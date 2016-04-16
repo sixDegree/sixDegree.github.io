@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hibernate基础</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="hibernate,jpa,orm,lucene">
+  
+  
+    <meta name="description" content="Hibernate Baisic Functional Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概念介绍</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">数据状态</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">DAO</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">ORM</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">JPA & Hibernate</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">SessionFactory & Session</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">主键</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">生成策略</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">联合主键</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">对象状态</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">映射</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">关系映射</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">组件映射</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">集合映射</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">继承映射</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">综合实例</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">查询</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">NativeSQL</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">HQL</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">QBC & QBE</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">命名的数据库查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">直接使用JDBC</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">缓存</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">一级缓存（Session）</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">二级缓存（SessionFactory）</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">三级缓存（Query）</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">事务</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">事务并发问题</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">事务隔离机制</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">锁</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">性能优化</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-33"><span class="sidebar-nav nav-text">动态局部插入&更新</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-34"><span class="sidebar-nav nav-text">cascade参数对CUD影响</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-35"><span class="sidebar-nav nav-text">1+N问题</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-36"><span class="sidebar-nav nav-text">防止内存泄漏</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-37"><span class="sidebar-nav nav-text">延迟加载</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-38"><span class="sidebar-nav nav-text">list & iterate</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-39"><span class="sidebar-nav nav-text">Hibernate 扩展组件</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-40"><span class="sidebar-nav nav-text">Hibernate Filter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-41"><span class="sidebar-nav nav-text">Hibernate Interceptor</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-42"><span class="sidebar-nav nav-text">Hibernate Listener</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-43"><span class="sidebar-nav nav-text">Hibernate Search</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Hibernate基础</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2013-05-31T16:00:00.000Z">2013-06-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+            <a href="/tags.html#tag-Hibernate">Hibernate</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">概念介绍</h2>
+<h3 id="header-2">数据状态</h3>
+<p>数据在计算机中有两种状态：</p>
+<ul>
+<li>瞬时状态：保存在内存的程序数据，程序退出后，数据就消失了，称为瞬时状态</li>
+<li>持久状态：保存在磁盘上的程序数据，程序退出后依然存在，称为程序数据的持久状态</li>
+</ul>
+<p><strong>持久化：</strong> 将程序数据在瞬时状态和持久状态之间相互转换的机制</p>
+<pre><code>Transient    ------------------&gt; Persistent
+(瞬时状态)            持久化        （持久状态）
+</code></pre><p>现在的项目大多使用三层构架: </p>
+<ul>
+<li>表示层</li>
+<li>业务逻辑层（服务层）</li>
+<li>持久化层 (这里的持久化层就是持久化的意思)</li>
+</ul>
+<h3 id="header-3">DAO</h3>
+<p>Data Access Object 数据访问对象</p>
+<p>DAO与持久化的<strong>关系</strong>是：DAO一种程序数据访问层（持久化层）的设计思想,供逻辑层使用。</p>
+<p>DAO不仅仅是其中的DAO类， DAO完整组件如下：</p>
+<ul>
+<li><strong>DAO 工厂类</strong> （暂时不使用,使用工厂设计模式）, 根据不同的数据源与访问特性生产对应的DAO产品，供业务逻辑类使用</li>
+<li><strong>DAO接口</strong>（一个）</li>
+<li><strong>实现了DAO接口的具体类</strong> ，根据数据源或者数据访问方式的不同有一个或多个</li>
+<li>实体类<ul>
+<li>DTO：Data Transfer Object数据传输对象 （实现Serializable接口）</li>
+<li>VO：Value Object 值对象</li>
+<li>POJO：实体类</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-4">ORM</h3>
+<p>Object-Relational Mapping 对象关系映射</p>
+<p>对象-关系映射：完成<strong>应用程序对象数据</strong>到<strong>关系型数据</strong>映射的机制<br>（利用程序我们把一个实体类的数据转化为关系型数据库表中的一行数据，或者把关系型数据库表中的一行数据转化为应用程序中的一个实体类）</p>
+<ul>
+<li><strong>ORM与DAO的关系：</strong>ORM是DAO接口针对关系型数据库的一种实现，本质上就是一个DAO实现类。</li>
+<li><strong>ORM思想：</strong>将关系型数据库中的表记录映射成对象，程序员可以把对DB的操作转化为对Object的操作</li>
+<li><strong>ORM框架：</strong>ORM思想的一个优雅实现，例如：Hibernate（JBoss），iBatis，Apache OJB，TopLink（Oracle），Castor JDO，…</li>
+</ul>
+<pre><code>应用对象数据 &lt;--------------------&gt; 关系型数据库
+（实体类）        映射                （表）
+</code></pre><p>一大堆类库，用面向对象的方式调用，它帮忙翻译成面向关系的方式<br>建立对象与表间关联，以简化编程，跨数据库平台</p>
+<h3 id="header-5">JPA &amp; Hibernate</h3>
+<p><strong>JPA</strong></p>
+<p>Java Persistent API<br>一个ORM规范（即一个持久层规范，类（较少）与接口（较多）的集合），通过注解Annotation或XML描述的方式完成对象关系映射</p>
+<p>意愿统一天下：像JDBC那样定义一个ORM规范，各ORM框架实现此规范（即各ORM框架实现JPA中的接口），这样只要学习了这个ORM规范就可以使用所有ORM框架了</p>
+<p><strong>Hibernate</strong></p>
+<p>hibernate是ORM思想的一个实现框架，先有Hibernate后有JPA，用Annotation来支持JPA官方标准</p>
+<pre><code>Client –Object  save() -&gt;Hibernate-&gt; Persist()—DB
+</code></pre><p>通过Hibernate实现Persist持久化到DB</p>
+<p>Hibernate应用场景：</p>
+<ul>
+<li>不适合OLAP（On-Line Analytical Processing 联机分析处理）：以查询分析统计数据为主的系统，一般是条记录，不是对象</li>
+<li>适合OLTP（On-Line Transaction Processing 联机事务处理）</li>
+</ul>
+<p>最佳实现：<br>1．设计细粒度的持久类，使用组件Component映射<br>。。。</p>
+<h2 id="header-6">Starter</h2>
+<ol>
+<li>添加Hibernate依赖包<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">version</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>建立hibernate 主配置文件hibernate.cfg.xml (可参考Hibernate jar包/project/etc/下的配置文件)</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">hibernate-configuration</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">session-factory</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dialect"</span>&gt;</span>org.hibernate.dialect.SQLServerDialect<span class="tag">&lt;/<span class="name">property</span>&gt;</span>    <span class="comment">&lt;!-- 方言，用来区别不同数据库--&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.url"</span>&gt;</span>jdbc:sqlserver://localhost:1433;databaseName=Bike<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.username"</span>&gt;</span>sa<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.password"</span>&gt;</span>Aa123456<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.driver_class"</span>&gt;</span>com.microsoft.sqlserver.jdbc.SQLServerDriver<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+         <span class="comment">&lt;!--  &lt;property name="myeclipse.connection.profile"&gt;Sql2008&lt;/property&gt;--&gt;</span>
+         <span class="comment">&lt;!-- JDBC connection pool (use the built-in) --&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"connection.pool_size"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+         <span class="comment">&lt;!--使用connection 数据库连接管理事务，使用connection连接管理事务(当前线程中找Session，只针对一个数据库) --&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"current_session_context_class"</span>&gt;</span>thread<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+
+         <span class="comment">&lt;!-- hbm：hibernate mapping; ddl：data defination language ; hbm2ddl：Hibernate自动生成建表语句 --&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hbm2ddl.auto"</span>&gt;</span>Validate<span class="tag">&lt;/<span class="name">property</span>&gt;</span>    
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"show_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+         <span class="comment">&lt;!-- 格式化显示输出sql --&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"format_sql"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+
+         <span class="comment">&lt;!-- 指明映射配置，两种方式：
+         使用xml映射文件：&lt;mapping resource="com/java/entity/Guestbook.hbm.xml" /&gt;，
+         使用Annotation：&lt;mapping class="bike.entity.Product"/&gt;--&gt;</span>
+         <span class="tag">&lt;<span class="name">mapping</span> <span class="attr">class</span>=<span class="string">"bike.entity.Product"</span>/&gt;</span>    
+     <span class="tag">&lt;/<span class="name">session-factory</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">hibernate-configuration</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>编写pojo实体类（可通过Hibernate反向工程自动生成）</p>
+<pre><code class="nulljava"> <span class="meta">@Entity</span>
+ <span class="meta">@Table</span>(name = <span class="string">"product"</span>)
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span> <span class="keyword">implements</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span>{
+     ...
+
+     <span class="meta">@Id</span>
+     <span class="meta">@GeneratedValue</span>(strategy=IDENTITY)
+     <span class="meta">@Column</span>(name = <span class="string">"id"</span>, unique = <span class="keyword">true</span>, nullable = <span class="keyword">false</span>)
+     <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span>
+     </span>{
+         <span class="keyword">return</span> <span class="keyword">this</span>.id;
+     }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-7">SessionFactory &amp; Session</h3>
+<table class="table">
+<thead>
+<tr>
+<th>SessionFactory</th>
+<th>Session</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类似ConnectionPool数据库连接池, 用来产生和管理Session</td>
+<td>从DB连接池中获取一个Connection挂到Session上,管理一个数据库的任务单元（简单说就是增 删 改 查）</td>
+</tr>
+<tr>
+<td>线程安全，生命期长，一个数据库对应一个SessionFactory</td>
+<td>非线程安全，生命期短，内部维护一级缓存和DB连接</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/2013/06/01/hibernate-session.png" alt="Hibernate Session"></p>
+<ol>
+<li><p>创建SessionFactory ，通常情况下每个应用只需要一个SessionFactory（除非要访间多个数据库的情况）</p>
+<pre><code class="nulljava"> <span class="comment">//主要维护DB连接池,很消费资源，一般创建一个，可使用单例，放在static语句块中</span>
+ <span class="keyword">private</span> <span class="keyword">static</span> SessionFactory sf=<span class="keyword">null</span>;
+ <span class="keyword">static</span>{
+     <span class="keyword">try</span>{
+         <span class="comment">//Hibernate3</span>
+         <span class="comment">//Configuration config=new Configuration().configure();</span>
+         <span class="comment">//sf=config.buildSessionFactory();</span>
+
+         <span class="comment">//Hibernate4</span>
+         <span class="comment">//Configuration cfg=new AnnotationConfiguration().configure();</span>
+         Configuration cfg = <span class="keyword">new</span> Configuration().configure();
+         ServiceRegistry serviceRegistry = <span class="keyword">new</span> ServiceRegistryBuilder()
+                 .applySettings(cfg.getProperties()).buildServiceRegistry();
+         sf = cfg.buildSessionFactory(serviceRegistry);
+     } 
+     <span class="keyword">catch</span> (HibernateException e){
+         e.printStackTrace();
+     }
+ }
+</code></pre>
+</li>
+<li><p>获取session</p>
+<ul>
+<li>使用<code>openSession</code> ,每次都是新的，需要手动close<pre><code class="nulljava">Session session=sf.openSession();
+<span class="comment">//使用session执行CRUD</span>
+...
+session.close();
+</code></pre>
+</li>
+<li>使用<code>getCurrentSession</code> 从上下文找，如果有，用旧的，如果没有，建新的, 界定事务边界，无需手动close，事务提交会自动close<pre><code class="nulljava"><span class="comment">/* 使用getCurrentSession需在hibernate的xml主配置文件中配置：
+&lt;property name="current_session_context_classs"&gt;thread&lt;/property&gt;
+*/</span>
+Session session=sf.getCurrentSession();
+session.beginTransaction();
+<span class="comment">//使用session执行CRUD</span>
+...
+session.getTransaction().commit();
+</code></pre>
+</li>
+<li>hibernate的xml主配置文件中<code>current_session_context_class</code>说明：<ul>
+<li><code>thread</code> 使用connection连接管理事务<ul>
+<li>当前线程中找Session，只针对一个数据库</li>
+</ul>
+</li>
+<li><code>jta</code> 全称java transaction api，-java分布式事务管理distributed transaction<ul>
+<li>多数据库访问，分布在多台不同数据库上</li>
+<li>eg：两个数据库操作放在一个事务里</li>
+<li>ApplicationServer提供Transaction Manager（JTA事务）</li>
+<li>Tomcat本身不可以，结合Spring可以，Jbass可以</li>
+<li>jta由中间件提供（jboss WebLogic等，tomcat不支持）<br>+<code>managed</code></li>
+</ul>
+</li>
+<li><code>custom.Class</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用Session执行CRUD</p>
+<ul>
+<li>save</li>
+<li>get,load(Xxx.class,id): 都会首先査找缓存（一级缓存)，如果没有，才会去数据库査找<table class="table">
+<thead>
+<tr>
+<th>方法</th>
+<th>不同</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>load</td>
+<td>返回的实际上是一个代理对象</td>
+<td>等到真正用到对象的内容时才发出sql语句，即会产生延迟加载，故在真正使用前若不存在此对象不会报错</td>
+</tr>
+<tr>
+<td>get</td>
+<td>返回的是实际对象</td>
+<td>马上会发出sql语句，直接从DB中加载，不会产生延迟</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>update<ul>
+<li>用来更新detached对象，更新完成后转为persistent状态</li>
+<li>更新transient对象会报错，更新自己设定id的transient对象可以（数据库有对应记录）</li>
+<li>persistent状态的对象只要设定（如:t.setName…）不同字段提交时就会发生更新，若跟原来字段值相同则不更新</li>
+</ul>
+</li>
+<li>delete</li>
+<li>saveOrUpdate,merge</li>
+<li>clear 强制清空Session缓存</li>
+<li>flush 强制将内存(session缓存)与数据库同步,即将Session缓存中内容提交到DB<ul>
+<li>默认情况下是当session的事务提交后，强制将内存(session缓存)与数据库同步</li>
+<li>设定何时同步缓存与数据库session.FlushMode(FlushMode.XXX) ，很少用</li>
+<li>例如: <code>session.setFlushMode(FlushMode.AUTO)</code>（需在session.beginTransaction()前调用，默认为AUTO；在调节性能时可能会用到此方法）</li>
+</ul>
+</li>
+<li>…</li>
+</ul>
+</li>
+<li><p>可使用泛型DAO封装SessionFactory，Transaction事务，方便在项目中调用</p>
+</li>
+</ol>
+<h2 id="header-8">主键</h2>
+<h3 id="header-9">生成策略</h3>
+<ol>
+<li><code>AUTO</code> 相当于NATIVE，可以是下面三种中任意一种类型，取决于底层数据库类型<ul>
+<li>对 MySQL使用auto_increment</li>
+<li>对 Oracle使用hibernate_sequence(sequence名称固定为hibernate_sequence）</li>
+</ul>
+</li>
+<li><code>IDENTITY</code> 自动增长</li>
+<li><code>SEQUENCE</code> 序列<ul>
+<li>对于Oracle，默认使用<code>hibernate_sequence</code>（插入数据时先执行<code>Select hibernate_sequence.nextval from dual</code>然后执行insert）</li>
+<li>可自定义在数据库生成指定的sequence名，结合<code>@SequenceGenerator</code>使用</li>
+</ul>
+</li>
+<li><code>TABLE</code> 借助数据库表，表中保存当前标识属性的最大值<ul>
+<li>一张表可提供无限多个ID值</li>
+<li>跨数据平台时有用， eg： 类库可应用在任何数据库平台上</li>
+<li>结合<code>@TableGenerator</code>使用</li>
+</ul>
+</li>
+<li><code>uuid</code>结合<code>@GenericGenerator</code>使用</li>
+</ol>
+<p>使用举例：</p>
+<ul>
+<li><p>使用<strong>Annotation</strong>方式（加在get主键方法上）</p>
+<pre><code class="nulljava">  <span class="comment">//auto</span>
+  <span class="meta">@Id</span>
+  <span class="meta">@GeneratedValue</span>(strategy=GenerationType.AUTO)
+
+  <span class="comment">//identity</span>
+  <span class="meta">@Id</span>
+  <span class="meta">@GeneratedValue</span>(strategy=GenerationType.IDENTITY)
+
+  <span class="comment">//sequence（默认使用hibernate_sequence）</span>
+  <span class="meta">@Id</span>
+  <span class="meta">@GeneratedValue</span>(strategy=GenerationType.SEQUENCE)
+
+  <span class="comment">//指定sequence名</span>
+  <span class="comment">//"teacherSEQ"为@SequenceGenerator的标识名</span>
+  <span class="comment">//"teacherSEQ_DB"为指定到数据库生成的Sequence名</span>
+  <span class="meta">@Id</span>
+  <span class="meta">@GeneratedValue</span>(strategy=GenerationType.SEQUENCE,generator=<span class="string">"teacherSEQ"</span>)
+  <span class="meta">@SequenceGenerator</span>(name=<span class="string">"teacherSEQ"</span>, sequenceName=<span class="string">"teacherSEQ_DB"</span>) 
+
+  <span class="comment">//table</span>
+  <span class="meta">@Id</span>
+  <span class="meta">@GeneratedValue</span>(strategy=GenerationType.TABLE,generator=<span class="string">"teacherID"</span>)
+  <span class="meta">@TableGenerator</span>(name=<span class="string">"teacherID"</span>,
+          table=<span class="string">"teacherID_DB"</span>,
+          pkColumnName=<span class="string">"key_value"</span>,
+          pkColumnValue=<span class="string">"pk_value"</span>,
+          valueColumnName=<span class="string">"teacher"</span>,
+          allocationSize=<span class="number">1</span>)
+
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> 
+  </span>{
+      <span class="keyword">return</span> id;
+  }
+</code></pre>
+</li>
+<li>使用<strong>xml</strong>方式：<pre><code class="nullxml">  <span class="comment">&lt;!-- 常用四个：native identity sequence uuid（native uuid跨平台）--&gt;</span>
+  <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span> &gt;</span>
+      <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="header-10">联合主键</h3>
+<ol>
+<li><p>将联合主键的属性提取出来,重新编写一个pojo类</p>
+<pre><code class="nulljava"><span class="comment">/*
+实现 java.io.Serializable 序列化接口（此为标记性接口，不用实现任何方法）
+重写equals和hashCode方法 （用于确保内存PK的唯一性）
+*/</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentPK</span>  <span class="keyword">implements</span> <span class="title">Serializable</span> 
+</span>{
+    <span class="keyword">private</span> String id;
+    <span class="keyword">private</span> String name;
+    … …
+    <span class="comment">//get/set 方法</span>
+    ... ...
+
+    <span class="comment">//重写equals方法</span>
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> 
+    </span>{
+        <span class="keyword">if</span>(o <span class="keyword">instanceof</span> StudentPk) 
+        {
+            StudentPk pk = (StudentPk)o;
+            <span class="keyword">if</span>(<span class="keyword">this</span>.id == pk.getId() &amp;&amp; <span class="keyword">this</span>.name.equals(pk.getName())) 
+            {
+                  <span class="keyword">return</span> <span class="keyword">true</span>;
+            }
+        }
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+
+    <span class="comment">//重写hashcode方法</span>
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span>
+    </span>{
+        <span class="keyword">return</span> <span class="keyword">this</span>.name.hashCode();
+    }
+}
+</code></pre>
+</li>
+<li><p>XML配置方式(composite-id)</p>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- 原pojo类Student中删除id，name属性，并加入新属性“StudentPK”--&gt;</span>
+ <span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.bjsxt.pojo.Student"</span> &gt;</span>
+         <span class="tag">&lt;<span class="name">composite-id</span> <span class="attr">name</span>=<span class="string">"studentPK"</span> <span class="attr">class</span>=<span class="string">"com.bjsxt.pojo.StudentPK"</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">key-property</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key-property</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">key-property</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">key-property</span>&gt;</span>
+         <span class="tag">&lt;/<span class="name">composite-id</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> /&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sex"</span> /&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"good"</span> <span class="attr">type</span>=<span class="string">"yes_no"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">class</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span>
+</code></pre>
+</li>
+<li><p><strong>Annotation 配置方式</strong></p>
+<ul>
+<li><p>方法1: 使用<code>@Embeddable</code></p>
+<pre><code class="nulljava"><span class="comment">//提取主键的主键类StudentPK上加 @Embeddable（可导入的，可注入的）</span>
+<span class="meta">@Embeddable</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentPK</span> <span class="keyword">implements</span> <span class="title">Serializable</span> 
+</span>{
+  <span class="keyword">private</span> String id;
+  <span class="keyword">private</span> String name;
+      … …
+}
+
+<span class="comment">//pojo类Student的新属性“StudentPK“的get方法前加@Id</span>
+<span class="meta">@Entity</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> 
+</span>{
+  <span class="keyword">private</span> StudentPK studentPK ;
+  <span class="meta">@Id</span>
+  <span class="function"><span class="keyword">public</span> StudentPK <span class="title">getStudentPK</span><span class="params">()</span> 
+  </span>{
+      <span class="keyword">return</span> studentPK;
+  }
+  … … 
+}
+</code></pre>
+</li>
+<li><p>方法2：联合主键上使用<code>@EmbeddedlD</code></p>
+<pre><code class="nulljava"><span class="comment">//主键类StudentPK不加注解</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentPK</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>{
+  <span class="keyword">private</span> String id;
+  <span class="keyword">private</span> String name;
+      … …
+}
+
+<span class="comment">//pojo类Student新属性“studentPK”的get方法前写@EmbeddedlD</span>
+<span class="meta">@Entity</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>{
+  <span class="keyword">private</span> StudentPK studentPK ;
+  <span class="meta">@EmbeddedlD</span>
+  <span class="function"><span class="keyword">public</span> StudentPK <span class="title">getStudentPK</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> studentPK;
+  }
+  … … 
+}
+</code></pre>
+</li>
+<li><p>方法3(推荐)：pojo类上使用<code>@IdClass</code></p>
+<pre><code class="nulljava"><span class="comment">//主键类StudentPK不加注解</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentPK</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>{
+  <span class="keyword">private</span> String id;
+  <span class="keyword">private</span> String name;
+      … …
+}
+
+<span class="comment">//pojo类Student前加“@IdClass(StudentPK).class)”,保留 id，name属性并加@Id</span>
+<span class="meta">@Entity</span>
+<span class="meta">@IdClass</span>(StudentPK.class)
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>{
+  <span class="keyword">private</span> String id;
+  <span class="keyword">private</span> String name;
+  <span class="meta">@Id</span>
+  <span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> id;
+  }
+  <span class="meta">@Id</span>
+  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> name;
+  }
+  ... ...
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>说明：</p>
+<ol>
+<li>序列化应用环境<ul>
+<li>系统集群</li>
+<li>虚拟内存（内存空间满了，需要通过序列化将对象暂存到虚拟空间（硬盘上））</li>
+</ul>
+</li>
+<li>DB记录读入内存，从内存读取对象：<ul>
+<li>从表Student中读取记录装入内存的哈希表中，需计算对象Student主键PK的HashCode然后插入哈希表中；</li>
+<li>在哈希表中查找内容是否相同时：首先遍历HashCode，然后使用equals判断HashCode相同的各个对象</li>
+<li>可使用Commonclipse：Commons lang builder插件帮助生成</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-11">对象状态</h3>
+<p>三种状态：</p>
+<ul>
+<li><strong>Transient</strong> 瞬时透明：内存中一个对象，没ID,session缓存中也没有</li>
+<li><strong>Persistent</strong> 持久化的：内存中有，session缓存中有，数据库有（ID) </li>
+<li><strong>Detached</strong> 托管的（脱离Session管理）：内存有，session缓存没有，数据库有，ID</li>
+</ul>
+<p>三种状态的区分关键在于:</p>
+<ol>
+<li>有没有ID</li>
+<li>ID在数据库中有没有</li>
+<li>在内存中有没有（session缓存）</li>
+</ol>
+<p><img src="/2013/06/01/object-state.png" alt="object state"></p>
+<h2 id="header-12">映射</h2>
+<h3 id="header-13">关系映射</h3>
+<p>对象之间的关系（不是指数据库的关系）</p>
+<ol>
+<li><p>映射关系：<code>@OneToOne</code>,<code>@OneToMany</code>,<code>@ManyToOne</code>,<code>@ManyToMany</code></p>
+<ul>
+<li><code>mappedBy</code>： 设置双向关联</li>
+<li><code>cascade</code> ：设置对象间的级联操作<ul>
+<li>只对增删改<code>CUD</code>起作用 （Create,Update,Delete）<br>+<code>cascade={CascadeType.xxx}</code>，CascadeType取值：<ul>
+<li><code>ALL</code>：Cascade all operations所有情况</li>
+<li><code>MERGE</code>：Cascade merge operation合并(merge=save+update)</li>
+<li><code>PERSIST</code>：Cascade persist operation存储 persist()</li>
+<li><code>REFRESH</code>：Cascade refresh operation刷新</li>
+<li><code>REMOVE</code>：Cascade remove operation删除</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>fetch</code> ：设置抓起策略<ul>
+<li>只对读取<code>R</code>起作用（Select）</li>
+<li><code>fetch=FetchType.xxx</code>，FetchType取值：<ul>
+<li><code>EAGER</code>：取出关联 （注意：双向不要两边设置Eager，否则会有多余的査询语句发出）</li>
+<li><code>LAZY</code>：不取关联，即延迟加载 （注意：需要在commit()之前， session还存在时取关联对象）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>例如：</p>
+<pre><code class="nulljava"><span class="meta">@OneToMany</span>(mappedBy=<span class="string">"parent"</span>, cascade={CascadeType.ALL}, fetch=FetchType.EAGER)
+<span class="function"><span class="keyword">public</span> List&lt;Tree&gt; <span class="title">getChildren</span><span class="params">()</span> </span>{...}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>关联外键字段设置：</p>
+<ul>
+<li><code>@JoinColumn</code> 指定关联的DB字段<ul>
+<li><code>@JoinColumn(name=”对应DB表中的列名”)</code></li>
+</ul>
+</li>
+<li><code>@JoinColumns</code> 关联联合主键<ul>
+<li><code>@JoinColumns({ @JoinColumn(name=”...”, referencedColumnName=”...”) , ... })</code></li>
+<li>例如：<pre><code class="nulljava"><span class="meta">@OneToOne</span>
+<span class="meta">@JoinColumns</span>( { 
+  <span class="meta">@JoinColumn</span>(name = <span class="string">"wifeid"</span>, referencedColumnName = <span class="string">"id"</span>),
+  <span class="meta">@JoinColumn</span>(name = <span class="string">"wifename"</span>, referencedColumnName = <span class="string">"name"</span>) 
+})
+<span class="function"><span class="keyword">public</span> Wife <span class="title">getWife</span><span class="params">()</span> </span>{……}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>@JoinTable</code> 多对多关联，指定中间表</p>
+<ul>
+<li><code>@JoinTable(name=”中间表名”,joinColumns={@JoinColumn(...)},inverseJoinColumns={@JoinColumn(...)})</code></li>
+<li><code>name</code>指明中间表表名；<br>+<code>joinColumns</code>包含@JoinColumn数组，指明本类主键在中间表中对应的字段名；</li>
+<li><code>inverseJoinColumns</code>包含@JoinColumn数组，指明对方类主键在中间表中的字段名</li>
+<li><p>例如：</p>
+<pre><code class="nulljava"><span class="meta">@ManyToMany</span>
+<span class="meta">@JoinTable</span>(name=<span class="string">"t_s"</span>, <span class="comment">//指定中间表表名</span>
+      joinColumns={<span class="meta">@JoinColumn</span>(name=<span class="string">"teacherid"</span>)},<span class="comment">//本类主键在中间表生成的对应字段名</span>
+      inverseJoinColumns={<span class="meta">@JoinColumn</span>(name=<span class="string">"studentid"</span>)}<span class="comment">//对方类主键在中间表生成的对应字段名</span>
+  )
+<span class="function"><span class="keyword">public</span> Set&lt;Student&gt; <span class="title">getStudents</span><span class="params">()</span></span>{...}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>使用举例：</p>
+<ol>
+<li><p>OneToOne （使用外键 mappedBy）</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Husband</td>
+<td>id,name,<strong>wifeId</strong> （FK：wifeId）</td>
+<td>id,name,<strong>wife</strong></td>
+</tr>
+<tr>
+<td>Wife</td>
+<td>id,name</td>
+<td>id,name,<strong>(husband)</strong></td>
+</tr>
+</tbody>
+</table>
+<p> xml方式：</p>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- 单向 many-to-one， unique="true"，保证生成的字段唯一,这样many-to-one 也达到了一对一的效果 --&gt;</span>
+ <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.bjsxt.pojo.Husband"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>&gt;</span><span class="tag">&lt;/<span class="name">generator</span>&gt;</span>
+         <span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"num"</span>/&gt;</span>
+         <span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"wife"</span> <span class="attr">column</span>=<span class="string">"wifeId"</span> <span class="attr">unique</span>=<span class="string">"true"</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">many-to-one</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">class</span>&gt;</span>
+
+ <span class="comment">&lt;!-- 双向many-to-one unique ，one-to-one property-ref（相当于mappedBy）,Wife.hbm.xml文件中加 ：--&gt;</span>
+<span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">"husband"</span> <span class="attr">property-ref</span>=<span class="string">"wife"</span>&gt;</span><span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span>
+</code></pre>
+<p> Annotation方式：</p>
+<pre><code class="nulljava"> <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Husband</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Wife wife;
+     ...
+     <span class="meta">@OneToOne</span>
+     <span class="meta">@JoinColumn</span>(name=<span class="string">"wifeid"</span>) <span class="comment">//指定对应的DB字段名</span>
+     <span class="function"><span class="keyword">public</span> Wife <span class="title">getWife</span><span class="params">()</span>
+     </span>{
+         <span class="keyword">return</span> wife;
+     }
+ }
+
+ <span class="comment">//设置双向关联：增加husband属性，getHusband方法（若不加mappedby会生成2个映射关系FK）</span>
+ <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wife</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Husband husband;
+     ...
+     <span class="meta">@OneToOne</span>(mappedBy=<span class="string">"wife"</span>) <span class="comment">//指定这个一对一关联是被Husband类的 wife属性(准确说是getWife方法)映射</span>
+     <span class="function"><span class="keyword">public</span> Husband <span class="title">getHusband</span><span class="params">()</span>
+     </span>{
+         <span class="keyword">return</span> husband;
+     }
+ }
+</code></pre>
+</li>
+<li><p>OneToOne （使用主键  @PrimaryKeyJoinColumn）</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Husband</td>
+<td>id,name</td>
+<td>id,name,<strong>wife</strong></td>
+</tr>
+<tr>
+<td>Wife</td>
+<td>id,name</td>
+<td>id,name,<strong>husband</strong></td>
+</tr>
+<tr>
+<td>Husband(id)  reference wife（id）</td>
+</tr>
+</tbody>
+</table>
+<p> xml方式：</p>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- 单项：one-to-one id （有bug，不会为两张表生成外键的参考关系,容易产生id不一致的现象）--&gt;</span>
+ <span class="tag">&lt;<span class="name">one-to-one</span>  <span class="attr">name</span>=<span class="string">"wife"</span> <span class="attr">constrained</span>=<span class="string">"true"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">id</span>&gt;</span>
+         <span class="comment">&lt;!--Husband的主键应参考Wife的主键生成--&gt;</span>
+         <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"foreign"</span>&gt;</span>
+             <span class="comment">&lt;!-- 指定靠哪个属性上的外键关系生成主键 --&gt;</span>
+             <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"property"</span>&gt;</span>wife<span class="tag">&lt;/<span class="name">param</span>&gt;</span> 
+         <span class="tag">&lt;/<span class="name">generator</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">one-to-one</span>&gt;</span>
+
+ <span class="comment">&lt;!-- 双向：one-to-one id 使用foreign class和one-to-one property-ref --&gt;</span>
+ <span class="tag">&lt;<span class="name">one-to-one</span> <span class="attr">name</span>=<span class="string">”husband”,property-ref</span>=<span class="string">”wife”/</span>&gt;</span>
+</code></pre>
+<p> Annotation方式：</p>
+<pre><code class="nulljava"> <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Husband</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Wife wife;
+     ...
+     <span class="meta">@oneToOne</span>
+     <span class="meta">@PrimaryKeyJoinColumn</span>
+     <span class="function"><span class="keyword">public</span> Wife <span class="title">getWife</span><span class="params">()</span>
+     </span>{
+         <span class="keyword">return</span> wife;
+     }
+ }
+
+ <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wife</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Husband husband;
+     ...
+     <span class="meta">@oneToOne</span>
+     <span class="meta">@PrimaryKeyJoinColumn</span>(mappedBy=”wife”)
+     <span class="function"><span class="keyword">public</span> Husband <span class="title">getHusband</span><span class="params">()</span>
+     </span>{
+         <span class="keyword">return</span> husband;
+     }
+ }
+</code></pre>
+</li>
+<li><p>OneToOne （使用联合主键 @JoinColumns）</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Husband</td>
+<td>id,name,<strong>wifeId</strong>,<strong>wifeName</strong></td>
+<td>id,name,<strong>wife</strong></td>
+</tr>
+<tr>
+<td>Wife</td>
+<td><strong>id</strong>,<strong>name</strong> （联合主键）</td>
+<td>id,name</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="nulljava"> <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Husband</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Wife wife;
+     ...
+     <span class="meta">@OneToOne</span>
+     <span class="meta">@JoinColumns</span>( { <span class="meta">@JoinColumn</span>(name = <span class="string">"wifeid"</span>, referencedColumnName = <span class="string">"id"</span>),
+             <span class="meta">@JoinColumn</span>(name = <span class="string">"wifename"</span>, referencedColumnName = <span class="string">"name"</span>) })
+     <span class="function"><span class="keyword">public</span> Wife <span class="title">getWife</span><span class="params">()</span> </span>{……}
+ }
+
+ <span class="comment">//Wife类中建立联合主键,建立方式参考 ID生成策略中的联合主键部分</span>
+ ...
+</code></pre>
+</li>
+<li><p>@ManyToOne （多对一，单项）</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User</td>
+<td>id,name,<strong>groupId</strong> (FK:groupId)</td>
+<td>id,name,<strong>group</strong>  (多)</td>
+</tr>
+<tr>
+<td>Group</td>
+<td>id,name</td>
+<td>id,name  (一)</td>
+</tr>
+</tbody>
+</table>
+<p> xml方式：</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">many-to-one</span> <span class="attr">name</span>=<span class="string">"group"</span> <span class="attr">column</span>=<span class="string">"groupid"</span> <span class="attr">cascade</span>=<span class="string">"all"</span>/&gt;</span>
+</code></pre>
+<p> Annotation方式：</p>
+<pre><code class="nulljava"> <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Group group;
+     ...
+     <span class="meta">@ManyToOne</span>
+     <span class="meta">@JoinColumn</span>(name=”groupId”)  <span class="comment">//指定对应的DB字段名</span>
+     <span class="function"><span class="keyword">public</span> Group <span class="title">getGroup</span><span class="params">()</span> </span>{...}
+ }
+</code></pre>
+</li>
+<li><p>@OneToMany （一对多，单项）</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User</td>
+<td>id,name,<strong>groupId</strong> (FK:groupId)</td>
+<td>id,name (多)</td>
+</tr>
+<tr>
+<td>Group</td>
+<td>id,name</td>
+<td>id,name,<strong>Set<User> users</strong> (一)</td>
+</tr>
+</tbody>
+</table>
+<p> xml方式：</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.hibernate.Group"</span> <span class="attr">table</span>=<span class="string">"t_group"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>/&gt;</span>
+     <span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"users"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"groupId"</span>/&gt;</span>    <span class="comment">&lt;!-- 指定生成外键字段的名字--&gt;</span>
+         <span class="tag">&lt;<span class="name">one-to-many</span> <span class="attr">class</span>=<span class="string">"com.pojo.User"</span>/&gt;</span>
+     <span class="tag">&lt;/<span class="name">set</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">class</span>&gt;</span>
+</code></pre>
+<p> Annotation方式：</p>
+<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Group</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Set&lt;User&gt; users = <span class="keyword">new</span> HashSet&lt;User&gt;();
+     ...
+     <span class="meta">@OneToMany</span>
+     <span class="meta">@JoinColumn</span>(name=”groupId”) <span class="comment">//指定User表中生成与Group对应的字段名</span>
+     <span class="function"><span class="keyword">public</span> Set&lt;User&gt; <span class="title">getUsers</span><span class="params">()</span> </span>{...}
+ }
+</code></pre>
+</li>
+<li><p>@ManyToOne &amp; @OneToMany （一对多和多对一，双向）</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User</td>
+<td>id,name,<strong>groupId</strong> (FK:groupId)</td>
+<td>id,name,<strong>group</strong>  (多)</td>
+</tr>
+<tr>
+<td>Group</td>
+<td>id,name</td>
+<td>id,name,<strong>Set<User> users</strong> (一)</td>
+</tr>
+</tbody>
+</table>
+<p> xml方式：<br> 务必确保在多的一端生成的生成的外键和一的一方生成的外键的名字相同,都为groupId.如果名字不同则会在多的一端生成多余的外键</p>
+<p> Annotation方式：</p>
+<pre><code class="nulljava"> <span class="comment">//在多的一端User配置group</span>
+ <span class="meta">@ManyToOne</span>
+ <span class="meta">@JoinColumn</span>(name=<span class="string">"groupid"</span>)
+
+ <span class="comment">//在一的一端Group配置users</span>
+ <span class="meta">@OneToMany</span>(mappedBy=<span class="string">"group"</span>)
+</code></pre>
+</li>
+<li><p>@ManyToMany (多对多)</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Teacher</td>
+<td>id,name</td>
+<td>id,name,Set<Student> students</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>id,name</td>
+<td>id,name,Set<Teacher> teacher</td>
+</tr>
+<tr>
+<td>中间表t_s</td>
+<td>teacherId，studentId</td>
+</tr>
+</tbody>
+</table>
+<p> xml方式：</p>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- 单项：--&gt;</span>
+ <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"com.xxx.Teacher"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>/&gt;</span>
+     <span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"students"</span> <span class="attr">table</span>=<span class="string">"t_s"</span>&gt;</span>table定义中间表的表名
+         <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"teacher_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"com.xxx.Student"</span> <span class="attr">column</span>=<span class="string">"student_id"</span>/&gt;</span>
+     <span class="tag">&lt;/<span class="name">set</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">class</span>&gt;</span>
+
+ <span class="comment">&lt;!-- 双向:两端配置一样,注意表名和生成的中间表的字段属性名要一致（table=”t_s”,column错开对应）--&gt;</span>
+ <span class="comment">&lt;!-- Teacher那一端配置：--&gt;</span>
+ <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"students"</span> <span class="attr">table</span>=<span class="string">"t_s"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"teacher_id"</span>/&gt;</span>
+         <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"com.xxx.Student"</span> <span class="attr">column</span>=<span class="string">"student_id"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">set</span>&gt;</span>
+ <span class="comment">&lt;!-- 在Student那一端配置：--&gt;</span>
+ <span class="tag">&lt;<span class="name">set</span> <span class="attr">name</span>=<span class="string">"teachers"</span> <span class="attr">table</span>=<span class="string">"t_s"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">key</span> <span class="attr">column</span>=<span class="string">"student_id"</span>&gt;</span><span class="tag">&lt;/<span class="name">key</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">many-to-many</span> <span class="attr">class</span>=<span class="string">"com.xxx.Teacher"</span> <span class="attr">column</span>=<span class="string">"teacher_id"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">set</span>&gt;</span>
+</code></pre>
+<p> Annotation方式：</p>
+<pre><code class="nulljava"> <span class="comment">//Teacher是主的一方 Student是附属的一方</span>
+ <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Set&lt;Student&gt; students=<span class="keyword">new</span> HashSet&lt;Student&gt;();
+     ...
+     <span class="meta">@ManyToMany</span>
+     <span class="meta">@JoinTable</span>(name=<span class="string">"t_s"</span>, <span class="comment">//指定中间表表名</span>
+         joinColumns={<span class="meta">@JoinColumn</span>(name=<span class="string">"teacherid"</span>)},<span class="comment">//本类主键在中间表生成的对应字段名</span>
+         inverseJoinColumns={<span class="meta">@JoinColumn</span>(name=<span class="string">"studentid"</span>)}<span class="comment">//对方类主键在中间表生成的对应字段名</span>
+     )
+     <span class="function"><span class="keyword">public</span> Set&lt;Student&gt; <span class="title">getStudents</span><span class="params">()</span></span>{...}
+ }
+
+ <span class="comment">//双向关联，注意：mappedBy 与 @JoinTable等一类的配置要分开，不然表字段可能乱</span>
+ <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Set&lt;Teacher&gt; teacher=<span class="keyword">new</span> HashSet&lt;Teacher&gt;();
+     ...
+     <span class="meta">@ManyToMany</span>(mappedBy=”students”)
+     <span class="function"><span class="keyword">public</span> Set&lt;Teacher&gt; <span class="title">getTeachers</span><span class="params">()</span></span>{...}
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-14">组件映射</h3>
+<p>对象关系：一个对象是另外一个对象的一部分<br>数据库表：一张表</p>
+<table class="table">
+<thead>
+<tr>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Husband：id,name,wifename,wifeage</td>
+<td>对象Husband ：id,name,<strong>Wife wife</strong></td>
+</tr>
+<tr>
+<td></td>
+<td>对象Wife：name,age</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Husband</span>
+</span>{
+    <span class="comment">//id,name,wife</span>
+    ...
+    <span class="meta">@Embedded</span> <span class="comment">//表明该对象是从别的位置嵌入过来的,是不需要单独映射的表</span>
+    <span class="function">Public Wife <span class="title">getWife</span><span class="params">()</span>
+    </span>{ <span class="keyword">return</span> wife;}
+}
+
+<span class="meta">@Embeddable</span> <span class="comment">//写在分类（Wife类）的类名前的，不过好像不写也行</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Wife</span> </span>{… …}
+</code></pre>
+<p><strong>PS</strong>: 若Husband与Wife两个类中都有name字段,这样在生成表的时候会有冲突</p>
+<p>解决方案：</p>
+<ul>
+<li>方法一：重新指定生成的Wife类组件生成的字段名<ul>
+<li>使用 @AttributeOverride注解，写在getWife方法上 （不常用）</li>
+<li>指定Wife类中的name属性对应新的字段名—“wifename”</li>
+</ul>
+</li>
+<li>方法二（更好的解决方法）：<ul>
+<li>不要在组件的两个映射类中写同名属性；</li>
+<li>如果真的有重复，在分类中（此处为Wife类）的重复名称的属性上使用@Column指定新的字段名</li>
+<li>Annotation方式：<pre><code class="nulljava"><span class="meta">@Column</span>(name=<span class="string">"wifename"</span>)
+<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> 
+</span>{<span class="keyword">return</span> name;}
+</code></pre>
+</li>
+<li>xml方式: component<pre><code class="nullxml"><span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">"Husband"</span> &gt;</span>
+  <span class="tag">&lt;<span class="name">id</span> <span class="attr">name</span>=<span class="string">"id"</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">generator</span> <span class="attr">class</span>=<span class="string">"native"</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="name">id</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">component</span> <span class="attr">name</span>=<span class="string">"wife"</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"wifeName"</span>/&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"wifeAge"</span>/&gt;</span>
+  <span class="tag">&lt;/<span class="name">component</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">class</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-15">集合映射</h3>
+<p>Set,List,Map （注意：JPA1.0 目前不支持基础数据映射）</p>
+<pre><code class="nulljava"><span class="comment">//List (与Set差不多 多个@OrderBy)</span>
+<span class="meta">@OrderBy</span>(<span class="string">" name asc"</span>)
+getXXX(){...}
+
+<span class="comment">//Map</span>
+<span class="meta">@Mapkey</span>(name=<span class="string">"id"</span>)
+getXXX(){...}
+
+<span class="keyword">for</span>(Map.Entry&lt;Integer,User&gt; entity:g.getUsers().entrySet())
+{ System.out.println(entry.getValue().getName());}
+</code></pre>
+<h3 id="header-16">继承映射</h3>
+<p>继承映射：<code>@Inheritance</code>子类的Id都由父类中指定的方式生成，三种方式(InheritanceType)：<code>SINGLE_TABLE</code>,<code>TABLE_PER_CLASS</code>,<code>JOINED</code></p>
+<ol>
+<li><p><code>SINGLE_TABLE</code> 一张总表, 字段多的话会造成大冗余</p>
+<table class="table">
+<thead>
+<tr>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Person (id,name,score,title,discriminator)</td>
+<td>Student：id,name,score</td>
+</tr>
+<tr>
+<td></td>
+<td>Teacher：id,name,title</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="nulljava"> <span class="meta">@Entity</span>
+ <span class="meta">@Inheritance</span>(strategy=InheritanceType.SINGLE_TABLE)    <span class="meta">@DiscriminatorColumn</span>(name=<span class="string">"discriminator"</span>,discriminatorType=DiscriminatorType.STRING)
+ <span class="meta">@DiscriminatorValue</span>(<span class="string">"person"</span>)
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span>
+ </span>{    ...            <span class="comment">//属性id,name </span>
+     <span class="meta">@Id</span>
+     <span class="meta">@GenerateValue</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getId</span><span class="params">()</span></span>{<span class="keyword">return</span> id;}
+ }
+
+ <span class="meta">@Entity</span>
+ <span class="meta">@DiscriminatorValue</span>(<span class="string">"student"</span>)
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span>    //注意不要标注@<span class="title">Id</span>了
+ </span>{... }    <span class="comment">//属性score</span>
+
+ <span class="meta">@Entity</span>
+ <span class="meta">@DiscriminatorValue</span>(<span class="string">"teacher"</span>)
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span>    //注意不要标注@<span class="title">Id</span>了
+ </span>{...}    <span class="comment">//属性title</span>
+</code></pre>
+</li>
+<li><p><code>TABLE_PER_CLASS</code> 每个类分别一张表</p>
+<ul>
+<li>在load或get数据时建议直接用子类</li>
+<li>若用多态去获取，会Union所有对象在根据id查询</li>
+<li><p>例如：使用(Person.class,1),会 select from ( person  union student union teacher ) =&gt; 包含所有字段的表，相当于Single Table</p>
+<table class="table">
+<thead>
+<tr>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Person(id,name)</td>
+<td>Person(id,name)</td>
+</tr>
+<tr>
+<td>Student(id,name,score)</td>
+<td>Student (score) extends Person</td>
+</tr>
+<tr>
+<td>Teacher(id,name,title)</td>
+<td>Teacher (title)  extends Person</td>
+</tr>
+<tr>
+<td>t_gen_table(t_pk,t_value)</td>
+</tr>
+</tbody>
+</table>
+<p>注意： Person，Student，Teacher表的id各不相同</p>
+<pre><code class="nulljava"><span class="meta">@Entity</span>
+<span class="meta">@Inheritance</span>(strategy=InheritanceType.TABLE_PER_CLASS)
+<span class="meta">@TableGenerator</span>{
+  name=<span class="string">"t_gen"</span>,table=<span class="string">"t_gen_table"</span>,
+  pkColumnName=<span class="string">"t_pk"</span>,valueColumnName=<span class="string">"t_value"</span>,
+  pkColumnValue=<span class="string">"person_pk"</span>,initialValue=<span class="number">1</span>,allocationSize=<span class="number">1</span>}   <span class="comment">//Oracle 可用一个Sequence</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span>    //属性 <span class="title">id</span>,<span class="title">name</span>
+</span>{    ...
+  <span class="meta">@Id</span>
+  <span class="meta">@GeneratedValue</span>(generator=<span class="string">"t_gen"</span>,strategy=GenerationType.TABLE)
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span></span>{ <span class="keyword">return</span> id; }
+} 
+
+<span class="meta">@Entity</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span>   //其他注解什么都不需要加
+</span>{..} <span class="comment">// 属性score</span>
+
+<span class="meta">@Entity</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span>  /其他注解什么都不需要加
+</span>{...} <span class="comment">//属性title</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>JOINED</code> 每个子类一张表（这种用的相对多些）</p>
+<ul>
+<li>用子对象插入和读取是都会关联两张表（父和子）</li>
+<li><p>用多态父类获取时会关联所有表</p>
+<table class="table">
+<thead>
+<tr>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Person(id,name)</td>
+<td>Person(id,name)</td>
+</tr>
+<tr>
+<td>Student(id,score)</td>
+<td>Student (score) extends Person</td>
+</tr>
+<tr>
+<td>Teacher(id,title)</td>
+<td>Teacher (title)  extends Person</td>
+</tr>
+</tbody>
+</table>
+<p>注意： Student id 参考Person(id) ，Teacher id 参考 Person(id)</p>
+<pre><code class="nulljava"><span class="meta">@Entity</span>
+<span class="meta">@Inheritance</span>(strategy=InheritanceType.JOINED)
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> //属性 <span class="title">id</span>,<span class="title">name</span>
+</span>{...
+<span class="meta">@Id</span>
+<span class="meta">@GenerateValue</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getId</span><span class="params">()</span></span>{<span class="keyword">return</span> id;}
+}
+
+<span class="meta">@Entity</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span>   //其他注解什么都不需要加
+</span>{..} <span class="comment">// 属性score</span>
+
+<span class="meta">@Entity</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">extends</span> <span class="title">Person</span>  /其他注解什么都不需要加
+</span>{...} <span class="comment">//属性title</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-17">综合实例</h3>
+<ol>
+<li><p>Student，Score(中间表),Course</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Student</td>
+<td>id,name</td>
+<td>（多）   id,name,Set<Course> courses</td>
+</tr>
+<tr>
+<td>Course</td>
+<td>id,name</td>
+<td>（多）  id,name,Set<Student> students</td>
+</tr>
+<tr>
+<td>Score</td>
+<td>id,student_id,course_id，score</td>
+<td>（中间）  id,student,course,score</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="nulljava"> <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> string name;
+     <span class="keyword">private</span> Set&lt;Course&gt; courses=<span class="keyword">new</span> HashSet&lt;Course&gt;();
+     ...
+     <span class="meta">@ManyToMany</span>
+     <span class="meta">@JoinColumns</span>(name=<span class="string">"score"</span>,
+         joinColumns={<span class="meta">@JoinColumn</span>(name=<span class="string">"student_id"</span>)},
+         inverseJoinColumns={<span class="meta">@JoinColumn</span>(name=<span class="string">"course_id"</span>)}
+         )
+     <span class="function"><span class="keyword">public</span> Set&lt;Course&gt; <span class="title">getCourses</span><span class="params">()</span></span>{ <span class="keyword">return</span> courses;}
+ } 
+
+ <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Course</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> string name;
+     ...
+ } 
+
+ <span class="meta">@Entity</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Score</span>
+ </span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> <span class="keyword">int</span> score;
+     <span class="keyword">private</span> Student student;
+     <span class="keyword">private</span> Course course;
+     ....
+     <span class="meta">@ManyToOne</span>
+     <span class="meta">@JoinColumn</span>(name=<span class="string">"student_id"</span>)
+     <span class="function"><span class="keyword">public</span> Student <span class="title">getStudent</span><span class="params">()</span></span>{<span class="keyword">return</span> student;}
+
+     <span class="meta">@ManyToOne</span>
+     <span class="meta">@JoinColumn</span>(name=<span class="string">"course_id"</span>)
+     <span class="function"><span class="keyword">public</span> Course <span class="title">getCourse</span><span class="params">()</span></span>{<span class="keyword">return</span> course;}
+     ...
+ }
+</code></pre>
+</li>
+<li><p>Tree树状结构(在同—个类中使用OneToMany和ManyTo0ne)</p>
+<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>表</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tree</td>
+<td>id,name,<strong>parentId</strong></td>
+<td>id,name,<strong>Tree parent</strong>,<strong>List<Tree> children</strong></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree</span></span>{
+     <span class="keyword">private</span> <span class="keyword">int</span> id;
+     <span class="keyword">private</span> String name;
+     <span class="keyword">private</span> Tree parent;
+     <span class="keyword">private</span> List&lt;Tree&gt; children = <span class="keyword">new</span> ArrayList&lt;Tree&gt;();  <span class="comment">// 可用Set</span>
+     ...
+     <span class="meta">@ManyToOne</span>
+     <span class="meta">@JoinColumn</span>(name=<span class="string">"parent_id"</span>)
+     <span class="function"><span class="keyword">public</span> Tree <span class="title">getParent</span><span class="params">()</span></span>{ 
+         <span class="keyword">return</span> parent; 
+     }
+
+     <span class="comment">// @OneToMany的fetch默认为LAZY</span>
+     <span class="comment">//若树形较小 可使用EAGER 一次全部载入内存</span>
+     <span class="comment">//若为LAZY则查询树形时不会一次全部载入内存(适用于较大的树形),会每取一个叶子节点就select一次(可结合Ajax，异步调用)</span>
+         <span class="meta">@OneToMany</span>(mappedBy=<span class="string">"parent"</span>,
+             cascade={CascadeType.ALL},
+             fetch=FetchType.EAGER   )
+     <span class="function"><span class="keyword">public</span> List&lt;Tree&gt; <span class="title">getChildren</span><span class="params">()</span> </span>{
+         <span class="keyword">return</span> children;
+     }
+ }
+
+ <span class="comment">//调用打印树：</span>
+ <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Tree root)</span></span>{    <span class="comment">//递归打印</span>
+     System.out.println(root.getName());
+     <span class="keyword">for</span>(Tree t : root.getChildren())
+     {
+          print(t);
+     }
+ }
+ <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Tree root,<span class="keyword">int</span> level )</span></span>{    <span class="comment">//递归打印成树状结构</span>
+     String preStr=<span class="string">""</span>;
+     <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;level;i++)
+         preStr+=<span class="string">"----"</span>;
+     System.out.println(preStr+root.getName());
+     <span class="keyword">for</span>(Tree t : root.getChildren()){
+          print(t,level+<span class="number">1</span>); 
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-18">查询</h2>
+<p>查询效率：<br>NativeSQL &gt;HQL.&gt; EJBQL(JPQL 1.0) &gt; QBC(Query By Criteria) &gt; QBE(Query By Example)</p>
+<h3 id="header-19">NativeSQL</h3>
+<p>原生SQL查询（使用数据库本身的查询语言），使用<code>session.createSQLQuery</code></p>
+<p>举例：</p>
+<pre><code class="nulljava">SQLQuery q=session.createSQLQuery(<span class="string">"select * from category limit 2,4"</span>).addEntity(Category.class);
+List&lt;Category&gt; categoryList=(List&lt;Category&gt;)q.list();
+
+<span class="comment">//使用别名，将c这个别名映射为Category类</span>
+SQLQuery q=session.createSQLQuery(<span class="string">"select  {c.*}  from category c,topic t where c.topicid=topic.id and c.id=:categoryId"</span>);
+q.addEntity(<span class="string">"c"</span>,Category.class);
+q.setInteger(<span class="string">"categoryId"</span>,<span class="number">2</span>);
+List&lt;Category&gt; categoryList=(List&lt;Category&gt;)q.list();
+
+<span class="comment">//投影查询</span>
+SQLQuery q=session.createSQLQuery(<span class="string">"select  c.id,c.name  from category c,topic t where c.topicid=topic.id"</span>);
+q.addScalar(<span class="string">"id"</span>,Hibernate.INTEGER).addScalar(<span class="string">"name"</span>,Hibernate.STRING);
+q.setResultTransformer(Transformers.aliasToBean(Category.class));
+List&lt;Category&gt; categoryList=(List&lt;Category&gt;)q.list();
+</code></pre>
+<h3 id="header-20">HQL</h3>
+<p>Hibernate Query Language （Hibernate查询语言），使用<code>session.createQuery</code></p>
+<p>方法举例：</p>
+<ul>
+<li>sql中设置参数，使用<code>:XXX</code> 相当于prepareStatement 预留变量,可以是基本变量，也可以是对象</li>
+<li><code>q.setParameter(XXX,value);</code> 自动转换</li>
+<li><code>q.setXXX(...);</code> 指定转换类型，eg：<code>setInteger(XXX,value);</code></li>
+<li><code>q.list();</code>    </li>
+<li><code>q.uniqueResult();</code></li>
+<li><code>q.executeUpdate();</code></li>
+</ul>
+<p>使用举例：</p>
+<ol>
+<li><p>连接查询 （对象需建立关联）</p>
+<pre><code class="nullsql"> <span class="comment">-- 不需要再写on连接条件，这里是inner join</span>
+ <span class="comment">-- 注意：这里必须写t.category</span>
+ <span class="keyword">select</span> t.title,c.name <span class="keyword">from</span> Topic t <span class="keyword">join</span> t.category c
+
+ //迫切连接查询
+ <span class="keyword">Select</span> c <span class="keyword">from</span> <span class="keyword">Category</span> c <span class="keyword">join</span> <span class="keyword">fetch</span> c.topics
+</code></pre>
+</li>
+<li><p>“from …” 返回实体对象:</p>
+<pre><code class="nulljava"> q=session.createQuery(<span class="string">"from Category c where c.id&gt;:min and c.id&lt;:max"</span>);
+ q.setParameter(<span class="string">"min"</span>,<span class="number">2</span>);
+ q.setInteger(<span class="string">"max"</span>,<span class="number">6</span>);
+
+ q=session.createQuery(<span class="string">"from Topic t where t.createData&lt;:date"</span>);
+ q.setParameter(<span class="string">"date"</span>,<span class="keyword">new</span> Date());
+
+ q=session.createQuery(<span class="string">"from Msg m where m=:MsgToSearch"</span>);
+ Msg m=<span class="keyword">new</span> Msg();
+ m.setId(<span class="number">1</span>);
+ q.setParameter(<span class="string">"MsgToSearch"</span>,m);
+ Msg mResult=(Msg)q.uniqueResult(); <span class="comment">//只有一条记录时使用</span>
+</code></pre>
+</li>
+<li><p>“select …” 返回Object[]:</p>
+<pre><code class="nulljava"> q=session.creatQuery(<span class="string">"select t.id,t.name from Topic t"</span>)
+ List&lt;Object[]&gt; topicList=(List&lt;Object[]&gt;)q.list();
+</code></pre>
+</li>
+<li><p>VO(Value Object)~DTO(Data Transfer Object), Hibernate 让开发者摆脱了繁琐的DTO</p>
+<pre><code class="nulljava"> q=session.creatQuery(<span class="string">"select new com.pojo.MsgInfo(m.id,m.content,m.topic.title,m.topic.category.name) from Msg m"</span>);
+ List&lt;MsgInfo&gt; list=q.list();
+</code></pre>
+</li>
+<li>update<pre><code class="nulljava"> Query q=session.createQuery(<span class="string">"update Topic t set t.title=upper(t.title)"</span>);
+ q.executeUpdate();
+</code></pre>
+</li>
+<li>in: 用in可以实现exists的功能，但是exists的执行效率高<pre><code class="nullsql"> // Topic 中设置了msgs的@OneToMany导航    
+ from Topic t where t.msgs is empty    
+ from Topic t where not exists (<span class="keyword">select</span> m.id <span class="keyword">from</span> msg m <span class="keyword">where</span> m.topic.id=t.id)
+ <span class="keyword">from</span> Topic t <span class="keyword">where</span> t.id <span class="keyword">not</span> <span class="keyword">in</span> ( <span class="keyword">select</span> m.topic.id <span class="keyword">from</span> msg m )
+</code></pre>
+</li>
+</ol>
+<h3 id="header-21">QBC &amp; QBE</h3>
+<p>标准化对象查询(Criteria Query):以对象的方式进行查询，将查询语句封装为对象操作</p>
+<ul>
+<li>优点：可读性好，符合Java 程序员的编码习惯。</li>
+<li>缺点：不够成熟，不支持投影（projection）或统计函数（aggregation）</li>
+</ul>
+<p>QBC，QBE 以对象的方式进行查询，<br>应用场景： 按条件搜索对象时，使用QBC，QBE 则不用手动拼写SQL了<br>使用session. createCriteria (Criterion 标准/准则/约束 , Criteria为复数形式)</p>
+<ol>
+<li><p>QBC: </p>
+<pre><code class="nulljava"> Criteria c=session.createCriteria(Topic.class)       <span class="comment">// from Topic</span>
+         .add(Restrictions.gt(<span class="string">"id"</span>,<span class="number">2</span>))        <span class="comment">// greater than:id&gt;2</span>
+         .add(Restrictions.like(<span class="string">"title"</span>,<span class="string">"t_"</span>)    <span class="comment">// like 't_'</span>
+         .createCriteria(<span class="string">"category"</span>)
+         .add(Restrictions.between(<span class="string">"id"</span>,<span class="number">3</span>,<span class="number">5</span>)) ; <span class="comment">//category.id between 3 and 5</span>
+ c.list();
+
+ session.createCriteria(Topic.class).setFetchMode(“msgs”,FetchMode.JOIN);
+
+ <span class="comment">//若先创建，不绑定session，需要时再绑定session  —— 使用 DetachedCriteria</span>
+ ...
+</code></pre>
+</li>
+<li>QBE<pre><code class="nulljava"> Topic tExample=<span class="keyword">new</span> Topic();
+ tExample.setTitle=<span class="string">"T_"</span>;
+ Example e=Example.create(tExample)
+         .ignoreCase().enableLike();
+ Criteria c=session.createCriteria(Topic.class)
+         .add(Restrictions.gt(<span class="string">"id"</span>,<span class="number">2</span>))
+         .add(e);
+</code></pre>
+</li>
+</ol>
+<h3 id="header-22">命名的数据库查询</h3>
+<ol>
+<li><p>使用Annotation方式，写在类前面：<code>@NamedQueries</code>, <code>@NamedNativeQueries</code><br>（命名的本地化数据库查询 ，3.5前不支持）</p>
+<pre><code class="nulljava"> <span class="meta">@NamedQueries</span>(
+     {
+         <span class="meta">@NamedQuery</span>(name=<span class="string">"topic.selectCertainTopic"</span>,query=<span class="string">"from Topic t where t.id=:id"</span>)
+     }
+ )
+</code></pre>
+</li>
+<li><p>xml方式，写在配置文档中：</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span>
+         ...
+     <span class="tag">&lt;<span class="name">query</span> <span class="attr">name</span>=<span class="string">”</span> <span class="attr">topic.selectCertainTopic</span>”&gt;</span>
+         &lt;![CDATA[from Topic t where t.id=:id]]&gt;
+     <span class="tag">&lt;/<span class="name">query</span>&gt;</span>
+
+     <span class="tag">&lt;<span class="name">sql-query</span> <span class="attr">name</span>=<span class="string">””</span>&gt;</span>
+         &lt;![CDATA[select {t.*} from Topic t where t.id=:id]]&gt;
+         <span class="tag">&lt;<span class="name">return</span> <span class="attr">alias</span>=<span class="string">”c”</span> <span class="attr">class</span>=<span class="string">”com.pojo.Topic”</span> /&gt;</span>
+     <span class="tag">&lt;/<span class="name">sql-query</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span>
+</code></pre>
+</li>
+<li>调用：<pre><code class="nulljava"> Query q=session.getNamedQuery(<span class="string">"topic.selectCertainTopic"</span>);
+ q.setParameter(<span class="string">"id"</span>,<span class="number">5</span>);
+ Topic t=(Topic)q.uniqueResult();
+</code></pre>
+</li>
+</ol>
+<h3 id="header-23">直接使用JDBC</h3>
+<p>通过Session对象的connection()方法获取java.sql.Connection对象，执行SQL语句，提交后会自动关闭<br>在Hibernate中不支持非读取数据的存储过程（查询需有数据返回）</p>
+<pre><code class="nulljava">Transaction tx=session.beginTransaction();
+Connection conn=session.connection();
+String procedure=”{<span class="function">call <span class="title">updateGuestbookById</span><span class="params">(?,?)</span>}”</span>;
+<span class="keyword">try</span>
+{
+    CallableStatement stmt=conn.prepareCall(procedure);
+    stmt.setInt(<span class="number">1</span>,<span class="number">1</span>);
+    stmt.setString(<span class="number">2</span>,”修改了留言主题”);
+    stmt.executeUpdate();
+    tx.commit();
+}
+<span class="keyword">catch</span>(SQLException e)
+{
+    e.printStackTrace();
+}
+</code></pre>
+<h2 id="header-24">缓存</h2>
+<p>缓存算法：缓存满时，新来的对象该替换掉哪个旧的（指定哪个先完蛋）</p>
+<ul>
+<li>LRU：Least Recently Used –最近很少被使用</li>
+<li>LFU：Least Frequently Used (命中率高低)</li>
+<li>FIFO：First In First Out 按顺序替换</li>
+</ul>
+<p>持久层缓存，级别：</p>
+<ol>
+<li>事务级（eg:Hibernate一级缓存），</li>
+<li>应用（进程）级(eg: Hibernate二级缓存)</li>
+<li>分布式级</li>
+</ol>
+<p>下面介绍Hibernate缓存</p>
+<h3 id="header-25">一级缓存（Session）</h3>
+<p>Hibernate一级缓存：session级别的缓存<br>（内置的缓存，不能通过程序或配置修改，通过Session实现的缓存）</p>
+<p>一级缓存的管理：</p>
+<ul>
+<li>evict() 移除Session缓存中某个对象； eg:session.evict(gb1);</li>
+<li>clear() 清空Session缓存中所有对象；eg:session.clear();</li>
+<li>contains();</li>
+<li>flush();</li>
+<li>setReadOnly();</li>
+</ul>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getGuestbook</span><span class="params">()</span></span>{
+    Session session=HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+    session.beginTransaction();
+    Guestbook gb1=(Guestbook)session.get(Guestbook.class,<span class="number">100</span>);
+    Guestbook gb2=(Guestbook)session.get(Guestbook.class,<span class="number">100</span>);
+    System.out.printIn(gb1==gb2);
+
+    gb1.setEmail(<span class="string">"test@123.com"</span>);
+    gb2.setTitle(<span class="string">"Test2"</span>);
+
+    session.getTransaction().commit();
+}
+</code></pre>
+<p>=&gt; gb1与gb2相同，总共一条select，一条update</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getGuestbook</span><span class="params">()</span></span>{
+    Session session=HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+    session.beginTransaction();
+    Guestbook gb1=(Guestbook)session.get(Guestbook.class,<span class="number">100</span>);
+    session.getTransaction().commit();
+
+    Session session=HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+    session.beginTransaction();
+    Guestbook gb2=(Guestbook)session.get(Guestbook.class,<span class="number">100</span>);
+    System.out.printIn(gb1==gb2);
+    session.getTransaction().commit();
+}
+</code></pre>
+<p>=&gt; gb1与gb2不同，两条select</p>
+<h3 id="header-26">二级缓存（SessionFactory）</h3>
+<p>用于应用中降低数据库的负载，缓存数据库查询结果以减少数据库访问次数，提高应用的访问速度</p>
+<p>Hibernate二级缓存：SessionFactory级别的缓存<br>(可以跨越session存在，所有session都能用)</p>
+<ul>
+<li>由SessionFactory对象负责管理，可以缓存整个应用的持久化对象,即应用级别，又称SessionFactory缓存（插件式）</li>
+<li>应用场景：经常被访间；改动不大不会经常改动；数重有限</li>
+<li>二级缓存的策略：read-only -&gt; nonstrict-read-write  -&gt; read-write -&gt; transactional</li>
+<li>缓存组件对缓存策略的支持：<table class="table">
+<thead>
+<tr>
+<th>缓存名称</th>
+<th>缓存类型</th>
+<th>对应的适配器类</th>
+<th>read-only</th>
+<th>nonstrict-read-write</th>
+<th>read-write</th>
+<th>transactional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hashtable</td>
+<td>内存</td>
+<td>org.hibernate.cache.HashtableCacheProvider</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>EHCache</td>
+<td>内存，硬盘</td>
+<td>org.hibernate.cache.EhCacheProvider</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>OSCache</td>
+<td>内存，硬盘</td>
+<td>org.hibernate.cache.OSCacheProvider</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>SwarmCache</td>
+<td>分布式（不支持分布式事务）</td>
+<td>org.hibernate.cache.swarmCacheProvider</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>JBoss Cache 1.x</td>
+<td>分布式（支持分布式事务）</td>
+<td>org.hibernate.cache.TreeCacheProvider</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>JBoss Cache2</td>
+<td>分布式（支持分布式事务）</td>
+<td>org.hibernate.cache.jbc2.JBossCacheRegionFactory</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<p>使用举例：</p>
+<ol>
+<li><p>使用EhCache 作为二级缓存：</p>
+<ul>
+<li>导入包：<ul>
+<li>ehcache-1.2.3.jar（hibernate包中有提供）</li>
+<li>commons-logging-1.0.4.jar (apache 日志)包</li>
+</ul>
+</li>
+<li>在hibernate.cfg.xml 中设定：<pre><code class="nullxml"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>= <span class="string">"cache.use_second_level_cache"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cache.provider_class"</span>&gt;</span>org.hibernate.cache.EhCacheProvider<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+</code></pre>
+</li>
+<li>加入EhCache配置文件<code>echache.xml</code>（可从hibernate包的etc中copy一份）<ul>
+<li>配置<code>memoryStoreEvictionPolicy = &quot;LRU&quot;</code></li>
+<li>EHCache配置文件ehcache.xml 中参数说明：<table class="table">
+<thead>
+<tr>
+<th>名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maxElementsInMemory</td>
+<td>设置保存在内存中缓存对象的最大数量</td>
+</tr>
+<tr>
+<td>etemal</td>
+<td>设置缓存中对象是否永远不过去（true 活了超时设置，缓存对象永不过期）</td>
+</tr>
+<tr>
+<td>timeToIdleSeconds</td>
+<td>最大空闲时间，单位秒</td>
+</tr>
+<tr>
+<td>timeToLiveSeconds</td>
+<td>最大生存时间，单位秒</td>
+</tr>
+<tr>
+<td>overflowToDisk</td>
+<td>内存中缓存对象达到maxElementInMemory限制是，是否将缓存对象保存到硬盘中</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>使用<code>@Cache</code>注解指定需要使用二级缓存的对象(此注解在JPA1.0中还未提供，固在此由hibernate扩展提供)</li>
+<li>例如：<pre><code class="nulljava"><span class="meta">@Entity</span>
+<span class="meta">@Cache</span>(usage=CacheConcurrencyStrategy.READ_WRITE)
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Category</span>
+</span>{...}
+</code></pre>
+</li>
+<li><p>验证效果：</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">list</span><span class="params">()</span></span>{
+  SessionFactory sessionFactory=HibernateSessionFactoryUtil.getSessionFactory();
+  Session session1=sessionFactory.getCurrentSession();
+  session1.beginTransaction();
+  Product p1=(Product)session1.get(Product.class,<span class="number">1</span>);
+  System.out.printIn(p1.getName());
+  session1.getTransaction().commit();
+
+  Session session2=sessionFactory.getCurrentSession();
+  session2.beginTransaction();
+  Product p2=(Product)session1.get(Product.class,<span class="number">1</span>);
+  System.out.printIn(p2.getName());
+  session2.getTransaction().commit();
+}
+</code></pre>
+<p>=&gt;session1与session2不同，p1与p2相同，一条select</p>
+</li>
+</ul>
+</li>
+<li><p>应用memcached作为二级缓存(分布式的内存对象缓存系统，通用，不一定在Hibernate中使用)</p>
+<ul>
+<li>导入包: <ul>
+<li>hibernate-memched.jar</li>
+<li>memcached.jar</li>
+<li>spy.jar</li>
+<li>commons-codec.jar</li>
+</ul>
+</li>
+<li>下载安装memcached服务器程序，执行<code>memcached –vv</code></li>
+<li>在hibernate.cfg.xml 中设定：<pre><code class="nullxml">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>= <span class="string">"cache.use_second_level_cache"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"cache.provider_class"</span>&gt;</span>com.googlecode.hibernate.memcached.MemcachedCacheProvider<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-27">三级缓存（Query）</h3>
+<p>Hibernate三级缓存：查询缓存 Query cache<br>（相同的查询可使用，需在二级缓存的基础上）</p>
+<ul>
+<li>对查询的要求严格，必须条件参数也一致</li>
+<li>在二级缓存的基础上再打开查询缓存 <code>&lt;property name=&quot;cache.use_query_cache&quot;&gt;true&lt;/property&gt;</code></li>
+<li>调用Query的<code>setCachable (true)</code>方法指明使用二级缓存，例如：<code>session.createQuery(&quot;from Category&quot;).setCacheable(true).list();</code></li>
+</ul>
+<h2 id="header-28">事务</h2>
+<p>ACID：</p>
+<ul>
+<li>Atomic原子性（执行或不执行）； </li>
+<li>Consistency一致性（完整性约束）； </li>
+<li>Itegrity 独立性（多事务不会交错）；</li>
+<li>Durability持久性（提交后更改是永久的）</li>
+</ul>
+<h3 id="header-29">事务并发问题</h3>
+<table class="table">
+<thead>
+<tr>
+<th>并发问题</th>
+<th>名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lost Update</td>
+<td>第一类丢失更新</td>
+<td>撤销一个事务会影响另一个事务，只要数据库支持事务,就不可能出现第一类丢失更新</td>
+</tr>
+<tr>
+<td>Dirty Read</td>
+<td>脏读</td>
+<td>读了别的事务还未提交的数据（比如另一事物回滚则刚才读取的数据就会不对）</td>
+</tr>
+<tr>
+<td>Non-repeatable Read</td>
+<td>不可重复读</td>
+<td>同一事务中前后读取的数据不一样，即被另一个事务所影响了（一个事务在另一个事务提交前和后读取同一对象的结果不一致）</td>
+</tr>
+<tr>
+<td>Second Lost Update</td>
+<td>第二类丢失更新</td>
+<td>不可重复读的特殊情况</td>
+</tr>
+<tr>
+<td>Phantom Read</td>
+<td>幻读</td>
+<td>插入删除时，会多读或少读数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-30">事务隔离机制</h3>
+<p>不同隔离级别可以发生的并发问题：</p>
+<table class="table">
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>解释</th>
+<th>更新丢失 Lost Update</th>
+<th>脏读 Dirty Read</th>
+<th>不可重复读Non-repeatable Read</th>
+<th>幻读Phantom Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read Uncommitted</td>
+<td>允许读取未提交的数据，效率最高</td>
+<td>不可能</td>
+<td>可能</td>
+<td>可能</td>
+<td>可能</td>
+</tr>
+<tr>
+<td>Read Committed</td>
+<td>读取已提交的数据，oracle默认使用的级别</td>
+<td>不可能</td>
+<td>不可能</td>
+<td>可能</td>
+<td>可能</td>
+</tr>
+<tr>
+<td>Repeatable Read</td>
+<td>可重复读，给读出的数据加把锁，类似于select … for update，MySQL 引擎默认使用的级别 （当前事务未结束，其他事务无法执行修改或插入操作，较安全）</td>
+<td>不可能</td>
+<td>不可能</td>
+<td>不可能</td>
+<td>可能</td>
+</tr>
+<tr>
+<td>Serializable</td>
+<td>顺序执行事务， 不并发，实际中很少用，最消耗资源</td>
+<td>不可能</td>
+<td>不可能</td>
+<td>不可能</td>
+<td>不可能</td>
+</tr>
+</tbody>
+</table>
+<p>设定hibernate的事务隔离级别（查看 java.sql.Connection 文件）：</p>
+<ul>
+<li>配置<code>hibernate.connection.isolation</code>属性， 取值值<strong>1 2 4 8</strong> （1=0000,2=0010,4=0100,8=1000  位移计算效率高)<ul>
+<li><code>read-uncommitted=1</code></li>
+<li><code>read-committed=2</code></li>
+<li><code>repeatable read  =4</code></li>
+<li><code>serializable =8</code> </li>
+</ul>
+</li>
+<li>如果不设 默认依赖数据库本身的级别</li>
+<li>eg： <code>hibernate.connection.isolation = 2</code> 表示使用<code>read-committed</code>隔离级别</li>
+</ul>
+<h3 id="header-31">锁</h3>
+<p>一般项目中使用<code>read-commited</code>事务隔离机制，在程序中设置悲观锁或乐观锁解决<code>non-repeatable read</code> 和 <code>phantom-read</code>问题</p>
+<ol>
+<li><p><strong>悲观锁 Pessimistic Locking</strong>，依赖于数据库的锁</p>
+<ul>
+<li>悲观锁认为每次读取或修改数据库数据时，其他事务也在并发访问相同的数据，有很强的排他性，即对于这个数据其他事务是不准碰的</li>
+<li>load 时加锁：<code>session.load(xx.class , i , LockMode.Upgrade)</code><br>相当于 select … for update，事务提交后会解除</li>
+<li>其他LockMode说明：<ul>
+<li><code>LockMode.None</code>：无锁的机制，Transaction结束时，切换到此模式</li>
+<li><code>LockMode.read</code>：在査询的时候hibernate会自动获取锁</li>
+<li><code>LockMode.write</code> ：insert  update hibernate 会自动获取锁</li>
+<li><code>LockMode.UPGRADE_NOWAIT</code>： ORACLE 支持的锁的方式</li>
+</ul>
+</li>
+<li>注意： <code>None</code>,<code>read</code>,<code>write</code> 3种锁的模式，是hibernate内部执行时自己使用的(自己加自己解，不需要设)</li>
+</ul>
+</li>
+<li><p><strong>乐观锁 Optimistic Locking</strong>，依赖Hibernate(JPA)的锁</p>
+<ul>
+<li>乐观锁认为数据库中的数据很少发生同事呗操作问题，通过数据的版本号<code>Version</code>比较机制或时间戳<code>timestamp</code>实现</li>
+<li>使用<code>version</code>实现乐观锁原理：<ul>
+<li>默认在表中增加一version字段，初始为0</li>
+<li>当某一事物获取该对象并要update时，先判断version的值是否改变</li>
+<li>若未改变则version+1，update成功</li>
+<li>若version值于当初获取时不同，则update失败</li>
+</ul>
+</li>
+<li><p>流程举例：</p>
+<table class="table">
+<thead>
+<tr>
+<th>时间</th>
+<th>转账事务A</th>
+<th>取款事务B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td></td>
+<td>开始事务</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>开始事务</td>
+<td></td>
+</tr>
+<tr>
+<td>T3</td>
+<td>查询学生为10人</td>
+<td>查询账户余额为1000 version=0</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>查询账户余额为1000 version=0</td>
+<td></td>
+</tr>
+<tr>
+<td>T5</td>
+<td></td>
+<td>取出100 把余额改为900 version=1</td>
+</tr>
+<tr>
+<td>T6</td>
+<td></td>
+<td>提交事务</td>
+</tr>
+<tr>
+<td>T7</td>
+<td>汇入100元</td>
+<td></td>
+</tr>
+<tr>
+<td>T8</td>
+<td>提交事务 ? version&gt;0 throw Exception</td>
+<td></td>
+</tr>
+<tr>
+<td>T9</td>
+<td>把余额改为1100元(丢失更新)</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>示例：</p>
+<pre><code class="nulljava"><span class="comment">//在pojo实体类中增加version属性()，在get方法前加@Version注解</span>
+<span class="meta">@Entity</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Account</span></span>{   <span class="comment">//属性：id,balance,version</span>
+  ...
+  <span class="meta">@Version</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getVersion</span><span class="params">()</span>
+  </span>{ <span class="keyword">return</span> version; }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-32">性能优化</h2>
+<h3 id="header-33">动态局部插入&amp;更新</h3>
+<ul>
+<li><p>方式1：</p>
+<ul>
+<li>动态局部插入：在pojo类上加<code>@DynamicInsert</code></li>
+<li>动态局部更新：在pojo类上加<code>@DynamicUpdate</code><ul>
+<li>原理：会先根据Id获取对象（若缓存中没有，则从DB中查询加载该对象），逐个字段比对，不一致则update该字段</li>
+</ul>
+</li>
+<li>对Persistence对象有用</li>
+<li>现象：同一个session可以，跨session不行，不过可以用session.merge(XXX对象)(不重要）， 实际merge方法会先从DB中select对象到内存，然后update</li>
+</ul>
+</li>
+<li><p>方式2：使用 HQL(EjBQL)</p>
+<pre><code class="nulljava">  <span class="comment">//Query 为org.hibernate.Query; Student 为对象，不是DB表</span>
+  Query  q=session.createQuery(“update Student s set s.name=’zhangsan’ where s.id=<span class="number">1</span>”);
+  q.executeUpdate();
+</code></pre>
+</li>
+</ul>
+<h3 id="header-34">cascade参数对CUD影响</h3>
+<ol>
+<li><p>Update时@ManyToOne()中的cascade参数关系</p>
+<pre><code class="nulljava"> session.beginTransaction();
+ User user = (User)session.load(User.class,<span class="number">1</span>);
+ <span class="comment">//user对象属性改变 事务commit时自动判断与数据库原有数据不同 可自动update</span>
+ <span class="comment">//此时的update与@ManyToOne()中的cascade或fetch参数取值无关</span>
+ user.setName(<span class="string">"user1"</span>);
+ user.getGroup().setName(<span class="string">"group1"</span>);
+ session.getTransaction().commit();
+</code></pre>
+<p> 如果user改变在commit()之后 且想要执行Update方法时 user与group表同时更新则，则User类的<code>cascade={CascadeType.ALL}</code>，并在程序中写如下代码：</p>
+<pre><code class="nulljava"> session.beginTransaction();
+ User user = (User)session.get(User.class,<span class="number">1</span>);
+ session.getTransaction().commit();
+ user.setName(<span class="string">"user1"</span>);
+ user.getGroup().setName(<span class="string">"group1"</span>);
+ Session session2 = sessionFactory.getCurrentSession();
+ session2.beginTransaction();
+ session2.update(user);
+ session2.getTransaction().commit();
+</code></pre>
+</li>
+<li><p>Delete时@ManyToOne()中的cascade关系<br> 如果User及Group类中均设为@ManyToOne(cascade={CascadeType.All})，那么在执行如下：</p>
+<pre><code class="nulljava"> session.beginTransaction();
+ User user = (User)session.load(User.class,1);
+ session.delete(user);
+ session.getTransaction().commit();
+</code></pre>
+<p><strong>注意：</strong><br>此处删除的是 多对一(即User对Group) 中的“多”的一方(User类)<br>会删除user及user对应的group，再反向对应group的user都会删除，原因就是设置了<code>@ManyToOne(cascade={CascadeType.All})</code></p>
+</li>
+</ol>
+<p>三种方法可避免全部删除的情况：</p>
+<ol>
+<li>去掉@ManyToOne(cascade={CascadeType.All})设置；</li>
+<li>直接写Hql语句执行删除；</li>
+<li>将user对象的group属性设为null，相当于打断User与Group间的关联，代码如下<pre><code class="nulljava">     session.beginTransaction();
+     User user = (User)session.load(User.class,<span class="number">1</span>);
+     user.setGroup(<span class="keyword">null</span>);
+     session.delete(user);
+     session.getTransaction().commit();
+</code></pre>
+</li>
+</ol>
+<p><strong>注意：</strong><br>如果删除的是 多对一中的“一”的一方(Group类)时，使用第3种方式(user属性设为null)来打断两个对象间的关联的话，代码与之前不同,如下：</p>
+<pre><code class="nulljava">session.beginTransaction();
+Group group = (Group)session.load(Group.class,<span class="number">1</span>);
+<span class="comment">//循环将group中的set集合下的各个user对象设为null</span>
+<span class="comment">//相当于先将数据库中user表中与group表关联的字段(即groupid)设为null</span>
+<span class="keyword">for</span>(User user :group.getUsers()){
+    System.out.println(user.getName());
+    user.setGroup(<span class="keyword">null</span>);
+}
+<span class="comment">//再将group的set集合设为null,相当于将group表中与user表关联的字段(即userid)设为null</span>
+<span class="comment">//此句的前提是user表中的关联字段(groupid)已经为null,如没有则相当于破坏了一对多关联,会报错</span>
+group.setUsers(<span class="keyword">null</span>);
+session.delete(group);
+session.getTransaction().commit();
+</code></pre>
+<h3 id="header-35">1+N问题</h3>
+<p><strong>现象描述</strong>：<br>一个对象关联另一个对象（ManyToOne），而FetchType为EAGER，那么在去这个对象时它所关联的对象也会取出，<br>本来一句SQL就可取出N条记录，但还要取关联对象，又会再发N条语句取关联的对象</p>
+<p>查询某个对象，本来应该只发一条SQL语句查询，<br>若被关联对象有N条，结果就会再发N条查找关联对象的SQL数据<br>eg：</p>
+<pre><code class="nullsql"><span class="keyword">select</span> * <span class="keyword">from</span> topic
+<span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">category</span> <span class="keyword">where</span> <span class="keyword">id</span>=?
+<span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">category</span> <span class="keyword">where</span> <span class="keyword">id</span>=?
+    ...
+</code></pre>
+<p><strong>解决方案</strong>：</p>
+<ul>
+<li>方案一，fetch=FetchType.LAZY 解决N+1问题：<br>  当多对一(@ManyToOne)已经设定属性” fetch=FetchType.LAZY “时<br>  只有当需要时(如:t.getCategory().getName()时)才会去获取关联表中数据 可以解决N+1问题<pre><code class="nulljava">  <span class="meta">@ManyToOne</span>(fetch=FetchType.LAZY)
+</code></pre>
+</li>
+<li>方案二，@BatchSize 解决N+1问题：<br>在与查询表(此例中为Topic类)关联的表类(此例中为Category类)头处加@BatchSize(size=5)<br>表示每次可查出5条记录 从而减少了select语句的个数<pre><code class="nulljava">  <span class="meta">@Entity</span>
+  <span class="meta">@BatchSize</span>(size=<span class="number">5</span>)
+  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Category</span>
+  </span>{...}
+</code></pre>
+</li>
+<li>方案三，join fetch 解决N+1问题：<pre><code class="nulljava">  <span class="comment">//修改hql语句为--"  from Topic t left join fetch t.category c  "</span>
+  List&lt;Topic&gt; topicList=(List&lt;Topic&gt;)session.createQuery(<span class="string">"from Topic t left join fetch t.category c"</span>).list();
+</code></pre>
+</li>
+<li>方案四，QBC(Query By Criteria) 解决N+1问题：<br>  QBC 默认使用表连接来取（left join），使用QBC的 createCriteria(*.class)执行查询 <pre><code class="nulljava">  List&lt;Topic&gt; topicList=(List&lt;Topic&gt;)session.createCriteria(Topic.class).list();
+</code></pre>
+</li>
+</ul>
+<h3 id="header-36">防止内存泄漏</h3>
+<p>在同一个Session中，大集合进行遍历，小心出现内存泄漏，用完的数据要及时clear下，让垃圾回收机及时回收掉</p>
+<p>发生情境：</p>
+<ul>
+<li><p>在不断分页循环的时候</p>
+<ul>
+<li>同一Session中执行分页操作，Session 缓存 1～50，51～100，…  越占越多，由于有引用，java虚拟机是不会自动清除的。</li>
+<li>建议适时的调用<code>session.clear();</code></li>
+<li>一般不同页面会启用新的Session，但是导数据时可能会发生此问题</li>
+</ul>
+</li>
+<li><p>在一个大集合中进行遍历</p>
+<ul>
+<li>eg：遍历msg，取出其中的含有敏感字样的对象</li>
+</ul>
+</li>
+</ul>
+<p>Java有内存泄漏吗？：</p>
+<ul>
+<li>在语法级别上没有 ，有Java虚拟机自动垃圾回收；</li>
+<li>但是可由编程引起,例如:连接池中打开了一个连接不关闭,或打开文件，io读取后不关闭</li>
+<li>实际上java调用c,c调用windows API，c不会自动回收</li>
+</ul>
+<h3 id="header-37">延迟加载</h3>
+<p>Lazy Loading:真正要读取数据时才从DB中获取，在关联对象上的应用较多</p>
+<p>可能导致的异常：<code>org.hibernate.LazyInitializationException:could not initialize proxy – no Session</code><br>eg: 持久层gb=session.load(…); tx.commit();  控制层/表示层：gb.getTitle();</p>
+<p>解决：</p>
+<ul>
+<li>方案一：取消延迟加载（不推荐）</li>
+<li>方案二：使用Hibernate.initialize();</li>
+<li>方案三：使用Open Session In View(OSIV) 设计模式，延迟session关闭，等都输出处理完后再tx.commit();<ul>
+<li>可使用Servlet过滤器实现自己的OSIV模式：发出请求时开启Session对象，Servlet执行后再关闭Session对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-38">list &amp; iterate</h3>
+<p>list</p>
+<ul>
+<li>list 取所有；session中list第二次发出，仍会到数据库査询；</li>
+<li>使用list会取出对象的所有内容，并加入到二级缓存中，</li>
+<li>但第二次取同样内容会重新去DB中获取而不从二级缓存中获取</li>
+</ul>
+<p>iterate</p>
+<ul>
+<li>iterate先取 ID,等用到的时候再根据ID来取对象；</li>
+<li>iterate默认使用二级缓存，第二次，首先找session 级缓存；</li>
+<li>默认往二级缓存加数据，但是查询的时候不使用</li>
+<li>使用iterate 只会取出对象的Id，当要取该对象的其他内容时，先从二级缓存中查找，没有再重新去DB根据id查询</li>
+</ul>
+<p><strong>PS：</strong> 若要查询的数据已在缓存中，那用iterate是比较快的，不在就会出现上述N+1问题，这样list的效率会更高</p>
+<pre><code class="nulljava">List&lt;Category&gt; categories =(List&lt;Category&gt;)session.createQuery(<span class="string">"from Category"</span>).list();
+<span class="keyword">for</span>( Category c : categories)
+{ 
+    System.out.println(c.getName);}
+    Iterator&lt;Category&gt; categories =(Iterator&lt;Category&gt;)session.createQuery(<span class="string">"from Category"</span>).iterate();
+    <span class="keyword">while</span>(categories.hasNext())
+    {
+        Category c=categories.next();
+        System.out.println(c.getName());
+    }
+}
+</code></pre>
+<h2 id="header-39">Hibernate 扩展组件</h2>
+<h3 id="header-40">Hibernate Filter</h3>
+<p>对查找的记录集再进行过滤</p>
+<ol>
+<li>使用<code>&lt;filter-def&gt;</code> 定义过滤器，使用<code>&lt;filter&gt;</code> 声明使用过滤器<pre><code class="nullxml"><span class="tag">&lt;<span class="name">hibernate-mapping</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">class</span> <span class="attr">name</span>=<span class="string">””</span> <span class="attr">table</span>=<span class="string">””</span> &gt;</span>
+     ...
+     <span class="tag">&lt;<span class="name">set</span> <span class="attr">...</span>&gt;</span>
+         ...
+         <span class="tag">&lt;<span class="name">filter</span> <span class="attr">name</span>=<span class="string">”...”</span> <span class="attr">condition</span>=<span class="string">”...”</span> /&gt;</span>     //过滤集合
+     <span class="tag">&lt;/<span class="name">set</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">filter</span> <span class="attr">name</span>=<span class="string">”nameFilter”</span> <span class="attr">condition</span>=<span class="string">”NAME</span>=<span class="string">:inputName”</span> /&gt;</span>    //NAME 为表中字段
+ <span class="tag">&lt;/<span class="name">class</span>&gt;</span>
+ ...
+ <span class="tag">&lt;<span class="name">filter-def</span>  <span class="attr">name</span>=<span class="string">”nameFilter”</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">filter-param</span> <span class="attr">name</span>=<span class="string">”inputName”</span> <span class="attr">type</span>=<span class="string">”java.lang.String”</span> /&gt;</span>
+ <span class="tag">&lt;/<span class="name">filter-def</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">hibernate-mapping</span>&gt;</span>
+</code></pre>
+</li>
+<li>在Query调用方法前使用Filter<pre><code class="nulljava">String hql=”from Guestbook where id between 10 and 200”
+Query query=session.createQuery(hql);
+Filter filter=session.enableFilter(“nameFilter”);
+filter.setParameter(“inputName”,”ZhangSan”);
+List&lt;Guestbook&gt; list=query.list();
+</code></pre>
+</li>
+</ol>
+<h3 id="header-41">Hibernate Interceptor</h3>
+<p>创建Session对象时，所有Session对象或此Session对象的所有持久化操作动作都会被指定的拦截器拦截 （org.hibernate.Interceptor 接口）</p>
+<ul>
+<li>应用：使用拦截器实现审计日志</li>
+<li>审计日志：在应用系统中，对所以数据库的操作都做记录，包括操作内容，用户，操作时间</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogEntityInterceptor</span> <span class="keyword">extends</span> <span class="title">EmptyInterceptor</span></span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID=...;
+    <span class="keyword">private</span> Logger logger=Logger.getLogger(LogEntityInterceptor.class);    <span class="comment">//使用Log4J记录日志</span>
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDelete</span><span class="params">(Object entity,Serializable id,Object[] state,String[] propertyNames,Type[] types)</span></span>{
+        logger.info(“Delete Data”);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onFlushDirty</span><span class="params">(Object entity,Serializable id,Object[] state,String[] propertyNames,
+                    Type[] types)</span></span>{
+        logger.info(“Update Data”);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onSave</span><span class="params">(Object entity,Serializable id,Object[] state,String[] propertyNames,
+                    Type[] types)</span></span>{
+        logger.info(“Save Data”);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+}
+</code></pre>
+<pre><code class="nulljava">LogEntityInterceptor interceport=<span class="keyword">new</span> LogEntityInterceptor();
+<span class="comment">//通过Configuration对象加载拦截器, 此时通过此config生成的sessionFactory，session都会使用此拦截器</span>
+Configuration config=<span class="keyword">new</span> Configuration();
+config.setInterceptor(interceptor);
+config.configure();
+SessionFactory sf=config.buildSessionFactory();
+Session seesion=sf.getCurrentSession();
+...
+
+<span class="comment">//也可通过Session对象加载拦截器</span>
+Session session=sf.openSession(interceptor);
+</code></pre>
+<h3 id="header-42">Hibernate Listener</h3>
+<p>事件监听机制:能精确追踪到持久化对象的字段的修改，关联关系的变更，更新前后数值<br>与拦截器比较：更细粒度上的拦截，可获取修改前后值，可直接通过Event对象获取Session对象</p>
+<ol>
+<li>实现具体的Listener类或继承具体的Listener接口</li>
+<li>在<code>hibernate.cfg.xml</code>中配置事件监听器对象，或使用<code>Configuration</code>对象注册事件监听器对象</li>
+</ol>
+<h3 id="header-43">Hibernate Search</h3>
+<ol>
+<li><p>Hibernate Search特点：</p>
+<ul>
+<li>支持索引数据的自动更新（通过Hibernate更新变动的数据，会同步更新索引数据）</li>
+<li>支持众多搜索方式（关键词，通配符，近似，同义词）</li>
+<li>支持搜索集群</li>
+<li>支持直接调用Lucene API</li>
+</ul>
+</li>
+<li><p>底层使用的是<a href="http://lucene.apache.org/">Lucene</a>:</p>
+<ul>
+<li>java领域的全文搜索工具包，可对文本，HTML，Excel，PDF等格式的文件建立索引并进行搜索</li>
+</ul>
+</li>
+<li><p>Hibernate Search类库：</p>
+<ul>
+<li>hibernate-search.jar</li>
+<li>lucene-core.jar</li>
+<li>hibernate-commons-annotations.jar</li>
+</ul>
+</li>
+<li><p>搜索引擎：</p>
+<ul>
+<li>全文搜索引擎</li>
+<li>目录索引引擎（一般用在网页黄页中）</li>
+<li>元搜索引擎（向多个搜索引擎查询汇总）</li>
+</ul>
+</li>
+</ol>
+<p><strong>全文搜索引擎原理：</strong><br><img src="/2013/06/01/lucene.png" alt="Lucene"></p>
+<p><strong>使用示例：</strong></p>
+<ol>
+<li><p>hibernate配置文件中：</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.search.default.directory_provider"</span>&gt;</span>
+     org.hibernate.search.store.FSDirectoryProvider
+ <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+
+ <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.search.default.indexBase"</span>&gt;</span>
+     D:/temp/index
+ <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>pojo类：</p>
+<pre><code class="nulljava"><span class="meta">@Index</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuesBook</span> </span>{
+    ...
+    <span class="meta">@DucumentId</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span>
+    </span>{ <span class="keyword">return</span> id;}
+
+    <span class="comment">//保存到索引文件中（hibernate-search下的store），默认不存</span>
+    <span class="meta">@Field</span>(store=Store.YES)
+    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span>
+    </span>{ <span class="keyword">return</span> name;}
+
+    <span class="comment">//不进行分词处理,默认使用分词处理</span>
+    <span class="meta">@Field</span>(store=Store.YES,index=Index.UN_TOKENIZED)
+    <span class="function"><span class="keyword">public</span> String <span class="title">getPhone</span><span class="params">()</span>
+    </span>{ <span class="keyword">return</span> phone;}
+
+    <span class="meta">@Field</span>
+    <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span>
+    </span>{ <span class="keyword">return</span> title;}
+    ...
+}
+</code></pre>
+</li>
+<li><p>建立索引</p>
+<pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">index</span><span class="params">()</span></span>{
+     Session session-HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+
+     FullTextSession ftSession=Search.getFullTextSession(session);
+     ftSession.getTransaction().begin();
+
+     List&lt;Guestbook&gt; list=session.createQuery(<span class="string">"from Guestbook"</span>).list();
+     <span class="keyword">for</span>(Guestbook gb:list)
+         ftSession.index(gb);
+     ftSession.getTransaction().commit();
+ }
+</code></pre>
+</li>
+<li><p>搜索</p>
+<pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">query</span><span class="params">()</span></span>{
+     <span class="comment">//使用庖丁分词器搜索时，使用：</span>
+     <span class="comment">//QueryParser parser=new QueryParaser(“title”,new paoding.analysis.analyzer.PaodingAnalyzer());</span>
+     QueryParser parser=<span class="keyword">new</span> QueryParser(<span class="string">"title"</span>,<span class="keyword">new</span> StandardAnalyzer());
+
+     org.apache.lucene.search.Query luceneQuery=<span class="keyword">null</span>;
+     <span class="keyword">try</span>{
+         luceneQuery=parser.parse(<span class="string">"title:中国"</span>);
+     }<span class="keyword">catch</span>(ParseException e){
+         e.printStackTrace();
+     }
+
+     Session session=HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+     FullTextSession ftSession=Search.getFullTextSession(session);
+     ftSession.beginTransaction().begin();
+     org.hibernate.Query query=ftSession.createFullTextQuery(lucenQuery,Guestbook.class);
+     query.setFirstResult(<span class="number">0</span>);
+     query.setMaxResults(<span class="number">20</span>);
+
+     List&lt;Guestbook&gt; list=query.list();
+     ftSession.getTransaction().commit();
+     <span class="keyword">for</span>(Guestbook gb:list)
+         System.out.printIn(<span class="string">"id:"</span>+gb.getId()+<span class="string">",title:"</span>+gb.getTitle());
+ }
+</code></pre>
+<p> =&gt;不使用中文分词时，是分成一个字一个字的</p>
+</li>
+</ol>
+<p><strong>使用第三方的中文分词组件</strong>，eg：“庖丁解牛” 分词组件(使用词库)</p>
+<ol>
+<li>建立配置文件<code>paoding.dic.home.properties: paoding.dic.home=.../paoding/dic</code> ( 配置词库位置)</li>
+<li>将类库<code>paoding-analisis.jar</code>加入项目中</li>
+<li>pojo类上加入注解：<code>@Analyzer(impl=net.paoding.analysis.analyzer.PaodingAnalyzer.class)</code>    </li>
+</ol>
+<p><strong><a href="http://www.getopt.org/luke/">Luck</a> 工具：</strong>可显示修改Lucene索引数据和模拟搜索的开源工具</p>
+<ul>
+<li>在Dos命令下运行： java –jar lukeall.jar</li>
+<li>中文分词：将中文句子切分成有医院的单词</li>
+<li>基本机制：使用词库匹配；使用自动切分算法</li>
+<li>词库切分与自动切分比较：<table class="table">
+<thead>
+<tr>
+<th></th>
+<th>自动切分</th>
+<th>词库表切分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实现</td>
+<td>实现简单</td>
+<td>实现复杂</td>
+</tr>
+<tr>
+<td>查询</td>
+<td>增加了查询分析的复杂程度</td>
+<td>适于实现比较复杂的查询语法规则</td>
+</tr>
+<tr>
+<td>存储效率</td>
+<td>索引冗余大，索引几乎和原文一样大</td>
+<td>索引效率高，为原文大小的30%左右</td>
+</tr>
+<tr>
+<td>维护成本</td>
+<td>无词库维护成本</td>
+<td>词库维护成本高，还需要包括词频统计等内容</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>Luke查看效果如下：<br><img src="/2013/06/01/luke.png" alt="Luke"></li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2013/06/01/Hibernate-Basic.html';	
+		var disqus_title = 'Hibernate基础';
+		var disqus_url = 'http://sixdegree.github.io/2013/06/01/Hibernate-Basic.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

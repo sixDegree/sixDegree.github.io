@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Design Pattern</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="design,pattern,23,factory,adapter,strategy">
+  
+  
+    <meta name="description" content="23 Design Patterns Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">创建类模式</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Factory</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Abstract Factory</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Builder</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Singleton</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Prototype</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">结构类模式</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Adapter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Decorator</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Proxy</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Facade</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Bridge</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Combine</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Flyweight</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">行为类模式</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">Strategy</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Template</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Observer</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">Iterator</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">Chain of Responsibility</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">Command</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">Memento</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">State</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">Visitor</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">Mediator</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">Interpreter</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">总结</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">重构</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Design Pattern</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2013-05-02T16:00:00.000Z">2013-05-03</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <p>23中设计模式介绍，主要分为三大类：</p>
+<ol>
+<li>创建型（创建对象）</li>
+<li>结构型（自身扩展）</li>
+<li>行为型（对象间解耦）</li>
+</ol>
+<h2 id="header-1">创建类模式</h2>
+<h3 id="header-2">Factory</h3>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SendFactory</span></span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Sender <span class="title">produce</span><span class="params">(String name)</span></span>{
+        <span class="keyword">if</span>(<span class="string">"mail"</span>.equals(name))
+            <span class="keyword">return</span> <span class="keyword">new</span> MailSender();
+        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">"sms"</span>.equals(name))
+            <span class="keyword">return</span> <span class="keyword">new</span> SmsSender();
+        <span class="keyword">else</span>
+            <span class="keyword">return</span>  <span class="keyword">null</span>;
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Sender</span></span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Send</span><span class="params">()</span></span>;
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MailSender</span> <span class="keyword">implements</span> <span class="title">Sender</span></span>{...}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmsSender</span> <span class="keyword">implements</span> <span class="title">Sender</span></span>{...}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Sender sender=SenderFactory.produce(<span class="string">"mail"</span>);
+sender.send();
+</code></pre>
+<h3 id="header-3">Abstract Factory</h3>
+<p>拓展性比Factory Pattern好</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Provider</span></span>{
+    <span class="function"><span class="keyword">public</span> Sender <span class="title">provide</span><span class="params">()</span></span>;
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MailFactory</span> <span class="keyword">implements</span> <span class="title">Provider</span></span>{...}    <span class="comment">// new MailSender</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmsFactory</span> <span class="keyword">implements</span> <span class="title">Provider</span></span>{...}  <span class="comment">// new SmsSender</span>
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Provider provider = <span class="keyword">new</span> MailFactory();
+Sender sender=provider.provide();
+sender.send();
+</code></pre>
+<h3 id="header-4">Builder</h3>
+<p>工厂模式关注创建单个产品<br>建造者模式关注创建多个产品</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>{
+    <span class="keyword">private</span> List&lt;Sender&gt; list = <span class="keyword">new</span> ArrayList&lt;Sender&gt;();
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">produce</span><span class="params">(String name,<span class="keyword">int</span> count)</span></span>{
+        <span class="keyword">if</span>(<span class="string">"mail"</span>.equals(name)){
+            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;count; i++){
+                list.add(<span class="keyword">new</span> MailSender());
+            }
+        }<span class="keyword">else</span>{
+             <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;count; i++){
+                list.add(<span class="keyword">new</span> SmsSender());
+            }
+        }
+    }
+}
+</code></pre>
+<pre><code class="nulljava">Builder builder = <span class="keyword">new</span> Builder();
+builder.produce(<span class="string">"mail"</span>,<span class="number">10</span>);
+builder.produce(<span class="string">"sms"</span>,<span class="number">10</span>);
+</code></pre>
+<h3 id="header-5">Singleton</h3>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>{
+    <span class="comment">// 可再加入volatile：禁止指令重排序优化 （Java 5 之后修复）</span>
+    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance=<span class="keyword">null</span>;
+
+    <span class="comment">// 构造函数私有化，防止被外部实例化</span>
+    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>{}
+
+    <span class="comment">// 静态方法，创建实例</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>{
+        <span class="keyword">if</span>(instance==<span class="keyword">null</span>)
+            syncInit()
+        <span class="keyword">return</span> instance;
+    }
+
+    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">syncInit</span><span class="params">()</span> </span>{
+        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) {
+            instance = <span class="keyword">new</span> Singleton();    <span class="comment">// 注意：这并不是一个原子操作</span>
+        }
+    }
+    ...
+}
+</code></pre>
+<p>优化1：使用私有静态内部类<code>private static nested class</code></p>
+<ul>
+<li>懒加载</li>
+<li>线程安全</li>
+<li>读取实例的时候不会进行同步，没有性能缺陷</li>
+<li>不依赖 JDK 版本</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>{
+    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>{ }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> SingletonFactory.instance;
+    }
+
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonFactory</span> </span>{
+        <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();
+    }
+
+    <span class="comment">// 可采用"影子实例"的办法为单例对象的属性同步更新</span>
+    <span class="keyword">private</span> Vector properties = <span class="keyword">null</span>;
+    <span class="function"><span class="keyword">public</span> Vector <span class="title">getProperties</span><span class="params">()</span> </span>{
+          <span class="keyword">return</span> properties;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateProperties</span><span class="params">()</span> </span>{
+        Singleton shadow = <span class="keyword">new</span> Singleton();
+        properties = shadow.getProperties();
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Singleton singleton=Singleton.getInstance();
+</code></pre>
+<p>优化2：使用枚举<code>enum</code></p>
+<ul>
+<li>自由序列化</li>
+<li>线程安全</li>
+<li>保证只有一个实例（即使使用反射机制也无法多次实例化一个枚举量）</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton{
+    INSTANCE;
+    <span class="keyword">private</span> Singleton{}
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Singleton singleton=Singleton.INSTANCE;
+</code></pre>
+<p>注：参考《Effective Java》</p>
+<h3 id="header-6">Prototype</h3>
+<p>将一个对象作为原型，对其进行复制、克隆，产生一个和原对象类似的新对象</p>
+<pre><code class="nulljava"><span class="comment">//实现Cloneable接口（空接口）</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Prototype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>{
+    <span class="keyword">private</span> String str;
+    <span class="keyword">private</span> MyObject obj;
+
+    <span class="comment">// 浅复制（基本数据类型）</span>
+    <span class="comment">// 需调用super.clone();</span>
+    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>{
+        Prototype proto = (Prototype) <span class="keyword">super</span>.clone();
+        <span class="keyword">return</span> proto;
+    }
+
+    <span class="comment">// 深复制（基本数据类型+引用类型）</span>
+    <span class="comment">// 需要采用流的形式读入当前对象，再写出</span>
+    <span class="function"><span class="keyword">public</span> Object <span class="title">deepClone</span><span class="params">()</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>{
+        <span class="comment">// 写入当前对象的二进制流</span>
+        ByteArrayOutputStream bos = <span class="keyword">new</span> ByteArrayOutputStream();
+        ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(bos);
+        oos.writeObject(<span class="keyword">this</span>);
+
+        <span class="comment">// 读出二进制流产生的新对象</span>
+        ByteArrayInputStream bis = <span class="keyword">new</span> ByteArrayInputStream(bos.toByteArray());
+        ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(bis);
+        <span class="keyword">return</span> ois.readObject();
+    }
+
+    <span class="comment">//get/set</span>
+    ...
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyObject</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>{
+    ...
+}
+</code></pre>
+<hr>
+<h2 id="header-7">结构类模式</h2>
+<p><img src="/2013/05/03/adapter.png" alt="Adapter"></p>
+<p>对象的适配器模式是各种模式的起源</p>
+<h3 id="header-8">Adapter</h3>
+<p>适配器模式</p>
+<ul>
+<li>将某个类的接口转换成客户端期望的另一个接口表示</li>
+<li>目的：消除由于接口不匹配所造成的类的兼容性问题</li>
+</ul>
+<p>主要分为三类：</p>
+<ol>
+<li><p>类的适配器模式：</p>
+<ul>
+<li>Adapter类继承Source类，实现Targetable接口</li>
+<li><p>场景：希望将一个类转换成满足另一个新接口的类时</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Source</span> </span>{
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>{ ... }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Targetable</span> </span>{
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>;
+  <span class="comment">// 扩展方法</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>;
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">extends</span> <span class="title">Source</span> <span class="keyword">implements</span> <span class="title">Targetable</span> </span>{
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>{
+     ...
+  }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Targetable target = <span class="keyword">new</span> Adapter();
+target.method1();
+target.method2();
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>对象的适配器模式：</p>
+<ul>
+<li>Adapter类持有Source类的实例，调用Source实例的方法</li>
+<li>场景：希望将一个对象转换成满足另一个新接口的对象<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">implements</span> <span class="title">Targetable</span> </span>{
+  <span class="keyword">private</span> Source source;
+  <span class="function"><span class="keyword">public</span> <span class="title">Adapter</span><span class="params">(Source source)</span></span>{
+      <span class="keyword">super</span>();
+      <span class="keyword">this</span>.source = source;
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span> </span>{
+      source.method1();
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span> </span>{
+      ...
+  }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Targetable target = <span class="keyword">new</span> Adapter(<span class="keyword">new</span> Source());
+target.method1();
+target.method2();
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>接口的适配器模式：</p>
+<ul>
+<li>Adapter类继承一个抽象类（实现了Targetable接口），重写方法</li>
+<li>场景：不希望实现一个接口中所有的方法时<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractTarget</span> <span class="keyword">implements</span> <span class="title">Targetable</span></span>{
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>{
+      ...
+  }
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method2</span><span class="params">()</span></span>{
+      ...
+  }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adapter</span> <span class="keyword">extends</span> <span class="title">AbstractTarget</span></span>{
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method1</span><span class="params">()</span></span>{
+      ...
+  }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Targetable target=<span class="keyword">new</span> Adapter();
+target.method1();
+target.method2();
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-9">Decorator</h3>
+<p>装饰模式</p>
+<ul>
+<li>动态给一个对象增加一些新的功能</li>
+<li>应用场景：<ul>
+<li>扩展一个类的功能</li>
+<li>动态的为一个对象增加撤销功能（继承的功能是静态的，不能动态增删）</li>
+</ul>
+</li>
+<li>实现方式：<ul>
+<li>Target：被装饰类</li>
+<li>Decorator：装饰类</li>
+<li>Target和Decorator实现同一个接口</li>
+<li>Decorator对象持有Target对象，为Target动态的添加取消功能</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<pre><code class="nulljava">  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Targetable</span> </span>{
+      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>;
+  }
+</code></pre>
+<pre><code class="nulljava">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Target</span> <span class="keyword">implements</span> <span class="title">Targetable</span> </span>{
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{
+          ...
+      }
+  }
+  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Decorator</span> <span class="keyword">implements</span> <span class="title">Targetable</span> </span>{
+      <span class="keyword">private</span> Targetable target;
+
+      <span class="comment">// 通过构造函数传入Target对象</span>
+      <span class="function"><span class="keyword">public</span> <span class="title">Decorator</span><span class="params">(Targetable target)</span></span>{
+          <span class="keyword">super</span>();
+          <span class="keyword">this</span>.target = target;
+      }
+
+      <span class="comment">// 扩展Target方法</span>
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{
+          ...
+          target.method();
+          ...
+      }
+  }
+</code></pre>
+<pre><code class="nulljava">  <span class="comment">//Test</span>
+  Targetable obj=<span class="keyword">new</span> Decorator(<span class="keyword">new</span> Source());
+  obj.method();
+</code></pre>
+</li>
+<li>缺点：产生过多相似的对象，不易排错</li>
+</ul>
+<h3 id="header-10">Proxy</h3>
+<p>代理模式：相较于Decorator，Proxy通过自己创建Target对象，来持有Targe对象<br>（将功能划分的更加清晰，有助于后期维护）</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Proxy</span> <span class="keyword">implements</span> <span class="title">Targetable</span> </span>{
+    <span class="keyword">private</span> Targetable target;
+
+    <span class="comment">// 在构造函数中创建Target对象</span>
+    <span class="function"><span class="keyword">public</span> <span class="title">Proxy</span><span class="params">()</span></span>{
+        <span class="keyword">super</span>();
+        <span class="keyword">this</span>.target = <span class="keyword">new</span> Target();
+    }
+    <span class="comment">// 扩展Target方法</span>
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{
+        ...
+        target.method();
+        ...
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Targetable obj=<span class="keyword">new</span> Proxy();
+obj.method();
+</code></pre>
+<h3 id="header-11">Facade</h3>
+<p>外观模式：为了解决类与类之家的依赖关系<br>（将依赖放在一个Facade类中，降低类与类之间的耦合度，类似Spring将通过配置文件维护各个bean的依赖关系）</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>{...}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>{...}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Facade</span></span>{
+    <span class="keyword">private</span> A a;
+    <span class="keyword">private</span> B b;
+    <span class="function"><span class="keyword">public</span> <span class="title">Facade</span><span class="params">()</span></span>{
+        a=<span class="keyword">new</span> A();
+        b=<span class="keyword">new</span> B();
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>{
+        a.xxx();
+        b.xxx();
+        ...
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Facade facade = <span class="keyword">new</span> Facade();
+facade.method();
+</code></pre>
+<h3 id="header-12">Bridge</h3>
+<p>桥接模式：将抽象与实现解耦，使得二者可以独立变化</p>
+<p>类似：DriverManager与JDBC桥接（统一接口），在各个数据库（提供各自实现）之间进行切换<br>用一个叫做数据库驱动的程序来桥接就行了。</p>
+<pre><code class="nulljava"><span class="comment">// 统一接口</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Targetable</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>;
+}
+
+<span class="comment">//各自实现</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TargetSub1</span> <span class="keyword">implements</span> <span class="title">Targetable</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{... }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TargetSub2</span> <span class="keyword">implements</span> <span class="title">Targetable</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{ ... }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// 桥接：抽象方法，通过set传入Target对象，自定义调用Target方法</span>
+<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Bridge</span> </span>{
+    <span class="keyword">private</span> Targetable target;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>{
+        target.method();
+    }
+    <span class="comment">//get/set</span>
+    ...
+}
+
+<span class="comment">// 桥接扩展</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBridge</span> <span class="keyword">extends</span> <span class="title">Bridge</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>{
+        getTarget().method();
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Bridge bridge = <span class="keyword">new</span> MyBridge();
+
+<span class="comment">// 调用第一个对象</span>
+bridge.setTarget(<span class="keyword">new</span> TargetSub1());
+bridge.method();
+
+<span class="comment">// 调用第二个对象</span>
+bridge.setTarget(<span class="keyword">new</span> TargetSub2());
+bridge.method();
+</code></pre>
+<h3 id="header-13">Combine</h3>
+<p>组合模式：部分-整体模式，将多个对象组合在一起进行操作（常用场景：树形结构）</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tree</span> </span>{
+    TreeNode root = <span class="keyword">null</span>;
+    <span class="function"><span class="keyword">public</span> <span class="title">Tree</span><span class="params">(String name)</span> </span>{
+        root = <span class="keyword">new</span> TreeNode(name);
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> </span>{
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span> TreeNode parent;
+    <span class="keyword">private</span> Vector&lt;TreeNode&gt; children = <span class="keyword">new</span> Vector&lt;TreeNode&gt;();
+
+    <span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(String name)</span></span>{
+        <span class="keyword">this</span>.name = name;
+    }
+
+    <span class="comment">//get/set</span>
+    ...
+
+    <span class="comment">//添加孩子节点</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(TreeNode node)</span></span>{
+        children.add(node);
+    }
+    <span class="comment">//删除孩子节点</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(TreeNode node)</span></span>{
+        children.remove(node);
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Tree tree = <span class="keyword">new</span> Tree(<span class="string">"A"</span>);
+TreeNode nodeB = <span class="keyword">new</span> TreeNode(<span class="string">"B"</span>);
+TreeNode nodeC = <span class="keyword">new</span> TreeNode(<span class="string">"C"</span>);
+tree.root.add(nodeB);
+nodeB.add(nodeC);
+</code></pre>
+<h3 id="header-14">Flyweight</h3>
+<p>享元模式：实现对象的共享，即共享池<br>（对象多的时候可以减少内存的开销，一般为单例，可参考数据库连接池的实现）</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionPool</span> </span>{
+    <span class="keyword">private</span> Vector&lt;Connection&gt; pool;
+    <span class="comment">/*公有属性*/</span>
+    <span class="keyword">private</span> String url = <span class="string">"jdbc:mysql://localhost:3306/test"</span>;
+    <span class="keyword">private</span> String username = <span class="string">"root"</span>;
+    <span class="keyword">private</span> String password = <span class="string">"root"</span>;
+    <span class="keyword">private</span> String driverClassName = <span class="string">"com.mysql.jdbc.Driver"</span>;
+
+    <span class="keyword">private</span> <span class="keyword">int</span> poolSize = <span class="number">100</span>;
+    Connection conn = <span class="keyword">null</span>;
+
+    <span class="keyword">private</span> <span class="keyword">static</span> ConnectionPool instance = <span class="keyword">null</span>;
+    <span class="function"><span class="keyword">private</span> <span class="title">ConnectionPool</span><span class="params">()</span> </span>{
+        pool = <span class="keyword">new</span> Vector&lt;Connection&gt;(poolSize);
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; poolSize; i++) {
+            <span class="keyword">try</span> {
+                Class.forName(driverClassName);
+                conn = DriverManager.getConnection(url, username, password);
+                pool.add(conn);
+            } <span class="keyword">catch</span> (ClassNotFoundException e) {
+                e.printStackTrace();
+            } <span class="keyword">catch</span> (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    <span class="comment">/* 返回连接到连接池 */</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">release</span><span class="params">()</span> </span>{
+        pool.add(conn);
+    }
+
+    <span class="comment">/* 返回连接池中的一个数据库连接 */</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Connection <span class="title">getConnection</span><span class="params">()</span> </span>{
+        <span class="keyword">if</span> (pool.size() &gt; <span class="number">0</span>) {
+            conn = pool.get(<span class="number">0</span>);
+            pool.remove(conn);
+            <span class="keyword">return</span> conn;
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">null</span>;
+        }
+    }
+}
+</code></pre>
+<hr>
+<h2 id="header-15">行为类模式</h2>
+<p><img src="/2013/05/03/action.png" alt="Action"></p>
+<h3 id="header-16">Strategy</h3>
+<p>策略模式：定义了一系列算法，封装起来，可随意替换<br>场景：适用于当一个应用程序需要实现一种特定的服务或者功能，而且该程序有多种实现方式时使用(决定权在用户，系统本身提供不同的实现)<br><strong>PS：</strong> 可参考<code>java.util</code>中<code>Collections</code>算法类的使用和实现</p>
+<p><img src="/2013/05/03/strategy.png" alt="Strategy"></p>
+<pre><code class="nulljava"><span class="comment">//统一接口</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IStrategy</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operate</span><span class="params">()</span></span>;
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//各个策略实现类（具体对象）</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Strategy1</span> <span class="keyword">implements</span> <span class="title">IStrategy</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operate</span><span class="params">()</span> </span>{...}
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Strategy2</span> <span class="keyword">extends</span> <span class="title">AbstractStrategy</span> <span class="keyword">implements</span> <span class="title">IStrategy</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operate</span><span class="params">()</span> </span>{ ... }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// 环境类（引用策略）</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span></span>{
+    <span class="keyword">private</span> IStrategy strategy;
+    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(IStrategy strategy)</span></span>{
+        <span class="keyword">this</span>.strategy=strategy;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="title">operate</span><span class="params">()</span></span>{
+        <span class="keyword">this</span>.strategy.opreate();
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Context ctx=<span class="keyword">new</span> Context(<span class="keyword">new</span> Strategy1());
+ctx.operate();
+</code></pre>
+<h3 id="header-17">Template</h3>
+<p>模板模式：在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中，使得子类可以在不改变算法结构的情冴下，重新定义算法中的某些步骤</p>
+<p>抽象类和具体子类的之间的协作</p>
+<ul>
+<li>抽象类：给出一个算法的骨架和搭建步骤<ul>
+<li>基本方法：搭建步骤（抽象方法，由子类具体实现）</li>
+<li>模板方法：骨架（基本方法的汇总）</li>
+</ul>
+</li>
+<li>子类：提供这个算法搭建步骤的具体实现</li>
+</ul>
+<p><strong>PS:</strong>可参考<code>HttpServlet</code>抽象类<br>（提供了一个service方法，这个方法调用七个do方法中的一个或几个，完成对客户端调用的响应，这些do方法需要由HttpServlet的具体子类提供，这是典型的模板模式）</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractTemplate</span></span>{
+    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod1</span><span class="params">()</span></span>;
+    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">abstractMethod2</span><span class="params">()</span></span>;
+    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">hookMethod</span><span class="params">()</span></span>{...}
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">templateMethod</span><span class="params">()</span></span>{
+        abstractMethod1();
+        abstractMethod2();
+        hookMethod();
+        ...
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> ConcreteTemplate extends AbstractTemplate{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod1</span><span class="params">()</span></span>{...}
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">abstractMethod2</span><span class="params">()</span></span>{...}
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hookMethod</span><span class="params">()</span></span>{...}
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+AbstractTemplate template=<span class="keyword">new</span> ConcreteTemplate();
+template.templateMethod();
+</code></pre>
+<h3 id="header-18">Observer</h3>
+<p>订阅者模式：发布-订阅（Publish/Subscribe）模式</p>
+<p>对象之间是一种一对多的关系：<br>让多个观察者对象同时监听某一个主题对象<br>这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己</p>
+<ul>
+<li>Subject：主题（接口/抽象类，可增加删除观察者对象）</li>
+<li>Observer：观察者（接口/抽象类，在得到Subject通知时更新自己）</li>
+<li>ConcreteSubject：具体主题</li>
+<li>ConcreteObserver：具体观察者</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Subject</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Observer observer)</span></span>;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(Observer observer)</span></span>;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObservers</span><span class="params">()</span></span>;  <span class="comment">// 通知Observer</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span></span>;     <span class="comment">//自身的操作</span>
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Observer</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>;
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Subject 实现类：</span>
+<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractSubject</span> <span class="keyword">implements</span> <span class="title">Subject</span> </span>{
+    <span class="keyword">private</span> Vector&lt;Observer&gt; vector = <span class="keyword">new</span> Vector&lt;Observer&gt;();
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(Observer observer)</span> </span>{
+        vector.add(observer);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(Observer observer)</span> </span>{
+        vector.remove(observer);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">notifyObservers</span><span class="params">()</span> </span>{
+        Enumeration&lt;Observer&gt; enumo = vector.elements();
+        <span class="keyword">while</span>(enumo.hasMoreElements()){
+            enumo.nextElement().update();
+        }
+    }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteSubject</span> <span class="keyword">extends</span> <span class="title">AbstractSubject</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">operation</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"update self!"</span>);
+        notifyObservers();
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Observer 实现类：</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver1</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"observer1 has received!"</span>);
+    }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteObserver2</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span> </span>{
+        System.out.println(<span class="string">"observer2 has received!"</span>);
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Subject subject = <span class="keyword">new</span> ConcreteSubject();
+subject.add(<span class="keyword">new</span> ConcreteObserver1());
+subject.add(<span class="keyword">new</span> ConcreteObserver2());
+subject.operation();
+</code></pre>
+<h3 id="header-19">Iterator</h3>
+<p>迭代器模式</p>
+<ul>
+<li>又叫做游标（Cursor）模式</li>
+<li>顺序访问容器(Container)中的各个对象，且不需暴露内部细节</li>
+<li>常使用JDK提供的迭代接口<code>Iterator</code>进行<code>collection</code>的遍历<pre><code class="nulljava">Iterator it = list.iterator();
+<span class="keyword">while</span>(it.hasNext()){
+　<span class="comment">//using “it.next();”do some businesss logic</span>
+}
+</code></pre>
+</li>
+</ul>
+<p>实现：</p>
+<ul>
+<li>Iterator</li>
+<li>Container</li>
+<li>ConcreteIterator</li>
+<li>ConcreteContainer</li>
+</ul>
+<p>一是需要遍历的对象，即聚集对象，二是迭代器对象，用于对聚集对象进行遍历访问</p>
+<p>这个思路和我们常用的一模一样，MyCollection中定义了集合的一些操作，MyIterator中定义了一系列迭代操作，且持有Collection实例</p>
+<p>两个接口</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Container</span> </span>{
+    <span class="function"><span class="keyword">public</span> Iterator <span class="title">iterator</span><span class="params">()</span></span>;
+    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(<span class="keyword">int</span> i)</span></span>;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span> </span>{
+    <span class="function"><span class="keyword">public</span> Object <span class="title">previous</span><span class="params">()</span></span>;
+    <span class="function"><span class="keyword">public</span> Object <span class="title">next</span><span class="params">()</span></span>;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteContainer</span> <span class="keyword">implements</span> <span class="title">Container</span> </span>{
+    <span class="keyword">public</span> String string[] = {<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"C"</span>,<span class="string">"D"</span>,<span class="string">"E"</span>};
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Iterator <span class="title">iterator</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> ConcreteIterator(<span class="keyword">this</span>);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(<span class="keyword">int</span> i)</span> </span>{
+        <span class="keyword">return</span> string[i];
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> string.length;
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteIterator</span> <span class="keyword">implements</span> <span class="title">Iterator</span> </span>{
+    <span class="keyword">private</span> Container container;
+    <span class="keyword">private</span> <span class="keyword">int</span> pos = -<span class="number">1</span>;
+    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteIterator</span><span class="params">(Container Container)</span></span>{
+        <span class="keyword">this</span>.container = container;
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Object <span class="title">previous</span><span class="params">()</span> </span>{
+        <span class="keyword">if</span>(pos &gt; <span class="number">0</span>){  pos--; }
+        <span class="keyword">return</span> container.get(pos);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Object <span class="title">next</span><span class="params">()</span> </span>{
+        <span class="keyword">if</span>(pos&lt;container.size()-<span class="number">1</span>){pos++;   }
+        <span class="keyword">return</span> container.get(pos);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> pos&lt;container.size()-<span class="number">1</span>?<span class="keyword">true</span>:<span class="keyword">false</span>;
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Container container = <span class="keyword">new</span> ConcreteContainer();
+Iterator it = container.iterator();
+<span class="keyword">while</span>(it.hasNext()){
+    System.out.println(it.next());
+}
+</code></pre>
+<h3 id="header-20">Chain of Responsibility</h3>
+<p>责任链模式：</p>
+<ul>
+<li>有多个对象，每个对象持有对下一个对象的引用，这样就会形成一条链</li>
+<li>请求在这条链上传递，直到某一对象决定处理该请求。</li>
+<li>发出者并不清楚到底最终那个对象会处理该请求</li>
+<li>所以，责任链模式可以实现在隐瞒客户端的情况下，对系统进行动态的调整</li>
+</ul>
+<p>实现：</p>
+<ul>
+<li>Handler：抽象处理者</li>
+<li>ConcreteHandler：具体处理者（持有下家的引用，可将请求处理掉，或将请求传给下家）</li>
+</ul>
+<p><strong>PS</strong>：</p>
+<ul>
+<li>链接上的请求可以是一条链，可以是一个树，还可以是一个环，模式本身不约束这个；</li>
+<li>在一个时刻，命令只允许由一个对象传给另一个对象，而不允许传给多个对象</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Handler</span> </span>{
+    <span class="comment">// 持有handler</span>
+    <span class="keyword">private</span> Handler handler;
+    <span class="function"><span class="keyword">public</span> Handler <span class="title">getHandler</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> handler;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHandler</span><span class="params">(Handler handler)</span> </span>{
+        <span class="keyword">this</span>.handler = handler;
+    }
+    <span class="comment">// 处理方法，抽象</span>
+   <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">handlerRequest</span><span class="params">(String condition)</span></span>;
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler1</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handlerRequest</span><span class="params">(String condition)</span> </span>{ ... }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler2</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handlerRequest</span><span class="params">(String condition)</span> </span>{ ... }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteHandler3</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handlerRequest</span><span class="params">(String condition)</span> </span>{ ... }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+ConcreteHandler1 handler1 = <span class="keyword">new</span> ConcreteHandler1();
+ConcreteHandler2 handler2 = <span class="keyword">new</span> ConcreteHandler2();
+ConcreteHandler3 handler3=<span class="keyword">new</span> ConcreteHandler3();
+
+handler1.setHandler(handler2);
+handler2.setHandler(handler3);
+
+<span class="comment">// handler1 =&gt; handler2 =&gt; handler3</span>
+handler1.operator();
+</code></pre>
+<h3 id="header-21">Command</h3>
+<p>命令模式：</p>
+<ul>
+<li>将来自客户端的不同的请求（命令）传入一个对象（根据命令执行操作）</li>
+<li>达到命令的发出者和执行者之间解耦，实现请求和执行分开</li>
+</ul>
+<p><img src="/2013/05/03/command.png" alt="Command"></p>
+<p>实现：</p>
+<ul>
+<li>Invoker：调用者（司令员）</li>
+<li>Receiver：被调用者（士兵）</li>
+<li>Command：命令</li>
+<li>ConcreteCommand：实现了Command接口，持有接收对象</li>
+</ul>
+<pre><code class="nulljava"><span class="comment">// 调用者（包含命令）</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Invoker</span> </span>{
+    <span class="keyword">private</span> Command command;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCommand</span><span class="params">(Command command)</span></span>{
+        <span class="keyword">this</span>.command=command;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>{
+        <span class="keyword">this</span>.command.execute();
+    }
+}
+
+<span class="comment">// 命令接收者</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Receiver</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>{
+        <span class="comment">// 真正执行命令操作的功能代码</span>
+        System.out.println(<span class="string">"command received!"</span>);
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// 命令</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Command</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;
+}
+<span class="comment">// 具体命令（包括命令接收者）</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteCommand</span> <span class="keyword">implements</span> <span class="title">Command</span> </span>{
+    <span class="keyword">private</span> Receiver receiver;
+    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteCommand</span><span class="params">(Receiver receiver)</span> </span>{
+        <span class="keyword">this</span>.receiver = receiver;
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>{
+        receiver.action();
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Invoker invoker = <span class="keyword">new</span> Invoker();                      <span class="comment">// 创建命令调用者</span>
+Command cmd = <span class="keyword">new</span> ConcreteCommand(<span class="keyword">new</span> Receiver());    <span class="comment">// 构造具体命令</span>
+invoker.setCommand(cmd);     <span class="comment">// 装入命令</span>
+invoker.action();            <span class="comment">// 发送命令</span>
+</code></pre>
+<h3 id="header-22">Memento</h3>
+<p>备忘录模式：</p>
+<ul>
+<li>快照模式(Snapshot Pattern)或Token模式</li>
+<li>在不破坏封闭的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，以后可将该对象恢复到原先保存的状态</li>
+<li>场景：适用于对象在执行某些操作为防止意外而在执行操作前将对象状态备份的场景（有点类似事务回滚的意思）</li>
+</ul>
+<p>实现：</p>
+<ul>
+<li>Originator：发起人（包括内部状态和备忘录）</li>
+<li>Memento：备忘录（需保存的内容）</li>
+<li>Caretaker：管理备忘录</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Originator</span> </span>{
+    <span class="keyword">private</span> String value;
+    <span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> value;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(String value)</span> </span>{
+        <span class="keyword">this</span>.value = value;
+    }
+    <span class="function"><span class="keyword">public</span> Memento <span class="title">createMemento</span><span class="params">()</span></span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> Memento(value);
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">restoreMemento</span><span class="params">(Memento memento)</span></span>{
+        <span class="keyword">this</span>.value = memento.getValue();
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Memento</span> </span>{
+    <span class="keyword">private</span> String value;
+    <span class="function"><span class="keyword">public</span> <span class="title">Memento</span><span class="params">(String value)</span> </span>{
+        <span class="keyword">this</span>.value = value;
+    }
+    <span class="function"><span class="keyword">public</span> String <span class="title">getValue</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> value;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(String value)</span> </span>{
+        <span class="keyword">this</span>.value = value;
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Caretaker</span>  </span>{
+    <span class="keyword">private</span> Memento memento;
+    <span class="function"><span class="keyword">public</span> Memento <span class="title">getMemento</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> memento;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMemento</span><span class="params">(Memento memento)</span> </span>{
+        <span class="keyword">this</span>.memento = memento;
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+
+Originator originator=<span class="keyword">new</span> Originator();     <span class="comment">// 创建发起对象</span>
+Caretaker caretaker=<span class="keyword">new</span> Caretaker();        <span class="comment">// 创建管理者</span>
+
+originator.setValue(<span class="string">"Test"</span>);
+caretaker.setMemento(originator.createMemento());    <span class="comment">// 暂存状态</span>
+
+origi.setValue(<span class="string">"Test too"</span>);
+origi.restoreMemento(storage.getMemento());          <span class="comment">// 恢复状态</span>
+</code></pre>
+<h3 id="header-23">State</h3>
+<p>状态模式：当对象的状态改变时，同时改变其行为</p>
+<ul>
+<li>State</li>
+<li>ConcreteState</li>
+<li>Context</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">State</span></span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handler</span><span class="params">(Context context)</span></span>;
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>{
+    <span class="keyword">private</span> State state;
+    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(State state)</span></span>{
+        <span class="keyword">this</span>.state = state;
+    }
+    <span class="function"><span class="keyword">public</span> State <span class="title">getState</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> state;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setState</span><span class="params">(State state)</span> </span>{
+        <span class="keyword">this</span>.state = state;
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handler</span><span class="params">()</span> </span>{
+        <span class="keyword">this</span>.state.handler(<span class="keyword">this</span>);
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteState1</span> <span class="keyword">extends</span> <span class="title">State</span></span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handler</span><span class="params">(Context context)</span><span class="params">()</span></span>{
+        System.out.println(<span class="string">"Current State 1"</span>);
+        <span class="comment">// 设置下一状态为2</span>
+        context.setState(<span class="keyword">new</span> ConcreteState2());
+    }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteState2</span> <span class="keyword">extends</span> <span class="title">State</span></span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handler</span><span class="params">(Context context)</span><span class="params">()</span></span>{
+        System.out.println(<span class="string">"Current State 2"</span>);
+        <span class="comment">// 设置下一状态为1</span>
+        context.setState(<span class="keyword">new</span> ConcreteState1());
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+Context context = <span class="keyword">new</span> Context(<span class="keyword">new</span> ConcreteState1());
+context.handler();
+context.handler();
+</code></pre>
+<h3 id="header-24">Visitor</h3>
+<p>访问者模式：</p>
+<ul>
+<li>一种分离对象数据结构与行为的方法</li>
+<li>封装一些施加于某种数据结构元素之上的操作，一旦这些操作需要修改的话，接受这个操作的数据结构则可以保持不变</li>
+<li>适用于数据结构相对稳定的系统，把数据结构和算法解耦</li>
+</ul>
+<p>实现：</p>
+<ul>
+<li>Vistor</li>
+<li>Element</li>
+<li>ObjectStructure</li>
+<li>ConcreteVisitor</li>
+<li>ConcreteElement</li>
+</ul>
+<p><strong>PS：</strong> Vistor 和 Element的都可自行扩展，会不影响（相对独立，双重分派）</p>
+<pre><code class="nulljava"><span class="comment">// 访问Element，可对Element提出某些操作</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Visitor</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Element element)</span></span>;
+}
+<span class="comment">// 接收访问者，提供处理方法</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Element</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Visitor visitor)</span></span>;
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>;
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteVisitor1</span> <span class="keyword">implements</span> <span class="title">Visitor</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Element element)</span> </span>{
+        <span class="comment">//element.doSomething();</span>
+    }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteVisitor2</span> <span class="keyword">implements</span> <span class="title">Visitor</span> </span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(Element element)</span> </span>{
+        <span class="comment">//element.doSomething();</span>
+    }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteElement1</span> <span class="keyword">implements</span> <span class="title">Element</span></span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Visitor visitor)</span> </span>{
+        visitor.visit(<span class="keyword">this</span>);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>{  ... }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteElement2</span> <span class="keyword">implements</span> <span class="title">Element</span></span>{
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Visitor visitor)</span> </span>{
+        visitor.visit(<span class="keyword">this</span>);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>{  ... }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ObjectStruture</span></span>{
+    <span class="keyword">private</span> List&lt;Element&gt; list = <span class="keyword">new</span> ArrayList&lt;Element&gt;();
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">attach</span><span class="params">(Element element)</span></span>{
+        <span class="keyword">this</span>.list.add(element);
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">accept</span><span class="params">(Vistor vistor)</span></span>{
+        <span class="keyword">for</span>(Element element:list){
+            element.accept(vistor);
+        }
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">// Test</span>
+ObjectStruture objectStructor=<span class="keyword">new</span> ObjectStructor();
+objectStructor.attach(<span class="keyword">new</span> ConcreteElement1());
+objectStructor.attach(<span class="keyword">new</span> ConcreteElement2());
+objectStructor.accept(<span class="keyword">new</span> ConcreteVisitor1();)
+objectStructor.accept(<span class="keyword">new</span> ConcreteVisitor2();)
+</code></pre>
+<h3 id="header-25">Mediator</h3>
+<p>中介者模式：<br>用一个中介者对象封装一系列的对象交互，中介者使各对象不需要显示地相互作用，从而使耦合松散，而且可以独立地改变它们之间的交互</p>
+<p><strong>PS：</strong>只需关心和Mediator类的关系（由Mediator负责具体类类之间的关系及调度，有点像spring容器的作用）</p>
+<p>实现：</p>
+<ul>
+<li>Mediator：维护Colleague之间的关系及调度</li>
+<li>Colleague：维护与Mediator的关系，自身的一些处理等</li>
+<li>ConcreteMediator</li>
+<li>ConcreteColleague</li>
+</ul>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Mediator</span></span>{
+    <span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(Colleague colleague)</span></span>;
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteMediator</span> <span class="keyword">implements</span> <span class="title">Mediator</span> </span>{
+    <span class="keyword">private</span> List&lt;Colleague&gt; list=<span class="keyword">new</span> ArrayList&lt;Colleague&gt;();
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addColleague</span><span class="params">(Colleague colleague)</span></span>{
+        <span class="keyword">this</span>.list.add(colleague);
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">change</span><span class="params">(Colleague colleague)</span> </span>{
+        <span class="comment">//各个Colleague交互协作</span>
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Colleague</span></span>{
+    <span class="keyword">private</span> Mediator mediator;
+    <span class="function"><span class="keyword">public</span> <span class="title">Colleague</span><span class="params">(Mediator mediator)</span> </span>{
+        <span class="keyword">this</span>.mediator = mediator;
+    }
+    <span class="function"><span class="keyword">public</span> Mediator <span class="title">getMediator</span><span class="params">()</span></span>{
+        <span class="keyword">return</span> mediator;
+    }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteColleague1</span> <span class="keyword">extends</span> <span class="title">Colleague</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteColleague1</span><span class="params">(Mediator mediator)</span></span>{
+        <span class="keyword">super</span>(mediator);
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>{
+        <span class="comment">//...</span>
+    }
+}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcreteColleague2</span> <span class="keyword">extends</span> <span class="title">Colleague</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="title">ConcreteColleague1</span><span class="params">(Mediator mediator)</span></span>{
+        <span class="keyword">super</span>(mediator);
+    }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>{
+        <span class="comment">//...</span>
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="comment">//Test</span>
+Mediator mediator = <span class="keyword">new</span>  ConcreteMediator();
+Colleague colleague1=<span class="keyword">new</span> ConcreteColleague1();
+Colleague cooleague2=<span class="keyword">new</span> ConcreteColleague2();
+mediator.addColleague(colleague1);
+mediator.addColleague(colleague1);
+mediator.change(colleague1);
+</code></pre>
+<h3 id="header-26">Interpreter</h3>
+<p>解释器模式</p>
+<ul>
+<li>一种简单的语法解释器构架</li>
+<li>给定一个语言之后，解释器模式可以定义出其文法的一种表示，并同时提供一个解释器</li>
+<li>客户端可以使用这个解释器来解释这个语言中的句子</li>
+<li>用来做各种各样的解释器，如正则表达式等的解释器等等</li>
+</ul>
+<p><img src="/2013/05/03/interpreter.png" alt="Interpreter"></p>
+<p>用的不多！</p>
+<h2 id="header-27">总结</h2>
+<h3 id="header-28">重构</h3>
+
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2013/05/03/DesignPattern.html';	
+		var disqus_title = 'Design Pattern';
+		var disqus_url = 'http://sixdegree.github.io/2013/05/03/DesignPattern.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SpringMVC</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="spring,mvc,restful">
+  
+  
+    <meta name="description" content="Spring MVC Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">依赖包</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">处理流程</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Restful</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">使用示例</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">SpringMVC</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2013-07-14T16:00:00.000Z">2013-07-15</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+            <a href="/tags.html#tag-Spring">Spring</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<h3 id="header-2">依赖包</h3>
+<p>在加入Spring依赖包的基础上，加入：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${spring.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<p>额外包：</p>
+<pre><code class="nullxml"><span class="comment">&lt;!-- FileUpload --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-io<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="comment">&lt;!-- JSTL,Taglib --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jstl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>taglibs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>standard<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span> 
+
+<span class="comment">&lt;!-- Test--&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>xmlunit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xmlunit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mockito<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mockito-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mockito<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mockito-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<h3 id="header-3">使用</h3>
+<ol>
+<li>配置web.xml (在配置了Spring的基础上)<pre><code class="nullxml"> <span class="comment">&lt;!-- 配置加载DispatchServlet 拦截请求--&gt;</span>
+ <span class="tag">&lt;<span class="name">servlet</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>配置xxx-servlet.xml</p>
+<pre><code class="nullxml"> <span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>
+ <span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
+     <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+     <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span>
+     <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
+     <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"</span>&gt;</span>
+
+     <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>/&gt;</span>
+     <span class="comment">&lt;!-- find controller and registered as beans--&gt;</span>
+     <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.mytest.controller"</span>/&gt;</span>
+
+     <span class="comment">&lt;!-- PS: 若使用@ControllerAdvice，需如下配置
+     &lt;context:component-scan base-package="com.mytest.controller" use-default-filters="false"&gt;
+         &lt;context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"  /&gt;
+         &lt;context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/&gt;
+     &lt;/context:component-scan&gt;
+     --&gt;</span>
+
+     <span class="comment">&lt;!-- Handle requests for static resources --&gt;</span>
+     <span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">location</span>=<span class="string">"/resources/"</span> <span class="attr">mapping</span>=<span class="string">"/resources/**"</span>/&gt;</span>
+
+     <span class="comment">&lt;!-- use InternalResourceViewResolver to resolve internal view:
+         prefix + logical view name + suffix
+     --&gt;</span>
+     <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/user/"</span>/&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span>
+     <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+     <span class="comment">&lt;!-- for file uploads --&gt;</span>
+     <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"1000000"</span>/&gt;</span>
+     <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+ <span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>在Spring配置文件（<code>beans.xml</code>）中去除加载Controller（避免重复）</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.mytest"</span> &gt;</span>
+     <span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">"regex"</span> <span class="attr">expression</span>=<span class="string">"com.mytest.controller.*"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Controller</p>
+<pre><code class="nulljava"> <span class="meta">@Controller</span>
+ <span class="meta">@RequestMapping</span>(value={<span class="string">"/users"</span>})
+ <span class="meta">@SessionAttributes</span>(<span class="string">"loginUser"</span>)
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span>
+ </span>{
+     <span class="keyword">private</span> UserService userService;
+     <span class="function"><span class="keyword">public</span> UserService <span class="title">getUserService</span><span class="params">()</span></span>{<span class="keyword">return</span> <span class="keyword">this</span>.userService;}
+     <span class="meta">@Inject</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserService</span><span class="params">(UserService userService)</span></span>{<span class="keyword">this</span>.userService=userService;}
+
+     <span class="comment">// List Users</span>
+     <span class="meta">@RequestMapping</span>(value={<span class="string">"/"</span>})
+     <span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">(Model model)</span>
+     </span>{
+         model.addAttribute(<span class="string">"users"</span>,userService.list());
+         <span class="keyword">return</span> <span class="string">"list"</span>;
+     }
+
+     <span class="comment">// get user details by id</span>
+     <span class="meta">@RequestMapping</span>(value={<span class="string">"/{id}"</span>},method=RequestMethod.GET)
+     <span class="function"><span class="keyword">public</span> String <span class="title">details</span><span class="params">(@PathVariable <span class="keyword">int</span> id,Model model)</span>
+     </span>{
+         User user=userService.get(id);
+         <span class="keyword">if</span>(user!=<span class="keyword">null</span>)
+             model.addAttribute(user);
+         <span class="keyword">return</span> <span class="string">"create"</span>;
+     }
+
+     <span class="comment">//create user &amp; file upload</span>
+     <span class="meta">@RequestMapping</span>(value={<span class="string">"/"</span>},method=RequestMethod.POST)
+     <span class="function"><span class="keyword">public</span> String <span class="title">create</span><span class="params">(@Valid User user,BindingResult binding, @RequestParam(value=<span class="string">"photos"</span>,required=<span class="keyword">false</span>)</span> MultipartFile[] photos,HttpServletRequest req)
+             <span class="keyword">throws</span> IOException
+     </span>{
+         <span class="keyword">if</span>(binding.hasErrors())
+             <span class="keyword">return</span> <span class="string">"create"</span>;
+
+         <span class="comment">//file upload</span>
+         String realpath = req.getSession().getServletContext().getRealPath(<span class="string">"/resources/upload/"</span>);
+         <span class="keyword">for</span>(MultipartFile photo : photos)
+         {
+             <span class="keyword">if</span>(photo.isEmpty())
+                 <span class="keyword">continue</span>;
+             FileUtils.copyInputStreamToFile(photo.getInputStream(), <span class="keyword">new</span> File(realpath+<span class="string">"/"</span>+photo.getOriginalFilename()));
+         }
+
+         <span class="comment">//save user</span>
+         userService.save(user)
+         <span class="keyword">return</span> <span class="string">"redirect:list"</span>;
+     }
+
+     <span class="comment">// login</span>
+     <span class="meta">@RequestMapping</span>(value={<span class="string">"/login"</span>},method=RequestMethod.POST)
+     <span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">(String username,String password,Model model)</span>
+     </span>{
+         User user=userService.check(username,password);
+         <span class="keyword">if</span>(user!=<span class="keyword">null</span>){
+             model.addAttribute(<span class="string">"loginUser"</span>,user);
+             <span class="comment">//return InternalResourceViewResolver.REDIRECT_URL_PREFIX+"/users"</span>
+             <span class="keyword">return</span> <span class="string">"redirect:list"</span>;
+         }
+         <span class="keyword">throw</span> <span class="keyword">new</span> UserException(<span class="string">"Login Fail"</span>);
+         <span class="comment">//return "login";</span>
+     }
+
+     <span class="meta">@ExceptionHandler</span>(value={UserException.class})
+     <span class="function"><span class="keyword">public</span> String <span class="title">handlerUserException</span><span class="params">(Exception ex,HttpServletRequest req)</span>
+     </span>{
+         req.setAttribute(<span class="string">"ex"</span>,ex.getMessage());
+         <span class="keyword">return</span> <span class="string">"error"</span>;
+     }
+ }
+</code></pre>
+</li>
+<li><p>JSP</p>
+<ul>
+<li><p><code>WEB_INF/user/list.jsp</code> 部分代码：</p>
+<pre><code class="nullhtml"><span class="comment">&lt;!-- 在页面中引入：--&gt;</span>
+<span class="tag">&lt;<span class="name">%@</span> <span class="attr">taglib</span> <span class="attr">prefix</span>=<span class="string">"c"</span> <span class="attr">uri</span>=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span>
+
+<span class="comment">&lt;!-- 显示登录用户--&gt;</span>
+<span class="tag">&lt;<span class="name">h2</span>&gt;</span>Welcome : ${loginUser.username}<span class="tag">&lt;<span class="name">h2</span>&gt;</span>
+
+<span class="comment">&lt;!-- Menu Link --&gt;</span>
+<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"create"</span>&gt;</span>Create User<span class="tag">&lt;/<span class="name">a</span>&gt;</span> | <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"login"</span>&gt;</span>Login User<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+
+<span class="comment">&lt;!-- 循环遍历 model：users--&gt;</span>
+<span class="tag">&lt;<span class="name">h2</span>&gt;</span>User List<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
+<span class="tag">&lt;<span class="name">table</span>&gt;</span>
+<span class="tag">&lt;<span class="name">tr</span>&gt;</span>
+<span class="tag">&lt;<span class="name">td</span>&gt;</span>Id<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+<span class="tag">&lt;<span class="name">td</span>&gt;</span>userName<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+<span class="tag">&lt;<span class="name">td</span>&gt;</span>nickName<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+<span class="tag">&lt;<span class="name">td</span>&gt;</span>password<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+<span class="tag">&lt;<span class="name">td</span>&gt;</span>email<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+<span class="tag">&lt;<span class="name">td</span>&gt;</span>Opera<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">tr</span>&gt;</span>
+<span class="tag">&lt;<span class="name">c:forEach</span> <span class="attr">items</span>=<span class="string">"${users}"</span>  <span class="attr">var</span>=<span class="string">"u"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">tr</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">td</span>&gt;</span>${u.value.id}<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">td</span>&gt;</span>${u.value.username }<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">td</span>&gt;</span>${u.value.nickname }<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">td</span>&gt;</span>${u.value.password }<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">td</span>&gt;</span>${u.value.email }<span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"${u.key}"</span>&gt;</span>Details<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">tr</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">c:forEach</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">table</span>&gt;</span>
+</code></pre>
+</li>
+<li><p><code>WEB-INF/user/create.jsp</code> 部分代码：</p>
+<pre><code class="nullhtml"><span class="comment">&lt;!-- 页面中引入spring form：--&gt;</span>
+<span class="tag">&lt;<span class="name">%@</span> <span class="attr">taglib</span> <span class="attr">prefix</span>=<span class="string">"sf"</span> <span class="attr">uri</span>=<span class="string">"http://www.springframework.org/tags/form"</span> %&gt;</span>
+
+<span class="tag">&lt;<span class="name">h2</span>&gt;</span>Create User<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
+<span class="tag">&lt;<span class="name">sf:form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">modelAttribute</span>=<span class="string">"user"</span> <span class="attr">enctype</span>=<span class="string">"multipart/form-data"</span>&gt;</span>
+  UserName:<span class="tag">&lt;<span class="name">sf:input</span> <span class="attr">path</span>=<span class="string">"username"</span>/&gt;</span><span class="tag">&lt;<span class="name">sf:errors</span> <span class="attr">path</span>=<span class="string">"username"</span>/&gt;</span>
+  NickName:<span class="tag">&lt;<span class="name">sf:input</span> <span class="attr">path</span>=<span class="string">"nickname"</span>/&gt;</span><span class="tag">&lt;<span class="name">sf:errors</span> <span class="attr">path</span>=<span class="string">"nickname"</span>/&gt;</span>
+  Password:<span class="tag">&lt;<span class="name">sf:password</span> <span class="attr">path</span>=<span class="string">"password"</span>/&gt;</span><span class="tag">&lt;<span class="name">sf:errors</span> <span class="attr">path</span>=<span class="string">"password"</span>/&gt;</span>
+  Email:<span class="tag">&lt;/<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">sf:input</span> <span class="attr">path</span>=<span class="string">"email"</span>/&gt;</span><span class="tag">&lt;<span class="name">sf:errors</span> <span class="attr">path</span>=<span class="string">"email"</span>/&gt;</span>
+  photo1:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"photos"</span>/&gt;</span>
+  photo2:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span> <span class="attr">name</span>=<span class="string">"photos"</span>/&gt;</span>
+  <span class="tag">&lt;<span class="name">sf:button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">sf:button</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">sf:button</span> <span class="attr">type</span>=<span class="string">"submit"</span> &gt;</span>Submit<span class="tag">&lt;/<span class="name">sf:button</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">sf:form</span>&gt;</span>
+</code></pre>
+</li>
+<li><p><code>WEB-INF/user/login.jsp</code>部分代码：</p>
+<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>User Login<span class="tag">&lt;/<span class="name">h2</span>&gt;</span>
+<span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> &gt;</span>
+  UserName:<span class="tag">&lt;<span class="name">input</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span>
+  Password:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>/&gt;</span>
+  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>Reset<span class="tag">&lt;/<span class="name">button</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">form</span>&gt;</span>
+</code></pre>
+</li>
+<li><p><code>WEB-INF/user/error.jsp</code>部分代码：</p>
+<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">body</span>&gt;</span>${ex}<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>测试</p>
+<pre><code class="nulljava"> <span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)
+ <span class="meta">@WebAppConfiguration</span>
+ <span class="meta">@ContextConfiguration</span>({<span class="string">"classpath:beans.xml"</span>,<span class="string">"file:src/main/webapp/WEB-INF/mytest-servlet.xml"</span>})
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyControllerTest</span>
+ </span>{
+     <span class="keyword">private</span> MockMvc mockMvc;
+     <span class="keyword">protected</span> MockHttpSession mockSession;
+     <span class="meta">@Inject</span>
+     <span class="keyword">private</span> WebApplicationContext wac;
+
+     <span class="meta">@Before</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span>
+     </span>{
+         MockitoAnnotations.initMocks(<span class="keyword">this</span>);
+         mockMvc =MockMvcBuilders.webAppContextSetup(wac).build();
+         mockSession=<span class="keyword">new</span> MockHttpSession();
+     }
+
+     <span class="meta">@Test</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testList</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>{
+         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(<span class="string">"/users"</span>))
+             .andExpect(MockMvcResultMatchers.view().name(<span class="string">"list"</span>))
+             .andExpect(MockMvcResultMatchers.model().attributeExists(<span class="string">"users"</span>))
+             .andDo(MockMvcResultHandlers.print())
+             .andReturn();
+         printMvcResult(result);
+         Assert.assertNotNull(result.getModelAndView().getModel().get(<span class="string">"users"</span>));
+     }
+
+     <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">printMvcResult</span><span class="params">(MvcResult result)</span> <span class="keyword">throws</span> IOException
+     </span>{
+         MockHttpServletRequest request= result.getRequest();
+         MockHttpServletResponse response= result.getResponse();
+         <span class="comment">//ModelAndView  mv=getModelAndView() //得到执行后的ModelAndView</span>
+
+         System.out.println(<span class="string">"Request:"</span>);
+         System.out.println(<span class="string">"URI:"</span>+request.getRequestURI());
+         System.out.println(<span class="string">"URL:"</span>+request.getRequestURL());
+         System.out.println(<span class="string">"Method:"</span>+request.getMethod()+<span class="string">",ContentType:"</span>+request.getContentType());
+ <span class="comment">//System.out.println("InputStream:"+IOUtils.toString(request.getInputStream()));</span>
+         System.out.println(<span class="string">"Response:"</span>);
+         System.out.println(<span class="string">"Status:"</span>+response.getStatus()+<span class="string">" ErrorMessage:"</span>+response.getErrorMessage());
+         System.out.println(<span class="string">"content:"</span>+response.getContentAsString());
+         System.out.println(<span class="string">"contentType:"</span>+response.getContentType());
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-4">处理流程</h2>
+<p><img src="/2013/07/15/mvc.png" alt="Spring MVC"></p>
+<p><code>Request</code>会由<code>DispatcherServlet</code>分配给具体<code>Controller</code>（由<code>HandlerMapping</code>根据RequestURL来确定）。<code>Controller</code>完成处理后，<code>Request</code>会被发送给一个<code>View</code>（由<code>ViewResolver</code>确定）来呈现输出结果</p>
+<p>具体过程：</p>
+<ol>
+<li>Request发送，由DispatcherServlet拦截</li>
+<li>将Request交给HandlerMapping，HandlerMapping根据URL决策使用哪个Controller来处理</li>
+<li>将Request发送给选定的Controller完成逻辑处理</li>
+<li>将需要Client显示的信息打包成Model，并标志出处用于渲染输出的视图名称（即逻辑逻辑视图名）发送回DispatcherServlet</li>
+<li>ViewResolver根据逻辑视图名确定真正的视图实现（View）</li>
+<li>视图将Model渲染输出，通过Response传递回Client</li>
+</ol>
+<p>当要为用户展现信息时，SpringMVC可以使用视图解析器选择合适的视图：</p>
+<table class="table">
+<thead>
+<tr>
+<th>View resolver</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BeanNameViewResolver</td>
+<td>Finds an implementation of View that’s registered as a <bean> whose ID is the same as the logical view name.</td>
+</tr>
+<tr>
+<td>ContentNegotiatingViewResolver</td>
+<td>Delegates to one or more other view resolvers, the choice of which is based on the content type being requested.</td>
+</tr>
+<tr>
+<td>FreeMarkerViewResolver</td>
+<td>Finds a FreeMarker-based template whose path is determined by prefixing and suffixing the logical view name.</td>
+</tr>
+<tr>
+<td>InternalResourceViewResolver</td>
+<td>Finds a view template contained within the web application’s WAR file. The path to the view template is derived by prefixing and suffixing the logical view name.</td>
+</tr>
+<tr>
+<td>JasperReportsViewResolver</td>
+<td>Finds a view defined as a Jasper Reports report file whose path is derived by prefixing and suffixing the logical view name.</td>
+</tr>
+<tr>
+<td>ResourceBundleViewResolver</td>
+<td>Looks up View implementations from a properties file.</td>
+</tr>
+<tr>
+<td>TilesViewResolver</td>
+<td>Looks up a view that is defined as a Tiles template. The name of the template is the same as the logical view name.</td>
+</tr>
+<tr>
+<td>UrlBasedViewResolver</td>
+<td>This is the base class for some of the other view resolvers, such as InternalResourceViewResolver. It can be used on its own, but it’s not as powerful as its sub-classes. For example, UrlBasedViewResolver is unable to resolve views based on the current locale.</td>
+</tr>
+<tr>
+<td>VelocityLayoutViewResolver</td>
+<td>This is a subclass of VelocityViewResolver that supports page composition via Spring’s VelocityLayoutView (a view implementation that emulates Velocity’s VelocityLayoutServlet).</td>
+</tr>
+<tr>
+<td>VelocityViewResolver</td>
+<td>Resolves a Velocity-based view where the path of a Velocity template is derived by prefixing and suffixing the logical view name.</td>
+</tr>
+<tr>
+<td>XmlViewResolver</td>
+<td>Finds an implementation of View that’s declared as a <bean> in an XML file (/WEB-INF/views.xml). This view resolver is a lot like BeanNameViewResolver except that the view <bean>s are declared separately from those for the application’s Spring context.</td>
+</tr>
+<tr>
+<td>XsltViewResolver</td>
+<td>Resolves an XSLT-based view where the path of the XSLT stylesheet is derived by prefixing and suffixing the logical view name.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="header-5">Restful</h2>
+<p><strong>URI</strong>: 统一资源定位符,每种”资源”对应一个特定的URI（<strong>无状态</strong>）；<br>所以要获取这个资源，访问它的URI就可以，URI为每一个资源的地址或独一无二的识别符</p>
+<p><strong>REST=Representational State Transfer</strong>（表现层状态转化）</p>
+<ul>
+<li>Representional：客户端和服务器之间，通过HTTP请求的头信息（Accept，Content-Type）指定”资源”的表现形式，例如：xml,json,html</li>
+<li>State Transfer：客户端通过HTTP动词（GET,POST,PUT,PUT,DELETE），对服务器端”资源”进行操作，实现”表现层状态转化”</li>
+<li>transferring the state of resources</li>
+</ul>
+<p>REST 中最重要的概念是资源（resources），使用全球 ID（通常使用 URI）标识。<br>客户端应用程序使用 HTTP 方法（GET/ POST/ PUT/ DELETE）操作资源或资源集。<br>通常，RESTful Web 服务应该定义以下方面：</p>
+<ul>
+<li>Web 服务的基/根 URI，比如 <code>http://host/&lt;appcontext&gt;/resources</code></li>
+<li>支持 MIME 类型的响应数据，包括 JSON/XML/ATOM 等等</li>
+<li>服务支持的操作集合（例如 POST、GET、PUT 或 DELETE）</li>
+</ul>
+<p>Restful</p>
+<ul>
+<li>面向资源的设计</li>
+<li>是一种风格，而不是标准</li>
+<li>其目标是“使延迟和网络交互最小化，同时使组件实现的独立性和扩展性最大化”</li>
+<li>最主要驱动是分布性和扩展性</li>
+</ul>
+<p>Restless &amp; Restful URL示例:</p>
+<p><img src="2013-07-15-SpringMVC/restless.png" alt="Restless"><br>(Restless)</p>
+<p><img src="/2013/07/15/restful.png" alt="Restfull"><br>(Restful)</p>
+<p>HTTP动词：</p>
+<ul>
+<li>GET（SELECT）：从服务器取出资源（一项或多项）。</li>
+<li>POST（CREATE）：在服务器新建一个资源。</li>
+<li>PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</li>
+<li>PATCH（UPDATE）：在服务器更新资源（客户端提供改变的属性）。</li>
+<li>DELETE（DELETE）：从服务器删除资源。</li>
+<li>HEAD：获取资源的元数据。</li>
+<li>OPTIONS：获取信息，关于资源的哪些属性是客户端可以改变的</li>
+</ul>
+<p>HTTP状态码</p>
+<table class="table">
+<thead>
+<tr>
+<th>Status Codes</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200 OK - [GET]</td>
+<td>服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）</td>
+</tr>
+<tr>
+<td>201 CREATED - [POST/PUT/PATCH]</td>
+<td>用户新建或修改数据成功</td>
+</tr>
+<tr>
+<td>202 Accepted - [*]</td>
+<td>表示一个请求已经进入后台排队（异步任务）</td>
+</tr>
+<tr>
+<td>204 NO CONTENT - [DELETE]</td>
+<td>用户删除数据成功</td>
+</tr>
+<tr>
+<td>400 INVALID REQUEST - [POST/PUT/PATCH]</td>
+<td>用户发出的请求有错误，服务器没有进行新建或修改数据的操作，该操作是幂等的</td>
+</tr>
+<tr>
+<td>401 Unauthorized - [*]</td>
+<td>表示用户没有权限（令牌、用户名、密码错误）</td>
+</tr>
+<tr>
+<td>403 Forbidden - [*]</td>
+<td>表示用户得到授权（与401错误相对），但是访问是被禁止的</td>
+</tr>
+<tr>
+<td>404 NOT FOUND - [*]</td>
+<td>用户发出的请求针对的是不存在的记录，服务器没有进行操作，该操作是幂等的</td>
+</tr>
+<tr>
+<td>406 Not Acceptable - [GET]</td>
+<td>用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）</td>
+</tr>
+<tr>
+<td>410 Gone -[GET]</td>
+<td>用户请求的资源被永久删除，且不会再得到的</td>
+</tr>
+<tr>
+<td>422 Unprocesable entity - [POST/PUT/PATCH]</td>
+<td>当创建一个对象时，发生一个验证错误</td>
+</tr>
+<tr>
+<td>500 INTERNAL SERVER ERROR - [*]</td>
+<td>服务器发生错误，用户将无法判断发出的请求是否成功</td>
+</tr>
+</tbody>
+</table>
+<p>Restful 设计示例：</p>
+<ul>
+<li>GET /users：列出所有用户</li>
+<li>POST /users：新建一个用户</li>
+<li>GET /users/{id}：获取某个指定用户的信息</li>
+<li>PUT /users/{id}：更新某个指定用户的信息（提供该用户的全部信息）</li>
+<li>PATCH /users/{id}：更新某个指定用户的信息（提供该用户的部分信息）</li>
+<li>DELETE /users/{id}：删除某个用户</li>
+<li>GET /users/{id}/roles：列出某个指定用户的所有角色</li>
+<li>DELETE /users/{id}/roles/{roleId}：删除某个指定用户的指定角色</li>
+</ul>
+<h3 id="header-6">使用示例</h3>
+<ol>
+<li><p>SpringMVC配置加入Restful (<code>xxx-servlet.xml</code>)</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mediaTypes"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">map</span>&gt;</span>
+             <span class="comment">&lt;!-- &lt;entry key="html" value="text/html"/&gt; --&gt;</span>
+             <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"json"</span> <span class="attr">value</span>=<span class="string">"application/json"</span>/&gt;</span>
+         <span class="tag">&lt;/<span class="name">map</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+     <span class="comment">&lt;!-- &lt;property name="defaultContentType" value="text/html"/&gt; --&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewResolvers"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">list</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span> <span class="attr">value</span>=<span class="string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/"</span>/&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span>
+             <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> 
+         <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultViews"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">list</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.json.MappingJacksonJsonView"</span> &gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"objectMapper"</span>&gt;</span>
+                     <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.codehaus.jackson.map.ObjectMapper"</span>&gt;</span>
+                         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serializationConfig.serializationInclusion"</span>&gt;</span>
+                             <span class="tag">&lt;<span class="name">value</span> <span class="attr">type</span>=<span class="string">"org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion"</span>&gt;</span>NON_NULL<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+                         <span class="tag">&lt;/<span class="name">property</span>&gt;</span> 
+                     <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+                 <span class="tag">&lt;/<span class="name">property</span>&gt;</span> 
+             <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+         <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Controller</p>
+<pre><code class="nulljava"> <span class="meta">@Controller</span>
+ <span class="meta">@RequestMapping</span>(<span class="string">"/users"</span>)
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>{
+     <span class="keyword">private</span> SysUserService userService;
+     <span class="function"><span class="keyword">public</span> SysUserService <span class="title">getUserService</span><span class="params">()</span> </span>{<span class="keyword">return</span> userService;}
+     <span class="meta">@Inject</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserService</span><span class="params">(SysUserService userService)</span> </span>{<span class="keyword">this</span>.userService = userService;}
+
+     <span class="meta">@RequestMapping</span>(method=RequestMethod.GET)
+     <span class="meta">@ResponseBody</span>
+     <span class="function"><span class="keyword">public</span> Object <span class="title">list</span><span class="params">()</span></span>{
+         List&lt;User&gt; users=<span class="keyword">this</span>.userService.list();
+         <span class="keyword">return</span> users;
+     }
+
+     <span class="meta">@RequestMapping</span>(value={<span class="string">"/{id}"</span>},method=RequestMethod.GET)
+     <span class="meta">@ResponseBody</span>
+     <span class="function"><span class="keyword">public</span> Object <span class="title">getUser</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> String id)</span>{
+             <span class="keyword">return</span> <span class="keyword">this</span>.userService.get(id);
+     }
+
+     <span class="meta">@RequestMapping</span>(method=RequestMethod.POST)
+     <span class="meta">@ResponseBody</span>
+     <span class="function"><span class="keyword">public</span> Object <span class="title">create</span><span class="params">(@RequestBody User user,HttpServletRequest request)</span></span>{
+         <span class="keyword">return</span> <span class="keyword">this</span>.userService.save(user);
+     }
+
+     <span class="meta">@RequestMapping</span>(method=RequestMethod.POST)
+     <span class="meta">@ResponseBody</span>
+     <span class="function"><span class="keyword">public</span> Object <span class="title">upload</span><span class="params">(@RequestParam(value=<span class="string">"file"</span>,required=<span class="keyword">true</span>)</span> MultipartFile file,
+             @<span class="title">RequestParam</span><span class="params">(value=<span class="string">"remark"</span>,required=<span class="keyword">false</span>)</span> String remark) 
+                     <span class="keyword">throws</span> IOException, InvalidFormatException
+     </span>{
+         System.out.println(<span class="string">"ContentType:"</span>+file.getContentType());
+         System.out.println(<span class="string">"Name:"</span>+file.getName());
+         System.out.println(<span class="string">"OriginalFilename:"</span>+file.getOriginalFilename());
+         System.out.println(<span class="string">"Size:"</span>+file.getSize());
+         System.out.println(<span class="string">"remark:"</span>+remark);
+
+         String filename=file.getOriginalFilename();
+         <span class="keyword">int</span> pos=filename.lastIndexOf(<span class="string">"."</span>);
+         String fileExtesion=(pos!=-<span class="number">1</span>?filename.substring(pos+<span class="number">1</span>):<span class="string">"UnKnow"</span>);
+
+         String realpath = req.getSession().getServletContext().getRealPath(<span class="string">"/resources/uploads/"</span>);
+         FileUtils.copyInputStreamToFile(file.getInputStream(), <span class="keyword">new</span> File(realpath+File.separatorChar+fileName));
+         <span class="keyword">return</span> ResponseUtils.sendSuccess(fileName);
+     }
+ }
+</code></pre>
+</li>
+<li><p>测试</p>
+<pre><code class="nulljava"> <span class="comment">//GET</span>
+ MvcResult result=<span class="keyword">this</span>.mockMvc.perform(MockMvcRequestBuilders.get(url)
+             .session(<span class="keyword">this</span>.mockSession)
+             .contentType(MediaType.APPLICATION_JSON))
+             .andDo(MockMvcResultHandlers.print())
+             .andExpect(status().isOk())
+             .andExpect(jsonPath(<span class="string">"$.success"</span>,Matchers.equalTo(<span class="keyword">true</span>)))
+             .andReturn();
+
+ <span class="comment">//POST</span>
+ User user=<span class="keyword">new</span> User();
+ user.setName(<span class="string">"xxx"</span>);
+ user.setAge(xxx);
+
+ ObjectMapper mapper = <span class="keyword">new</span> ObjectMapper();
+ mapper.setSerializationInclusion(Include.NON_NULL);
+ <span class="keyword">byte</span>[] userBytes=mapper.writeValueAsString(object);
+
+ MvcResult result=<span class="keyword">this</span>.mockMvc.perform(post(url)
+             .contentType(MediaType.APPLICATION_JSON)
+             .content(reqBytes))
+             .andDo(MockMvcResultHandlers.print())
+             .andExpect(status().isOk())
+             <span class="comment">//.andExpect(jsonPath("$.success",Matchers.equalTo(true)))</span>
+             .andExpect(jsonPath(<span class="string">"$.name"</span>,Matchers.equalTo(<span class="string">"xxx"</span>)))
+             .andReturn();
+</code></pre>
+<p> 或使用<code>RestTemplate</code></p>
+<pre><code class="nulljava"> RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate();
+ User[] users = restTemplate.getForObject(SERVER_URI+<span class="string">"/users"</span>, User[].class);
+ User user = restTemplate.getForObject(SERVER_URI+<span class="string">"/users/{id}"</span>, User.class,id);
+ User response = restTemplate.postForObject(SERVER_URI+<span class="string">"/users"</span>, user, User.class);
+</code></pre>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2013/07/15/SpringMVC.html';	
+		var disqus_title = 'SpringMVC';
+		var disqus_url = 'http://sixdegree.github.io/2013/07/15/SpringMVC.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

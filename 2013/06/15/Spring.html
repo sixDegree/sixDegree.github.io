@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Spring</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="spring,ioc,aop,aspect,proxy,context,properties">
+  
+  
+    <meta name="description" content="Spring Basic Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">依赖包</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">IOC</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Spring Bean加载销毁顺序</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Bean实例化顺序</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">XML配置装载Bean</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Annotation配置装载Bean</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">AOP</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">静态代理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">JDK动态代理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Cglib动态代理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Spring AOP</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Spring Context</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">ServletContext</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">ApplicationContext</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">使用properties配置值</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Spring</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2013-06-14T16:00:00.000Z">2013-06-15</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+            <a href="/tags.html#tag-Spring">Spring</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<h3 id="header-2">依赖包</h3>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-orm<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-aspects<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context-support<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjrt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cglib<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cglib-nodep<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.inject<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javax.inject<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<p>测试依赖包：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<h3 id="header-3">使用</h3>
+<ol>
+<li><p><code>beans.xml</code>:</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
+         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+         <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
+         <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
+         <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
+         <span class="attr">xsi:schemaLocation</span>=<span class="string">"
+             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"</span>&gt;</span>
+
+     //...
+ <span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>本地应用：</p>
+<pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>
+ </span>{
+     BeanFactory beanFactory=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"beans.xml"</span>);
+     MyTest myTest=(MyTest)beanFactory.getBean(<span class="string">"myTest"</span>);
+     System.out.printIn(myTest.isDoCheck());
+ }
+</code></pre>
+</li>
+<li><p>web应用（配置web.xml）:</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">listener</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beans.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>单元测试：</p>
+<pre><code class="nulljava"> <span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)
+ <span class="meta">@ContextConfiguration</span>(<span class="string">"classpath:beans.xml"</span>)
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReqSupplierTest</span>
+ </span>{
+     <span class="meta">@Inject</span>
+     <span class="keyword">private</span> MyTest myTest;
+
+     <span class="meta">@Test</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testIsDoCheck</span><span class="params">()</span></span>{
+         System.out.printIn(myTest.isDoCheck());
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-4">IOC</h2>
+<ul>
+<li><code>IOC</code>: inversion of control 控制反转</li>
+<li><code>DI</code>：Dependency Injection 依赖注入 (IOC实现方式)<ul>
+<li>基本条件：所有的类都要被spring管理</li>
+<li>注入方式：<ul>
+<li>set注入</li>
+<li>construct注入</li>
+</ul>
+</li>
+<li>配置方式：<ul>
+<li>xml</li>
+<li>Annotation</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>bean</code>:由Spring容器初始化、装配及被管理的对象，scope作用域：<ul>
+<li><code>singleton</code>:默认，每次调用getBean的时候返回相同的实例</li>
+<li><code>prototype</code>:每次调用getBean的时候返回不同的实例</li>
+</ul>
+</li>
+</ul>
+<p>Spring IOC容器根据配置，对应用中各个对象bean进行实例化、配置以及组装，而非对象本身管理。</p>
+<h3 id="header-5">Spring Bean加载销毁顺序</h3>
+<h4 id="header-6">Bean实例化顺序</h4>
+<ol>
+<li>构造函数注入(Constructor Injection)： <code>public A()</code>  construct </li>
+<li>属性注入(Setter Injection): <code>setXxx()</code> property</li>
+<li>接口注入(Interface Injection)<ul>
+<li><code>setBeanName(String name)</code> [A implements BeanNameAware]</li>
+<li><code>setBeanFactory(BeanFactory factory)</code> [A implements BeanFactoryAware]</li>
+<li><code>setApplicationContext(ApplicationContext context)</code> [A implements ApplicationContextAware]</li>
+</ul>
+</li>
+<li><code>@postConstruct</code></li>
+<li><code>afterPropertiesSet()</code> [ A implements InitializingBean ] </li>
+<li><code>init-method</code> function [set in bean configuration file]</li>
+</ol>
+<p>####Bean销毁顺序</p>
+<ol>
+<li><code>@PreDestroy</code></li>
+<li><code>destroy()</code> [A implements DisposableBean]</li>
+<li><code>destroy-method</code> function [set in bean configuration file]</li>
+</ol>
+<h3 id="header-7">XML配置装载Bean</h3>
+<p>Java类定义：</p>
+<pre><code class="nulljava"><span class="keyword">public</span> MyTest{
+    <span class="keyword">private</span> String searchFilter;
+    <span class="keyword">private</span> ContextSource contextSource;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">MyTest</span><span class="params">(String searchFilter,ContextSource contextSource)</span></span>{
+        <span class="keyword">this</span>.searchFilter=searchFilter;
+        <span class="keyword">this</span>.contextSource=contextSource;
+    }
+
+    <span class="keyword">private</span> <span class="keyword">boolean</span> doCheck;
+    <span class="keyword">private</span> List&lt;String&gt; extensions;
+    <span class="keyword">private</span> MailSender mailSender;
+    <span class="keyword">private</span> AccessManager accessManager;
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isDoCheck</span><span class="params">()</span></span>{<span class="keyword">return</span> <span class="keyword">this</span>.doCheck;}
+    <span class="meta">@Inject</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDoCheck</span><span class="params">(<span class="keyword">boolean</span> doCheck)</span></span>{<span class="keyword">this</span>.doCheck=doCheck;}
+
+    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">getExtensions</span><span class="params">()</span></span>{<span class="keyword">return</span> <span class="keyword">this</span>.extensions;}
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setExtensions</span><span class="params">(List&lt;String&gt; extensions)</span></span>{<span class="keyword">this</span>.extensions=extensions;}
+
+    <span class="function">publis MailSender <span class="title">getMailSender</span><span class="params">()</span></span>{<span class="keyword">return</span> <span class="keyword">this</span>.mailSender;}
+    <span class="meta">@Inject</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMailSender</span><span class="params">(MailSender mailSender)</span></span>{<span class="keyword">this</span>.mailSender=mailSender}
+
+    <span class="function">publis AccessManager <span class="title">getAccessManager</span><span class="params">()</span></span>{<span class="keyword">return</span> <span class="keyword">this</span>.accessManager;}
+    <span class="meta">@Inject</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAccessManager</span><span class="params">(AccessManager accessManager)</span></span>{<span class="keyword">this</span>.accessManager=accessManager}
+}
+</code></pre>
+<p>xml配置由Spring管理此类：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myTest"</span> <span class="attr">class</span>=<span class="string">"xxx"</span>&gt;</span>
+    <span class="comment">&lt;!-- 构造方法,即new时就注入某个对象 --&gt;</span>
+    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"searchFilter"</span> <span class="attr">value</span>=<span class="string">"none"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"contextSource"</span> <span class="attr">ref</span>=<span class="string">"ldapServer"</span>/&gt;</span>  
+    <span class="comment">&lt;!-- 构造后，自动调用setXXX方法注入对应对象,在类中必须定义setXXX方法--&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"doCheck"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"extensions"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">list</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">value</span>&gt;</span>.txt<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">value</span>&gt;</span>.mail<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">list</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mailSender"</span> <span class="attr">ref</span>=<span class="string">"mailSender"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"accessManager"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"..."</span>&gt;</span>...<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+<h3 id="header-8">Annotation配置装载Bean</h3>
+<ol>
+<li><p>Bean注解 （加在类上）</p>
+<ul>
+<li><code>@Service</code> 标记类是Service层类</li>
+<li><code>@Controller</code> 标记类是Controller层类</li>
+<li><code>@Repository</code> 标记类是DAO层类</li>
+<li><code>@Component</code> 泛指</li>
+<li><code>@Scope(&quot;xxx&quot;)</code> 作用域，可为singleton(default)，prototype</li>
+</ul>
+</li>
+<li><p>属性注入注解（可加在属性定义或set方法上）</p>
+<ul>
+<li><code>@Autowired</code> 自动注入，默认按类型(byType)装配 (使用<code>@Qulifier</code>则byName)</li>
+<li><code>@Resource</code> 默认先按名称(byName)装配，再按类型(byType)装配</li>
+<li><code>@Inject</code> 等价于默认的<code>@Autowired</code></li>
+<li><code>@Value(value = &quot;SpEL表达式&quot;)</code> 注入*.properties文件中的配置值，eg：<ul>
+<li>bean.xml中：<code>&lt;context:property-placeholder location=&quot;classpath:prod.properties&quot;/&gt;</code></li>
+<li>bean类中： <code>@Value(&quot;${deploy.url}&quot;)private String systemUrl</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-9">AOP</h2>
+<p>面向切面编程Aspect-Oriented-Programming</p>
+<ol>
+<li>是对面向对象的思维方式的有力补充</li>
+<li>可以动态的添加和删除在切面上的逻辑而不影响原来的执行代码</li>
+<li>实现方式：<ul>
+<li>静态代理：在程序运行前，代理类的.class文件就已经存在了</li>
+<li>动态代理：在程序运行时，运用反射机制动态创建代理类<ul>
+<li>JDK</li>
+<li>CGLIB</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-10">静态代理</h3>
+<p><strong>PS</strong>： 使用静态代理带来的最大问题，需要为每一个类都加入与业务逻辑无关的横切代码</p>
+<p>使用示例：</p>
+<ol>
+<li>Target<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Manager</span> </span>{  
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span></span>;  
+ }  
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerImpl</span> <span class="keyword">implements</span> <span class="title">Manager</span> </span>{  
+     <span class="meta">@Override</span>  
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span> </span>{  
+        System.out.println(<span class="string">"*******modify()方法被调用"</span>);  
+     }
+ }
+</code></pre>
+</li>
+<li>Proxy<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerHandler</span> <span class="keyword">implements</span> <span class="title">Manager</span> </span>{
+     <span class="keyword">private</span> Manager target;
+     <span class="function"><span class="keyword">public</span> <span class="title">ManagerHandler</span><span class="params">(Manager target)</span></span>{
+         <span class="keyword">this</span>.target=target;
+     }
+     <span class="meta">@Override</span>  
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span> </span>{  
+        System.out.println(<span class="string">"do something before method"</span>);  
+        <span class="comment">//执行target方法</span>
+        target.modify();  
+        System.out.println(<span class="string">"do something after method"</span>);   
+     }  
+ }
+</code></pre>
+</li>
+<li>测试<pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{  
+     ManagerHandler proxy = <span class="keyword">new</span> ManagerHandler(<span class="keyword">new</span> ManagerImpl());  
+     proxy.modify(); 
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-11">JDK动态代理</h3>
+<p><strong>PS</strong>: JDK的动态代理机制只能代理实现了接口的类</p>
+<p>主要涉及到<code>java.lang.reflect</code>包中的两个类：</p>
+<ul>
+<li><code>interface InvocationHandler</code>：通过实现该接口定义横切逻辑，通过反射机制调用目标类的代码,动态的将横切逻辑和业务逻辑编织在一起</li>
+<li><code>class Proxy</code> 为<code>InvocationHandler实现类</code>动态的创建一个符合某一接口的代理实例</li>
+</ul>
+<p>使用步骤：</p>
+<ol>
+<li>创建动态代理类：<code>InvocationHandler</code>实现类<ul>
+<li>在代理类中创建相应的要代理的对象（以后创建对象就完全通过这个代理类来进行创建）</li>
+<li>在重载方法<code>public Object invoke(Object proxy, Method method, Object[] args)</code>中编写横切逻辑</li>
+</ul>
+</li>
+<li>通过代理类创建对象</li>
+</ol>
+<p>使用示例：</p>
+<ol>
+<li>Target<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Manager</span> </span>{  
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span></span>;  
+ }  
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerImpl</span> <span class="keyword">implements</span> <span class="title">Manager</span> </span>{  
+     <span class="meta">@Override</span>  
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span> </span>{  
+        System.out.println(<span class="string">"*******modify()方法被调用"</span>);  
+     }  
+ }
+</code></pre>
+</li>
+<li>Dynamic InvocationHandler<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BusinessHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>{  
+     <span class="keyword">private</span> Object target = <span class="keyword">null</span>;  
+     <span class="comment">/** 
+      * 绑定委托对象并返回一个代理类 
+      * <span class="doctag">@param</span> target 
+      * <span class="doctag">@return</span> 
+      */</span>  
+     <span class="function"><span class="keyword">public</span> Object <span class="title">bind</span><span class="params">(Object target)</span> </span>{  
+         <span class="keyword">this</span>.target = target;  
+         <span class="comment">//取得代理对象  </span>
+         <span class="keyword">return</span> Proxy.newProxyInstance(target.getClass().getClassLoader(),  
+                 target.getClass().getInterfaces(), <span class="keyword">this</span>); <span class="comment">//要绑定接口(这是一个缺陷，cglib弥补了这一缺陷)  </span>
+     }  
+     <span class="meta">@Override</span>  
+     <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span>  
+         <span class="keyword">throws</span> Throwable 
+     </span>{  
+        System.out.println(<span class="string">"do something before method"</span>);  
+        <span class="comment">//执行target方法</span>
+        Object ret = method.invoke(<span class="keyword">this</span>.target, args);  
+        System.out.println(<span class="string">"do something after method"</span>);  
+        <span class="keyword">return</span> ret;  
+     }  
+ }
+</code></pre>
+</li>
+<li>测试<pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{  
+     BusinessHandler proxy = <span class="keyword">new</span> BusinessHandler();  
+     Manager manger = (Manager) proxy.bind(<span class="keyword">new</span> ManagerImpl());  
+     manger.modify();  
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-12">Cglib动态代理</h3>
+<p><strong>PS</strong>: cglib是针对类来实现代理的 (对目标类生成一个子类，覆盖其中方法实现增强),所以不能对final修饰的类进行代理</p>
+<p>使用示例：</p>
+<ol>
+<li>Target<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Manager</span> </span>{  
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span></span>;  
+ }  
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerImpl</span> <span class="keyword">implements</span> <span class="title">Manager</span> </span>{  
+     <span class="meta">@Override</span>  
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span> </span>{  
+        System.out.println(<span class="string">"*******modify()方法被调用"</span>);  
+     }  
+ }
+</code></pre>
+</li>
+<li>Dynamic InvocationHandler<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BusinessHandler</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>{  
+     <span class="keyword">private</span> Object target = <span class="keyword">null</span>;  
+     <span class="comment">/** 
+      * 创建代理对象 
+      * <span class="doctag">@param</span> target 
+      * <span class="doctag">@return</span> 
+      */</span> 
+     <span class="function"><span class="keyword">public</span> Object <span class="title">getInstance</span><span class="params">(Object target)</span> </span>{  
+         <span class="keyword">this</span>.target = target;  
+         Enhancer enhancer = <span class="keyword">new</span> Enhancer();  
+         enhancer.setSuperclass(<span class="keyword">this</span>.target.getClass());  
+         <span class="comment">// 回调方法  </span>
+         enhancer.setCallback(<span class="keyword">this</span>);  
+         <span class="comment">// 创建代理对象  </span>
+         <span class="keyword">return</span> enhancer.create();  
+     }  
+     <span class="meta">@Override</span>  
+     <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object obj, Method method, Object[] args,  
+             MethodProxy proxy)</span> <span class="keyword">throws</span> Throwable </span>{  
+        System.out.println(<span class="string">"do something before method"</span>);  
+        Object ret = proxy.invokeSuper(obj, args);
+        System.out.println(<span class="string">"do something after method"</span>);  
+        <span class="keyword">return</span> ret;  
+     }  
+ }
+</code></pre>
+</li>
+<li>测试<pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{  
+     BusinessHandler proxy = <span class="keyword">new</span> BusinessHandler();  
+     Manager manger = (Manager) proxy.getInstance(<span class="keyword">new</span> ManagerImpl());  
+     manger.modify();  
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-13">Spring AOP</h3>
+<p>Spring AOP 使用动态代理的方式，将一些横切性的问题（例如：日志管理，权限控制）提取出来成为一个模块，在运行的时候根据需要切入到原有正常代码中</p>
+<p>一些基本概念：<br><img src="/2013/06/15/aop.png" alt="AOP"></p>
+<ol>
+<li>Joinpoint 连接点 ： 可加入位置</li>
+<li>Pointcut 切入点： 约定一个范围，Jointpoint集合（使用表达式匹配连接点）</li>
+<li>Advice 通知：在约定的连接点上执行的增强的方法<ul>
+<li>before</li>
+<li>after returning</li>
+<li>after throwing</li>
+<li>after (finally)</li>
+<li>around</li>
+</ul>
+</li>
+<li>Aspect 切面：切入点模块化（Advice和Pointcut的组合）</li>
+<li>TargetObject 目标对象：原始对象，会被切面处理的对象</li>
+<li>weave 织入：将Advice应用目标对象TargetObject某个方法JoinPoint的过程（运行期动态执行）</li>
+</ol>
+<p>切入点(Pointcut)表达式：</p>
+<ul>
+<li><p><code>execution</code>：用于匹配执行方法的连接点<br>  <img src="/2013/06/15/execution.png" alt="Execution"></p>
+<pre><code class="nulljava">  <span class="comment">//任意公共方法的执行</span>
+  execution(<span class="keyword">public</span> * *(..))
+
+  <span class="comment">//任何一个以“set”开始的方法的执行</span>
+  execution(* set*(..))
+
+  <span class="comment">//AccountService 接口的任意方法的执行</span>
+  execution(* com.xyz.service.AccountService.*(..))
+
+  <span class="comment">//在service包里的任意方法的执行</span>
+  execution(* com.xyz.service.*.*(..))
+
+  <span class="comment">//在service包或者子包里的任意方法的执行</span>
+  execution(* com.xyz.service..*.*(..))
+</code></pre>
+</li>
+<li><p><code>within</code>：限定匹配特定类型的连接点</p>
+<pre><code class="nulljava">  <span class="comment">//在service包里的任意连接点</span>
+  within(com.xyz.service.*)
+
+  <span class="comment">//在service包或者子包里的任意连接点</span>
+  within(com.xyz.service..*)
+</code></pre>
+</li>
+<li><p><code>@within</code>: 限定匹配特定类型的连接点，其中连接点所在类型已指定注解</p>
+<pre><code class="nulljava">  <span class="comment">//任何一个目标对象声明的类型有一个 @Transactional 注解的连接点: </span>
+  <span class="meta">@within</span>(org.springframework.transaction.annotation.Transactional)
+</code></pre>
+</li>
+<li><p><code>this</code>：限定匹配特定的连接点，其中bean reference（Spring AOP 代理）是指定类型的实例</p>
+<pre><code class="nulljava">  <span class="comment">//实现了 AccountService 接口的代理对象的任意连接点</span>
+  <span class="keyword">this</span>(com.xyz.service.AccountService)
+</code></pre>
+</li>
+<li><p><code>target</code>：限定匹配特定的连接点，其中目标对象（被代理的appolication object）是指定类型的实例（Spring AOP中只能匹配方法执行的连接点）</p>
+<pre><code class="nulljava">  <span class="comment">//实现了 AccountService 接口的目标对象的任意连接点 </span>
+  target(com.xyz.service.AccountService)
+</code></pre>
+</li>
+<li><p><code>@target</code>：限定匹配特定的连接点，其中执行的对象的类已经有指定类型的注解</p>
+<pre><code class="nulljava">  <span class="comment">// 有一个 @Transactional 注解的目标对象中的任意连接点:</span>
+  <span class="meta">@target</span>(org.springframework.transaction.annotation.Transactional)
+</code></pre>
+</li>
+<li><p>args：限定匹配特定的连接点，其中参数是指定类型的实例</p>
+<pre><code class="nulljava">  <span class="comment">//任何一个只接受一个参数，且在运行时传入的参数实现了 Serializable 接口的连接点</span>
+  args(java.io.Serializable)
+</code></pre>
+<p>  <strong>PS：</strong> 这里不同于 <code>execution(* *(java.io.Serializable))</code><br>  <code>args</code>只有在动态运行时候传入参数是可序列化的（Serializable）才匹配<br>  <code>execution</code> 在传入参数的签名声明的类型实现了 Serializable 接口时候匹配</p>
+</li>
+<li><p><code>@args</code>: 限定匹配特定的连接点，其中实际传入参数的运行时类型有指定类型的注解</p>
+<pre><code class="nulljava">  <span class="comment">//任何一个接受一个参数，并且传入的参数在运行时的类型实现了 @Classified annotation的连接点: </span>
+  <span class="meta">@args</span>(com.xyz.security.Classified)
+</code></pre>
+</li>
+<li><p><code>@annotation</code>: 限定匹配特定的连接点，其中连接点的主题有某种给定的注解</p>
+<pre><code class="nulljava">  <span class="comment">//任何一个执行的方法有一个 @Transactional annotation的连接点:</span>
+  <span class="meta">@annotation</span>(org.springframework.transaction.annotation.Transactional)
+</code></pre>
+</li>
+</ul>
+<p><strong>PS</strong>: Spring支持使用逻辑运算符(<code>&amp;&amp;</code>,<code>||</code>,<code>!</code>)来组合切入点表达式</p>
+<p>spring对AOP的支持：</p>
+<ul>
+<li>JDK动态代理：默认使用（TargetObject必须实现某接口）</li>
+<li>CGLIB动态代理：需手动配置（TargetObject可以不实现某接口）</li>
+<li>spring会自动在JDK动态代理和CGLIB之间转换<ul>
+<li>在xml中打开aop的自动检索<code>&lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="/2013/06/15/proxy.png" alt="Proxy"></p>
+<p>spring AOP使用示例：</p>
+<ol>
+<li><p>xml方式</p>
+<pre><code class="nulljava"> <span class="keyword">import</span> org.aspectj.lang.JoinPoint;
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityHandler</span>
+ </span>{
+     <span class="comment">//可以通过Advice中添加一个JoinPoint参数，这个值会由spring自动传入，从JoinPoint中可以取得参数值、方法名等</span>
+     <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">checkSecurity</span><span class="params">(JoinPoint joinPoint)</span>
+     </span>{
+         Object[] args = joinPoint.getArgs();
+         <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; args.length; i++)
+             System.out.println(args[i]);
+         System.out.println(joinPoint.getSignature().getName());
+         System.out.println(<span class="string">"----------checkSecurity()---------------"</span>);
+     }
+ }
+</code></pre>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"securityHandler"</span> <span class="attr">class</span>=<span class="string">"com.myspring.first.aop.SecurityHandler"</span>/&gt;</span>  
+ <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">id</span>=<span class="string">"security"</span> <span class="attr">ref</span>=<span class="string">"securityHandler"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">id</span>=<span class="string">"allAddMethod"</span> <span class="attr">expression</span>=<span class="string">"execution(* show*(..)) || execution(* add*(..)) "</span>/&gt;</span>
+         <span class="tag">&lt;<span class="name">aop:before</span> <span class="attr">method</span>=<span class="string">"checkSecurity"</span> <span class="attr">pointcut-ref</span>=<span class="string">"allAddMethod"</span>/&gt;</span>
+     <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Annotation方式</p>
+<pre><code class="nulljava"> <span class="keyword">import</span> org.aspectj.lang.annotation.AfterReturning;
+ <span class="keyword">import</span> org.aspectj.lang.annotation.Aspect;
+ <span class="keyword">import</span> org.aspectj.lang.annotation.Before;
+ <span class="keyword">import</span> org.aspectj.lang.annotation.Pointcut;
+
+ <span class="comment">/*
+ 采用Aspect定义切面
+ 在Aspect定义Pointcut和Advice
+ 注意：在这种方法定义中，切入点的方法是不被执行的，
+ 它存在的目的仅仅是为了重用切入点,即Advice中通过方法名引用这个切人点
+ */</span>
+ <span class="meta">@Aspect</span>
+ <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LogAspect</span>
+ </span>{
+
+     <span class="comment">//定义Pointcut，Pointcut的名称即为logMethod,此方法不能有返回值和参数，该方法只是一个标识</span>
+     <span class="comment">//注意：在这种方法定义中，切入点的方法是不被执行的，它存在的目的仅仅是为了重用切入点</span>
+     <span class="comment">//即Advice中通过方法名引用这个切人点</span>
+     <span class="comment">//execution([可见性] 返回类型 [声明类型]方法名称(参数类型) [异常类型])</span>
+     <span class="meta">@Pointcut</span>(<span class="string">"execution(* com.myspring.first.bo.GuestbookBo.show*(..))"</span>)
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logMethod</span><span class="params">()</span>
+     </span>{}
+
+     <span class="comment">//定义Advice，标识在那个切入点Pointcut何处织入此方法</span>
+     <span class="meta">@Before</span>(value=<span class="string">"logMethod()"</span>)
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logBeforeMethod</span><span class="params">()</span>
+     </span>{
+         System.out.println(<span class="string">"=================Function beginning================="</span>);
+     }
+
+     <span class="meta">@AfterReturning</span>(value=<span class="string">"logMethod()"</span>)
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logAfterMethod</span><span class="params">()</span>
+     </span>{
+         System.out.println(<span class="string">"=================Function ending================="</span>);
+     }    
+ }
+</code></pre>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- 启用AspectJ对Annotation的支持 --&gt;</span>
+ <span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>/&gt;</span>
+</code></pre>
+</li>
+</ol>
+<h2 id="header-14">Spring Context</h2>
+<h3 id="header-15">ServletContext</h3>
+<p>获取ServletContext：</p>
+<ol>
+<li>在javax.servlet.Filter中直接获取<pre><code class="nulljava"> ServletContext context = config.getServletContext();
+</code></pre>
+</li>
+<li>在HttpServlet中直接获取<pre><code class="nulljava"> <span class="keyword">this</span>.getServletContext();
+</code></pre>
+</li>
+<li>在其他方法中，通过HttpRequest获得<pre><code class="nulljava"> request.getSession().getServletContext();
+</code></pre>
+</li>
+<li>Spring 环境下：<ul>
+<li>方式一：通过注解形式<pre><code class="nulljava"><span class="meta">@Autowired</span> 
+<span class="keyword">private</span> ServletContext servletContext;
+</code></pre>
+</li>
+<li>方式二： <code>implements ServletContextAware</code><pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setServletContext</span><span class="params">(ServletContext sc)</span> </span>{  
+  <span class="keyword">this</span>.servletContext=sc;  
+  <span class="comment">//System.out.println("项目的绝对路径为："+servletContext.getRealPath("/"));  </span>
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>通过servletContext对象读取资源文件：</p>
+<ul>
+<li>第一种：使用<code>getResourceAsStream</code>方法：返回资源文件的读取字节流<pre><code class="nulljava">  InputStream in = <span class="keyword">this</span>.getServletContext().getResourceAsStream(<span class="string">"/resources/uploads/images/1.png"</span>);
+</code></pre>
+</li>
+<li>第二种：使用<code>getRealPath</code>方法，获得文件的完整绝对路径path<pre><code class="nulljava">  String path = <span class="keyword">this</span>.getServletContext().getRealPath(<span class="string">"/resources/uploads/images/1.png"</span>);
+</code></pre>
+</li>
+<li>第三种：使用<code>getResource</code>方法，获得一个url对象<pre><code class="nulljava">  URL url = <span class="keyword">this</span>.getServletContext().getResource(<span class="string">"/resources/uploads/images/1.png"</span>);
+  InputStream in = url.openStream();
+</code></pre>
+</li>
+</ul>
+<p><strong>PS:</strong> 非servlet程序中可使用类装载器读取文件（文件不能太大，否则极易导致内存溢出），例如：</p>
+<pre><code class="nulljava"><span class="comment">//方式一：使用getResourceAsStream</span>
+InputStream in = <span class="keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="string">"db.properties"</span>);
+
+<span class="comment">//方式二：使用getResource</span>
+ URL url = <span class="keyword">this</span>.getClass().getClassLoader().getResource(<span class="string">"db.properties"</span>);
+ String path = url.getPath(); <span class="comment">//获得资源文件名称</span>
+ FileInputStream in = <span class="keyword">new</span> FileInputStream(path);
+</code></pre>
+<h3 id="header-16">ApplicationContext</h3>
+<ol>
+<li><p>使用<code>WebApplicationContextUtils</code>工具类获取 （在web项目中使用，缺点依赖于Servlet容器）</p>
+<pre><code class="nulljava"> ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
+ <span class="comment">//获取所有Spring中的所有bean</span>
+ String [] names = ctx.getBeanDefinitionNames();
+ <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;names.length;i++){
+      System.out.println(<span class="string">"上下文实例："</span>+names[i]);
+ }
+  <span class="comment">//根据名称获取单个bean</span>
+ LoginAction action=(LoginAction)ctx.getBean(<span class="string">"action"</span>);
+</code></pre>
+</li>
+<li><p>使用<code>ClassPathXmlApplicationContext</code>工具类（实际只适合测试时候使用，需要读配置文件）</p>
+</li>
+<li><p><code>implements ApplicationContextAware</code></p>
+</li>
+</ol>
+<h3 id="header-17">使用properties配置值</h3>
+<ol>
+<li><p>加载单独一份properties文件</p>
+<pre><code class="nullxml"><span class="comment">&lt;!-- 默认order是Integer.MAX_VALUE：0x7fffffff,越大越往后 --&gt;</span>
+<span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>= <span class="string">"classpath:jdbc.properties"</span> /&gt;</span>
+</code></pre>
+</li>
+<li><p>加载多份properties文件</p>
+<ul>
+<li>方式一<pre><code class="nullxml"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>= <span class="string">"classpath:jdbc.properties"</span> <span class="attr">order</span>=<span class="string">"1"</span>  <span class="attr">ignore-unresolvable</span>=<span class="string">"true"</span>/&gt;</span>
+<span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:application.properties"</span> <span class="attr">order</span>= <span class="string">"2"</span> <span class="attr">ignore-unresolvable</span> =<span class="string">"true"</span>/&gt;</span>
+</code></pre>
+</li>
+<li><p>方式二</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">context:property-placeholder</span>
+  <span class="attr">location</span>=<span class="string">"classpath:dao.properties,
+    classpath:services.properties,
+    classpath:user.properties"</span>
+    <span class="attr">ignore-unresolvable</span>=<span class="string">"true"</span>/&gt;</span>
+
+<span class="comment">&lt;!-- 或者如下方式书写--&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"propertyConfigurer"</span> <span class="attr">class</span>=<span class="string">"org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"locations"</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">list</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:dao.properties<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:services.properties<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:user.properties<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span> 
+  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ignoreUnresolvablePlaceholders"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>设置使用默认值（当找不到资源文件时）</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">util:properties</span> <span class="attr">id</span>= <span class="string">"applicationProps"</span> &gt;</span>
+ <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span> =<span class="string">"cron.expression"</span>&gt;</span> 0 0/5 * * * ?<span class="tag">&lt;/ <span class="attr">prop</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span> =<span class="string">"cron.active"</span>&gt;</span>true<span class="tag">&lt;/ <span class="attr">prop</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">util:properties</span> &gt;</span>
+<span class="tag">&lt;<span class="name">context:property-placeholder</span>
+ <span class="attr">location</span>= <span class="string">"classpath:application.properties"</span>
+ <span class="attr">order</span> =<span class="string">"2"</span>
+ <span class="attr">ignore-resource-not-found</span>= <span class="string">"true"</span>
+ <span class="attr">ignore-unresolvable</span> =<span class="string">"true"</span>
+ <span class="attr">properties-ref</span>=<span class="string">"applicationProps"</span> 
+/&gt;</span>
+</code></pre>
+</li>
+<li><p>调用配置值（<code>${key}</code>,<code>#{propId[key]}</code>）</p>
+<ul>
+<li>配置文件中<pre><code class="nullxml"><span class="tag">&lt;<span class="name">task:scheduled-tasks</span>&gt;</span>
+     <span class="comment">&lt;!-- &lt;task:scheduled ref="smsBackTask" method="alarmThreadState" cron="#{applicationProps['cron.expression']}" /&gt; --&gt;</span>
+     <span class="comment">&lt;!-- &lt;task:scheduled ref="smsBackTask" method="alarmThreadState" cron="${cron.expression}"  /&gt; --&gt;</span>
+     <span class="tag">&lt;<span class="name">task:scheduled</span> <span class="attr">ref</span> =<span class="string">"smsBackTask"</span> <span class="attr">method</span>=<span class="string">"alarmThreadState"</span> <span class="attr">cron</span>= <span class="string">"0 0/20 * * * ?"</span>  /&gt;</span>
+<span class="tag">&lt;/<span class="name">task:scheduled-tasks</span> &gt;</span>
+</code></pre>
+</li>
+<li><p>代码类中</p>
+<pre><code class="nulljava"><span class="meta">@Value</span>( <span class="string">"#{applicationProps['cron.active']}"</span>)
+<span class="keyword">private</span> <span class="keyword">boolean</span> isActive;     
+<span class="meta">@Value</span>(<span class="string">"#{applicationProps['cron.expression']}"</span>)
+<span class="keyword">private</span> String cronExp;
+
+<span class="meta">@Value</span>(<span class="string">"${cron.active}"</span>)
+<span class="keyword">private</span> <span class="keyword">boolean</span> isActive;
+<span class="meta">@Value</span>(<span class="string">"${cron.expression}"</span>)
+<span class="keyword">private</span> String cronExp;
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2013/06/15/Spring.html';	
+		var disqus_title = 'Spring';
+		var disqus_url = 'http://sixdegree.github.io/2013/06/15/Spring.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

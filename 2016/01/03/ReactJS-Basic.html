@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ReactJS基础</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="reactJs,browserify,webpack,jsx,isomorphic">
+  
+  
+    <meta name="description" content="using reactJS build front view (web component)">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Using Directly</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Using Builded JS Depend on npm</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Build by browserify</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Build by webpack</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Basic Features</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Component</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Element</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Render</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">LifeCycle</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Props</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">State</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Refs</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Form</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">Isomorphic</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">一个简单示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Use Extra JS in React</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">ReactJS基础</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2016-01-02T16:00:00.000Z">2016-01-03</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-ReactJs">ReactJs</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<h3 id="header-2">Using Directly</h3>
+<pre><code class="nullvim">&gt; bower install react react-dom babel
+</code></pre>
+<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"example"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"bower_components/react/react.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"bower_components/react/react-dom.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"bower_components/babel/browser.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/babel"</span>&gt;</span><span class="javascript">
+    <span class="comment">// write your reactjs here</span>
+    ReactDOM.render(
+      <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>,
+      <span class="built_in">document</span>.getElementById(<span class="string">'example'</span>)
+    );
+</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<h3 id="header-3">Using Builded JS Depend on npm</h3>
+<ol>
+<li><p>下载ReactJS依赖包：</p>
+<pre><code class="nullvim"> &gt; npm install react react-dom --save
+</code></pre>
+</li>
+<li><p>编写React：</p>
+<pre><code class="nulljavascript"> <span class="comment">// ./src/xx.jsx</span>
+ <span class="keyword">var</span> React=<span class="built_in">require</span>(<span class="string">"react"</span>);
+ <span class="keyword">var</span> ReactDOM=<span class="built_in">require</span>(<span class="string">"react-dom"</span>);
+
+ ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, world!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>,<span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));
+
+ <span class="keyword">var</span> element = React.createElement(<span class="string">'h1'</span>, <span class="literal">null</span>, <span class="string">'Hello, world!'</span>);
+ ReactDOM.render(element,<span class="built_in">document</span>.getElementById(<span class="string">'example'</span>));
+</code></pre>
+</li>
+<li><p>编译生成可直接在浏览器执行的JS (这里提供两种方法，参考下文)</p>
+<ul>
+<li>Method1: Build By Browserify</li>
+<li>Method2: Build By Webpack</li>
+</ul>
+</li>
+<li><p>HTML页面中直接调用生成的JS文件：</p>
+<pre><code class="nullhtml"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"xxx.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+</li>
+<li>可通过Gulp或Webpack插件实现Server热加载实时预览等功能，eg：<ul>
+<li>gulp插件： <code>gulp-server-livereload</code></li>
+<li>webpack插件：<code>webpack-dev-server</code> （还可结合使用<code>react-hot</code>高效react热加载功能）</li>
+</ul>
+</li>
+</ol>
+<h4 id="header-4">Build by browserify</h4>
+<ul>
+<li><p>下载依赖包：</p>
+<pre><code class="nullvim">  &gt; npm install browserify -g
+  &gt; npm install babelify --save
+  &gt; npm install watchify -g
+</code></pre>
+<p>  <a href="https://github.com/babel/babelify"><code>babelify</code></a> ：合并模块时对 ES6 和 ES7 进行编译转换，同时还可以对 JSX 进行编译转换，也可使用 <a href="https://www.npmjs.com/package/reactify">reactify</a></p>
+<p>   <a href="https://github.com/substack/watchify"> <code>watchify</code></a> ：监听，配合 <code>browserify</code> 实现实时合并 (是一个<code>browserify</code>的封装，配置同<code>browserify</code>)</p>
+</li>
+</ul>
+<ul>
+<li><p>执行</p>
+<ul>
+<li><p><code>browserify</code> 合并模块</p>
+<pre><code class="nullvim">&gt; browserify ./src/app.jsx -t babelify -o ./dist/bundle.js
+
+//如果require的module的后缀不为.js,.json，需添加-extension参数，eg：
+&gt; browserify ./src/app.jsx -t babelify -o ./dist/bundle.js --extension .jsx
+</code></pre>
+</li>
+<li><p><code>watchify</code> 监听</p>
+<pre><code>&gt; watchify ./src/app.jsx -t babelify --extension .jsx  -o ./dist/bundle.js -v
+</code></pre></li>
+<li><p>可在<code>package.json</code>中配置<code>browserify</code></p>
+<pre><code class="nulljson">&quot;browserify&quot; : {
+  &quot;transform&quot;: [
+      [&quot;reactify&quot;, {&quot;es6&quot;: true}]
+  ]，
+  &quot;extensions&quot;:[&quot;.jsx&quot;]
+}
+</code></pre>
+<pre><code class="nullvim">&gt; browserify xxx.jsx -o xxx.js
+&gt; watchify xxx.jsx -o xxx.js
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>+ 可使用`gulp`
+
+```javascript
+var gulp=require("gulp");
+var gutil=require("gulp-util");
+var source = require('vinyl-source-stream');
+var watchify=require("watchify");
+var browserify = require('browserify');
+var babelify=require("babelify");
+var argv=require("yargs").argv;
+
+function doBuild(filename){
+    if(!filename)
+        filename="app";
+
+    var b=watchify(browserify({
+        entries:["./src/"+filename+".jsx"],
+        transform:[babelify],
+        extensions:[".jsx"],
+        debug: true,
+        cache: {},
+        packageCache: {},
+        fullPaths: true
+    }));
+
+    function build(file){
+        if(file)
+            gutil.log('Recompiling ' + file);
+        b.bundle()
+        .on('error',gutil.log.bind(gutil,"Browserify Error"))
+        .pipe(source(filename+".js"))
+        .pipe(gulp.dest('./dist'));
+    };
+
+    build();
+    b.on('update',build);
+}
+
+gulp.task('build',function(){
+    var filename=argv.n || "app";
+    doBuild(filename);
+})
+```
+
+```vim
+&gt; gulp build
+```
+</code></pre><h3 id="header-5">Build by webpack</h3>
+<ul>
+<li><p>下载依赖包</p>
+<pre><code class="nullvim">  &gt; npm install jsx-loader --save
+</code></pre>
+</li>
+<li><p>编写webpack.config.js</p>
+<pre><code class="nulljavascript">  <span class="comment">//webpack.config.js</span>
+  <span class="built_in">module</span>.exports = {
+      entry: <span class="string">"./src/questionApp.jsx"</span>,
+      output: {
+          path: __dirname+<span class="string">"/dist"</span>,
+          filename: <span class="string">"questionApp-webpack.js"</span>
+          publicPath:<span class="string">"/dist"</span>
+      },
+      resolve: {
+          extensions: [<span class="string">''</span>,<span class="string">'.js'</span>,<span class="string">'.jsx'</span>]
+      },
+      <span class="built_in">module</span>: {
+          loaders: [
+              <span class="comment">//{ test: /\.jsx$/, loader: "babel-loader!jsx-loader?harmony" }</span>
+              { test: <span class="regexp">/\.jsx$/</span>, loader: <span class="string">"jsx"</span> }
+          ]
+      }
+  };
+</code></pre>
+</li>
+<li><p>执行</p>
+<pre><code class="nullvim">  &gt; webpack
+</code></pre>
+<p>  或通过webpack-dev-server Visit <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> with your browser.（先下载包： <code>npm install webpack-dev-server -g</code>）</p>
+<pre><code class="nullvim">  &gt; webpack-dev-server
+  //启动热加载
+  &gt; webpack-dev-server --hot --inline
+</code></pre>
+</li>
+</ul>
+<h2 id="header-6">Basic Features</h2>
+<h3 id="header-7">Component</h3>
+<pre><code class="nulljavascript"><span class="keyword">var</span> reactComponent=React.createClass({
+    ...
+    render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ...
+        return ...
+    },
+    ...
+});
+</code></pre>
+<h3 id="header-8">Element</h3>
+<pre><code class="nulljavascript"><span class="keyword">var</span> reactElement = React.createElement(type, props, children);
+</code></pre>
+<p>或通过Factory创建Element：</p>
+<pre><code class="nulljavascript"><span class="keyword">var</span> tag = React.createFactory(type);
+<span class="keyword">var</span> reactElement = tag(props, children);
+</code></pre>
+<p>使用示例：</p>
+<pre><code class="nulljavascript"><span class="keyword">var</span> element=React.createElement(<span class="string">'div'</span>, {className:<span class="string">'my-div'</span>}, <span class="string">'Hello, world!'</span>);
+
+<span class="comment">//或：</span>
+<span class="keyword">var</span> div = React.createFactory(<span class="string">'div'</span>);
+<span class="keyword">var</span> element = div({ className: <span class="string">'my-div'</span> },<span class="string">'Hello, world!'</span>);
+</code></pre>
+<h3 id="header-9">Render</h3>
+<pre><code class="nulljavascript">ReactDOM.render(reactElement,domContainerNode,callback);
+</code></pre>
+<p>使用示例：</p>
+<pre><code class="nulljavascript"><span class="keyword">var</span> Question=<span class="built_in">require</span>(<span class="string">"./components/question"</span>);
+<span class="keyword">var</span> propOpts={...};
+
+<span class="comment">//use createElement:</span>
+<span class="keyword">var</span> element=React.createElement(Question, propOpts);
+ReactDOM.render(element,<span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));
+
+<span class="comment">//or use createFactory:</span>
+<span class="keyword">var</span> QuestionFactory=React.createFactory(Question);
+ReactDOM.render(QuestionFactory(propOpts),<span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));
+
+<span class="comment">//or use JSX:</span>
+ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Question</span> {<span class="attr">...propOpts</span>} /&gt;</span>,document.getElementById('app'));</span>
+</code></pre>
+<pre><code class="nulljavascript"><span class="comment">// ./components/question.jsx:</span>
+<span class="keyword">var</span> React=<span class="built_in">require</span>(<span class="string">"react"</span>);
+<span class="built_in">module</span>.exports=React.createClass({
+    ...
+    render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ...
+        <span class="comment">//use JSX:</span>
+        <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">'my-div'</span>&gt;</span>Question System<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>);
+        <span class="comment">//or use createElement:</span>
+        <span class="comment">//return React.createElement('div',{className:my-div},'Question System');</span>
+    },
+    ...
+})
+</code></pre>
+<h3 id="header-10">LifeCycle</h3>
+<p><strong>Component Lifecycle :</strong></p>
+<ul>
+<li>Mounting :<ul>
+<li>void componentWillMount()</li>
+<li>void componentDidMount()</li>
+</ul>
+</li>
+<li>Updating :<ul>
+<li>receive new props<ul>
+<li>void componentWillReceiveProps (object nextProps)</li>
+</ul>
+</li>
+<li>boolean shouldComponentUpdate(object nextProps, object nextState)</li>
+<li>void componentWillUpdate( object nextProps, object nextState)</li>
+<li>void componentDidUpdate(object prevProps, object prevState)</li>
+</ul>
+</li>
+<li>UnMount :<ul>
+<li>void componentWillUnmount()</li>
+</ul>
+</li>
+</ul>
+<p><strong>note:</strong><br>    shouldComponentUpdate(nextProps,nextStates) &amp; render()<br>    should in mixin or component (only in one place)</p>
+<p><strong>Initial (第一次 render ) :</strong></p>
+<ul>
+<li>-&gt; getDefaultProps</li>
+<li>-&gt; getInitialState</li>
+<li>-&gt; componentWillMount</li>
+<li>-&gt; render<ul>
+<li>sub component (do same initial cycle)</li>
+</ul>
+</li>
+<li>-&gt; componentDidmount</li>
+<li>-&gt; RenderFinished!</li>
+</ul>
+<p><strong>Update (第n次 render )：</strong></p>
+<ul>
+<li>-&gt; shouldComponentUpdate(nextProps,nextState)<ul>
+<li>return false – stop here</li>
+<li>return true – go to next</li>
+</ul>
+</li>
+<li>-&gt; componentWillUpdate(nextProps,nextState)</li>
+<li>-&gt; render<ul>
+<li>Sub Component： componentWillReceiveProps(nextProps)</li>
+<li>Sub Component： shouldComponentUpdate(nextProps,nextState)</li>
+<li>Sub Component： componentWillUpdate(nextProps,nextState)</li>
+<li>Sub Component： componentDidUpdate(prevProps,prevState)</li>
+</ul>
+</li>
+<li>-&gt; componentDidUpdate(prevProps,prevState)</li>
+</ul>
+<p><strong>Initial （has Mixins）:</strong></p>
+<ul>
+<li>-&gt; getDefaultProps – Mixins + Component (merge return) – can’t set same property</li>
+<li>-&gt; getInitialState – Mixins + Component (merge return) – can’t set same property</li>
+<li>-&gt; Mixins: componentWillMount</li>
+<li>-&gt; componentWillMount</li>
+<li>-&gt; render – in Mixins or Component</li>
+<li>-&gt; Mixins: componentDidMount</li>
+<li>-&gt; componentDidMount</li>
+<li>-&gt; RenderFinished!</li>
+</ul>
+<p><strong>update （has Mixins）:</strong></p>
+<ul>
+<li>-&gt; shouldComponentUpdate – in Mixins or Component</li>
+<li>-&gt; Mixins: componentWillUpdate</li>
+<li>-&gt; componentWillUpdate</li>
+<li>-&gt; render – in Mixins or Component</li>
+<li>-&gt; Mixins: componentDidUpdate</li>
+<li>-&gt; componentDidUpdate</li>
+</ul>
+<h3 id="header-11">Props</h3>
+<p>初始化props：</p>
+<pre><code>getDefaultProps:function(){
+    return {...}
+},
+</code></pre><p>可通过定义propTypes限定props，eg：</p>
+<pre><code>propTypes: {
+    value: React.PropTypes.object.isRequired,
+    onChange: React.PropTypes.func.isRequired,
+    onSubmit: React.PropTypes.func.isRequired,
+},
+</code></pre><p>使用时传入props参数：</p>
+<pre><code>&lt;Tag {...opts} /&gt;
+&lt;Tag xxx='...' yyy={...} zzz=...  ... /&gt;
+</code></pre><p>当传入新的props参数时，会触发Component的以下方法：</p>
+<pre><code>void componentWillReceiveProps (object nextProps)
+boolean shouldComponentUpdate(object nextProps, object nextState)
+void componentWillUpdate( object nextProps, object nextState)
+void render()
+void componentDidUpdate(object prevProps, object prevState)
+</code></pre><p>注意</p>
+<ul>
+<li><code>this.props.children</code>是获取当前节点的全部子内容</li>
+<li><code>this.props.xxx</code>获取参数值（注意不可这样修改props）</li>
+<li>Component间传递：<ul>
+<li>Father state/props to Children’ props</li>
+<li>refs</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-12">State</h3>
+<p>初始化state：</p>
+<pre><code>getInitialState:function(){
+    return {...}
+}
+</code></pre><p>获取state值：</p>
+<ul>
+<li><code>this.state.xxx</code></li>
+</ul>
+<p>设置state值：</p>
+<ul>
+<li><code>this.setState({...})</code></li>
+<li><code>this.state.xxx=...;</code>,还需调用<code>this.forceUpdate()</code>生效</li>
+</ul>
+<p>当state变化时会触发以下方法：</p>
+<pre><code>boolean shouldComponentUpdate(object nextProps, object nextState)
+void componentWillUpdate( object nextProps, object nextState)
+void render()
+void componentDidUpdate(object prevProps, object prevState)
+</code></pre><h3 id="header-13">Refs</h3>
+<p>设置ref（可以绑定到 render() 输出的任何组件上去），eg：</p>
+<pre><code>&lt;input type="text" defaultValue={this.state.inputValue} ref="goodInput"/&gt;
+</code></pre><p>获取：</p>
+<ul>
+<li>access the component instance: <code>this.refs.xxx</code> or <code>this.refs[xxx]</code></li>
+<li>access the DOM <code>ReactDOM.findDOMNode(componentInstance)</code></li>
+</ul>
+<p>eg：</p>
+<pre><code>//在function中抓取我們動態render的某個UI元素
+this.refs.goodInput
+
+this.refs.goodInput.value
+this.refs.goodInput.focus()
+ReactDOM.findDOMNode(this.refs.goodInput).focus();
+</code></pre><h3 id="header-14">Form</h3>
+<ul>
+<li>Interactive props: <code>value</code>,<code>checked</code>,<code>selected</code></li>
+<li>SyntheticEvent ：React对Event进行了封装</li>
+<li>Form Events: <code>onChange</code>, <code>onInput</code>,<code>onClick</code>, <code>onSubmit</code>,<code>onReset</code>,…</li>
+</ul>
+<p>eg:</p>
+<pre><code class="nulljavascript">render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">return</span> (
+    &lt;form onSubmit={this.submitHandler}&gt;
+        &lt;input type="text" value={this.state.inputValue} onChange={this.inputHandler}/&gt;
+        &lt;br/&gt;
+        &lt;input type="radio" name="goodRadio" value="A" defaultChecked onChange={this.radioHandler}/&gt;A
+        &lt;input type="radio" name="goodRadio" value="B" onChange={this.radioHandler}/&gt;B
+        &lt;input type="radio" name="goodRadio" value="C" onChange={this.radioHandler}/&gt;C
+        &lt;button type="reset" &gt;Reset&lt;/button&gt; &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+    )
+},
+
+submitHandler:function(e){
+    // React对event进行了优化，若未使用则e填充值都为null
+    console.log(e);
+    console.log(e.target);
+    console.log(e.type);
+    console.log(this.state);
+    e.preventDefault();
+},
+resetHandler:function(e){
+    if(e) e.preventDefault();
+    ReactDOM.findDOMNode(this.refs.regForm).reset();
+},
+inputHandler:function(e){
+    this.setState({inputValue:e.target.value});
+},
+radioHandler:function(e){
+    this.setState({radioValue:e.target.value});
+},
+...
+</code></pre>
+<h2 id="header-15">Isomorphic</h2>
+<p>同构，可在client或server端渲染React对象，统一使用，提供渲染速度，利于SEO</p>
+<p>使用 <code>ReactDOMServer</code> (in <code>react-dom/server</code> package)</p>
+<ul>
+<li><code>string renderToString(ReactElement element)</code></li>
+<li><code>string renderToStaticMarkup(ReactElement element)</code> //doesn’t create extra DOM attributes such as data-react-id, that React uses internally</li>
+</ul>
+<h3 id="header-16">一个简单示例</h3>
+<ol>
+<li><p><code>messageBox.jsx</code> 定义需要同构的React Component：</p>
+<pre><code class="nulljavascript"> <span class="keyword">var</span> MessageBox = React.createClass({
+   getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+     <span class="keyword">return</span> {value: <span class="string">'Hello!'</span>};
+   },
+   handleChange: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>{
+     <span class="keyword">this</span>.setState({value: event.target.value});
+   },
+   render: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+     <span class="keyword">var</span> value = <span class="keyword">this</span>.state.value;
+     <span class="keyword">return</span> (
+       <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
+           <span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is Isomorphic Test:<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">value</span>=<span class="string">{value}</span> <span class="attr">onChange</span>=<span class="string">{this.handleChange}</span> /&gt;</span>
+         <span class="tag">&lt;<span class="name">p</span>&gt;</span>Inputed:{value}<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+       <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+     );
+   }
+ });
+ module.exports=MessageBox;</span>
+</code></pre>
+</li>
+<li><p><code>app.jsx</code> 实现Client端渲染：</p>
+<pre><code class="nulljavascript"> <span class="keyword">var</span> MessageBox=<span class="built_in">require</span>(<span class="string">'messageBox.jsx'</span>);
+ ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">MessageBox</span>/&gt;</span></span>,<span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));
+</code></pre>
+</li>
+<li><p><code>app.js</code> 编译生成的Client端可执行的js文件</p>
+<pre><code class="nullvim"> &gt; browserify app.jsx -t babelify --presets react -o app.js --extension .jsx
+</code></pre>
+<p> 生成的js如下：</p>
+<pre><code class="nulljavascript"> (<span class="function"><span class="keyword">function</span> <span class="title">e</span>(<span class="params">t,n,r</span>)</span>{<span class="function"><span class="keyword">function</span> <span class="title">s</span>(<span class="params">o,u</span>)</span>{<span class="keyword">if</span>(!n[o]){<span class="keyword">if</span>(!t[o]){<span class="keyword">var</span> a=<span class="keyword">typeof</span> <span class="built_in">require</span>==<span class="string">"function"</span>&amp;&amp;<span class="built_in">require</span>;<span class="keyword">if</span>(!u&amp;&amp;a)<span class="keyword">return</span> a(o,!<span class="number">0</span>);<span class="keyword">if</span>(i)<span class="keyword">return</span> i(o,!<span class="number">0</span>);<span class="keyword">var</span> f=<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Cannot find module '"</span>+o+<span class="string">"'"</span>);<span class="keyword">throw</span> f.code=<span class="string">"MODULE_NOT_FOUND"</span>,f}<span class="keyword">var</span> l=n[o]={exports:{}};t[o][<span class="number">0</span>].call(l.exports,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>{<span class="keyword">var</span> n=t[o][<span class="number">1</span>][e];<span class="keyword">return</span> s(n?n:e)},l,l.exports,e,t,n,r)}<span class="keyword">return</span> n[o].exports}<span class="keyword">var</span> i=<span class="keyword">typeof</span> <span class="built_in">require</span>==<span class="string">"function"</span>&amp;&amp;<span class="built_in">require</span>;<span class="keyword">for</span>(<span class="keyword">var</span> o=<span class="number">0</span>;o&lt;r.length;o++)s(r[o]);<span class="keyword">return</span> s})({<span class="number">1</span>:[<span class="function"><span class="keyword">function</span>(<span class="params">require,module,exports</span>)</span>{
+<span class="meta"> 'use strict'</span>;
+
+ <span class="keyword">var</span> MessageBox = React.createClass({
+   displayName: <span class="string">'MessageBox'</span>,
+
+   getInitialState: <span class="function"><span class="keyword">function</span> <span class="title">getInitialState</span>(<span class="params"></span>) </span>{
+     <span class="keyword">return</span> { value: <span class="string">'Hello!'</span> };
+   },
+   handleChange: <span class="function"><span class="keyword">function</span> <span class="title">handleChange</span>(<span class="params">event</span>) </span>{
+     <span class="keyword">this</span>.setState({ value: event.target.value });
+   },
+   render: <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>{
+     <span class="keyword">var</span> value = <span class="keyword">this</span>.state.value;
+     <span class="keyword">return</span> React.createElement(
+       <span class="string">'div'</span>,
+       <span class="literal">null</span>,
+       React.createElement(
+         <span class="string">'h1'</span>,
+         <span class="literal">null</span>,
+         <span class="string">'This is Isomorphic Test:'</span>
+       ),
+       React.createElement(<span class="string">'input'</span>, { type: <span class="string">'text'</span>, value: value, onChange: <span class="keyword">this</span>.handleChange }),
+       React.createElement(
+         <span class="string">'p'</span>,
+         <span class="literal">null</span>,
+         <span class="string">'Inputed:'</span>,
+         value
+       )
+     );
+   }
+ });
+
+ ReactDOM.render(React.createElement(MessageBox, <span class="literal">null</span>), <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));
+
+ },{}]},{},[<span class="number">1</span>]);
+</code></pre>
+</li>
+<li><p><code>index.html</code> 定义主页面，加载上面生成的Client的js文件<code>app.js</code></p>
+<pre><code class="nullhtml"> <span class="meta">&lt;!DOCTYPE html&gt;</span>
+ <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">head</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello React!<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">head</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">body</span>&gt;</span>
+
+   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span>{content}<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"libs/react/react.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"libs/react/react-dom.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+
+ <span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">html</span>&gt;</span>
+</code></pre>
+</li>
+<li><p><code>server.js</code> 定义Server端响应渲染</p>
+<pre><code class="nulljavascript"> <span class="built_in">require</span>(<span class="string">"babel-core/register"</span>);
+
+ <span class="keyword">var</span> React=<span class="built_in">require</span>(<span class="string">"react"</span>);
+ <span class="keyword">var</span> ReactDOMServer=<span class="built_in">require</span>(<span class="string">"react-dom/server"</span>);
+ <span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">"http"</span>);
+ <span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>);
+
+ <span class="keyword">var</span> server=http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>{
+     <span class="built_in">console</span>.log(req.url);
+     <span class="keyword">if</span>(req.url==<span class="string">'/'</span> || req.url==<span class="string">'/index.html'</span>){
+         <span class="keyword">var</span> element = React.createElement(<span class="built_in">require</span>(<span class="string">"./messageBox.jsx"</span>));
+         <span class="keyword">var</span> reactHtml = ReactDOMServer.renderToString(element);
+
+         fs.readFile(<span class="string">"./index.html"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>{
+             <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;
+             res.writeHead(<span class="number">200</span>,{<span class="string">'Content-Type'</span>:<span class="string">'text/html'</span>});
+               res.end(data.toString().replace(<span class="string">"{content}"</span>,reactHtml));
+         });
+     }<span class="keyword">else</span> <span class="keyword">if</span>(req.url.startsWith(<span class="string">"/libs"</span>)){
+         fs.readFile(<span class="string">"."</span>+req.url,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>{
+             <span class="keyword">if</span>(err) <span class="keyword">throw</span> err;
+             res.writeHead(<span class="number">200</span>);
+               res.end(data);
+         })
+     }<span class="keyword">else</span>{
+         res.writeHead(<span class="number">400</span>,{<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>});
+         res.end(<span class="string">"not found"</span>);
+     }
+ });
+
+ server.listen(<span class="number">3000</span>, <span class="string">'localhost'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, result</span>) </span>{
+   <span class="keyword">if</span> (err) <span class="built_in">console</span>.log(err);
+   <span class="built_in">console</span>.log(<span class="string">'Listening at localhost:3000'</span>);
+ });
+</code></pre>
+</li>
+<li><p>执行<code>node server</code>启动服务查看效果</p>
+</li>
+</ol>
+<p><strong>PS:</strong><br>如果出现无法识别解析JSX的错误，请检查使用的<code>babel-core</code>版本，6和5的使用上会有些不同，具体可参考<a href="http://jamesknelson.com/the-six-things-you-need-to-know-about-babel-6/">The Six Things You Need To Know About Babel 6</a></p>
+<h3 id="header-17">Use Extra JS in React</h3>
+<p><strong>eg:</strong> Using JQuery in React</p>
+<pre><code class="nulljavascript"><span class="keyword">var</span> $=<span class="built_in">require</span>(<span class="string">"jquery"</span>);
+<span class="built_in">module</span>.exports=React.createClass({
+    componentDidMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="comment">//一般在这里进行初始化绑定dom</span>
+        <span class="comment">//eg: $('#xxx').modal('hide');</span>
+    },
+    ...
+    <span class="comment">//可在其他方法中调用操作</span>
+    <span class="comment">//eg: $('#xxx').modal('show');</span>
+});
+</code></pre>
+<p><strong>eg:</strong> Using highlight.js in React <a href="https://github.com/isagalaev/highlight.js/issues/925">Issue on Github</a></p>
+<pre><code class="nulljavascript"><span class="keyword">var</span> hljs =<span class="built_in">require</span>(<span class="string">"highlight.js"</span>);
+<span class="keyword">var</span> Pretty = React.createClass({
+    componentDidMount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">var</span> current = React.findDOMNode(<span class="keyword">this</span>);
+        hljs.highlightBlock(current);
+    },
+    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">pre</span> <span class="attr">className</span>=<span class="string">"custom-json-body"</span>&gt;</span>
+                    <span class="tag">&lt;<span class="name">code</span> <span class="attr">className</span>=<span class="string">"json"</span>&gt;</span>{JSON.stringify(this.props.json, null, 2)}<span class="tag">&lt;/<span class="name">code</span>&gt;</span>
+               <span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span>;
+    }
+});
+</code></pre>
+<p><strong>PS:</strong><br>一般不推荐在React中注入其他作用域的代码，推荐使用相应的React Plugins或自行扩展实现功能（尽量保持都在React的作用域）</p>
+<h2 id="header-18">Reference</h2>
+<ul>
+<li>ReactJS<ul>
+<li><a href="https://facebook.github.io/react/docs">Doc En</a> | <a href="http://reactjs.cn/react/docs">Doc Cn</a> | <a href="https://github.com/facebook/react">Github</a></li>
+<li><a href="http://react-china.org/">React China</a> | <a href="http://wiki.jikexueyuan.com/project/react/">中文版开发手册</a> </li>
+<li><a href="https://github.com/ruanyf/react-demos">Demos from ruanyf</a></li>
+</ul>
+</li>
+<li>Build<ul>
+<li>Browserify<ul>
+<li><a href="http://browserify.org/">官网</a> | <a href="https://github.com/substack/node-browserify#usage">Usage</a></li>
+<li><a href="http://segmentfault.com/a/1190000002941361">前端模块及依赖管理的新选择：Browserify</a></li>
+<li><a href="https://github.com/substack/watchify">watchify on Github</a></li>
+</ul>
+</li>
+<li>Webpack<ul>
+<li><a href="http://webpack.github.io/docs/">Doc</a></li>
+<li><a href="https://www.gitbook.com/book/zhaoda/webpack/details">中文指南</a> | <a href="https://www.gitbook.com/book/wohugb/react-webpack-cookbook/details">react-webpack-cookbook</a> | <a href="https://christianalfoni.github.io/react-webpack-cookbook">Cookbook</a></li>
+<li><a href="http://segmentfault.com/a/1190000002551952">入门指迷</a> | <a href="http://www.07net01.com/2015/08/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a> | <a href="http://segmentfault.com/a/1190000002767365">轻松入门React和Webpack</a></li>
+<li><a href="https://github.com/ruanyf/webpack-demos">Demos from ruanyf</a></li>
+</ul>
+</li>
+<li>Babel<ul>
+<li><a href="http://babeljs.io">官网</a></li>
+<li><a href="https://cnodejs.org/topic/56460e0d89b4b49902e7fbd3">在node中使用babel6的一些简单分享</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://github.com/sixDegree/react-starter">My Demos</a></li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2016/01/03/ReactJS-Basic.html';	
+		var disqus_title = 'ReactJS基础';
+		var disqus_url = 'http://sixdegree.github.io/2016/01/03/ReactJS-Basic.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

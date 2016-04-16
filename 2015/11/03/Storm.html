@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Storm</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="storm,topology,trident,drpc,stream,batch,partition">
+  
+  
+    <meta name="description" content="Storm Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Storm集群的基本组件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">环境搭建</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Cmd</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">原语</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Topology</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">并行度</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">消息的可靠性处理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">记录级容错</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">DRPC</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Trident</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">应用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Java API</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">使用Spout&Bolt原语</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">使用Trident</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">使用TridentState</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">使用Kafka做消息源</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Storm</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2015-11-02T16:00:00.000Z">2015-11-03</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-BigData">BigData</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<p>Storm 流数据实时分析，主要用于实时分析，对分析时效要求较高的场景 （Spark 将来有可能替代Storm）</p>
+<p>应用场景：</p>
+<ul>
+<li>事件流处理（EventStream Processing）</li>
+<li>持续计算 （Continuous Computation）</li>
+<li>分布式RPC （Distributed RPC）</li>
+<li>eg: 金融市场（算法交易），交通车流，监控，临界分析（瞬间临界instant thershold，时间序列临界time series threshold）</li>
+</ul>
+<table class="table">
+<thead>
+<tr>
+<th>Storm</th>
+<th>Hadoop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>流式处理</td>
+<td>批处理</td>
+</tr>
+<tr>
+<td>内存中先处理（先处理，数据可存可不存）</td>
+<td>先存后计算</td>
+</tr>
+<tr>
+<td>适合在线实时场景，数据量比较小，处理速度快</td>
+<td>比较适合离线数据分析场景，数据处理量可以达到PB，不适合实时或准实时场景</td>
+</tr>
+<tr>
+<td>注重实时</td>
+<td>注重数据的海量</td>
+</tr>
+<tr>
+<td>数据多次处理一次写入</td>
+<td>数据一次写入，多次处理使用（查询）</td>
+</tr>
+<tr>
+<td>Storm系统运行起来后是持续不断的</td>
+<td>hadoop往往只是在业务需要时调用数据</td>
+</tr>
+<tr>
+<td>上面你运行的是Topology（永远运行，除非显式杀掉）</td>
+<td>上面运行的是MapReduce的Job（最终会结束）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-2">Storm集群的基本组件</h3>
+<p><img src="/2015/11/03/storm.png" alt="Storm"></p>
+<ul>
+<li><code>Nimbus</code>：主控制节点，在集群里面分布代码，分配集群任务，监控集群状态等</li>
+<li><code>Zookeeper</code>：协调Nimbus和Supervisor，存放公有数据（心跳信息，分配的任务，集群状态，配置信息等）</li>
+<li><code>Supervisor</code>：监听Nimbus分配的任务，管理属于自己的Worker进程</li>
+<li><code>Worker</code>：运行具体处理组件逻辑（Spout、Bolt）的进程</li>
+</ul>
+<p><img src="/2015/11/03/topology-submit.png" alt="Storm"><br><img src="/2015/11/03/topology-storm.png" alt="Storm"></p>
+<p>各节点上的目录结构：</p>
+<ol>
+<li><p>Nimbus</p>
+<ul>
+<li>用户上传topology定义（例如上传jar包，最终会变成stormjar-{uuid}.jar）</li>
+<li>nimbus建立topology本地目录<pre><code>/{storm.local.dir}
+|
+| - /nimbus
+       |
+       | - /inbox
+       |      | - /stormjar-{uuid}.jar
+       | - /stormdist
+              | - /{topology-id}
+                   | - /stormjar.jar -- 包含此topology所有代码的jar包(从nimbus/inbox挪过来)
+                   | -/stormcode.ser -- 这个topology对象的序列化
+                   | -/stormconf.ser -- 运行这个topology的配置
+</code></pre></li>
+</ul>
+</li>
+<li><p>Zookeeper</p>
+<ul>
+<li>nimbus计算topology工作量（分成一个个task），在zookeeper中保存toplogy信息，建立心跳目录等<pre><code>{storm.zookeeper.root} 
+|  
+| - /workerbeats                -- 所有的Worker的心跳
+|       | - {topology-id}
+| - /supervisors                -- 所有的Supervisors的心跳信息
+|          | - /{supervisor-id}
+| - /assignments                -- 任务分配信息
+|       | - /{topology-id}
+| - /storms                     --  正在运行的topology
+|       | - /{topology-id}
+| - /errors                     -- 产生的出错信息
+|       | - /{topology-id}
+</code></pre></li>
+</ul>
+</li>
+<li><p>Supervisor</p>
+<ul>
+<li>监听zookeeper<ul>
+<li>同步topology信息到supervisor本地</li>
+<li>删除不再运行的topology本地信息</li>
+</ul>
+</li>
+<li><p>启动worker处理任务</p>
+<ul>
+<li>去zookeeper上找其对应的task；</li>
+<li>根据task的outbound信息建立对外的socket连接（将来发送tuple就是从这些socket连接发出去的）；</li>
+</ul>
+<pre><code>/{storm.local.dir}
+  |
+  | - /supervisor
+        | - stormdist
+             | - {topology-id}
+                    | - stormjar.jar
+                    | - stormcode.ser
+                    | - stormconf.ser
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-3">环境搭建</h3>
+<ol>
+<li>搭建Zookeeper集群；</li>
+<li>安装JDK</li>
+<li>下载解压Storm；</li>
+<li>修改<code>conf/storm.yaml</code>配置文件；<pre><code> # 使用的Zookeeper集群地址
+  storm.zookeeper.servers:
+     - &quot;192.168.0.110&quot;
+     - &quot;192.168.0.111&quot;
+     - &quot;192.168.0.112&quot;
+  # nimbus机器地址（各supervisor节点需知道哪个机器是nimbus）
+   nimbus.host: cj.storm
+  # nimbus 或 supervisor 本地存储目录（注意对改目录需要有足够的访问权限）
+  storm.local.dir: &quot;/usr/local/storm/data&quot;
+  # supervisor 可以允许的worker（每个worker占用一个端口用于接收消息）
+  # 默认情况下，每个节点上可运行4个workers，如下：
+  supervisor.slots.ports:
+      - 6700
+      - 6701
+      - 6702
+      - 6703
+</code></pre></li>
+<li>复制Storm到其他节点<pre><code> &gt; scp -rp storm/  cj@cj.storm1:/usr/local
+ &gt; scp -rp storm/  cj@cj.storm2:/usr/local
+</code></pre></li>
+<li>开启Storm各个后台进程（注意需先启动Zookeeper：<code>zkServer.sh start</code>）<pre><code> # 主节点上运行
+ &gt; bin/storm nimbus &amp;
+ &gt; bin/storm ui &amp;
+ &gt; bin/storm logviewer &amp;
+</code></pre><pre><code> # 工作节点上运行
+ &gt; bin/storm supervisor &amp;
+</code></pre><pre><code> # 查看
+ &gt; jps
+</code></pre></li>
+</ol>
+<h3 id="header-4">Cmd</h3>
+<ol>
+<li><p>启动nimbus</p>
+<pre><code>&gt; bin/storm nimbus &amp;
+</code></pre></li>
+<li><p>启动supervisor</p>
+<pre><code>&gt; bin/storm supervisor &amp;
+</code></pre></li>
+<li><p>启动storm ui ( 开启后可通过<code>http://{nimbus host}:8080</code>观察集群的worker资源使用情况、Topologies的运行状态等信息)</p>
+<pre><code># Storm UI必须和Storm Nimbus部署在同一台机器上，否则UI无法正常工作，因为UI进程会检查本机是否存在Nimbus链接
+&gt; bin/storm ui &amp;
+</code></pre></li>
+<li><p>启动一个DRPC进程</p>
+<pre><code>&gt; bin/storm drpc
+</code></pre></li>
+<li><p>提交topology</p>
+<pre><code># storm jar [jar路径] [拓扑包名.拓扑类名] [拓扑名称]
+&gt; bin/storm jar com.cj.storm.WordCountTopology wordCount
+</code></pre></li>
+<li><p>杀死topology</p>
+<pre><code>#storm kill topology-name [-w wait-time-secs]
+&gt; bin/storm kill wordCount
+</code></pre></li>
+<li><p>暂停topology</p>
+<pre><code>&gt; bin/storm deactivate topology-name
+</code></pre></li>
+<li><p>激活topology</p>
+<pre><code>&gt; bin/storm activate topology-name
+</code></pre></li>
+<li><p>重新分配任务</p>
+<pre><code># storm rebalance topology-name [-w wait-time-secs]
+&gt; bin/storm rebalance wordCount
+</code></pre></li>
+<li><p>查看所有topology运行情况</p>
+<pre><code>&gt; bin/storm list
+</code></pre></li>
+</ol>
+<h2 id="header-5">原语</h2>
+<h3 id="header-6">Topology</h3>
+<p>Topology 拓扑图（有向无环图）：定义了Spout和Bolt的结合关系、并发数量、配置等等</p>
+<ul>
+<li><code>Spout</code><ul>
+<li>数据源，源源不断的发送元组数据<code>Tuple</code></li>
+</ul>
+</li>
+<li><code>Bolt</code><ul>
+<li>消费处理Tuple的节点，可并发</li>
+</ul>
+</li>
+<li><code>Tuple</code><ul>
+<li>元组数据的抽象接口，可以是任何类型的数据（必须要可序列化）</li>
+<li>可以包含多个Field，每个Field表示一个属性</li>
+<li>Tuple本来应该是一个Key-Value的Map，由于各个组件间传递的tuple的Field已事先定义好了，所以Tuple只需要按序填入各个Value，所以就是一个Value List</li>
+</ul>
+</li>
+<li><p><code>Stream</code></p>
+<ul>
+<li>没有边界的tuple序列（Tuple集合，一个Stream内的Tuple来自同一个Spout源）</li>
+<li>流分组策略（Stream Grouping）：告诉topology如何在两个组件之间发送tuple<ul>
+<li><code>Shuffle Grouping</code> 随机分组：随机派发stream里的tuple，保证每个bolt接收到的tuple数目大致相同</li>
+<li><code>Fields Grouping</code> 字段分组 ：保证相同field值的tuple会被分配到同一个task</li>
+<li><code>All Grouping</code> 广播发送：将每一个Tuple发送到所有的Task</li>
+<li><code>Global Grouping</code> 全局分组：整个stream分配到某个指定的task</li>
+<li><code>None Grouping</code> 不分组：效果同Shuffle Grouping</li>
+<li><code>Direct Grouping</code> 直接分组：直接将Tuple发送到指定的Task来处理（这种tuple必须使用<code>emitDirect</code>方法发送）</li>
+<li><code>Local or Shuffle Grouping</code> 本地或随机分组：优先使用同JVM可处理的task</li>
+<li><code>Custom Grouping</code> 自定义分组</li>
+</ul>
+</li>
+<li>注意：<code>Fields Grouping</code> 字段分组<ul>
+<li>相同的字段数据一定会跑到相同的对象（task）中</li>
+<li>但这个对象（task）中不一定只有一种字段数据</li>
+<li>可能多种字段数据分到了同一个对象（task）中</li>
+<li>eg: 相同的单词会跑到相同的Bolt instance （task）中，但不表示一个Bolt instance（task）中只有一种单词</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Storm的现实模型就是水流的处理，例如小区供水：</p>
+<ul>
+<li>数据来源定义为<code>Spout</code>，源源不断的供给水流</li>
+<li>水流在管道中流行，定义为<code>Stream</code></li>
+<li>每个住户都会消费水，是Stream中的一个节点，定义为<code>Bolt</code>（可能会将消费的水排放，也或许不排）</li>
+<li>一个小区的<code>Spout</code>、<code>Stream</code>、<code>Bolt</code>组合在一起，即一个拓扑结构，定义为<code>Topology</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="/2015/11/03/spout.png" alt="Spout"><br><img src="/2015/11/03/bolt.png" alt="Bolt"><br><img src="/2015/11/03/topology.png" alt="Topology"></p>
+<h3 id="header-7">并行度</h3>
+<p>并行度（Parallelism）</p>
+<ul>
+<li>Topology里面的每一个节点（spout/bolt）都是并行运行的</li>
+<li>可以指定每个节点（spout/bolt）的并行度</li>
+<li>storm会在集群里面根据配置的并行度分配线程来同时计算</li>
+<li>Topology中的逻辑节点与物理节点：可以多对多<ul>
+<li>逻辑节点：Component（eg：spout/bolt）</li>
+<li>物理节点（Supervisor Node）</li>
+<li>Worker(JVM) 进程</li>
+<li>Executors(Threads)线程池</li>
+<li>Executor(Thread) 线程</li>
+<li>Task (spout/bolt instance)<br><img src="/2015/11/03/task.png" alt="Task"></li>
+</ul>
+</li>
+<li>示例：单词统计<ul>
+<li>Topology 逻辑图：<img src="/2015/11/03/word-topology.png" alt="word count topology"></li>
+<li>Node（缺省）效果图：一个task代表一个component instance（spout/bolt），对应一个Executor（thread）<br><img src="/2015/11/03/word-node1.png" alt="word count node"></li>
+<li>Node（配置并行度后）效果图： 通过Storm Confugration 或 API进行修改并行度（Worker，Executor，Component instance个数）<br><img src="/2015/11/03/word-node2.png" alt="word count node"></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-8">消息的可靠性处理</h3>
+<p>可靠性（Guarantee no data loss）：</p>
+<ul>
+<li>Storm会告知用户每一个Tuple是否在一个指定的时间内被完全处理</li>
+<li>Storm通过<code>acker机制</code>保证Spout发出的每一个Tuple都被完全处理</li>
+<li>完全处理的意思是：某MessageId绑定的源Tuple以及由该源Tuple衍生的所有Tuple都经过了Topology中每一个应该到达的Bolt的处理，即<ul>
+<li>tuple tree 不再生长</li>
+<li>tuple tree 中任何消息被表示为”已处理“</li>
+</ul>
+</li>
+</ul>
+<p>acker机制：</p>
+<ol>
+<li>Spout创建一个新的Tuple时，会发一个消息通知acker去跟踪；</li>
+<li>Bolt在处理Tuple成功或失败后，也会发一个消息通知acker；</li>
+<li>acker通过异或后ack_val是否为0，判定从Spout发出的Tuple是否已经被完全处理完毕</li>
+<li>acker找到发射该Tuple的Spout，回调其ack或fail方法；</li>
+</ol>
+<p><img src="/2015/11/03/ack.png" alt="ack"></p>
+<p>说明：</p>
+<ul>
+<li>acker是个Component（一般一个topology有一个acker，也可以通过配置参数指定多个）</li>
+<li>acker存储一个Map<taskId, ack val>：<ul>
+<li>spout的taskId<ul>
+<li>用于acker在整个tuple树被完全处理后找到原始的Spout进行回调ack或fail</li>
+</ul>
+</li>
+<li>ack_val 为消息传递过程中的 tupleid的xor值（一个64bit的随机数字）<ul>
+<li>用于标志该tuple是否被完全处理</li>
+<li>如果为0，则会指定哪个spout或者bolt已经处理完了</li>
+<li>原理：参考下文【tuple tree跟踪技术】</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>tuple tree （源Tuple+新衍生的Tuple构成了一个Tuple树）跟踪技术：<ul>
+<li>原理：<ul>
+<li>异或处理： 与本身异或肯定为0 (<code>a xor a = 0</code>)</li>
+<li><code>a xor b xor c xor a = b xor c</code> ， 相当于登记a,又把a删除掉</li>
+</ul>
+</li>
+<li>spout 发出tuple，设置一个初始id，开辟64bits空间，用来跟踪衍生tuples（ 节省空间且速度快）</li>
+<li>每个衍生tuple有一个id，登记（xor一次），删除（再xor一次），最终64bits为0表示都所有衍生tuple都处理完毕了</li>
+<li>注意：tuple的id可能会重复，造成误判错误的几率为 1/2(64)，即2的64次方分之一，很小<br>  <img src="/2015/11/03/tuple-tree.png" alt="ack"></li>
+</ul>
+</li>
+</ul>
+<p>实现：</p>
+<ul>
+<li>Spout 发送Tuple时指定一个id（也就是回调回ack和fail方法的参数msgId）<ul>
+<li><code>nextTuple()</code> : <code>_collector.emit(new Values(xxx),msgId);</code></li>
+<li><code>ack(msgId)</code></li>
+<li><code>fail(msgId)</code></li>
+</ul>
+</li>
+<li>Bolt 发送衍生Tuple时需锚定输入Tuple<ul>
+<li><code>execute(...)</code>：<code>_collector.emit(tuple,new Values(xxx)); _collector.ack(tuple);</code></li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>一个消息只会由发送它的那个spout任务来调用ack或fail。</li>
+<li>如果系统中某个spout由多个任务运行，消息也只会由创建它的spout任务来应答（ack或fail），决不会由其他的spout任务来应答。</li>
+</ul>
+</li>
+</ul>
+<p>关闭（允许丢失一些信息）：可减少消息数量（每个消息不需要应答了）和大小（每个tuple不用记录跟id了）</p>
+<ul>
+<li>设置topology的acker为0个：参数<code>Config.TOPOLOGY_ACKERS</code>设置为0（此时当Spout发送一个消息的时候，它的ack方法将立刻被调用）</li>
+<li>在Spout的<code>nextTuple</code>方法中不指定此消息的id （当需要关闭特定消息可靠性的时候，可以使用此方法）</li>
+<li>在Bolt的<code>emit</code>方法中不锚定输入消息（关闭某个消息派生出来的子孙消息的可靠性）</li>
+</ul>
+<h3 id="header-9">记录级容错</h3>
+<p>集群的各级容错</p>
+<ol>
+<li>任务级失败<ul>
+<li><code>bolt task crash</code>=&gt; acker中与此bolt关联的消息因超时而失败，spout的fail调用</li>
+<li><code>acker task fail</code> =&gt; 所持有的所有消息因超时而失败 -&gt; spout的fail调用</li>
+<li><code>spout task fail</code> =&gt; spout对接的外部设备负责消息的完整性</li>
+</ul>
+</li>
+<li>任务槽（slot）故障<ul>
+<li><code>worker broken</code> =&gt; supervisor 监控，尝试重启</li>
+<li><code>supervisor broken</code> =&gt; supervisor是无状态的，不影响当前运行任务，不自举 ，需外部监控重启</li>
+<li><code>nimbus broken</code> =&gt; nimbus是无状态的，不影响当前运行任务，但无法提交新任务，不自举 -&gt; 需外部监控重启</li>
+</ul>
+</li>
+<li>集群节点（机器 node）故障<ul>
+<li><code>storm node broken</code> =&gt; nimbus 将运行任务转移到其他node</li>
+<li><code>zookeeper node broken</code> =&gt; 保证少于半数node仍可正常运行，人员及时修复broken node</li>
+</ul>
+</li>
+</ol>
+<p>storm集群中除nimbus外，没有单点存在，任何节点都可以出故障而保证数据不会丢失。<br>nimbus/supervisor 被设计为无状态的，只要可以及时重启，就不会影响正在运行的任务</p>
+<h3 id="header-10">DRPC</h3>
+<p>DRPC其实不能算是storm本身的一个特性， 它是通过组合storm的原语spout，bolt， topology而成的一种模式(pattern)</p>
+<p>DRPC 使得我们可以从一个Client调用storm集群的资源，并不一定要连接到storm集群的某一个节点来提交topology</p>
+<p><img src="/2015/11/03/drpc.png" alt="DRPC"></p>
+<p><img src="/2015/11/03/drpc2.png" alt="DRPC"></p>
+<h3 id="header-11">Trident</h3>
+<p>构建在Storm框架上的一个更高Level的抽象（基于原生Storm API的高级封装，类似与MapReduce的Pig框架），屏蔽了事务处理，批量处理的细节<br>就是在Storm的Stream处理模式上，对底层原语（Spout，Bolt等）进行进一步抽象，实现了一些常见的业务逻辑的支持，让开发者更方便的使用Storm（如Join/Filter/Aggregation/Grouping等）</p>
+<ul>
+<li>Trident 核心操作对象：<code>stream</code><ul>
+<li>一个stream包含一系列batch</li>
+<li>一个batch包含一系列tuple</li>
+<li>Trident在处理输入stream的时候会把输入转换成若干个tuple的<code>batch</code>来处理（Trident spouts must emit tuples in batches.）</li>
+<li>Trident提供了一系列非常成熟的批量处理的API来处理这些batch（且保证tuple只被处理一次）</li>
+<li>处理batches中间结果存储在<code>TridentState</code>对象中</li>
+</ul>
+</li>
+<li>在Storm集群节点间，一个stream被划分成很多分区（<code>partition</code>）<ul>
+<li>对流（stream）的操作（operation）是在每个partition上并行执行的</li>
+<li>在Storm中并发的最小执行单元是task；在trident中partition相当于task的角色</li>
+<li>一个partition里面可能有多个batch</li>
+<li>一个batch也可能位于不同的partition上</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2015/11/03/trident.png" alt="Trident"></p>
+<p>事务处理</p>
+<ul>
+<li>把一个batch的计算分成两个阶段：<ul>
+<li><code>processing阶段</code>： 可以同时处理多个batch，不用保证顺序性（这个阶段很多batch可以并行计算）</li>
+<li><code>commit阶段</code>： 保证batch的强顺序性，并且一次只能处理一个batch，第1个batch成功提交之前，第2个batch不能被提交（这个阶段各个batch之间需要有强顺序性的保证）</li>
+<li>许多batch可以在processing阶段的任何时刻并行计算，但是只有一个batch可以处在commit阶段</li>
+<li>如果一个batch在processing或者commit阶段有任何错误， 那么此batch需要被replay</li>
+</ul>
+</li>
+<li>Storm通过acker机制判断一个batch是否被成功处理了，失败会replay对应的batch （无需手动设置ack）</li>
+<li>所以需要一个可以完全重发(replay)一个特定batch的消息的队列系统(Message Queue)，例如kafka</li>
+<li>事务类型：事务型、非事务型和透明事务型<ul>
+<li>spout的事务类型：指定了由于下游出现问题导致元组需要重放时，应该怎么发送元组<ul>
+<li>事务型：重放时能保证同一个批次发送同一批元组。可以保证每一个元组都被发送且只发送一个，且同一个批次所发送的元组是一样的</li>
+<li>非事务型：没有任何保障，发完就算</li>
+<li>透明事务型：保证每一个元组都被发送且只发送一次，但不能保证重放时同一个批次的数据是一样的</li>
+</ul>
+</li>
+<li>state的事务类型：指定了如果将storm的中间输出或者最终输出持久化到某个地方（如内存），当某个批次的数据重放时应该如果更新状态<ul>
+<li>事务型状态：同一批次tuple提供的结果是相同的。</li>
+<li>非事务型状态：没有回滚能力，更新操作是永久的。</li>
+<li>透明事务型状态：更新操作基于先前的值，这样由于这批数据发生变化，对应的结果也会发生变化<br><img src="/2015/11/03/transaction.png" alt="Transaction"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Trident有五大类操作（<code>operation</code>）:</p>
+<ul>
+<li><code>Partition-local</code> – 对每个partition的局部操作（本地的操作），不产生网络传输（例如：function、filter、partitionAggregate、stateQuery、partitionPersist、project等）<ul>
+<li>function<table class="table">
+<thead>
+<tr>
+<th></th>
+<th>Input</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fields</td>
+<td>a b c</td>
+<td>a b c d</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 1 2 3 ]</td>
+<td>[ 1 2 3 0 ],[ 1 2 3 1 ]</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 4 1 6 ]</td>
+<td>[ 4 1 6 0 ]</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 3 0 8 ]</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>filter<table class="table">
+<thead>
+<tr>
+<th></th>
+<th>Input Tuple</th>
+<th>Output Tuple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fields</td>
+<td>a b c</td>
+<td>a b c</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 1 2 3]</td>
+<td>/</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 2 1 1]</td>
+<td>[ 2 1 1]</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 2 3 4]</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>Projection<table class="table">
+<thead>
+<tr>
+<th></th>
+<th>Input Tuple</th>
+<th>Output Tuple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fields</td>
+<td>a b c</td>
+<td>b c</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 1 2 3]</td>
+<td>[2,3]</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 2 1 1]</td>
+<td>[ 1,2]</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>[ 2 3 4]</td>
+<td>[3,4]</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>partitionAggregate <ul>
+<li>对每个partition执行一个function操作（实际上是聚合操作），最后把局部聚合值emit出来，通过网络传输供后面使用</li>
+<li>由 partitionAggregate发送出的 tuple 会将输入 tuple 的域替换<br><img src="/2015/11/03/partitionAggregate.png" alt="partitionAggregate"></li>
+</ul>
+</li>
+<li>persistentAggregate<ul>
+<li>对源源不断发送过来数据流做一个总的聚合，每个批次（batch）的聚合值只是一个中间状态</li>
+<li>通过与trident新提出的state概念结合，实现中间状态的持久化，同时支持事务性</li>
+<li>只能使用CombinerAggregator或者ReducerAggregator （不能使用Aggregator）</li>
+</ul>
+</li>
+<li>partitionPersist<ul>
+<li>是一个接收 Trident 聚合器作为参数并对 state 数据源进行更新的方法</li>
+<li>persistentAggregate 就是构建于 partitionPersist 上层的一个编程抽象</li>
+</ul>
+</li>
+<li>stateQuery<ul>
+<li>按批次对持久化的数据做查询</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Repartitioning</code> – 对stream的重新划分（仅仅是划分，不改变stream内容），产生网络传输</p>
+<ul>
+<li>shuffle：随机将tuple均匀地分发到目标partition里。</li>
+<li>broadcast：每个tuple被复制到所有的目标partition里，在DRPC中有用 — 你可以在每个partition上使用stateQuery。</li>
+<li>partitionBy：对每个tuple选择partition的方法是：(该tuple指定字段的hash值) mod (目标partition的个数)，该方法确保指定字段相同的tuple能够被发送到同一个partition。（但同一个partition里可能有字段不同的tuple）</li>
+<li>global：所有的tuple都被发送到同一个partition。</li>
+<li>batchGlobal：确保同一个batch中的tuple被发送到相同的partition中。</li>
+<li>patition：该方法接受一个自定义分区的function（实现CustomStreamGrouping）</li>
+</ul>
+</li>
+<li><p><code>Aggregation</code> – 聚合，可能产生网络传输</p>
+<ul>
+<li>aggregate：对流做全局聚合<ul>
+<li>每个批次（batch）的流只能在1个partition中执行，并不能实现并发的功能</li>
+<li>当使用ReduceAggregator或者Aggregator聚合器时，流先被重新划分成一个大分区(仅有一个partition)，然后对这个partition做聚合操作；</li>
+<li>当使用CombinerAggregator时，Trident首先对每个partition局部聚合，然后将所有这些partition重新划分到一个partition中，完成全局聚合。</li>
+<li>相比而言，CombinerAggregator更高效，推荐使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>on grouped streams</code>– 作用在分组流上的操作</p>
+<ul>
+<li>groupby<ul>
+<li>先对流中的指定字段做partitionBy操作，让指定字段相同的tuple能被发送到同一个partition里。</li>
+<li>然后在每个partition里根据指定字段值对该分区里的tuple进行分组<br><img src="/2015/11/03/groupby.png" alt="groupby"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Merge &amp; Join</code>– stream间的合并和连接（根据tuple的域Field）</p>
+<ul>
+<li>merge 合并两个Stream所有Field</li>
+<li>join 依某Field连接两个Stream</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2015/11/03/trident-1.png" alt="Trident"><br><img src="/2015/11/03/trident-2.png" alt="Trident"></p>
+<h2 id="header-12">应用示例</h2>
+<h3 id="header-13">Java API</h3>
+<p>依赖包：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.storm<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>storm<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">version</span>&gt;</span>${storm.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.storm<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>storm-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${storm.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<p><img src="/2015/11/03/java-api.png" alt="Java API"></p>
+<ul>
+<li>interface <code>IComponent</code><ul>
+<li>void declareOutputFields(OutputFieldsDeclarer declarer);</li>
+<li>Map<String, Object> getComponentConfiguration();</li>
+</ul>
+</li>
+<li>interface <code>ISpout</code><ul>
+<li>void open(Map conf, TopologyContext context, SpoutOutputCollector collector);</li>
+<li>void activate();</li>
+<li>void nextTuple(); //循环调用</li>
+<li>void ack(Object msgId);</li>
+<li>void fail(Object msgId);</li>
+<li>void deactivate();</li>
+<li>void close();</li>
+</ul>
+</li>
+<li>interface <code>IBolt</code><ul>
+<li>void prepare(Map stormConf, TopologyContext context, OutputCollector collector);</li>
+<li>void execute(Tuple input);    //循环调用</li>
+<li>void cleanup();</li>
+</ul>
+</li>
+<li>interface <code>IRichSpout</code> extends ISpout, IComponent</li>
+<li>interface <code>IRichBolt</code> extends IBolt, IComponent</li>
+<li><p>interface <code>IBasicBolt</code> extends IComponent</p>
+<ul>
+<li>void prepare(Map stormConf, TopologyContext context);</li>
+<li>void execute(Tuple input, BasicOutputCollector collector); //循环调用</li>
+<li>void cleanup();</li>
+</ul>
+</li>
+<li><p>说明：</p>
+<ul>
+<li>提交Topology后：<ul>
+<li>执行各Component的<code>construct</code>方法</li>
+<li>执行各Component的<code>declareOutputFields</code>方法</li>
+<li>执行Spout的<code>open</code>，<code>activate</code>方法 &amp; Bolt的<code>prepare</code>方法（只执行一次）</li>
+<li>执行Spout的<code>nextTuple</code> &amp; Bolt的<code>execute</code>方法 （不断循环执行）</li>
+<li>执行Spout的<code>ack</code>或<code>fail</code>方法（使用ack机制发送tuple，在每一个tuple tree完成后触发）</li>
+</ul>
+</li>
+<li><code>IRichBolt</code>与<code>IBasicBolt</code>的区别在于：后者会自动ack<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplitSentence</span> <span class="keyword">extends</span> <span class="title">BaseRichBolt</span></span>{
+  OutputCollector _collector;
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(Map conf,Topology context,OutputCollector collector)</span></span>{
+      _collector=collector;
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Tuple tuple)</span></span>{
+      String sentence=tuple.getString(<span class="number">0</span>);
+      <span class="keyword">for</span>(String word:sentence.split(<span class="string">" "</span>)){
+          _collector.emit(tuple,<span class="keyword">new</span> Value(word));    <span class="comment">//发送tuple</span>
+      }
+      _collector.ack(tuple);                         <span class="comment">//手动ack</span>
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldDeclarer declarer)</span></span>{
+      declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"word"</span>));
+  }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplitSentence</span> <span class="keyword">extends</span> <span class="title">BaseBaseBolt</span></span>{
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Tuple tuple,BasicOutputCollector collector)</span></span>{
+      String sentence=tuple.getString(<span class="number">0</span>);
+      <span class="keyword">for</span>(String word:sentence.split(<span class="string">" "</span>)){
+          _collector.emit(tuple,<span class="keyword">new</span> Value(word));        <span class="comment">//发送tuple</span>
+      }
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldDeclarer declarer)</span></span>{
+      declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"word"</span>));
+  }
+}
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><code>TridentTopology</code>：可接入3种spout，创建stream<ul>
+<li>非事务类型：<code>IBathSpout</code></li>
+<li>事务类型：<code>ITridentSpout</code>,<code>IPartitionedTridentSpout</code></li>
+<li>非透明事务类型：<code>IOpaquePartitionedTridentSpout</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>构建topology，即<code>StormTopology</code>对象</p>
+<ul>
+<li>使用<code>TopologyBuilder</code> （Spout &amp; Bolt原语）<pre><code class="nulljava">TopologyBuilder builder=<span class="keyword">new</span> TopologyBuilder();
+builder.setSpout(...);
+builder.setBolt(...);
+...
+builder.createTopology();
+</code></pre>
+</li>
+<li>使用<code>TridentTopology</code> （Trident原语）<pre><code class="nulljava">TridentTopology topology=<span class="keyword">new</span> TridentTopology();
+topology.newStream(...)
+      ...
+      .build();
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>提交topology</p>
+<ul>
+<li>提交给正式storm集群，使用<code>StormSubmitter</code><ul>
+<li>StormSubmitter.submitTopology(topologyName, stormConf, topology);</li>
+</ul>
+</li>
+<li>提交给本地虚拟集群，使用<code>LocalCluster</code>（一般用于测试）<ul>
+<li>(new LocalCluster()).submitTopology(topologyName, stormConf, topology);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-14">使用Spout&amp;Bolt原语</h3>
+<p>示例：单词统计 （根据配置，从指定路径读取文件行作为输入源，这里未使用ack机制）</p>
+<pre><code>wordReader =&gt; wordSpliter =&gt; wordCounter
+（Spout，1）   (Bolt，2)       (Bolt，3)
+</code></pre><pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>
+</span>{
+    <span class="keyword">if</span>(args.length!=<span class="number">2</span>){
+        System.err.println(<span class="string">"Set Args!"</span>);
+        <span class="keyword">return</span>;
+    }
+
+    TopologyBuilder builder=<span class="keyword">new</span> TopologyBuilder();
+    builder.setSpout(<span class="string">"wordReader"</span>, <span class="keyword">new</span> WordReaderSpout());
+    builder.setBolt(<span class="string">"wordSpliter"</span>,<span class="keyword">new</span> WordSpliterBolt(),<span class="number">2</span>).shuffleGrouping(<span class="string">"wordReader"</span>);
+    builder.setBolt(<span class="string">"wordCounter"</span>,<span class="keyword">new</span> WordCounterBolt(),<span class="number">3</span>).fieldsGrouping(<span class="string">"wordSpliter"</span>,<span class="keyword">new</span> Fields(<span class="string">"word"</span>));
+
+    Config config=<span class="keyword">new</span> Config();
+    config.put(<span class="string">"INPUT_PATH"</span>,args[<span class="number">0</span>]);
+    config.put(<span class="string">"TIME_OFFSET"</span>,args[<span class="number">1</span>]);
+    config.setDebug(<span class="keyword">false</span>);
+
+    LocalCluster cluster=<span class="keyword">new</span> LocalCluster();
+    cluster.submitTopology(<span class="string">"WordCountTopology"</span>, config,builder.createTopology());
+}
+</code></pre>
+<p>WordReaderSpout：</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordReaderSpout</span> <span class="keyword">extends</span> <span class="title">BaseRichSpout</span></span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">4838334026285320050L</span>;
+    <span class="keyword">private</span> SpoutOutputCollector collector;
+    <span class="keyword">private</span> String inputPath;
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">open</span><span class="params">(@SuppressWarnings(<span class="string">"rawtypes"</span>)</span> Map conf, TopologyContext context,SpoutOutputCollector collector)</span>{
+        <span class="keyword">this</span>.inputPath=(String)conf.get(<span class="string">"INPUT_PATH"</span>);
+        <span class="keyword">this</span>.collector=collector;
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextTuple</span><span class="params">()</span></span>{
+        Collection&lt;File&gt; files=FileUtils.listFiles(<span class="keyword">new</span> File(inputPath),
+                FileFilterUtils.notFileFilter(FileFilterUtils.suffixFileFilter(<span class="string">"bak"</span>)), <span class="keyword">null</span>);
+        <span class="keyword">try</span>{
+            <span class="keyword">for</span>(File file:files){
+                List&lt;String&gt; lines=FileUtils.readLines(file);
+                <span class="keyword">for</span>(String line:lines)
+                    collector.emit(<span class="keyword">new</span> Values(line));        <span class="comment">//发送一行句子</span>
+                FileUtils.moveFile(file,<span class="keyword">new</span> File(file.getPath()+System.currentTimeMillis()+<span class="string">".bak"</span>));
+            }
+        } <span class="keyword">catch</span> (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldsDeclarer declarer)</span></span>{
+        declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"line"</span>));
+    }
+}
+</code></pre>
+<p>WordSpliterBolt：</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordSpliterBolt</span> <span class="keyword">extends</span> <span class="title">BaseBasicBolt</span></span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3841856624992471803L</span>;
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Tuple input, BasicOutputCollector collector)</span></span>{
+        String line=input.getString(<span class="number">0</span>);
+        String[] words=line.split(<span class="string">"\\s+"</span>);
+        <span class="keyword">for</span>(String word:words){
+            collector.emit(<span class="keyword">new</span> Values(word));    <span class="comment">//发送一个单词</span>
+        }
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldsDeclarer declarer)</span></span>{
+        declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"word"</span>));
+    }
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCounterBolt</span> <span class="keyword">extends</span> <span class="title">BaseBasicBolt</span></span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3841856624992471803L</span>;
+    <span class="keyword">private</span> Map&lt;String,Integer&gt; counts=<span class="keyword">new</span> HashMap&lt;String,Integer&gt;();
+    <span class="keyword">private</span> SimpleDateFormat sdf=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(@SuppressWarnings(<span class="string">"rawtypes"</span>)</span> Map stormConf, TopologyContext context,OutputCollector collector)</span>{
+        <span class="keyword">final</span> Long timeOffset=Long.parseLong((String)stormConf.get(<span class="string">"TIME_OFFSET"</span>));
+        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable(){
+            <span class="meta">@Override</span>
+            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>{
+                <span class="keyword">while</span>(<span class="keyword">true</span>){
+                    System.out.println(sdf.format(<span class="keyword">new</span> Date())+<span class="string">"------------------"</span>);
+                    <span class="keyword">for</span>(String key:counts.keySet())
+                        System.out.println(key+<span class="string">" "</span>+counts.get(key));
+                    <span class="keyword">try</span>{
+                        Thread.sleep(timeOffset*<span class="number">1000</span>);
+                    } <span class="keyword">catch</span> (InterruptedException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(Tuple input, BasicOutputCollector collector)</span></span>{
+        String word=input.getString(<span class="number">0</span>).toLowerCase();
+        <span class="keyword">if</span>(counts.containsKey(word))
+            counts.put(word, (counts.get(word)+<span class="number">1</span>));
+        <span class="keyword">else</span>
+            counts.put(word,<span class="number">1</span>);
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">declareOutputFields</span><span class="params">(OutputFieldsDeclarer declarer)</span></span>{
+        declarer.declare(<span class="keyword">new</span> Fields(<span class="string">"word"</span>,<span class="string">"count"</span>));
+    }
+}
+</code></pre>
+<h3 id="header-15">使用Trident</h3>
+<p>Main: submit topology</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  <span class="keyword">throws</span> Exception </span>{
+    Config config=<span class="keyword">new</span> Config();
+    config.setDebug(<span class="keyword">false</span>);
+    <span class="keyword">if</span> (args != <span class="keyword">null</span> &amp;&amp; args.length &gt; <span class="number">0</span>) {
+        config.setNumWorkers(<span class="number">2</span>);
+        StormSubmitter.submitTopology(args[<span class="number">0</span>], config, buildTopology(<span class="keyword">null</span>));
+    } <span class="keyword">else</span> {
+        config.setMaxTaskParallelism(<span class="number">3</span>);
+        LocalCluster cluster=<span class="keyword">new</span> LocalCluster();
+        cluster.submitTopology(<span class="string">"word2-topology"</span>,config, buildTopology());
+    }
+}
+</code></pre>
+<p>buildTopology:</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> StormTopology <span class="title">buildTopology</span><span class="params">()</span></span>{
+    <span class="comment">//使用FixedBatchSpout创建一个输入spout，spout的输出字段为sentence，每3个元组作为一个batch</span>
+    FixedBatchSpout spout=<span class="keyword">new</span> FixedBatchSpout(<span class="keyword">new</span> Fields(<span class="string">"sentence"</span>), <span class="number">3</span>, 
+            <span class="keyword">new</span> Values(<span class="string">"China America Japan Italy America"</span>),
+            <span class="keyword">new</span> Values(<span class="string">"Korea Italy Netherlands China"</span>),
+            <span class="keyword">new</span> Values(<span class="string">"France America Italy"</span>),
+            <span class="keyword">new</span> Values(<span class="string">"Japan China Korea"</span>),
+            <span class="keyword">new</span> Values(<span class="string">"France Netherlands America"</span>),
+            <span class="keyword">new</span> Values(<span class="string">"America Korea Netherlands Japan"</span>));
+    <span class="comment">//数据是否不断的重复发送</span>
+    spout.setCycle(<span class="keyword">false</span>);
+
+    TridentTopology topology=<span class="keyword">new</span> TridentTopology();
+
+    <span class="comment">//方式一：aggregate for batch tuples on each batches.</span>
+    topology.newStream(<span class="string">"word-spout"</span>, spout)
+        .each(<span class="keyword">new</span> Fields(<span class="string">"sentence"</span>), <span class="keyword">new</span> SplitFunction(),<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+        .groupBy(<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+        .aggregate(<span class="keyword">new</span> Fields(<span class="string">"word"</span>), <span class="keyword">new</span> BatchCount(), <span class="keyword">new</span> Fields(<span class="string">"count"</span>)).parallelismHint(<span class="number">3</span>)
+        .each(<span class="keyword">new</span> Fields(<span class="string">"count"</span>),<span class="keyword">new</span> PrintFilter())
+        ;
+
+    <span class="comment">//方式二：partitionAggregate for all batch tuples on each partitions.</span>
+    topology.newStream(<span class="string">"word-spout"</span>, spout)
+            .each(<span class="keyword">new</span> Fields(<span class="string">"sentence"</span>), <span class="keyword">new</span> SplitFunction(),<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+            .partitionBy(<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+            .partitionAggregate(<span class="keyword">new</span> Fields(<span class="string">"word"</span>),<span class="keyword">new</span> BatchCount(), <span class="keyword">new</span> Fields(<span class="string">"count"</span>)).parallelismHint(<span class="number">3</span>)
+            .each(<span class="keyword">new</span> Fields(<span class="string">"count"</span>),<span class="keyword">new</span> PrintFilter())
+            ;
+
+    <span class="keyword">return</span> topology.build();
+}
+</code></pre>
+<p>Function：SplitFunction</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplitFunction</span> <span class="keyword">extends</span> <span class="title">BaseFunction</span></span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">3520791925362776023L</span>;
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(TridentTuple tuple, TridentCollector collector)</span> </span>{
+        String sentence=tuple.getString(<span class="number">0</span>);
+        String[] words=sentence.toLowerCase().split(<span class="string">"\\s+"</span>);
+        <span class="keyword">for</span>(String word:words){
+            <span class="keyword">if</span>(word!=<span class="keyword">null</span> &amp;&amp; word.length()!=<span class="number">0</span>)
+                collector.emit(<span class="keyword">new</span> Values(word));
+        }
+    }
+}
+</code></pre>
+<p>Aggregator：BatchCount</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BatchCount</span> <span class="keyword">extends</span> <span class="title">BaseAggregator</span>&lt;<span class="title">Map</span>&lt;<span class="title">String</span>,<span class="title">Long</span>&gt;&gt;</span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">6887898093280014532L</span>;
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Map&lt;String, Long&gt; <span class="title">init</span><span class="params">(Object batchId, TridentCollector collector)</span> </span>{
+        System.out.println(<span class="string">"batchId:"</span>+batchId);
+        <span class="keyword">return</span> <span class="keyword">new</span> HashMap&lt;String,Long&gt;();
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">aggregate</span><span class="params">(Map&lt;String, Long&gt; val, TridentTuple tuple,
+            TridentCollector collector)</span> </span>{
+        String key=tuple.getString(<span class="number">0</span>);
+        Long value=val.get(key);
+        val.put(tuple.getString(<span class="number">0</span>), (value==<span class="keyword">null</span>?<span class="number">0L</span>:value)+<span class="number">1</span>);
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">complete</span><span class="params">(Map&lt;String, Long&gt; val, TridentCollector collector)</span> </span>{
+        collector.emit(<span class="keyword">new</span> Values(val));
+    }
+}
+</code></pre>
+<p>Filter：PrintFilter</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintFilter</span> <span class="keyword">extends</span> <span class="title">BaseFilter</span></span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">4222174314803471311L</span>;
+    <span class="keyword">private</span> <span class="keyword">int</span> partitionIndex;
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">(Map conf, TridentOperationContext context)</span> </span>{
+        <span class="keyword">this</span>.partitionIndex = context.getPartitionIndex();
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isKeep</span><span class="params">(TridentTuple tuple)</span> </span>{
+        System.out.println(<span class="string">"partition ["</span> + partitionIndex + <span class="string">"]: "</span> + tuple.getValues());
+        <span class="keyword">return</span> <span class="keyword">true</span>;
+    }
+}
+</code></pre>
+<h3 id="header-16">使用TridentState</h3>
+<p>buildTopology：使用<code>persistentAggregate</code>返回的是<code>TridentState</code>对象</p>
+<pre><code class="nulljava"><span class="comment">//此流程用于统计单词数据</span>
+TridentState countState= topology.newStream(<span class="string">"word-spout"</span>, spout)
+        .each(<span class="keyword">new</span> Fields(<span class="string">"sentence"</span>), <span class="keyword">new</span> SplitFunction(),<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+        .groupBy(<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+        .persistentAggregate(<span class="keyword">new</span> MemoryMapState.Factory(), <span class="keyword">new</span> Count(), <span class="keyword">new</span> Fields(<span class="string">"count"</span>))
+        .parallelismHint(<span class="number">3</span>)
+        <span class="comment">//.newValuesStream()</span>
+        <span class="comment">//.each(new Fields("word","count"),new PrintFilter())</span>
+        ;
+
+<span class="comment">//另一流程：查询上面的统计结果</span>
+topology.newDRPCStream(<span class="string">"words"</span>,drpc)
+        .each(<span class="keyword">new</span> Fields(<span class="string">"args"</span>),<span class="keyword">new</span> SplitFunction(),<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+        .groupBy(<span class="keyword">new</span> Fields(<span class="string">"word"</span>))
+        .stateQuery(countState, <span class="keyword">new</span> Fields(<span class="string">"word"</span>),<span class="keyword">new</span> MapGet(), <span class="keyword">new</span> Fields(<span class="string">"count"</span>))
+        <span class="comment">//.aggregate(new Fields("word"), new Count(), new Fields("count"))</span>
+        .each(<span class="keyword">new</span> Fields(<span class="string">"word"</span>,<span class="string">"count"</span>),<span class="keyword">new</span> PrintFilter())
+        ;
+
+<span class="keyword">return</span> topology.build();
+</code></pre>
+<p>CombinerAggregator：Count</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">implements</span> <span class="title">CombinerAggregator</span>&lt;<span class="title">Long</span>&gt; </span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = -<span class="number">2368597420284085245L</span>;
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Long <span class="title">init</span><span class="params">(TridentTuple tuple)</span> </span>{
+        <span class="keyword">return</span> <span class="number">1L</span>;
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Long <span class="title">combine</span><span class="params">(Long val1, Long val2)</span> </span>{
+        <span class="keyword">return</span> val1 + val2;
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Long <span class="title">zero</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="number">0L</span>;
+    }
+}
+</code></pre>
+<p>测试：</p>
+<pre><code class="nulljava">Config config=<span class="keyword">new</span> Config();
+config.setDebug(<span class="keyword">false</span>);
+config.setMaxTaskParallelism(<span class="number">3</span>);
+LocalCluster cluster=<span class="keyword">new</span> LocalCluster();
+LocalDRPC drpc=<span class="keyword">new</span> LocalDRPC();
+cluster.submitTopology(<span class="string">"word2-topology"</span>,config, buildTopology(drpc));
+<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) {
+    System.out.println(<span class="string">"DRPC RESULT: "</span> + drpc.execute(<span class="string">"words"</span>, <span class="string">"China Japan Italy"</span>));
+    Thread.sleep(<span class="number">100</span>);
+}
+</code></pre>
+<h3 id="header-17">使用Kafka做消息源</h3>
+<p>加入依赖包：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.storm<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>storm-kafka<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${storm.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kafka_2.10<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${kafka.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<p>示例：</p>
+<p>使用<code>KafkaSpout</code>：</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+    BrokerHosts brokerHosts=<span class="keyword">new</span> ZkHosts(<span class="string">"cj.storm:2181,cj.storm:2182,cj.storm:2183"</span>);
+    SpoutConfig spoutConfig=<span class="keyword">new</span> SpoutConfig(brokerHosts, <span class="string">"sentence"</span>, <span class="string">"/sentence"</span>, <span class="string">"id"</span>);
+    <span class="comment">//kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());</span>
+    spoutConfig.scheme=<span class="keyword">new</span> SchemeAsMultiScheme(<span class="keyword">new</span> RecordScheme(<span class="string">"message"</span>));
+
+    TopologyBuilder builder=<span class="keyword">new</span> TopologyBuilder();
+    builder.setSpout(<span class="string">"wordReader"</span>, <span class="keyword">new</span> KafkaSpout(spoutConfig)());
+    <span class="comment">//setBolt</span>
+    ...
+    <span class="comment">//submit topology</span>
+    ...
+}
+</code></pre>
+<p>使用<code>TransactionalTridentKafkaSpout</code>：</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+    BrokerHosts brokerHosts=<span class="keyword">new</span> ZkHosts(<span class="string">"cj.storm:2181,cj.storm:2182,cj.storm:2183"</span>);
+    TridentKafkaConfig spoutConfig=<span class="keyword">new</span> TridentKafkaConfig(brokerHosts, <span class="string">"sentence"</span>, <span class="string">"/sentence"</span>, <span class="string">"id"</span>);
+    <span class="comment">//kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());</span>
+    spoutConfig.scheme=<span class="keyword">new</span> SchemeAsMultiScheme(<span class="keyword">new</span> RecordScheme(<span class="string">"message"</span>));
+
+    TridentTopology topology = <span class="keyword">new</span> TridentTopology();  
+    StormTopology stormTopology=topology.newStream(<span class="string">"wordReader"</span>, <span class="keyword">new</span> TransactionalTridentKafkaSpout(spoutConfig)())
+        ....
+        .build();
+    <span class="comment">//submit topology</span>
+    ...
+}
+</code></pre>
+<p>RecordScheme: 实现Scheme接口，它主要负责从消息流中解析出需要的数据</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RecordScheme</span> <span class="keyword">implements</span> <span class="title">Scheme</span></span>{
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1246495372611050401L</span>;
+    <span class="keyword">private</span> String schemeKey=<span class="string">"msg"</span>;
+    <span class="function"><span class="keyword">public</span> <span class="title">RecordScheme</span><span class="params">(String schemeKey)</span></span>{
+        <span class="keyword">this</span>.schemeKey=schemeKey;
+    }
+    <span class="function"><span class="keyword">public</span> List&lt;Object&gt; <span class="title">deserialize</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>{
+        <span class="keyword">try</span> {
+            String str=<span class="keyword">new</span> String(bytes, <span class="string">"UTF-8"</span>);
+            <span class="keyword">return</span> <span class="keyword">new</span> Values(str);
+        } <span class="keyword">catch</span> (UnsupportedEncodingException e) {
+            System.out.println(e.getMessage());
+            <span class="keyword">return</span> <span class="keyword">null</span>;
+        }
+    }
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> Fields <span class="title">getOutputFields</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> Fields(schemeKey);
+    }
+}
+</code></pre>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2015/11/03/Storm.html';	
+		var disqus_title = 'Storm';
+		var disqus_url = 'http://sixdegree.github.io/2015/11/03/Storm.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

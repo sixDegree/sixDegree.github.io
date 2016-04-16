@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Apache+Tomcat</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="java,webserver,apache,tomcat,apr,ssl,cluster,intergration">
+  
+  
+    <meta name="description" content="WebServer Apache and Tomcat Integration">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Apache</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">下载安装</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">加入系统服务</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">开机自启动</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">使用yum安装（方便）</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">使用系统服务</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">开机自启动</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">测试</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">介绍</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">apache 进程</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">apache 模块</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">apache 虚拟主机</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">apache 日志</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">主配置文件</span></a></li></ol></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">Tomcat</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">下载安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Tomcat优化</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">集群方案</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">Apache+Tomcat</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">下载生成JK</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">整合配置</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">集群配置</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">Apache配置</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">Tomcat配置</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">测试</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">Session同步说明</span></a></li></ol></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">SSL</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">创建服务器证书</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">Apache SSL</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">Tomcat SSL</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">不使用APR</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">使用APR</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Apache+Tomcat</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2014-05-31T16:00:00.000Z">2014-06-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+            <a href="/tags.html#tag-Apache">Apache</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Apache</h2>
+<h3 id="header-2">下载安装</h3>
+<pre><code>&gt; tar zxvf httpd-2.4.12.tar.gz
+&gt; cd httpd-2.4.12
+&gt; ./configure --prefix=/usr/local/apache2.4
+&gt; make &amp;&amp; make install
+</code></pre><p>若安装编译过程中，出现如下错误，需先安装对应的依赖包，然后再编译安装apache</p>
+<ul>
+<li>提示<code>APR not found</code>：<pre><code>&gt; tar zxvf apr-1.5.2.tar.gz
+&gt; cd apr-1.5.2
+&gt; ./configure --prefix=/usr/local/apr
+&gt; make &amp;&amp; make install
+</code></pre></li>
+<li>提示<code>APR-Util not found</code>：<pre><code>&gt; tar zxvf apr-util-1.5.4.tar.gz
+&gt; cd apr-util-1.5.4
+&gt; ./configure --prefix=/usr/local/apr-util --with-apr=/usr/local/apr
+&gt; make &amp;&amp; make install
+</code></pre></li>
+<li><p>提示<code>PCRE not found</code>：</p>
+<pre><code>&gt; tar zxvf pcre2-10.20.tar.gz
+&gt; cd pcre2-10.20
+&gt; ./configure --prefix=/usr/local/pcre
+&gt; make &amp;&amp; make install
+</code></pre></li>
+<li><p>再编译安装apache：</p>
+<pre><code>&gt; cd httpd-2.4.12
+&gt; ./configure --prefix=/usr/local/apache --with-apr=/usr/local/apr --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre
+&gt; make &amp;&amp; make install
+</code></pre></li>
+<li><p>在<code>/usr/local/apache2.4/bin</code>下有可执行程序</p>
+<pre><code>&gt; ./apachectl start      #启动apache服务
+&gt; ./apachectl stop       #关闭apache服务
+&gt; ./apachectl restart    #重启apache服务
+</code></pre><pre><code>&gt; ./httpd -V                # apache信息，如下：
+Server version: Apache/2.4.12 (Unix)
+Server built:   Jul 15 2015 09:34:46
+Server's Module Magic Number: 20120211:41
+Server loaded:  APR 1.5.2, APR-UTIL 1.5.4
+Compiled using: APR 1.5.2, APR-UTIL 1.5.4
+Architecture:   64-bit
+Server MPM:     event
+threaded:     yes (fixed thread count)
+  forked:     yes (variable process count)
+Server compiled with....
+-D APR_HAS_SENDFILE
+-D APR_HAS_MMAP
+-D APR_HAVE_IPV6 (IPv4-mapped addresses enabled)
+-D APR_USE_SYSVSEM_SERIALIZE
+-D APR_USE_PTHREAD_SERIALIZE
+-D SINGLE_LISTEN_UNSERIALIZED_ACCEPT
+-D APR_HAS_OTHER_CHILD
+-D AP_HAVE_RELIABLE_PIPED_LOGS
+-D DYNAMIC_MODULE_LIMIT=256
+-D HTTPD_ROOT="/usr/local/apache2.4"
+-D SUEXEC_BIN="/usr/local/apache2.4/bin/suexec"
+-D DEFAULT_PIDLOG="logs/httpd.pid"
+-D DEFAULT_SCOREBOARD="logs/apache_runtime_status"
+-D DEFAULT_ERRORLOG="logs/error_log"
+-D AP_TYPES_CONFIG_FILE="conf/mime.types"
+-D SERVER_CONFIG_FILE="conf/httpd.conf"
+</code></pre><pre><code>&gt; cp /usr/local/apache2.4/bin/httpd /usr/local/bin/httpd    #加入命令 httpd后，可直接使用httpd命令
+&gt; httpd -V
+</code></pre></li>
+</ul>
+<h4 id="header-3">加入系统服务</h4>
+<p>将<code>apachectl</code>加入到系统服务（这样就可以使用<code>service</code>命令来控制apache的启动和停止）</p>
+<ul>
+<li><p>将<code>apachectl</code>复制到<code>etc/init.d/httpd</code>中</p>
+<pre><code>  &gt; cd /etc/init.d
+  &gt; ls -l | grep httpd
+  &gt; cat /usr/local/apache2.4/bin/apachectl &gt; httpd
+</code></pre></li>
+<li><p><code>vi httpd</code>（在文件最前面插入下面的行，使其支持<code>chkconfig</code>命令）</p>
+<pre><code>  #!/bin/sh
+  #chkconfig: 2345 85 15
+  #description:apache
+</code></pre><p>  说明：</p>
+<ul>
+<li>第一行：告诉系统使用的shell</li>
+<li>第二行：chkconfig后面有三个参数<ul>
+<li>第一个参数：系统启动级别，这里表示2,3,4,5级启动</li>
+<li>第二个参数：启动优先级</li>
+<li>第二个参数：终止优先级</li>
+<li>所谓的优先级，就是在rc脚本中出现在各个符号链接名中的数字，例如：<ul>
+<li>在rc2.d~rc5.d目录下，创建名字为S85auto_run的文件连接，连接到/etc/rc.d/init.d目录下的的auto_run脚本。</li>
+<li>第一个字符是S，系统在启动的时候，运行脚本auto_run，就会添加一个start参数，告诉脚本，现在是启动模式。</li>
+<li>在rc0.d和rc6.d目录下，创建名字为K15auto_run的文件连接</li>
+<li>第一个字符为K，系统在关闭系统的时候，会运行auto_run，添加一个stop，告诉脚本，现在是关闭模式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>赋予<code>httpd</code>脚本执行权限</p>
+<pre><code>  &gt; chmod +x httpd
+</code></pre></li>
+<li><p>使用：</p>
+<pre><code>  &gt; service httpd start       #启动Apache服务,与/etc/init.d/httpd start等效
+  &gt; service httpd stop          #停止Apache服务
+  &gt; service httpd restart        #重启Apache服务
+</code></pre></li>
+</ul>
+<h4 id="header-4">开机自启动</h4>
+<ol>
+<li>加入Apache服务（使用上文生成的<code>/etc/init.d/httpd</code>）<pre><code> &gt; chkconfig --add httpd
+</code></pre></li>
+<li><p>检查Apache服务是否已经生效</p>
+<pre><code> &gt; chkconfig --list httpd
+</code></pre><p> 若返回<code>httpd          0:off 1:off 2:on 3:on 4:on 5:on 6:off</code>，表明apache服务已经生效（在2、3、4、5运行级别随系统启动而自动启动）</p>
+</li>
+<li><p>开/关</p>
+<pre><code> &gt; chkconfig httpd off          #关闭开机自启动
+ &gt; chkconfig httpd on           #开启开机自启动
+</code></pre></li>
+</ol>
+<p><strong>PS:</strong>可参看<code>/etc/init.d/rc.local</code>,/etc/rc.local<code>,</code>/etc/rcS.local`</p>
+<h3 id="header-5">使用yum安装（方便）</h3>
+<pre><code>&gt; yum install -y httpd
+&gt; yum install -y httpd-tools
+&gt; yum install -y httpd-*
+</code></pre><p>说明：<br>注意安装<code>httpd-devel</code>（即apxs）<br>apxs （APache eXtenSion tool）：可独立编译apache的动态模块（DSO）</p>
+<pre><code>&gt; which apxs                 #查看属于哪个文件
+#/usr/sbin/apxs
+&gt; rpm -qf /usr/sbin/apxs     #查看属于哪个安装包
+#httpd-devel-xxxx
+</code></pre><p>在上面使用下载编译apache的安装方式中，configure时添加<code>--enable-so</code>以支持DSO</p>
+<p>查看安装：</p>
+<pre><code>&gt; rpm -qi httpd
+&gt; rpm -qa httpd
+&gt; yum list | grep httpd
+</code></pre><p><strong>PS：</strong>apache目录会生成在<code>/etc/httpd</code>下</p>
+<pre><code>&gt; ls -l /etc/httpd
+conf                                # 存放主配置文件
+conf.d                              # 存放模块配置文件
+logs  -&gt; /var/log/httpd             # 日志
+modules -&gt; /usr/lib/httpd/modules   # 模块存放目录,存放*.so文件
+run -&gt; /var/run/httpd (httpd.pid)   #存放apache主进程id
+</code></pre><h4 id="header-6">使用系统服务</h4>
+<p>使用<code>service</code>操作apache（<code>apachectrl</code>命令已自动安装到系统服务中）</p>
+<pre><code>&gt; service httpd
+&gt; service httpd start
+&gt; service httpd stop
+&gt; service httpd restart
+&gt; service httpd graceful               #优雅的开启（完成当前连接请求后开启服务）
+&gt; service httpd graceful -stop       #优雅的关闭（完成当前连接请求后关闭服务）
+</code></pre><h4 id="header-7">开机自启动</h4>
+<pre><code>&gt; chkconfig httpd on    # 打开
+&gt; chkconfig httpd off    #关闭
+</code></pre><h3 id="header-8">测试</h3>
+<p>（这里apache安装目录在<code>/etc/httpd</code>下）</p>
+<ol>
+<li><p>配置apache</p>
+<pre><code>&gt; vi  /etc/httpd/conf/httpd.conf
+ServerName localhost:80
+</code></pre></li>
+<li><p>启动apache</p>
+<pre><code>&gt; service httpd start        #启动apache
+&gt; ps aux | grep httpd
+&gt; netstat -tunpl | grep 80    #apache 默认监听TCP协议80端口（https加密端口一般为443）
+</code></pre></li>
+<li><p>编写网页</p>
+<pre><code>&gt; cd /var/www               #默认网站根目录
+&gt; cd /var/www/html        #网页存放目录
+&gt; echo "Linux Apache" &gt; index.html
+</code></pre></li>
+<li><p>打开防火墙<code>iptables</code> 80端口,使外部能访问（一般都是打开着的）</p>
+<pre><code>&gt; iptables -nvL | grep 8080
+&gt; iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+&gt; service iptables save
+</code></pre></li>
+<li><p>测试：访问<code>http://localhost</code>（默认就为80端口），会看到网页呈现</p>
+</li>
+<li><p>查看apache日志</p>
+<ul>
+<li>访问日志文件access_log</li>
+<li>错误日志文件error_log<pre><code>&gt; cd /etc/httpd/logs
+access_log  error_log  httpd.pid
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-9">介绍</h3>
+<p>apache默认用户为: apache</p>
+<pre><code>&gt; cat /etc/passwd | grep apache
+</code></pre><h4 id="header-10">apache 进程</h4>
+<p>apache服务默认会启动一个主进程（控制进程）和多个子进程</p>
+<p>查看apache相关进程</p>
+<pre><code>&gt; ps aux | grep httpd
+</code></pre><p>其中，以<code>root</code>身份运行的是主进程，以<code>apache</code>身份运行的是子进程<br>（主进程的进程ID保存在 <code>/etc/httpd/run/httpd.pid</code>文件内）</p>
+<h4 id="header-11">apache 模块</h4>
+<p>Apache是一个模块化设计的服务</p>
+<pre><code>&gt; httpd -M      #查看模块
+&gt; httpd -l      #查看静态编译入程序的模块
+</code></pre><ul>
+<li>核心只包含主要功能，扩展功能通过模块实现</li>
+<li>不同的模块可以被静态编译进程序，也可动态加载</li>
+<li>模块的动态加载通过DSO (Dynamic Shared Object)实现(so_module mod_so.c)</li>
+<li><p>多路处理模块：MPM (Multi-Processing Modules)</p>
+<ul>
+<li>负责实现网络监听，请求处理等功能</li>
+<li>MPM有很多种，目的是为了在不同平台环境下实现最优化的性能及稳定性<ul>
+<li>prefork：预生成多进程型MPM， 会预先启动一些子进程，并根据并发请求数量动态生成子进程（指数级增加），稳定；响应快，但连接数比较大时非常消耗内存</li>
+<li>worker：多进程多线程模型MPM，每个进程可以生成多个线程，每个线程处理一个请求（比worker模式更节省系统的内存资源）</li>
+<li>event：worker模式的变种，它把服务进程从连接中分离出来,在开启KeepAlive场合下相对worker模式能够承受的了更高的并发负载</li>
+</ul>
+</li>
+<li>若要切换MPM，需要重新编译apache</li>
+<li><p>MPM配置（httpd.conf中）：</p>
+<pre><code>&lt;ifModule prefork.c&gt;
+  StartServers               8     #默认启动的子进程数
+  MinSpareServers         5     #最小空闲进程数量
+  MaxSpareServers        20    #最大空闲进程数量
+  ServerLimit                 256   #最高并发量
+  MaxClients                  256    #&lt;=ServerLimit
+  MaxRequestsPerChild   4000  #每个子进程可处理的最多请求数量
+&lt;/ifModule&gt;
+
+&lt;ifModule worker.c&gt;
+  ...
+&lt;/ifModule&gt;
+</code></pre></li>
+<li>模拟测试:<pre><code>&gt; watch -n 1 -d 'ps uax | grep httpd'      #周期性（1s）的动态查看
+&gt; ab -c 16 -n 10000 http://xxxx/index.html  # 压力测试，并发
+&gt; top  # 查看占用内存数量
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h4 id="header-12">apache 虚拟主机</h4>
+<p>虚拟主机（VirtualHost）：在同一台机器搭建属于不同域名或者基于不同 IP 的多个网站服务的技术. </p>
+<p>可以为运行在同一物理机器上的各个网站指配不同的 IP 和端口, 也可让多个网站拥有不同的域名.</p>
+<p><img src="/2014/06/01/virtualHost.png" alt="Virtual Host"></p>
+<p>Apache 中的配置（httpd.conf）:</p>
+<pre><code>NameVirtualHost *:80
+&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@dummy-host.example.com
+    DocumentRoot /www/docs/dummy-host.example.com
+    ServerName dummy-host.example.com
+    ErrorLog logs/dummy-host.example.com-error_log
+    CustomLog logs/dummy-host.example.com-access_log common
+&lt;/VirtualHost&gt;
+</code></pre><p>说明：</p>
+<ul>
+<li>NameVirtualHost 使用基于域名的虚拟主机<ul>
+<li>必须指定服务器IP地址（和可能的端口）来使主机接受请求</li>
+<li>如果服务器上所有的IP地址都会用到， 可以用<code>*</code>作为NameVirtualHost的参数</li>
+<li>注意：在NameVirtualHost指令中指明IP地址并不会使服务器自动侦听那个IP地址<br>这里设定的IP地址必须对应服务器上的一个网络接口。</li>
+</ul>
+</li>
+<li><code>&lt;VirtualHost&gt;</code> 为建立的每个虚拟主机设定<VirtualHost>配置块，其中<ul>
+<li><code>ServerName</code> 指定伺服哪个主机</li>
+<li><code>DocumentRoot</code> 指令说明这个主机的内容存在于文件系统的什么地方</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-13">apache 日志</h4>
+<p>日志（Log）</p>
+<p>手册 <a href="http://httpd.apache.org/docs/2.4/logs.html">logs</a> | <a href="http://httpd.apache.org/docs/2.4/programs/rotatelogs.html">rotatelogs</a></p>
+<p>使用 <code>bin/rotatelogs</code>举例：</p>
+<pre><code>&gt; vi httpd.conf
+#rotatelogs logfile [ rotationtime [ offset ]] | [ filesizeM ]
+#86400表示的是每个天记录一次，这个单位是s,480表示和UTC时间差的分钟数目，我们是东八区要比他们早480分钟。
+ErrorLog "| /usr/local/apache2.4/bin/rotatelogs -f logs/error_log.%Y_%m_%d 86400 480"
+
+#CustomLog "logs/access_log" common
+#rotatelogs logfile [ rotationtime [ offset ]] | [ filesizeM ]
+CustomLog "| /usr/local/apache2.4/bin/rotatelogs -f logs/access_log.%Y_%m_%d 86400 480" common
+</code></pre><pre><code>&gt; vi mod_jk.conf
+#指定jk logs文件存放位置
+JkLogFile "| /usr/local/apache2.4/bin/rotatelogs /usr/local/apache2.4/logs/mod_jk_%Y_%m_%d.log 86400 480"
+</code></pre><h4 id="header-14">主配置文件</h4>
+<p><code>conf/httpd.conf</code>文件，加载模块化配置文件<code>conf.d/*.conf</code></p>
+<ol>
+<li><p>Section1: Global Environment 全局配置</p>
+<pre><code> ServerToken OS               # 控制非正常页面的页脚信息的详细程度，等级： Full/OS/Major
+ ServerRoot "/etc/httpd"
+ PidFile run/httpd.pid
+
+ Timeout 60
+ KeepAlive Off
+ MaxKeepAliveRequests 100     #KeepAlive on 时有效
+ KeepAliveTimeout 15              #KeepAlive on 时有效
+
+ #MPM
+ &lt;IfModule prefork.c&gt;
+ StartServers               8     #默认启动的子进程数
+ MinSpareServers         5     #最小空闲进程数量
+ MaxSpareServers        20    #最大空闲进程数量
+ ServerLimit                 256   #最高并发量
+ MaxClients                  256    #&lt;=ServerLimit
+ MaxRequestsPerChild   4000  #每个子进程可处理的最多请求数量
+ &lt;/IfModule&gt;
+
+ &lt;IfModule worker.c&gt;
+ ...
+ &lt;/IfModule&gt;
+
+ Listen 80              # 监听端口，可指定ip （多网卡）
+
+ #DSO support
+ LoadModule auth_basic_module modules/mod_auth_basic.so
+ ...
+
+ #加载额外的配置文件
+ Include conf.d/*.conf         #加载模块配置文件
+
+ #指定apache子进程的运行用户
+ User apache
+ Group apache
+</code></pre></li>
+<li><p>Section2: ‘Main’ Server Configuration 主服务配置</p>
+<pre><code> ServerAdmin root@localhost               #管理员邮件地址
+ ServerName www.example.com:80     #域名
+ UseCanonicalName Off                        #严格合法域名，使用虚拟主机的话一定要off
+ DocumentRoot "/var/www/html"          #网站根目录
+
+ # 目录访问控制
+ &lt;Directory /&gt;     
+     Options FollowSymLinks
+     AllowOverride None
+ &lt;/Directory&gt;
+
+ &lt;Directory "/var/www/html"&gt;
+  Options Indexes FollowSymLinks
+  AllowOverride None
+  Order allow,deny
+  Allow from all
+ &lt;/Directory&gt;
+
+ # 条件化模块配置（如果有某模块则对应配置有效）
+ &lt;IfModule mod_userdir.c&gt;
+      UserDir disabled
+ &lt;/IfModule&gt;
+
+ DirectoryIndex index.html index.html.var     #默认加载网页
+ AccessFileName .htaccess                         # 加载分布式访问控制的文件
+
+ # 文件访问控制
+ &lt;Files ~ "^\.ht"&gt;
+     Order allow,deny
+     Deny from all
+     Satisfy All
+ &lt;/Files&gt;
+
+ TypesConfig /etc/mime.types               #指定mime文件的访问路径加载
+ DefaultType text/plain                         #默认返回类型，纯文本
+
+ &lt;IfModule mod_mime_magic.c&gt;
+     MIMEMagicFile conf/magic
+ &lt;/IfModule&gt;
+
+ # 日志相关配置
+ HostnameLookups Off                         #log是否进行域名解析记录
+ ErrorLog logs/error_log
+ LogLevel warn
+ LogFormat "%h %l %u %t \"%r\" %&gt;s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+ LogFormat "%h %l %u %t \"%r\" %&gt;s %b" common
+ LogFormat "%{Referer}i -&gt; %U" referer
+ LogFormat "%{User-agent}i" agent
+ CustomLog logs/access_log combined
+
+ ServerSignature On                         #服务器签名,作用类似ServerToken
+
+ Alias /icons/ "/var/www/icons/"        #路径别名，方便快捷链接
+ &lt;Directory "/var/www/icons"&gt;
+     Options Indexes MultiViews FollowSymLinks
+     AllowOverride None
+     Order allow,deny
+     Allow from all
+ &lt;/Directory&gt;
+
+ &lt;IfModule mod_dav_fs.c&gt;
+     DAVLockDB /var/lib/dav/lockdb
+ &lt;/IfModule&gt;
+
+ ScriptAlias /cgi-bin/ "/var/www/cgi-bin/"     #脚本路径别名
+
+ &lt;Directory "/var/www/cgi-bin"&gt;
+     AllowOverride None
+     Options None
+     Order allow,deny
+     Allow from all
+ &lt;/Directory&gt;
+
+ IndexOptions FancyIndexing VersionSort NameWidth=* HTMLTable Charset=UTF-8
+
+ AddIconByEncoding (CMP,/icons/compressed.gif) x-compress x-gzip
+ AddIconByType (TXT,/icons/text.gif) text/*
+ ...
+ AddIcon /icons/binary.gif .bin .exe
+ ...
+
+ DefaultIcon /icons/unknown.gif
+ ReadmeName README.html
+ HeaderName HEADER.html
+ IndexIgnore .??* *~ *# HEADER* README* RCS CVS *,v *,t
+
+ AddLanguage ca .caAddLanguage cs .cz .cs
+ AddLanguage en .en
+ AddLanguage zh-CN .zh-cn
+ AddLanguage zh-TW .zh-tw
+ ...
+ LanguagePriority en ca cs da de el eo es et fr he hr it ja ko ltz nl nn no pl pt pt-BR ru sv zh-CN zh-TW
+ ForceLanguagePriority Prefer Fallback
+
+ AddDefaultCharset UTF-8                              #默认网页编码
+ AddType application/x-compress .Z
+ AddType application/x-gzip .gz .tgz
+ AddType application/x-x509-ca-cert .crt
+ AddType application/x-pkcs7-crl    .crl
+ AddHandler type-map var
+ AddType text/html .shtml
+ AddOutputFilter INCLUDES .shtml
+
+ Alias /error/ "/var/www/error/"
+
+ &lt;IfModule mod_negotiation.c&gt;
+ &lt;IfModule mod_include.c&gt;
+     &lt;Directory "/var/www/error"&gt;
+         AllowOverride None
+         Options IncludesNoExec
+         AddOutputFilter Includes html
+         AddHandler type-map var
+         Order allow,deny
+         Allow from all
+         LanguagePriority en es de fr
+         ForceLanguagePriority Prefer Fallback
+     &lt;/Directory&gt;
+ &lt;/IfModule&gt;
+ &lt;/IfModule&gt;
+
+ # 基于特定的浏览器进行特定的配置
+ BrowserMatch "Mozilla/2" nokeepalive
+ BrowserMatch "MSIE 4\.0b2;" nokeepalive downgrade-1.0 force-response-1.0
+ BrowserMatch "RealPlayer 4\.0" force-response-1.0
+ BrowserMatch "Java/1\.0" force-response-1.0
+ BrowserMatch "JDK/1\.0" force-response-1.0
+ BrowserMatch "Microsoft Data Access Internet Publishing Provider" redirect-carefully
+ BrowserMatch "MS FrontPage" redirect-carefully
+ BrowserMatch "^WebDrive" redirect-carefully
+ BrowserMatch "^WebDAVFS/1.[0123]" redirect-carefully
+ BrowserMatch "^gnome-vfs/1.0" redirect-carefully
+ BrowserMatch "^XML Spy" redirect-carefully
+ BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
+</code></pre></li>
+<li><p>Section3: Virtual Hosts 虚拟主机配置</p>
+<pre><code> NameVirtualHost *:80
+ &lt;VirtualHost *:80&gt;
+     ServerAdmin webmaster@dummy-host.example.com
+     DocumentRoot /www/docs/dummy-host.example.com
+     ServerName dummy-host.example.com
+     ErrorLog logs/dummy-host.example.com-error_log
+     CustomLog logs/dummy-host.example.com-access_log common
+ &lt;/VirtualHost&gt;
+</code></pre></li>
+</ol>
+<h2 id="header-15">Tomcat</h2>
+<h3 id="header-16">下载安装</h3>
+<ol>
+<li><p>download <code>apache-tomcat-8.0.24.tar.gz</code></p>
+</li>
+<li><p>setup</p>
+<pre><code> &gt; tar zxvf apache-tomcat-8.0.24.tar.gz
+ &gt; mv apache-tomcat-8.0.24 /usr/local/tomcat8
+</code></pre></li>
+<li><p>configure</p>
+<pre><code> &gt; vi /etc/profile
+ export CATALINA_BASE=/usr/local/tomcat8
+ export CATALINA_HOME=/usr/local/tomcat8
+
+ &gt; source /etc/profile    #使其生效
+</code></pre></li>
+<li><p>configure： <code>vi conf/tomcat-users.xml</code></p>
+<pre><code class="nullxml"> <span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">'1.0'</span> encoding=<span class="string">'utf-8'</span><span class="meta">?&gt;</span></span>
+ <span class="tag">&lt;<span class="name">tomcat-users</span>&gt;</span>
+     <span class="comment">&lt;!--
+     &lt;role rolename="tomcat"/&gt;
+     &lt;role rolename="role1"/&gt;
+     &lt;user username="tomcat" password="tomcat" roles="tomcat"/&gt;
+     &lt;user username="both" password="tomcat" roles="tomcat,role1"/&gt;
+     &lt;user username="role1" password="tomcat" roles="role1"/&gt;
+     --&gt;</span>
+     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-gui"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-script"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-jmx"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"admin-gui"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">user</span> <span class="attr">password</span>=<span class="string">"admin123"</span> <span class="attr">roles</span>=<span class="string">"manager-gui"</span> <span class="attr">username</span>=<span class="string">"manager"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">user</span> <span class="attr">password</span>=<span class="string">"admin123"</span> <span class="attr">roles</span>=<span class="string">"manager-script"</span> <span class="attr">username</span>=<span class="string">"admin"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">user</span> <span class="attr">password</span>=<span class="string">"admin123"</span> <span class="attr">roles</span>=<span class="string">"admin-gui"</span> <span class="attr">username</span>=<span class="string">"tomcat"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">tomcat-users</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>打开防火墙 <code>iptables</code> 8080端口,使外部能访问</p>
+<pre><code> &gt; iptables -nvL | grep 8080
+ &gt; iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+ &gt; service iptables save
+</code></pre></li>
+<li><p>启动关闭Tomcat</p>
+<pre><code> &gt; cd /usr/local/tomcat8/bin
+ &gt; ./startup.sh          # ./catalina.sh run (显示tomcat控制台)
+ &gt; ./shutdown.sh
+</code></pre></li>
+<li><p>开机自启动 <code>chkconfig tomcat on</code></p>
+</li>
+</ol>
+<p><strong>PS：</strong>For java.lang.OutOfmemoryError: PermGen Space</p>
+<pre><code>&gt;vi catalina.sh
+JAVA_OPTS="$JAVA_OPTS -XX:PermSize=256m -XX:MaxPermSize=1024m"
+</code></pre><pre><code>-XX:PermSize=256m
+-XX:MaxPermSize=1024m
+</code></pre><h3 id="header-17">Tomcat优化</h3>
+<ol>
+<li>提高JVM栈内存</li>
+<li>调节并发线程数</li>
+<li>压缩</li>
+<li>Tomcat原生库<ul>
+<li>基于APR，在产品运作中帮助融合原生的服务器技术以展现最佳的性能</li>
+<li>APR（Apache Portable Runtime：Apache可移植运行时）功能：<ul>
+<li>访问高级IO功能（例如sendfile,epoll和OpenSSL）</li>
+<li>OS级别功能（随机数生成，系统状态等等）</li>
+<li>本地进程管理（共享内存，NT管道和UNIX sockets）</li>
+</ul>
+</li>
+<li><strong>PS：</strong>Tomcat中使用APR库，其实就是在Tomcat中使用JNI的方式来读取文件以及进行网络传输，可以大大提升Tomcat对静态文件和SSL的处理性能</li>
+</ul>
+</li>
+<li>与Apache等静态服务器集成（对于有大量静态页面的系统）<ul>
+<li>静态页面交由Apache处理</li>
+<li>动态部分交由Tomcat处理</li>
+<li>能极大解放Tomcat的处理能力</li>
+</ul>
+</li>
+<li>搭建系统集群方式（对于并发要求较高的系统）<ul>
+<li>将负载分别分担到多个Tomcat上，能很大的提高系统的性能，充分利用硬件资源</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-18">集群方案</h3>
+<p>单个Tomcat的处理性能是有限的，当并发量较大的时候，就需要有部署多套来进行负载均衡了。</p>
+<p>集群的关键点：</p>
+<ol>
+<li><p>引入负载端</p>
+<ul>
+<li>软负载可以使用<code>nginx</code>或者<code>apache</code>来进行，主要是使用一个分发的功能</li>
+</ul>
+</li>
+<li><p>共享session处理，目前的处理方式有如下几种：</p>
+<ul>
+<li>使用Tomcat本身的Session复制功能<ul>
+<li>配置简单，但当集群数量较多时，Session复制的时间会比较长，影响响应的效率 </li>
+</ul>
+</li>
+<li>使用第三方来存放共享Session<ul>
+<li>使用<code>memcached</code>，<code>redis</code>将session信息的存储独立出来也是解决session同步问题</li>
+<li>用<code>zookeeper</code>实现的分布式session方案（不是简单的把session独立出来存储而是设计一个完全独立的session机制，它既能给每个web应用提供session的功能又可以实现session同步）<br><img src="/2014/06/01/zookeeper.png" alt="Zookeeper"></li>
+</ul>
+</li>
+<li>使用黏性session的策略 <ul>
+<li>处理效率高多了，但强会话要求的场合不合适 </li>
+<li>对于会话要求不太强（不涉及到计费，失败了允许重新请求下等）的场合，同一个用户的session可以由<code>nginx</code>或者<code>apache</code>交给同一个Tomcat来处理，这就是所谓的session sticky策略，目前应用也比较多 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>其中1和2可以组合使用，具体场景具体分析</p>
+</li>
+</ol>
+<h2 id="header-19">Apache+Tomcat</h2>
+<ul>
+<li>Apache：<ul>
+<li>可以作为独立的Web服务器来运行</li>
+<li>只支持静态网页，如(asp,php,cgi,jsp)等动态网页的无能为力</li>
+<li>解释静态页面要比tomcat快速而且稳定</li>
+</ul>
+</li>
+<li>Tomcat：<ul>
+<li>可以作为独立的Web服务器来运行</li>
+<li>是应用（java）服务器（Servlet容器）,可以解析jsp动态页面</li>
+</ul>
+</li>
+<li>实际整合应用：<ul>
+<li>Apache作为主服务器运行<ul>
+<li>为网站的静态页面请求提供服务；</li>
+<li>监听到有jsp或者servlet的请求，转发给tomcat服务器</li>
+</ul>
+</li>
+<li>Tomcat服务器作为一个Servlet/JSP插件，解析显示网站的动态页面；</li>
+<li>好处： 提高静态页面访问速度，减少tomcat服务开销，分工合作,实现负载均衡，提高系统的性能</li>
+</ul>
+</li>
+<li>整合的原理：<ul>
+<li>Tomcat中有两个监听的端口<ul>
+<li>8080：用于提供web服务</li>
+<li>8009：用于监听来自于apache的请求</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Apache监听转发jsp/servlet请求给Tomcat的8009端口</li>
+<li>交由Tomcat处理后，再返回给Apache，由Apache返回给Client</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2014/06/01/combine.png" alt="Combine"></p>
+<h3 id="header-20">下载生成JK</h3>
+<p>（Apache Tomcat Connector）</p>
+<p>编译生成apache module：<code>mod_jk.so</code>，放入apache的modules目录下</p>
+<pre><code>&gt; tar zxvf tomcat-connectors-1.2.40-src.tar.gz
+&gt; mv  tomcat-connectors-1.2.40-src /usr/local/tomcat-connector-1.2.40
+&gt; cd /usr/local/tomcat-connector-1.2.40
+</code></pre><p>若是使用下载编译安装的apache：</p>
+<pre><code>&gt; cd native
+&gt; ./configure --with-apxs=/usr/local/apache2.4/bin/apxs
+&gt; make &amp;&amp; make install
+&gt; cp ./apache-2.0/mod_jk.so /usr/local/apache2.4/modules/
+</code></pre><p>若是使用yum安装的apache：</p>
+<pre><code>&gt; cd native
+&gt; ./configure --with-apxs=/usr/sbin/apxs
+&gt; make &amp;&amp; make install
+&gt; cp ./apache-2.0/mod_jk.so /etc/httpd/modules/
+</code></pre><h3 id="header-21">整合配置</h3>
+<p>修改Apache（Tomcat不用做其他特殊配置）</p>
+<ol>
+<li>主配置文件中，加载<code>mod_jk.so</code><pre><code> #load module for apache and tomcat integration
+ LoadModule jk_module modules/mod_jk.so
+ &lt;IfModule jk_module&gt;
+         Include conf/extra/mod_jk.conf
+ &lt;/IfModule&gt;
+</code></pre></li>
+<li><p>编写mod_jk模块的配置文件（这里定义的是<code>mod_jk.conf</code>文件）,也可将下面内容直接放入<code>&lt;IfModule jk_module&gt;</code>中</p>
+<ul>
+<li><code>JkWorkersFile</code></li>
+<li><code>JkLogFile</code>,<code>JkLogLevel</code></li>
+<li><p><code>JkMount</code>,<code>JkUnMount</code>,<code>JkMountFile</code></p>
+<pre><code>#指定workers.properties文件路径
+JkWorkersFile /usr/local/apache2.4/conf/extra/workers.properties
+
+#指定jk logs文件存放位置
+JkLogFile /usr/local/apache2.4/logs/mod_jk.log
+JkLogLevel info
+JkLogStampFormat &quot;[%a %b %d %H:%M:%S %Y]&quot;
+JkOptions +ForwardKeySize +ForwardURICompat -ForwardDirectories
+JkRequestLogFormat &quot;%w %V %T %q %U%R&quot;
+
+#JkMount 表示使用Tomcat来解析, JkUnMount则相反
+JkMount /* worker1
+JkUnMount /*/resources/* worker1
+JkUnMount /index.html worker1
+JkUnMount / worker1
+</code></pre><p><strong>PS：</strong>url映射关系除了使用<code>JkMount</code>配置外，也可使用<code>JkMountFile</code>专门放置在一个文件中进行配置，例如：<br>mod_jk.conf中：</p>
+<pre><code>...
+#External File for mount points
+JkMountFile /usr/local/apache2.4/conf/extra/uriworkermap.properties
+</code></pre><p>uriworkmap.properties中：</p>
+<pre><code>#JkMount /* worker1
+#JkUnMount /*/resources/* worker1
+#JkUnMount /index.html worker1
+#JkUnMount / worker1
+
+/*=controller
+#!/*/resources/*=controller
+!/resources/*=controller
+!/index.html=controller
+!/=controller
+</code></pre></li>
+</ul>
+</li>
+<li><p>配置worker（这里定义的是<code>workers.properties</code>文件）</p>
+<pre><code> worker.list=worker1
+
+ worker.worker1.type=ajp13
+ worker.worker1.host=localhost
+ worker.worker1.port=8009
+ worker.worker1.lbfactor=1
+</code></pre></li>
+<li><p>重启Apache，测试</p>
+</li>
+</ol>
+<h3 id="header-22">集群配置</h3>
+<h4 id="header-23">Apache配置</h4>
+<p>与上文中整合Tomcat配置相似，主要区别在于worker的配置</p>
+<p>例如：workers.properties</p>
+<pre><code># workers 列表
+worker.list=controller,status
+
+# tomcat1
+worker.tomcat1.type=ajp13
+worker.tomcat1.host=localhost
+worker.tomcat1.port=7009                         #ajp13端口号，server.xml配置,默认8009
+worker.tomcat1.lbfactor=1                        #server的加权比重，值越高，分得的请求越多
+#Define preferred failover node for tomcat1
+#worker.tomcat1.redirect=tomcat2
+
+# tomcat2
+worker.tomcat2.type=ajp13
+worker.tomcat2.host=localhost
+worker.tomcat2.port=9009
+worker.tomcat2.lbfactor=1
+#Define tomcat2 for all requests except failover
+#worker.tomcat2.activation=disabled
+
+# 负载均衡控制器
+worker.controller.type=lb
+worker.controller.balance_workers=tomcat1,tomcat2     #指定分担请求的tomcat
+worker.controller.sticky_session=true           #设置为粘性session
+worker.controller.sticky_session_force=false    #设置当多次请求未响应，请求将转发
+
+#jk-status
+worker.status.type=status
+
+#worker.connection_pool_size=3000
+#worker.connection_pool_minsize=50
+#worker.connection_pool_timeout=50000
+</code></pre><p>说明：</p>
+<ul>
+<li><code>sticky_session_force</code> <ul>
+<li>集群中某台服务器多次请求没有响应，是否转发到其它节点处理</li>
+<li>true : 不转发</li>
+<li>false : 转发</li>
+</ul>
+</li>
+<li><code>sticky_session</code><ul>
+<li>粘性session，是否向其他节点进行会话复制</li>
+<li>true：不复制</li>
+<li>false：复制</li>
+</ul>
+</li>
+</ul>
+<p><strong> 注意</strong>：<br>workers.properties中配置了<code>worker.list=controller</code>,则在JkMount时需使用<code>controller</code><br>例如：uriworkermap.properties</p>
+<pre><code>/*=controller
+#!/*/resources/*=controller
+!/resources/*=controller
+!/index.html=controller
+!/=controller
+
+/jk-status=status
+</code></pre><h4 id="header-24">Tomcat配置</h4>
+<ol>
+<li><p>从环境变量中去除<code>CATALINA_HOME</code> 和 <code>CATALINA_BASE</code> 配置</p>
+<pre><code>&gt; vi /etc/profile
+# export CATALINA_HOME=/usr/local/tomcat8
+# export CATALINA_BASE=/usr/local/tomcat8
+&gt; source /etc/profile
+</code></pre></li>
+<li><p>安装多个tomcat</p>
+</li>
+<li><p>配置tomcat的<code>server.xml</code>文件</p>
+<ul>
+<li><code>&gt; vi /usr/local/tomcat1/server.xml</code></li>
+<li><p><code>&gt; vi /usr/local/tomcat2/server.xml</code></p>
+<pre><code class="nullxml"><span class="comment">&lt;!-- 修改各个端口号--&gt;</span>
+
+# Shutdown Port 8005 =&gt; 7005，9005
+<span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"8005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span>
+...
+
+# Http Connector Port 8080 =&gt; 7080,9080
+<span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span>/&gt;</span>
+
+# AJP Connector Port 8009 =&gt; 7009,8009
+<span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span>
+
+# Set jvmRoute to support load-balancing via AJP =&gt; jvmRoute="tomcat1",jvmRoute="tomcat2" 
+# 注意：jvmRoute取值必须要与mod_jk的workers.properties中设置的节点名称一致
+<span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>  <span class="attr">jvmRoute</span>=<span class="string">"..."</span> &gt;</span>
+...
+</code></pre>
+<pre><code class="nullxml"><span class="comment">&lt;!-- 集群配置（tomcat1和tomcat2配置相同） --&gt;</span>
+
+<span class="comment">&lt;!-- Cluster Setting: tomcat1 &amp; tomcat2 server.xml (same) --&gt;</span>
+<span class="tag">&lt;<span class="name">Cluster</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.tcp.SimpleTcpCluster"</span> <span class="attr">channelSendOptions</span>=<span class="string">"8"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">Manager</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.DeltaManager"</span>
+      <span class="attr">expireSessionsOnShutdown</span>=<span class="string">"false"</span>
+     <span class="attr">notifyListenersOnReplication</span>=<span class="string">"true"</span>/&gt;</span>
+
+  <span class="tag">&lt;<span class="name">Channel</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.GroupChannel"</span>&gt;</span>
+      <span class="comment">&lt;!-- 
+          bind="127.0.0.1" 如果主机有vpn-虚拟专用网络，需要要bind下，否则会导致session无法复制
+          address="228.0.0.4" 广播地址，同一组tomcat集群一样
+          port="45564"  同一组tomcat集群一样
+      --&gt;</span>
+      <span class="tag">&lt;<span class="name">Membership</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.membership.McastService"</span> 
+          <span class="attr">address</span>=<span class="string">"228.0.0.4"</span>
+          <span class="attr">port</span>=<span class="string">"45564"</span>
+           <span class="attr">frequency</span>=<span class="string">"500"</span>
+          <span class="attr">dropTime</span>=<span class="string">"3000"</span>/&gt;</span>
+
+      <span class="comment">&lt;!-- 
+          address="xxx" 修改为本机IP地址，如果用auto的话，在vmware里会与主机的实际ip产生冲突
+          port="xxx" 若同一台上配置负载，要修改此端口，防止端口冲突不起作用
+      --&gt;</span>
+      <span class="tag">&lt;<span class="name">Receiver</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.nio.NioReceiver"</span>  
+         <span class="attr">address</span>=<span class="string">"localhost"</span>
+         <span class="attr">port</span>=<span class="string">"4000"</span>
+         <span class="attr">autoBind</span>=<span class="string">"100"</span>
+        <span class="attr">selectorTimeout</span>=<span class="string">"5000"</span>
+         <span class="attr">maxThreads</span>=<span class="string">"6"</span>/&gt;</span>
+      <span class="tag">&lt;<span class="name">Sender</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.ReplicationTransmitter"</span>&gt;</span>  
+      <span class="tag">&lt;<span class="name">Transport</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.nio.PooledParallelSender"</span>/&gt;</span>  
+      <span class="tag">&lt;/<span class="name">Sender</span>&gt;</span>  
+      <span class="tag">&lt;<span class="name">Interceptor</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.interceptors.TcpFailureDetector"</span>/&gt;</span>  
+      <span class="tag">&lt;<span class="name">Interceptor</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor"</span>/&gt;</span>  
+  <span class="tag">&lt;/<span class="name">Channel</span>&gt;</span>  
+
+  <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.tcp.ReplicationValve"</span> <span class="attr">filter</span>=<span class="string">""</span>/&gt;</span>  
+  <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.JvmRouteBinderValve"</span>/&gt;</span>  
+
+  <span class="tag">&lt;<span class="name">Deployer</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.deploy.FarmWarDeployer"</span>  
+          <span class="attr">tempDir</span>=<span class="string">"/tmp/war-temp/"</span>  
+          <span class="attr">deployDir</span>=<span class="string">"/tmp/war-deploy/"</span>  
+           <span class="attr">watchDir</span>=<span class="string">"/tmp/war-listen/"</span>  
+          <span class="attr">watchEnabled</span>=<span class="string">"false"</span>/&gt;</span>  
+
+  <span class="tag">&lt;<span class="name">ClusterListener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener"</span>/&gt;</span>  
+  <span class="tag">&lt;<span class="name">ClusterListener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.ClusterSessionListener"</span>/&gt;</span>  
+
+<span class="tag">&lt;/<span class="name">Cluster</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p>注意：<code>server.xml</code>中配置的<code>jvmRoute</code>值会出现在由该结点创建的session id中<br>例如：</p>
+<ul>
+<li>在非集群环境下，一个sessionid可能是 “xxxxxxxxx” 的格式</li>
+<li>而在集群环境下，如果当前结点的jvmRtomat1oute被配置为tomcat1,那由该结点生成的sessionid将变成“xxxxxxxxx.tomat1”格式</li>
+<li>mod_jk正是依赖于这个节点后缀实现sticky session的，也就是把所有后缀是tomat1的请求都发送给tomat1结点进行处理</li>
+</ul>
+<h4 id="header-25">测试</h4>
+<ol>
+<li><p>建立测试项目<code>testCluster</code></p>
+<pre><code> &gt; mkdir testCluster
+ &gt; mkdir WEB-INF
+ &gt; vi testCluster/index.jsp
+ &gt; vi WEB-INF/web.xml
+</code></pre><ul>
+<li>index.jsp：<pre><code class="nullhtml">&lt;%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%&gt;
+&lt;%@ page import="java.text.SimpleDateFormat"%&gt;
+&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;TestCluster&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ Server Info:
+ &lt;%
+  String dtm = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date());
+  System.out.println("["+request.getLocalAddr()+":"+ request.getLocalPort()+"]"+dtm);
+  out.println("&lt;br&gt;["+request.getLocalAddr()+":"+request.getLocalPort()+"]"+dtm+"&lt;br&gt;");
+ %&gt;
+ Session Info:
+ &lt;%
+      session.setAttribute("name","dennisit");
+      System.out.println("[Session Info] Session ID:"+session.getId());
+      out.println("&lt;br&gt;[Session Info] Session ID:" + session.getId()+"&lt;br&gt;");
+ %&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</li>
+<li>web.xml:<pre><code class="nullxml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"ISO-8859-1"</span><span class="meta">?&gt;</span></span>
+<span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span>
+<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee
+                    http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span>
+<span class="attr">version</span>=<span class="string">"3.1"</span>
+<span class="attr">metadata-complete</span>=<span class="string">"true"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Welcome to Tomcat<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">description</span>&gt;</span>
+       Welcome to Tomcat
+  <span class="tag">&lt;/<span class="name">description</span>&gt;</span>
+  <span class="comment">&lt;!-- 表明集群下某一节点生成或改变的 Session ，将广播到该集群的其它节点 --&gt;</span>
+  <span class="tag">&lt;<span class="name">distributable</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">web-app</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>deploy testCluster to tomcat1 &amp; tomcat2</p>
+</li>
+<li><p>启动服务</p>
+<pre><code> &gt; service httpd start
+ &gt; /usr/local/tomcat1/bin/startup.sh
+ &gt; /usr/local/tomcat2/bin/shutdown.sh
+</code></pre></li>
+<li><p>测试</p>
+<ul>
+<li>check tomcat1<br><img src="/2014/06/01/tomcat1.png" alt="Tomcat 1"></li>
+<li>check tomcat2<br><img src="/2014/06/01/tomcat2.png" alt="Tomcat 2"></li>
+<li>=&gt; 可以看到 tomcat1、tomcat2 两个节点的 Session 一样</li>
+<li>check apache （负载均衡集群测试）<ul>
+<li>session粘性测试=&gt; 多次刷新后，请求访问的一直是tomcat1，并且session Id一直保持不变，session中的数据也能够保持，说明session粘性良好<br><img src="/2014/06/01/apache1.png" alt="Apache"></li>
+<li>session复制测试：关闭tomcat1<code>&gt; /usr/local/tomcat1/bin/shutdown.sh</code> =&gt;请求被转发给tomcat2，页面访问正常，Session Id保持不变，session数据也全部传递给tomcat2，表明session复制良好<br><img src="/2014/06/01/apache2.png" alt="Apache"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="header-26">Session同步说明</h4>
+<p>Session同步方式</p>
+<ol>
+<li><p>sticky模式</p>
+<ul>
+<li>利用负载均衡器的sticky模式的方式把所有同一session的请求都发送到相同的节点</li>
+<li>这样不同用户的请求就被平均分配到集群中各个tomcat节点上，实现负载均衡的能力</li>
+<li>同一用户同一session只和一个webServer交互，一旦这个webserver发生故障，本次session将丢失，用户不能继续使用<pre><code>sticky_session_force=true
+stick_session=false
+</code></pre></li>
+</ul>
+</li>
+<li><p>复制模式</p>
+<ul>
+<li>利用Tomcat session复制的机制使得所有session在所有Tomcat节点中保持一致</li>
+<li>当一个节点修改一个session数据的时候，该节点会把这个 session的所有内容序列化，然后广播给所有其它节点</li>
+<li>当下一个用户请求被负载均衡器分配到另外一个节点的时候，那个节点上有完备的 session信息可以用来服务该请求</li>
+<li>问题：对session有任何更改要会把整个sessions数据全部序列化 （serialize），并广播给集群中所有节点（不管该节点到底需不需要这个session），造成大量的网络通信，导致网络阻塞。</li>
+<li>一般采用这种方式，当Tomcat节点超过4个时候，整个集群的吞吐量就不能再上升了</li>
+<li>此方式是通过tomcat本身提供的功能，只需要修改server.xml文件<ul>
+<li>修改Engine节点信息： <code>&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot; jvmRoute=&quot;tomcat1&quot;&gt;</code></li>
+<li>去掉<code>&lt;Cluster className=&quot;org.apache.catalina.ha.tcp.SimpleTcpCluster&quot;/&gt;</code> 的注释符</li>
+<li>web.xml中增加 <code>&lt;distributable/&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-27">SSL</h2>
+<p>Http &amp; Https</p>
+<ul>
+<li>Http：超文本传输协议，信息是明文传输；无状态连接 </li>
+<li>Https：由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议</li>
+</ul>
+<p>有两种基本的加解密算法类型：</p>
+<ul>
+<li>对称加密：密钥只有一个，加密解密为同一个密码，且速度快，对称加密算法有DES、AES等</li>
+<li>非对称加密：密钥成对出现，加密解密使用不同密钥，相对对称加密速度较慢，典型的非对称加密算法有RSA、DSA等<ul>
+<li>根据公钥无法推知私钥</li>
+<li>根据私钥也无法推知公钥</li>
+<li>公钥加密需要私钥解密</li>
+<li>私钥加密需要公钥解密</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2014/06/01/https-1.png" alt="Https"><br><img src="/2014/06/01/https.png" alt="Https"><br>(Https会话过程)</p>
+<ul>
+<li>首先服务器端先生成一份密钥，将公钥交给CA，由CA对它签署并生成证书，保存一份并回送给服务器端。</li>
+<li>服务器对其进行配置使用，在通话后就将证书发送给客户端，客户端询问CA进行验证。</li>
+</ul>
+<h3 id="header-28">创建服务器证书</h3>
+<p>借助<code>openssl</code>命令</p>
+<ol>
+<li>创建key(密钥) =&gt; server.key<pre><code>&gt; openssl genrsa -out server.key 1024
+</code></pre></li>
+<li>根据key生成csr文件（证书请求文件） =&gt; server.csr<pre><code>openssl req -new -key server.key -out server.csr
+</code></pre></li>
+<li>提交csr生成证书 =&gt; server.crt<br>（这里签署的证书仅仅做测试用，真正运行的时候，应该将CSR发送到一个CA，返回真正的证书）<pre><code>&gt; openssl x509 -days 365 -req -in server.csr -signkey server.key -out server.crt
+</code></pre></li>
+<li>查看证书<pre><code>&gt; openssl x509 -noout -text -in server.crt
+</code></pre></li>
+</ol>
+<p><strong>PS：</strong>为了便于管理，可将上述三个文件移动至<code>/etc/pki/tls/myCerts</code>中</p>
+<h3 id="header-29">Apache SSL</h3>
+<ul>
+<li>浏览器到HttpServer ：使用https加密通信</li>
+<li>HttpServer 与 tomcat：使用http通信</li>
+<li>所以如果HttpServer开启https，则tomcat可以不用开启https</li>
+</ul>
+<ol>
+<li><p>配置httpd.conf （加载mod_ssl,mod_socache_shmcb模块，ssl配置文件https-ssl.conf）</p>
+<pre><code> #For SSL
+ LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
+ #Load SSL Module 
+ LoadModule ssl_module modules/mod_ssl.so
+
+ # Secure (SSL/TLS) connections
+ Include conf/extra/httpd-ssl.conf
+</code></pre></li>
+<li><p>配置httpd-ssl.conf</p>
+<pre><code> Listen 443
+ ...
+ &lt;VirtualHost _default_:443&gt;
+
+      #DocumentRoot "/usr/local/apache2.4/htdocs"
+      #ServerName www.example.com:443
+      ServerName localhost:443
+      #ServerAdmin you@example.com
+      #ErrorLog "/usr/local/apache2.4/logs/error_log"
+      #TransferLog "/usr/local/apache2.4/logs/access_log"
+
+      JkMountFile /usr/local/apache2.4/conf/extra/uriworkermap.properties
+
+      SSLEngine on
+      SSLCertificateFile "/etc/pki/tls/myCerts/server.crt"
+      SSLCertificateKeyFile "/etc/pki/tls/myCerts/server.key"
+      ...
+ &lt;/VirtualHost&gt;
+</code></pre></li>
+<li><p>重启apache，测试</p>
+</li>
+</ol>
+<p><strong>PS：</strong>若网站无法通过https正常访问，可确认服务器443端口（防火墙）是否开启</p>
+<h3 id="header-30">Tomcat SSL</h3>
+<p>Tomcat的SSL配置分为两种情况：</p>
+<ul>
+<li>不使用APR</li>
+<li>使用APR</li>
+</ul>
+<h4 id="header-31">不使用APR</h4>
+<p>keystore：包含了服务器中被客户端用于验证服务器的数字证书</p>
+<ul>
+<li>客户端接受了这个证书，就可以使用<code>public key</code>加密要发送的数据</li>
+<li>服务器端拥有一个<code>private key</code>，作为唯一解密数据的密钥</li>
+</ul>
+<ol>
+<li><p>创建<code>.keystore</code> 文件（使用<code>JAVA_HOME/bin</code>下的<code>keytool</code>）</p>
+<pre><code> keytool -genkey -alias tomcat -keyalg RSA -keystore tomcat.keystore
+</code></pre><ul>
+<li><code>-genkey</code>：创建一个public-private key pair</li>
+<li><code>-alias</code>：用户别名</li>
+<li><code>-keyalg</code>：加密算法</li>
+<li><code>-keystore</code>：密钥库</li>
+<li>上面命令会创建一个自签证书（self-signed certificate）</li>
+</ul>
+</li>
+<li><p>在 <code>server.xml</code> 中启用 SSL HTTP/1.1 连接器（已有配置，去除注释修改即可）</p>
+<pre><code class="nullxml"><span class="comment">&lt;!-- "keystorePass" 是生成 .keystore 文件的密码 --&gt;</span>
+<span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8443"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span>
+           <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">scheme</span>=<span class="string">"https"</span> <span class="attr">secure</span>=<span class="string">"true"</span>
+           <span class="attr">clientAuth</span>=<span class="string">"false"</span> <span class="attr">sslProtocol</span>=<span class="string">"TLS"</span>
+           <span class="attr">keystoreFile</span>=<span class="string">"tomcat.keystore"</span> 
+<span class="attr">keystorePass</span>=<span class="string">"123@com"</span>/&gt;</span>
+</code></pre>
+<p>（若修改port，则需要将其他非SSL的redirectPort也进行修改）</p>
+</li>
+<li><p>重启 Tomcat，测试</p>
+</li>
+</ol>
+<p><strong>Issues：</strong></p>
+<pre><code>2012-5-16 13:10:37 org.apache.catalina.core.AprLifecycleListener init  
+信息: Loaded APR based Apache Tomcat Native library 1.1.23.  
+2012-5-16 13:10:37 org.apache.catalina.core.AprLifecycleListener init  
+信息: APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].  
+2012-5-16 13:10:37 org.apache.coyote.AbstractProtocol init  
+信息: Initializing ProtocolHandler ["http-apr-8080"]  
+2012-5-16 13:10:37 org.apache.coyote.AbstractProtocol init  
+信息: Initializing ProtocolHandler ["http-apr-8443"]  
+2012-5-16 13:10:37 org.apache.coyote.AbstractProtocol init  
+ 严重: Failed to initialize end point associated with ProtocolHandler ["http-apr-8443"]  
+ java.lang.Exception: &lt;span style="background-color: #ffff00;"&gt;Connector attribute SSLCertificateFile must be defined when using SSL with APR&lt;/span&gt;  
+     at org.apache.tomcat.util.net.AprEndpoint.bind(AprEndpoint.java:484)  
+     at org.apache.tomcat.util.net.AbstractEndpoint.init(AbstractEndpoint.java:566)  
+    at org.apache.coyote.AbstractProtocol.init(AbstractProtocol.java:417)  
+    at org.apache.catalina.connector.Connector.initInternal(Connector.java:956)  
+     at org.apache.catalina.util.LifecycleBase.init(LifecycleBase.java:102)  
+    at org.apache.catalina.core.StandardService.initInternal(StandardService.java:559)
+</code></pre><ul>
+<li><p>解决方案一：修改conf/server.xml，注释掉下面一段</p>
+<pre><code class="nullxml">  <span class="comment">&lt;!--APR library loader. Documentation at /docs/apr.html --&gt;</span>  
+  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span>
+</code></pre>
+<p>  但这样做将失去APR库的价值，Tomcat性能必然下降（<a href="http://wenson.iteye.com/blog/382738">APR库作用</a> ）</p>
+</li>
+<li><p>解决方案二：修改上面server.xml中protocol的配置为<code>protocol=&quot;org.apache.coyote.http11.Http11Protocol&quot;</code> （不启用APR）</p>
+<pre><code class="nullxml">   <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"443"</span> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11Protocol"</span> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span>
+                <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">scheme</span>=<span class="string">"https"</span> <span class="attr">secure</span>=<span class="string">"true"</span>
+                <span class="attr">clientAuth</span>=<span class="string">"false"</span> <span class="attr">sslProtocol</span>=<span class="string">"TLS"</span>
+                <span class="attr">keystoreFile</span>=<span class="string">"D:\Tomcat7.0\conf\.keystore"</span>
+                <span class="attr">keystorePass</span>=<span class="string">"xxxx"</span>/&gt;</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="header-32">使用APR</h4>
+<p>在安装APR并使用后（安装apr,apr-util,tomcat-native），如下配置</p>
+<pre><code>&lt;Connector port="8443" protocol="HTTP/1.1"  
+           maxThreads="200"
+           scheme="https" secure="true" SSLEnabled="true"
+           SSLCertificateFile="/usr/local/ssl/server.crt"
+           SSLCertificateKeyFile="/usr/local/ssl/server.pem"
+           SSLPassword="123456"
+           clientAuth="optional" SSLProtocol="TLSv1"/&gt;
+</code></pre><ul>
+<li>SSLCertificateFile：指明证书的路径</li>
+<li>SSLCertificateKeyFile：指明私钥的路径（私钥包含在证书文件里时可不配置此参数）</li>
+<li>SSLPassword：指明私钥的加密密钥（若SSLCertificateKeyFile中的私钥进行了加密，则需要配置）</li>
+<li>Tomcat要求SSLCertificateFile、SSLCertificateKeyFile所指向的文件的内容格式都为PEM格式</li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2014/06/01/Apache-Tomcat.html';	
+		var disqus_title = 'Apache+Tomcat';
+		var disqus_url = 'http://sixdegree.github.io/2014/06/01/Apache-Tomcat.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

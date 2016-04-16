@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JQuery</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="javascript,object,prototype,jquery,event,deferred,promise,ajax,plugin">
+  
+  
+    <meta name="description" content="Javascript and JQuery Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">JQuery基础</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">搭建环境</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">文档加载</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">JQuery与DOM</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">选择器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">包装集操作</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">改变结果集</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">结果集检查</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">元素的操作：取值/赋值</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">元素的操作：替换</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">元素的操作：创建/删除</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">元素操作: 移动</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">工具方法</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">数据缓存</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">判别</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">数组和对象操作</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">格式转化</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">特效</span></a></li></ol></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">事件</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">支持事件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">事件对象</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">事件绑定</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">事件触发</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">延迟</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">Deferred</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">Ajax</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">调用函数</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">插件</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">$符号冲突</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">$.fn包装集插件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">自定义插件</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">优化</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">JQuery</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2014-02-28T16:00:00.000Z">2014-03-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-JQuery">JQuery</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">JQuery基础</h2>
+<h3 id="header-2">搭建环境</h3>
+<p>下载JQuery：</p>
+<pre><code>&gt; bower install jquery
+</code></pre><p>引入JQuery包：</p>
+<pre><code class="nulljs">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"bower_components/jquery/dist/jquery.min.js"</span>/&gt;
+</code></pre>
+<p>使用：</p>
+<p>jQuery构造函数：<code>jQuery(...)</code>,可简写为<code>$(...)</code>，每次<code>$(xxx)</code>都是创建一个新的JQuery对象</p>
+<pre><code class="nulljs">&lt;script type=<span class="string">"text/javascript"</span>&gt;
+    <span class="comment">//$(xxx)</span>
+&lt;<span class="regexp">/script&gt;</span>
+</code></pre>
+<h3 id="header-3">文档加载</h3>
+<ul>
+<li>使用JS的<code>onload</code>加载文档（注意：若定义多个，执行时会使用后一个的定义）<pre><code class="nulljs"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+  <span class="comment">//...</span>
+};
+</code></pre>
+</li>
+<li>使用JQuery的<code>$</code>加载文档（注意：是一个方法，多个时都会被执行）<pre><code class="nulljs">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+  <span class="comment">//...</span>
+});
+</code></pre>
+</li>
+<li>注意：都是在页面DOM加载完成后执行</li>
+</ul>
+<h3 id="header-4">JQuery与DOM</h3>
+<ul>
+<li><p>Javascript操作DOM元素：</p>
+<ul>
+<li>获取（一个或一组）<pre><code class="nulljs"><span class="built_in">document</span>.getElementById(<span class="string">"xxx"</span>);
+<span class="built_in">document</span>.getElementByName(<span class="string">"xxx"</span>);
+documentElementByTagName(<span class="string">"xxx"</span>);
+</code></pre>
+</li>
+<li>创建DOM元素<pre><code class="nulljs"><span class="built_in">document</span>.createElement(<span class="string">"xxx"</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>JQuery操作DOM元素：</p>
+<ul>
+<li>获取： <code>$(&quot;xxx&quot;)</code>，<code>$(dom)</code>（会筛选出页面中一组满足xxx的元素，用JQuery封装）</li>
+<li>创建：<code>$(&quot;&lt;xxx/&gt;&quot;)</code></li>
+<li><strong>注意</strong>：使用<code>$(xxx)</code>，返回的一定是一个集合，所以称为<code>JQuery包装集</code></li>
+</ul>
+</li>
+<li><p>JQuery与DOM转换</p>
+<ul>
+<li><code>$(...)</code>：DOM=&gt;JQuery</li>
+<li><code>$(...)[index]</code>,<code>$(...).get(index)</code>: JQuery=&gt;DOM</li>
+</ul>
+</li>
+</ul>
+<p>举例：</p>
+<pre><code class="nulljs"><span class="comment">//dom</span>
+<span class="keyword">var</span> div=<span class="built_in">document</span>.getElementById(<span class="string">"#testDiv"</span>);
+div.innerHtml=<span class="string">"Hello"</span>;
+
+<span class="comment">//dom=&gt;jquery</span>
+<span class="keyword">var</span> divJquery1=$(div);
+divJquery1.html();            <span class="comment">// Hello</span>
+divJquery1.html(<span class="string">"Hello World"</span>);
+
+<span class="comment">//dom=&gt;jquery</span>
+divJquery=$(<span class="string">"#testDiv"</span>);
+divJquery.html();            <span class="comment">// Hello World</span>
+
+<span class="comment">//jquery=&gt;dom</span>
+<span class="keyword">var</span> div=divJquery[<span class="number">0</span>];
+<span class="built_in">console</span>.log(div.innerHtml);        <span class="comment">// Hello World</span>
+
+<span class="comment">//create element by javascript</span>
+<span class="keyword">var</span> input=<span class="built_in">document</span>.createElement(<span class="string">"input"</span>);
+input.type=<span class="string">"text"</span>;
+<span class="built_in">document</span>.body.appendChild(input);
+
+<span class="comment">//create element by jquery</span>
+<span class="keyword">var</span> inputJquery=$(<span class="string">"&lt;input/&gt;"</span>);
+inputJquery.appendTo($(<span class="string">"body"</span>));
+</code></pre>
+<h3 id="header-5">选择器</h3>
+<p>将一个选择表达式xxx，放进构造函数<code>$(&quot;xxx&quot;)</code>，得到匹配的元素集合（即为一个包装集）</p>
+<p>其中xxx可为（类似CSS选择器的格式）：</p>
+<ul>
+<li><p>基础选择：</p>
+<ul>
+<li><code>#id</code></li>
+<li><code>tagName</code></li>
+<li><code>.styleClass</code></li>
+<li><code>*</code></li>
+</ul>
+</li>
+<li><p>层级选择</p>
+<ul>
+<li><code>ancestor descendent</code></li>
+<li><code>parent &gt; child</code></li>
+<li><code>prev + next</code> (相当于<code>$(&quot;prev&quot;).next(&quot;next&quot;)</code>)</li>
+<li><code>prev ~ siblings</code> (相当于<code>$(&quot;prev&quot;).nextAll(&quot;next&quot;)</code>)</li>
+</ul>
+</li>
+<li><p>基本过滤</p>
+<ul>
+<li><code>:first</code></li>
+<li><code>:last</code></li>
+<li><code>:not(selector)</code></li>
+<li><code>:even</code></li>
+<li><code>:odd</code></li>
+<li><code>:eq(index)</code>（index&gt;=0）</li>
+<li><code>:gt(index)</code></li>
+<li><code>:lt(index)</code></li>
+</ul>
+</li>
+<li><p>子元素过滤</p>
+<ul>
+<li><code>:nth-child(index/even/odd/equation)</code></li>
+<li><code>:first-child</code></li>
+<li><code>:last-child</code></li>
+<li><code>:only-child</code></li>
+</ul>
+</li>
+<li><p>内容过滤</p>
+<ul>
+<li><code>:contains(text)</code></li>
+<li><code>:empty</code></li>
+<li><code>:has(selector)</code></li>
+<li><code>:parent</code></li>
+</ul>
+</li>
+<li><p>可见性过滤</p>
+<ul>
+<li><code>:hidden</code></li>
+<li><code>:visible</code></li>
+</ul>
+</li>
+<li><p>属性过滤</p>
+<ul>
+<li><code>[attribute]</code></li>
+<li><code>[attribute=value]</code></li>
+<li><code>[attribute!=value]</code></li>
+<li><code>[attribute^=value]</code></li>
+<li><code>[attribute$=value]</code></li>
+<li><code>[attribute*=value]</code></li>
+</ul>
+</li>
+<li><p>表单对象</p>
+<ul>
+<li><code>:hidden</code></li>
+<li><code>:input</code>,<code>:text</code>,<code>:password</code>,<code>:radio</code>,<code>:checkbox</code></li>
+<li><code>:submit</code>,<code>:reset</code></li>
+</ul>
+</li>
+<li><p>表单属性过滤</p>
+<ul>
+<li><code>:enabled</code></li>
+<li><code>:checked</code></li>
+<li><code>:selected</code></li>
+<li><code>:disabled</code></li>
+</ul>
+</li>
+<li><p>混合</p>
+<ul>
+<li><code>selector1, selector2, selectorN</code>：获取多个选择符的合集</li>
+<li><code>[selector1][selector2][selectorN]</code>：匹配同时符合多个属性选择符的对象</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-6">包装集操作</h3>
+<h4 id="header-7">改变结果集</h4>
+<ul>
+<li><p>过滤：对结果集进行筛选，缩小选择结果（返回原对象）</p>
+<ul>
+<li><code>not</code></li>
+<li><code>filter</code></li>
+<li><code>has</code></li>
+<li><code>eq(index)</code>,<code>first</code>,<code>last</code></li>
+</ul>
+</li>
+<li><p>查找：从结果集出发，选择附近的元素（返回新对象）</p>
+<ul>
+<li><code>next</code>,<code>nextAll</code>,<code>prev</code>,<code>prevAll</code>,<code>siblings</code></li>
+<li><code>children</code>,<code>find</code></li>
+<li><code>parent</code>,<code>parents</code>,<code>closest</code><ul>
+<li><code>closest</code>：从元素本身逐级向上匹配，返回可包含0或1个元素</li>
+<li><code>parents</code>：从根元素开始逐级向下匹配，返回可包含0或1或多个元素</li>
+</ul>
+</li>
+<li><code>slice(start,[end])</code></li>
+<li><code>contents()</code>：返回匹配元素内部所有子节点，包括文本节点（若是iframe，则查找文档内容）</li>
+</ul>
+</li>
+<li><p>串联</p>
+<ul>
+<li><code>add</code>：添加匹配元素到包装集</li>
+<li><code>end()</code>：返回前一个包装集</li>
+<li><code>addSelf()</code>：筛选结果集添加到最初包装集</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-8">结果集检查</h4>
+<ul>
+<li><code>size()</code></li>
+<li><code>index(obj)</code></li>
+<li><code>is(expr)</code>：判断，包装集中有一个匹配则返回true</li>
+<li><code>hasClass</code>：判断，包装集中有一个含有某特定类则返回true（= <code>is(&quot;.&quot; + class)</code>）</li>
+</ul>
+<h4 id="header-9">元素的操作：取值/赋值</h4>
+<ul>
+<li><p>使用同一个函数，来完成取值和赋值（由函数的参数决定是取值还是赋值）</p>
+<ul>
+<li><code>attr({...})</code>,<code>attr(&quot;...&quot;,&quot;...&quot;)</code>,<code>attr(&quot;...&quot;)</code></li>
+<li><code>prop({...})</code>,<code>prop(&quot;...&quot;,&quot;...&quot;)</code>,<code>prop(&quot;...&quot;)</code></li>
+<li><code>css({...})</code>,<code>css(&quot;...&quot;,&quot;...&quot;)</code>,<code>css(&quot;...&quot;)</code></li>
+<li><code>width</code>,<code>height</code></li>
+<li><code>html(&quot;xxx&quot;)</code>,<code>html()</code></li>
+<li><code>text(&quot;xxx&quot;)</code>,<code>text()</code></li>
+<li><code>val(xxx)</code>,<code>val()</code></li>
+</ul>
+</li>
+<li><p>赋值，返回原包装集</p>
+<ul>
+<li><code>removeAttr</code></li>
+<li><code>removeProp</code></li>
+<li><code>addClass</code>,<code>removeClass</code>,<code>toggleClass</code></li>
+<li><code>empty()</code> ：清空元素内容（但是不删除该元素）</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-10">元素的操作：替换</h4>
+<ul>
+<li>替换节点<ul>
+<li><code>replaceWith</code>：某集合被某集合替换掉</li>
+<li><code>replaceAll</code>：使用某集合替换掉某集合</li>
+<li>eg：<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"first"</span>&gt;</span>Hello1<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"second"</span>&gt;</span>Hello2<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"third"</span>&gt;</span>Hello3<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+=&gt;
+<span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"second"</span>&gt;</span>Hello2<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"first"</span>&gt;</span>Hello1<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b.third"</span>).replaceWith($(<span class="string">"b.first"</span>));
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b.first"</span>).replaceAll($(<span class="string">"b.third"</span>));
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b"</span>).replaceWith(<span class="string">"&lt;p&gt;World&lt;/p&gt;"</span>);
+=&gt;
+<span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>World<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>
+&lt;p&gt;World&lt;<span class="regexp">/p&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-11">元素的操作：创建/删除</h4>
+<ul>
+<li><p>创建：</p>
+<ul>
+<li><code>&lt;Xxx/&gt;</code> 新元素标签直接传入jQuery的构造函数即可</li>
+<li><code>clone</code>：复制，返回新包装集</li>
+</ul>
+</li>
+<li><p>删除</p>
+<ul>
+<li><code>remove</code>：不保留被删除元素的事件（返回被移除的集合）</li>
+<li><code>detach</code>：保留被删除元素的事件，有利于重新插入文档时使用</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-12">元素操作: 移动</h4>
+<p>操作元素在网页中的位置：移动直接移动该元素或移动其他元素<br>（以下操作都返回原对象）</p>
+<ul>
+<li><p>内部插入</p>
+<ul>
+<li><code>append</code>,<code>prepend</code>：在节点内部的后面/前面添加某元素</li>
+<li><code>appendTo</code>,<code>prependTo</code>：将节点添加到某元素内部的后面/前面</li>
+<li><p>eg：</p>
+<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Say<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+<span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;<span class="name">i</span>&gt;</span>Tom<span class="tag">&lt;<span class="name">i</span>&gt;</span>
+=&gt;
+<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">i</span>&gt;</span>Tom<span class="tag">&lt;/<span class="name">i</span>&gt;</span>Say<span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"p"</span>).append(b).prepend(i);
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b"</span>).appendTo(<span class="string">"p"</span>);
+$(<span class="string">"i"</span>).prepend(<span class="string">"p"</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>外部插入<ul>
+<li><code>after</code>,<code>before</code>：在节点前面/后面添加元素</li>
+<li><code>insertAfter</code>，<code>insertBefore</code>：将节点添加到某元素后面/前面</li>
+<li>eg：<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">a</span>&gt;</span>Say<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+<span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;<span class="name">i</span>&gt;</span>Tom<span class="tag">&lt;<span class="name">i</span>&gt;</span>
+=&gt;
+<span class="tag">&lt;<span class="name">i</span>&gt;</span>Tom<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>Say<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"a"</span>).after(<span class="string">"b"</span>).before(<span class="string">"i"</span>)
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b"</span>).insertAfter(<span class="string">"a"</span>);
+$(<span class="string">"i"</span>).insertBefore(<span class="string">"a"</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>包裹</p>
+<ul>
+<li><code>wrap</code>：匹配的每个节点分别用某个元素包裹</li>
+<li><code>wrapAll</code>：整个包装集用某个元素包裹</li>
+<li><code>wrapInner</code>：匹配的每个节点的内容用某个元素包裹</li>
+<li><p>eg：</p>
+<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello1<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello2<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b"</span>).wrap(<span class="string">"&lt;div/&gt;"</span>);
+
+<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello1<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
+&lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello2<span class="tag">&lt;/<span class="name">b</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b"</span>).wrapAll(<span class="string">"&lt;div/&gt;"</span>);
+
+<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello1<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello2<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"b"</span>).wrapInner(<span class="string">"&lt;div/&gt;"</span>);
+
+<span class="xml"><span class="tag">&lt;<span class="name">b</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello1<span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span>
+&lt;b&gt;<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">b</span>&gt;</span></span>
+</code></pre>
+</li>
+<li><p><code>unwrap</code>：移除节点的父元素</p>
+<pre><code class="nulljs">&lt;div&gt;
+  &lt;b&gt;Hello1&lt;/b&gt;
+  &lt;b&gt;Hello2&lt;/b&gt;
+&lt;/div&gt;
+=&gt;
+&lt;b&gt;Hello1&lt;/b&gt;
+&lt;b&gt;Hello2&lt;/b&gt;
+
+$("b").unwrap();
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-13">工具方法</h3>
+<h4 id="header-14">数据缓存</h4>
+<ul>
+<li><code>$(xxx).data(key,value)</code>,<code>$(xxx).data(key)</code></li>
+<li><code>$(xxx).removeData(key)</code></li>
+</ul>
+<h4 id="header-15">判别</h4>
+<ul>
+<li><code>$.contains(container,contained)</code> 一个DOM节点是否包含另一个DOM节点</li>
+<li><code>$.type</code> 判断对象的类别（函数对象、日期对象、数组对象、正则对象等等）</li>
+<li><code>$.isNumeric</code> 判断是否是一个数字</li>
+<li><code>$.isArray</code> 判断某个参数是否为数组</li>
+<li><code>$.isEmptyObject</code> 判断某个对象是否为空（不含有任何属性）</li>
+<li><code>$.isFunction</code> 判断某个参数是否为函数</li>
+<li><code>$.isPlainObject</code> 判断某个参数是否为用”{}”或”new Object”建立的对象</li>
+<li><p><code>$.support</code> 判断浏览器是否支持某个特性</p>
+<pre><code class="nulljs">  $.type(<span class="literal">true</span>) === <span class="string">"boolean"</span>
+  $.type(<span class="number">3</span>) === <span class="string">"number"</span>
+  $.type(<span class="string">"test"</span>) === <span class="string">"string"</span>
+  $.type(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{}) === <span class="string">"function"</span>
+  $.type([]) === <span class="string">"array"</span>
+  $.type(<span class="keyword">new</span> <span class="built_in">Date</span>()) === <span class="string">"date"</span>
+  $.type(<span class="regexp">/test/</span>) === <span class="string">"regexp"</span>
+
+  $.isNumeric(<span class="string">""</span>);     <span class="comment">// false</span>
+  $.isNumeric({});     <span class="comment">// false (empty object)</span>
+  $.isNumeric(<span class="literal">NaN</span>);    <span class="comment">// false</span>
+  $.isNumeric(<span class="literal">null</span>);   <span class="comment">// false</span>
+  $.isNumeric(<span class="literal">true</span>);   <span class="comment">// false</span>
+
+  $.isNumeric(<span class="string">"-10"</span>);  <span class="comment">// true</span>
+  $.isNumeric(<span class="number">16</span>);     <span class="comment">// true</span>
+  $.isNumeric(<span class="number">0xFF</span>);   <span class="comment">// true</span>
+  $.isNumeric(<span class="number">3.1415</span>); <span class="comment">// true</span>
+  $.isNumeric(+<span class="number">10</span>);    <span class="comment">// true</span>
+
+  $.isFunction($.noop)    <span class="comment">//true</span>
+  $.isFunction(<span class="string">"Hello"</span>)    <span class="comment">//false</span>
+
+  $.isEmptyObject(<span class="literal">undefined</span>)        <span class="comment">//true</span>
+  $.isEmptyObject(<span class="literal">null</span>)        <span class="comment">//true</span>
+  $.isEmptyObject({})        <span class="comment">//true</span>
+  $.isEmptyObject( <span class="keyword">new</span> <span class="built_in">Object</span>() )  <span class="comment">// true</span>
+  $.isEmptyObject([] )  <span class="comment">// true</span>
+  $.isEmptyObject({ foo: <span class="string">"bar"</span> }) <span class="comment">// false</span>
+  $.isEmptyObject([<span class="number">1</span>,<span class="number">2</span>]) <span class="comment">// false</span>
+  $.isEmptyObject(<span class="string">"sdfe"</span>) <span class="comment">// false</span>
+  $.isEmptyObject(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{...}) <span class="comment">// false</span>
+
+  $.isPlainObject({}) <span class="comment">// true</span>
+  $.isPlainObject(<span class="keyword">new</span> <span class="built_in">Object</span>()) <span class="comment">// true</span>
+  $s.isPlainObject(<span class="string">"test"</span>) <span class="comment">// false</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="header-16">数组和对象操作</h4>
+<ul>
+<li><p><code>$.merge(first,second)</code>  合并数组</p>
+<ul>
+<li>合并两个数组到第一个数组上</li>
+<li>eg: <pre><code class="nulljs">$.merge( [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>], [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] )   <span class="comment">//[0,1,2,2,3,4]</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>$.extend([d],tgt,obj1,[objN])</code></p>
+<ul>
+<li><code>$.extend(p1,p2)</code>：p2覆盖p1，返回p1</li>
+<li><code>$.extend(p0,p1,p2)</code>：p2与p1合并存储到p0，返回p0</li>
+</ul>
+</li>
+<li><p><code>$.makeArray(obj)</code></p>
+<ul>
+<li>将类数组对象转换为数组对象</li>
+</ul>
+</li>
+<li><p><code>$.toArray()</code></p>
+<ul>
+<li>把jQuery集合中所有DOM元素恢复成一个数组</li>
+<li>eg:<pre><code class="nulljs">$(<span class="string">'li'</span>).toArray();  <span class="comment">// [&lt;li id="foo"&gt;, &lt;li id="bar"&gt;]</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>$.inArray(val,arr,[from])</code></p>
+<ul>
+<li>返回value在arrayObj中下标的位置(从0开始计数)</li>
+<li>如果value不在array中则返回-1 </li>
+<li>eg: <pre><code class="nulljs">$.inArray(<span class="string">"Pete"</span>,[<span class="number">4</span>, <span class="string">"Pete"</span>, <span class="number">8</span>, <span class="string">"John"</span>],<span class="number">2</span>) <span class="comment">// -1</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>$.unique(array)</code></p>
+<ul>
+<li>删除数组中重复元素</li>
+<li>只处理删除DOM元素数组，不能处理字符串或者数字数组</li>
+</ul>
+</li>
+<li><p><code>$.each( collection, callback )</code> 遍历集合,返回原对象</p>
+<ul>
+<li><code>$.each(jsonObj,function(key,value){...});</code></li>
+<li><code>$.each(arrayObj,function(indexInArray,valueOfElement){...});</code></li>
+<li>callback中<ul>
+<li>return false ：将停止循环 (同 break)</li>
+<li>return true ： 跳至下一个循环(同 continue)</li>
+</ul>
+</li>
+<li>注意：和<code>$(selector).each(function(index,domEle){...});</code>不一样<ul>
+<li>function中使用this时， this 指代的是 DOM 对象而非 jQuery 对象</li>
+</ul>
+</li>
+<li>eg:<pre><code class="nulljs"><span class="keyword">var</span> arrayObj= [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'c'</span>];
+<span class="keyword">var</span> returnValue = $.each(arrayObj, <span class="function"><span class="keyword">function</span>(<span class="params">index,value</span>) </span>{
+  alert(index + <span class="string">" "</span> + value);
+});
+</code></pre>
+<pre><code class="nulljs"><span class="keyword">var</span> jsonObj= {one:<span class="number">1</span>, two:<span class="number">2</span>, three:<span class="number">3</span>};
+<span class="keyword">var</span> returnValue=$.each(jsonObj,<span class="function"><span class="keyword">function</span>(<span class="params">key,value</span>) </span>{
+  alert(key+<span class="string">":"</span>+value);
+});
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"div"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index, domEle</span>) </span>{ 
+<span class="comment">// domEle == this</span>
+$(domEle).css(<span class="string">"backgroundColor"</span>, <span class="string">"yellow"</span>);
+<span class="keyword">if</span> ($(<span class="keyword">this</span>).is(<span class="string">"#stop"</span>)) {
+     $(<span class="string">"span"</span>).text(<span class="string">"Stopped at div index #"</span> + index);
+     <span class="keyword">return</span> <span class="literal">false</span>;
+}
+});
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>$.map(array,callback)</code> 转换数组，返回一个新的数组</p>
+<ul>
+<li><code>$.map( array, callback(elementOfArray, indexInArray){...} )</code></li>
+<li>callback中<ul>
+<li>通过return返回新的值，不return就没有值了</li>
+<li>返回null在这里相当于不返回</li>
+</ul>
+</li>
+<li>注意：和 <code>$(dom).map(callback(){...})</code>不一样</li>
+<li>eg：<pre><code class="nulljs"><span class="keyword">var</span> arr = [ <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span> ];
+<span class="keyword">var</span> arr2 = jQuery.map(arr, <span class="function"><span class="keyword">function</span>(<span class="params">n, i</span>)</span>{
+  <span class="keyword">return</span> (n.toUpperCase() + i);
+});
+alert(arr);        <span class="comment">//a,b,c,d,e</span>
+alert(arr2);    <span class="comment">//A0,B1,C2,D3,E4</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>$.grep(array,callback)</code> 过滤数组</p>
+<ul>
+<li><code>$.grep( array, function(elementOfArray, indexInArray) [, invert] )</code></li>
+<li>参数二：<ul>
+<li>一个测试函数（注意：这里此函数参数和each,map的回调函数的参数顺序相反）</li>
+<li>字符串：正则表达式，相当于执行<code>return elementOfArray.match(正则表达式)</code> (a 代表数组元素，i 代表元素索引值)</li>
+</ul>
+</li>
+<li>参数三：<ul>
+<li>false：默认</li>
+<li>true：回调函数的返回值的效果刚好相反，返回true的会被去掉</li>
+</ul>
+</li>
+<li>eg：<pre><code class="nulljs"><span class="keyword">var</span> arrayObj = [ <span class="number">1</span>, <span class="number">9</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">1</span> ];
+arr = jQuery.grep(arrayObj , <span class="function"><span class="keyword">function</span>(<span class="params">n, i</span>)</span>{
+<span class="keyword">return</span> (n != <span class="number">5</span> &amp;&amp; i &gt; <span class="number">4</span>);
+});
+</code></pre>
+<pre><code class="nulljs"><span class="keyword">var</span> bigNumbers = $.grep(arrayObj ,<span class="string">'a&gt;5'</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="header-17">格式转化</h4>
+<ul>
+<li><code>$(&quot;form&quot;).serialize()</code> 序列表格内容为字符串</li>
+<li><code>$(&quot;form&quot;).serializearray()</code>  序列表格内容为JSON数组</li>
+<li><code>$.param(obj,[traditional])</code>  对象序列化为字符串（是.serialize()的核心方法）</li>
+<li><code>$.parseXML(data)</code> 解析一个字符串，返回XML文档</li>
+<li><code>$.parseJSON(jsonString)</code>  解析一个字符串，返回jsonObj</li>
+<li><code>JSON.stringify(jsonObje)</code> 将jsonObj转换为一个字符串</li>
+</ul>
+<h4 id="header-18">特效</h4>
+<ul>
+<li><p><code>animate(css,time,callbackFunc)</code></p>
+<pre><code class="nulljs">  $(<span class="string">"#go"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+      $(<span class="string">"#block"</span>).animate({
+          width: <span class="string">"90%"</span>,
+          height: <span class="string">"100%"</span>,
+          fontSize: <span class="string">"10em"</span>,
+          borderWidth: <span class="number">10</span>
+      }, <span class="number">1000</span> );
+  })
+  $(<span class="string">"#right"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+      $(<span class="string">".block"</span>).animate({left: <span class="string">'+50px'</span>}, <span class="string">"slow"</span>);
+  });
+
+  $(<span class="string">"p"</span>).animate({
+      left: <span class="number">50</span>, opacity: <span class="string">'show'</span>
+  }, <span class="number">500</span>);
+
+  $(<span class="string">"p"</span>).animate({
+      opacity: <span class="string">'show'</span>
+  }, <span class="string">"slow"</span>, <span class="string">"easein"</span>);
+
+  $(<span class="string">'div'</span>).animate(
+      {
+        left : <span class="string">"+=50"</span>, <span class="comment">//不断右移</span>
+        opacity : <span class="number">0.25</span> <span class="comment">//指定透明度</span>
+      },
+      <span class="number">300</span>, <span class="comment">// 持续时间</span>
+      <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{ alert(<span class="string">'done!'</span>); } <span class="comment">//回调函数</span>
+  );
+</code></pre>
+</li>
+<li><p>淡入淡出：<code>fadeIn/fadeOut([speed],[easing],[fn])</code>,<code>fadeToggle</code></p>
+<pre><code class="nulljs">  $(<span class="string">'h1'</span>).fadeIn(<span class="number">300</span>); <span class="comment">// 300毫秒内淡入</span>
+  $(<span class="string">'h1'</span>).fadeOut(<span class="string">'slow'</span>); <span class="comment">// 缓慢地淡出</span>
+  $(<span class="string">'p'</span>).fadeOut(<span class="number">300</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{ $(<span class="keyword">this</span>).remove(); });
+</code></pre>
+</li>
+<li>滑入滑出：<code>slideDown/slideUp([speed],[easing],[fn])</code>,<code>slideToggle</code></li>
+<li><code>stop()</code>和<code>delay()</code>停止或延缓特效的执行</li>
+<li><code>$.fx.off</code>,设置为true，则关闭所有网页特效</li>
+</ul>
+<h2 id="header-19">事件</h2>
+<h3 id="header-20">支持事件</h3>
+<ul>
+<li><code>blur</code> 表单元素失去焦点。</li>
+<li><code>change</code> 表单元素的值发生变化</li>
+<li><code>click</code> 鼠标单击</li>
+<li><code>dblclick</code> 鼠标双击</li>
+<li><code>focus</code> 表单元素获得焦点</li>
+<li><code>focusin</code> 子元素获得焦点</li>
+<li><code>focusout</code> 子元素失去焦点</li>
+<li><code>hover</code> 同时为<code>mouseenter</code>和<code>mouseleave</code>事件指定处理函数</li>
+<li><code>keydown</code> 按下键盘（长时间按键，只返回一个事件）</li>
+<li><code>keypress</code> 按下键盘（长时间按键，将返回多个事件）</li>
+<li><code>keyup</code> 松开键盘</li>
+<li><code>load</code> 元素加载完毕</li>
+<li><code>mousedown</code> 按下鼠标</li>
+<li><code>mouseenter</code> 鼠标进入（进入子元素不触发）</li>
+<li><code>mouseleave</code> 鼠标离开（离开子元素不触发）</li>
+<li><code>mousemove</code> 鼠标在元素内部移动</li>
+<li><code>mouseout</code> 鼠标离开（离开子元素也触发）</li>
+<li><code>mouseover</code> 鼠标进入（进入子元素也触发）</li>
+<li><code>mouseup</code> 松开鼠标</li>
+<li><code>ready</code>DOM加载完成</li>
+<li><code>resize</code> 浏览器窗口的大小发生改变</li>
+<li><code>scroll</code> 滚动条的位置发生变化</li>
+<li><code>select</code> 用户选中文本框中的内容</li>
+<li><code>submit</code> 用户递交表单</li>
+<li><code>toggle</code> 根据鼠标点击的次数，依次运行多个函数</li>
+<li><code>unload</code> 用户离开页面</li>
+</ul>
+<h3 id="header-21">事件对象</h3>
+<ul>
+<li><code>event.target</code></li>
+<li><code>event.currentTarget</code></li>
+<li><code>event.data</code></li>
+<li><code>event.preventDefault()</code> 阻止事件的默认行为（比如点击链接，会自动打开新页面）</li>
+<li><code>event.stopPropagation()</code> 停止事件向上层元素冒泡</li>
+<li><code>event.pageX</code> 事件发生时，鼠标距离网页左上角的水平距离</li>
+<li><code>event.pageY</code> 事件发生时，鼠标距离网页左上角的垂直距离</li>
+<li><code>event.type</code> 事件的类型（比如click）</li>
+<li><code>event.which</code> 按下了哪一个键</li>
+</ul>
+<h3 id="header-22">事件绑定</h3>
+<ul>
+<li><p>把事件直接绑定在网页元素</p>
+<ul>
+<li>Xxx([[data],fn])</li>
+</ul>
+</li>
+<li><p>绑定事件/解除事件绑定</p>
+<ul>
+<li>bind/unbind</li>
+<li>one: 一次性</li>
+<li>on/off ：代替bine,unbind</li>
+<li>hover(overFunc,outFunc)：绑定鼠标悬停事件（鼠标移动到一个对象上面及移出这个对象）</li>
+<li>toggle([speed],[easing],[fn]) ：绑定多个事件处理器函数，以响应被选元素的轮流的 click 事件</li>
+</ul>
+</li>
+<li><p>事件的委托处理</p>
+<ul>
+<li>on/off：代替live,delegate</li>
+<li>子元素”委托”父元素处理事件：<ul>
+<li>子元素的事件会逐级向上”冒泡”，成为父元素的事件</li>
+<li>利用这一点，可以大大简化事件的绑定</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>使用举例：</p>
+<ol>
+<li><p>事件直接绑定</p>
+<pre><code class="nulljs"> $(<span class="string">'p'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+     alert(<span class="string">'Hello'</span>);
+ });
+</code></pre>
+</li>
+<li><p>使用bind绑定（on方法使用类似）</p>
+<pre><code class="nulljs"> <span class="comment">//可同时绑定click和change事件</span>
+ $(<span class="string">'input'</span>).bind(<span class="string">'click change'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+   alert(<span class="string">'Hello'</span>);
+ });
+ <span class="comment">//可在事件名后面加命名空间</span>
+ $(<span class="string">"#test"</span>).bind(<span class="string">"mouseover.test mouseout.test"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>{
+     $(<span class="keyword">this</span>).toggleClass(<span class="string">"bgClass"</span>);
+ })
+</code></pre>
+</li>
+<li><p>使用unbind解绑（off方法使用类似）</p>
+<pre><code class="nulljs"> $(<span class="string">"input"</span>).unbind();        <span class="comment">//解绑所有事件</span>
+ $(<span class="string">"#test"</span>).unbind(<span class="string">".test"</span>);    <span class="comment">//解绑使用“test”命名空间的事件</span>
+
+ <span class="keyword">var</span> foo=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{...};
+ $(<span class="string">"input"</span>).bind(<span class="string">"click"</span>,foo);
+ $(<span class="string">"input"</span>).unbind(<span class="string">"click"</span>,foo);        <span class="comment">//解绑特定函数的绑定</span>
+</code></pre>
+</li>
+<li><p>使用on/off进行事件的委托处理<br>说明：<br>相较与上面使用<code>$(&quot;td&quot;).on(&quot;click&quot;,function(){...})</code><br>这个事件只需要在父元素绑定1次即可<br>而不需要在子元素上绑定n次<br>大大提高了性能</p>
+<pre><code class="nulljs"> <span class="comment">//方式一：</span>
+ $(<span class="string">"table"</span>).on(<span class="string">"click"</span>, <span class="string">"td"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+     $(<span class="keyword">this</span>).toggleClass(<span class="string">"click"</span>);
+ });
+ $(table).off(<span class="string">"click"</span>, <span class="string">"td"</span>);
+
+ <span class="comment">//方式二（更好）：</span>
+ $(<span class="built_in">document</span>).on(<span class="string">"click"</span>, <span class="string">"td"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+     $(<span class="keyword">this</span>).toggleClass(<span class="string">"click"</span>);
+ });
+ $(<span class="built_in">document</span>).off(<span class="string">"click"</span>, <span class="string">"td"</span>);
+</code></pre>
+</li>
+<li><p>使用hover绑定切换事件（鼠标移入移除时触发）</p>
+<pre><code class="nulljs"> $(<span class="string">"td"</span>).hover(
+   <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+     $(<span class="keyword">this</span>).addClass(<span class="string">"hover"</span>);
+   },
+   <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
+     $(<span class="keyword">this</span>).removeClass(<span class="string">"hover"</span>);
+   }
+ );
+</code></pre>
+</li>
+<li><p>使用toggle绑定切换事件（点击时触发）</p>
+<pre><code class="nulljs"> $(<span class="string">'td'</span>).toggle();            <span class="comment">//隐藏/显示</span>
+ $(<span class="string">"p"</span>).toggle(<span class="string">"slow"</span>);    <span class="comment">//缓慢显示</span>
+ $(<span class="string">"p"</span>).toggle(<span class="string">"fast"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    alert(<span class="string">"Animation Done."</span>);
+  });
+ $(<span class="string">"td"</span>).toggle(
+     <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{ $(<span class="keyword">this</span>).addClass(<span class="string">"selected"</span>); },
+     <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{ $(<span class="keyword">this</span>).removeClass(<span class="string">"selected"</span>); }
+ );
+</code></pre>
+</li>
+</ol>
+<h3 id="header-23">事件触发</h3>
+<ul>
+<li><code>xxx()</code> : 直接调用事件</li>
+<li><code>trigger(type,[data])</code>：存在冒泡</li>
+<li><code>triggerHandler(type,[data])</code>：不冒泡</li>
+</ul>
+<pre><code class="nulljs">$(<span class="string">"p"</span>).click();    
+$(<span class="string">"input"</span>).change();
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"#test"</span>).on(<span class="string">"click"</span>,{name:<span class="string">"Tom"</span>},<span class="function"><span class="keyword">function</span>(<span class="params">event,a,b</span>)</span>{
+    <span class="built_in">console</span>.log(event.target);
+    <span class="built_in">console</span>.log(event.currentTarget);
+    <span class="built_in">console</span>.log(a+<span class="string">","</span>+b);            <span class="comment">//1,2</span>
+    <span class="built_in">console</span>.log(event.data)        <span class="comment">//{name:"Tom"}</span>
+});
+$(<span class="string">"#test"</span>).trigger(<span class="string">"click"</span>,[<span class="number">1</span>,<span class="number">2</span>]);
+</code></pre>
+<h2 id="header-24">延迟</h2>
+<p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html">jQuery的deferred对象详解</a>）</p>
+<h3 id="header-25">Deferred</h3>
+<p>【回调函数：异步/同步操作，一般不能立即返回结果，为它们指定回调函数（callback），一旦那些操作运行结束，就触发调用】</p>
+<p>Deferred：”延迟”到未来某个点再执行，作为回调函数解决方案，提供了更好的控制：</p>
+<ul>
+<li>可以进行链式操作</li>
+<li>允许自由添加多个回调函数</li>
+<li>所有操作都可用（本地操作，ajax操作，同步，异步均可）</li>
+</ul>
+<p>deferred对象</p>
+<ul>
+<li>创建<ul>
+<li><code>$.Deferred()</code></li>
+</ul>
+</li>
+<li>三种执行状态：<ul>
+<li>未完成：继续等待，或调用<code>progress</code>方法指定的回调函数</li>
+<li>已完成：立刻调用<code>done</code>方法指定的回调函数</li>
+<li>已失败：立刻调用<code>fail</code>方法指定的回调函数</li>
+</ul>
+</li>
+<li>改变执行状态：<ul>
+<li>自动修改<ul>
+<li>ajax操作时，deferred对象根据返回结果，自动改变自身的执行状态</li>
+</ul>
+</li>
+<li>手动修改：<ul>
+<li><code>resolve()</code> ：”未完成”=&gt;”已完成”，触发<code>done</code>方法指定的function</li>
+<li><code>reject()</code> ：”未完成”=&gt;”已失败”，触发<code>fail</code>方法指定的function</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绑定回调函数：<ul>
+<li><code>progress(callback)</code></li>
+<li><code>done(callback)</code></li>
+<li><code>fail(callback)</code></li>
+<li><code>then(doneCallback,failCallback)</code></li>
+<li><code>alwarys(callback)</code></li>
+</ul>
+</li>
+<li>注意：deferred对象是一个全局对象，执行状态可以从外部改变，防止执行状态被外部改变：<ul>
+<li>方式一：<code>deferred.promise()</code>：<ul>
+<li>在原来的deferred对象上返回另一个deferred对象，屏蔽了与改变执行状态有关的方法</li>
+</ul>
+</li>
+<li>方式三：<code>deffered.promise(func)</code>：<ul>
+<li>在func上部署Deferred接口</li>
+</ul>
+</li>
+<li>方式二：<code>$.Deferred(func)</code>：<ul>
+<li>生成的deferred对象将作为这个函数的默认参数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>使用示例1：<code>$.Deferred</code></p>
+<p>一个耗时的操作</p>
+<pre><code class="nulljs"><span class="keyword">var</span> wait = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> tasks = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+      alert(<span class="string">"执行完毕！"</span>);
+    };
+    setTimeout(tasks,<span class="number">5000</span>);
+};
+</code></pre>
+<p>为它指定回调函数</p>
+<pre><code class="nulljs"><span class="keyword">var</span> wait=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> dtd = $.Deferred();     <span class="comment">// 新建一个Deferred对象</span>
+    <span class="keyword">var</span> tasks = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        alert(<span class="string">"执行完毕！"</span>);
+        <span class="comment">//dtd.reject();</span>
+        dtd.resolve();                 <span class="comment">// 改变Deferred对象的执行状态</span>
+    };
+    setTimeout(tasks,<span class="number">5000</span>);
+    <span class="keyword">return</span> dtd.promise();     <span class="comment">// 返回promise对象</span>
+}
+
+wait()
+.done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Success！"</span>); })
+.fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Fail！"</span>); });
+</code></pre>
+<p>使用示例2：<code>$.ajax</code></p>
+<pre><code class="nulljs">$.ajax(<span class="string">"test.html"</span>)
+    .done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Success"</span>); })
+    .fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Fail"</span>); });
+    .done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Success 2"</span>);} );
+</code></pre>
+<p>使用示例3：<code>$.when</code></p>
+<pre><code class="nulljs">$.when($.ajax(<span class="string">"test1.html"</span>), $.ajax(<span class="string">"test2.html"</span>))
+　　.done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Success"</span>); })    <span class="comment">//都成功时执行</span>
+　　.fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Fail！"</span>); });        <span class="comment">//其中一个失败就执行</span>
+</code></pre>
+<h3 id="header-26">Ajax</h3>
+<p>以下操作返回一个Promise对象（屏蔽了修改执行状态方法的Deferred对象）</p>
+<ul>
+<li><code>$.get(url,{...},successCallback,type);</code>,<code>$.post(url,{...},successCallback,type);</code><ul>
+<li>简单HTTP GET/POST请求</li>
+<li>successCallback：请求成功调用回调函数</li>
+<li>type：返回内容格式，例如 xml, html, script, json, text<pre><code class="nulljs">$.get(url,{name:<span class="string">"tom"</span>},<span class="function"><span class="keyword">function</span>(<span class="params">data,status</span>)</span>{
+  <span class="built_in">console</span>.log(data);
+},<span class="string">"json"</span>);
+$.post(url,{name:<span class="string">"tom"</span>},<span class="function"><span class="keyword">function</span>(<span class="params">data,status</span>)</span>{
+  <span class="built_in">console</span>.log(data);
+},<span class="string">"json"</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>$.getJSON(url, {...}, successCallback)</code><pre><code class="nulljs">$.getJSON(<span class="string">"test.json"</span>, { name: <span class="string">"John"</span>, time: <span class="string">"2pm"</span> }, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{
+    alert(<span class="string">"JSON Data: "</span> + data.users[<span class="number">3</span>].name);
+});
+</code></pre>
+</li>
+<li><code>$.getScript(url,successCallback)</code> 加载并执行脚本<pre><code class="nulljs">$.getScript(<span class="string">"test.js"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    alert(<span class="string">"Script loaded and executed."</span>);
+});
+</code></pre>
+</li>
+<li><p><code>$(...).load(url,{...},successCallback)</code></p>
+<ul>
+<li>返回内容成功加载到包装集后调用successCallback函数</li>
+<li>successCallback: <code>function(data){...}</code>,data为DOM对象</li>
+</ul>
+</li>
+<li><p><code>$.ajax({...});</code> ,<code>$.ajax(url,{...});</code> 返回一个<code>promise</code>对象</p>
+<ul>
+<li><code>type</code>: 默认为GET，表请求方式（GET,POST,DELETE,PUT,…）</li>
+<li><code>async</code>:默认为true，表异步</li>
+<li><code>contentType</code>:默认为<code>application/x-www-form-urlencoded; charset=UTF-8</code>,发送服务器时内容编码类型</li>
+<li><code>data</code>: 发送到服务器的数据，object或string类型</li>
+<li><code>processData</code>：默认为true,会自动转换要发送的<code>data</code>为对象以配合<code>contentType</code></li>
+<li><code>dataType</code>: 预期服务器返回的数据类型（html,xml,json,script,jsonp），默认自动根据 HTTP 包 MIME 信息返回</li>
+<li><code>global</code>：默认为true，允许触发 AJAX 全局事件</li>
+<li><code>ifModified</code>：默认为false，表示仅在服务器数据改变时获取新数据（根据 HTTP 包 Last-Modified 头信息判断）</li>
+<li><code>headers</code>：默认<code>{}</code>,会被<code>beforeSend</code> 函数内的设置覆盖</li>
+<li>局部事件触发方法（除了beforeSend外，其他在1.8后被弃用，推荐使用Promise对象的<code>done</code>,<code>fail</code>,<code>always</code>方法）：<ul>
+<li><code>beforeSend:function (XMLHttpRequest,settings) {}</code></li>
+<li><code>success:function (data, textStatus,jqXHR) {...}</code></li>
+<li><code>error:function (jqXHR, textStatus, errorThrown){...}</code></li>
+<li><code>complete:function (jqXHR, textStatus){...}</code></li>
+</ul>
+</li>
+<li>AJAX全局事件：通过事件绑定的方式绑定到元素上（可通过设置<code>global:false</code>来禁用）<ul>
+<li>ajaxStart</li>
+<li>ajaxSend</li>
+<li>ajaxSuccess</li>
+<li>ajaxError</li>
+<li>ajaxComplete</li>
+<li>ajaxStop</li>
+</ul>
+</li>
+<li><p>eg：</p>
+<pre><code class="nulljs">$.ajax({
+  url:<span class="string">"/test"</span>,
+  type:<span class="string">"get"</span>,
+  data:{id:<span class="number">1</span>},
+  beforeSend:<span class="function"><span class="keyword">function</span>(<span class="params">xhr,settings</span>)</span>{
+      $(<span class="string">"#preLoading"</span>).show();
+  }
+}).then(<span class="function"><span class="keyword">function</span>(<span class="params">data, textStatus, jqXHR</span>)</span>{
+  <span class="comment">//success/done</span>
+},<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR, textStatus, errorThrown</span>)</span>{
+  <span class="comment">//error/fail</span>
+});
+</code></pre>
+<pre><code class="nulljs">$.ajax({
+  url:<span class="string">"/test"</span>,
+  type:<span class="string">"post"</span>,
+  data:<span class="built_in">JSON</span>.stringify({id:<span class="number">1</span>}),
+  processData:<span class="literal">false</span>,
+  contentType:<span class="string">"application/json;charset=utf-8"</span>,
+  dataType:<span class="string">"json"</span>,
+  beforeSend:<span class="function"><span class="keyword">function</span>(<span class="params">xhr,settings</span>)</span>{...}
+}).done(<span class="function"><span class="keyword">function</span>(<span class="params">data, textStatus, jqXHR</span>)</span>{
+  <span class="comment">//success</span>
+  ...
+}).fail(<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR, textStatus, errorThrown</span>)</span>{
+  <span class="comment">//error</span>
+  ...
+}).always(<span class="function"><span class="keyword">function</span>(<span class="params">data|jqXHR, textStatus, jqXHR|errorThrown</span>) </span>{
+  <span class="comment">//complete</span>
+  ...
+})
+</code></pre>
+<pre><code class="nulljs">$(<span class="string">"#loading"</span>).bind(<span class="string">"ajaxSend"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+  $(<span class="keyword">this</span>).show();
+}).bind(<span class="string">"ajaxComplete"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+  $(<span class="keyword">this</span>).hide();
+});
+</code></pre>
+<pre><code class="nulljs"><span class="comment">// 禁用全局Ajax事件</span>
+$.ajax({
+  url: <span class="string">"test.html"</span>,
+  global: <span class="literal">false</span>
+  ...
+});
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>注意：</p>
+<p>若返回完整html</p>
+<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">html</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">head</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">title</span>&gt;</span>UserBlocks<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>  <span class="attr">href</span>=<span class="string">"resources/css/base/reset.css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>/&gt;</span> 
+    <span class="tag">&lt;/<span class="name">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">body</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">div</span>&gt;</span>World<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
+
+$(data)=&gt;包装集内容为：
+
+<span class="tag">&lt;<span class="name">title</span>&gt;</span>UserBlocks<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
+<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>  <span class="attr">href</span>=<span class="string">"resources/css/base/reset.css"</span> <span class="attr">media</span>=<span class="string">"screen"</span>/&gt;</span> 
+<span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span>&gt;</span>World<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+</code></pre>
+<p>若返回html片段</p>
+<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span>&gt;</span>World<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+
+$(data)=&gt;包装集内容为：
+
+<span class="tag">&lt;<span class="name">div</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+<span class="tag">&lt;<span class="name">div</span>&gt;</span>World<span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+</code></pre>
+<h2 id="header-27">调用函数</h2>
+<p>不同作用域函数使用</p>
+<ul>
+<li><p><code>call(context,param1,param2,...)</code>，<code>apply(context,[...])</code></p>
+<pre><code class="nulljs">  <span class="keyword">var</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>{
+      <span class="built_in">console</span>.log(arg1+arg2);
+  }
+  sum.call(<span class="keyword">this</span>,<span class="number">1</span>,<span class="number">2</span>);        <span class="comment">//3</span>
+  sum.apply(<span class="keyword">this</span>,[<span class="number">1</span>,<span class="number">2</span>]);    <span class="comment">//3</span>
+  <span class="built_in">console</span>.log(sum.length)    <span class="comment">//2 表示sum函数的参数个数</span>
+</code></pre>
+<pre><code class="nulljs">  <span class="keyword">var</span> showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+      <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);
+  }
+  <span class="keyword">var</span> c={
+      name:<span class="string">"Tom"</span>
+  }
+  <span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name</span>)</span>{
+      <span class="keyword">this</span>.name=name;
+  }
+
+  <span class="comment">//传入不同上下文作用域，结果不同</span>
+  sum.call(c);    <span class="comment">//Tom</span>
+  sum.call(<span class="keyword">new</span> People(<span class="string">"Jerry"</span>));    <span class="comment">//Jerry</span>
+</code></pre>
+</li>
+<li><p><code>$.proxy(func,context)(args)</code>,<code>$.proxy(context,funcName)(args)</code></p>
+<pre><code class="nulljs">  <span class="keyword">var</span> obj = {
+      name: <span class="string">"John"</span>,
+      test: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+          alert( <span class="keyword">this</span>.name );
+          alert(<span class="built_in">arguments</span>);
+      }
+  };
+
+  <span class="comment">//两种方式等效，返回代理函数</span>
+  <span class="keyword">var</span> func=$.proxy( obj, <span class="string">"test"</span> );
+  func=$.proxy( obj.test, obj );
+
+  func();            <span class="comment">//执行：实则执行obj的test函数，能获取this.name</span>
+  obj.test();        <span class="comment">//执行：无法获取this.name</span>
+</code></pre>
+<pre><code class="nulljs">  <span class="keyword">var</span> obj={
+      name:<span class="string">"John"</span>
+  };
+  <span class="keyword">var</span> fn=<span class="function"><span class="keyword">function</span>(<span class="params">color</span>)</span>{
+      alert(<span class="keyword">this</span>.name);
+      alert(color);
+  }
+
+  <span class="comment">//两种方式等效</span>
+  $.proxy(fn,obj)(<span class="string">"red"</span>);        <span class="comment">//John,red</span>
+  fn.call(obj,<span class="string">"red"</span>);            <span class="comment">//John,red</span>
+</code></pre>
+</li>
+</ul>
+<h2 id="header-28">插件</h2>
+<h3 id="header-29"><code>$</code>符号冲突</h3>
+<ul>
+<li>使用<code>jQuery.noConflict()</code><pre><code class="nulljs"><span class="keyword">var</span> $j=jQuery.noConflict();
+$j(<span class="string">"td"</span>).css(<span class="string">"color"</span>,<span class="string">"#f00"</span>);
+</code></pre>
+</li>
+<li>使用闭包<pre><code class="nulljs">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>{
+  $(<span class="string">"td"</span>).css(<span class="string">"color"</span>,<span class="string">"#f00"</span>);
+})(jQuery)
+</code></pre>
+</li>
+</ul>
+<h3 id="header-30"><code>$.fn</code>包装集插件</h3>
+<p>使用<code>$.fn</code>创建包装集插件（jQuery专门定义了<code>jQuery.fn=jQuery.prototype</code>）</p>
+<p>使用举例：</p>
+<p>定义</p>
+<pre><code class="nulljs">$.fn.setColor=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">this</span>.css(<span class="string">"color"</span>,<span class="string">"#0f0"</span>);    <span class="comment">// this为包装集对象</span>
+    <span class="keyword">return</span> <span class="keyword">this</span>;                <span class="comment">//必须返回this （包装集的函数一定要能支持链式结构）</span>
+}
+</code></pre>
+<p>调用</p>
+<pre><code class="nulljs">$(<span class="string">"td"</span>).setColor();
+</code></pre>
+<h3 id="header-31">自定义插件</h3>
+<p>例如：</p>
+<p>自定义JFillContent插件</p>
+<pre><code class="nulljs">(<span class="function"><span class="keyword">function</span>(<span class="params">$</span>)</span>{
+    <span class="comment">//私有构造函数</span>
+    <span class="keyword">var</span> JFillContent=<span class="function"><span class="keyword">function</span>(<span class="params">element,options</span>)</span>{
+        <span class="keyword">this</span>.element=element;
+        <span class="keyword">this</span>.options=options;
+        <span class="keyword">this</span>._init();
+    };
+
+    <span class="comment">//预设值设置</span>
+    JFillContent.Defaults={...};
+
+    <span class="comment">//原型中定义方法，例如：</span>
+    JFillContent.prototype._init=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ...
+    };
+
+    <span class="comment">//原型中定义方法，例如：</span>
+    JFillContent.prototype.fillContent=<span class="function"><span class="keyword">function</span>(<span class="params">optUrl</span>)</span>{
+        ...
+    };
+
+    ...
+    <span class="comment">//定义包装集插件</span>
+    $.fn.jFillContent=<span class="function"><span class="keyword">function</span>(<span class="params">option</span>)</span>{
+        <span class="keyword">var</span> options = $.extend({}, JFillContent.Defaults, <span class="keyword">this</span>.data(), <span class="keyword">typeof</span> option == <span class="string">'object'</span> &amp;&amp; option);
+        <span class="keyword">var</span> instance=<span class="keyword">this</span>.data(<span class="string">'jFillContent'</span>);
+        <span class="keyword">if</span> (!instance) {
+            <span class="keyword">this</span>.data(<span class="string">'jFillContent'</span>,(instance=<span class="keyword">new</span> JFillContent(<span class="keyword">this</span>, options)));
+        }
+        <span class="keyword">if</span> (option === <span class="literal">true</span>) 
+            <span class="keyword">return</span> instance;
+       <span class="keyword">if</span> ($.type(option) === <span class="string">'string'</span>) {
+               <span class="keyword">if</span> ( !$.isFunction( instance[option] ) || option.charAt( <span class="number">0</span> ) === <span class="string">"_"</span> ) {
+                    <span class="keyword">return</span> $.error( <span class="string">"no such method '"</span> + option+<span class="string">"'"</span> );
+            }
+           instance[option]();
+        }
+       <span class="keyword">return</span> <span class="keyword">this</span>;
+    };
+    $.fn.jFillContent.Constructor = JFillContent;
+
+})(jQuery);
+</code></pre>
+<p>使用插件：</p>
+<pre><code class="nulljs">$(<span class="string">"#nav-left"</span>).jFillContent({...});                    <span class="comment">//返回$("#nav-left");</span>
+$(<span class="string">"#nav-left"</span>).jFillContent({...}).trigger(<span class="string">"xxx"</span>);    <span class="comment">//触发方法，等同$("#nav-left").trigger("xxx")</span>
+
+$(<span class="string">"#nav-left"</span>).jFillContent(<span class="literal">true</span>);    <span class="comment">//返回JFillContent对象（从包装集的data中获取，若无，则创建一个新的）</span>
+$(<span class="string">"#nav-left"</span>).jFillContent(<span class="literal">true</span>).fillContent(url);    <span class="comment">//调用jFillContent插件中定义的方法</span>
+</code></pre>
+<h2 id="header-32">优化</h2>
+<p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html">jQuery最佳实践</a>）</p>
+<ul>
+<li>用对选择器，选择器快到慢：<ul>
+<li><code>id/tag选择器&gt;.class选择器&gt;:xxx伪类/[attr]属性选择器</code></li>
+<li><code>parent.find(&#39;xxx&#39;) &gt; parent.children(&quot;xxx&quot;) &gt; $(&#39;#parent .child&#39;)</code></li>
+</ul>
+</li>
+<li>缓存，减少使用<code>$(xxx)</code>生成jQuery对象<ul>
+<li>变量中暂存jQuery对象</li>
+<li>链式写法，jQuery自动缓存每一步的结果</li>
+</ul>
+</li>
+<li>减少DOM结构改动<ul>
+<li>尽量合并改动，减少改动次数</li>
+<li>对于大量操作，推荐先使用<code>detach</code>方法从DOM中分离出，处理完毕后再重新插回文档</li>
+</ul>
+</li>
+<li>事件管理<ul>
+<li>多个对象绑定事件，尽量使用委托处理</li>
+<li>eg: <code>$(document).on(&quot;click&quot;, &quot;td&quot;, function(){...})</code>方式优于<code>$(td).on(&quot;click&quot;,function(){...})</code></li>
+</ul>
+</li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2014/03/01/JQuery.html';	
+		var disqus_title = 'JQuery';
+		var disqus_url = 'http://sixdegree.github.io/2014/03/01/JQuery.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

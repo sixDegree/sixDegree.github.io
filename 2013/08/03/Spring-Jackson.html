@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Spring应用之Jackson</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="spring,mvc,jackson,json,serialize">
+  
+  
+    <meta name="description" content="Jackson Usage in SpringMVC and Hibernate">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">动态过滤属性</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">问题描述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">解决方案</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">单向过滤</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">动态解析</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">SpringMVC中扩展应用</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Spring应用之Jackson</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2013-08-02T16:00:00.000Z">2013-08-03</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+            <a href="/tags.html#tag-Spring">Spring</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <p>加入依赖包：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.jaxrs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-jaxrs-json-provider<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<h2 id="header-1">动态过滤属性</h2>
+<h3 id="header-2">问题描述</h3>
+<p><strong>ISSUE:双向关联对象转JSON问题</strong><br>多对一双向关联后使用org.codehaus.jackson.map.ObjectMapper转json时报org.codehaus.jackson.map.ObjectMapper<br>双向关联后转Json，由于两边都关联，会形成死循环</p>
+<p>例如：父子关系引用</p>
+<table class="table">
+<thead>
+<tr>
+<th>Table</th>
+<th>Class</th>
+<th>Relation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user(name,createDate)</td>
+<td>user(name,createDate,articles)</td>
+<td>oneToMany (One User can post many Articles)</td>
+</tr>
+<tr>
+<td>article(title)</td>
+<td>article(title,user)</td>
+<td>ManyToOne (one Article can be post by one User)</td>
+</tr>
+</tbody>
+</table>
+<p>=&gt; 直接输出肯定是报循环错误</p>
+<h3 id="header-3">解决方案</h3>
+<p><strong>方式一：</strong>在类属性上加入注解<code>@JsonManagedReference</code>,<code>@JsonBackReference</code></p>
+<ul>
+<li>User类中（父）：<pre><code class="nulljava"><span class="meta">@JsonManagedReference</span>
+<span class="function"><span class="keyword">public</span> Set&lt;Article&gt; <span class="title">getArticles</span><span class="params">()</span> </span>{
+  <span class="keyword">return</span> articles;
+}
+</code></pre>
+</li>
+<li>Article类中（子）：<pre><code class="nulljava"><span class="meta">@JsonBackReference</span>
+<span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>{
+    <span class="keyword">return</span> user;
+}
+</code></pre>
+</li>
+<li>Result:<pre><code class="nulljava">UserJson {<span class="string">"name"</span>:<span class="string">"chris"</span>,<span class="string">"createDate"</span>:<span class="string">"2012-04-18"</span>,<span class="string">"articles"</span>:[{<span class="string">"title"</span>:<span class="string">"title"</span>}]}
+ArticleJson {<span class="string">"title"</span>:<span class="string">"title"</span>}
+</code></pre>
+</li>
+</ul>
+<p><strong>方式二：</strong>加在类属性上加入注解<code>@JsonIgnore</code></p>
+<ul>
+<li>User类中（父）：<pre><code class="nulljava"><span class="meta">@JsonIgnore</span>
+<span class="function"><span class="keyword">public</span> Set&lt;ArticleB&gt; <span class="title">getArticles</span><span class="params">()</span> </span>{ 
+     <span class="keyword">return</span> articles; 
+}
+</code></pre>
+</li>
+<li>Result:<pre><code class="nulljava">UserJson {<span class="string">"name"</span>:<span class="string">"chris"</span>,<span class="string">"createDate"</span>:<span class="string">"2014-07-23 11:03:44"</span>}
+ArticleJson {<span class="string">"title"</span>:<span class="string">"title"</span>,<span class="string">"user"</span>:{<span class="string">"name"</span>:<span class="string">"chris"</span>,<span class="string">"createDate"</span>:<span class="string">"2014-07-23 11:03:44"</span>}}
+</code></pre>
+</li>
+</ul>
+<p><strong>方式三：</strong> 在类上加入注解<code>@JsonIgnoreProperties</code></p>
+<ul>
+<li>User类上（父）：<pre><code class="nulljava"><span class="meta">@JsonIgnoreProperties</span>(<span class="string">"articles"</span>)
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>{...}
+</code></pre>
+</li>
+<li>Result(同方式二)</li>
+</ul>
+<p><strong>方式四：</strong><code>@JsonFilter</code> + <code>Jacksons filter</code></p>
+<ul>
+<li>User类上:<pre><code class="nulljava"><span class="meta">@JsonFilter</span> (<span class="string">"myFilter"</span> )
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>{...}
+</code></pre>
+</li>
+<li>测试：<pre><code class="nulljava">String userJson = Jacksons.me().filter(<span class="string">"myFilter"</span> , <span class="string">"articles"</span> ).readAsString(user);
+</code></pre>
+</li>
+<li>Result:<pre><code class="nulljava">UserJson {<span class="string">"name"</span>:<span class="string">"chris"</span>,<span class="string">"createDate"</span>:<span class="string">"2014-07-23 11:08:46"</span>}
+</code></pre>
+</li>
+<li>注意：<ul>
+<li>如果用另外一个没有添加该filter的ObjectMapper解析的话会报错</li>
+<li>如果这个User类已经添加了<code>@JsonFilter(&quot;myFilter&quot;)</code>注解，但在另外一个地方又要解析它并不想过滤name 属性，</li>
+<li>那只能是<code>Jacksons.me().filter(&quot;myFilter&quot;, &quot;&quot;)</code>，然后再读出来</li>
+</ul>
+</li>
+</ul>
+<p><strong>方式五：</strong><code>@JsonIgnoreProperties</code> +<code>Jacksons addMixInAnnotations</code></p>
+<ul>
+<li>添加过滤类：<pre><code class="nulljava"><span class="meta">@JsonIgnoreProperties</span> (<span class="string">"articles"</span> )
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MixInUser</span></span>{}      <span class="comment">// class 或interface都可</span>
+</code></pre>
+</li>
+<li>测试：<pre><code class="nulljava">String mixInUser = Jacksons.me().addMixInAnnotations(User. <span class="class"><span class="keyword">class</span> , <span class="title">MixInUser</span>.<span class="title">class</span> ).<span class="title">readAsString</span>(<span class="title">user</span>)</span>;
+</code></pre>
+</li>
+<li>Result:<pre><code class="nulljava">UserJson {<span class="string">"name"</span>:<span class="string">"chris"</span>,<span class="string">"createDate"</span>:<span class="string">"2014-07-23 11:10:43"</span>}
+</code></pre>
+</li>
+</ul>
+<h3 id="header-4">单向过滤</h3>
+<p>使用<code>@JsonIgnore</code>+<code>@JsonProperty</code></p>
+<p>应用： JsonDeserialize时过滤某属性，JsonSerialize时保留属性</p>
+<pre><code class="nulljava"><span class="meta">@JsonIgnore</span>
+<span class="keyword">private</span> Date createDate;
+<span class="meta">@JsonProperty</span>
+<span class="function"><span class="keyword">public</span> Date <span class="title">getCreateDate</span><span class="params">()</span></span>{
+    <span class="keyword">return</span> <span class="keyword">this</span>.createDate;
+}
+<span class="meta">@JsonIgnore</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreateDate</span><span class="params">(Date createDate)</span></span>{
+    <span class="keyword">this</span>.createDate=createDate;
+}
+</code></pre>
+<h2 id="header-5">动态解析</h2>
+<ul>
+<li><code>@JsonSerialize</code> :  序列化 Object to JsonString</li>
+<li><code>@JsonDeserialize</code>：反序列化 JsonString to Object</li>
+</ul>
+<p>使用举例：</p>
+<ol>
+<li>POJO：<pre><code class="nulljava"> <span class="meta">@Column</span>(name = <span class="string">"evalContent"</span>, nullable = <span class="keyword">false</span>)
+ <span class="meta">@Lob</span>
+ <span class="meta">@JsonSerialize</span>(using=CustomContentSerialize.class)
+ <span class="keyword">public</span> <span class="keyword">byte</span>[] getEvalContent(){
+     <span class="keyword">return</span> <span class="keyword">this</span>.evalContent;
+ }
+ <span class="meta">@JsonDeserialize</span>(using=CustomContentDeserialize.class)
+ <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEvalContent</span><span class="params">(<span class="keyword">byte</span>[] evalContent)</span></span>{
+     <span class="keyword">this</span>.evalContent = evalContent;
+ }
+</code></pre>
+</li>
+<li>Serialize：Read Object to JsonString（CustomContentSerialize: byte[] to String）<pre><code class="nulljava"> public class CustomContentSerialize extends JsonSerializer&lt;byte[]&gt; {
+     @Override
+     public void serialize(byte[] value, JsonGenerator jgen,
+             SerializerProvider provider) throws IOException,
+             JsonProcessingException
+     {
+         System.out.println("CustomContentSerialize------------");
+         String content=new String(value,"UTF-8");
+         /*System.out.println(content);*/
+         jgen.writeString(content);
+     }  
+ }
+</code></pre>
+</li>
+<li>Deserialize：Read JsonString to Object （CustomContentDeserialize: String to byte[]）<pre><code class="nulljava"> public class CustomContentDeserialize extends JsonDeserializer&lt;byte[]&gt; {
+     @Override
+     public byte[] deserialize(JsonParser jp, DeserializationContext ctxt)
+             throws IOException, JsonProcessingException
+     {
+         //System.out.println("CustomContentDeserialize-----------");
+         String content=jp.getText();
+         //System.out.println(content);
+         return content.getBytes("UTF-8");
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-6">SpringMVC中扩展应用</h2>
+<ol>
+<li><p>自定义<code>ObjectMapper</code></p>
+<ul>
+<li>序列化时自动转换时间格式为<code>yyyy-MM-dd HH:mm:ss</code></li>
+<li><p>序列化时对一些特殊字符进行转换（为防止Xss恶意攻击）</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateObjectMapper</span> <span class="keyword">extends</span> <span class="title">ObjectMapper</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>  </span>{
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">293736193275041317L</span>;
+  <span class="function"><span class="keyword">public</span> <span class="title">DateObjectMapper</span><span class="params">()</span> </span>{
+      _serializationConfig = _serializationConfig.with(<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>));
+      <span class="keyword">this</span>.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, <span class="keyword">true</span>);
+      <span class="keyword">this</span>.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, <span class="keyword">false</span>);
+  }
+
+  <span class="keyword">private</span> <span class="keyword">boolean</span> doHtmlXssSerializer=<span class="keyword">false</span>;
+  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isDoHtmlXssSerializer</span><span class="params">()</span></span>{
+      <span class="keyword">return</span> doHtmlXssSerializer;
+  }
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDoHtmlXssSerializer</span><span class="params">(<span class="keyword">boolean</span> doHtmlXssSerializer)</span></span>{
+      <span class="keyword">this</span>.doHtmlXssSerializer = doHtmlXssSerializer;
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>{
+      System.out.println(<span class="string">"doHtmlXssSerializer-----------"</span>);
+      <span class="keyword">if</span>(doHtmlXssSerializer){
+           SimpleModule <span class="keyword">module</span> = <span class="keyword">new</span> SimpleModule(<span class="string">"HTML XSS Serializer"</span>);
+           <span class="keyword">module</span>.addSerializer(<span class="keyword">new</span> JsonHtmlXssSerializer(String.class));
+           <span class="keyword">this</span>.registerModule(<span class="keyword">module</span>);
+      }
+  }
+}
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JsonHtmlXssSerializer</span> <span class="keyword">extends</span> <span class="title">StdSerializer</span>&lt;<span class="title">String</span>&gt;</span>{
+  <span class="function"><span class="keyword">protected</span> <span class="title">JsonHtmlXssSerializer</span><span class="params">(Class&lt;String&gt; t)</span></span>{
+      <span class="keyword">super</span>(t);
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">serialize</span><span class="params">(String value, JsonGenerator jgen,SerializerProvider provider)</span> <span class="keyword">throws</span> IOException,JsonProcessingException</span>{
+      <span class="keyword">if</span> (value != <span class="keyword">null</span>) {
+           String encodedValue=value.replaceAll(<span class="string">"&lt;"</span>, <span class="string">"&amp;lt;"</span>).replaceAll(<span class="string">"&gt;"</span>, <span class="string">"&amp;gt;"</span>);
+           System.out.println(<span class="string">"encodedValue:"</span>+encodedValue);
+           jgen.writeString(encodedValue);
+        }
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Spring MVC 中注入自定义的<code>ObjectMapper</code> （配置<code>xxx-servlet.xml</code>）</p>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- Jackson ObjectMapper --&gt;</span>
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myObjectMapper"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.jackson.MyDateObjectMapper"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serializationInclusion"</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span> <span class="attr">type</span>=<span class="string">"com.fasterxml.jackson.annotation.JsonInclude.Include"</span>&gt;</span>NON_NULL<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"doHtmlXssSerializer"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+ <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">mvc:message-converters</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"</span>&gt;</span>
+             <span class="comment">&lt;!-- 这里注入自定义的ObjectMapper --&gt;</span>
+              <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"objectMapper"</span> <span class="attr">ref</span>=<span class="string">"myObjectMapper"</span>/&gt;</span>
+         <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span>
+
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mediaTypes"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">map</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"json"</span> <span class="attr">value</span>=<span class="string">"application/json"</span>/&gt;</span>
+         <span class="tag">&lt;/<span class="name">map</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewResolvers"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">list</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span> <span class="attr">value</span>=<span class="string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/"</span>/&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span>
+             <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> 
+         <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultViews"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">list</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.json.MappingJackson2JsonView"</span> &gt;</span>
+                 <span class="comment">&lt;!-- 这里注入自定义的ObjectMapper --&gt;</span>
+                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"objectMapper"</span> <span class="attr">ref</span>=<span class="string">"myObjectMapper"</span> /&gt;</span>
+             <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+         <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
+     <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2013/08/03/Spring-Jackson.html';	
+		var disqus_title = 'Spring应用之Jackson';
+		var disqus_url = 'http://sixdegree.github.io/2013/08/03/Spring-Jackson.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

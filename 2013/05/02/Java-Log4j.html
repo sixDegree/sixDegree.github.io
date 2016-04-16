@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>日志（Slf4j+log4j）</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="java,slf4j,log4j,logger">
+  
+  
+    <meta name="description" content="Java Logger Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Slf4j</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Log4j</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">依赖包</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">配置appender</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">配置logger</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">rootLogger</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Logger</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">分离日志</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">后台使用</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">读取配置文件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">获取日志记录器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">插入记录信息</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">在Spring中使用log4j</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">日志（Slf4j+log4j）</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2013-05-01T16:00:00.000Z">2013-05-02</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Slf4j</h2>
+<p>Simple logging facade for Java (简单日记门面)：</p>
+<p>是为各种loging APIs提供一个简单统一的接口<br>在部署时，选择不同的实现包，即可自动转换到不同的日志系统上</p>
+<p><img src="2013-05-01-Java/slf4j.png" alt="Slf4j"></p>
+<h2 id="header-2">Log4j</h2>
+<h3 id="header-3">依赖包</h3>
+<p>使用slf4j + log4j，实现日志管理：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<p>会自动关联依赖slf4j-api-xxx.jar和log4j-xxx.jar</p>
+<h3 id="header-4">配置appender</h3>
+<p>配置日志信息输出目的的</p>
+<pre><code>    log4j.appender.appenderName = appenderClass
+    log4j.appender.appenderName.option1 = value1
+    ...
+    log4j.appender.appenderName.option = valueN
+</code></pre><ul>
+<li>appender class ：<code>implements Appender</code>，eg：<ul>
+<li>org.apache.log4j.ConsoleAppender：控制台</li>
+<li>org.apache.log4j.FileAppender：文件</li>
+<li>org.apache.log4j.DailyRollingFileAppender：每天产生一个日志文件</li>
+<li>org.apache.log4j.RollingFileAppender：文件大小到达指定尺寸的时候产生新文件</li>
+<li>org.apache.log4j.WriterAppender：将日志信息以流格式发送到任意指定的地方</li>
+<li>org.apache.log4j.JDBCAppender：将日志信息保存到数据库中</li>
+</ul>
+</li>
+<li><p>option （使用不同的Appender，option会有所不同，一般公有的option配置项如下）</p>
+<ul>
+<li><code>Threshold</code>：设置此appender的日志输出级别（过滤器，不设置则依据父类中相应的配置）</li>
+<li><code>ImmediateFlush</code>：默认值是true,意谓着所有的消息都会被立即输出</li>
+<li><code>layout</code>：配置日志信息的格式（布局）<pre><code> log4j.appender.appenderName.layout = layoutClass
+ log4j.appender.appenderName.layout.option1 = value1
+ ....
+ log4j.appender.appenderName.layout.option = valueN
+</code></pre><ul>
+<li>layout class： <code>extends Layout</code>，不同layout class，使用不同的可配置项</li>
+<li>例如：使用<code>org.apache.log4j.PatternLayout</code><pre><code>log4j.appender.activiti.layout.ConversionPattern= %p %d | %C{1}.%M | %m%n
+</code></pre><table class="table">
+<thead>
+<tr>
+<th>标识</th>
+<th>含义</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%c</code></td>
+<td>输出所属类的全名,%c{Num} ,Num类名输出的范围</td>
+<td>“com.sun.aaa.classB”, %C{2}将使日志输出输出范围为：aaa.classB</td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td>输出日志时间点的日期或时间，默认格式为ISO8601, 可指定格式</td>
+<td>%d{yyy MMM dd HH：mm：ss，SSS}  2002年10月18日 22：10：28，921</td>
+</tr>
+<tr>
+<td><code>%l</code></td>
+<td>输出日志事件发生位置，包括类目名、发生线程，在代码中的行数</td>
+<td>Testlog4.main（TestLog4.java：10）</td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>换行符</td>
+<td>Windows平台为“rn”，Unix平台为“n”</td>
+</tr>
+<tr>
+<td><code>%m</code></td>
+<td>输出代码中指定信息</td>
+<td>info(“message”),输出message</td>
+</tr>
+<tr>
+<td><code>%p</code></td>
+<td>输出日志的优先级</td>
+<td>即DEBUG，INFO，WARN，ERROR，FATAL</td>
+</tr>
+<tr>
+<td><code>%r</code></td>
+<td>输出从启动到显示该条日志信息所耗费的时间（毫秒数）</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%t</code></td>
+<td>输出产生该日志事件的线程名</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%F</code></td>
+<td>输出日志消息产生时所在的文件名称</td>
+<td></td>
+</tr>
+<tr>
+<td><code>%L</code></td>
+<td>输出代码中的行号</td>
+</tr>
+</tbody>
+</table>
+<strong>PS：</strong>可以在<code>%</code>与模式字符之间加上修饰符来控制其最小宽度、最大宽度、和文本的对齐方式，eg：<code>%-20c</code> 指定输出category的名称最小的宽度是20，左对齐；<code>%.30c</code> 最大的长度是30,大于30的左边多出的字符截掉</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>示例：</p>
+<pre><code>  # 控制台
+  log4j.appender.Stdout=org.apache.log4j.ConsoleAppender
+  log4j.appender.Stdout.layout=org.apache.log4j.PatternLayout
+  log4j.appender.Stdout.layout.ConversionPattern=[QC] %p %C{1}.%M | %m%n
+  log4j.appender.Stdout.Target=System.err        #默认值是System.out
+
+  # 回滚文件
+  log4j.appender.RollingFile=org.apache.log4j.RollingFileAppender
+  log4j.appender.RollingFile.layout=org.apache.log4j.PatternLayout
+  log4j.appender.RollingFile.layout.ConversionPattern=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n
+  log4j.appender.RollingFile.ImmediateFlush=true
+  log4j.appender.RollingFile.Append=true
+  log4j.appender.RollingFile.File=D:/logs/log.log4j
+  log4j.appender.RollingFile.MaxFileSize=200KB
+  log4j.appender.RollingFile.MaxBackupIndex=50
+
+  # 定期回滚日志文件
+  log4j.appender.DailyFile=org.apache.log4j.DailyRollingFileAppender
+  log4j.appender.DailyFile.layout=org.apache.log4j.PatternLayout
+  log4j.appender.DailyFile.layout.ConversionPattern=[R] %p %d | %C{1}.%M | %m%n
+  log4j.appender.DailyFile.File=D:/logs/shuttle/shuttle
+  log4j.appender.DailyFile.DatePattern='.'yyyy-MM-dd'.log'
+
+  # 发送日志到指定邮件
+  log4j.appender.Mail=org.apache.log4j.net.SMTPAppender
+  log4j.appender.Mail.Threshold = ERROR
+  log4j.appender.Mail.layout=org.apache.log4j.PatternLayout
+  log4j.appender.Mail.layout.ConversionPattern=%-4r %-5p [%t] %37c %3x - %m%n
+  log4j.appender.Mail.BufferSize=5
+  log4j.appender.Mail.Subject=ErrorLog
+  log4j.appender.Mail.To=xxx@xxx.com
+  log4j.appender.Mail.From=xxx@xxx.com
+  log4j.appender.Mail.SMTPHost=smtp.xxx.net
+
+  # 数据库
+  log4j.appender.Database=org.apache.log4j.jdbc.JDBCAppender
+  log4j.appender.Database.layout=org.apache.log4j.PatternLayout
+  log4j.appender.Database.layout.ConversionPattern=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n
+  log4j.appender.Database.URL=jdbc:mysql://localhost:3306/test
+  log4j.appender.Database.driver=com.mysql.jdbc.Driver
+  log4j.appender.Database.user=root
+  log4j.appender.Database.password=xxx
+  log4j.appender.Database.sql=INSERT INTO LOG4J (Message) VALUES('=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n')
+</code></pre></li>
+</ul>
+<h3 id="header-5">配置logger</h3>
+<p>定义了appender后，需将appender加入Logger，才可用</p>
+<p>方式一：加入<code>log4j.rootLogger</code> （默认日志）<br>方式二：加入<code>log4j.logger</code> （指定日志）</p>
+<h4 id="header-6">rootLogger</h4>
+<p>设置根日志的级别和输出，是<strong>所有的日志的父类</strong>（相当于默认日志）</p>
+<pre><code>  log4j.rootLogger=[level]，appenderName， ……，
+</code></pre><ul>
+<li><p><code>[level]</code>：日志的级别</p>
+<ul>
+<li>指定这条日志信息的重要性,设置需要输出信息的级别：<code>ALL&lt;DEBUG&lt;INFO&lt;WARN&lt;ERROR&lt;FATAL&lt;OFF</code>，不区分大小写</li>
+<li>一般常用的为 <code>DEBUG</code> ， <code>INFO</code> ，<code>WARN</code> ，<code>ERROR</code>四种，分别对应Logger类的四种方法:<ul>
+<li>debug(Object message ) ;</li>
+<li>info(Object message ) ;</li>
+<li>warn(Object message ) ;</li>
+<li>error(Object message ) ;</li>
+</ul>
+</li>
+<li>若设置级别为INFO，则优先级大于等于INFO级别的日志信息可以被输出</li>
+</ul>
+</li>
+<li><p><code>appenderName</code>：日志信息输出目的地</p>
+<ul>
+<li>比如打印到控制台，输出到文件等</li>
+<li>同一条日志信息可以配置多个输出目的地</li>
+</ul>
+</li>
+<li>例如： <code>log4j.rootLogger = info,stdout,F</code></li>
+</ul>
+<h4 id="header-7">Logger</h4>
+<p>例如：</p>
+<p>log4j.properties</p>
+<pre><code># appender
+log4j.appender.test1=org.apache.log4j.FileAppender
+log4j.appender.test1.File=${myweb.root}/WEB-INF/log/test1.log
+log4j.appender.test1.layout=org.apache.log4j.PatternLayout
+log4j.appender.test1.layout.ConversionPattern=%d %p [%c] - %m%n
+
+# logger
+log4j.logger.myTest1= info, test1
+</code></pre><p>Test:</p>
+<pre><code class="nulljava"><span class="meta">@Test</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogger</span><span class="params">()</span></span>{
+    Log logger = LogFactory.getLog(<span class="string">"myTest1"</span>);
+    logger.info(<span class="string">"xxxx"</span>);
+}
+</code></pre>
+<h4 id="header-8">分离日志</h4>
+<p>在log4j中子日志输出，父日志也会相应的输出代码，可通过配置<code>additivity</code>分离日志</p>
+<pre><code>log4j.additivity.loggerName=false    # 所需的内容从原有日志中分离，默认为true
+</code></pre><p>（<strong>PS：</strong> <code>additivity</code>的作用在于 children-logger是否使用顶层或父层的的配置)</p>
+<p>示例：</p>
+<p>log4j.properties:</p>
+<pre><code>log4j.rootLogger=debug,test
+
+# appender: test
+log4j.appender.test=org.apache.log4j.FileAppender
+log4j.appender.test.File=D://output/test.log
+log4j.appender.test.layout=org.apache.log4j.PatternLayout
+log4j.appender.test.layout.ConversionPattern=%d %p [%c] - %m%n
+
+# appender: test1
+log4j.appender.test1=org.apache.log4j.FileAppender
+log4j.appender.test1.File=D://output/test1.log
+log4j.appender.test1.layout=org.apache.log4j.PatternLayout
+log4j.appender.test1.layout.ConversionPattern=%d %p [%c] - %m%n
+
+# appender: test2
+log4j.appender.test2=org.apache.log4j.FileAppender
+log4j.appender.test2.File=D://output/test2.log
+log4j.appender.test2.layout=org.apache.log4j.PatternLayout
+log4j.appender.test2.layout.ConversionPattern=%d %p [%c] - %m%n
+log4j.appender.test2.Threshold = warn
+
+# appender: test3
+log4j.appender.test3=org.apache.log4j.FileAppender
+log4j.appender.test3.File=D://output/test3.log
+log4j.appender.test3.layout=org.apache.log4j.PatternLayout
+log4j.appender.test3.layout.ConversionPattern=%d %p [%c] - %m%n
+
+
+# logger
+log4j.logger.myTest1= info, test1
+
+log4j.logger.myTest2= info, test2
+log4j.additivity.myTest2 = false
+</code></pre><p>Test：</p>
+<pre><code class="nulljava">Logger logger=Logger.getLogger(<span class="keyword">this</span>.getClass());
+logger.debug(<span class="string">"Debug Message"</span>);
+logger.info(<span class="string">"Info Message"</span>);
+
+
+Logger logger1=Logger.getLogger(<span class="string">"myTest1"</span>);
+logger1.debug(<span class="string">"Debug Message-1"</span>);
+logger1.info(<span class="string">"Info Message-1"</span>);
+
+
+Logger logger2=Logger.getLogger(<span class="string">"myTest2"</span>);
+logger2.debug(<span class="string">"Debug Message-2"</span>);
+logger2.info(<span class="string">"Info Message-2"</span>);
+logger2.warn(<span class="string">"Warn Message-2"</span>);
+</code></pre>
+<p>Result：</p>
+<pre><code>test.log：
+使用class的logger输出信息（debug级别及以上）
+使用myTest1的logger输出信息（info级别及以上）
+不包含使用myTest2的logger输出信息 （因为additivity设置为false）
+
+test1.log:
+使用myTest1的logger输出信息（info级别及以上）
+
+test2.log:
+使用myTest2的logger输出信息（warn级别及以上，因为Threshold设置为warn，且logger中设置的为info，info&lt;warn）
+
+test3.log 不生成 （因为没有被加入到logger中，且rootLogger中也没有加入）
+</code></pre><h3 id="header-9">后台使用</h3>
+<h4 id="header-10">读取配置文件</h4>
+<pre><code class="nulljava">#自动快速地使用缺省Log4j环境:log4j.properties
+BasicConfigurator.configure();
+
+#读取使用Java的特性文件编写的配置文件
+PropertyConfigurator.configure(String configFilename) ;
+
+# 读取XML形式的配置文件
+DOMConfigurator.configure(String filename);
+</code></pre>
+<h4 id="header-11">获取日志记录器</h4>
+<pre><code class="nulljava"><span class="comment">//使用Log4j获得logger对象</span>
+Logger logger = Logger.getLogger(xxx);
+
+<span class="comment">//使用Slf4J获得logger对象</span>
+ Logger logger = LoggerFactory.getLogger(xxx);
+</code></pre>
+<h4 id="header-12">插入记录信息</h4>
+<pre><code class="nulljava">Logger.debug ( Object message ) ;
+Logger.info ( Object message ) ;
+Logger.warn ( Object message ) ;
+Logger.error ( Object message ) ;
+</code></pre>
+<h3 id="header-13">在Spring中使用log4j</h3>
+<ol>
+<li><p>配置web.xml (在Spring配置基础上)，也可什么都不配，使用默认的即可</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>log4jConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:log4j.properties<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
+
+ <span class="comment">&lt;!-- 3000表示 开一条watchdog线程每60秒扫描一下配置文件的变化;这样便于日志存放位置的改变 --&gt;</span>
+ <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>log4jRefreshInterval<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>3000<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">listener</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.util.Log4jConfigListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>  
+ <span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Bean中使用</p>
+<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SystemAnnualTask</span>
+ </span>{
+     <span class="comment">//log4j获取Logger</span>
+     <span class="comment">//static Logger logger = Logger.getLogger(SystemAnnualTask.class);</span>
+     <span class="comment">//通过slf4j获取Logger</span>
+     <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(SystemAnnualTask.class);
+
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnnualProcess</span><span class="params">()</span></span>{
+         ...
+         logger.info(xxx);
+         <span class="comment">//这里增加判断，提高效率（可不判断，直接调用）</span>
+         <span class="keyword">if</span> (logger.isDebugEnabled()){
+             logger.debug(xxx);
+         }
+         <span class="comment">//若使用Slf4j，则可如下使用：</span>
+         logger.info(<span class="string">"{} is {}"</span>, <span class="keyword">new</span> String[]{“x<span class="string">",“y"</span>});
+         ...
+     }
+ }
+</code></pre>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2013/05/02/Java-Log4j.html';	
+		var disqus_title = '日志（Slf4j+log4j）';
+		var disqus_url = 'http://sixdegree.github.io/2013/05/02/Java-Log4j.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

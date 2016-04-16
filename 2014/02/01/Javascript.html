@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Javascript类与对象</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="javascript,object,prototype">
+  
+  
+    <meta name="description" content="Javascript Class and Object Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">类</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">继承</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">闭包</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Javascript类与对象</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2014-01-31T16:00:00.000Z">2014-02-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Javascript">Javascript</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <p>Javascript中本身没有“类”，“实例”，“继承”的概念</p>
+<p>可通过<code>new Object()</code>或<code>json方式</code>创建一个对象</p>
+<p>下面介绍</p>
+<ul>
+<li>使用原型和构造函数模拟类，创建对象</li>
+<li>使用原型链和伪装函数组合模拟继承，创建子对象</li>
+</ul>
+<h3 id="header-1">类</h3>
+<p>使用<code>function</code>,<code>prototype</code>和<code>constructor</code>模拟<br>（参考<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">Javascript继承机制的设计思想</a>）</p>
+<ul>
+<li><code>function Xxx(args){...}</code><ul>
+<li>构造函数<ul>
+<li>通过<code>this.名称</code>设置实例对象不需要共享的属性和方法（this代表新创建的实例对象）</li>
+</ul>
+</li>
+<li>内置了一个<code>prototype属性</code>，指向一个<code>prototype对象</code><ul>
+<li>通过<code>Xxx.prototype.名称</code>设置此<code>prototype对象</code>中存放实例对象需要共享的属性和方法</li>
+<li>任何一个<code>prototype对象</code>都有一个<code>constructor属性</code>，指向它的构造函数</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>调用<code>new 构造函数(args)</code>从<code>prototype对象</code>生成一个实例对象<ul>
+<li>实例对象的属性和方法，分成本地的和继承自prototype对象的</li>
+<li>所有的实例对象共享同一个<code>prototype对象</code></li>
+<li>每一个实例有一个<code>_prop_</code>属性，指向<code>prototype对象</code></li>
+</ul>
+</li>
+</ul>
+<p>定义类：</p>
+<pre><code class="nulljs"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>{}
+Person.prototype={
+    <span class="keyword">constructor</span>:Person,
+    name:"leon",
+    age:22,
+    say:function(){
+        alert(<span class="keyword">this</span>.name+<span class="string">" "</span>+<span class="keyword">this</span>.age);
+    }
+}
+</code></pre>
+<ul>
+<li><code>function Person</code>中有一个<code>prototype属性</code>，指向<code>Person prototype对象</code></li>
+<li><code>Person prototype对象</code>中有一个<code>constructor属性</code>，指向<code>function Person</code></li>
+<li>所以可以通过<code>new Person()</code>创建对象</li>
+<li>注意：使用<code>json</code>方式构建prototype，需手动指定constructor，若不写，则默认指向Object</li>
+<li>原型内存模型：<br>  <img src="/2014/02/01/prototype-1.png" alt="Prototype"></li>
+</ul>
+<p>创建对象，并测试：</p>
+<pre><code class="nulljs"><span class="keyword">var</span> p1=<span class="keyword">new</span> Person();
+p1.say();        <span class="comment">// leon 22</span>
+
+<span class="keyword">var</span> p2=<span class="keyword">new</span> Person();
+p2.name=<span class="string">"Ada"</span>;
+
+p1.say();    <span class="comment">// leon 22</span>
+p2.say();    <span class="comment">// Ada 22</span>
+</code></pre>
+<ul>
+<li>通过<code>new Person()</code>创建的对象会有一个<code>_prop_</code>属性，指向<code>Person prototype对象</code></li>
+<li>使用<code>对象.xxx</code>访问对象属性或方法时<ul>
+<li>先在对象内查找调用</li>
+<li>若对象内没有，就会通过<code>_prop属性</code>去<code>Person prototype对象</code>中查找</li>
+<li>eg：<ul>
+<li><code>p1.name</code> 返回<code>leon</code> （<code>Person prototype对象</code>中的值）</li>
+<li><code>p2.name</code> 返回<code>Ada</code>（p2对象定义的值）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>注意：这个<code>_prop_</code>属性外部是不能访问的</li>
+</ul>
+</li>
+<li>原型内存模型：<br>  <img src="/2014/02/01/prototype-2.png" alt="Prototype"></li>
+</ul>
+<p>检测对象：</p>
+<pre><code class="nulljs">Person.prototype.isPrototypeOf(p1);        <span class="comment">//true</span>
+p1.hasOwnProperty(<span class="string">"name"</span>);                <span class="comment">//false</span>
+<span class="comment">//检测某个属性是否在对象中（对象空间或原型空间）</span>
+alert(<span class="string">"name"</span> <span class="keyword">in</span> p1);                            <span class="comment">//true</span>
+alert(<span class="string">"address"</span> <span class="keyword">in</span> p2);                        <span class="comment">//false</span>
+
+Person.prototype.isPrototypeOf(p2);        <span class="comment">//true</span>
+p2.hasOwnProperty(<span class="string">"name"</span>);                <span class="comment">//true</span>
+
+<span class="keyword">for</span>(<span class="keyword">var</span> prop <span class="keyword">in</span> p1) { alert(<span class="string">"p1["</span>+prop+<span class="string">"]="</span>+p1[prop]); }
+</code></pre>
+<ul>
+<li><code>isPrototypeOf()</code>：判断某个proptotype对象和某个实例之间的关系</li>
+<li><code>hasOwnProperty()</code>：判断某一个属性是否是本地属性</li>
+<li><code>in</code>运算符<ul>
+<li>判断某个实例是否含有某属性，不管是不是本地属性</li>
+<li>还可以用来遍历某个对象的所有属性</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意：</strong></p>
+<p>若在<code>Person prototype对象</code>中定义的属性为引用类型，可能会影响到其他对象获取的值，例如：</p>
+<pre><code class="nulljs">Person.prototype.firends=[<span class="string">"Tom"</span>,<span class="string">"Jerry"</span>];
+p1.friends.push(<span class="string">"LiLi"</span>);
+<span class="built_in">console</span>.log(p1.friends);    <span class="comment">//["Tom","Jerry","LiL"];</span>
+<span class="built_in">console</span>.log(p2.friends);    <span class="comment">//["Tom","Jerry","LiL"];</span>
+</code></pre>
+<p>建议在construct中定义属性，在prototype中定义方法：</p>
+<pre><code class="nulljs"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>{
+    <span class="keyword">this</span>.friends=[<span class="string">"Tom"</span>,<span class="string">"Jerry"</span>];
+}
+Person.prototype={
+    <span class="keyword">constructor</span>:Person,
+    ...
+}
+</code></pre>
+<h3 id="header-2">继承</h3>
+<p>父类：</p>
+<pre><code class="nulljs"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>)</span>{
+    <span class="keyword">this</span>.name=name;
+    <span class="keyword">this</span>.color=[<span class="string">"red"</span>,<span class="string">"blue"</span>];
+}
+Parent.prototype={
+    <span class="keyword">constructor</span>:Person,
+    ps:function(){
+        alert(<span class="keyword">this</span>.name+<span class="string">" "</span>+<span class="keyword">this</span>.color);
+    }
+}
+</code></pre>
+<p>子类：</p>
+<pre><code class="nulljs"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name,age</span>)</span>{
+    <span class="comment">//调用父类构造方法，构造子类属性</span>
+    Parent.call(<span class="keyword">this</span>);
+    <span class="keyword">this</span>.age=age;
+}
+
+<span class="comment">//使用原型链继承，让Child prototype指向Parent对象</span>
+Child.prototype=<span class="keyword">new</span> Parent();
+Child.prototype.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    alert(<span class="keyword">this</span>.name+<span class="string">" "</span>+<span class="keyword">this</span>.age+<span class="string">" "</span>+<span class="keyword">this</span>.color);
+}
+</code></pre>
+<p>创建对象，并测试：</p>
+<pre><code class="nulljs"><span class="keyword">var</span> c1=<span class="keyword">new</span> Child(<span class="string">"leon"</span>,<span class="number">22</span>);
+<span class="keyword">var</span> c2=<span class="keyword">new</span> Child(<span class="string">"Ada"</span>,<span class="number">23</span>);
+
+c1.color.push(<span class="string">"green"</span>);
+c1.ps();        <span class="comment">// leon ["red","blue","green"]</span>
+c1.say();      <span class="comment">// leon 22 ["red","blue","green"]</span>
+
+c2.ps();        <span class="comment">// Ada ["red","blue"]</span>
+c2.say();      <span class="comment">// Ada 23 ["red","blue"]</span>
+</code></pre>
+<p>内存模型：</p>
+<p><img src="/2014/02/01/prototype-3.png" alt="Prototype"></p>
+<h3 id="header-3">闭包</h3>
+<p>定义的函数：</p>
+<ul>
+<li>使用<code>function xxx(){...}</code>（会先被初始化）：<pre><code class="nulljs">  fn();
+  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>{
+      ...
+  }
+</code></pre>
+</li>
+<li>使用<code>var xxx=function(){...}</code>：<pre><code class="nulljs">  fn2();        <span class="comment">// 会报错</span>
+  <span class="keyword">var</span> fn2=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+      ...
+  }
+</code></pre>
+</li>
+</ul>
+<p>闭包：</p>
+<p>通过返回函数来扩大函数的作用域的方式</p>
+<pre><code class="nulljs"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>{
+    ...
+    return <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        ...
+    }
+}
+</code></pre>
+<p>创建匿名函数并调用（建议这样放入全局变量，控制在一个作用域中）：</p>
+<pre><code class="nulljs">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="comment">//...</span>
+})()
+</code></pre>
+<p>使用举例：</p>
+<p>类中设置私有变量（即没有<code>this.xxx</code>定义，无法通过<code>对象.xxx</code>获取和更改）</p>
+<pre><code class="nulljs"><span class="keyword">var</span> Person;
+<span class="comment">//调用匿名函数（在匿名函数中进行类和私有变量的定义）</span>
+(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">var</span> name=<span class="string">""</span>;    <span class="comment">//在此匿名函数外部无法获取，且在函数结束时销毁</span>
+    Person=<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>{
+        name=name;
+    };
+    Person.prototyep.setName=<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>{
+        name=name;
+    };
+    Person.prototype.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="keyword">return</span> name;
+    }
+})();
+</code></pre>
+<p>测试：</p>
+<pre><code class="nulljs"><span class="keyword">var</span> p1=<span class="keyword">new</span> Person(<span class="string">"Tom"</span>);
+p1.getName();                <span class="comment">//Tom</span>
+p1.setName(<span class="string">"Lucy"</span>);
+p1.getName();                <span class="comment">//Lucy</span>
+<span class="comment">//p1.name为undefined，无法获取到</span>
+</code></pre>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2014/02/01/Javascript.html';	
+		var disqus_title = 'Javascript类与对象';
+		var disqus_url = 'http://sixdegree.github.io/2014/02/01/Javascript.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

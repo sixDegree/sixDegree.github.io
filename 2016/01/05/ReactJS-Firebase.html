@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ReactJS高阶之Firebase</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="reactJs,firebase,reactFire">
+  
+  
+    <meta name="description" content="using firebase in reactJS by reactFire">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">直接使用firebase库</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">通过reactFire使用firebase （在React中）</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">ReactJS高阶之Firebase</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2016-01-04T16:00:00.000Z">2016-01-05</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-ReactJs">ReactJs</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <p>FireBase 提供实时数据云服务 <a href="https://www.firebase.com/docs/web/quickstart.html">Doc</a></p>
+<p><strong>直接上示例：</strong></p>
+<p><img src="/2016/01/05/firebase.PNG" alt="my firebase"><br>（下面示例使用的firebase结构）</p>
+<h3 id="header-1">直接使用firebase库</h3>
+<pre><code class="nullvim">&gt; npm install firebase --save
+
+//或前端使用，直接从CDN获取
+&lt;script src=<span class="string">"https://cdn.firebase.com/js/client/2.4.0/firebase.js"</span>&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="nulljavascript"><span class="keyword">var</span> Firebase=<span class="built_in">require</span>(<span class="string">"firebase"</span>);
+<span class="keyword">var</span> DB_URL=<span class="string">"https://&lt;YOUR-FIREBASE-APP&gt;.firebaseio.com/"</span>;
+<span class="keyword">var</span> Fb=<span class="keyword">new</span> Firebase(DB_URL);
+
+<span class="comment">/*
+设置数据，可参考：https://www.firebase.com/docs/web/guide/saving-data.html
+set(),update(),push(),transaction( )
+push() function that generates a unique ID, or key, for each new child
+*/</span>
+<span class="comment">//username is key</span>
+Fb.child(<span class="string">"users"</span>).child(username).set({username:xxx,password:xxx});
+Fb.child(<span class="string">"users"</span>).child(username).update({password:xxx});
+
+<span class="comment">//generate a uniqueID as key</span>
+<span class="keyword">var</span> usersRef=Fb.child(<span class="string">"users"</span>).push();
+<span class="keyword">var</span> id=usersRef.key();
+usersRef.push({username:xxx,password:xxx});
+
+<span class="comment">/*
+获取数据，可参考https://www.firebase.com/docs/web/guide/retrieving-data.html
+Get:
+    on('value',function(snapshot){xxxx})
+    once('value',function(snapshot){xxxx})
+Query:
+    orderByChild("xxx"),orderByKey(),orderByValue(),orderByPriority()
+    limitToLast(count),limitToFirst(count)
+    startAt(xxx),endAt(xxx),equalTo(xxx)
+*/</span>
+Fb.child(<span class="string">"users"</span>).child(username).once(<span class="string">'value'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">snapshot</span>)</span>{
+    <span class="built_in">console</span>.log(snapshot.key());
+    <span class="built_in">console</span>.log(snapshot.val());
+    <span class="keyword">if</span>(snapshot.exists())
+        <span class="built_in">console</span>.log(snapshot.child(<span class="string">"password"</span>).val());
+});
+</code></pre>
+<h3 id="header-2">通过reactFire使用firebase （在React中）</h3>
+<pre><code class="nulljavascript"><span class="keyword">var</span> ReactFire=<span class="built_in">require</span>(<span class="string">"reactfire"</span>);
+<span class="keyword">var</span> Firebase=<span class="built_in">require</span>(<span class="string">"firebase"</span>);
+</code></pre>
+<pre><code class="nulljavascript"><span class="comment">// Component中：</span>
+componentWillMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"Question Will Mount..."</span>);
+    <span class="keyword">this</span>.fb=<span class="keyword">new</span> Firebase(rootUrl+<span class="string">"questions/"</span>);
+    <span class="keyword">this</span>.bindAsArray(<span class="keyword">this</span>.fb,<span class="string">"questions"</span>);        <span class="comment">// =&gt; this.state.questions（当有变化时自动转换为数组，且调用this.setState({questions:xxx})； ）</span>
+    <span class="keyword">this</span>.fb.on(<span class="string">"value"</span>,<span class="keyword">this</span>.loadDataHandler);
+},
+loadDataHandler:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"Data Loaded"</span>);
+},
+addNewQuestion:<span class="function"><span class="keyword">function</span>(<span class="params">newQuestion</span>)</span>{
+    <span class="comment">//this.firebaseRefs.questions.push(newQuestion);</span>
+    <span class="keyword">this</span>.fb.push(newQuestion);
+    <span class="keyword">this</span>.setState({newQuestion:newQuestion});
+},
+voteUpdate:<span class="function"><span class="keyword">function</span>(<span class="params">questionId,voteCount</span>)</span>{
+    <span class="keyword">this</span>.fb.child(questionId).update({voteCount:voteCount});
+},
+removeItem:<span class="function"><span class="keyword">function</span>(<span class="params">question</span>)</span>{
+    <span class="keyword">this</span>.fb.child(question[<span class="string">".key"</span>]).remove();
+}
+</code></pre>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2016/01/05/ReactJS-Firebase.html';	
+		var disqus_title = 'ReactJS高阶之Firebase';
+		var disqus_url = 'http://sixdegree.github.io/2016/01/05/ReactJS-Firebase.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

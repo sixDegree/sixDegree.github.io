@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>NodeJS</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="npm,stream,event,module,express,middleware,route,socket.io">
+  
+  
+    <meta name="description" content="NodeJS Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">npm</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">HelloWorld</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Events</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Streams</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Modules</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Express</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Middleware</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Route Instances</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Request Params</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">常用module</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">body parser</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">formidable</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">session</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">view engine</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">Socket.io</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">NodeJS</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2015-02-28T16:00:00.000Z">2015-03-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-NodeJs">NodeJs</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<blockquote>
+<p>Allows you to build scalable network applications using JavaScript on the server-side.</p>
+</blockquote>
+<p>Node.js：</p>
+<ul>
+<li>用JavaScript编写服务端程序</li>
+<li><code>V8</code>引擎</li>
+<li>采用<code>单线程</code>+<code>非阻塞IO</code>的方式（以<code>事件</code>的方式通知<code>回调函数</code>）达到并行的目的（高吞吐量，充分利用CPU资源）</li>
+<li>适合场景：<ul>
+<li>数据密集型（大量读取数据文件）</li>
+<li>实时交互系统</li>
+</ul>
+</li>
+<li>不适合场景：<ul>
+<li>计算量大</li>
+<li>逻辑太复杂</li>
+</ul>
+</li>
+</ul>
+<p>nodeJS 本身并没有根目录的概念，并不能读取某个文件夹的静态文件，只能一个文件一个文件的运行<br>nodeJS 自身封装了一些模块，使用require(moduleName)引用<br>nodeJS 本身不具备路由功能，服务跑起来后，不管地址栏添加任何path，结果都不变</p>
+<h3 id="header-2">npm</h3>
+<p>npm （Node Package Manager）</p>
+<ul>
+<li>node包管理和分发工具，node自动安装</li>
+<li>能很快找到特定服务需要的包，下载安装管理</li>
+</ul>
+<pre><code>-g 表示全局，不加-g，则安装在当前目录的node_modules下
+&gt; npm install -g xxx
+
+下载包并记录在package.json文件中的devDependencies下
+&gt; npm install xxx --save-dev
+
+下载包并记录在package.json文件中的dependencies下
+&gt; npm install xxx --save
+
+下载指定version    
+&gt; npm install xxx@version
+
+卸载node模块
+&gt; npm uninstall moudleName
+
+更新node模块
+&gt; npm update moduleName
+</code></pre><pre><code>根据当前目录下的package.json文件中声明的内容安装（dependencies的内容）
+&gt; npm install
+
+初始化（会引导你创建一个package.json文件）
+&gt; npm init
+</code></pre><pre><code>查看当前目录下已安装的node包
+&gt; npm list
+
+查看当前包的安装路径
+&gt; npm root
+
+查看全局的包的安装路径
+&gt; npm root -g
+
+查看npm安装的版本
+&gt; npm -v
+</code></pre><h3 id="header-3">HelloWorld</h3>
+<p>nodeTest/01.js:</p>
+<pre><code class="nulljs"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">'http'</span>);
+http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request,response</span>)</span>{
+    <span class="built_in">console</span>.log(request.url);
+    res.writeHead(<span class="number">200</span>,{<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>});
+    res.end(<span class="string">'Hello world'</span>);
+}).listen(<span class="number">1337</span>);
+<span class="built_in">console</span>.log(<span class="string">'Listening on port 1337'</span> );
+</code></pre>
+<p>执行：</p>
+<pre><code>&gt; node nodeTest/01.js
+</code></pre><p>浏览器中访问：<code>http://localhost:1337</code>,<code>http://localhost:1337/123</code>查看效果</p>
+<h3 id="header-4">Events</h3>
+<pre><code class="nulljs"><span class="keyword">var</span> EventEmitter=<span class="built_in">require</span>(<span class="string">'events'</span>).EventEmitter;
+<span class="keyword">var</span> logger=<span class="keyword">new</span> EventEmitter();
+
+<span class="comment">//绑定事件</span>
+logger.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">'Err:'</span>+msg);
+});
+
+<span class="comment">//触发事件</span>
+logger.emit(<span class="string">'error'</span>,<span class="string">'Wrong number'</span>);
+logger.emit(<span class="string">'error'</span>,<span class="string">'Unknow cmd'</span>);
+</code></pre>
+<p>Node里面的许多对象都会emit事件<br>例如：<br><code>class http.Server</code>是一个<code>EventEmitter</code>，当有一个<code>request</code>时，就会通知绑定的<code>function(request,response){...}</code>执行</p>
+<pre><code class="nulljs">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request,response</span>)</span>{...});
+
+<span class="comment">//等价于：</span>
+<span class="keyword">var</span> server=http.createServer();
+server.on(<span class="string">'request'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">request,response</span>)</span>{...});
+</code></pre>
+<h3 id="header-5">Streams</h3>
+<p>Stream可分为：</p>
+<ul>
+<li>readable<ul>
+<li>事件<ul>
+<li>readable</li>
+<li>data</li>
+<li>end</li>
+<li>close</li>
+<li>error</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>read</li>
+<li>pause</li>
+<li>resume</li>
+<li>pipe</li>
+<li>unpipe</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>writeable<ul>
+<li>事件<ul>
+<li>drain</li>
+<li>finish</li>
+<li>pipe</li>
+<li>unpipe</li>
+</ul>
+</li>
+<li>方法<ul>
+<li>write</li>
+<li>end</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>readable &amp; writeable</li>
+</ul>
+<p>例如1：</p>
+<pre><code class="nulljs">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request,response</span>)</span>{
+    response.writeHead(<span class="number">200</span>);
+    request.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>{
+        response.write(chunk);
+    });
+    request.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        response.end();
+    })
+}).listen(<span class="number">8080</span>)
+</code></pre>
+<p>等同于：</p>
+<pre><code class="nulljs">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request,response</span>)</span>{
+    response.writeHead(<span class="number">200</span>);
+    request.pipe(response)
+}).listen(<span class="number">8080</span>)
+</code></pre>
+<ul>
+<li><code>request</code>为readable stream</li>
+<li><code>response</code>为writable stream</li>
+<li>测试：<pre><code>  &gt; curl -d 'hello' http://localhost:8080`
+  &gt; curl --upload-file readme.md http://localhost:8080`
+</code></pre></li>
+</ul>
+<p>例如2：</p>
+<pre><code class="nulljs">readStream.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>{
+    <span class="keyword">var</span> buffer_good =writeStream.write(chunk);    <span class="comment">//返回true/false，表明数据是否被写入目标了</span>
+    <span class="keyword">if</span> (!buffer_good)                <span class="comment">//为false，表示数据临时放在了缓存，而未写入目标</span>
+        readStream.pause();        <span class="comment">//暂停读取</span>
+});
+writeStream.on(<span class="string">'drain'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    readStream.resume();            <span class="comment">//恢复读取</span>
+})
+</code></pre>
+<p>等同于：</p>
+<pre><code class="nulljs"><span class="comment">//pipe可以解决当延迟非常大时导致的读写不平衡问题</span>
+readStream.pipe(writeStream);
+</code></pre>
+<h3 id="header-6">Modules</h3>
+<ul>
+<li>定义一个Module：<code>module.exports=xxx</code></li>
+<li>调用自定义Module：<code>require(path)</code> 使用相对路径或绝对路径</li>
+<li>调用外部的Module：<code>require(moduleName)</code> 会从当前目录逐层往上搜索<code>node_modules</code>目录</li>
+</ul>
+<p>示例：</p>
+<p>makeRequest.js</p>
+<pre><code class="nulljs"><span class="keyword">var</span> http=<span class="built_in">require</span>(<span class="string">'http'</span>);
+<span class="built_in">module</span>.exports=<span class="function"><span class="keyword">function</span>(<span class="params">opts,message</span>)</span>{
+    <span class="keyword">var</span> request=http.request(opts,<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>{
+        response.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{
+            <span class="built_in">console</span>.log(data);
+        });
+        request.write(message);
+        request.end();
+    })
+}
+</code></pre>
+<p>调用</p>
+<pre><code class="nulljs"><span class="keyword">var</span> makeRequest=<span class="built_in">require</span>(<span class="string">'./makeRequest'</span>);
+markeRequest({host:<span class="string">'localhost'</span>,<span class="string">'port'</span>:<span class="number">8080</span>,path:<span class="string">'/'</span>,method:<span class="string">'POST'</span>},<span class="string">"Hello world!"</span>);
+</code></pre>
+<h2 id="header-7">Express</h2>
+<p><a href="http://www.expressjs.com.cn/4x/api.html">Express.js框架</a>: 极大的简化了nodeJS开发</p>
+<pre><code>&gt; npm install express
+</code></pre><pre><code class="nulljs"><span class="keyword">var</span> express=<span class="built_in">require</span>(<span class="string">'express'</span>);
+<span class="keyword">var</span> app=express();
+
+...
+
+app.listen(<span class="number">1337</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"Listen on port 1337"</span>);
+});
+</code></pre>
+<h3 id="header-8">Middleware</h3>
+<p>一个Express应用，从本质上来说，就是一系列中间件的调用</p>
+<p><img src="/2015/03/01/middleware.png" alt="Middleware"></p>
+<ul>
+<li><p>中间件就是一函数，形式如下：</p>
+<pre><code class="nulljs"><span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+  ...
+  <span class="comment">//next(); or next(xxx); or response.xxx</span>
+}
+</code></pre>
+<pre><code class="nulljs"><span class="comment">//错误处理的中间件</span>
+<span class="function"><span class="keyword">function</span>(<span class="params">err, req, res, next</span>)</span>{
+  ...
+  <span class="comment">//err.status,err.message</span>
+}
+</code></pre>
+<ul>
+<li>request<ul>
+<li>query string：<code>request.query.xxx</code></li>
+<li>placeholder in url：<code>request.params.xxx</code></li>
+</ul>
+</li>
+<li>response<ul>
+<li>response.send(xxx),response.json(xxx),response.sendFile(xxx)</li>
+<li>response.status(xxx), response.status(xxx).json(xxx)</li>
+<li>response.render(xxx)</li>
+<li>response.redirect(xxx)</li>
+</ul>
+</li>
+<li>next<ul>
+<li>next()表示传递给下一个中间件进行处理</li>
+<li>如果带参数，则代表抛出一个错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注册中间件</p>
+<ul>
+<li><code>app.use([path], [function, ...] function)</code></li>
+<li><code>app.METHOD([path], [function, ...] function)</code> （METHOD可为get,post,put,delete,all,param等）</li>
+</ul>
+</li>
+</ul>
+<p>使用举例1：Express的static middleware</p>
+<ul>
+<li>项目目录结构：<pre><code>  nodeTest
+  - app.js
+  - public/
+      - blocks.jpg
+      - index.html
+</code></pre></li>
+<li>使用static middleware<pre><code class="nulljs">  app.use(express.static(<span class="string">'public'</span>));
+</code></pre>
+</li>
+<li>访问静态资源：<ul>
+<li>GET <code>http://localhost:1337/blocks.jpg</code></li>
+<li>GET <code>http://localhost:1337/index.html</code></li>
+</ul>
+</li>
+</ul>
+<p>使用举例2：自定义Middleware</p>
+<ul>
+<li>logger.js<pre><code class="nulljs">  <span class="built_in">module</span>.exports=<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+      ...
+      next();
+  }
+</code></pre>
+</li>
+<li>使用自定义的logger middleware<pre><code class="nulljs">  <span class="keyword">var</span> logger=<span class="built_in">require</span>(<span class="string">'./logger'</span>);
+  app.use(logger);
+</code></pre>
+</li>
+</ul>
+<h3 id="header-9">Route Instances</h3>
+<pre><code class="nulljs">app.route(<span class="string">'/blocks'</span>)
+    .get(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+    })
+    .post(parseUrlencoded, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>{
+    ...
+    });
+
+app.route(<span class="string">'/blocks/:name'</span>)
+    .all(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+        next();
+    })
+    .get(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+    })
+    .delete(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+    });
+</code></pre>
+<p>从Express 4.0开始，路由器功能成了一个单独的组件<code>Express.Router</code></p>
+<ul>
+<li>router.use(…)</li>
+<li>router.METHOD(…)</li>
+<li>router.route(…)</li>
+<li><code>...</code>为<code>[path], [function, ...] function</code></li>
+</ul>
+<pre><code class="nulljs"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);
+<span class="keyword">var</span> router=express.Router();
+router.route(<span class="string">'/'</span>)
+    .get(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+    })
+    .post(parseUrlencoded, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>{
+    ...
+    });
+router.route(<span class="string">'/:name'</span>)
+    .all(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+        next();
+    })
+    .get(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+    })
+    .delete(<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+        ...
+    });
+<span class="built_in">module</span>.exports = router;
+</code></pre>
+<pre><code class="nulljs"><span class="keyword">var</span> blocks=<span class="built_in">require</span>(<span class="string">'./routes/blocks'</span>);
+app.use(<span class="string">'/blocks'</span>,blocks);
+</code></pre>
+<h3 id="header-10">Request Params</h3>
+<p>示例1：<code>request.params.xxx</code>,<code>request.query.xxx</code></p>
+<pre><code class="nulljs">app.get(<span class="string">'/blocks/:name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>) </span>{
+    <span class="built_in">console</span>.log(request.params.name);
+    <span class="built_in">console</span>.log(request.query.limit);
+    response.send(request.query.limit+<span class="string">","</span>+request.params.name);
+});
+</code></pre>
+<pre><code>&gt; curl -i http://localhost:1337/blocks/test?limit=5
+
+HTTP/1.1 200 OK
+"5,test"
+</code></pre><p>示例2：<code>app.param(...)</code></p>
+<pre><code class="nulljs">app.param(<span class="string">'name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response, next</span>) </span>{
+    request.name=request.params.name;
+    next();
+});
+
+app.get(<span class="string">'/blocks/:name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response,next</span>) </span>{
+    <span class="built_in">console</span>.log(request.name);
+    <span class="built_in">console</span>.log(request.params.name);
+    ...
+});
+</code></pre>
+<p>示例3：<code>app.all(...)</code></p>
+<pre><code class="nulljs">app.all(<span class="string">'/blocks/:name'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+    request.name=request.params.name;
+    next();
+})
+app.get(<span class="string">'/blocks/:name'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">request, response,next</span>) </span>{
+    <span class="built_in">console</span>.log(request.name);
+    <span class="built_in">console</span>.log(request.params.name);
+    ...
+});
+</code></pre>
+<h2 id="header-11">常用module</h2>
+<h3 id="header-12">body parser</h3>
+<p>Node.js body parsing middleware.provides the following parsers: (<a href="https://www.npmjs.com/package/body-parser">官网</a>)</p>
+<ul>
+<li>JSON body parser <code>bodyParser.json(options)</code> (parse <code>application/json</code>)</li>
+<li>Raw body parser    <code>bodyParser.raw(options)</code></li>
+<li>Text body parser    <code>bodyParser.text(options)</code></li>
+<li>URL-encoded form body parser <code>bodyParser.urlencoded(options)</code> （parse <code>application/x-www-form-urlencoded</code> ）</li>
+</ul>
+<p>注意：body-parser does not handle multipart bodies （无法解析<code>multipart/form-data</code>）</p>
+<p>使用示例：</p>
+<p>安装<code>body-parser</code>包（parse form elements to object properties）</p>
+<pre><code>&gt; npm install body-parser
+</code></pre><p>后台使用：（ <code>request.body</code> ：get form data）</p>
+<pre><code class="nulljs"><span class="keyword">var</span> bodyParser=<span class="built_in">require</span>(<span class="string">'body-parser'</span>);
+<span class="keyword">var</span> parseUrlencoded=bodyParser.urlencoded({extended:<span class="literal">false</span>});
+
+app.post(<span class="string">'/blocks'</span>,parseUrlencoded,<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+    <span class="comment">//request.body.xxx</span>
+    ...
+})
+</code></pre>
+<p>前台触发：</p>
+<pre><code class="nullhtml">$.ajax({
+    type:&#39;POST&#39;,url:&#39;/blocks&#39;,data:$(&quot;#blockForm&quot;).serialize()
+}).done(function(data){
+    console.log(data);
+});
+</code></pre>
+<h3 id="header-13">formidable</h3>
+<pre><code>&gt; npm install formidable
+</code></pre><p>后端：</p>
+<pre><code class="nulljs"><span class="keyword">var</span> formidable=<span class="built_in">require</span>(<span class="string">'formidable'</span>);
+app.post(<span class="string">'/blocks'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>{
+    <span class="keyword">var</span> form=formidable.IncomingForm();
+    form.on(<span class="string">'field'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">name,value</span>)</span>{
+        <span class="built_in">console</span>.log(name+<span class="string">":"</span>+value);
+    });
+    form.on(<span class="string">'file'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">name,file</span>)</span>{
+        <span class="built_in">console</span>.log(name+<span class="string">"+"</span>+file.size);
+    });
+    form.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        <span class="built_in">console</span>.log(<span class="string">'end'</span>);
+        ...
+    });
+});
+</code></pre>
+<pre><code class="nulljs"><span class="keyword">var</span> formidable=<span class="built_in">require</span>(<span class="string">'formidable'</span>);
+app.post(<span class="string">'/blocks'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>{
+    <span class="keyword">var</span> form=formidable.IncomingForm();
+    form.parse(req, <span class="function"><span class="keyword">function</span>(<span class="params">err, fields, files</span>) </span>{
+        <span class="built_in">console</span>.log(fields);
+        <span class="built_in">console</span>.log(files);
+    });
+});
+</code></pre>
+<pre><code class="nulljs"><span class="keyword">var</span> formidable=<span class="built_in">require</span>(<span class="string">'formidable'</span>);
+app.post(<span class="string">'/blocks'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>{
+    <span class="keyword">var</span> form=formidable.IncomingForm();
+
+    <span class="comment">//all fields and files are collected and passed to the callback</span>
+    form.parse(req, <span class="function"><span class="keyword">function</span>(<span class="params">err, fields, files</span>) </span>{
+        <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);
+        <span class="comment">//end</span>
+         res.json({success:<span class="literal">false</span>,data:<span class="built_in">JSON</span>.stringify(block)});
+    });
+    <span class="comment">//overwrite onPart to filter</span>
+    form.onPart = <span class="function"><span class="keyword">function</span>(<span class="params">part</span>) </span>{
+      <span class="keyword">if</span>(part.filename){
+          <span class="comment">//在这里处理file，不再交给formidable继续处理（不会再触发file事件）</span>
+        part.pipe(fs.createWriteStream(part.filename));
+      }<span class="keyword">else</span>{
+          form.handlePart(part);    <span class="comment">//交给formidable继续处理</span>
+      }
+    };
+    <span class="comment">// 处理POST 普通数据（ 不包含文件 ）</span>
+    form.on(<span class="string">'field'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">name,value</span>)</span>{
+         block[name]=value;
+    });
+});
+</code></pre>
+<p>前端：</p>
+<pre><code class="nulljs"> <span class="keyword">var</span> formData = <span class="keyword">new</span> FormData($(<span class="string">"form"</span>)[<span class="number">0</span>]);
+ $.ajax({
+    url: <span class="string">'/blocks'</span>,
+    type: <span class="string">'POST'</span>,
+    data: formData,
+    processData: <span class="literal">false</span>
+}).done(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{
+    <span class="built_in">console</span>.log(data);
+});
+</code></pre>
+<h3 id="header-14">session</h3>
+<pre><code>&gt; npm install cookie-parser
+&gt; npm install express-session
+</code></pre><p>示例1：</p>
+<pre><code class="nulljs"><span class="keyword">var</span> cookieParser = <span class="built_in">require</span>(<span class="string">'cookie-parser'</span>);
+<span class="keyword">var</span> session=<span class="built_in">require</span>(<span class="string">"express-session"</span>);
+app.use(cookieParser)
+    .use(session({
+        resave:<span class="literal">false</span>,
+        saveUninitialized:<span class="literal">true</span>,
+        secret:<span class="string">"xxxx"</span>
+    }));
+
+app.post(<span class="string">"/j_spring_security_check"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+    request.session.loginUser=request.body.username;
+    ...
+});
+
+app.get(<span class="string">'/j_spring_security_logout'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">request,response</span>)</span>{
+    <span class="built_in">console</span>.log(request.session);
+    request.session.destroy(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>{
+        <span class="keyword">if</span>(err)
+            <span class="keyword">throw</span> err;
+        <span class="built_in">console</span>.log(<span class="string">"destroy session!"</span>);
+    });
+    ...
+});
+</code></pre>
+<p>示例2：使用Redis存储session</p>
+<pre><code>&gt; npm install connect-redis
+</code></pre><pre><code class="nulljs"><span class="keyword">var</span> RedisStore = <span class="built_in">require</span>(<span class="string">'connect-redis'</span>)(session);
+app.use(session({
+store: <span class="keyword">new</span> RedisStore({
+    host: <span class="string">"127.0.0.1"</span>,
+    port: <span class="number">6379</span>,
+    db: <span class="string">"test_session"</span>
+  }),
+  resave:<span class="literal">false</span>,
+  saveUninitialized:<span class="literal">false</span>,
+  secret: <span class="string">'xxx'</span>
+}))；
+</code></pre>
+<p>示例3：使用MongoDB存储session</p>
+<pre><code>&gt; npm install connect-mongo
+</code></pre><pre><code class="nulljs"><span class="keyword">var</span> MongoStore = <span class="built_in">require</span>(<span class="string">'connect-mongo'</span>)(session);
+app.use(session({
+     store: <span class="keyword">new</span> MongoStore({
+         host: <span class="string">'localhost'</span>,
+         port: <span class="number">27017</span>,
+         db: <span class="string">'test-app'</span>
+     })
+     secret: <span class="string">'xxx'</span>,
+     resave: <span class="literal">false</span>,
+     saveUninitialized: <span class="literal">true</span>,
+ }));
+</code></pre>
+<h3 id="header-15">view engine</h3>
+<p>示例：使用ejs</p>
+<pre><code>&gt; npm install ejs
+</code></pre><pre><code class="nulljs"><span class="keyword">var</span> ejs=<span class="built_in">require</span>(<span class="string">"ejs"</span>);
+app.set(<span class="string">'views'</span>, path.join(__dirname, <span class="string">'views'</span>));
+app.set(<span class="string">'view engine'</span>, <span class="string">'html'</span>);
+app.engine(<span class="string">'html'</span>,ejs.__express) ;
+
+app.get(<span class="string">'/test'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">request,response,next</span>)</span>{
+    request.render(<span class="string">'test'</span>, {title: <span class="string">'Test Message'</span>});
+});
+</code></pre>
+<h3 id="header-16">Socket.io</h3>
+<blockquote>
+<p>Using duplexed websocket connection</p>
+</blockquote>
+<p>安装</p>
+<pre><code>&gt; npm install socket.io
+</code></pre><p>使用示例：</p>
+<p>app.js</p>
+<pre><code class="nulljs"><span class="keyword">var</span> socket=<span class="built_in">require</span>(<span class="string">'socket.io'</span>);
+<span class="keyword">var</span> express=<span class="built_in">require</span>(<span class="string">'express'</span>);
+
+<span class="keyword">var</span> app=express();
+<span class="keyword">var</span> server = <span class="built_in">require</span>(<span class="string">'http'</span>).Server(app);
+<span class="keyword">var</span> io=socket.listen(server);
+server.listen(<span class="number">1337</span>);
+
+app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>{
+  res.send(<span class="string">'&lt;h1&gt;Hello world&lt;/h1&gt;'</span>);
+});
+
+io.set(<span class="string">'log level'</span>, <span class="number">2</span>);        <span class="comment">// 0:error，1:warn，2:info，3:debug</span>
+io.sockets.on(<span class="string">'connection'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">client</span>)</span>{
+    client.on(<span class="string">'join'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>{
+        client.set(<span class="string">'nickname'</span>,name);
+        client.broadcast.emit(<span class="string">"status"</span>,name+<span class="string">" joined!"</span>);
+    });
+    client.on(<span class="string">'message'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{
+        client.get(<span class="string">'nickname'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,name</span>)</span>{
+            io.sockets.emit(<span class="string">"chat"</span>,name+<span class="string">" : "</span>+data);
+        });
+    });
+    client.on(<span class="string">'disconnect'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>{
+        client.get(<span class="string">'nickname'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,name</span>)</span>{
+            client.broadcast.emit(<span class="string">"status"</span>,name+<span class="string">" leaved!"</span>);
+        });
+    });
+});
+</code></pre>
+<p>01.html</p>
+<pre><code class="nullhtml">...
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/socket.io/socket.io.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"vender/jquery/jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
+    <span class="keyword">var</span> server=io.connect(<span class="string">'http://localhost:8080'</span>);
+    <span class="keyword">var</span> content=$(<span class="string">"#content"</span>);
+    server.on(<span class="string">"connect"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+        content.html(<span class="string">'Connected'</span>);
+        <span class="keyword">var</span> nickname=prompt(<span class="string">"What is your nickname?"</span>);
+        server.emit(<span class="string">"join"</span>,nickname);
+        $(<span class="string">"#clientName"</span>).text(<span class="string">"--"</span>+nickname);
+    });
+    server.on(<span class="string">"chat"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{
+        content.append(<span class="string">"&lt;p&gt;"</span>+data+<span class="string">"&lt;/p&gt;"</span>);
+    });
+    server.on(<span class="string">"status"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>{
+        content.append(<span class="string">"&lt;div&gt;&lt;small&gt;"</span>+data+<span class="string">"&lt;/small&gt;&lt;/div&gt;"</span>);
+    });
+    $(<span class="string">"#chatForm"</span>).on(<span class="string">"submit"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>{
+        event.preventDefault();
+        server.emit(<span class="string">"message"</span>,$(<span class="string">"#chatInput"</span>).val());
+        $(<span class="string">"#chatInput"</span>).val(<span class="string">""</span>);
+    });
+</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+</code></pre>
+<p>测试</p>
+<pre><code>&gt; node nodeTest/app.js
+</code></pre>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2015/03/01/NodeJS.html';	
+		var disqus_title = 'NodeJS';
+		var disqus_url = 'http://sixdegree.github.io/2015/03/01/NodeJS.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

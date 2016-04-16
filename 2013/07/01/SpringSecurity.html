@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SpringSecurity</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="spring,security,authentication">
+  
+  
+    <meta name="description" content="Spring Security Framework Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">依赖包</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">基础包</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">额外支持包</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">装载SpringSecurity</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">配置web.xml文件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">装载过程说明</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">SecurityFilters</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">100 CHANNEL_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">200 SECURITY_CONTEXT_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">300 CONCURRENT_SESSION_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">400 LOGOUT_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">500 X509_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">600 PRE_AUTH_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">700 CAS_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">800 FORM_LOGIN_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">900     OPENID_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">1000    LOGIN_PAGE_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">1100    DIGEST_AUTH_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">1200    BASIC_AUTH_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">1300    REQUEST_CACHE_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">1400    SERVLET_API_SUPPORT_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">1500    JAAS_API_SUPPORT_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">1600    REMEMBER_ME_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">1700    ANONYMOUS_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">1800    SESSION_MANAGEMENT_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">1900    EXCEPTION_TRANSLATION_FILTER</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">2000    FILTER_SECURITY_INTERCEPTOR</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">2100    SWITCH_USER_FILTER</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">http标签</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">认证</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">JDBC认证</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">password使用plaintext明文（即不加密）</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-33"><span class="sidebar-nav nav-text">使用MD5+salt:username 加密 （即对{usermane}password加密）</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-34"><span class="sidebar-nav nav-text">使用MD5+salt:radom 加密（推荐！）</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-35"><span class="sidebar-nav nav-text">LDAP认证</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-36"><span class="sidebar-nav nav-text">通过LDAP完成用户认证，并加载用户的权限列表</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-37"><span class="sidebar-nav nav-text">通过LDAP完成用户认证，从其他地方加载用户的权限列表</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-38"><span class="sidebar-nav nav-text">CAS</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-39"><span class="sidebar-nav nav-text">Siteminder</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-40"><span class="sidebar-nav nav-text">访问控制</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-41"><span class="sidebar-nav nav-text">Web层（RequestURL级别）</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-42"><span class="sidebar-nav nav-text">一般处理过程：</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-43"><span class="sidebar-nav nav-text">扩展：从其他地方获取访问权限</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-44"><span class="sidebar-nav nav-text">方法层（Method级别）</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-45"><span class="sidebar-nav nav-text">一般处理过程：</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-46"><span class="sidebar-nav nav-text">支持四种方法层的安全：</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-47"><span class="sidebar-nav nav-text">结合SpringMVC使用</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">SpringSecurity</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2013-06-30T16:00:00.000Z">2013-07-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+            <a href="/tags.html#tag-Spring">Spring</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">依赖包</h2>
+<h3 id="header-2">基础包</h3>
+<pre><code class="nullxml"><span class="comment">&lt;!-- 核心框架和类 --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="comment">&lt;!-- 支持web层 --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>    
+
+<span class="comment">&lt;!-- 整体配置支持 --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="comment">&lt;!-- 支持JSP标签库 --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-taglibs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<h3 id="header-3">额外支持包</h3>
+<ol>
+<li>支持CAS<pre><code class="nullxml"> <span class="comment">&lt;!-- Addition: 支持CAS--&gt;</span>
+ <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+</li>
+<li>支持LDAP<pre><code class="nullxml"> <span class="comment">&lt;!-- Addition:支持LDAP --&gt;</span>
+ <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-ldap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+</li>
+<li>支持ACL，加入<code>spring-security-acl-nnn.jar</code></li>
+<li>支持OpenID ，加入<code>spring-security-openid-nnn.jar</code></li>
+</ol>
+<h2 id="header-4">装载SpringSecurity</h2>
+<h3 id="header-5">配置web.xml文件</h3>
+<ol>
+<li>context-param<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beans.xml,classpath*:security.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
+</code></pre>
+</li>
+<li>listener<ul>
+<li>加载Spring监听器 （因为下面的过滤器Filter中要使用到此Bean，所以使用Listener的方式加载spring）<pre><code class="nullxml"><span class="tag">&lt;<span class="name">listener</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+</code></pre>
+</li>
+<li>加载Security Session生命周期事件监听器<pre><code class="nullxml"><span class="comment">&lt;!--设置session 超时时间间隔：以分钟为单位，值必须为整数（如果值为零或负数，则表示会话将永远不会超时）--&gt;</span>
+<span class="tag">&lt;<span class="name">session-config</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>60<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">session-config</span>&gt;</span>
+<span class="tag">&lt;<span class="name">listener</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li>filter<pre><code class="nullxml"><span class="tag">&lt;<span class="name">filter</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">filter</span>&gt;</span>
+<span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+<p><strong>PS: </strong></p>
+<ol>
+<li><code>DelegatingFilterProxy</code>将过滤处理委托给一个由Security注入Spring容器的<code>Filter</code><br>（我们无法对注册在web.xml中的Servlet Filter进行Bean注入，<br>但通过Spring的<code>DelegatingFilterProxy</code>，使得我们可以在外部配置文件中配置实际工作的Filter）</li>
+<li>这个<code>filter-name</code>为<code>springSecurityFilterChain对SpringSecurity</code>是有意义的，<br>用于在Spring上下文中查找Filter Bean</li>
+</ol>
+<h3 id="header-6">装载过程说明</h3>
+<ol>
+<li>容器创建一个<code>ServletContext(上下文)</code><ul>
+<li>这个WEB项目所有部分都将共享这个上下文</li>
+<li>容器将<code>&lt;context-param&gt;</code>转化为键值对，交给<code>ServletContext</code></li>
+</ul>
+</li>
+<li>Spring监听器<code>ContextLoaderListener</code>，初始化Spring容器（调用 <code>contextInitialized(ServletContextEvent event)</code>）<ul>
+<li><code>ServletContext sc= event.getServletContext();</code></li>
+<li><code>this.contextLoader.initWebApplicationContext(sc);</code><ul>
+<li>获取<code>&lt;context-param&gt;</code>中<code>contextConfigLocation</code>指定的配置文件<pre><code class="nulljava">context-param的值 = sc.getInitParameter(<span class="string">"context-param的键"</span>);
+</code></pre>
+</li>
+<li>交给<code>WebApplicationContext</code>，解析并注入配置文件中定义的Bean</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>解析Security配置文件（<code>security.xml</code>）中的标签，创建注入Security Bean到Spring容器<ul>
+<li>Security解析包为：<code>spring-security-config.jar</code>，包下META-INF中有两个文件：<ul>
+<li>spring.schemas：标签的规范、约束</li>
+<li>spring.handlers：定义真正解析自定义标签的类<ul>
+<li>内容为：<code>http\://www.springframework.org/schema/security=org.springframework.security.config.SecurityNamespaceHandler</code></li>
+<li>即spring security的标签解析由<code>SecurityNamespaceHandler</code>来处理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意：Security配置文件需添加Spring Security命名空间）:<pre><code class="nullxml"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
+  <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
+  <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
+  <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
+  <span class="attr">xmlns:sec</span>=<span class="string">"http://www.springframework.org/schema/security"</span>
+  <span class="attr">xsi:schemaLocation</span>=<span class="string">"
+      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd"</span>&gt;</span>
+  ...
+<span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li>加载Security代理过滤器<code>DelegatingFilterProxy</code>，截获<code>/*</code>所有请求<ul>
+<li><code>DelegatingFilterProxy</code><ul>
+<li>位于<code>spring-web.jar</code>包，本身是和springSecurity无关</li>
+<li>通过<code>registerBeanComponent</code>方法将 <code>FilterChainProxy</code>注册到Spring容器中，并控制注册的别名为<code>springSecurityFilterChain</code></li>
+<li>其实该类仅仅是初始化一个<code>FilterChainProxy</code>，然后把所有拦截的Request交给Spring容器中的<code>FilterChainProxy</code>处理<br><img src="/2013/07/01/delegatingFilterProxy.PNG" alt="DelegatingFilterProxy"></li>
+</ul>
+</li>
+<li><code>FilterChainProxy</code><ul>
+<li>是一个特殊的Servlet Filter，它可以链接任意一个或多个其他的过滤器</li>
+<li>package org.springframework.security.web<br><img src="/2013/07/01/filterchain.PNG" alt="filterchain"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-7">SecurityFilters</h2>
+<p>对于Web资源，我们大约可以只用6个过滤器来保护我们的应用系统:<br><img src="/2013/07/01/filters.png" alt="filters"></p>
+<p>Spring Security依赖一系列的Servlet Filter来提供不同的安全特性<br>(不需要显示的声明springSecurityFilterChain以及它所链接在一起的其他Filters)</p>
+<ul>
+<li>Spring Security会根据在xml中配置的标签，自动创建所需要的Bean</li>
+<li>通过使用Java EE的servlet过滤器链按顺序组合起来</li>
+</ul>
+<p><strong>PS:</strong><br>Spring Security中默认Filter顺序，通过<code>enum SecurityFilters</code> 定义</p>
+<ul>
+<li><code>Value [Integer.MIN_VALUE,100~2100,Integer.MAX_VALUE]</code>,每个间隔100</li>
+<li>对于customer配置的Filter，有<code>after</code>，<code>before</code>，<code>position</code>三种顺序 (+-1)</li>
+</ul>
+<h3 id="header-8">100 CHANNEL_FILTER</h3>
+<p><strong><code>ChannelProcessingFilter</code>    ：通道处理过滤器</strong></p>
+<ul>
+<li>只要<code>intercept-url标签</code>中包含<code>requires-channel属性</code>，该过滤器就被创建,并把决策权交给<code>ChannelDecisionManager决策处理器</code>处理</li>
+<li><p><code>requires-channel</code> 值有以下三种:</p>
+<table class="table">
+<thead>
+<tr>
+<th>值</th>
+<th>含义</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>any</td>
+<td>任何通道都支持</td>
+<td>决策管理器不做处理</td>
+</tr>
+<tr>
+<td>https</td>
+<td>只支持安全通道</td>
+<td>决策管理器把决策任务交给ChannelProcessor列表循环处理 <br>（若以http方式访问，则重定向到https通道，以SSL方式访问）</td>
+</tr>
+<tr>
+<td>http</td>
+<td>只支持http</td>
+<td>决策管理器把决策任务交给ChannelProcessor列表循环处理  <br>（若以https方式访问，则重定向到http通道，以不安全的方式访问）</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="header-9">200 SECURITY_CONTEXT_FILTER</h3>
+<p><strong><code>SecurityContextPersistenceFilter</code>：持久化<code>SecurityContext</code></strong></p>
+<p><code>interface SecurityContext</code>：</p>
+<ul>
+<li>用于存放认证实体<code>Authentication</code></li>
+<li>方法：<ul>
+<li><code>Authentication getAuthentication();</code> 获取认证实体</li>
+<li><code>void setAuthentication(Authentication authentication);</code> 设置认证实体</li>
+</ul>
+</li>
+<li>实际存储在：<ul>
+<li>Session中，可通过 <code>getAttribute(&quot;SPRING_SECURITY_CONTEXT&quot;)</code> 获取</li>
+<li>SecurityContextHolder中，可通过 <code>SecurityContextHolder.getContext()</code>  获取，有三种保存策略（SecurityContextHolderStrategy）：<ul>
+<li>ThreadLocal 默认 （不能跨越多个request存在，即一次request有效）</li>
+<li>InheritableThreadLocal</li>
+<li>Global</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-10">300 CONCURRENT_SESSION_FILTER</h3>
+<p><strong><code>ConcurrentSessionFilter</code>：Session并发控制</strong></p>
+<ul>
+<li>从session缓存中获取当前session信息</li>
+<li>若发现过期了，则跳转到<code>expired-url</code>配置的url，或者响应session失效提示信息</li>
+</ul>
+<p>配置：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:session-management</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:concurrency-control</span> <span class="attr">max-sessions</span>=<span class="string">"1"</span> <span class="attr">error-if-maximum-exceeded</span>=<span class="string">"true"</span> <span class="attr">expired-url</span>= <span class="string">"/xxx"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:session-management</span>&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>max-sessions</td>
+<td>Session最大并发数：当前认证实体的已注册的最大session数</td>
+</tr>
+<tr>
+<td>expired-url</td>
+<td>跳转到指定url <br> 若未配置，则提示：This session has been expired (possibly due to multiple concurrent logins being attempted as the same user).</td>
+</tr>
+<tr>
+<td>error-if-maximum-exceeded</td>
+<td>true：若max-sessions为1，则第二次登录不了 <br> false(默认) ：若max-sessions为1，则第二次是能够登录的，但第一次登录的账号再次发起的请求，会跳转到<code>expired-url</code></td>
+</tr>
+<tr>
+<td>session-registry-ref</td>
+<td>默认使用：<code>SessionRegistryImpl</code>，完成对发布的Session的生命周期事件的处理</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-11">400 LOGOUT_FILTER</h3>
+<p><strong><code>LogoutFilter</code>：登出过滤器</strong></p>
+<p>监控一个实际为退出功能的URL（默认为<code>/j_spring_security_logout</code>），</p>
+<ul>
+<li>监控处理<code>filterProcessesUrl</code>请求（退出功能的URL，默认为<code>/j_spring_security_logout</code>）</li>
+<li>循环<code>List&lt;LogoutHandler&gt;</code> 每个<code>LogoutHandler</code>的<code>logout()</code>方法</li>
+<li>成功后交由有<code>logoutSuccessHandler</code>处理（跳转到指定URL）</li>
+</ul>
+<p>配置：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:logout</span>
+    <span class="attr">logout-success-url</span>=<span class="string">""</span>
+    <span class="attr">success-handler-ref</span>=<span class="string">""</span>
+    <span class="attr">logout-url</span>=<span class="string">""</span>
+    <span class="attr">invalidate-session</span>=<span class="string">"false"</span>
+    <span class="attr">deleteCookies</span>=<span class="string">“XXX,XXX”</span>
+/&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logout-url</td>
+<td>默认为: <code>/j_spring_security_logout</code> <br>对应filterProcessesUrl字段，设置要监控的退出URL</td>
+</tr>
+<tr>
+<td>logout-success-url</td>
+<td>默认为: <code>/</code> <br> 会使用<code>SimpleUrlLogoutSuccessHandler</code>实现页面跳转</td>
+</tr>
+<tr>
+<td>success-handler-ref</td>
+<td>指向一个<code>LogoutSuccessHandler</code>的实现类 <br> 用于完成退出系统后的后续动作</td>
+</tr>
+<tr>
+<td>invalidate-session</td>
+<td>用于配置<code>SecurityContextHandler</code>的<code>invalidateHttpSession</code>属性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PS: </strong></p>
+<p><code>logout-success-url</code> 和 <code>success-handler-ref</code> 只能设置其中之一</p>
+<ul>
+<li>使用<code>logout-success-url</code> ：<pre><code class="nullxml">  <span class="tag">&lt;<span class="name">sec:logout</span> <span class="attr">logout-success-url</span>=<span class="string">"/index"</span>/&gt;</span>
+</code></pre>
+</li>
+<li>使用<code>success-handler-ref</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:logout</span> <span class="attr">success-handler-ref</span>=<span class="string">"myLogoutSuccessHandler"</span>/&gt;</span>
+<span class="comment">&lt;!--
+myLogoutSuccessHandler：自定义的LogoutSuccessHandler
+功能：为LogoutURL加入动态时间参数，以防止被浏览器缓存
+--&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myLogoutSuccessHandler"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.core.auth.MyLogoutSuccessHandler"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"logoutSuccessUrl"</span> <span class="attr">value</span>=<span class="string">"https://sso.seagate.com/logout.html?doc="</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="header-12">500 X509_FILTER</h3>
+<p><strong><code>X509AuthenticationFilter</code>： X509认证过滤器</strong></p>
+<h3 id="header-13">600 PRE_AUTH_FILTER</h3>
+<p><strong><code>RequestHeaderAuthenticationFilter</code>：预认证过滤器（需手动注入）</strong></p>
+<ul>
+<li>从RequestHeader中获取预认证用户信息，默认从header attribute <code>SM_USER</code>中获取用户名</li>
+<li><code>extends AbstractPreAuthenticatedProcessingFilter</code></li>
+<li>使用<code>PreAuthenticatedAuthenticationProvider</code>认证器处理<code>PreAuthenticatedAuthenticationToken</code>获取认证实体<ul>
+<li>可以使用<code>PreAuthenticatedGrantedAuthoritiesUserDetailsService</code>从Request中获取权限列表</li>
+<li>也可使用<code>UserDetailsByNameServiceWrapper&lt;T extends Authentication&gt;</code>从其他地方获取权限列表</li>
+</ul>
+</li>
+</ul>
+<p>例如：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+    ...
+    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">position</span>=<span class="string">"PRE_AUTH_FILTER"</span> <span class="attr">ref</span>=<span class="string">"siteminderFilter"</span> /&gt;</span>
+<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"siteminderFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"principalRequestHeader"</span> <span class="attr">value</span>=<span class="string">"SM-USER"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionIfHeaderMissing"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"myAuthenticationManager"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+```xml
+<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+    ...
+    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">position</span>=<span class="string">"PRE_AUTH_FILTER"</span> <span class="attr">ref</span>=<span class="string">"siteminderFilter"</span> /&gt;</span>
+<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"siteminderFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"principalRequestHeader"</span> <span class="attr">value</span>=<span class="string">"SM-USER"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionIfHeaderMissing"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"myAuthenticationManager"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">ref</span>=<span class="string">"preauthAuthProvider"</span> /&gt;</span>
+    ...
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"preauthAuthProvider"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"preAuthenticatedUserDetailsService"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"userDetailsServiceWrapper"</span>  <span class="attr">class</span>=<span class="string">"org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper"</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"myUserDetailsService"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span> 
+
+<span class="comment">&lt;!-- 通过myUserDetailsService获取用户权限列表--&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.security.service.MyUserDetailsService"</span>/&gt;</span>
+</code></pre>
+<h3 id="header-14">700 CAS_FILTER</h3>
+<p>CAS认证过滤器（需手动注入）</p>
+<ul>
+<li><code>CasAuthenticationEntryPoint</code>：认证入口点，会跳转到CAS Server提供的登录界面</li>
+<li><code>CAS Server</code> ：对登录信息进行处理，如果登录成功，就跳转回本系统指定的URL，并携带ticket</li>
+<li>拦截URL：默认为<code>/j_spring_cas_security_check</code><ul>
+<li>对ticket进行验证</li>
+<li>构建认证实体<code>CasAuthenticationToken</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>PS:</strong><br>CAS（Center Authentication Service） 中心认证服务，提供单点登录门户 (SSO:Sigle Sign-On Portal)</p>
+<h3 id="header-15">800 FORM_LOGIN_FILTER</h3>
+<p><strong><code>UsernamePasswordAuthenticationFilter</code>：登录认证过滤器</strong></p>
+<ul>
+<li>对登录账号进行认证处理，并把认证通过的实体保存到<code>SecurityContext</code>中</li>
+<li>默认处理请求：<code>POST : /j_spring_security_check?j_username=?&amp;j_password=?</code></li>
+<li><code>extends AbstractAuthenticationProcessingFilter</code><ul>
+<li>doFilter是由父类AbstractAuthenticationProcessingFilter完成<ul>
+<li>认证 <code>abstract Authentication attemptAuthentication(req,resp)</code></li>
+<li>session策略处理认证信息 <code>sessionStrategy.onAuthentication(auth,req,resp)</code> （通过<code>&lt;session-management&gt;</code>标签定义）</li>
+<li>结果处理</li>
+</ul>
+</li>
+<li><code>@Override Authentication attemptAuthentication(req,res)</code><ul>
+<li>默认只对<code>POST</code>方法处理,否则 <code>throw new AuthenticationServiceException</code></li>
+<li>从request中获取<code>username</code>&amp;<code>password</code></li>
+<li>构造未认证的<code>UsernamePasswordAuthenticationToken</code></li>
+<li>构建details <code>authenticationDetailsSource.buildDetails(request)</code> </li>
+<li>通过<code>AuthenticationManager</code>完成认证任务,返回认证实体 <code>authenticationManager.authenticate(Authentication token)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>配置：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:form-login</span> 
+    <span class="attr">login-page</span>=<span class="string">"/index"</span> 
+    <span class="attr">authentication-failure-url</span>=<span class="string">"/index?login_error=t"</span> 
+    <span class="attr">default-target-url</span>=<span class="string">"/index"</span>
+    <span class="attr">login-processing-url</span>=<span class="string">"/common/login-process"</span> 
+    <span class="attr">password-parameter</span>=<span class="string">"myPassword"</span> 
+    <span class="attr">username-parameter</span>=<span class="string">"myUsername"</span> /&gt;</span>
+</code></pre>
+<p>相当于：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"authenticationFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"authenticationManager"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"postOnly "</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>  <span class="comment">&lt;!-- 默认即为true，只处理post请求 --&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"filterProcessesUrl"</span> <span class="attr">value</span>=<span class="string">"/common/login-process"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"usernameParameter"</span> <span class="attr">value</span>=<span class="string">"myPassword "</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"passwordParameter"</span> <span class="attr">value</span>=<span class="string">"myUsername"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>login-page</td>
+<td>登录页面</td>
+</tr>
+<tr>
+<td>authentication-failure-url</td>
+<td>认证失败时跳转的URL</td>
+</tr>
+<tr>
+<td>default-target-url</td>
+<td>认证成功时跳转的URL <br> 默认为：<code>/spring_security_login?login_error=xxx</code></td>
+</tr>
+<tr>
+<td>authentication-failure-handler-ref</td>
+<td>登录失败处理器</td>
+</tr>
+<tr>
+<td>authentication-success-handler-ref</td>
+<td>登录成功处理器</td>
+</tr>
+<tr>
+<td>login-processing-url</td>
+<td>默认为：<code>/j_spring_security_check</code></td>
+</tr>
+<tr>
+<td>username-parameter</td>
+<td>默认为： <code>j_username</code></td>
+</tr>
+<tr>
+<td>password-parameter</td>
+<td>默认为： <code>j_password</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-16">900     OPENID_FILTER</h3>
+<p><strong><code>OpenIDAuthenticationFilter</code>: OpenID认证</strong></p>
+<h3 id="header-17">1000    LOGIN_PAGE_FILTER</h3>
+<p><strong><code>DefaultLoginPageGeneratingFilter</code>: 生成默认登录页</strong></p>
+<h3 id="header-18">1100    DIGEST_AUTH_FILTER</h3>
+<p><strong><code>DigestAuthenticationFilter</code>: Digest认证过滤器(需手动注入)</strong></p>
+<pre><code class="nullxml">
+<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">ref</span>=<span class="string">"digestFilter"</span> <span class="attr">position</span>=<span class="string">"DIGEST_AUTH_FILTER"</span> /&gt;</span>
+    ...
+<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationFilter"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"myUserService"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationEntryPoint"</span> <span class="attr">ref</span>=<span class="string">"digestEntryPoint"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestEntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"realmName"</span> <span class="attr">value</span>=<span class="string">"shuttle vendor"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"zero"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+<h3 id="header-19">1200    BASIC_AUTH_FILTER</h3>
+<p><strong><code>BasicAuthenticationFilter</code>: 基本认证</strong></p>
+<p>配置<code>&lt;sec:http-basic/&gt;</code></p>
+<h3 id="header-20">1300    REQUEST_CACHE_FILTER</h3>
+<p><strong><code>RequestCacheAwareFilter</code>: 用于用户认证成功后，重新恢复因为登录被打断的请求</strong>（由requestCache处理）</p>
+<p><strong>说明：</strong></p>
+<p>未认证用户发送一个请求Request时，会有<code>ExceptionTranslationFilter</code>捕获到<code>Authentication</code>或匿名用户引发的<code>AccessDeniedException</code>，并将此Request暂时保存到Session，供下次通过认证时恢复这个Request</p>
+<p><code>interface RequestCache</code>实现类有：<code>HttpSessionRequestCache</code>（默认）,<code>NullRequestCache</code></p>
+<p><strong>配置不恢复打断请求：</strong></p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:request-cache</span> <span class="attr">ref</span>=<span class="string">"nullRequestCache"</span>/&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"nullRequestCache"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.savedrequest.NullRequestCache"</span>/&gt;</span>
+</code></pre>
+<h3 id="header-21">1400    SERVLET_API_SUPPORT_FILTER</h3>
+<p><strong><code>SecurityContextHolderAwareRequestFilter</code>: 封装一些ServletApi到Request对象</strong></p>
+<ul>
+<li>功能： 包装<code>Request对象</code>到<code>SecurityContextHolderAwareRequestWrapper对象</code>，传递到下一个Filter</li>
+<li>原理：使用装饰模式（Decorate Model），装饰HttpServletRequest对象</li>
+<li><code>SecurityContextHolderAwareRequestWrappe</code> 增加对非匿名认证实体的查询和判断api<ul>
+<li><code>boolean isUserInRole(String role)</code>：判断非匿名认证实体是否授权</li>
+<li><code>String getRemoteUser()</code>：获取非匿名认证实体的登录账号</li>
+<li><code>Principal getUserPrincipal()</code>：获取非匿名认证实体</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-22">1500    JAAS_API_SUPPORT_FILTER</h3>
+<p><code>JaasApiIntegrationFilter</code></p>
+<h3 id="header-23">1600    REMEMBER_ME_FILTER</h3>
+<p><strong><code>RememberMeAuthenticationFilter</code>: RememberMe AutoLogin 认证</strong></p>
+<p>说明：<br>当SecurityContextHolder中不存在Authentication用户授权信息时，此Filter会调用rememberMeServices 的autoLogin()方法从cookie中获取用户信息自动登录</p>
+<ul>
+<li>创建条件：配置了<code>&lt;remember-me&gt;</code></li>
+<li>执行条件：SecurityContext实例中不存在Authentication认证信息时 (即没有认证实体时)</li>
+<li>处理：<ul>
+<li>从cookie获取认证实体Authentication <code>rememberMeServices.autoLogin(request, response)</code></li>
+<li>交由AuthenticationManager验证<code>authenticationManager.authenticate(auth)</code> （通过后设置认证信息到SecurityContext中）</li>
+<li>下一个Filter</li>
+</ul>
+</li>
+</ul>
+<p><code>Remember me</code>功能设置了一个cookie在用户的浏览器上，它包含一个Base64编码的字符串，包含以下内容：</p>
+<ul>
+<li>一个MD5的散列值，包括过期日期/时间、用户名和密码；</li>
+<li>应用的key值，是在<remember-me>元素的key属性中定义的</li>
+</ul>
+<p>使用：</p>
+<ol>
+<li><p>通过配置<code>&lt;remember-me&gt;</code>，添加此Filter到过滤器链中</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">sec:remember-me</span> 
+     <span class="attr">key</span>=<span class="string">""</span> 
+     <span class="attr">data-source-ref</span>=<span class="string">""</span> 
+     <span class="attr">user-service-ref</span>=<span class="string">""</span> 
+     <span class="attr">token-validity-seconds</span>=<span class="string">""</span> 
+     <span class="attr">token-repository-ref</span>=<span class="string">""</span>/&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Key</td>
+<td>建议key值包含应用的唯一名称以及至少36位长度的随机字符，eg: 420046A65F774C9ABBF83E73DA1C07C9</td>
+</tr>
+<tr>
+<td>token-validity-seconds</td>
+<td>cookie的过期时间</td>
+</tr>
+<tr>
+<td>data-source-ref / token-repository-ref</td>
+<td>默认使用TokenBasedRememberMeServices，也可配置使用PersistentTokenBasedRememberMeServices</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>在<code>&lt;form&gt;</code>中触发rememberMe功能</p>
+<pre><code class="nullxml"><span class="comment">&lt;!-- URL?_spring_security_ remember_me=true --&gt;</span>
+<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"remember"</span> <span class="attr">name</span>=<span class="string">"_spring_security_ remember_me"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
+<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"remember "</span>&gt;</span> Remember Me? <span class="tag">&lt;/<span class="name">label</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+<h3 id="header-24">1700    ANONYMOUS_FILTER</h3>
+<p><strong><code>AnonymousAuthenticationFilter</code>: 无认证实体时添加一个匿名认证实体</strong></p>
+<ul>
+<li>执行条件：当前SecurityContext中没有认证实体</li>
+<li>功能： 产生一个匿名认证实体，并保存到SecurityContext中</li>
+</ul>
+<p>即若前面Filter（UsernamePasswordAuthenticationFilter、BasicAuthenticationFilter、RememberMeAuthenticationFilter等）都未认证成功，则在当前的SecurityContext中添加一个经过匿名认证的token</p>
+<p><strong>配置：</strong></p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:anonymous</span> <span class="attr">key</span>=<span class="string">"test"</span> <span class="attr">granted-authority</span>=<span class="string">"ROLE_GUEST"</span> <span class="attr">username</span>=<span class="string">"guest"</span>/&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>granted-authority</td>
+<td>设置权限，注入到authorities授权列表 <br>默认为：<code>ROLE_ANONYMOUS</code></td>
+</tr>
+<tr>
+<td>username</td>
+<td>匿名认证账号 <br> 默认为：<code>anonymousUser</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>PS：</strong><br>通过servlet的<code>getRemoteUser</code>等方法无法获取到登录账号，<br>因为<code>SecurityContextHolderAwareRequestFilter</code>过滤器在此Filter的前面</p>
+<h3 id="header-25">1800    SESSION_MANAGEMENT_FILTER</h3>
+<p><strong><code>SessionManagementFilter</code>: Session管理，提供两大类功能：</strong></p>
+<ol>
+<li>session固化保护：通过session-fixation-protection配置</li>
+<li>session并发控制：通过concurrency-control配置</li>
+</ol>
+<p><strong>配置security.xml：</strong></p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:session-management</span> <span class="attr">session-fixation-protection</span>=<span class="string">"migrateSession"</span> <span class="attr">invalid-session-url</span>=<span class="string">"/common/timeout.jsp"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">sec:concurrency-control</span> <span class="attr">max-sessions</span>=<span class="string">"1"</span> <span class="attr">expired-url</span>= <span class="string">"/index?error=This session has been expired"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:session-management</span>&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session-fixation-protection</td>
+<td>session固化保护</td>
+<td><code>none</code>：使得session固化攻击失效（未配置其他属性）；<br> <code>migrateSession</code>：当用户经过认证后分配一个新的session，它保证原session的所有属性移到新session中；<br> <code>newSession</code>：当用户认证后建立一个新的session，原（未认证时）session的属性不会进行移到新session中来；<br> <code>invalid-session-url</code>: 设置invalidSessionStrategy的跳转URL，默认使用 SimpleRedirectInvalidSessionStrategy</td>
+</tr>
+<tr>
+<td>concurrency-control</td>
+<td>session并发控制</td>
+<td>从session缓存中获取当前session信息，如果发现过期了，就跳转到expired-url配置的url或者响应session失效提示信息 <br> 1. <code>error-if-maximum-exceeded=&quot;true&quot;，max-sessions=&quot;1&quot;</code>: 第二次登录时，是登录不了的；<br> 2. <code>error-if-maximum-exceeded=&quot;false&quot;</code> : 第二次是能够登录到系统的，但是第一个登录的账号再次发起请求时，会跳转到expired-url配置的url中；<br> 3. 如果没有配置，则显示提示信息：This session has been expired (possibly due to multiple concurrent logins being attempted as the same user). <br> (参见ConcurrentSessionFilter)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置web.xml：</strong></p>
+<pre><code class="nullxml"><span class="comment">&lt;!-- 设置session 超时时间 --&gt;</span>
+<span class="tag">&lt;<span class="name">session-config</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>60<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">session-config</span>&gt;</span>
+
+<span class="comment">&lt;!-- 让servelt容器通知SpringSecurity session失效 --&gt;</span>
+<span class="comment">&lt;!-- HttpSessionEventPublisher监听器：主要监听sessionCreated、sessionDestroyed事件，发布通知--&gt;</span>
+<span class="tag">&lt;<span class="name">listener</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+</code></pre>
+<p><strong>PS：</strong><br><code>ConcurrentSessionFilter</code>过滤器也是处理session失效，但是它所处理的仅仅是封装后的<code>SessionInformation</code>类，如果这个类满足失效条件，再执行<code>session.invalidate</code>强制失效</p>
+<h3 id="header-26">1900    EXCEPTION_TRANSLATION_FILTER</h3>
+<p><strong><code>ExceptionTranslationFilter</code>：仅捕获此Filter之后发生的异常</strong></p>
+<p>仅捕获此Filter之后发生的异常:<br>FilterSecurityInterceptor，SwitchUserFilter，1900 Filter之后的自定义拦截器的异常</p>
+<p>主要拦截两类安全异常：</p>
+<ol>
+<li><code>AuthenticationException</code> 认证异常<ul>
+<li>清空SecurityContext中的认证实体Authentication</li>
+<li>保存当前被打断的请求 <code>requestCache.saveRequest(request, response);</code></li>
+<li>认证入口点<code>AuthenticationEntryPoint</code>处理此异常</li>
+</ul>
+</li>
+<li><code>AccessDeniedException</code> 访问拒绝异常<ul>
+<li>匿名用户引发 （同认证异常Authentication的处理）</li>
+<li>非匿名用户引发 （由<code>AccessDeniedHandler</code>处理）</li>
+</ul>
+</li>
+</ol>
+<p>配置：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"false"</span> 
+    <span class="attr">entry-point-ref</span>=<span class="string">"http403EntryPoint"</span> 
+    <span class="attr">access-denied-page</span>=<span class="string">"/home/accessDenied"</span> &gt;</span>
+    ...
+<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>entry-point-ref</td>
+<td>认证入口点，指向认证失败或匿名用户拒绝访问异常时的处理bean <br> 默认：根据<code>http标签</code>下具体配置的认证类型加载对应的<code>AuthenticationEntryPoint</code></td>
+</tr>
+<tr>
+<td>access-denied-page</td>
+<td>访问拒绝时跳转的页面 <br> 为设置<code>access-denied-handler</code>时，对应<code>AccessDeniedHandlerImpl</code>的<code>errorPage</code></td>
+</tr>
+</tbody>
+</table>
+<p>手动指定AuthenticationEntryPoint：</p>
+<pre><code class="nullxml"><span class="comment">&lt;!-- 
+这里使用Security自带的AuthenticationEntryPoint，也可使用自定义的
+( Response 403 error，msg: "Access Denied" )
+--&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"http403EntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"</span>/&gt;</span>
+</code></pre>
+<h3 id="header-27">2000    FILTER_SECURITY_INTERCEPTOR</h3>
+<p><strong><code>FilterSecurityInterceptor</code>: Web级别的访问控制</strong></p>
+<ul>
+<li>功能：完成URL级别的授权处理</li>
+<li><code>extends abstract class AbstractSecurityInterceptor</code><ul>
+<li>获取资源权限列表 （通过<code>SecurityMetadataSource</code> 资源权限获取器）</li>
+<li>认证 （通过<code>AuthenticationManager</code> 认证管理器）</li>
+<li>访问控制判断 （通过<code>AccessDecisionManager</code> 访问决策器）</li>
+</ul>
+</li>
+</ul>
+<p>配置：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">pattern</span>=<span class="string">"/resources/**"</span>  <span class="attr">security</span>=<span class="string">"none"</span>/&gt;</span>
+</code></pre>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/security/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/back/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN,ROLE_USER"</span>/&gt;</span>
+    ...
+<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+</code></pre>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">use-expressions</span>=<span class="string">"true"</span> &gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/"</span> <span class="attr">access</span>=<span class="string">"hasRole('ROLE_GUEST') or authenticated"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/"</span> <span class="attr">access</span>=<span class="string">"permitAll"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-urlpattern="</span>/<span class="attr">admin</span>/**"<span class="attr">access</span>=<span class="string">"hasRole('ROLE_ADMIN')"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/**"</span> <span class="attr">method</span>=<span class="string">"GET"</span> <span class="attr">access</span>=<span class="string">"hasAnyRole('ROLE_USER','ROLE_ADMIN')"</span>/&gt;</span>
+    ...
+<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th><code>&lt;sec:intercept-url&gt;</code>的属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pattern</td>
+<td>a URL pattern</td>
+</tr>
+<tr>
+<td>path-type</td>
+<td>设置pattern的匹配类型<br>（用于判断Request和设置的URL pattern是否匹配）<br> 可以设置为：<code>ant</code>(默认),<code>regex</code>,<code>ciRegex</code>  <br>（由对应的<code>RequestMatcher</code>处理）</td>
+</tr>
+<tr>
+<td>access</td>
+<td>security rules <br> 若设置<code>use-expressions=&#39;true&#39;</code>，则可使用<code>SpEL</code>(Spring expressions language)</td>
+</tr>
+<tr>
+<td>method</td>
+<td>allowed Http Method （<code>GET</code>, <code>POST</code>, <code>HEAD</code>, <code>OPTIONS</code>, <code>PUT</code>, <code>DELETE</code>, <code>TRACE</code>）<br> default value: null (allow all)</td>
+</tr>
+<tr>
+<td>required-channel</td>
+<td>允许的通道：<code>http</code>,<code>https</code>,<code>any</code>(默认)</td>
+</tr>
+<tr>
+<td>security</td>
+<td><code>none</code> 表示不进行安全检查，即不做授权判断，直接通过</td>
+</tr>
+</tbody>
+</table>
+<p>SpEL expressions added by Spring Security 3.0 :</p>
+<table class="table">
+<thead>
+<tr>
+<th>expression</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>authentication</td>
+<td>The user’s authentication object</td>
+</tr>
+<tr>
+<td>denyAll</td>
+<td>Always evaluates to false</td>
+</tr>
+<tr>
+<td>hasAnyRole(list of roles)</td>
+<td>true if the user has been granted any of the roles specified</td>
+</tr>
+<tr>
+<td>hasRole(role)</td>
+<td>true if the user has been granted the specified role</td>
+</tr>
+<tr>
+<td>hasIpAddress(IP Address)</td>
+<td>The user’s IP address (only available in web security)</td>
+</tr>
+<tr>
+<td>isAnonymous()</td>
+<td>true if the current user is an anonymous user</td>
+</tr>
+<tr>
+<td>isAuthenticated()</td>
+<td>true if the current user is not anonymous</td>
+</tr>
+<tr>
+<td>isFullyAuthenticated()</td>
+<td>true if the current user is neither an anonymous nor a remember-me user</td>
+</tr>
+<tr>
+<td>isRememberMe()</td>
+<td>Always evaluates to true</td>
+</tr>
+<tr>
+<td>permitAll</td>
+<td>Always evaluates to true</td>
+</tr>
+<tr>
+<td>principal</td>
+<td>The user’s principal object</td>
+</tr>
+<tr>
+<td>authentication</td>
+<td>The user’s authentication object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-28">2100    SWITCH_USER_FILTER</h3>
+<p><strong><code>SwitchUserFilter</code>: 切换用户</strong></p>
+<h2 id="header-29">http标签</h2>
+<p><code>HttpSecurityBeanDefinitionParser</code>解析<http>标签</p>
+<p>最小化配置：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"true"</span> &gt;</span>
+        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN"</span>/&gt;</span> 
+        <span class="comment">&lt;!--使用Ant风格的路径--&gt;</span>
+    <span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+</code></pre>
+<ul>
+<li>使用<code>&lt;http&gt;</code>标签将会自动创建一个<code>FilterChainProxy</code>（它会委托给配置在<code>web.xml</code>中的<code>DelegatingFilterProxy</code>）以及链中的所有过滤器Bean</li>
+<li>通过配置<code>auto-config=&#39;true&#39;</code>，将得到三个免费赠品：<ul>
+<li>额外登陆页</li>
+<li>http基本认证</li>
+<li>登出功能</li>
+<li>即等价于显示配置了：<code>&lt;form-login/&gt;</code> ,<code>&lt;http-basic/&gt;</code> ,<code>&lt;logout/&gt;</code>标签<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"true"</span> &gt;</span>
+  <span class="tag">&lt;<span class="name">sec:form-login</span>/&gt;</span>
+  <span class="tag">&lt;<span class="name">sec:http-basic</span>/&gt;</span>
+  <span class="tag">&lt;<span class="name">sec:logout</span>/&gt;</span>
+  <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-30">认证</h2>
+<p>一般处理过程：</p>
+<ol>
+<li><code>XxxAuthenticationFilter</code> 拦截Request，获取需认证的信息，构建要进行认证的认证实体xxxToken</li>
+<li><code>AuthenticationManager</code> 认证管理器，对xxxToken进行认证 （实际调用实现类<code>ProviderManager</code>的<code>authenticate(xxxToken)</code>方法）<ul>
+<li>循环<code>List&lt;AuthenticationProvider&gt;</code> 认证器列表</li>
+<li>使用支持此认证Token的AuthenticationProvider认证器（<code>XxxAuthenticationProvider</code>）进行认证，返回认证Token<ul>
+<li><code>provider.supports(authentication.getClass())</code> 找到支持此认证xxxToken的认证器</li>
+<li><code>provider.authenticate(authentication)</code> 对此xxxToken进行认证，返回认证过的认证实体</li>
+<li>注意：只要有一个provider认证成功，则成功，后续的provider将不会执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>简单配置：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"authenticationManager"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">sec:user-service</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">authorities</span>=<span class="string">"ROLE_USER"</span> <span class="attr">name</span>=<span class="string">"tom"</span> <span class="attr">password</span>=<span class="string">"123"</span>/&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">authorities</span>=<span class="string">"ROLE_USER"</span> <span class="attr">name</span>=<span class="string">"jerry"</span> <span class="attr">password</span>=<span class="string">"456"</span>/&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">authorities</span>=<span class="string">"ROLE_ADMIN"</span> <span class="attr">name</span>=<span class="string">"admin"</span> <span class="attr">password</span>=<span class="string">"111"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="name">sec:user-service</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+</code></pre>
+<p><strong>PS：</strong><br>用户的认证信息通过<code>SecurityContextHolder</code>信息传递。<br>eg: <code>SecurityContextHolder.getContext().getAuthentication();</code></p>
+<p>Authentication接口可以实现的方法：</p>
+<table class="table">
+<thead>
+<tr>
+<th>方法签名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Object getPrincipal()</code></td>
+<td>返回安全实体的唯一标识（如，一个用户名）</td>
+</tr>
+<tr>
+<td><code>Object getCredentials()</code></td>
+<td>返回安全实体的凭证信息</td>
+</tr>
+<tr>
+<td><code>List&lt;GrantedAuthority&gt;  getAuthorities()</code></td>
+<td>得到安全实体的权限集合，根据认证信息的存储决定的</td>
+</tr>
+<tr>
+<td><code>Object getDetails()</code></td>
+<td>返回一个跟认证提供者相关的安全实体细节信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-31">JDBC认证</h3>
+<p>SpringSecurity使用<code>DaoAuthenticationProvider</code>支持<code>UsernamePasswordAuthenticationToken</code></p>
+<p>需使用自定义的<code>UserDetailsService</code>实现类，从DB获取用户信息构建<code>UserDetails</code>对象，例如：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.service.MyUserDetailsServiceImpl"</span>/&gt;</span>
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserDetailsService</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span></span>{
+    <span class="keyword">static</span> Logger logger = Logger.getLogger(MyUserDetailsService.class);
+    <span class="keyword">private</span> ISecurityService securityService;
+
+    <span class="function"><span class="keyword">public</span> ISecurityService <span class="title">getSecurityService</span><span class="params">()</span></span>{
+        <span class="keyword">return</span> securityService;
+    }
+    <span class="meta">@Inject</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecurityService</span><span class="params">(ISecurityService securityService)</span></span>{
+        <span class="keyword">this</span>.securityService = securityService;
+    }
+
+    <span class="meta">@Override</span>
+    <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String account)</span>
+            <span class="keyword">throws</span> UsernameNotFoundException</span>{
+        <span class="comment">//MyUser implements UserDetails, CredentialsContainer</span>
+        <span class="comment">//一般获取用户的account,password,salt信息</span>
+        MyUser user=securityService.getUser(account);
+        <span class="keyword">if</span>(user==<span class="keyword">null</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"No User"</span>);
+        <span class="comment">//获取用户角色列表</span>
+        List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
+        <span class="keyword">if</span>(glist==<span class="keyword">null</span> || glist.size()==<span class="number">0</span>)
+            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"No GrantedAuthority"</span>);
+        UserDetails userDetails=<span class="keyword">new</span> MyUser(user, glist);
+        <span class="keyword">return</span> userDetails;
+    }
+}
+</code></pre>
+<h4 id="header-32">password使用plaintext明文（即不加密）</h4>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+</code></pre>
+<h4 id="header-33">使用MD5+salt:username 加密 （即对{usermane}password加密）</h4>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">sec:password-encoder</span> <span class="attr">hash</span>=<span class="string">"md5"</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:salt-source</span> <span class="attr">user-property</span>=<span class="string">"username"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="name">sec:password-encoder</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+</code></pre>
+<p>相当于：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">authentication-manager</span> <span class="attr">alias</span>=<span class="string">"authenticationManager"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">password-encoder</span> <span class="attr">ref</span>=<span class="string">"passwordEncoder"</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">salt-source</span> <span class="attr">ref</span>=<span class="string">"saltSource"</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="name">password-encoder</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">authentication-provider</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">authentication-manager</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.authentication.encoding.Md5PasswordEncoder"</span> <span class="attr">id</span>=<span class="string">"passwordEncoder"</span>/&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.authentication.dao.ReflectionSaltSource"</span> <span class="attr">id</span>=<span class="string">"saltSource"</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userPropertyToUse"</span> <span class="attr">value</span>=<span class="string">"username"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+<h4 id="header-34">使用MD5+salt:radom 加密（推荐！）</h4>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"mySaltUserDetailsService"</span> &gt;</span>
+        <span class="tag">&lt;<span class="name">sec:password-encoder</span> <span class="attr">hash</span>=<span class="string">"md5"</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:salt-source</span> <span class="attr">user-property</span>=<span class="string">"usersalt"</span>/&gt;</span>
+        <span class="tag">&lt;/<span class="name">sec:password-encoder</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+</code></pre>
+<p><strong>PS：</strong>扩展数据库schema，salt要与用户记录一起保存在数据库<br>，eg: <code>SysUser(account,password,enable,usersalt)</code></p>
+<ul>
+<li>addUser/changePassword(SysUser u)<pre><code class="nulljava"><span class="keyword">int</span> salt=(<span class="keyword">int</span>)(Math.random()*<span class="number">1000000</span>);
+u.setUsersalt(String.valueOf(salt));
+u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
+</code></pre>
+</li>
+<li>SQL insert user<pre><code class="nullsql"><span class="keyword">insert</span> <span class="keyword">into</span> sys_user(username, <span class="keyword">password</span>, enabled, usersalt) <span class="keyword">values</span> (<span class="string">'admin'</span>,<span class="string">'admin'</span>,<span class="literal">true</span>,<span class="keyword">CAST</span>(<span class="keyword">RAND</span>()*<span class="number">1000000000</span> <span class="keyword">AS</span> <span class="built_in">varchar</span>));
+</code></pre>
+</li>
+</ul>
+<h3 id="header-35">LDAP认证</h3>
+<p>使用<code>LdapAuthenticationProvider</code>支持<code>UsernamePasswordAuthenticationToken</code></p>
+<ul>
+<li><code>LdapAuthenticator authenticator;</code> 用于认证用户，不通过则<code>throw BadCredentialsException</code></li>
+<li><code>LdapAuthoritiesPopulator authoritiesPopulator;</code> 用于获取权限信息列表（即角色列表）</li>
+<li><code>boolean hideUserNotFoundExceptions = true;</code></li>
+</ul>
+<p>必须加入依赖包：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-ldap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+<p>LDAP 介绍：</p>
+<ul>
+<li>Lightweight Directory Access Protocol  轻量级目录访问协议</li>
+<li>是目录服务在TCP/IP上的实现</li>
+<li>允许根据需要使用ACI（一般都称为ACL或者访问控制列表）控制对数据读和写的权限</li>
+</ul>
+<p><strong>PS：</strong><br>ACI可以根据谁访问数据、访问什么数据、数据存在什么地方以及其它对数据进行访问控制。<br>因为这些都是由LDAP目录服务器完成的，所以不用担心在客户端的应用程序上是否要进行安全检查。</p>
+<p>LDIF文件：</p>
+<ul>
+<li>LDIF用文本格式表示目录数据库的信息，以方便用户创建、阅读和修改</li>
+<li>按照树型结构组织，由条目Entry组成（相当于DB中Table的记录）<br>  <img src="2013-07-01-SpringSecurity/ldap.PNG" alt="LDIF"></li>
+</ul>
+<p>SpringSecurity LDAP 提供两种认证方式：</p>
+<ul>
+<li><code>BindAuthenticator</code> 绑定认证<ul>
+<li>LDAP服务器进行认证和校验用户密码</li>
+<li>默认</li>
+</ul>
+</li>
+<li><code>PasswordComparisonAuthenticator</code> 密码对比认证 <ul>
+<li>SpringSecurity负责将密码编码成目录期望的格式然后与目录进行对比进行认证校验</li>
+<li>需配置<code>&lt;sec:password-compare/&gt;</code>，默认LDAP的密码编码算法为<code>SHA</code></li>
+<li>为了安全，密码对比策略并不能真正从目录上读取（基于安全策略，读取目录的密码通常会被拒绝）</li>
+<li>作为替代，PasswordComparisonAuthenticator会从用户的目录条目作为根节点进行一个LDAP查找，试图查找与SpringSecurity编码密码值匹配的密码属性值</li>
+</ul>
+</li>
+</ul>
+<p>配置LdapServer：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:ldap-server</span> <span class="attr">url</span>=<span class="string">"ldap://ldap.sing.seagate.com:389/o=xxx"</span> <span class="attr">id</span>=<span class="string">"ldapServer"</span> /&gt;</span>
+</code></pre>
+<h4 id="header-36">通过LDAP完成用户认证，并加载用户的权限列表</h4>
+<p>配置从LDAP上获取认证用户（包括角色列表），直接使用<code>LdapAuthenticationProvider</code>（下面示例使用密码对比认证）：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:ldap-authentication-provider</span>
+        <span class="attr">server-ref</span>=<span class="string">"ldapLocal"</span>
+        <span class="attr">user-search-base</span>=<span class="string">"ou=people"</span>
+        <span class="attr">user-search-filter</span>=<span class="string">"(uid={0})"</span>
+        <span class="attr">group-search-base</span>=<span class="string">"ou=Groups"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">sec:password-compare</span>/&gt;</span>
+    <span class="tag">&lt;/<span class="name">sec:</span> <span class="attr">ldap-authentication-provider</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+</code></pre>
+<table class="table">
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>默认</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>group-search-base</td>
+<td>用于查找group（角色）<br>定义了基础的DN，LDAP集成应该基于此往下为用户查找一个或多个的匹配项。</td>
+<td>默认值会在LDAP根中进行查找，这可能会代价较高；</td>
+</tr>
+<tr>
+<td>group-search-filter</td>
+<td>LDAP查找的过滤器，用来匹配用户的DN与group-search-base之下的条目属性;<br> 过滤器通过两个参数进行参数化设置: <br> 第一个（{0}）作为用户的DN <br> 第二个作为（{1}）作为用户的名字</td>
+<td>默认值为（uniqueMember={0}）</td>
+</tr>
+<tr>
+<td>group-role-attribute</td>
+<td>它定义了匹配条目中用来组装用户GrantedAuthority的属性；</td>
+<td>默认值为cn</td>
+</tr>
+<tr>
+<td>role-prefix</td>
+<td>要拼到在group-role-attribute中发现值的前缀以产生Spring Security的GrantedAuthority</td>
+<td>默认值为“ROLE_”</td>
+</tr>
+<tr>
+<td>user-search-base</td>
+<td>用于查找users</td>
+<td></td>
+</tr>
+<tr>
+<td>user-search-filter</td>
+<td>用于过滤users</td>
+<td></td>
+</tr>
+<tr>
+<td>user-details-class</td>
+<td>匹配构建UserDetails对象方式： inetOrgPerson,person</td>
+<td>person</td>
+</tr>
+</tbody>
+</table>
+<h4 id="header-37">通过LDAP完成用户认证，从其他地方加载用户的权限列表</h4>
+<ol>
+<li><p>配置<code>AuthenticationManager</code> &amp; <code>LdapAuthenticationProvider</code></p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span>&gt;</span>
+     <span class="comment">&lt;!-- &lt;sec:ldap-authentication-provider  user-search-base="ou=people" user-search-filter="(uid={0})" /&gt; --&gt;</span>
+     <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">ref</span>=<span class="string">"ldapAuthenticationProvider"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapAuthenticationProvider"</span> 
+     <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.LdapAuthenticationProvider"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"authenticator"</span> <span class="attr">ref</span>=<span class="string">"bindAuthenticator"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"authoritiesPopulator"</span> <span class="attr">ref</span>=<span class="string">"ldapAuthoritiesPopulator"</span>/&gt;</span>
+     <span class="comment">&lt;!-- &lt;property name="hideUserNotFoundExceptions" value="false"/&gt; --&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>配置Provider中的<code>LdapAuthenticator</code>用于认证用户（<code>DirContextOperations</code>对象）</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bindAuthenticator"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.BindAuthenticator"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"contextSource"</span> <span class="attr">ref</span>=<span class="string">"ldapServer"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userSearch"</span> <span class="attr">ref</span>=<span class="string">"ldapSearch"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapSearch"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.search.FilterBasedLdapUserSearch"</span>&gt;</span>  
+   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"searchBase"</span> <span class="attr">value</span>=<span class="string">"ou=people"</span>/&gt;</span>   <span class="comment">&lt;!-- user-search-base --&gt;</span>  
+   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"searchFilter"</span> <span class="attr">value</span>=<span class="string">"(uid={0})"</span>/&gt;</span> <span class="comment">&lt;!-- user-search-filter --&gt;</span>
+   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"contextSource"</span> <span class="attr">ref</span>=<span class="string">"ldapServer"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>配置Provider中的<code>LdapAuthoritiesPopulator</code>用于获取权限信息列表（<code>Collection&lt;? extends GrantedAuthority&gt;</code>）</p>
+<ul>
+<li><p>方式1：扩展<code>UserDetailsService</code></p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator"</span> <span class="attr">id</span>=<span class="string">"ldapAuthoritiesPopulator"</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"myUserDetailsService"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.service.MyUserDetailsServiceImpl"</span>/&gt;</span>
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserDetailsService</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span></span>{
+  <span class="keyword">static</span> Logger logger = Logger.getLogger(MyUserDetailsService.class);
+  <span class="keyword">private</span> ISecurityService securityService;
+
+  <span class="function"><span class="keyword">public</span> ISecurityService <span class="title">getSecurityService</span><span class="params">()</span></span>{
+      <span class="keyword">return</span> securityService;
+  }
+  <span class="meta">@Inject</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecurityService</span><span class="params">(ISecurityService securityService)</span></span>{
+      <span class="keyword">this</span>.securityService = securityService;
+  }
+
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String account)</span>
+          <span class="keyword">throws</span> UsernameNotFoundException</span>{
+      <span class="comment">//获取用户角色列表</span>
+      List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
+      <span class="keyword">if</span>(glist==<span class="keyword">null</span> || glist.size()==<span class="number">0</span>)
+          <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"No GrantedAuthority"</span>);
+      UserDetails userDetails=<span class="keyword">new</span> User(account,<span class="keyword">null</span>,glist);
+      <span class="keyword">return</span> userDetails;
+  }
+}
+</code></pre>
+</li>
+<li><p>方式二：扩展<code>LdapAuthoritiesPopulator</code></p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapAuthoritiesPopulator"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.security.ldap.MyLdapAuthoritiesPopulator"</span>/&gt;</span>
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLdapAuthoritiesPopulator</span> <span class="keyword">implements</span> <span class="title">LdapAuthoritiesPopulator</span></span>{
+  <span class="keyword">static</span> Logger logger = Logger.getLogger(MyLdapAuthoritiesPopulator.class); 
+  <span class="keyword">private</span> ISecurityService securityService;
+  <span class="function"><span class="keyword">public</span> ISecurityService <span class="title">getSecurityService</span><span class="params">()</span></span>{
+      <span class="keyword">return</span> securityService;
+  }
+  <span class="meta">@Inject</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecurityService</span><span class="params">(ISecurityService securityService)</span></span>{
+      <span class="keyword">this</span>.securityService = securityService;
+  }
+
+  <span class="meta">@Override</span>
+  <span class="keyword">public</span> Collection&lt;? extends GrantedAuthority&gt; getGrantedAuthorities(
+          DirContextOperations userData, String username){
+      <span class="keyword">return</span> securityService.getGrantedAuthorities(username);
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-38">CAS</h3>
+<ol>
+<li><p>使用必须额外加入CAS包</p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+ <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+ <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>将<code>CasAuthenticationFilter</code>加入FilterChain，并注入<code>Cas AuthenticationEntryPoint</code></p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"true"</span> <span class="attr">entry-point-ref</span>=<span class="string">"casAuthEntryPoint"</span> <span class="attr">access-denied-page</span>=<span class="string">"/home/accessDenied"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">ref</span>=<span class="string">"casAuthenticationFilter"</span> <span class="attr">position</span>=<span class="string">"CAS_FILTER"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">sec:logout</span> <span class="attr">logout-success-url</span>=<span class="string">"/index"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>配置CAS 认证入口点<code>AuthenticationEntryPoint</code></p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casAuthEntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.web.CasAuthenticationEntryPoint"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"loginUrl"</span> <span class="attr">value</span>=<span class="string">"https://server:8443/cas/login"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serviceProperties"</span> <span class="attr">ref</span>=<span class="string">"casService"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>    
+
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.ServiceProperties"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"service"</span> <span class="attr">value</span>=<span class="string">"http://localhost:8888/docms/j_spring_cas_security_check"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>配置<code>CasAuthenticationFilter</code>，注入<code>authenticationManager</code></p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casAuthenticationFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.web.CasAuthenticationFilter"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"authenticationmanager"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"authenticationmanager"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">ref</span>=<span class="string">"casAuthenticationProvider"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>配置<code>CasAuthenticationProvider</code></p>
+<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casAuthenticationProvider"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.authentication.CasAuthenticationProvider"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ticketValidator"</span> <span class="attr">ref</span>=<span class="string">"casTicketValidator"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serviceProperties"</span> <span class="attr">ref</span>=<span class="string">"casService"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"docms"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationUserDetailsService"</span> <span class="attr">ref</span>=<span class="string">"authenticationUserDetailsService"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casTicketValidator"</span> <span class="attr">class</span>=<span class="string">"org.jasig.cas.client.validation.Cas20ServiceTicketValidator"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"https://server:8443/cas/"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"authenticationUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"userDetailsManager"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+<h3 id="header-39">Siteminder</h3>
+<p>使用<code>RequestHeaderAuthenticationFilter</code>获取经过Siteminder认证后的用户信息，通过<code>PreAuthenticatedAuthenticationProvider</code>认证器进一步处理<code>PreAuthenticatedAuthenticationToken</code>构建认证实体</p>
+<p>具体请参考上文中【600 PRE_AUTH_FILTER】的相关介绍</p>
+<h2 id="header-40">访问控制</h2>
+<p>SpringSecurity提供两个访问控制的级别：</p>
+<ul>
+<li>Web层（RequestURL级别）：基于Servlet Filter<ul>
+<li>使用<code>FilterSecurityInterceptor</code> (URL拦截器)</li>
+</ul>
+</li>
+<li>方法层（Method级别）：基于Spring AOP<ul>
+<li>使用<code>MethodSecurityInterceptor</code> （Method拦截器）</li>
+</ul>
+</li>
+</ul>
+<p>这两个拦截器都继承自<code>abstract class AbstractSecurityInterceptor</code>，包含：</p>
+<ul>
+<li><code>interface SecurityMetadataSource</code> 资源权限获取器：资源权限表，SpringSecurity启动时就收集创建</li>
+<li><code>interface AuthenticationManager</code> 认证管理器：对认证实体重新进行认证</li>
+<li><code>interface AccessDecisionManager</code> 访问决策器：用于验证认证实体Authentication是否有权限访问资源<ul>
+<li><code>accessDecisionManager.decide(authenticated, fi, attributes);</code></li>
+<li>通过统计投票者的投票结果，完成决策（调用<code>List&lt;AccessDecisionVoter&gt; decisionVoters</code>投票者们的<code>vote()</code>方法，统计投票）</li>
+<li>有三种访问决策管理器的实现类：<ul>
+<li><code>AffirmativeBased</code>（默认，一票赞成则通过）</li>
+<li><code>ConsensusBased</code>（多数：赞成票&gt;反对票）</li>
+<li><code>UnanimusBased</code>（无异议：全部赞成则通过）</li>
+</ul>
+</li>
+<li>默认加载的投票器<code>AccessDecisionVoter</code>为：<ul>
+<li><code>AuthenticatedVoter</code></li>
+<li><code>RoleVoter</code></li>
+</ul>
+</li>
+<li>注意： 若<code>&lt;sec:http&gt;</code>中使用<code>use-expressions=&quot;true&quot;</code>则注入<code>WebExpressionVoter</code>，不再加载其他<code>AccessDecisionVoter</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-41">Web层（RequestURL级别）</h3>
+<p>基于Servlet Filter</p>
+<h4 id="header-42">一般处理过程：</h4>
+<ol>
+<li><code>FilterSecurityInterceptor</code> 拦截Request</li>
+<li>从<code>FilterSecurityMetadataSource</code> 获取访问Request所需的权限列表</li>
+<li>使用<code>AuthenticationManager</code> 对当前认证实体重新认证</li>
+<li>使用<code>AccessDecisionManager</code>实现类 的<code>decide(authentication, fi, attributes)</code>方法决策当前Request是否有访问权限<ul>
+<li>默认为<code>AffirmativeBased</code>决策访问器</li>
+<li>循环投票器，统计投票结果 <code>List&lt;AccessDecisionVoter&gt;</code></li>
+<li>投票器<code>AccessDecisionVoter</code>：<ul>
+<li><code>boolean support(attr)</code> 判断是否支持，不支持则返回<code>ACCESS_ABSTAIN</code>，表弃票</li>
+<li><code>int vote(auth,fi,attributes)</code> 投票，并返回投票结果</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="header-43">扩展：从其他地方获取访问权限</h4>
+<p><strong>PS:</strong> 因为SpringSecurity自带的<code>FilterSecurityInterceptor</code> 会在<code>SecurityNamespaceHandler</code>中就加载构建，无法修改，故在此Filter之前构建自己的Filter进行授权处理</p>
+<ol>
+<li><p>配置</p>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- 1. 设置Filter--&gt;</span>
+ <span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">before</span>=<span class="string">"FILTER_SECURITY_INTERCEPTOR"</span> <span class="attr">ref</span>=<span class="string">"mySecurityFilter"</span> /&gt;</span>
+     <span class="comment">&lt;!-- 定义匿名用户--&gt;</span>
+     <span class="tag">&lt;<span class="name">sec:anonymous</span> <span class="attr">key</span>=<span class="string">"test"</span> <span class="attr">granted-authority</span>=<span class="string">"ROLE_GUEST"</span> <span class="attr">username</span>=<span class="string">"guest"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+
+ <span class="comment">&lt;!-- 2. 自定义FilterSecurityInterceptor --&gt;</span>
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mySecurityFilter"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.core.filter.MySecurityFilter"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"securityMetadataSource"</span> <span class="attr">ref</span>=<span class="string">"mySecurityMetadataSource"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"accessDecisionManager"</span> <span class="attr">ref</span>=<span class="string">"myAccessDecisionManager"</span>/&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"myAuthenticationManager"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+ <span class="comment">&lt;!--3. 自定义SecurityMetadataSource --&gt;</span>
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mySecurityMetadataSource"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.security.intercept.MySecurityMetadataSource"</span>&gt;</span>
+         <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"securityService"</span> <span class="attr">ref</span>=<span class="string">"securityService"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+
+ <span class="comment">&lt;!-- 4. 定义认证管理--&gt;</span>
+ <span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
+         <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span> /&gt;</span>
+ <span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+
+ <span class="comment">&lt;!-- 5. 自定义决策管理：增加匿名用户的访问控制--&gt;</span>
+ <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myAccessDecisionManager"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.core.access.MyAccessDecisionWithGuestManager"</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"anonymous"</span> <span class="attr">value</span>=<span class="string">"ROLE_GUEST"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>自定义FilterSecurityInterceptor </p>
+<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySecurityFilter</span> <span class="keyword">extends</span> <span class="title">AbstractSecurityInterceptor</span> 
+                                 <span class="keyword">implements</span> <span class="title">Filter</span></span>{
+     ...
+     <span class="meta">@Override</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response,
+             FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException</span>{
+         <span class="comment">//System.out.println("MySecurityFilter-------");</span>
+         FilterInvocation fi = <span class="keyword">new</span> FilterInvocation(request, response, chain);  
+         invoke(fi);  
+
+     }
+     <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">(FilterInvocation fi)</span> <span class="keyword">throws</span> IOException, ServletException </span>{  
+         Collection&lt;ConfigAttribute&gt; attributes=<span class="keyword">this</span>.obtainSecurityMetadataSource().getAttributes(fi);
+         InterceptorStatusToken token = <span class="keyword">super</span>.beforeInvocation(fi);  
+         <span class="keyword">try</span> {  
+             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());  
+         } <span class="keyword">finally</span> {  
+             <span class="keyword">super</span>.afterInvocation(token, <span class="keyword">null</span>);
+         }
+     }
+ }
+</code></pre>
+</li>
+<li><p>自定义SecurityMetadataSource，在构造时加载所有访问控制信息</p>
+<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySecurityMetadataSource</span> <span class="keyword">implements</span> <span class="title">FilterInvocationSecurityMetadataSource</span> 
+ </span>{
+     <span class="keyword">private</span> ISecurityService securityService;
+     <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;RequestMatcher, Collection&lt;ConfigAttribute&gt;&gt; resourceMap = <span class="keyword">null</span>;
+
+     <span class="function"><span class="keyword">public</span> <span class="title">MySecurityMetadataSource</span><span class="params">(ISecurityService securityService)</span> </span>{  
+         <span class="keyword">this</span>.securityService = securityService;  
+         resourceMap=securityService.loadResourceDefine();  
+     }
+     <span class="meta">@Override</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; clazz)</span></span>{
+         <span class="keyword">return</span> <span class="keyword">true</span>;
+     }
+
+     <span class="comment">//其他方法实现，可参考DefaultFilterInvocationSecurityMetadataSource类</span>
+     ...
+ }
+</code></pre>
+</li>
+<li><p>自定义决策管理：增加匿名用户的访问控制判断</p>
+<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAccessDecisionWithGuestManager</span> <span class="keyword">implements</span> <span class="title">AccessDecisionManager</span></span>{
+     <span class="keyword">private</span> AuthenticationTrustResolver authenticationTrustResolver = <span class="keyword">new</span> AuthenticationTrustResolverImpl();
+     <span class="keyword">private</span> String anonymous=<span class="string">"ROLE_ANONYMOUS"</span>;
+     <span class="function"><span class="keyword">public</span> String <span class="title">getAnonymous</span><span class="params">()</span></span>{
+         <span class="keyword">return</span> anonymous;
+     }
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAnonymous</span><span class="params">(String anonymous)</span></span>{
+         <span class="keyword">this</span>.anonymous = anonymous;
+     }
+     <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isFullyAuthenticated</span><span class="params">(Authentication authentication)</span> </span>{
+         <span class="keyword">return</span> (!authenticationTrustResolver.isAnonymous(authentication) 
+         &amp;&amp; !authenticationTrustResolver.isRememberMe(authentication));
+     }
+     <span class="meta">@Override</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">decide</span><span class="params">(Authentication authentication, Object object,
+     Collection&lt;ConfigAttribute&gt; configAttributes)</span>
+             <span class="keyword">throws</span> AccessDeniedException, InsufficientAuthenticationException</span>{
+         <span class="keyword">if</span>(configAttributes == <span class="keyword">null</span>) {
+             <span class="keyword">return</span>;
+         }
+         <span class="comment">//所请求的资源拥有的权限(一个资源对多个权限)  </span>
+         Iterator&lt;ConfigAttribute&gt; iterator = configAttributes.iterator();  
+         <span class="keyword">while</span>(iterator.hasNext())  {  
+             ConfigAttribute configAttribute = iterator.next();  
+             <span class="comment">//访问所请求资源所需要的权限  </span>
+             String attribute = configAttribute.getAttribute(); 
+             <span class="comment">//System.out.println("needPermision:"+attribute);</span>
+             <span class="keyword">if</span>(<span class="keyword">this</span>.anonymous.equals(attribute)){
+                 <span class="keyword">if</span>(authenticationTrustResolver.isAnonymous(authentication) 
+                         || isFullyAuthenticated(authentication)
+                         || authenticationTrustResolver.isRememberMe(authentication))
+                     <span class="keyword">return</span>;
+             }
+             <span class="comment">//用户所拥有的权限authentication  </span>
+             <span class="keyword">for</span>(GrantedAuthority ga : authentication.getAuthorities()) {  
+                 <span class="keyword">if</span>(attribute.equals(ga.getAuthority())) 
+                     <span class="keyword">return</span>;  
+             }  
+         }  
+         <span class="comment">//没有权限  </span>
+         <span class="keyword">throw</span> <span class="keyword">new</span> AccessDeniedException(<span class="string">"Access Denied -- You don't have permission!"</span>);  
+     }
+
+     <span class="meta">@Override</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(ConfigAttribute attribute)</span></span>{
+         <span class="keyword">return</span> <span class="keyword">true</span>;
+     }
+     <span class="meta">@Override</span>
+     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; clazz)</span></span>{
+         <span class="keyword">return</span> <span class="keyword">true</span>;
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-44">方法层（Method级别）</h3>
+<p>基于Spring AOP</p>
+<h4 id="header-45">一般处理过程：</h4>
+<ul>
+<li>在<code>SecurityNamespaceHandler</code>中注入<br><code>GlobalMethodSecurityBeanDefinitionParser</code>，<code>MethodSecurityMetadataSourceBeanDefinitionParser</code></li>
+<li>收集配置的访问控制信息存入<code>MethodSecurityMetadataSource</code>实例中</li>
+</ul>
+<h4 id="header-46">支持四种方法层的安全：</h4>
+<ol>
+<li><p>Spring 简单注解：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">global-method-security</span> <span class="attr">secured-annotations</span>=<span class="string">"enabled"</span> /&gt;</span>
+</code></pre>
+<ul>
+<li><code>@Secured</code><pre><code class="nulljava"><span class="comment">/*
+指认证的用户必须被授予"ROLE_SPITTER", "ROLE_ADMIN"其中的一个权限才能访问该方法；
+如果没有这两个中任何一个权限，将抛出异常或是AuthenticationException or AccessDeniedException的子异常;
+如果方法在Web请求中调用，异常将被SpringSecurity自动调用
+*/</span>
+<span class="meta">@Secured</span>({<span class="string">"ROLE_SPITTER"</span>, <span class="string">"ROLE_ADMIN"</span>}) 
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSpittle</span><span class="params">(Spittle spittle)</span> </span>{ <span class="comment">// ... }</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>JSR-250标准：</p>
+<pre><code class="nullxml"><span class="comment">&lt;!--  JSR-250's @RolesAllowed与secured-annotations可同时被启用，
+推荐使用该方式启用注解，因为他是Java的标准注解。--&gt;</span>
+<span class="tag">&lt;<span class="name">global-method-security</span> <span class="attr">jsr250-annotations</span>=<span class="string">"enabled"</span> /&gt;</span>
+</code></pre>
+<ul>
+<li><code>@RolesAllowed</code><pre><code class="nulljava"><span class="meta">@RolesAllowed</span>({<span class="string">"ROLE_USER"</span>,<span class="string">"ROLE_ADMIN"</span>})
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changePassword</span><span class="params">(String username, String password)</span></span>;
+</code></pre>
+</li>
+<li><code>@PermitAll</code></li>
+<li><code>@DenyAll</code></li>
+</ul>
+</li>
+<li><p>Pre-/Post-invocation (可使用SpEL表达式)：</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">global-method-security</span> <span class="attr">pre-post-annotations</span>=<span class="string">"enabled"</span> /&gt;</span>
+</code></pre>
+<ul>
+<li><code>@PreAuthorized</code> : 基于表达式的结果在调用方法或类前限制被访问。<pre><code class="nulljava"><span class="comment">/*
+  拥有角色ROLE_SPITTER的用户的参数spittle字符只能少于140个,
+而拥有角色ROLE_PREMIUM的用户则不受此限制
+*/</span>
+<span class="meta">@PreAuthorize</span>(<span class="string">"(hasRole('ROLE_SPITTER') and #spittle.text.length() &lt;= 140) or hasRole('ROLE_PREMIUM')"</span>) 
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSpittle</span><span class="params">(Spittle spittle)</span> </span>{ ... }
+</code></pre>
+</li>
+<li><code>@PostAuthorized</code>：如果表达式结果为false，允许方法被调用，同时抛出一个安全异常。该注解主要是基于被保护的方法的返回值来决定执行表达式<pre><code class="nulljava"><span class="comment">/*
+  当返回的Spittle对象属于被认证的用户时才可以访问该方法
+  本例中returnObject是SpringEL提供的一个name用于方便获取返回的对象，
+而principal是SpringSecuroty提供的用于代表被当前认证的用户。
+如果认证失败，则AccessDeniedException异常将抛出
+*/</span>
+<span class="meta">@PostAuthorize</span>(<span class="string">"returnObject.spitter.username == principal.username"</span>) 
+<span class="function"><span class="keyword">public</span> Spittle <span class="title">getSpittleById</span><span class="params">(<span class="keyword">long</span> id)</span> </span>{ ... }
+</code></pre>
+</li>
+<li><code>@PreFilter</code>：允许一个方法被调用，但是用每一个表达式去过滤方法的结果。</li>
+<li><code>@PostFilter</code>：允许一个方法被调用，但是过滤在进如方法之前的输入。</li>
+</ul>
+</li>
+<li><p>使用protect-pointcut添加安全切点</p>
+<pre><code class="nullxml"> <span class="comment">&lt;!-- 
+     该配置将识别任何拥有@Sensitive的方法
+     access属性则指，认证的用户必须拥有的角色去访问表达式识别的
+ --&gt;</span>
+ <span class="tag">&lt;<span class="name">global-method-security</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">protect-pointcut</span> <span class="attr">access</span>=<span class="string">"ROLE_SPITTER"</span>  <span class="attr">expression</span>=<span class="string">"execution(@com.habuma.spitter.Sensitive * *.*(String))"</span>/&gt;</span>
+ <span class="tag">&lt;/<span class="name">global-method-security</span>&gt;</span>
+</code></pre>
+</li>
+</ol>
+<h4 id="header-47">结合SpringMVC使用</h4>
+<ol>
+<li><p>在mvc的servlet配置文件（xxx-servlet.xml）:</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:global-method-security</span> <span class="attr">pre-post-annotations</span>=<span class="string">"enabled"</span>/&gt;</span>
+</code></pre>
+<p><strong>PS: </strong>若要在MVC Controller方法上加<code>@PreAuthorize</code>,<code>@PostAuthorize</code>,<code>@PreFilter</code>,<code>@PostFilter</code>，<br>此配置一定要放在spring mvc的xml中，否则无效</p>
+</li>
+<li><p>在XxxController方法上添加方法注解：</p>
+<pre><code class="nulljava"><span class="meta">@PostAuthorize</span>(<span class="string">"!(#type=='user' and returnObject[extra].senderType=='Group' and !hasRole('ROLE_GROUP'))"</span>)
+<span class="meta">@RequestMapping</span>(value={<span class="string">"/inputs/{type}/{status}/{id}"</span>},method=RequestMethod.GET)
+<span class="meta">@ResponseBody</span>
+<span class="function"><span class="keyword">public</span> Object <span class="title">getInput</span><span class="params">(@PathVariable(<span class="string">"type"</span>)</span> String type,@<span class="title">PathVariable</span><span class="params">(<span class="string">"status"</span>)</span> String status,@PathVariable <span class="keyword">int</span> id) </span>{ ... }
+</code></pre>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2013/07/01/SpringSecurity.html';	
+		var disqus_title = 'SpringSecurity';
+		var disqus_url = 'http://sixdegree.github.io/2013/07/01/SpringSecurity.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>
