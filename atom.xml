@@ -5,7 +5,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="http://sixdegree.github.io/"/>
-  <updated>2016-04-12T01:03:32.631Z</updated>
+  <updated>2016-04-17T09:44:58.541Z</updated>
   <id>http://sixdegree.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sixdegree.github.io/2016/01/21/NodeJS-Markdown.html"/>
     <id>http://sixdegree.github.io/2016/01/21/NodeJS-Markdown.html</id>
     <published>2016-01-20T16:00:00.000Z</published>
-    <updated>2016-04-12T01:03:32.631Z</updated>
+    <updated>2016-04-17T09:44:58.541Z</updated>
     
     <content type="html">&lt;ol&gt;
 &lt;li&gt;使用marked解析markdown文章的基本命令和API介绍；&lt;/li&gt;
@@ -518,7 +518,7 @@ fs.readFile(&lt;span class=&quot;string&quot;&gt;&quot;articles/test.md&quot;&lt
     while(src){
         ...
     }
-     &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(tocIndex&amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;){
+     &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(tocIndex&amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; || &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.options.reHeader){
         &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; toc=[];
         &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;i&amp;lt;&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.tokens.length;i++){
           &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.tokens[i].type===&lt;span class=&quot;string&quot;&gt;&#39;heading&#39;&lt;/span&gt;){
