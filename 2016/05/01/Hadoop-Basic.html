@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hadoop Basic</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="hadoop,hdfs,mapreduce,partitioner,sort">
+  
+  
+    <meta name="description" content="Hadoop Basic Introduce (HDFS+MapReduce)">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Hadoop</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">版本说明</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">生态系统</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">安装部署</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">环境准备</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Hadoop1.x 安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Hadoop2.x 安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">集群模式部署</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">日志</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">配置文件说明</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">HDFS</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">各进程说明</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Namenode & Secondary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">Datanode</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">HDFS 的web 接口</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Shell Cmd</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Java API</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">URL</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">FileSystem</span></a></li></ol></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">RPC</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">RPC示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">Hadoop RPC</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">HDFS 提供的通讯协议</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">MapReduce 提供的通讯协议</span></a></li></ol></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">MapReduce</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">版本说明</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">各进程说明</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">执行流程</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">并行计算模型</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">Partitioner</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-33"><span class="sidebar-nav nav-text">LocalAggregation</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-34"><span class="sidebar-nav nav-text">Key-Value 数据类型</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-35"><span class="sidebar-nav nav-text">Input & Output</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-36"><span class="sidebar-nav nav-text">Counter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-37"><span class="sidebar-nav nav-text">全局数据</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-38"><span class="sidebar-nav nav-text">MapReduce 应用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-39"><span class="sidebar-nav nav-text">统计</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-40"><span class="sidebar-nav nav-text">按值排序</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-41"><span class="sidebar-nav nav-text">TopK</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-42"><span class="sidebar-nav nav-text">全排序</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-43"><span class="sidebar-nav nav-text">多数据源连接</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-44"><span class="sidebar-nav nav-text">链式任务</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-45"><span class="sidebar-nav nav-text">未完待续</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Hadoop Basic</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2016-04-30T16:00:00.000Z">2016-05-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-BigData">BigData</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Hadoop</h2>
+<blockquote>
+<p>Nobody wants data,what they want are the answers</p>
+</blockquote>
+<h3 id="header-2">概述</h3>
+<ul>
+<li><p>适合<code>大数据</code>的，<code>分布式</code>，<code>存储（HDFS）</code>与<code>计算（MapReduce）</code>平台</p>
+</li>
+<li><p><code>HDFS</code>: Hadoop Distributed File System 分布式文件系统</p>
+<ul>
+<li>思想<ul>
+<li>单次写入，多次读取 （不支持并发写，可追加，不可原内容修改）</li>
+<li>以Block存储，多副本</li>
+<li>面向大文件存储（小文件不合适）</li>
+</ul>
+</li>
+<li>主从结构<ul>
+<li>namenode(1) – 管理（接收请求，存储元数据）</li>
+<li>secondNamenode(1) – 辅助管理（存储元数据快照）</li>
+<li>datanode(n) – 存储数据（block）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>MapReduce</code>: Engine+Logic 并行计算框架，处理计算HDFS中的数据</p>
+<ul>
+<li>思想<ul>
+<li>分而治之</li>
+<li>mapper（Data-Local，尽可能移动计算到数据端）+ reducer</li>
+</ul>
+</li>
+<li>主从结构<ul>
+<li>jobTracker(1) – 管理（接收、分配、监控任务）</li>
+<li>taskTracker(n)– 执行任务（mapper或reducer）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>YARN</code>: Yet Another Resource Negotiator 资源管理调度系统 (Hadoop2.x加入)</p>
+</li>
+<li><p>特点（分布式特点）</p>
+<ul>
+<li>扩容能力（Scalable）<ul>
+<li>能可靠地存储和处理千兆字节（PB）数据</li>
+</ul>
+</li>
+<li>成本低（Economical）<ul>
+<li>可以通过普通机器组成的服务器群来分发以及处理数据</li>
+<li>服务器群可达数千个节点</li>
+</ul>
+</li>
+<li>高效率（Efficient）<ul>
+<li>可在的节点上并行地处理数据</li>
+</ul>
+</li>
+<li>可靠性（Reliable）<ul>
+<li>自动维护数据的多份副本</li>
+<li>在任务失败后能自动地重新部署计算任务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-3">版本说明</h3>
+<ul>
+<li><p>Apache Hadoop</p>
+<ul>
+<li>0.20.2 =&gt; hadoop     1.x</li>
+<li>0.23.0 =&gt; hadoop 2.x</li>
+</ul>
+</li>
+<li><p>Hadoop 1.x</p>
+<ul>
+<li>HDFS （分布式文件系统）</li>
+<li>MapReduce （离线计算框架）</li>
+</ul>
+</li>
+<li><p>Hadoop 2.x</p>
+<ul>
+<li>HDFS （支持NameNode横向扩展）</li>
+<li>MapReduce （运行在YARN上）</li>
+<li>YARN （资源管理系统）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2016/05/01/version.png" alt="Hadoop version"></p>
+<h3 id="header-4">生态系统</h3>
+<ul>
+<li><p>Hadoop1.x 生态系统<br>  <img src="/2016/05/01/ecosystem-1.x.png" alt="Hadoop 1.x Ecosystem"></p>
+</li>
+<li><p>Hadoop2.x 生态系统<br>  <img src="/2016/05/01/ecosystem-2.x.png" alt="Hadoop 2.x Ecosystem"></p>
+</li>
+</ul>
+<h3 id="header-5">安装部署</h3>
+<ul>
+<li>本地模式<ul>
+<li>本地运行</li>
+<li>只负责存储，没有计算功能</li>
+</ul>
+</li>
+<li>伪分布模式<ul>
+<li>在一台机器上模拟分布式部署</li>
+<li>方便学习和调试</li>
+</ul>
+</li>
+<li>集群模式<ul>
+<li>在多个机器上配置 hadoop</li>
+<li>是真正的“分布式”</li>
+</ul>
+</li>
+</ul>
+<p>部署进程说明：</p>
+<ul>
+<li><code>DataNode</code>(HDFS)与<code>TaskTracker</code>(MapReduce)，共享一个节点（<code>Slave</code>，可多个）</li>
+<li><code>NameNode</code>(HDFS)与<code>JobTracker</code>(MapReduce)，可在同一个或两个不同的节点（<code>Master</code>）</li>
+<li><p><code>NameNode</code>(HDFS)与<code>SecondaryNameNode</code>(HDFS)，尽量安排在两个不同的节点（<code>Master</code>）</p>
+</li>
+<li><p>部署逻辑图<br>  <img src="/2016/05/01/hdfs-mapreduce.png" alt="Hadoop Hdfs-MapReduce "></p>
+</li>
+<li>集群的物理分布<br>  <img src="/2016/05/01/cluster.png" alt="Hadoop Cluster "></li>
+<li>单个节点中的物理结构<br>  <img src="/2016/05/01/master-slave.png" alt="Hadoop Master-Slave "></li>
+<li>Hadoop 组件依赖关系<br>  <img src="/2016/05/01/setup.png" alt="Hadoop Master-Slave "></li>
+</ul>
+<h4 id="header-6">环境准备</h4>
+<ol>
+<li><p>Linux环境设置</p>
+<ul>
+<li>关闭iptables : <code>service iptables stop</code><pre><code>&gt; service iptables status
+&gt; service iptables stop
+&gt; chkconfig iptables off
+&gt; chkconfig --list | grep iptables
+</code></pre></li>
+<li>设置hostname：<code>/etc/sysconfig/network</code><pre><code>&gt; hostname cj
+&gt; vi /etc/sysconfig/network
+NETWORKING=yes
+HOSTNAME=cj
+&gt; restart
+</code></pre></li>
+<li><p>设置静态ip：<code>/etc/sysconfig/network-scripts/ifcfg-eth0</code></p>
+<pre><code>&gt; vi /etc/sysconfig/network-scripts/ifcfg-eth0
+...
+BOOTPROTO=static
+IPADDR=10.40.33.100
+NETMASK=255.255.255.0
+...
+&gt; service network restart
+&gt; ifconfig
+</code></pre></li>
+<li><p>设置DNS（绑定hostname &amp; ip ）: <code>/etc/hosts</code> (windows下：<code>C:\windows\system32\drivers\etc\hosts</code>)</p>
+<pre><code>&gt; vi /etc/hosts
+10.40.33.100  cj.storm cj
+... # 其他节点
+</code></pre></li>
+</ul>
+</li>
+<li><p>JVM 安装</p>
+<ul>
+<li>rpm安装    <code>rpm -ivh xxx.rpm</code><pre><code>&gt; rpm -ivh jdk-8u45-linux-x64.rpm     # 默认安装到/usr/java
+&gt; rpm -q --whatprovides java
+</code></pre></li>
+<li>配置环境变量（JAVA_HOME，PATH）： <code>/etc/profile</code><pre><code>&gt; vi /etc/profile
+export JAVA_HOME=/usr/java/jdk1.8.0_45
+export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+&gt; source /etc/profile
+</code></pre></li>
+<li>测试是否安装成功 <code>javac</code><pre><code>&gt; java -version
+&gt; javac -version
+</code></pre></li>
+</ul>
+</li>
+<li><p>Hadoop 用户</p>
+<pre><code> &gt; groupadd hadoop
+ &gt; useradd -g hadoop hadoop
+ &gt; passwd hadoop
+</code></pre></li>
+<li><p>SSH 免密码登录</p>
+<ul>
+<li>切换用户: <code>su xxx</code><pre><code>&gt; su hadoop
+</code></pre></li>
+<li>生成两个钥匙（公有，私有）: <code>ssh-keygen -t rsa</code><pre><code>&gt; mkdir .ssh
+&gt; cd .ssh
+&gt; ssh-keygen -t rsa
+&gt; ls
+id_rsa,id_rsa.pub
+</code></pre></li>
+<li>将公有钥匙添加到authorized_keys：<code>cp id_rsa.pub &gt;&gt; authorized_keys</code><pre><code>&gt; cp id_rsa.pub &gt;&gt; authorized_keys
+</code></pre></li>
+<li>权限修改：<code>chmod</code><pre><code>&gt; chmod 744 /home/hadoop
+&gt; chmod 700 /home/hadoop/.ssh
+&gt; chmod 644 /home/hadoop/.ssh/authorized_keys
+</code></pre></li>
+<li>验证（第一次需要输入密码，以后就不用了）： <code>ssh localhost</code><pre><code>&gt; ssh localhost
+&gt; ssh -v localhost  # ouput debug infomation
+&gt; exit
+</code></pre></li>
+<li>注意：如果<code>authorized_keys</code>文件、<code>$HOME/.ssh</code>目录 或 $HOME目录让本用户之外的用户有写权限，那么sshd都会拒绝使用 <code>~/.ssh/authorized_keys</code>文件中的key来进行认证的</li>
+</ul>
+</li>
+</ol>
+<h4 id="header-7">Hadoop1.x 安装</h4>
+<ol>
+<li><p>安装Hadoop</p>
+<ul>
+<li>上传并解压<pre><code>&gt; tar -zxvf hadoop-1.2.1.tar.gz -C /home/hadoop/
+</code></pre></li>
+<li>配置环境变量（HADOOP_INSTALL，PATH）： <code>/etc/profile</code><pre><code>&gt; vi /etc/profile
+export HADOOP_INSTALL=/home/hadoop/hadoop-1.2.1
+export PATH=$PATH:$HADOOP_INSTALL/bin
+&gt; source /etc/profile
+</code></pre></li>
+</ul>
+</li>
+<li><p>配置</p>
+<ul>
+<li><code>hadoop-env.sh</code> （配置JAVA_HOME）<pre><code class="nullshell">export JAVA_HOME=/usr/java
+</code></pre>
+</li>
+<li><code>core-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
+      <span class="comment">&lt;!-- 指定hadoop运行时产生文件的存放目录 --&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+      <span class="comment">&lt;!-- 指定HDFS的namenode的通信地址 --&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.default.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://cj.storm:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+      <span class="comment">&lt;!-- 指定HDFS的secondNamenode的存放目录 --&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.checkpoint.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/namesecondary<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+</code></pre>
+</li>
+<li><code>hdfs-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
+      <span class="comment">&lt;!-- HDFS 元数据存放目录--&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/hdfs/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+      <span class="comment">&lt;!-- HDFS Block存放目录--&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/hdfs/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+      <span class="comment">&lt;!-- HDFS Block Size 默认为64M--&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.block.size<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>8388608<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+      <span class="comment">&lt;!-- HDFS block 副本数，伪分布式下必须为1 --&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+      <span class="comment">&lt;!-- HDFS 文件系统权限控制--&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.permissions<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+</code></pre>
+</li>
+<li><code>mapred-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
+      <span class="comment">&lt;!-- 指定jobtracker地址 --&gt;</span>
+      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapred.job.tracker<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+              <span class="tag">&lt;<span class="name">value</span>&gt;</span>cj.storm:9001<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>启用进程</p>
+<ul>
+<li>初始化（namenode格式化，第一次时）: <code>hadoop namenode -format</code></li>
+<li>启动所有：<code>start-all.sh</code></li>
+<li>退出安全模式： <code>hadoop dfsadmin -safemode leave</code></li>
+<li>启动某个进程：<code>hadoop-daemon.sh start xxx</code></li>
+<li>关闭所有：<code>stop-all.sh</code></li>
+<li>关闭某个进程：<code>hadoop-daemon.sh stop xxx</code></li>
+</ul>
+</li>
+<li><p>验证</p>
+<ul>
+<li>进程查看：<code>jps</code></li>
+<li>web访问<ul>
+<li>HDFS （NameNode: <a href="http://cj.storm:50070，SecondNameNode">http://cj.storm:50070，SecondNameNode</a>: <a href="http://cj.storm:50090）">http://cj.storm:50090）</a></li>
+<li>MapReduce （JobTracker: <a href="http://cj.storm:50030，TaskTracker">http://cj.storm:50030，TaskTracker</a>: <a href="http://cj.storm:50060）">http://cj.storm:50060）</a></li>
+<li>注意：在windows下需维护linux主机名和IP的映射关系（<code>C:\Windows\System32\drivers\etc</code>）</li>
+</ul>
+</li>
+<li>HDFS查看 : <code>hadoop fs -lsr /</code></li>
+<li>MapReduce测试 : <code>hadoop jar $HADOOP_HOME/hadoop-examples-1.2.1.jar pi 10 100</code></li>
+<li>日志查看 : <code>ls $HADOOP_HOME/logs/*-cj.log</code></li>
+</ul>
+</li>
+</ol>
+<h4 id="header-8">Hadoop2.x 安装</h4>
+<ol>
+<li><p>安装Hadoop</p>
+<ul>
+<li>上传并解压<pre><code>&gt; tar -zxvf hadoop-2.7.2.tar.gz -C /home/hadoop/
+</code></pre></li>
+<li>配置环境变量（HADOOP_INSTALL，PATH）： <code>/etc/profile</code><pre><code>&gt; vi /etc/profile
+export HADOOP_INSTALL=/home/hadoop/hadoop-2.7.2
+export PATH=$PATH:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin
+&gt; source /etc/profile
+</code></pre></li>
+</ul>
+</li>
+<li><p>配置</p>
+<ul>
+<li><code>hadoop-env.sh</code> （配置JAVA_HOME）<pre><code class="nullshell">export JAVA_HOME=/usr/java
+</code></pre>
+</li>
+<li><code>core-site.xml</code> (同Hadoop1.x)</li>
+<li><code>hdfs-site.xml</code>  (同Hadoop1.x)</li>
+<li><code>mapred-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
+  <span class="comment">&lt;!-- 指定mr运行在yarn上 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+</code></pre>
+</li>
+<li><code>yarn-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
+  <span class="comment">&lt;!-- 指定YARN的老大（ResourceManager）的地址 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">value</span>&gt;</span>cj.storm<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- reducer获取数据的方式 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+      <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>启用进程</p>
+<ul>
+<li>先启动HDFS：<code>start-dfs.sh</code></li>
+<li>再启动YARN：<code>start-yarn.sh</code></li>
+</ul>
+</li>
+<li><p>验证</p>
+<ul>
+<li>进程查看：<code>jps</code></li>
+<li>web访问<ul>
+<li>HDFS （<a href="http://cj.storm:50070）">http://cj.storm:50070）</a></li>
+<li>MapReduce （<a href="http://cj.storm:8088）">http://cj.storm:8088）</a></li>
+<li>注意：在windows下需维护linux主机名和IP的映射关系（<code>C:\Windows\System32\drivers\etc</code>）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="header-9">集群模式部署</h4>
+<p>示例：</p>
+<ul>
+<li><p>3个节点</p>
+<ul>
+<li>Master：NameNode,SecondeNameNode,JobTracker – cj.storm</li>
+<li>Slave1：DataNode,TaskTracker – user1.storm</li>
+<li>Slave2：DataNode,TaskTracker – user2.storm</li>
+</ul>
+</li>
+<li><p>某个hadoop节点配置master和slave信息：</p>
+<ul>
+<li><code>vi masters</code> 配置secondnamenode host<pre><code>#localhost
+cj.storm
+</code></pre></li>
+<li><code>vi slaves</code> 配置datanode/tasktracker host<pre><code>#localhost
+user1.storm
+user2.storm
+</code></pre></li>
+</ul>
+</li>
+<li>DNS配置<ul>
+<li><code>vi /etc/hosts</code><pre><code>10.40.33.100  cj.storm cj
+10.40.33.101 user1.storm user1
+10.40.33.102 user2.storm user2
+</code></pre></li>
+</ul>
+</li>
+<li>同步到其他节点 <code>scp</code><ul>
+<li>同步DNS信息</li>
+<li>同步SSH <code>authorized_keys</code>（注意权限问题）</li>
+<li>同步hadoop<pre><code>&gt; scp -rp /home/hadoop/hadoop-1.2.1 hadoop@user1.storm:~
+&gt; scp -rp /home/hadoop/hadoop-1.2.1 hadoop@user2.storm:~
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-10">日志</h3>
+<ul>
+<li>存放配置：【hadoop-env.sh】（默认在hadoop安装目录的logs下）<pre><code>  &gt; vi $HADOOP_HOME/conf/hadoop-env.sh
+  export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
+</code></pre></li>
+<li>命名规则：【hadoop-用户名-进程名-主机名-日志格式后缀】<br>  <img src="/2016/05/01/log.png" alt="Hadoop Log "><ul>
+<li><code>.log</code>：通过log4j记录，日滚动，内容比全</li>
+<li><code>.out</code>：记录标准输出和错误的日志，默认情况系统保留最新5个日志文件</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-11">配置文件说明</h3>
+<ul>
+<li>优先级：<ul>
+<li><code>core</code> &lt;  <code>hdfs</code></li>
+<li><code>core</code>&lt; <code>mapred</code> &lt; <code>yarn</code></li>
+</ul>
+</li>
+<li>core-site.xml （默认：<code>core-default.xml</code>）</li>
+<li>hdfs-site.xml （默认：<code>hdfs-default.xml</code>）</li>
+<li>mapred-site.xml （默认：<code>mapred-default.xml</code>）</li>
+<li>yarn-site.xml (Hadoop2.x)</li>
+</ul>
+<hr>
+<h2 id="header-12">HDFS</h2>
+<p>把客户端的<code>大文件</code>存放在<code>很多节点</code>的<code>数据块</code>中</p>
+<p><img src="/2016/05/01/hdfs.png" alt="Hadoop hdfs "></p>
+<h3 id="header-13">各进程说明</h3>
+<h4 id="header-14">Namenode &amp; Secondary</h4>
+<p><code>Namenode</code> 负责管理：</p>
+<ul>
+<li>接收用户的操作请求</li>
+<li>管理数据节点和文件目录结构</li>
+<li>始终在内存中维护<code>metadata</code> （元数据）<ul>
+<li>内容：<code>FileName, replicas, block-ids,id2host,...</code></li>
+<li>eg: <code>/test/a.log, 3 ,{blk_1,blk_2}, [{blk_1:[h0,h1,h3]},{blk_2:[h0,h2,h4]}],...</code></li>
+</ul>
+</li>
+</ul>
+<p><code>Namenode</code> 主要维护的文件：</p>
+<ul>
+<li><code>fsimage</code><ul>
+<li>元数据镜像文件，即namenode中metedata的镜像（存放位置配置<code>dfs.name.dir</code>）</li>
+<li>文件目录与数据块之间的关系（<code>name &lt;=&gt; block</code>）</li>
+<li><code>静态</code>：<ul>
+<li>不随时与namenode内存中的metedata保持一致</li>
+<li>每隔一段时间由SecondNamenode合并fsimage和edits，推送给Namenode更新</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>edits</code><ul>
+<li>操作日志文件（存放位置配置<code>dfs.name.edit.dir</code>）</li>
+<li>数据块与节点之间的关系（<code>block &lt;=&gt; node</code>）</li>
+<li><code>动态变化</code>:<ul>
+<li>每次Namenode启动时rebuilt到内存中</li>
+<li>写请求到来时，namenode先向edits文件中写日志，成功后更新内存中的metadata，向客户端返回</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>fstime</code><ul>
+<li>保存最近一次checkpoint的时间</li>
+<li>checkpiont 时机设置<ul>
+<li><code>fs.checkpoint.period</code> ：指定两次checkpoint的最大时间间隔（默认3600秒）</li>
+<li><code>fs.checkpoint.size</code> ：规定edits文件的最大值，超过则强制checkpoint（默认64M）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>SecondaryNamenode</code> 辅助Namenode :</p>
+<ul>
+<li>HA的一个解决方案，但不支持热备</li>
+<li>监控HDFS状态的辅助后台程序</li>
+<li>每隔一段时间获取HDFS元数据的快照<ul>
+<li>通知Namenode切换edits</li>
+<li>从Namenode下载fsimage和edits</li>
+<li>合并生成新的fsimage，推送至NameNode</li>
+<li>NameNode替换旧的fsimage<br><img src="/2016/05/01/namenode-meta.png" alt="Hadoop NameNode Metadata "></li>
+</ul>
+</li>
+</ul>
+<h4 id="header-15">Datanode</h4>
+<p>负责存储：</p>
+<ul>
+<li>存储位置：${hadoop.tmp.dir}/dfs/data</li>
+<li>文件块数据（block）<ul>
+<li>HDFS 最基本的存储单位</li>
+<li>文件被分成block存储在磁盘上</li>
+<li>为保证数据安全，block会有多个副本，存放在不同物理机上（默认为3个，配置<code>dfs.replication</code>）</li>
+</ul>
+</li>
+<li>块数据的校验和（meta）</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>一个文件小于一个Block的大小时，只占用一个block，占有磁盘空间为文件实际大小（与普通文件系统不同）</li>
+<li>HDFS适合存储大文件，不适合小文件<ul>
+<li>每个文件占用的block在namenode内存中都有管理</li>
+<li>多个小文件也许只占用一个block，对存储并不影响，但对namenode有影响（会增加namenode的内存压力）</li>
+</ul>
+</li>
+<li>Block也不易太大，会增加读写复制移动重传等操作压力</li>
+</ul>
+<h3 id="header-16">HDFS 的web 接口</h3>
+<p>HDFS 对外提供了可供访问的http server，开放了很多端口</p>
+<ul>
+<li>core-site.xml,hdfs-site.xml<ul>
+<li>Namenode：dfs.http.address</li>
+<li>Datanode：dfs.datanode.http.address</li>
+</ul>
+</li>
+<li>mapred-site.xml<ul>
+<li>JobTracker：mapred.job.tracker.http.addresss</li>
+<li>TaskTracker：mapred.task.tracker.http.address</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-17">Shell Cmd</h3>
+<pre><code>&gt; hadoop fs -ls                              # list  /home/&lt;currentUser&gt;
+&gt; hadoop fs -ls /                            # list HDFS根目录下的内容
+&gt; hadoop fs -ls hdfs://cj.storm:9000/        # list HDFS根目录下的内容
+&gt; hadoop fs -lsr hdfs://cj.storm:9000/       # list HDFS as tree
+&gt; hadoop fs -mkdir hdfs://cj.storm:9000/dl
+&gt; hadoop fs -put /usr/local/tomcat1/logs/localhost_access_log.2015-07-15.txt hdfs://cj.storm:9000/dl
+&gt; hadoop fs -text hdfs://cj.storm:9000/dl/localhost_access_log.2015-07-15.txt
+</code></pre><p><code>hadoop fs</code>命令选项列表：</p>
+<table class="table">
+<thead>
+<tr>
+<th>选项名称</th>
+<th>使用格式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-ls</td>
+<td>-ls &lt;路径&gt;</td>
+<td>查看指定路径的当前目录结构</td>
+</tr>
+<tr>
+<td>-lsr</td>
+<td>-lsr &lt;路径&gt;</td>
+<td>递归查看指定路径的目录结构</td>
+</tr>
+<tr>
+<td>-du</td>
+<td>-du &lt;路径&gt;</td>
+<td>统计目录下个文件大小</td>
+</tr>
+<tr>
+<td>-dus</td>
+<td>-dus &lt;路径&gt;</td>
+<td>汇总统计目录下文件(夹)大小</td>
+</tr>
+<tr>
+<td>-count</td>
+<td>-count [-q]</td>
+<td>&lt;路径&gt; 统计文件(夹)数量</td>
+</tr>
+<tr>
+<td>-mv</td>
+<td>-mv &lt;源路径&gt; &lt;目的路径&gt;</td>
+<td>移动</td>
+</tr>
+<tr>
+<td>-cp</td>
+<td>-cp &lt;源路径&gt;</td>
+<td>&lt;目的路径&gt; 复制</td>
+</tr>
+<tr>
+<td>-rm</td>
+<td>-rm [-skipTrash] &lt;路径&gt;</td>
+<td>删除文件/空白文件夹</td>
+</tr>
+<tr>
+<td>-rmr</td>
+<td>-rmr [-skipTrash] &lt;路径&gt;</td>
+<td>递归删除</td>
+</tr>
+<tr>
+<td>-put</td>
+<td>-put &lt;多个linux 上的文件&gt; <hdfs 路径></td>
+<td>上传文件</td>
+</tr>
+<tr>
+<td>-copyFromLocal</td>
+<td>-copyFromLocal &lt;多个linux 上的文件&gt; <hdfs 路径></td>
+<td>从本地复制</td>
+</tr>
+<tr>
+<td>-moveFromLocal</td>
+<td>-moveFromLocal &lt;多个linux 上的文件&gt; <hdfs 路径></td>
+<td>从本地移动</td>
+</tr>
+<tr>
+<td>-getmerge</td>
+<td>-getmerge &lt;源路径&gt; <linux 路径></td>
+<td>合并到本地</td>
+</tr>
+<tr>
+<td>-cat</td>
+<td>-cat <hdfs 路径></td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td>-text</td>
+<td>-text <hdfs 路径></td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td>-copyToLocal</td>
+<td>-copyToLocal [-ignoreCrc] [-crc] [hdfs 源路径] [linux 目的路径]</td>
+<td>从本地复制</td>
+</tr>
+<tr>
+<td>-moveToLocal</td>
+<td>-moveToLocal [-crc] <hdfs 源路径> <linux目的路径></td>
+<td>从本地移动</td>
+</tr>
+<tr>
+<td>-mkdir</td>
+<td>-mkdir <hdfs 路径></td>
+<td>创建空白文件夹</td>
+</tr>
+<tr>
+<td>-setrep</td>
+<td>-setrep [-R] [-w] &lt;副本数&gt; &lt;路径&gt;</td>
+<td>修改副本数量</td>
+</tr>
+<tr>
+<td>-touchz</td>
+<td>-touchz &lt;文件路径&gt;</td>
+<td>创建空白文件</td>
+</tr>
+<tr>
+<td>-stat</td>
+<td>-stat [format] &lt;路径&gt;</td>
+<td>显示文件统计信息</td>
+</tr>
+<tr>
+<td>-tail</td>
+<td>-tail [-f] &lt;文件&gt;</td>
+<td>查看文件尾部信息</td>
+</tr>
+<tr>
+<td>-chmod</td>
+<td>-chmod [-R] &lt;权限模式&gt; [路径]</td>
+<td>修改权限</td>
+</tr>
+<tr>
+<td>-chown</td>
+<td>-chown [-R] [属主][:[属组]]</td>
+<td>路径修改属主</td>
+</tr>
+<tr>
+<td>-chgrp</td>
+<td>-chgrp [-R]</td>
+<td>属组名称路径修改属组</td>
+</tr>
+<tr>
+<td>-help</td>
+<td>-help [命令选项]</td>
+<td>帮助</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-18">Java API</h3>
+<h4 id="header-19">URL</h4>
+<pre><code class="nulljava">String HDFS_PATH=<span class="string">"hdfs://cj.storm:9000"</span>;
+<span class="meta">@Test</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testURL</span><span class="params">()</span> <span class="keyword">throws</span> IOException</span>{
+    URL.setURLStreamHandlerFactory(<span class="keyword">new</span> FsUrlStreamHandlerFactory());
+    URL url=<span class="keyword">new</span> URL(HDFS_PATH+<span class="string">"/dl/localhost_access_log.2015-07-15.txt"</span>);
+    InputStream in=url.openStream();
+    IOUtils.copyBytes(in, System.out, <span class="number">1024</span>, <span class="keyword">true</span>);
+}
+</code></pre>
+<h4 id="header-20">FileSystem</h4>
+<pre><code class="nullxml"><span class="comment">&lt;!-- hdfs-site.xml --&gt;</span>
+<span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.block.size<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">value</span>&gt;</span>8388608<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+</code></pre>
+<pre><code class="nulljava">String HDFS_PATH=<span class="string">"hdfs://cj.storm:9000"</span>;
+<span class="meta">@Test</span>
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFileSystem</span><span class="params">()</span> <span class="keyword">throws</span> IOException, URISyntaxException</span>{
+    FileSystem fileSystem=FileSystem.get(<span class="keyword">new</span> URI(HDFS_PATH),<span class="keyword">new</span> Configuration());
+
+    <span class="comment">// create dir</span>
+    fileSystem.mkdirs(<span class="keyword">new</span> Path(<span class="string">"/t1"</span>));
+
+    <span class="comment">//upload file</span>
+    FileInputStream in1=<span class="keyword">new</span> FileInputStream(<span class="string">"D:/input/012.txt"</span>);
+    FSDataOutputStream out=fileSystem.create(<span class="keyword">new</span> Path(<span class="string">"/t1/012.txt"</span>));
+    IOUtils.copyBytes(in1,out,<span class="number">1024</span>,<span class="keyword">true</span>);
+
+    <span class="comment">//file status -- upload by eclipse client (depends on project classpath:hdfs-site.xml)</span>
+    FileStatus status=fileSystem.getFileStatus(<span class="keyword">new</span> Path(<span class="string">"/t1/012.txt"</span>));
+    System.out.println(<span class="string">"012.txt"</span>);
+    System.out.println(<span class="string">"BlockSize:"</span>+status.getBlockSize());
+    System.out.println(<span class="string">"Length:"</span>+status.getLen());
+    System.out.println(<span class="string">"Replication:"</span>+status.getReplication());
+    System.out.println(<span class="string">"----------------------------"</span>);
+
+    <span class="comment">//file status -- upload by hdfs cmd (depends on server conf/hdfs-site.xml)</span>
+    status=fileSystem.getFileStatus(<span class="keyword">new</span> Path(<span class="string">"/dl/localhost_access_log.2015-07-15.txt"</span>));
+    System.out.println(<span class="string">"localhost_access_log.2015-07-15.txt:"</span>);
+    System.out.println(<span class="string">"BlockSize:"</span>+status.getBlockSize());
+    System.out.println(<span class="string">"Length:"</span>+status.getLen());
+    System.out.println(<span class="string">"Replication:"</span>+status.getReplication());
+    System.out.println(<span class="string">"----------------------------"</span>);
+
+    <span class="comment">//download file</span>
+    FSDataInputStream in2=fileSystem.open(<span class="keyword">new</span> Path(<span class="string">"/t1/012.txt"</span>));
+    IOUtils.copyBytes(in2,System.out,<span class="number">1024</span>,<span class="keyword">true</span>);
+
+    <span class="comment">// delete file or dir</span>
+    <span class="comment">//boolean result=fileSystem.delete(new Path("/t1"),true);</span>
+    <span class="comment">//System.out.println("Delete:"+result);</span>
+}
+</code></pre>
+<p>注意：上传文件时，报<code>AccessControlException</code>:</p>
+<ul>
+<li>方法1：set master server hdfs-site.xml dfs.permissions false</li>
+<li>方法2：hadoop fs -chmod 777 xxx</li>
+<li>方法3：change windows user to server user</li>
+</ul>
+<h2 id="header-21">RPC</h2>
+<h3 id="header-22">概述</h3>
+<p>RPC：Remote Procedure Call</p>
+<ul>
+<li>远程过程（对象方法）调用协议</li>
+<li>Client端触发，Server端运行，返回结果给Client</li>
+<li>不同java进程间对象方法的调用，Server端提供对象供Client端调用，被调用对象的方法执行发生在Server端</li>
+</ul>
+<h3 id="header-23">RPC示例</h3>
+<ul>
+<li>Server端：<ul>
+<li>Object：<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IStudent</span> <span class="keyword">extends</span> <span class="title">VersiondPrototocol</span></span>{
+   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> VERSION=<span class="number">2343L</span>;
+   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">sayHi</span><span class="params">()</span></span>;
+}
+</code></pre>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">IStudent</span></span>{
+   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">sayHi</span><span class="params">()</span></span>{
+       System.out.printIn(<span class="string">"Hello"</span>); 
+        <span class="keyword">return</span> <span class="keyword">true</span>;
+   }
+   <span class="meta">@Override</span>
+   <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getProtocolVersion</span><span class="params">(String protocol,<span class="keyword">long</span> clientVersion)</span>
+        <span class="keyword">throws</span> IOException</span>{
+       <span class="keyword">return</span> IStudent.VERSION;
+   }
+}
+</code></pre>
+</li>
+<li>发布服务：<pre><code class="nulljava">String Server_Address=<span class="string">"localhost"</span>;
+<span class="keyword">int</span> Port=<span class="number">12345</span>;
+Server server=RPC.getServer(<span class="keyword">new</span> Student,Server_Address,Port,<span class="keyword">new</span> Configuration());
+server.start();
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Client端:<ul>
+<li>Object Interface：<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IStudent</span> <span class="keyword">extends</span> <span class="title">VersiondPrototocol</span></span>{
+   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> VERSION=<span class="number">2343L</span>;
+   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">sayHi</span><span class="params">()</span></span>;
+}
+</code></pre>
+</li>
+<li>调用服务：<pre><code class="nulljava">IStudent proxy=(IStudent)RPC.waitForProxy(IStudent.class,IStudent.VERSION,<span class="keyword">new</span> InetSocketAddress(Server_Address,Server_Port),<span class="keyword">new</span> Configuration());
+<span class="keyword">boolean</span> result=proxy.sayHi();
+System.out.print(result);
+RPC.stopProxy(proxy);
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-24">Hadoop RPC</h3>
+<ul>
+<li>Hadoop的整个体系结构就是构建在RPC之上的(见org.apache.hadoop.ipc)</li>
+<li>Namenode/JobTracker 实际就是RPC Server＋WebServer(Jetty)</li>
+<li>各节点间的通讯协议  <code>extends VersionedProtocol</code></li>
+</ul>
+<h4 id="header-25">HDFS 提供的通讯协议</h4>
+<ul>
+<li><p><code>ClientProtocol</code> （<code>Client &lt;=&gt; Namenode</code>）</p>
+<ul>
+<li>Client端与NameNode（Server端）的通讯接口</li>
+<li>在Client端实际不能直接调用<code>ClientProtocol</code>提供的方法，而是使用<code>FileSystem</code></li>
+<li>传送文件时，是直接传送到<code>Datanode</code> </li>
+<li>（NameNode记录相关信息，指定传送到哪个Datanode中）</li>
+<li>注意：文件不是传送到NameNode后由NameNode再向Datanode传送的</li>
+</ul>
+</li>
+<li><p><code>ClientDatanodeProtocol</code> （<code>Client &lt;=&gt; Datanode</code>）</p>
+<ul>
+<li>Client端与DataNode（Server端）的通讯接口</li>
+<li>for block recovery</li>
+</ul>
+</li>
+<li><p><code>DatanodeProtocol</code> （<code>Datanode &lt;=&gt; Namenode</code>）</p>
+<ul>
+<li>Datanode（Client端）与NameNode（Server端）的通讯接口</li>
+<li>主动向NameNode发送心跳(setHeartbeat)<ul>
+<li>发送给Namenode的心跳中包含Datanode自身的一些信息</li>
+<li>NameNode返回回来的是下发给Datanode的命令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>NamenodeProtocol</code> （<code>SecondaryNamenode &lt;=&gt; Namenode</code>）</p>
+<ul>
+<li>SecondaryNameNode（Client端）与NameNode（Server端）的通讯接口</li>
+</ul>
+</li>
+</ul>
+<p><strong>注：</strong>Client端通过<code>DFSClient对象</code>与NameNode，Datanode通讯</p>
+<p><code>DFSClient</code>内部：</p>
+<ul>
+<li>调用<code>ClientProtocol</code>对象方法与NameNode通讯</li>
+<li>通过<code>DataStreamer</code>在对应Datanode上写入或删除block<br>  （<code>DataStreamer</code>内部会调用<code>DatanodeProtocol</code>对象方法向NameNode确定blockId和block所写位置）</li>
+<li>例如：上传文件到HDFS<pre><code class="nulljava"><span class="comment">//upload file</span>
+FileInputStream in1=<span class="keyword">new</span> FileInputStream(<span class="string">"D:/input/012.txt"</span>);
+FSDataOutputStream out=fileSystem.create(<span class="keyword">new</span> Path(<span class="string">"/t1/012.txt"</span>));
+IOUtils.copyBytes(in1,out,<span class="number">1024</span>,<span class="keyword">true</span>);
+</code></pre>
+<img src="/2016/05/01/hdfs-rpc.png" alt="Hadoop rpc "></li>
+</ul>
+<h4 id="header-26">MapReduce 提供的通讯协议</h4>
+<ul>
+<li><p><code>JobSubmissionProtocol</code> （<code>Client &lt;=&gt; JobTracker</code>）</p>
+<ul>
+<li>调用JobSubmissionProtocol的submitJob，即执行是JobTracker（Server端）的submitJob</li>
+</ul>
+</li>
+<li><p><code>InterTrackerProtocol</code> （<code>TaskTracker &lt;=&gt; JobTracker</code>）</p>
+<ul>
+<li>调用了heartbeat将tasktracker的状态通过RPC机制发送给jobTracker，返回值就是JobTracker的指令（方式同HDFS中的DatanodeProtocol）</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-27">MapReduce</h2>
+<p>MapReduce框架: 提供了统一的计算框架，为程序员隐藏了绝大多数系统层面的处理（数据存储、划分、分发、结果收集、错误恢复等）细节</p>
+<p>MR 思想：</p>
+<ul>
+<li>分而治之，化整为零</li>
+<li>排序优化，降低内存</li>
+</ul>
+<h3 id="header-28">版本说明</h3>
+<ol>
+<li>hadoop 0.x 一般使用包 mapred<ul>
+<li>mapper: extends MapReduceBase implements Mapper<K, V, K, V></li>
+<li>reducer: extends MapReduceBase implements Reducer<K, V, K, V></li>
+<li>job: JobConf,JobClient.runJob(jobConf)</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>hadoop 1.x 一般使用包 mapreduce<ul>
+<li>mapper: extends Mapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT></li>
+<li>reducer: extends Reducer<KEYIN,VALUEIN,KEYOUT,VALUEOUT></li>
+<li>job: Job,job.waitForComplete(true);</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-29">各进程说明</h3>
+<ol>
+<li><p><code>JobTracker</code> 负责管理 （master，只有一个）：</p>
+<ul>
+<li>接收用户提交的计算任务</li>
+<li>分配计算任务给TaskTrackers执行</li>
+<li>监控TaskTracker的执行情况</li>
+</ul>
+</li>
+<li><p><code>TaskTracker</code> 负责具体计算任务（slave，可有多个）：</p>
+<ul>
+<li>执行JobTracker分配的计算任务</li>
+<li>管理各个任务在每个节点上的执行情况</li>
+<li>可负责MapTask或ReduceTask</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-30">执行流程</h3>
+<ul>
+<li>客户端提交一个mr的jar包给JobClient(提交方式：hadoop jar …)</li>
+<li>JobClient通过RPC和JobTracker进行通信，返回一个存放jar包的地址（HDFS）和jobId</li>
+<li>client将jar包写入到HDFS当中(path = hdfs上的地址 + jobId)</li>
+<li>开始提交任务(任务的描述信息，不是jar, 包括jobid，jar存放的位置，配置信息等等)</li>
+<li>JobTracker进行初始化任务</li>
+<li>读取HDFS上的要处理的文件，开始计算输入分片，每一个分片对应一个MapperTask</li>
+<li>TaskTracker通过心跳机制领取任务（任务的描述信息）</li>
+<li>下载所需的jar，配置文件等</li>
+<li>TaskTracker启动一个java child子进程，用来执行具体的任务（MapperTask或ReducerTask）</li>
+<li>将结果写入到HDFS当中</li>
+</ul>
+<p><img src="/2016/05/01/mapreduce.png" alt="Hadoop MapReduce "></p>
+<h3 id="header-31">并行计算模型</h3>
+<p><img src="/2016/05/01/map-reduce.png" alt="Hadoop MapReduce "></p>
+<ol>
+<li><p>InputFormat</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InputFormat</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>{
+ InputSplit[] getSplits(JobConf job, <span class="keyword">int</span> numSplits) <span class="keyword">throws</span> IOException;
+ <span class="function">RecordReader&lt;K, V&gt; <span class="title">getRecordReader</span><span class="params">(InputSplit split,JobConf job, Reporter reporter)</span> <span class="keyword">throws</span> IOException</span>;
+}
+</code></pre>
+<ul>
+<li>InputSplit：分片（逻辑上）</li>
+<li>RecordReader：分片读取器<ul>
+<li>break data into <code>key-value pairs</code> for input to the mapper (byte-oriented view =&gt; record-oriented view)</li>
+<li>processing <code>record boundaries</code> (eg：LineRecordReader 对每个Split会多读取一行)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Mapper (<code>byte-oriented=&gt;&lt;k1,v1&gt;=&gt;&lt;k2,v2&gt;</code>)</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>{
+ setup(context);
+ <span class="keyword">try</span> {
+   <span class="keyword">while</span> (context.nextKeyValue()) {
+     map(context.getCurrentKey(), context.getCurrentValue(), context);
+   }
+ } <span class="keyword">finally</span> {
+   cleanup(context);
+ }
+}
+</code></pre>
+<ul>
+<li>Context extends MapContext extends TaskInputOutputContext<ul>
+<li>InputSplit split</li>
+<li>RecordReader<KEYIN,VALUEIN> reader</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Shuffle</p>
+<ul>
+<li>3.1 Mapper端<ul>
+<li><code>Partitioner</code> – 分区（逻辑上，将key-value pairs 划分到不同reducer的标记）</li>
+<li><code>Sort</code> – 本地Mapper的数据，在不同分区中，按key排序</li>
+<li><code>Combiner</code> (optional) – 按key分组后进行规约（本地的reduce <code>&lt;k,v&gt;=&gt;&lt;k,{v1,v2,...}&gt;</code>）</li>
+<li>CompressionCode (optional) – 压缩</li>
+<li>Mapper output (on HDFS)  – 物理上Partition输出（eg: part-r-00000,part-r-00001,…）</li>
+</ul>
+</li>
+<li>3.2 Reducer端<ul>
+<li><code>Copy</code> – 从各个Mapper端copy对应分区的数据到Reducer</li>
+<li><code>Sort &amp; Merge</code> – 各个Mapper来的数据，按key合并排序 (<code>&lt;k,v&gt; =&gt; &lt;k,{v1,v2,...}&gt;</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Reducer (<code>&lt;k,{v1,v2,...}&gt; =&gt; &lt;k,v&gt;</code>)</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>{
+ setup(context);
+ <span class="keyword">try</span> {
+   <span class="keyword">while</span> (context.nextKey()) {
+     reduce(context.getCurrentKey(), context.getValues(), context);
+   }
+ } <span class="keyword">finally</span> {
+   cleanup(context);
+ }
+}
+</code></pre>
+<ul>
+<li>Context extends ReduceContext extends TaskInputOutputContext<ul>
+<li>RawKeyValueIterator input</li>
+<li>RawComparator<KEYIN> comparator</li>
+<li>Deserializer<KEYIN> keyDeserializer</li>
+<li>Deserializer<VALUEIN> valueDeserializer</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>OutputFormat</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">OutputFormat</span>&lt;<span class="title">K</span>, <span class="title">V</span>&gt; </span>{
+ <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> RecordWriter&lt;K, V&gt; <span class="title">getRecordWriter</span><span class="params">(TaskAttemptContext context )</span> <span class="keyword">throws</span> IOException, InterruptedException</span>;
+ <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">checkOutputSpecs</span><span class="params">(JobContext context)</span> <span class="keyword">throws</span> IOException, InterruptedException</span>;
+  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> OutputCommitter <span class="title">getOutputCommitter</span><span class="params">(TaskAttemptContext context)</span> <span class="keyword">throws</span> IOException, InterruptedException</span>;
+}
+</code></pre>
+<ul>
+<li>RecordWriter 将key-value paris 输出到output file</li>
+</ul>
+</li>
+</ol>
+<p><strong>注：</strong></p>
+<ul>
+<li><code>MapTask</code>： Mapper+Shuffle（Mapper端）</li>
+<li><code>ReduceTask</code>：Reducer+Shuffle（Reducer端）</li>
+<li>Mapper数量=InputSplit数量<ul>
+<li>由conf参数<code>mapred.min.split.size</code>,<code>mapred.max.split.size,</code>blockSize` 共同决定</li>
+<li><code>splitSize = max{minSize, min{maxSize, blockSize}}</code></li>
+<li>一般为BlockSize，即有BlockNum个Split</li>
+</ul>
+</li>
+<li>Reducer数量=Partition数量<ul>
+<li>由<code>job.setNumReduceTasks(..)</code>设</li>
+<li>默认为1</li>
+</ul>
+</li>
+<li><code>Spill</code> 溢出<ul>
+<li>每个map有一个环形内存缓冲区，用于存储任务的输出</li>
+<li>一旦达到阀值，后台线程把内容写到一个溢出写文件（partition，sort，combiner-optional 后再写入）</li>
+<li>Mapper完成后，合并全部溢出写文件为各个分区且排序的文件，供Reducer使用</li>
+<li><code>io.sort.mb</code> 设置缓冲区大小（默认100M）</li>
+<li><code>io.sort.spill.percent</code>设置阀值（默认0.8）<br><img src="/2016/05/01/map-reduce2.png" alt="Hadoop MapReduce "></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-32">Partitioner</h3>
+<ol>
+<li><p>Partition作用：</p>
+<ul>
+<li>负载均衡 （对Mapper产生的中间结果进行分区，以便交给各个Reducer并行处理，提高效率）</li>
+<li>如何分区是关键：要快，且尽量均匀</li>
+</ul>
+</li>
+<li><p><code>abstract Partitioner</code></p>
+<ul>
+<li><code>public abstract int getPartition(KEY key, VALUE value, int numPartitions);</code></li>
+<li>返回<code>[0,numPartitions-1]</code>的数字，即分区标识</li>
+<li>Job默认使用<code>HashPartitioner</code>，按key分区（相同key会划分到同一个reducer）</li>
+</ul>
+</li>
+<li><p>实现类：</p>
+<ul>
+<li>基于hash分区的实现：<ul>
+<li><code>which reducer=(hash &amp; Integer.MAX_VALUE) % numReduceTasks</code></li>
+<li><code>HashPartitioner</code> （默认）: hash为key.hashCode()</li>
+<li><code>BinaryPatitioner</code>：对键值K的[rightOffset，leftOffset]这个区间取hash</li>
+<li><code>KeyFieldBasedPartitioner</code>：提供了多个区间用于计算hash</li>
+</ul>
+</li>
+<li>不基于hash分区的实现：<ul>
+<li><code>TotalOrderPartitioner</code><ul>
+<li>通过 trie 树，按照大小将数据分成若干个区间（分片）</li>
+<li>且保证后一个区间的所有数据均大于前一个区间数据</li>
+<li>通常用在数据<code>全排序</code></li>
+<li>典型的应用实例：TeraSort，HBase批量数据导入</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-33">LocalAggregation</h3>
+<p>本地聚合，减少传输到reducer的数据量（注意处理不要影响最终结果）</p>
+<p>示例：计算平均值（输入文件每行记录：string,count）</p>
+<ol>
+<li><p>方式一： out-mapper Combiner （extends Reducer）</p>
+<pre><code> /* 注意：mapper的输出键值对和reducer的输入键值对类型要匹配
+ class Mapper
+     method map(string word,integer count)
+         Emit(word,count)
+ */
+ class Mapper
+     method map(string word,integer count)
+         Emit(word,pair(count,1))
+
+ class Combiner
+     method reduce(string word,integer-list [c1,c2,...])
+         sum := 0
+         cnt := 0
+         foreach integer c in [c1,c2,...]
+             sum := sum+c
+             cnt := cnt+1
+         Emit(word,pair(sum,cnt))
+
+ class Reducer
+     method reduce(string word,pairs[(s1,c1),(s2,c2),...])
+         sum := 0
+         cnt := 0
+         foreach pair(s,c) in pairs[(s1,c1),(s2,c2),...]
+             sum := sum+s
+             cnt := cnt+c
+         avg := sum/cnt
+         Emit(word,avg)
+</code></pre></li>
+<li><p>方案二：in-mapper Combiner （map时统计，cleanup时emit）</p>
+<pre><code> class Mapper
+     method setup
+         S := new AssociativeArray
+         C := new AssociativeArray
+     method map(string word,integer count)
+         S{word} := S{word}+count
+         C{word} := C{word}+1
+     method cleanup
+         foreach word in S
+             Emit(word,pair(S{word},C{word}))
+
+ //class Reducer 同上
+</code></pre></li>
+<li>注：<ul>
+<li>方案二更高效（方案一并没有减少在mapper产生的key-value对数量）</li>
+<li>方案二需注意内存溢出问题，可通过周期性的“flush“内存中的数据来解决</li>
+<li>例如修改为：<pre><code>/* mapper读入K条时，就flush H （emit &amp; clear）*/
+class Mapper
+  method setup
+      S := new AssociativeArray
+      C := new AssociativeArray
+      limit:=100
+  method map(string word,integer count)
+      S{word} := S{word}+count
+      C{word} := C{word}+1
+      if(S.size()&gt;100)
+             foreach word in S
+                    Emit(word,pair(S{word},C{word}))
+      else
+             S.clear();
+             C.clear();
+  method cleanup
+      foreach word in S
+          Emit(word,pair(S{word},C{word}))
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-34">Key-Value 数据类型</h3>
+<p>MapReduce中的Key-Value：</p>
+<ul>
+<li><p>Key：必须实现<code>interface WritableComparable</code> （一般需要重写toString,hashCode,equals方法）</p>
+<pre><code class="nulljava">  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">WritableComparable</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Writable</span>, <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>{
+  }
+</code></pre>
+<ul>
+<li>内部可另外实现一个比较优化器<code>WritableComparator</code>（implements RawComparator），实现直接比较数据流中的数据（无需反序列化为对象后比较）</li>
+</ul>
+</li>
+<li><p>Value：必须实现<code>interface Writable</code></p>
+<pre><code class="nulljava">  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Writable</span> </span>{
+      <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(DataOutput out)</span> <span class="keyword">throws</span> IOException</span>;    <span class="comment">//Serialize</span>
+      <span class="function"><span class="keyword">void</span> <span class="title">readFields</span><span class="params">(DataInput in)</span> <span class="keyword">throws</span> IOException</span>; <span class="comment">//Deserialize</span>
+  }
+</code></pre>
+</li>
+</ul>
+<p>接口说明：</p>
+<ol>
+<li><p><code>Writable</code>：</p>
+<ul>
+<li>根据 java.io 的<code>DataInput</code> 和 <code>DataOutput</code> 实现的简单、有效的序列化对象</li>
+<li>用于进程间通信，永久存储</li>
+<li>Hadoop中一些Java类型对应的Writable封装<table class="table">
+<thead>
+<tr>
+<th>Java类型</th>
+<th>WritableComparable</th>
+<th>序列化后长度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>BooleanWritable</td>
+<td>1</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>ByteWritable</td>
+<td>1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>IntWritable</td>
+<td>4</td>
+</tr>
+<tr>
+<td>int</td>
+<td>VIntWritable</td>
+<td>1～5</td>
+</tr>
+<tr>
+<td>long</td>
+<td>LongWritable</td>
+<td>8</td>
+</tr>
+<tr>
+<td>long</td>
+<td>VLongWritable</td>
+<td>1～9</td>
+</tr>
+<tr>
+<td>float</td>
+<td>FloatWritable</td>
+<td>4</td>
+</tr>
+<tr>
+<td>double</td>
+<td>DoubleWritable</td>
+<td>8</td>
+</tr>
+<tr>
+<td>String</td>
+<td>Text</td>
+<td></td>
+</tr>
+<tr>
+<td>null</td>
+<td>NullWritable</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>eg:</p>
+<pre><code class="nulljava">  Text text = <span class="keyword">new</span> Text(<span class="string">"test"</span>);
+  text.toString();
+  text.set(<span class="string">"Hello"</span>);
+
+  IntWritable one = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);
+  one.get();
+  one.set(<span class="number">2</span>);
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>RawComparator</code>:</p>
+<ul>
+<li>优化比较，允许直接比较流中的记录，省去反序列化对象的开销<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RawComparator</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">byte</span>[] b1, <span class="keyword">int</span> s1, <span class="keyword">int</span> l1, <span class="keyword">byte</span>[] b2, <span class="keyword">int</span> s2, <span class="keyword">int</span> l2)</span></span>;
+}
+</code></pre>
+</li>
+<li><code>WritableComparator</code>是<code>RawComparator</code>对<code>WritableComparable</code>类的一个通用实现<ul>
+<li>compare默认实现：从数据流中反序列化出对象，使用对象的compareTo方法比较</li>
+<li>充当了RawComparator实例的一个工厂方法</li>
+<li>可通过静态方法注册比较器：<code>WritableComparator.define(Class c,WritableComparator comparator)</code></li>
+<li>例如：IntWritable 中注册使用了RawComparator<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Comparator</span> <span class="keyword">extends</span> <span class="title">WritableComparator</span> </span>{
+  <span class="function"><span class="keyword">public</span> <span class="title">Comparator</span><span class="params">()</span> </span>{
+    <span class="keyword">super</span>(IntWritable.class);
+  }
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">byte</span>[] b1, <span class="keyword">int</span> s1, <span class="keyword">int</span> l1,
+                     <span class="keyword">byte</span>[] b2, <span class="keyword">int</span> s2, <span class="keyword">int</span> l2)</span> </span>{
+    <span class="keyword">int</span> thisValue = readInt(b1, s1);
+    <span class="keyword">int</span> thatValue = readInt(b2, s2);
+    <span class="keyword">return</span> (thisValue&lt;thatValue ? -<span class="number">1</span> : (thisValue==thatValue ? <span class="number">0</span> : <span class="number">1</span>));
+  }
+}
+<span class="keyword">static</span> {     <span class="comment">// register this comparator</span>
+  WritableComparator.define(IntWritable.class, <span class="keyword">new</span> Comparator());
+}
+</code></pre>
+</li>
+<li>在Job中，也可通过<code>job.setCombinerClass(cls)</code>设置key的比较器</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-35">Input &amp; Output</h3>
+<p><code>InputFormat</code> 负责处理MapReduce的输入部分</p>
+<ul>
+<li>有三个作用:<ul>
+<li>验证作业的输入是否规范（例如输入路径是否存在等）</li>
+<li>把输入文件按照一定规则切分成<code>InputSplit</code>（逻辑上），每个InputSplit 由一个Mapper执行<ul>
+<li>InputSplit 接口方法：<code>getLength</code>，<code>getLocations</code></li>
+</ul>
+</li>
+<li>提供<code>RecordReader</code> 的实现类，把InputSplit读到Mapper中进行处理<ul>
+<li>RecordReader接口方法：<code>nextKeyValue</code>,<code>getCurrentKey</code>,<code>getCurrentValue</code>等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>抽象方法：<ul>
+<li><code>InputSplit[] getSplits(JobConf job, int numSplits) throws IOException;</code></li>
+<li><code>RecordReader&lt;K, V&gt; getRecordReader(InputSplit split,JobConf job,Reporter reporter) throws IOException;</code></li>
+</ul>
+</li>
+<li>实现类:<ul>
+<li>FileInputFormat<table class="table">
+<thead>
+<tr>
+<th>FileInputFormat</th>
+<th>Key</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TextInputFormat</td>
+<td>the byte offset of line</td>
+<td>line contents</td>
+<td>按行读取（默认）</td>
+</tr>
+<tr>
+<td>NLineInputFormat</td>
+<td>the byte offset of line</td>
+<td>line contents</td>
+<td>可以控制在每个split中数据的行数，默认为1行</td>
+</tr>
+<tr>
+<td>KeyValueTextInputFormat</td>
+<td>first tab character</td>
+<td>the remainder of line</td>
+<td>按行读，第一列为key，其余为value （以tab区分列）</td>
+</tr>
+<tr>
+<td>SequenceFileInputFormat</td>
+<td>user-defined</td>
+<td>user-defined</td>
+<td>二进制方式读取（一般为压缩文件）</td>
+</tr>
+<tr>
+<td>CombineFileInputFormat</td>
+<td>user-defined</td>
+<td>user-defined</td>
+<td>将多个小文件合成一个split作为输入</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>RandomInputFormat</li>
+<li>DBInputFormat</li>
+<li>EmptyInputFormat</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>注意：FileInputFormat对于每个小于splitSize的文件当做一个split，并分配一个map任务，效率底下，可考虑使用CombineFileInputFormat</li>
+</ul>
+<p><code>OutputFormat</code> 负责处理MapReduce的输出部分</p>
+<ul>
+<li>三个作用：<ul>
+<li>验证作业的输出是否规范（例如输出路径是否已存在等）</li>
+<li>提供<code>RecordWriter</code> 的实现类，把数据按某个格式写出</li>
+<li>提供<code>OutputCommitter</code>实现类，维护管理side-effect file（临时存放结果数据的文件）</li>
+</ul>
+</li>
+<li>抽象方法：<ul>
+<li><code>void checkOutputSpecs(JobContext context)</code></li>
+<li><code>RecordWriter&lt;K, V&gt; getRecordWriter(TaskAttemptContext context)</code></li>
+<li><code>OutputCommitter getOutputCommitter(TaskAttemptContext context)</code></li>
+</ul>
+</li>
+<li>实现类：<ul>
+<li>FileOutputFormat<ul>
+<li>TextOutputFormat： “key /t value /n“格式输出（默认）</li>
+<li>SequenceFileOutputFormat</li>
+</ul>
+</li>
+<li>FilterOutputFormat<ul>
+<li>LazyOutputFormat</li>
+</ul>
+</li>
+<li>DBOutputFormat</li>
+<li>NullOutputFormat</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-36">Counter</h3>
+<p>计数器</p>
+<ul>
+<li>方便以全局的视角来审查程序的运行情况以及各项指标，及时做出错误诊断并进行相应处理</li>
+<li>例如: 一个MapReduce任务的输出<pre><code>   Counters: 19                        // 共有19个计数器
+     File Output Format Counters       // 【FileOutputFormat 组】
+       Bytes Written=19                // reduce输出到hdfs的字节数
+     FileSystemCounters                // 【FileSystem 组】
+       FILE_BYTES_READ=481
+       HDFS_BYTES_READ=38
+       FILE_BYTES_WRITTEN=81316
+       HDFS_BYTES_WRITTEN=19
+     File Input Format Counters         // 【FileInputFormat 组】
+       Bytes Read=19                    // map从hdfs读取的字节数
+     Map-Reduce Framework               // 【MapReduce 组】
+       Map output materialized bytes=49
+       Map input records=2              // map读入的记录行数
+       Reduce shuffle bytes=0
+       Spilled Records=8
+       Map output bytes=35
+       Total committed heap usage (bytes)=266469376
+       SPLIT_RAW_BYTES=105
+       Combine input records=0
+       Reduce input records=4            // reduce从map端接收的记录行数
+       Reduce input groups=3             // reduce函数接收的key数量，即归并后的k2数量
+       Combine output records=0
+       Reduce output records=3           // reduce输出的记录行数
+       Map output records=4              // map输出的记录行数
+</code></pre></li>
+<li><code>Counter</code> (implements Writable)<ul>
+<li>成员变量：<ul>
+<li>String name</li>
+<li>String displayName</li>
+<li>long value</li>
+</ul>
+</li>
+<li>声明一个计数器<ul>
+<li><code>context.getCounter(Enum enum)</code></li>
+<li><code>context.getCounter(String groupName,String counterName)</code></li>
+</ul>
+</li>
+<li>设置计数器的值<ul>
+<li>设置值：<code>counter.setValue(long value);</code></li>
+<li>增加计数：<code>counter.increment(long incr);</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-37">全局数据</h3>
+<ul>
+<li><p>全局作业参数：保存在<code>Configuration</code>中</p>
+<ul>
+<li><code>conf.setXxx(&quot;...&quot;,...);</code></li>
+<li><code>context.getConfiguration().getXxx(&quot;...&quot;);</code></li>
+</ul>
+</li>
+<li><p>全局数据文件：使用<code>DistributedCache</code>文件传递机制（适合小文件，可完整读取到内存中）</p>
+<ul>
+<li>将文件传送到DistributedCache中,各节点从DistributedCache中将文件复制到本地的文件系统中使用</li>
+<li><code>DistributedCache.addCacheFile(uri, conf)</code></li>
+<li><code>DistributedCache.getCacheFiles(conf)</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="header-38">MapReduce 应用示例</h2>
+<p>计数 去重 排序 TopKey 选择 投影 分组 多表连接 单表连接<br>倒排索引 Inverted index | 页面排序 PageRank | 词频统计分析 | 同现关系 （矩阵算法）<br>动态规划 | 快速排序 | 堆排序<br>图算法 | 聚类 | 推荐系统 | 机器学习 | 数据挖掘</p>
+<h3 id="header-39">统计</h3>
+<p>示例：文本单词数量统计</p>
+<ul>
+<li>input:<pre><code>ABC DEF AED
+DIE EIL ABC
+JFIE ABC DEF
+</code></pre></li>
+<li>output:<pre><code>ABC 3
+AED 1
+DEF 2
+DIE 1
+EIL 1
+JFIE 1
+</code></pre></li>
+</ul>
+<ol>
+<li><p>最简版：map+reduce</p>
+<ul>
+<li>Mapper<pre><code class="nulljava">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCountMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>{
+      <span class="keyword">private</span> Text word=<span class="keyword">new</span> Text();
+      <span class="keyword">private</span> IntWritable one=<span class="keyword">new</span> IntWritable(<span class="number">1</span>);
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value, Context context)</span>
+              <span class="keyword">throws</span> IOException, InterruptedException </span>{
+          StringTokenizer itr=<span class="keyword">new</span> StringTokenizer(value.toString());
+          <span class="keyword">while</span>(itr.hasMoreTokens()){
+              word.set(itr.nextToken());
+              context.write(word, one);
+          }
+      }
+  }
+</code></pre>
+</li>
+<li>Reducer<pre><code class="nulljava">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCountReducer</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>{
+      <span class="keyword">private</span> IntWritable result=<span class="keyword">new</span> IntWritable();
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values,Context context)</span>
+              <span class="keyword">throws</span> IOException, InterruptedException </span>{
+          <span class="keyword">int</span> sum=<span class="number">0</span>;
+          <span class="keyword">for</span>(IntWritable val:values){
+              sum+=val.get();
+          }
+          result.set(sum);
+          context.write(key,result);
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>优化版：map+local aggregation（in-mapper combiner）+reduce</p>
+<ul>
+<li><p>Mapper</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCountMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>{
+  <span class="keyword">private</span> Map&lt;String,Integer&gt; temp=<span class="keyword">new</span> HashMap&lt;String,Integer&gt;();
+  <span class="keyword">private</span> <span class="keyword">int</span> limit=<span class="number">500</span>;
+  <span class="keyword">private</span> <span class="keyword">int</span> i=<span class="number">0</span>;
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">(Context context)</span> <span class="keyword">throws</span> IOException,
+          InterruptedException </span>{
+      limit=context.getConfiguration().getInt(<span class="string">"flush.limit"</span>, limit);
+      i=<span class="number">0</span>;
+  }
+
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value, Context context)</span>
+          <span class="keyword">throws</span> IOException, InterruptedException </span>{
+      StringTokenizer itr=<span class="keyword">new</span> StringTokenizer(value.toString());
+      String word=<span class="keyword">null</span>;
+      Integer sum=<span class="number">0</span>;
+      <span class="keyword">while</span>(itr.hasMoreTokens()){
+          sum=temp.get(word);
+          <span class="keyword">if</span>(sum==<span class="keyword">null</span>)
+              temp.put(word, <span class="number">1</span>);
+          <span class="keyword">else</span>
+              temp.put(word,sum+<span class="number">1</span>);
+          i++;
+          <span class="keyword">if</span>(i==limit){
+              cleanup(context);
+              temp.clear();
+              i=<span class="number">0</span>;
+          }
+      }
+  }
+
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">cleanup</span><span class="params">(Context context)</span>
+          <span class="keyword">throws</span> IOException, InterruptedException </span>{
+      Text word=<span class="keyword">new</span> Text();
+      IntWritable count=<span class="keyword">new</span> IntWritable();
+      <span class="keyword">for</span>(String key:temp.keySet()){
+          word.set(key);
+          count.set(temp.get(key));
+          context.write(word,count);
+      }
+  }
+}
+</code></pre>
+</li>
+<li>Reducer<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCountReducer</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>{
+  <span class="keyword">private</span> IntWritable result=<span class="keyword">new</span> IntWritable();
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values,Context context)</span>
+          <span class="keyword">throws</span> IOException, InterruptedException </span>{
+      <span class="keyword">int</span> sum=<span class="number">0</span>;
+      <span class="keyword">for</span>(IntWritable val:values){
+          sum+=val.get();
+      }
+      result.set(sum);
+      context.write(key,result);
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Job</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException, InterruptedException </span>{
+ Configuration conf=<span class="keyword">new</span> Configuration();
+ String[] otherArgs = <span class="keyword">new</span> GenericOptionsParser(conf, args).getRemainingArgs();
+ <span class="keyword">if</span> (otherArgs.length != <span class="number">2</span>) {
+   System.err.println(<span class="string">"Usage: SimpleWordCount &lt;in&gt; &lt;out&gt;"</span>);
+   System.exit(<span class="number">2</span>);
+ }
+
+ <span class="comment">// delete exist output path</span>
+ FileSystem fs=FileSystem.get(conf);
+ Path outputPath=<span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]);
+ <span class="keyword">if</span>(fs.exists(outputPath)){
+     fs.delete(outputPath, <span class="keyword">true</span>);
+ }
+
+ Job job=<span class="keyword">new</span> Job(conf,<span class="string">"WordCount"</span>);
+ job.setJarByClass(WordCount.class);
+ <span class="comment">//1.Input</span>
+ FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>]));
+ job.setInputFormatClass(TextInputFormat.class);
+ <span class="comment">//2.Mapper</span>
+ job.setMapperClass(WordCountMapper.class);
+ job.setMapOutputKeyClass(Text.class);
+ job.setMapOutputValueClass(IntWritable.class);
+ <span class="comment">//job.setCombinerClass(WordCountReducer.class);    // Optional</span>
+ <span class="comment">//3.Reducer</span>
+ job.setNumReduceTasks(<span class="number">2</span>);
+ job.setReducerClass(WordCountReducer.class);
+ job.setOutputKeyClass(Text.class);
+ job.setOutputValueClass(IntWritable.class);
+ <span class="comment">//4.Output</span>
+ FileOutputFormat.setOutputPath(job,<span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]));
+ job.setOutputFormatClass(TextOutputFormat.class);
+
+ <span class="keyword">boolean</span> result=job.waitForCompletion(<span class="keyword">true</span>);
+ System.exit(result ? <span class="number">0</span> : <span class="number">1</span>);
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="header-40">按值排序</h3>
+<p>示例：SecondarySort – first column desc ; second column asc</p>
+<ul>
+<li>input:<pre><code>A 1 r1994
+B 2 r1995
+C 1 r1998
+B 1 r1992
+A 3 r1994
+C 2 r1992
+A 2 r1995
+C 3 r1996
+B 3 r1998
+</code></pre></li>
+<li>output:<pre><code>C (1,r1998) (2,r1992) (3,r1996)
+B (1,r1992) (2,r1995) (3,r1998)
+A (1,r1994) (2,r1995) (3,r1994)
+</code></pre></li>
+</ul>
+<p>实现方案：用复合键让系统完成排序 (pairs)</p>
+<ul>
+<li>在map和reduce阶段进行排序时，比较的是key</li>
+<li>value是不参与排序比较的</li>
+<li>想让value部分也进行排序，将value中需要排序的部分加入到key中形成复合键pairs</li>
+<li>此时分区，分组时也是按照新的复合键pairs</li>
+<li>可以自定义Partitioner仅对pair中原来的k进行散列，以保证原来同一key的键值对分区到同一个Reduce节点上</li>
+<li>可自定义Comparator仅对pair中原来的k进行比较分组，以保证原来同一key的键值对分到同一组</li>
+</ul>
+<p>具体实现：</p>
+<ul>
+<li><p>Composite Key</p>
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NewK</span> <span class="keyword">implements</span> <span class="title">WritableComparable</span>&lt;<span class="title">NewK</span>&gt;</span>{
+  <span class="keyword">private</span> Text first;
+  <span class="keyword">private</span> <span class="keyword">int</span> second;
+
+  <span class="function"><span class="keyword">public</span> <span class="title">NewK</span><span class="params">(Text first,<span class="keyword">int</span> second)</span></span>{
+      <span class="keyword">this</span>.first=first;
+      <span class="keyword">this</span>.second=second;
+  }
+
+  <span class="function"><span class="keyword">public</span> Text <span class="title">getFirst</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> first;
+  }
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFirst</span><span class="params">(Text first)</span> </span>{
+      <span class="keyword">this</span>.first = first;
+  }
+  <span class="function"><span class="keyword">public</span> Integer <span class="title">getSecond</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> second;
+  }
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecond</span><span class="params">(<span class="keyword">int</span> second)</span> </span>{
+      <span class="keyword">this</span>.second = second;
+  }
+
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(DataOutput out)</span> <span class="keyword">throws</span> IOException </span>{
+      first.write(out);
+      out.writeInt(second);
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readFields</span><span class="params">(DataInput in)</span> <span class="keyword">throws</span> IOException </span>{
+      first.readFields(in);
+      second=in.readInt();
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(NewK o)</span> </span>{
+      <span class="keyword">int</span> cmp=first.compareTo(o.first);
+      <span class="keyword">return</span> cmp==<span class="number">0</span>?<span class="keyword">this</span>.second-o.second:cmp;
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> <span class="keyword">this</span>.first.hashCode()+<span class="keyword">this</span>.second;
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>{
+      <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> NewK){
+          NewK o=(NewK)obj;
+          <span class="keyword">return</span> <span class="keyword">this</span>.first.equals(o.getFirst()) &amp;&amp; <span class="keyword">this</span>.second==o.getSecond();
+      }
+      <span class="keyword">return</span> <span class="keyword">false</span>;
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>{
+      <span class="keyword">return</span> <span class="string">"["</span>+<span class="keyword">this</span>.first+<span class="string">","</span>+<span class="keyword">this</span>.second+<span class="string">"]"</span>;
+  }
+}
+</code></pre>
+</li>
+<li>Mapper<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondarySortMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span>, <span class="title">Text</span>, <span class="title">NewK</span>, <span class="title">Text</span>&gt;</span>{
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value, Context context)</span>
+          <span class="keyword">throws</span> IOException, InterruptedException </span>{
+      StringTokenizer itr=<span class="keyword">new</span> StringTokenizer(value.toString());
+      <span class="keyword">if</span>(itr.countTokens()&gt;=<span class="number">3</span>){
+          NewK newK=<span class="keyword">new</span> NewK(<span class="keyword">new</span> Text(itr.nextToken()),Integer.parseInt(itr.nextToken()));
+          context.write(newK, <span class="keyword">new</span> Text(itr.nextToken()));
+      }
+  }
+}
+</code></pre>
+</li>
+<li><p>Shuffler</p>
+<ul>
+<li>Partitioner<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NewKPartitioner</span> <span class="keyword">extends</span> <span class="title">Partitioner</span>&lt;<span class="title">NewK</span>, <span class="title">Text</span>&gt;
+</span>{
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPartition</span><span class="params">(NewK key, Text value, <span class="keyword">int</span> numPartitions)</span> </span>{
+      <span class="keyword">return</span> (key.getFirst().hashCode() &amp; Integer.MAX_VALUE) % numPartitions;
+  }
+}
+</code></pre>
+</li>
+<li><p>SortComparator</p>
+<pre><code class="nulljava"><span class="comment">// first desc ; second asc</span>
+<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NewKSortComparator</span> <span class="keyword">extends</span> <span class="title">WritableComparator</span></span>{
+  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Text.Comparator TEXT_COMPARATOR = <span class="keyword">new</span> Text.Comparator();
+
+  <span class="function"><span class="keyword">public</span> <span class="title">NewKSortComparator</span><span class="params">()</span> </span>{
+    <span class="keyword">super</span>(NewK.class);
+  }
+
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">byte</span>[] b1, <span class="keyword">int</span> s1, <span class="keyword">int</span> l1, <span class="keyword">byte</span>[] b2, <span class="keyword">int</span> s2,<span class="keyword">int</span> l2)</span> </span>{
+      <span class="keyword">try</span> {
+          <span class="comment">// 字节流中的Text字段：Len+Content=VInt+byte[]</span>
+          <span class="comment">// VInt:第一个byte描述VInt的长度，例如为n，则后面n-1个byte的内容为Text Content的长度</span>
+          <span class="comment">// 获取VInt的长度：WritableUtils.decodeVIntSize(b1[s1])</span>
+          <span class="comment">// 获取Content的长度（即VInt的值）：readVInt(b1, s1)</span>
+           <span class="keyword">int</span> firstLen1=WritableUtils.decodeVIntSize(b1[s1])+readVInt(b1, s1);
+           <span class="keyword">int</span> firstLen2=WritableUtils.decodeVIntSize(b1[s1])+readVInt(b2,s2);
+           <span class="keyword">int</span> cmp=TEXT_COMPARATOR.compare(b1, s1, firstLen1, b2, s2, firstLen2);
+           <span class="keyword">if</span>(cmp!=<span class="number">0</span>)
+              <span class="keyword">return</span> -cmp;
+          <span class="keyword">int</span> secondValue1=readInt(b1,s1+firstLen1);
+          <span class="keyword">int</span> secondValue2=readInt(b2,s2+firstLen2);
+          <span class="keyword">return</span> secondValue1-secondValue2;
+      } <span class="keyword">catch</span> (IOException e) {
+          <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(e);
+      }
+  }
+}
+</code></pre>
+</li>
+<li>GroupComparator<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NewKGroupingComparator</span> <span class="keyword">extends</span> <span class="title">WritableComparator</span></span>{
+  <span class="function"><span class="keyword">public</span> <span class="title">NewKGroupingComparator</span><span class="params">()</span></span>{
+      <span class="keyword">super</span>(NewK.class);
+  }
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">byte</span>[] b1, <span class="keyword">int</span> s1, <span class="keyword">int</span> l1, <span class="keyword">byte</span>[] b2, <span class="keyword">int</span> s2,<span class="keyword">int</span> l2)</span> </span>{
+      <span class="keyword">try</span> {
+          <span class="keyword">int</span> n1=WritableUtils.decodeVIntSize(b1[s1]);
+          <span class="keyword">int</span> n2=WritableUtils.decodeVIntSize(b2[s2]);
+          <span class="keyword">int</span> firstContentLen1=readVInt(b1, s1);
+          <span class="keyword">int</span> firstContentLen2=readVInt(b2,s2);
+          <span class="keyword">return</span> compareBytes(b1,s1+n1,firstContentLen1,b2,s2+n2,firstContentLen2);
+      } <span class="keyword">catch</span> (IOException e) {
+          <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(e);
+      }
+  }
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>Reducer<pre><code class="nulljava"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondarySortReducer</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">NewK</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">Text</span>&gt;</span>{
+  <span class="meta">@Override</span>
+  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(NewK key, Iterable&lt;Text&gt; values,Context context)</span>
+          <span class="keyword">throws</span> IOException, InterruptedException </span>{
+      <span class="keyword">for</span>(Text val:values){
+          context.write(key.getFirst(), <span class="keyword">new</span> Text(<span class="string">"("</span>+key.getSecond()+<span class="string">","</span>+val.toString()+<span class="string">")"</span>));
+      }
+  }
+}
+</code></pre>
+</li>
+<li><p>Job</p>
+<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException, InterruptedException </span>{
+  Configuration conf=<span class="keyword">new</span> Configuration();
+  String[] otherArgs = <span class="keyword">new</span> GenericOptionsParser(conf, args).getRemainingArgs();
+  <span class="keyword">if</span> (otherArgs.length != <span class="number">2</span>) {
+    System.err.println(<span class="string">"Usage: SecondarySort &lt;in&gt; &lt;out&gt;"</span>);
+    System.exit(<span class="number">2</span>);
+  }
+
+  <span class="comment">// delete exist output path</span>
+  FileSystem fs=FileSystem.get(conf);
+  Path outputPath=<span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]);
+  <span class="keyword">if</span>(fs.exists(outputPath)){
+      fs.delete(outputPath, <span class="keyword">true</span>);
+  }
+
+  Job job=<span class="keyword">new</span> Job(conf,<span class="string">"SecondarySort"</span>);
+  job.setJarByClass(SecondarySort.class);
+  <span class="comment">//1.Input</span>
+  FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>]));
+  job.setInputFormatClass(TextInputFormat.class);                    <span class="comment">//key:column1,value:remaining columns</span>
+  <span class="comment">//2.Mapper</span>
+  job.setMapperClass(SecondarySortMapper.class);
+  job.setMapOutputKeyClass(NewK.class);
+  job.setMapOutputValueClass(Text.class);
+  job.setPartitionerClass(NewKShuffle.NewKPartitioner.class);             <span class="comment">// partition by NewK.first</span>
+  job.setSortComparatorClass(NewKShuffle.NewKSortComparator.class);        <span class="comment">// 确定Key排序策略：NewK.first&amp;NewK.second（默认使用key的实现的compareTo方法）</span>
+  <span class="comment">//3.Reducer</span>
+  job.setNumReduceTasks(<span class="number">1</span>);                                                  <span class="comment">// only one reducer for all-key sorted</span>
+  job.setGroupingComparatorClass(NewKShuffle.NewKGroupingComparator.class); <span class="comment">//确定分组策略：NewK.first相同，则属于同一个组（默认同上面setSortComparatorClass）</span>
+  job.setReducerClass(SecondarySortReducer.class);
+  job.setOutputKeyClass(Text.class);
+  job.setOutputValueClass(Text.class);
+  <span class="comment">//4.Output</span>
+  FileOutputFormat.setOutputPath(job,<span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]));
+  job.setOutputFormatClass(TextOutputFormat.class);
+
+  <span class="keyword">boolean</span> result=job.waitForCompletion(<span class="keyword">true</span>);
+  System.exit(result ? <span class="number">0</span> : <span class="number">1</span>);
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="header-41">TopK</h3>
+<p>示例：</p>
+<ul>
+<li>input:<pre><code>A 39
+Hello 34
+K 93
+B 123
+Person 99
+D 3023
+C 39
+</code></pre></li>
+<li>output(top 3):<pre><code>Person 99
+B 123
+D 3023
+</code></pre></li>
+</ul>
+<p>实现方案：</p>
+<ul>
+<li>Reducer(1个): topk(S) = topk(topk(s1), topk(s2), topk(s3), …)</li>
+<li>TreeMap 自动排序</li>
+</ul>
+<p>具体实现：</p>
+<ul>
+<li><p>Mapper</p>
+<pre><code class="nulljava">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TopKMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>&gt;</span>{
+      <span class="keyword">private</span> TreeMap&lt;Integer,String&gt; temp=<span class="keyword">new</span> TreeMap&lt;Integer,String&gt;();
+      <span class="keyword">private</span> <span class="keyword">int</span> limitK=<span class="number">10</span>;
+      <span class="keyword">private</span> <span class="keyword">int</span> i=<span class="number">0</span>;
+
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">(Context context)</span> <span class="keyword">throws</span> IOException,InterruptedException </span>{
+          limitK=context.getConfiguration().getInt(<span class="string">"top.k"</span>, limitK);
+          i=<span class="number">0</span>;
+      }
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(Text key, IntWritable value, Context context)</span>
+              <span class="keyword">throws</span> IOException, InterruptedException </span>{
+          temp.put(value.get(), key.toString());
+          i++;
+          <span class="keyword">if</span>(i==limitK){
+              temp.pollFirstEntry();    <span class="comment">//temp.remove(temp.firstKey());</span>
+              i--;
+          }
+      }
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">cleanup</span><span class="params">(Context context)</span><span class="keyword">throws</span> IOException, InterruptedException</span>{
+          <span class="keyword">for</span>(Integer key:temp.keySet()){
+              context.write(<span class="keyword">new</span> IntWritable(key), <span class="keyword">new</span> Text(temp.get(key)));
+          }
+      }
+  }
+</code></pre>
+</li>
+<li><p>Reducer</p>
+<pre><code class="nulljava">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TopKReducer</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>&gt;</span>{
+      <span class="keyword">private</span> TreeMap&lt;Integer,String&gt; temp=<span class="keyword">new</span> TreeMap&lt;Integer,String&gt;();
+      <span class="keyword">private</span> <span class="keyword">int</span> limitK=<span class="number">10</span>;
+      <span class="keyword">private</span> <span class="keyword">int</span> i=<span class="number">0</span>;
+
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">setup</span><span class="params">(Context context)</span> <span class="keyword">throws</span> IOException,InterruptedException </span>{
+          limitK=context.getConfiguration().getInt(<span class="string">"top.k"</span>, limitK);
+          i=<span class="number">0</span>;
+      }
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(IntWritable key, Iterable&lt;Text&gt; values,Context context)</span>
+              <span class="keyword">throws</span> IOException, InterruptedException </span>{
+          temp.put(key.get(),values.toString());
+          i++;
+          <span class="keyword">if</span>(i==limitK){
+              temp.pollFirstEntry();
+              i--;
+          }
+      }
+      <span class="meta">@Override</span>
+      <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">cleanup</span><span class="params">(Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException</span>{
+          <span class="keyword">for</span>(Integer key:temp.keySet()){
+              context.write(<span class="keyword">new</span> IntWritable(key), <span class="keyword">new</span> Text(temp.get(key)));
+          }
+      }
+  }
+</code></pre>
+</li>
+<li><p>Job</p>
+<pre><code class="nulljava">  Job job=<span class="keyword">new</span> Job(conf,<span class="string">"TopK"</span>);
+  job.setJarByClass(TopK.class);
+  <span class="comment">//1.Input</span>
+  FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>]));
+  job.setInputFormatClass(KeyValueTextInputFormat.class);                    <span class="comment">//key:Word,value:Count</span>
+  <span class="comment">//2.Mapper</span>
+  job.setMapperClass(TopKMapper.class);
+  job.setMapOutputKeyClass(IntWritable.class);
+  job.setMapOutputValueClass(Text.class);
+  <span class="comment">//3.Reducer</span>
+  job.setNumReduceTasks(<span class="number">1</span>);                                                <span class="comment">// only one reducer</span>
+  job.setReducerClass(TopKReducer.class);
+  job.setOutputKeyClass(IntWritable.class);
+  job.setOutputValueClass(Text.class);
+  <span class="comment">//4.Output</span>
+  FileOutputFormat.setOutputPath(job,<span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]));
+  job.setOutputFormatClass(TextOutputFormat.class);
+
+  <span class="keyword">boolean</span> result=job.waitForCompletion(<span class="keyword">true</span>);
+  System.exit(result ? <span class="number">0</span> : <span class="number">1</span>);
+</code></pre>
+</li>
+</ul>
+<h3 id="header-42">全排序</h3>
+<ol>
+<li><p>最简版：归并排序（n个mapper+1个reduce）</p>
+<ul>
+<li>Map 阶段：每个 Map Task进行局部排序；</li>
+<li>Reduce 阶段：启动一个 Reduce Task 进行全局排序</li>
+<li>注意： 由于作业只能有一个 Reduce Task，因而 Reduce 阶段会成为作业的瓶颈</li>
+</ul>
+</li>
+<li><p>优化版：使用TotalOrderPartitioner (Sampler+map+TotalOrderPartitioner+reduce)</p>
+<ul>
+<li>Job1: 数据采样（InputSampler 通过采样获取分片的分割点，并写入partition file）<ul>
+<li>Sampler：<code>K[] getSample(InputFormat&lt;K,V&gt; inf, Job job) ，</code>Hadoop 自带了几个采样算法：<ul>
+<li>IntervalSampler</li>
+<li>RandomSampler</li>
+<li>SplitSampler</li>
+</ul>
+</li>
+<li>writePartitionFile：根据Sampler提供的样本，排序后写入到partition file</li>
+</ul>
+</li>
+<li>Job2：MapReduce （使用TotalOrderpartitioner进行分区）</li>
+</ul>
+</li>
+</ol>
+<p>优化版具体实现：</p>
+<ul>
+<li><p>Job1: Sampler</p>
+<pre><code class="nulljava">  <span class="comment">// Sampler Job</span>
+  Job samplerJob=<span class="keyword">new</span> Job(conf,<span class="string">"TotalOrderSampler"</span>);
+  samplerJob.setJarByClass(TotalOrder.class);
+  FileInputFormat.addInputPath(samplerJob, <span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>]));
+  FileOutputFormat.setOutputPath(samplerJob,<span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]));
+  samplerJob.setInputFormatClass(KeyValueTextInputFormat.class);
+  samplerJob.setNumReduceTasks(<span class="number">3</span>);
+  samplerJob.setOutputFormatClass(TextOutputFormat.class);
+
+  RandomSampler&lt;Text,Text&gt; sampler=<span class="keyword">new</span> RandomSampler&lt;Text,Text&gt;(<span class="number">0.1</span>,<span class="number">1000</span>,<span class="number">10</span>);
+  TotalOrderPartitioner.setPartitionFile(samplerJob.getConfiguration(),<span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>],<span class="string">"sampler"</span>));
+  InputSampler.writePartitionFile(samplerJob, sampler);     <span class="comment">// 默认使用TextInputFormat的Key取样</span>
+</code></pre>
+</li>
+<li>Job2: MapReduce<pre><code class="nulljava">  <span class="comment">// MapReduce Job</span>
+  Job job=<span class="keyword">new</span> Job(conf,<span class="string">"TotalOrder"</span>);
+  job.setJarByClass(TotalOrder.class);
+  <span class="comment">//2.1 Input</span>
+  FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(otherArgs[<span class="number">0</span>]));
+  job.setInputFormatClass(KeyValueTextInputFormat.class);    <span class="comment">// key:Word,value:Count</span>
+  <span class="comment">//2.2 Mapper</span>
+  job.setMapperClass(Mapper.class);                        <span class="comment">// default Mapper</span>
+  job.setMapOutputKeyClass(Text.class);
+  job.setMapOutputValueClass(Text.class);
+  job.setPartitionerClass(TotalOrderPartitioner.class);    <span class="comment">// Use TotalOrderPartitioner</span>
+  <span class="comment">//2.3 Reducer</span>
+  job.setNumReduceTasks(<span class="number">3</span>);                                <span class="comment">// only one reducer</span>
+  job.setReducerClass(Reducer.class);                      <span class="comment">// default Reducer</span>
+  job.setOutputKeyClass(Text.class);
+  job.setOutputValueClass(Text.class);
+  <span class="comment">//2.4 Output</span>
+  FileOutputFormat.setOutputPath(job,<span class="keyword">new</span> Path(otherArgs[<span class="number">1</span>]));
+  job.setOutputFormatClass(TextOutputFormat.class);
+  <span class="comment">//2.5 exec job</span>
+  <span class="keyword">boolean</span> result=job.waitForCompletion(<span class="keyword">true</span>);
+  System.exit(result ? <span class="number">0</span> : <span class="number">1</span>);
+</code></pre>
+</li>
+</ul>
+<h3 id="header-43">多数据源连接</h3>
+<ul>
+<li><p>方案一：用DataJoin类实现Reduce端Join（Repartitioned Join：需加入hadoop-datajoin包）</p>
+<ul>
+<li>mapper端: extends DataJoinMapperBase 打标签</li>
+<li>reducer端: extends DataJoinReducerBase 组合</li>
+<li>record: extends TaggedMapOutput 标签+数据<br><img src="/2016/05/01/datajoin-1.png" alt="Hadoop 2.x DataJoin"><br><img src="/2016/05/01/datajoin-2.png" alt="Hadoop 2.x DataJoin"></li>
+</ul>
+</li>
+<li><p>方案二：用文件复制实现Map端Join（Replicated Join： 把较小的数据源文件复制到每个Map节点,然后在Map阶段完成Join操作）</p>
+<ul>
+<li>Job中：使用distributed cache机制用于将一个或多个文件分布复制到所有节点上<ul>
+<li>addCacheFile(URI uri) 将一个文件放到distributed cache file中</li>
+</ul>
+</li>
+<li>mapper端<ul>
+<li>setup：读取设置在distributed cache files中的文件（context.getLocalCacheFiles()）并读入内存</li>
+<li>map：join</li>
+</ul>
+</li>
+<li>注意：即使较小的数据源文件，也可能仍然无法全部保存在内存中处理</li>
+<li>扩展示例：<ul>
+<li>设有两个数据集S和 R，较小的数据集R可以被分为R1, R2, R3, ……的子集，且每个子集都足以存放在内存中处理</li>
+<li>则可以对先对每个Ri用Replicated Join进行与S的Join处理，最后将处理结果合并起来(Union)，得到S Join R</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>扩展：</p>
+<ul>
+<li>mapper端：过滤，打标签<ul>
+<li>过滤数据记录，生成一个仅包含join key(如 CustomerID)的过滤文件，存放在distributed cache file中</li>
+<li>过滤掉不在这个列表中的所有Customer记录和Order记录</li>
+</ul>
+</li>
+<li>reducer端：join</li>
+</ul>
+</li>
+<li><p>限制：</p>
+<ul>
+<li>以上的多数据源Join只能是具有相同主键/外键的数据源间的连接</li>
+<li>例如：<ul>
+<li>有三个数据源：Customers（CustomerID），Orders（CustomerID，ItemID），Products(ItemID)</li>
+<li>在mapReduce中将需要分两个MapReduce作业来完成三个数据源的Join</li>
+<li>第一个MapReduce作业：完成Customers与Orders的Join</li>
+<li>第二个MapReduce作业：完成第一个MapReduce Join的结果与Products的Join</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-44">链式任务</h3>
+<ul>
+<li><p>子任务顺序化执行（前面MapReduce任务的输出作为后面MapReduce的输入：mapreduce1-&gt;mapreduce2-&gt;…-&gt;mapreduceN）</p>
+<pre><code class="nulljava">  // job1
+  Configuration jobconf1= new Configuration();
+  job1 = new Job(jobconf1, “Job1&quot;);
+  job1.setJarByClass(jobclass1);
+  ……
+  FileInputFormat.addInputPath(job1,  inpath1);
+  FileOutputFormat.setOutputPath(job1, outpath1);
+  job1.waitForCompletion(true);
+
+  // job2
+  Configuration jobconf2= new Configuration();
+  job2 = new Job(jobconf2, “Job2&quot;);
+  job2.setJarByClass(jobclass2);
+  ……
+  FileInputFormat.addInputPath(job2,  outpath1);
+  FileOutputFormat.setOutputPath(job2, outpath2);
+  job2.waitForCompletion(true);
+
+  // job3
+  Configuration jobconf3= new Configuration();
+  job3 = new Job(jobconf3, “Job3&quot;);
+  job3.setJarByClass(jobclass3);
+  ……
+  FileInputFormat.addInputPath(job3,  outpath2);
+  FileOutputFormat.setOutputPath(job3, outpath3);
+  job3.waitForCompletion(true);
+</code></pre>
+</li>
+<li><p>子任务间具有数据依赖关系 （1,2并行，join后3：mapreduce1 || mapreduce 2 -&gt; mapreduce3）</p>
+<pre><code class="nulljava">  jobx = new Job(jobxconf, “Jobx&quot;);
+  ……
+  joby = new Job(jobyconf, “Joby&quot;);
+  ……
+  jobz = new Job(jobzconf, “Jobz&quot;);
+  jobz.addDependingJob(jobx);  // jobz将等待jobx执行完毕
+  jobz.addDependingJob(joby);  // jobz将等待joby执行完毕
+  JobControl JC = new JobControl（“XYZJob”）；
+  JC.addJob(jobx);
+  JC.addJob(joby);
+  JC.addJob(jobz);
+  JC.run();
+</code></pre>
+</li>
+<li><p>前处理和后处理步骤的链式执行 ：链式Mapper(ChainMapper)和链式Reducer (ChainReducer)</p>
+</li>
+</ul>
+<h3 id="header-45">未完待续</h3>
+<p>…</p>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2016/05/01/Hadoop-Basic.html';	
+		var disqus_title = 'Hadoop Basic';
+		var disqus_url = 'http://sixdegree.github.io/2016/05/01/Hadoop-Basic.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>
