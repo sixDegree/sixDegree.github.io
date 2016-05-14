@@ -29,10 +29,11 @@
   <!-- Site Analyse -->
   
 	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
 	var _hmt = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?2bbb83cc0f781dd7502e9d5e19661866";
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
@@ -1384,7 +1385,7 @@ myThread.start();
 pool.execute(<span class="keyword">new</span> Runnable(){
   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>{
      <span class="comment">//执行任务</span>
-}
+    }
 }
 </code></pre>
 </li>
@@ -1517,8 +1518,9 @@ future.get();
 </li>
 <li>应用场景： 数据库连接、Session管理<pre><code class="nulljava">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConnectionManager</span></span>{
       <span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Connection&gt; theadLocal= <span class="keyword">new</span> ThreadLocal&lt;Connection&gt;() {
-      <span class="function"><span class="keyword">public</span> Connection <span class="title">initialValue</span><span class="params">()</span> </span>{
-          <span class="keyword">return</span> DriverManager.getConnection(DB_URL);
+          <span class="function"><span class="keyword">public</span> Connection <span class="title">initialValue</span><span class="params">()</span> </span>{
+              <span class="keyword">return</span> DriverManager.getConnection(DB_URL);
+          }
       }
       <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> </span>{
           <span class="keyword">return</span> theadLocal.get();

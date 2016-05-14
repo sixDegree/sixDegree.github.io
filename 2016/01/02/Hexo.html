@@ -27,10 +27,11 @@
   <!-- Site Analyse -->
   
 	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
 	var _hmt = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?2bbb83cc0f781dd7502e9d5e19661866";
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
@@ -1262,8 +1263,8 @@ Locals.prototype.site = siteLocals;
 <li><code>page.current_url</code> 当前页的URL</li>
 <li><code>page.prev</code> 前一页页码，如果为第一页，该值为0</li>
 <li><code>page.next</code> 后一页页码，如果为最后一页，则为0</li>
-<li><code>page.prev_link</code> 前一页URL，如果为第一页，则为’’</li>
-<li><code>page.next_link</code> 后一页URL，如果为最后一页，则为’’</li>
+<li><code>page.prev_link</code> 前一页URL，如果为第一页，则为<code>&#39;&#39;</code></li>
+<li><code>page.next_link</code> 后一页URL，如果为最后一页，则为<code>&#39;&#39;</code></li>
 <li><code>page.posts</code> 当前页的文章</li>
 </ul>
 </li>

@@ -29,10 +29,11 @@
   <!-- Site Analyse -->
   
 	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
 	var _hmt = _hmt || [];
 	(function() {
 	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?2bbb83cc0f781dd7502e9d5e19661866";
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
 	  var s = document.getElementsByTagName("script")[0]; 
 	  s.parentNode.insertBefore(hm, s);
 	})();
@@ -942,7 +943,7 @@ header.addHeaderElement(hName).setValue(<span class="string">"auth:tom"</span>);
 <ul>
 <li>基于jax-ws，开发方式和jax-ws基本类似，仅仅是为jax-ws增加了一些功能</li>
 <li>可以使用Interceptor替代SOAPHandler</li>
-<li>生命周期（阶段）：<br><img src="2013-09-01-Webservice/cxfLifeCycle.png" alt="LifeCycle"></li>
+<li>生命周期（阶段）：<br><img src="/2013/09/01/cxfLifeCycle.png" alt="LifeCycle"></li>
 <li>有多种Interceptor拦截器，用的比较多的是：<ul>
 <li>extends AbstractPhaseInterceptor<Message></li>
 <li>extends AbstractSoapInterceptor</li>
