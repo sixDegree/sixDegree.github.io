@@ -210,57 +210,54 @@
 &gt; watchify xxx.jsx -o xxx.js
 </code></pre>
 </li>
+<li><p>可使用<code>gulp</code></p>
+<pre><code class="nulljavascript"><span class="keyword">var</span> gulp=<span class="built_in">require</span>(<span class="string">"gulp"</span>);
+<span class="keyword">var</span> gutil=<span class="built_in">require</span>(<span class="string">"gulp-util"</span>);
+<span class="keyword">var</span> source = <span class="built_in">require</span>(<span class="string">'vinyl-source-stream'</span>);
+<span class="keyword">var</span> watchify=<span class="built_in">require</span>(<span class="string">"watchify"</span>);
+<span class="keyword">var</span> browserify = <span class="built_in">require</span>(<span class="string">'browserify'</span>);
+<span class="keyword">var</span> babelify=<span class="built_in">require</span>(<span class="string">"babelify"</span>);
+<span class="keyword">var</span> argv=<span class="built_in">require</span>(<span class="string">"yargs"</span>).argv;
+
+<span class="function"><span class="keyword">function</span> <span class="title">doBuild</span>(<span class="params">filename</span>)</span>{
+  <span class="keyword">if</span>(!filename)
+      filename=<span class="string">"app"</span>;
+
+  <span class="keyword">var</span> b=watchify(browserify({
+      entries:[<span class="string">"./src/"</span>+filename+<span class="string">".jsx"</span>],
+      transform:[babelify],
+      extensions:[<span class="string">".jsx"</span>],
+      debug: <span class="literal">true</span>,
+      cache: {},
+      packageCache: {},
+      fullPaths: <span class="literal">true</span>
+  }));
+
+  <span class="function"><span class="keyword">function</span> <span class="title">build</span>(<span class="params">file</span>)</span>{
+      <span class="keyword">if</span>(file)
+          gutil.log(<span class="string">'Recompiling '</span> + file);
+      b.bundle()
+      .on(<span class="string">'error'</span>,gutil.log.bind(gutil,<span class="string">"Browserify Error"</span>))
+      .pipe(source(filename+<span class="string">".js"</span>))
+      .pipe(gulp.dest(<span class="string">'./dist'</span>));
+  };
+
+  build();
+  b.on(<span class="string">'update'</span>,build);
+}
+
+gulp.task(<span class="string">'build'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+  <span class="keyword">var</span> filename=argv.n || <span class="string">"app"</span>;
+  doBuild(filename);
+})
+</code></pre>
+<pre><code class="nullvim">&gt; gulp build
+</code></pre>
+</li>
 </ul>
 </li>
 </ul>
-<pre><code>+ 可使用`gulp`
-
-```javascript
-var gulp=require("gulp");
-var gutil=require("gulp-util");
-var source = require('vinyl-source-stream');
-var watchify=require("watchify");
-var browserify = require('browserify');
-var babelify=require("babelify");
-var argv=require("yargs").argv;
-
-function doBuild(filename){
-    if(!filename)
-        filename="app";
-
-    var b=watchify(browserify({
-        entries:["./src/"+filename+".jsx"],
-        transform:[babelify],
-        extensions:[".jsx"],
-        debug: true,
-        cache: {},
-        packageCache: {},
-        fullPaths: true
-    }));
-
-    function build(file){
-        if(file)
-            gutil.log('Recompiling ' + file);
-        b.bundle()
-        .on('error',gutil.log.bind(gutil,"Browserify Error"))
-        .pipe(source(filename+".js"))
-        .pipe(gulp.dest('./dist'));
-    };
-
-    build();
-    b.on('update',build);
-}
-
-gulp.task('build',function(){
-    var filename=argv.n || "app";
-    doBuild(filename);
-})
-```
-
-```vim
-&gt; gulp build
-```
-</code></pre><h3 id="header-5">Build by webpack</h3>
+<h3 id="header-5">Build by webpack</h3>
 <ul>
 <li><p>下载依赖包</p>
 <pre><code class="nullvim">  &gt; npm install jsx-loader --save
