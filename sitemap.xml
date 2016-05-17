@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://sixdegree.github.io/2013/05/03/DesignPattern.html</loc>
+    
+    <lastmod>2016-05-17T00:48:26.077Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/05/01/Java.html</loc>
+    
+    <lastmod>2016-05-16T08:20:32.105Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://sixdegree.github.io/2016/01/03/ReactJS-Basic.html</loc>
     
     <lastmod>2016-05-16T01:23:56.383Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://sixdegree.github.io/2016/01/02/Hexo.html</loc>
     
     <lastmod>2016-05-14T15:41:22.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2013/05/01/Java.html</loc>
-    
-    <lastmod>2016-05-14T15:39:58.928Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>http://sixdegree.github.io/2013/06/01/Hibernate-Basic.html</loc>
     
     <lastmod>2016-04-12T08:00:48.405Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2013/05/03/DesignPattern.html</loc>
-    
-    <lastmod>2016-04-12T07:57:17.420Z</lastmod>
     
   </url>
   
