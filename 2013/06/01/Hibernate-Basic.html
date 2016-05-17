@@ -305,9 +305,10 @@ session.getTransaction().commit();
 <li>eg：两个数据库操作放在一个事务里</li>
 <li>ApplicationServer提供Transaction Manager（JTA事务）</li>
 <li>Tomcat本身不可以，结合Spring可以，Jbass可以</li>
-<li>jta由中间件提供（jboss WebLogic等，tomcat不支持）<br>+<code>managed</code></li>
+<li>jta由中间件提供（jboss WebLogic等，tomcat不支持）</li>
 </ul>
 </li>
+<li><code>managed</code></li>
 <li><code>custom.Class</code></li>
 </ul>
 </li>
@@ -362,7 +363,7 @@ session.getTransaction().commit();
 <h2 id="header-8">主键</h2>
 <h3 id="header-9">生成策略</h3>
 <ol>
-<li><code>AUTO</code> 相当于NATIVE，可以是下面三种中任意一种类型，取决于底层数据库类型<ul>
+<li><code>AUTO</code> 相当于NATIVE，取决于底层数据库类型,eg:<ul>
 <li>对 MySQL使用auto_increment</li>
 <li>对 Oracle使用hibernate_sequence(sequence名称固定为hibernate_sequence）</li>
 </ul>
@@ -572,9 +573,9 @@ session.getTransaction().commit();
 <h3 id="header-11">对象状态</h3>
 <p>三种状态：</p>
 <ul>
-<li><strong>Transient</strong> 瞬时透明：内存中一个对象，没ID,session缓存中也没有</li>
-<li><strong>Persistent</strong> 持久化的：内存中有，session缓存中有，数据库有（ID) </li>
-<li><strong>Detached</strong> 托管的（脱离Session管理）：内存有，session缓存没有，数据库有，ID</li>
+<li><strong>Transient</strong> 瞬时透明：内存中有，session缓存中没有,无ID</li>
+<li><strong>Persistent</strong> 持久化的：内存中有，session缓存中有，数据库有（ID）</li>
+<li><strong>Detached</strong> 托管的（脱离Session管理）：内存中有，session缓存中没有，数据库有（ID）</li>
 </ul>
 <p>三种状态的区分关键在于:</p>
 <ol>
@@ -591,7 +592,8 @@ session.getTransaction().commit();
 <ul>
 <li><code>mappedBy</code>： 设置双向关联</li>
 <li><code>cascade</code> ：设置对象间的级联操作<ul>
-<li>只对增删改<code>CUD</code>起作用 （Create,Update,Delete）<br>+<code>cascade={CascadeType.xxx}</code>，CascadeType取值：<ul>
+<li>只对增删改<code>CUD</code>起作用 （Create,Update,Delete）</li>
+<li><code>cascade={CascadeType.xxx}</code>，CascadeType取值：<ul>
 <li><code>ALL</code>：Cascade all operations所有情况</li>
 <li><code>MERGE</code>：Cascade merge operation合并(merge=save+update)</li>
 <li><code>PERSIST</code>：Cascade persist operation存储 persist()</li>
@@ -638,7 +640,8 @@ session.getTransaction().commit();
 <li><p><code>@JoinTable</code> 多对多关联，指定中间表</p>
 <ul>
 <li><code>@JoinTable(name=”中间表名”,joinColumns={@JoinColumn(...)},inverseJoinColumns={@JoinColumn(...)})</code></li>
-<li><code>name</code>指明中间表表名；<br>+<code>joinColumns</code>包含@JoinColumn数组，指明本类主键在中间表中对应的字段名；</li>
+<li><code>name</code>指明中间表表名；</li>
+<li><code>joinColumns</code>包含@JoinColumn数组，指明本类主键在中间表中对应的字段名；</li>
 <li><code>inverseJoinColumns</code>包含@JoinColumn数组，指明对方类主键在中间表中的字段名</li>
 <li><p>例如：</p>
 <pre><code class="nulljava"><span class="meta">@ManyToMany</span>
@@ -668,7 +671,7 @@ session.getTransaction().commit();
 <tbody>
 <tr>
 <td>Husband</td>
-<td>id,name,<strong>wifeId</strong> （FK：wifeId）</td>
+<td>id,name,<strong>wifeid</strong> （FK：wifeid）</td>
 <td>id,name,<strong>wife</strong></td>
 </tr>
 <tr>
@@ -1134,7 +1137,8 @@ getXXX(){...}
 </tbody>
 </table>
 <pre><code class="nulljava"> <span class="meta">@Entity</span>
- <span class="meta">@Inheritance</span>(strategy=InheritanceType.SINGLE_TABLE)    <span class="meta">@DiscriminatorColumn</span>(name=<span class="string">"discriminator"</span>,discriminatorType=DiscriminatorType.STRING)
+ <span class="meta">@Inheritance</span>(strategy=InheritanceType.SINGLE_TABLE)    
+ <span class="meta">@DiscriminatorColumn</span>(name=<span class="string">"discriminator"</span>,discriminatorType=DiscriminatorType.STRING)
  <span class="meta">@DiscriminatorValue</span>(<span class="string">"person"</span>)
  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span>
  </span>{    ...            <span class="comment">//属性id,name </span>
@@ -1157,7 +1161,7 @@ getXXX(){...}
 <li><p><code>TABLE_PER_CLASS</code> 每个类分别一张表</p>
 <ul>
 <li>在load或get数据时建议直接用子类</li>
-<li>若用多态去获取，会Union所有对象在根据id查询</li>
+<li>若用多态去获取，会Union所有对象再根据id查询</li>
 <li><p>例如：使用(Person.class,1),会 select from ( person  union student union teacher ) =&gt; 包含所有字段的表，相当于Single Table</p>
 <table class="table">
 <thead>
@@ -1357,7 +1361,7 @@ getXXX(){...}
          <span class="keyword">return</span> parent; 
      }
 
-     <span class="comment">// @OneToMany的fetch默认为LAZY</span>
+     <span class="comment">//@OneToMany的fetch默认为LAZY</span>
      <span class="comment">//若树形较小 可使用EAGER 一次全部载入内存</span>
      <span class="comment">//若为LAZY则查询树形时不会一次全部载入内存(适用于较大的树形),会每取一个叶子节点就select一次(可结合Ajax，异步调用)</span>
          <span class="meta">@OneToMany</span>(mappedBy=<span class="string">"parent"</span>,
@@ -1403,7 +1407,7 @@ q.setInteger(<span class="string">"categoryId"</span>,<span class="number">2</sp
 List&lt;Category&gt; categoryList=(List&lt;Category&gt;)q.list();
 
 <span class="comment">//投影查询</span>
-SQLQuery q=session.createSQLQuery(<span class="string">"select  c.id,c.name  from category c,topic t where c.topicid=topic.id"</span>);
+SQLQuery q=session.createSQLQuery(<span class="string">"select  c.id,c.name  from category c,topic t where c.topicid=t.id"</span>);
 q.addScalar(<span class="string">"id"</span>,Hibernate.INTEGER).addScalar(<span class="string">"name"</span>,Hibernate.STRING);
 q.setResultTransformer(Transformers.aliasToBean(Category.class));
 List&lt;Category&gt; categoryList=(List&lt;Category&gt;)q.list();
@@ -1472,7 +1476,7 @@ List&lt;Category&gt; categoryList=(List&lt;Category&gt;)q.list();
 <li>优点：可读性好，符合Java 程序员的编码习惯。</li>
 <li>缺点：不够成熟，不支持投影（projection）或统计函数（aggregation）</li>
 </ul>
-<p>QBC，QBE 以对象的方式进行查询，<br>应用场景： 按条件搜索对象时，使用QBC，QBE 则不用手动拼写SQL了<br>使用session. createCriteria (Criterion 标准/准则/约束 , Criteria为复数形式)</p>
+<p>QBC，QBE 以对象的方式进行查询<br>应用场景： 按条件搜索对象时，使用QBC，QBE 则不用手动拼写SQL了<br>使用session. createCriteria (Criterion 标准/准则/约束 , Criteria为复数形式)</p>
 <ol>
 <li><p>QBC: </p>
 <pre><code class="nulljava"> Criteria c=session.createCriteria(Topic.class)       <span class="comment">// from Topic</span>
@@ -1773,7 +1777,7 @@ String procedure=”{<span class="function">call <span class="title">updateGuest
 <ul>
 <li>对查询的要求严格，必须条件参数也一致</li>
 <li>在二级缓存的基础上再打开查询缓存 <code>&lt;property name=&quot;cache.use_query_cache&quot;&gt;true&lt;/property&gt;</code></li>
-<li>调用Query的<code>setCachable (true)</code>方法指明使用二级缓存，例如：<code>session.createQuery(&quot;from Category&quot;).setCacheable(true).list();</code></li>
+<li>调用Query的<code>setCachable (true)</code>方法指明使用缓存，例如：<code>session.createQuery(&quot;from Category&quot;).setCacheable(true).list();</code></li>
 </ul>
 <h2 id="header-28">事务</h2>
 <p>ACID：</p>
@@ -1899,7 +1903,7 @@ String procedure=”{<span class="function">call <span class="title">updateGuest
 </li>
 <li><p><strong>乐观锁 Optimistic Locking</strong>，依赖Hibernate(JPA)的锁</p>
 <ul>
-<li>乐观锁认为数据库中的数据很少发生同事呗操作问题，通过数据的版本号<code>Version</code>比较机制或时间戳<code>timestamp</code>实现</li>
+<li>乐观锁认为数据库中的数据很少发生同时被操作问题，通过数据的版本号<code>Version</code>比较机制或时间戳<code>timestamp</code>实现</li>
 <li>使用<code>version</code>实现乐观锁原理：<ul>
 <li>默认在表中增加一version字段，初始为0</li>
 <li>当某一事物获取该对象并要update时，先判断version的值是否改变</li>
@@ -2010,7 +2014,7 @@ String procedure=”{<span class="function">call <span class="title">updateGuest
  user.getGroup().setName(<span class="string">"group1"</span>);
  session.getTransaction().commit();
 </code></pre>
-<p> 如果user改变在commit()之后 且想要执行Update方法时 user与group表同时更新则，则User类的<code>cascade={CascadeType.ALL}</code>，并在程序中写如下代码：</p>
+<p> 如果user改变在commit()之后且想要执行Update方法时user与group表同时更新，则设置User类<code>cascade={CascadeType.ALL}</code>，并在程序中写如下代码：</p>
 <pre><code class="nulljava"> session.beginTransaction();
  User user = (User)session.get(User.class,<span class="number">1</span>);
  session.getTransaction().commit();
@@ -2129,9 +2133,8 @@ session.getTransaction().commit();
 </ul>
 <p>iterate</p>
 <ul>
-<li>iterate先取 ID,等用到的时候再根据ID来取对象；</li>
-<li>iterate默认使用二级缓存，第二次，首先找session 级缓存；</li>
-<li>默认往二级缓存加数据，但是查询的时候不使用</li>
+<li>iterate先取ID,等用到的时候再根据ID来取对象；</li>
+<li>iterate默认使用二级缓存</li>
 <li>使用iterate 只会取出对象的Id，当要取该对象的其他内容时，先从二级缓存中查找，没有再重新去DB根据id查询</li>
 </ul>
 <p><strong>PS：</strong> 若要查询的数据已在缓存中，那用iterate是比较快的，不在就会出现上述N+1问题，这样list的效率会更高</p>
@@ -2290,7 +2293,7 @@ Session session=sf.openSession(interceptor);
 </li>
 <li><p>建立索引</p>
 <pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">index</span><span class="params">()</span></span>{
-     Session session-HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
+     Session session=HibernateSessionFactoryUtil.getSessionFactory().getCurrentSession();
 
      FullTextSession ftSession=Search.getFullTextSession(session);
      ftSession.getTransaction().begin();

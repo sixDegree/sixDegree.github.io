@@ -305,11 +305,12 @@
  }
 </code></pre>
 <p> 使用：</p>
-<pre><code class="nulljava"> SQLQuery q  = session.createSQLQuery(sb.toString());    query.setResultTransformer(Transformers.aliasToBean(AdvancedClauseSearchResultDTO.class));
+<pre><code class="nulljava"> SQLQuery q  = session.createSQLQuery(sb.toString());    
+ query.setResultTransformer(Transformers.aliasToBean(AdvancedClauseSearchResultDTO.class));
  <span class="keyword">return</span> (List&lt;AdvancedClauseSearchResultDTO&gt;)query.list();
 </code></pre>
 </li>
-<li><p>自定义`ResultTransformer</p>
+<li><p>自定义<code>ResultTransformer</code></p>
 <pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedClauseSearchResultTransformer</span> <span class="keyword">implements</span> <span class="title">ResultTransformer</span> </span>{
      <span class="comment">//Use the aliasTransformer to do most of the work</span>
      ResultTransformer aliasTransformer = Transformers.aliasToBean(AdvancedClauseSearchResultDTO.class);
@@ -378,6 +379,7 @@
 <p>=&gt; <code>List&lt;Cat&gt;</code> (each Cat: mate,kittens)<br>=&gt; This query will fetch both mate and kittens by outer join.</p>
 <p><code>FetchType</code>与<code>FetchMode</code>：</p>
 <pre><code class="nulljava"><span class="meta">@OneToMany</span>(mappedBy=<span class="string">"item"</span>,cascade=CascadeType.ALL,fetch=FetchType.EAGER) 
+
 <span class="meta">@Fetch</span>(value=FetchMode.SUBSELECT)
 </code></pre>
 <p>两者比较：</p>
@@ -404,14 +406,14 @@
 }
 </code></pre><p>使用示例：</p>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
-    .add( Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
+    .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
     .createCriteria(<span class="string">"kittens"</span>)
     .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (<strong>Cat:  no kittens</strong>)<br>=&gt; The second createCriteria() returns a new instance of Criteria that refers to the elements of the kittens collection.</p>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
-    .add( Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
+    .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
     .createCriteria(<span class="string">"kittens"</span>,JoinType.LEFT_OUTER_JOIN)
     .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
     .list();
@@ -427,14 +429,14 @@
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
     .createAlias(<span class="string">"kittens"</span>, <span class="string">"kt"</span>)
     .createAlias(<span class="string">"mate"</span>, <span class="string">"mt"</span>)
-    .add( Restrictions.eqProperty(<span class="string">"kt.name"</span>, <span class="string">"mt.name"</span>) )
+    .add(Restrictions.eqProperty(<span class="string">"kt.name"</span>, <span class="string">"mt.name"</span>) )
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (<strong>Cat: no kittens and mate</strong>)<br>=&gt; createAlias() does not create a new instance of Criteria</p>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
     .createAlias(<span class="string">"kittens"</span>, <span class="string">"kt"</span>,JoinType.LEFT_OUTER_JOIN)
     .createAlias(<span class="string">"mate"</span>, <span class="string">"mt"</span>,JoinType.LEFT_OUTER_JOIN)
-    .add( Restrictions.eqProperty(<span class="string">"kt.name"</span>, <span class="string">"mt.name"</span>) )
+    .add(Restrictions.eqProperty(<span class="string">"kt.name"</span>, <span class="string">"mt.name"</span>) )
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (<strong>Cat:  kittens and mate</strong>)</p>
@@ -520,7 +522,7 @@ DetachedCriteria detachedCriteria=DetachedCriteria.forClass(ShuttleStation.class
     .add(Subqueries.propertyIn(<span class="string">"id"</span>, subCriteria));
 </code></pre>
 <h3 id="header-14">通用查询封装示例</h3>
-<p><strong>PS:</strong>  使用过setProjection后获取信息后，重置为null，返回的不再是RootEntity~！<br>参考文章: <a href="http://blog.xebia.com/2008/12/11/sorting-and-pagination-with-hibernate-criteria-how-it-can-go-wrong-with-joins/">Sorting And Pagination With Hibernate Criteria - How It Can Go Wrong With Joins</a></p>
+<p><strong>PS:</strong>  使用过setProjection获取信息后，重置为null，返回的不再是RootEntity~！<br>参考文章: <a href="http://blog.xebia.com/2008/12/11/sorting-and-pagination-with-hibernate-criteria-how-it-can-go-wrong-with-joins/">Sorting And Pagination With Hibernate Criteria - How It Can Go Wrong With Joins</a></p>
 <pre><code class="nulljava"><span class="meta">@Override</span>
 <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)
 <span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">list</span><span class="params">(DetachedCriteria detachedCriteria,<span class="keyword">boolean</span> byPage)</span>
@@ -730,12 +732,12 @@ parameters = {
  <span class="meta">@GeneratedValue</span>(strategy = GenerationType. TABLE, generator = <span class="string">"myFormatTableGenerator"</span> )
  <span class="meta">@GenericGenerator</span>(name = <span class="string">"myFormatTableGenerator"</span>, strategy = <span class="string">"com.cj.support.hibernate.MyFormatTableGenerator"</span> , parameters = {
   <span class="meta">@Parameter</span>(name = <span class="string">"format"</span>, value = <span class="string">"R%2$ty-%1$05d"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator. TABLE_PARAM, value = <span class="string">"tb_generator"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator. SEGMENT_COLUMN_PARAM, value = <span class="string">"gen_name"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator. SEGMENT_VALUE_PARAM, value = <span class="string">"Request_PK"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator. VALUE_COLUMN_PARAM, value = <span class="string">"gen_value"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator. INITIAL_PARAM, value = <span class="string">"1"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator. INCREMENT_PARAM, value = <span class="string">"20"</span>)
+  <span class="meta">@Parameter</span>(name = TableGenerator.TABLE_PARAM, value = <span class="string">"tb_generator"</span>),
+  <span class="meta">@Parameter</span>(name = TableGenerator.SEGMENT_COLUMN_PARAM, value = <span class="string">"gen_name"</span>),
+  <span class="meta">@Parameter</span>(name = TableGenerator.SEGMENT_VALUE_PARAM, value = <span class="string">"Request_PK"</span>),
+  <span class="meta">@Parameter</span>(name = TableGenerator.VALUE_COLUMN_PARAM, value = <span class="string">"gen_value"</span>),
+  <span class="meta">@Parameter</span>(name = TableGenerator.INITIAL_PARAM, value = <span class="string">"1"</span>),
+  <span class="meta">@Parameter</span>(name = TableGenerator.INCREMENT_PARAM, value = <span class="string">"20"</span>)
  })
  <span class="function"><span class="keyword">public</span> String <span class="title">getReqId</span><span class="params">()</span></span>{
      <span class="keyword">return</span> <span class="keyword">this</span>. reqId;
