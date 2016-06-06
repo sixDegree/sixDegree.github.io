@@ -156,7 +156,7 @@
 <ul>
 <li>获取（一个或一组）<pre><code class="nulljs"><span class="built_in">document</span>.getElementById(<span class="string">"xxx"</span>);
 <span class="built_in">document</span>.getElementByName(<span class="string">"xxx"</span>);
-documentElementByTagName(<span class="string">"xxx"</span>);
+<span class="built_in">document</span>.getElementByTagName(<span class="string">"xxx"</span>);
 </code></pre>
 </li>
 <li>创建DOM元素<pre><code class="nulljs"><span class="built_in">document</span>.createElement(<span class="string">"xxx"</span>);
@@ -250,7 +250,7 @@ inputJquery.appendTo($(<span class="string">"body"</span>));
 <li><code>:contains(text)</code></li>
 <li><code>:empty</code></li>
 <li><code>:has(selector)</code></li>
-<li><code>:parent</code></li>
+<li><code>:parent</code> (匹配含有子元素或者文本的元素)</li>
 </ul>
 </li>
 <li><p>可见性过滤</p>
@@ -354,7 +354,7 @@ inputJquery.appendTo($(<span class="string">"body"</span>));
 </ul>
 <h4 id="header-10">元素的操作：替换</h4>
 <ul>
-<li>替换节点<ul>
+<li>替换节点(是移动到目标位置来替换，而不是复制一份来替换)<ul>
 <li><code>replaceWith</code>：某集合被某集合替换掉</li>
 <li><code>replaceAll</code>：使用某集合替换掉某集合</li>
 <li>eg：<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">b</span> <span class="attr">class</span>=<span class="string">"first"</span>&gt;</span>Hello1<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
@@ -409,7 +409,7 @@ inputJquery.appendTo($(<span class="string">"body"</span>));
 <pre><code class="nulljs">$(<span class="string">"p"</span>).append(b).prepend(i);
 </code></pre>
 <pre><code class="nulljs">$(<span class="string">"b"</span>).appendTo(<span class="string">"p"</span>);
-$(<span class="string">"i"</span>).prepend(<span class="string">"p"</span>);
+$(<span class="string">"i"</span>).prependTo(<span class="string">"p"</span>);
 </code></pre>
 </li>
 </ul>
@@ -421,7 +421,7 @@ $(<span class="string">"i"</span>).prepend(<span class="string">"p"</span>);
 <span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
 <span class="tag">&lt;<span class="name">i</span>&gt;</span>Tom<span class="tag">&lt;<span class="name">i</span>&gt;</span>
 =&gt;
-<span class="tag">&lt;<span class="name">i</span>&gt;</span>Tom<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>Say<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
+<span class="tag">&lt;<span class="name">i</span>&gt;</span>Tom<span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;<span class="name">a</span>&gt;</span>Say<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">b</span>&gt;</span>
 </code></pre>
 <pre><code class="nulljs">$(<span class="string">"a"</span>).after(<span class="string">"b"</span>).before(<span class="string">"i"</span>)
 </code></pre>
@@ -532,7 +532,7 @@ $("b").unwrap();
 <ul>
 <li><p><code>$.merge(first,second)</code>  合并数组</p>
 <ul>
-<li>合并两个数组到第一个数组上</li>
+<li>合并第二个数组到第一个数组上</li>
 <li>eg: <pre><code class="nulljs">$.merge( [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>], [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>] )   <span class="comment">//[0,1,2,2,3,4]</span>
 </code></pre>
 </li>
@@ -546,7 +546,7 @@ $("b").unwrap();
 </li>
 <li><p><code>$.makeArray(obj)</code></p>
 <ul>
-<li>将类数组对象转换为数组对象</li>
+<li>将类对象转换为数组对象</li>
 </ul>
 </li>
 <li><p><code>$.toArray()</code></p>
@@ -596,12 +596,12 @@ $("b").unwrap();
 });
 </code></pre>
 <pre><code class="nulljs">$(<span class="string">"div"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">index, domEle</span>) </span>{ 
-<span class="comment">// domEle == this</span>
-$(domEle).css(<span class="string">"backgroundColor"</span>, <span class="string">"yellow"</span>);
-<span class="keyword">if</span> ($(<span class="keyword">this</span>).is(<span class="string">"#stop"</span>)) {
-     $(<span class="string">"span"</span>).text(<span class="string">"Stopped at div index #"</span> + index);
-     <span class="keyword">return</span> <span class="literal">false</span>;
-}
+    <span class="comment">// domEle == this</span>
+    $(domEle).css(<span class="string">"backgroundColor"</span>, <span class="string">"yellow"</span>);
+    <span class="keyword">if</span> ($(<span class="keyword">this</span>).is(<span class="string">"#stop"</span>)) {
+         $(<span class="string">"span"</span>).text(<span class="string">"Stopped at div index #"</span> + index);
+         <span class="keyword">return</span> <span class="literal">false</span>;
+    }
 });
 </code></pre>
 </li>
@@ -630,7 +630,7 @@ alert(arr2);    <span class="comment">//A0,B1,C2,D3,E4</span>
 <ul>
 <li><code>$.grep( array, function(elementOfArray, indexInArray) [, invert] )</code></li>
 <li>参数二：<ul>
-<li>一个测试函数（注意：这里此函数参数和each,map的回调函数的参数顺序相反）</li>
+<li>一个测试函数</li>
 <li>字符串：正则表达式，相当于执行<code>return elementOfArray.match(正则表达式)</code> (a 代表数组元素，i 代表元素索引值)</li>
 </ul>
 </li>
@@ -804,7 +804,7 @@ arr = jQuery.grep(arrayObj , <span class="function"><span class="keyword">functi
  $(<span class="string">"table"</span>).on(<span class="string">"click"</span>, <span class="string">"td"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
      $(<span class="keyword">this</span>).toggleClass(<span class="string">"click"</span>);
  });
- $(table).off(<span class="string">"click"</span>, <span class="string">"td"</span>);
+ $(<span class="string">"table"</span>).off(<span class="string">"click"</span>, <span class="string">"td"</span>);
 
  <span class="comment">//方式二（更好）：</span>
  $(<span class="built_in">document</span>).on(<span class="string">"click"</span>, <span class="string">"td"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
@@ -893,19 +893,19 @@ $(<span class="string">"#test"</span>).trigger(<span class="string">"click"</spa
 <li><code>done(callback)</code></li>
 <li><code>fail(callback)</code></li>
 <li><code>then(doneCallback,failCallback)</code></li>
-<li><code>alwarys(callback)</code></li>
+<li><code>always(callback)</code></li>
 </ul>
 </li>
 <li>注意：deferred对象是一个全局对象，执行状态可以从外部改变，防止执行状态被外部改变：<ul>
 <li>方式一：<code>deferred.promise()</code>：<ul>
-<li>在原来的deferred对象上返回另一个deferred对象，屏蔽了与改变执行状态有关的方法</li>
+<li>在原来的deferred对象上返回另一个deferred对象，屏蔽了与改变执行状态有关的方法（resolve,reject）</li>
 </ul>
 </li>
-<li>方式三：<code>deffered.promise(func)</code>：<ul>
+<li>方式二：<code>deffered.promise(func)</code>：<ul>
 <li>在func上部署Deferred接口</li>
 </ul>
 </li>
-<li>方式二：<code>$.Deferred(func)</code>：<ul>
+<li>方式三：<code>$.Deferred(func)</code>：<ul>
 <li>生成的deferred对象将作为这个函数的默认参数</li>
 </ul>
 </li>
@@ -927,7 +927,7 @@ $(<span class="string">"#test"</span>).trigger(<span class="string">"click"</spa
     <span class="keyword">var</span> tasks = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
         alert(<span class="string">"执行完毕！"</span>);
         <span class="comment">//dtd.reject();</span>
-        dtd.resolve();                 <span class="comment">// 改变Deferred对象的执行状态</span>
+        dtd.resolve();         <span class="comment">// 改变Deferred对象的执行状态</span>
     };
     setTimeout(tasks,<span class="number">5000</span>);
     <span class="keyword">return</span> dtd.promise();     <span class="comment">// 返回promise对象</span>
@@ -946,7 +946,7 @@ wait()
 <p>使用示例3：<code>$.when</code></p>
 <pre><code class="nulljs">$.when($.ajax(<span class="string">"test1.html"</span>), $.ajax(<span class="string">"test2.html"</span>))
 　　.done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Success"</span>); })    <span class="comment">//都成功时执行</span>
-　　.fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Fail！"</span>); });        <span class="comment">//其中一个失败就执行</span>
+　　.fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ alert(<span class="string">"Fail！"</span>); });    <span class="comment">//其中一个失败就执行</span>
 </code></pre>
 <h3 id="header-26">Ajax</h3>
 <p>以下操作返回一个Promise对象（屏蔽了修改执行状态方法的Deferred对象）</p>
@@ -1228,7 +1228,7 @@ $(<span class="string">"#nav-left"</span>).jFillContent(<span class="literal">tr
 <li><code>parent.find(&#39;xxx&#39;) &gt; parent.children(&quot;xxx&quot;) &gt; $(&#39;#parent .child&#39;)</code></li>
 </ul>
 </li>
-<li>缓存，减少使用<code>$(xxx)</code>生成jQuery对象<ul>
+<li>缓存（减少使用<code>$(xxx)</code>生成jQuery对象）<ul>
 <li>变量中暂存jQuery对象</li>
 <li>链式写法，jQuery自动缓存每一步的结果</li>
 </ul>

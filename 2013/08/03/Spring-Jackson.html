@@ -133,7 +133,7 @@
 </code></pre>
 <h2 id="header-1">动态过滤属性</h2>
 <h3 id="header-2">问题描述</h3>
-<p><strong>ISSUE:双向关联对象转JSON问题</strong><br>多对一双向关联后使用org.codehaus.jackson.map.ObjectMapper转json时报org.codehaus.jackson.map.ObjectMapper<br>双向关联后转Json，由于两边都关联，会形成死循环</p>
+<p><strong>ISSUE:双向关联对象转JSON问题</strong><br>双向关联后使用org.codehaus.jackson.map.ObjectMapper转json时报错（由于两边都关联，会形成死循环）</p>
 <p>例如：父子关系引用</p>
 <table class="table">
 <thead>
@@ -299,7 +299,7 @@ ArticleJson {<span class="string">"title"</span>:<span class="string">"title"</s
 <li><p>序列化时对一些特殊字符进行转换（为防止Xss恶意攻击）</p>
 <pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateObjectMapper</span> <span class="keyword">extends</span> <span class="title">ObjectMapper</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>  </span>{
   <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">293736193275041317L</span>;
-  <span class="function"><span class="keyword">public</span> <span class="title">DateObjectMapper</span><span class="params">()</span> </span>{
+  <span class="function"><span class="keyword">public</span> <span class="title">MyDateObjectMapper</span><span class="params">()</span> </span>{
       _serializationConfig = _serializationConfig.with(<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>));
       <span class="keyword">this</span>.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, <span class="keyword">true</span>);
       <span class="keyword">this</span>.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, <span class="keyword">false</span>);

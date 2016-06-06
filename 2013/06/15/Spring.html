@@ -406,11 +406,7 @@
 </ol>
 <p>使用示例：</p>
 <ol>
-<li>Target<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Manager</span> </span>{  
-     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span></span>;  
- }  
- <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ManagerImpl</span> <span class="keyword">implements</span> <span class="title">Manager</span> </span>{  
-     <span class="meta">@Override</span>  
+<li>Target<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Manager</span> </span>{  
      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modify</span><span class="params">()</span> </span>{  
         System.out.println(<span class="string">"*******modify()方法被调用"</span>);  
      }  
@@ -445,7 +441,7 @@
 </li>
 <li>测试<pre><code class="nulljava"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{  
      BusinessHandler proxy = <span class="keyword">new</span> BusinessHandler();  
-     Manager manger = (Manager) proxy.bind(<span class="keyword">new</span> ManagerImpl());  
+     Manager manger = (Manager) proxy.bind(<span class="keyword">new</span> Manager());  
      manger.modify();  
  }
 </code></pre>

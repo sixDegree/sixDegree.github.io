@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Flume</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="flume,kafka,log,hdfs">
+  
+  
+    <meta name="description" content="Log Collection">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">使用示例</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Flume</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2016-05-19T16:00:00.000Z">2016-05-20</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-BigData">BigData</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">概述</h2>
+<p>Flume 分布式的日志收集系统 <a href="https://flume.apache.org/FlumeUserGuide.html#setting-up-an-agent">官网手册</a></p>
+<p><img src="/2016/05/20/frame1.png" alt="Frame 1"></p>
+<ul>
+<li>agent：收集日志发送到目的地（运行在日志收集端的一个Java进程），包括三个核心组件：<ul>
+<li>source 收集日志（数据临时存放在channel中）<ul>
+<li>可处理各种类型各种格式的日志数据</li>
+<li>例如日志类型：avro、thrift、exec、jms、spooling directory、netcat、sequence generator、syslog、http、legacy、自定义</li>
+</ul>
+</li>
+<li>channel 缓冲数据（数据只有在sink发送成功之后才会被删除）<ul>
+<li>例如存放在：memory、jdbc、file、自定义</li>
+</ul>
+</li>
+<li>sink 发送日志到目的地<ul>
+<li>例如目的地：hdfs、logger、avro、thrift、ipc、file、null、hbase、solr、自定义</li>
+</ul>
+</li>
+<li>特殊：interceptor 拦截器（在日志进入到source前，包装清洗过滤event）<ul>
+<li>chain形式：可对一个source指定多个拦截器，按先后顺序依次处理</li>
+<li>官方已有的拦截器：Timestamp/Host/Static/Regex Filtering/Regex Extractor/… </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>event：在整个数据传输过程中，流动的是event</li>
+<li>注意：<ul>
+<li>事务保证在event级别</li>
+<li>flume支持多级agent</li>
+<li>flume支持扇入(fan-in)，扇出(fan-out)<br>  <img src="/2016/05/20/frame2.png" alt="Frame 2"><br>  <img src="/2016/05/20/frame3.png" alt="Frame 3"></li>
+</ul>
+</li>
+</ul>
+<h2 id="header-2">使用示例</h2>
+<ol>
+<li>安装：直接下载解压即可</li>
+<li><p>配置：在<code>$FLUME_HOME/conf</code>下添加一个配置文件（例如：<code>flume-conf-test1.properties</code>）</p>
+<pre><code class="nullvim"> # agent1表示代理名称
+ agent1.sources=source1
+ agent1.sinks=sink1
+ agent1.channels=channel1
+
+ # 配置source1
+ # <span class="number">1</span>. Spooling Directory是监控指定文件夹中新文件的变化
+ # 一旦新文件出现，就解析该文件内容，然后写入到channle
+ # 写入完成后，标记该文件已完成或者删除该文件
+ # <span class="number">2</span>. 添加Timestamp Interceptor
+ # 在event的header中添加一个key叫timestamp,value为当前的时间戳
+ agent1.sources.source1.<span class="built_in">type</span>=spooldir
+ agent1.sources.source1.spoolDir=/home/hadoop/<span class="built_in">input</span>/flume
+ agent1.sources.source1.channels=channel1
+ agent1.sources.source1.fileHeader = false
+ agent1.sources.source1.interceptors = i1
+ agent1.sources.source1.interceptors.i1.<span class="built_in">type</span> = timestamp
+
+ # 配置sink1
+ agent1.sinks.sink1.<span class="built_in">type</span>=hdfs
+ agent1.sinks.sink1.hdfs.path=hdf<span class="variable">s:</span>//cj.storm:<span class="number">9000</span>/output/flume
+ agent1.sinks.sink1.hdfs.fileType=DataStream
+ agent1.sinks.sink1.hdfs.writeFormat=TEXT
+ # agent1.sinks.sink1.hdfs.rollInterval=<span class="number">0</span>
+ # agent1.sinks.sink1.hdfs.rollSize=<span class="number">10485760</span>
+ agent1.sinks.sink1.channel=channel1
+ agent1.sinks.sink1.hdfs.filePrefix=%Y-%<span class="keyword">m</span>-%d
+
+ # 配置channel1
+ agent1.channels.channel1.<span class="built_in">type</span>=<span class="keyword">file</span>
+ agent1.channels.channel1.checkpointDir=/home/hadoop/<span class="built_in">input</span>/flume_tmp/checkpoint
+ agent1.channels.channel1.dataDirs=/home/hadoop/<span class="built_in">input</span>/flume_tmp/data
+</code></pre>
+</li>
+<li><p>测试</p>
+<pre><code class="nullshell"> # 1. 创建被监控目录
+ &gt; mkdir -p /home/hadoop/input/flume
+
+ # 2. 启动flume agent1
+ # -n 指定agent名称
+ # -c 指定配置文件目录
+ # -f 指定配置文件
+ &gt; bin/flume-ng agent -n agent1 -c conf -f conf/flume-conf-test1.properties \
+ -Dflume.root.logger=DEBUG,console
+
+ # 3. 放入测试文件
+ # 4. 查看运行结果
+ &gt; hadoop fs -lsr /output/flume
+</code></pre>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2016/05/20/Flume.html';	
+		var disqus_title = 'Flume';
+		var disqus_url = 'http://sixdegree.github.io/2016/05/20/Flume.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

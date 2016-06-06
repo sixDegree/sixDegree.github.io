@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sqoop</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Sqoop,bigdata,import,export,db">
+  
+  
+    <meta name="description" content="Sqoop introduction">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Import(MySQL=>HDFS)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Job</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Sqoop</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2016-05-14T16:00:00.000Z">2016-05-15</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-BigData">BigData</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">概述</h2>
+<p>SQOOP – 使用MapReduce实现用于对数据进行导入导出</p>
+<ul>
+<li>Import: 把MySQL、Oracle等数据库中的数据导入到HDFS、Hive、HBase中</li>
+<li>Export: 把HDFS、Hive、HBase中的数据导出到MySQL、Oracle等数据库中</li>
+<li>注意：导入导出的事务是以Mapper任务为单位</li>
+<li><a href="http://sqoop.apache.org/">官网</a></li>
+<li><a href="http://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html#_incremental_imports">用户手册</a></li>
+</ul>
+<p><img src="/2016/05/15/frame.png" alt="Export/Import"></p>
+<h2 id="header-2">安装</h2>
+<ol>
+<li>下载解压</li>
+<li>配置环境变量（<code>/etc/profile</code>）<ul>
+<li>SQOOP_HOME</li>
+<li>HADOOP_HOME</li>
+<li>PATH</li>
+</ul>
+</li>
+<li>将要使用的JDBC Connector Jar包放入<code>$SQOOP_HOME/lib</code>下</li>
+</ol>
+<h2 id="header-3">使用示例</h2>
+<h3 id="header-4">查询</h3>
+<ul>
+<li><p>list databases</p>
+<pre><code>  sqoop list-databases \
+  --connect jdbc:mysql://cj.storm:3306 --username root --password cj123
+</code></pre></li>
+<li><p>list tables</p>
+<pre><code>  sqoop list-tables \
+  --connect jdbc:mysql://cj.storm:3306/hive --username root --password cj123
+</code></pre></li>
+<li>list jobs<pre><code>  sqoop job --list
+</code></pre></li>
+</ul>
+<h3 id="header-5">Import(MySQL=&gt;HDFS)</h3>
+<p>一些参数说明：</p>
+<ul>
+<li><code>-m &lt;num&gt;</code>: 使用的mapper数（注意：对于无主键的表，需要增加参数<code>--split-by xxx</code> 或 <code>-m 1</code>）</li>
+<li><code>--warehouse-dir &lt;path&gt;</code>: 指定存放的数据仓库（默认：<code>/user/{USER_NAME}</code>）</li>
+<li><code>--target-dir &lt;path&gt;</code>: 指定存放的数据路径 （默认：<code>/user/{USER_NAME}/{tablename}</code>）</li>
+<li><code>--null-string &lt;str&gt;</code>: 指定用什么代表空字段（默认：NULL）</li>
+<li><code>--hive-import</code>: 表导入到hive中</li>
+<li><code>--hive-table &lt;tablename&gt;</code>: hive table name</li>
+<li><code>--hive-overwrite</code>: overwite hive table</li>
+</ul>
+<ol>
+<li><p><code>mysql table =&gt; hdfs file</code>:</p>
+<pre><code class="nullshell"> # use --warehouse-dir
+ # final file: /output/log/part-m-00000
+ sqoop import \
+ --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
+ --table log --fields-terminated-by ',' \
+ --warehouse-dir '/output' \
+ -m 1
+
+ # use --target-dir &amp; query
+ # final file: /output/log_2/part-m-00000
+ sqoop import \
+ --connect jdbc:mysql://cj.storm:3306/sqoop  --username root --P \
+ --query "select * from log where \$CONDITIONS" \
+ --target-dir /output/log_2 \
+ -m 1  
+
+ # use --target-dir &amp; columns &amp; where
+ sqoop import \
+ --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
+ --table log \
+ --columns "ip,status,method" \
+ --where "status='200' and method in ('GET','POST')"  \
+ -m 1  \
+ --target-dir /output/log_3 \
+ --fields-terminated-by ","
+</code></pre>
+</li>
+<li><p><code>mysql table =&gt; hive table</code>:</p>
+<pre><code class="nullshell"> # use hive-import
+ sqoop import 
+ --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 
+ --table TBLS 
+ --fields-terminated-by '\t'  
+ --null-string '**'  
+ -m 1 
+ --hive-import
+
+ # use hive-import &amp; hive-table
+ sqoop import \
+ --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 \
+ --table TBLS \
+ --fields-terminated-by '\t' \
+ --null-string '**' \
+ -m 1 \
+ --hive-import \
+ --hive-table 'tbls_2'
+
+ # check hive table
+ hive -e 'describe formatted tbls'
+ hive -e 'describe formatted tbls_2'
+</code></pre>
+</li>
+<li><p><code>mysql table schema =&gt; hive table schema</code>:</p>
+<pre><code class="nullshell"> # just copy table schema (no data)
+ sqoop create-hive-table \
+ --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
+ --table log \
+ --hive-table log_sqoop \
+ --fields-terminated-by &#39;,&#39;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-6">Job</h3>
+<ol>
+<li>create job:<pre><code class="nullshell"> sqoop job \
+ --create myjob \
+ -- import --connect jdbc:mysql://cj.storm:3306/hive  --username root -P \
+ --table TBLS \
+ --fields-terminated-by &#39;\t&#39;  \
+ --null-string &#39;**&#39; \
+ -m 1 \
+ --hive-import \
+ --hive-table &#39;tbls_4&#39;
+</code></pre>
+</li>
+<li>exec job:<pre><code class="nullshell"> sqoop job --exec myjob
+</code></pre>
+</li>
+<li>查看 job:<pre><code class="nullshell"> sqoop job --list
+ sqoop job --show myjob
+</code></pre>
+</li>
+<li>删除 job:<pre><code class="nullshell"> sqoop job --delete myjob
+</code></pre>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      <section class="post-comment">
+	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
+<div id="disqus_thread"> 
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+
+	<script type="text/javascript">
+		var disqus_shortname = 'sixdegreespace'; 
+		var disqus_identifier = '2016/05/15/Sqoop.html';	
+		var disqus_title = 'Sqoop';
+		var disqus_url = 'http://sixdegree.github.io/2016/05/15/Sqoop.html' ;
+		//var disqus_category_id = '4262241'; 
+
+		(function() {
+		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
+	</script>
+
+
+ 
+</section>
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/highlight/highlight.pack.js"></script>
+<script type="text/javascript">
+  hljs.initHighlightingOnLoad();
+  
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

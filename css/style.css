@@ -371,6 +371,10 @@ section.widget {
     section.widget > h3 span.glyphicon {
       font-size: 80%;
       margin: 0 10px; }
+    section.widget > h3 a {
+      color: #000; }
+      section.widget > h3 a:hover {
+        text-decoration: none; }
 
 ul.toc {
   font-size: 95%;

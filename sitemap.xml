@@ -2,16 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://sixdegree.github.io/2013/06/02/Hibernate-Advance.html</loc>
+    <loc>http://sixdegree.github.io/2016/05/25/Hadoop2.x-Basic.html</loc>
     
-    <lastmod>2016-05-17T08:45:52.105Z</lastmod>
+    <lastmod>2016-06-04T08:55:22.107Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2016/05/15/Sqoop.html</loc>
+    
+    <lastmod>2016-06-04T08:52:29.031Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2016/05/20/Flume.html</loc>
+    
+    <lastmod>2016-06-04T08:35:45.601Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2016/05/01/Hadoop1.x-Basic.html</loc>
+    
+    <lastmod>2016-06-04T08:33:01.581Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2016/05/10/Hive.html</loc>
+    
+    <lastmod>2016-05-31T01:14:41.060Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2016/05/05/HBase.html</loc>
+    
+    <lastmod>2016-05-24T01:45:30.876Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2015/03/01/NodeJS.html</loc>
+    
+    <lastmod>2016-05-19T04:28:39.525Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2014/03/01/JQuery.html</loc>
+    
+    <lastmod>2016-05-19T04:28:11.401Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/08/03/Spring-Jackson.html</loc>
+    
+    <lastmod>2016-05-18T06:06:24.909Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/07/01/SpringSecurity.html</loc>
+    
+    <lastmod>2016-05-18T05:48:27.508Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/06/15/Spring-RestTemplate-with-Authentication.html</loc>
+    
+    <lastmod>2016-05-18T02:41:34.979Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/06/15/Spring.html</loc>
+    
+    <lastmod>2016-05-18T02:08:40.520Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://sixdegree.github.io/2013/06/01/Hibernate-Basic.html</loc>
     
-    <lastmod>2016-05-17T07:06:43.601Z</lastmod>
+    <lastmod>2016-05-18T00:31:21.028Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/06/02/Hibernate-Advance.html</loc>
+    
+    <lastmod>2016-05-17T08:45:52.105Z</lastmod>
     
   </url>
   
@@ -40,20 +124,6 @@
     <loc>http://sixdegree.github.io/2016/01/02/Hexo.html</loc>
     
     <lastmod>2016-05-14T15:41:22.531Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2013/06/15/Spring.html</loc>
-    
-    <lastmod>2016-05-14T15:34:50.641Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2016/05/01/Hadoop-Basic.html</loc>
-    
-    <lastmod>2016-05-13T08:09:50.042Z</lastmod>
     
   </url>
   
@@ -149,20 +219,6 @@
   </url>
   
   <url>
-    <loc>http://sixdegree.github.io/2013/06/15/Spring-RestTemplate-with-Authentication.html</loc>
-    
-    <lastmod>2016-04-12T02:10:03.279Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2013/08/03/Spring-Jackson.html</loc>
-    
-    <lastmod>2016-04-12T02:09:55.906Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://sixdegree.github.io/2013/08/02/Spring-ScheduleTask.html</loc>
     
     <lastmod>2016-04-12T02:09:24.659Z</lastmod>
@@ -184,23 +240,9 @@
   </url>
   
   <url>
-    <loc>http://sixdegree.github.io/2013/07/01/SpringSecurity.html</loc>
-    
-    <lastmod>2016-04-12T02:08:52.883Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://sixdegree.github.io/2016/01/04/ReactJS-Router.html</loc>
     
     <lastmod>2016-04-12T01:04:05.079Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2014/03/01/JQuery.html</loc>
-    
-    <lastmod>2016-04-12T01:02:31.210Z</lastmod>
     
   </url>
   
@@ -215,13 +257,6 @@
     <loc>http://sixdegree.github.io/2015/04/01/Gulp.html</loc>
     
     <lastmod>2016-04-12T00:27:33.013Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2015/03/01/NodeJS.html</loc>
-    
-    <lastmod>2016-04-12T00:27:29.047Z</lastmod>
     
   </url>
   

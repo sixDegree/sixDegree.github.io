@@ -2,12 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hadoop Basic</title>
+  <title>Hadoop1.x Basic</title>
   
   <!-- Meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="hadoop,hdfs,mapreduce,partitioner,sort">
+    <meta name="keywords" content="hadoop1,hdfs,mapreduce,partitioner,sort">
   
   
     <meta name="description" content="Hadoop Basic Introduce (HDFS+MapReduce)">
@@ -106,7 +106,7 @@
     <div class="container">
       <article class="detail" role="main">
   <section class="post-header">
-    <h1 class="post-title">Hadoop Basic</h1>
+    <h1 class="post-title">Hadoop1.x Basic</h1>
     <ul class="post-meta">
       <li>
         <span class="glyphicon glyphicon-calendar"></span>
@@ -342,59 +342,59 @@ export PATH=$PATH:$HADOOP_INSTALL/bin
 </code></pre>
 </li>
 <li><code>core-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
-      <span class="comment">&lt;!-- 指定hadoop运行时产生文件的存放目录 --&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-      <span class="comment">&lt;!-- 指定HDFS的namenode的通信地址 --&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.default.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://cj.storm:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-      <span class="comment">&lt;!-- 指定HDFS的secondNamenode的存放目录 --&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.checkpoint.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/namesecondary<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- 指定hadoop运行时产生文件的存放目录 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- 指定HDFS的namenode的通信地址 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.default.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://cj.storm:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- 指定HDFS的secondNamenode的存放目录 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.checkpoint.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/namesecondary<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
 <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
 </code></pre>
 </li>
 <li><code>hdfs-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
-      <span class="comment">&lt;!-- HDFS 元数据存放目录--&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/hdfs/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-      <span class="comment">&lt;!-- HDFS Block存放目录--&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/hdfs/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-      <span class="comment">&lt;!-- HDFS Block Size 默认为64M--&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.block.size<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>8388608<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-      <span class="comment">&lt;!-- HDFS block 副本数，伪分布式下必须为1 --&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-      <span class="comment">&lt;!-- HDFS 文件系统权限控制--&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.permissions<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
+  <span class="comment">&lt;!-- HDFS 元数据存放目录--&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/hdfs/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- HDFS Block存放目录--&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>/home/hadoop/data1/hdfs/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- HDFS Block Size 默认为64M--&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.block.size<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>8388608<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- HDFS block 副本数，伪分布式下必须为1 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- HDFS 文件系统权限控制--&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.permissions<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
 </code></pre>
 </li>
 <li><code>mapred-site.xml</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>
-      <span class="comment">&lt;!-- 指定jobtracker地址 --&gt;</span>
-      <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapred.job.tracker<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-              <span class="tag">&lt;<span class="name">value</span>&gt;</span>cj.storm:9001<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  <span class="comment">&lt;!-- 指定jobtracker地址 --&gt;</span>
+  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapred.job.tracker<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+          <span class="tag">&lt;<span class="name">value</span>&gt;</span>cj.storm:9001<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
 <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span>
 </code></pre>
 </li>
@@ -2220,9 +2220,9 @@ D 3023
 
 	<script type="text/javascript">
 		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2016/05/01/Hadoop-Basic.html';	
-		var disqus_title = 'Hadoop Basic';
-		var disqus_url = 'http://sixdegree.github.io/2016/05/01/Hadoop-Basic.html' ;
+		var disqus_identifier = '2016/05/01/Hadoop1.x-Basic.html';	
+		var disqus_title = 'Hadoop1.x Basic';
+		var disqus_url = 'http://sixdegree.github.io/2016/05/01/Hadoop1.x-Basic.html' ;
 		//var disqus_category_id = '4262241'; 
 
 		(function() {

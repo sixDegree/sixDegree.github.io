@@ -129,7 +129,7 @@
 <p>REST对于资源型服务接口来说很合适，同时特别适合对于效率要求很高，但是对于安全要求不高的场景</p>
 <p>具体做法是：</p>
 <ol>
-<li>在每一个REST的call的头header（例如：@HeaderParam annotation. 例子: @HeaderParam.）都带user token 和 application ID</li>
+<li>在每一个REST的call的头header（例如：@HeaderParam）都带user token 和 application ID</li>
 <li>在服务器端对每一请求进行re-authentication（可以写一个拦截器来实现）<ul>
 <li>SpringSecurity 配置<code>create-session=&quot;stateless&quot;</code></li>
 <li>这样每个请求都是无状态的独立的，需要被再次认证re-authentication</li>
@@ -149,7 +149,7 @@ RestTemplate rt=<span class="keyword">new</span> RestTemplate();
 <p>Basic/Digest/NTLM 这些方案可用于服务器或代理对客户端的认证</p>
 <ul>
 <li><code>Basic</code> 基本认证:  以明码传送username和password(最不安全的一个方案)，一般使用 Basic +TLS/SSL 加密方式。[使用<code>UsernamePasswordCredentials</code>实例]</li>
-<li><code>Digest</code>摘要式认证： 传送用password对Server端发送的随机数（nonce）加密产生的字符串 （比Basic安全） [使用<code>UsernamePasswordCredentials</code>实例]</li>
+<li><code>Digest</code>摘要式认证： 传送用password对Server端发送的随机数（nonce）加密后生成的字符串 （比Basic安全） [使用<code>UsernamePasswordCredentials</code>实例]</li>
 <li><code>NTLM</code> 最复杂,认证了一个连接而不是一请求 [使用<code>NTCredentials</code>实例]</li>
 <li>自定义</li>
 </ul>

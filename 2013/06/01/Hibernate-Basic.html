@@ -572,11 +572,32 @@ session.getTransaction().commit();
 </ol>
 <h3 id="header-11">对象状态</h3>
 <p>三种状态：</p>
-<ul>
-<li><strong>Transient</strong> 瞬时透明：内存中有，session缓存中没有,无ID</li>
-<li><strong>Persistent</strong> 持久化的：内存中有，session缓存中有，数据库有（ID）</li>
-<li><strong>Detached</strong> 托管的（脱离Session管理）：内存中有，session缓存中没有，数据库有（ID）</li>
-</ul>
+<table class="table">
+<thead>
+<tr>
+<th>状态</th>
+<th>Session缓存中</th>
+<th>DB中</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transient 瞬时透明</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>Persistent 持久化的</td>
+<td>有</td>
+<td>有</td>
+</tr>
+<tr>
+<td>Detached 托管的（脱离Session管理）</td>
+<td>无</td>
+<td>有</td>
+</tr>
+</tbody>
+</table>
 <p>三种状态的区分关键在于:</p>
 <ol>
 <li>有没有ID</li>
