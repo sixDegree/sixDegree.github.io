@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">使用示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">History</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用Isomorphic</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Issues</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">1. Add <Routes baseHref></span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">2. Passing props to routes</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#使用示例"><span class="sidebar-nav nav-text">使用示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#History"><span class="sidebar-nav nav-text">History</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#使用Isomorphic"><span class="sidebar-nav nav-text">使用Isomorphic</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Issues"><span class="sidebar-nav nav-text">Issues</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#1-Add-lt-Routes-baseHref-gt"><span class="sidebar-nav nav-text">1. Add <Routes baseHref></span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#2-Passing-props-to-routes"><span class="sidebar-nav nav-text">2. Passing props to routes</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Reference"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,147 +123,144 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="header-1">使用示例</h2>
-<p>使用 react-router 实现前端路由：建立在history上，方便进行路由管理</p>
+    <h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><p>使用 react-router 实现前端路由：建立在history上，方便进行路由管理</p>
 <ol>
 <li><p>下载</p>
 <pre><code class="nullvim"> &gt; npm install react-router --save
- &gt; npm install <span class="keyword">history</span> --save
+ &gt; npm install history --save
 </code></pre>
 </li>
 <li><p>加载</p>
-<pre><code class="nulljavascript">     <span class="comment">//app.js</span>
-     <span class="keyword">var</span> React=<span class="built_in">require</span>(<span class="string">"react"</span>);
-     <span class="keyword">var</span> ReactDOM=<span class="built_in">require</span>(<span class="string">"react-dom"</span>);
+<pre><code class="nulljavascript">     //app.js
+     var React=require(&quot;react&quot;);
+     var ReactDOM=require(&quot;react-dom&quot;);
 
-     <span class="keyword">var</span> ReactRouter=<span class="built_in">require</span>(<span class="string">"react-router"</span>);
-     <span class="keyword">var</span> Router=ReactRouter.Router;
-     <span class="keyword">var</span> Route=ReactRouter.Route;
+     var ReactRouter=require(&quot;react-router&quot;);
+     var Router=ReactRouter.Router;
+     var Route=ReactRouter.Route;
 </code></pre>
 </li>
 <li><p>使用Router</p>
 <ul>
 <li><p>方式1：</p>
-<pre><code class="nulljavascript">  <span class="keyword">var</span> routes=(
+<pre><code class="nulljavascript">  var routes=(
       &lt;Router&gt;
-          &lt;Route path="/" component={App}&gt;
-              &lt;Route path="child/:id" component={Child} /&gt;
-              &lt;Route path="*" component={NoMatch} /&gt;
+          &lt;Route path=&quot;/&quot; component={App}&gt;
+              &lt;Route path=&quot;child/:id&quot; component={Child} /&gt;
+              &lt;Route path=&quot;*&quot; component={NoMatch} /&gt;
           &lt;/Route&gt;
       &lt;/Router&gt;
   );
-  ReactDOM.render(routes,document.getElementById("app"));
+  ReactDOM.render(routes,document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 <li><p>方式二：</p>
-<pre><code class="nulljavascript">  <span class="keyword">var</span> routes={
-      path:<span class="string">'/'</span>,
+<pre><code class="nulljavascript">  var routes={
+      path:&#39;/&#39;,
       component:App,
       childRoutes:[
-          {path:<span class="string">"/child/:id"</span>,component:Child},
-          {path:<span class="string">"*"</span>,component:NoMatch}
+          {path:&quot;/child/:id&quot;,component:Child},
+          {path:&quot;*&quot;,component:NoMatch}
       ]
   };
-  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Router</span> <span class="attr">routes</span>=<span class="string">{routes}</span> /&gt;</span>,document.getElementById("app"));</span>
+  ReactDOM.render(&lt;Router routes={routes} /&gt;,document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>定义Components</p>
-<pre><code class="nulljavascript"> <span class="keyword">var</span> App=React.createClass({
-     render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-         <span class="keyword">return</span> (
-             <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
-                 <span class="tag">&lt;<span class="name">Header</span>/&gt;</span>
-                 <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">"container"</span>&gt;</span>
-                     {this.props.children || "Welcome !"}
-                 <span class="tag">&lt;/<span class="name">div</span>&gt;</span>
-             <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
+<pre><code class="nulljavascript"> var App=React.createClass({
+     render:function(){
+         return (
+             &lt;div&gt;
+                 &lt;Header/&gt;
+                 &lt;div className=&quot;container&quot;&gt;
+                     {this.props.children || &quot;Welcome !&quot;}
+                 &lt;/div&gt;
+             &lt;/div&gt;
          )
      }
  });
 
- <span class="keyword">var</span> Header=React.createClass({
-     render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-         <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>)
+ var Header=React.createClass({
+     render:function(){
+         return (&lt;h1&gt;Header&lt;/h1&gt;)
      }
  })
 
- <span class="keyword">var</span> Child=React.createClass({
-     render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-         <span class="keyword">return</span> (
-             <span class="xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span> I am Child {this.props.params.id} ! <span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span>
+ var Child=React.createClass({
+     render:function(){
+         return (
+             &lt;h3&gt; I am Child {this.props.params.id} ! &lt;/h3&gt;
          )
      }
  });
 
- <span class="keyword">var</span> NoMatch=React.createClass({
-     render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-         <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>No Match !<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span>)
+ var NoMatch=React.createClass({
+     render:function(){
+         return (&lt;h3&gt;No Match !&lt;/h3&gt;)
      }
  })
 </code></pre>
 </li>
 </ol>
 <p><strong>PS:</strong> 路由的生命周期处理<br>进入时装载组件离开时卸载组件，不会一下把所有的组件都装载进来</p>
-<h2 id="header-2">History</h2>
-<ol>
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><ol>
 <li><p><code>createHashHistory</code> (default) : 通过 hash 来实现，可以通过 window.location.hash 读取到 # 后的内容</p>
-<pre><code class="nulljavascript"> <span class="comment">//has queryKey, eg: ?_k=ckuvup -&gt; remove queryKey:</span>
- ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Router</span> <span class="attr">routes</span>=<span class="string">{routes}</span> 
-     <span class="attr">history</span>=<span class="string">{createHashHistory({queryKey:false})}/</span>&gt;</span>,
-     document.getElementById("app"));</span>
+<pre><code class="nulljavascript"> //has queryKey, eg: ?_k=ckuvup -&gt; remove queryKey:
+ ReactDOM.render(&lt;Router routes={routes} 
+     history={createHashHistory({queryKey:false})}/&gt;,
+     document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 <li><p><code>createMemoryHistory</code> (test)</p>
 </li>
 <li><p><code>createBrowserHistory</code>    (production): run on server，HTML5 才有的新 API，可以用来操作浏览器的 session history (会话历史)</p>
-<pre><code class="nulljavascript"> <span class="keyword">var</span> createBrowserHistory =<span class="built_in">require</span>(<span class="string">"history/lib/createBrowserHistory"</span>);
- ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Router</span> <span class="attr">routes</span>=<span class="string">{routes}</span> <span class="attr">history</span>=<span class="string">{createBrowserHistory()}</span> /&gt;</span>,
-     document.getElementById("app"));</span>
+<pre><code class="nulljavascript"> var createBrowserHistory =require(&quot;history/lib/createBrowserHistory&quot;);
+ ReactDOM.render(&lt;Router routes={routes} history={createBrowserHistory()} /&gt;,
+     document.getElementById(&quot;app&quot;));
 </code></pre>
 <p> Run Based on nodeJS (cmd: node app):</p>
-<pre><code class="nulljavascript"> <span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)
- <span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)
- <span class="keyword">const</span> port = process.env.PORT || <span class="number">3000</span>
- <span class="keyword">const</span> app = express()
+<pre><code class="nulljavascript"> const express = require(&#39;express&#39;)
+ const path = require(&#39;path&#39;)
+ const port = process.env.PORT || 3000
+ const app = express()
 
- <span class="comment">// serve static assets normally</span>
- app.use(express.static(__dirname + <span class="string">'/public'</span>))
+ // serve static assets normally
+ app.use(express.static(__dirname + &#39;/public&#39;))
 
- <span class="comment">// handle every other route with index.html, which will contain</span>
- <span class="comment">// a script tag to your application's JavaScript file(s).</span>
- app.get(<span class="string">'*'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">request, response</span>)</span>{
-   response.sendFile(path.resolve(__dirname, <span class="string">'public'</span>, <span class="string">'index.html'</span>))
+ // handle every other route with index.html, which will contain
+ // a script tag to your application&#39;s JavaScript file(s).
+ app.get(&#39;*&#39;, function (request, response){
+   response.sendFile(path.resolve(__dirname, &#39;public&#39;, &#39;index.html&#39;))
  })
 
  app.listen(port)
- <span class="built_in">console</span>.log(<span class="string">"server started on port "</span> + port)
+ console.log(&quot;server started on port &quot; + port)
 </code></pre>
 </li>
 </ol>
-<h2 id="header-3">使用Isomorphic</h2>
-<ol>
+<h2 id="使用Isomorphic"><a href="#使用Isomorphic" class="headerlink" title="使用Isomorphic"></a>使用Isomorphic</h2><ol>
 <li><p><code>routes.jsx</code> 定义需要同构的React Routes：</p>
-<pre><code class="nulljavascript"> <span class="keyword">var</span> Main=<span class="built_in">require</span>(<span class="string">"./src/main"</span>);
- <span class="keyword">var</span> Child=<span class="built_in">require</span>(<span class="string">"./src/child"</span>);
+<pre><code class="nulljavascript"> var Main=require(&quot;./src/main&quot;);
+ var Child=require(&quot;./src/child&quot;);
 
- <span class="keyword">var</span> routes={
-     path:<span class="string">'/'</span>,
+ var routes={
+     path:&#39;/&#39;,
      component:Main,
      childRoutes:[
-         {path:<span class="string">"/child/:id"</span>,component:Child},
-         {path:<span class="string">"*"</span>,component:NoMatch}
+         {path:&quot;/child/:id&quot;,component:Child},
+         {path:&quot;*&quot;,component:NoMatch}
      ]
  };
- <span class="built_in">module</span>.exports=routes;
+ module.exports=routes;
 </code></pre>
 </li>
 <li><p><code>app.jsx</code> 实现Client端渲染：</p>
-<pre><code class="nulljavascript"> <span class="keyword">var</span> routes=<span class="built_in">require</span>(<span class="string">"./src/routes"</span>);
- <span class="keyword">var</span> createBrowserHistory =<span class="built_in">require</span>(<span class="string">"history/lib/createBrowserHistory"</span>);
- ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Router</span> <span class="attr">routes</span>=<span class="string">{routes}</span> <span class="attr">history</span>=<span class="string">{createBrowserHistory()}</span> /&gt;</span>,
-     document.getElementById("app"));</span>
+<pre><code class="nulljavascript"> var routes=require(&quot;./src/routes&quot;);
+ var createBrowserHistory =require(&quot;history/lib/createBrowserHistory&quot;);
+ ReactDOM.render(&lt;Router routes={routes} history={createBrowserHistory()} /&gt;,
+     document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 <li><p><code>app.js</code> 编译生成的Client端可执行的js文件</p>
@@ -271,115 +268,112 @@
 </code></pre>
 </li>
 <li><p><code>index.ejs</code> 定义主页面，加载上面生成的Client的js文件<code>app.js</code></p>
-<pre><code class="nullhtml"> <span class="meta">&lt;!DOCTYPE html&gt;</span>
- <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
- <span class="tag">&lt;<span class="name">head</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello React-Router <span class="tag">&lt;/<span class="name">title</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">head</span>&gt;</span>
- <span class="tag">&lt;<span class="name">body</span>&gt;</span>
+<pre><code class="nullhtml"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+   &lt;meta charset=&quot;UTF-8&quot;&gt;
+   &lt;title&gt;Hello React-Router &lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
 
-   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span> <span class="attr">content</span> %&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span>
+   &lt;div id=&quot;app&quot;&gt;&lt;%- content %&gt;&lt;/div&gt;
 
-   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/libs/react/react.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/libs/react/react-dom.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+   &lt;script type=&quot;text/javascript&quot; src=&quot;/libs/react/react.js&quot;&gt;&lt;/script&gt;
+   &lt;script type=&quot;text/javascript&quot; src=&quot;/libs/react/react-dom.js&quot;&gt;&lt;/script&gt;
+   &lt;script type=&quot;text/javascript&quot; src=&quot;/app.js&quot;&gt;&lt;/script&gt;
 
- <span class="tag">&lt;/<span class="name">body</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">html</span>&gt;</span>
+ &lt;/body&gt;
+ &lt;/html&gt;
 </code></pre>
 </li>
 <li><p><code>server.js</code> 定义Server端响应渲染</p>
-<pre><code class="nulljavascript"> <span class="built_in">require</span>(<span class="string">'babel-core/register'</span>);
- <span class="keyword">var</span> React=<span class="built_in">require</span>(<span class="string">"react"</span>);
- <span class="keyword">var</span> ReactDOMServer=<span class="built_in">require</span>(<span class="string">"react-dom/server"</span>);
+<pre><code class="nulljavascript"> require(&#39;babel-core/register&#39;);
+ var React=require(&quot;react&quot;);
+ var ReactDOMServer=require(&quot;react-dom/server&quot;);
 
- <span class="keyword">var</span> Router=<span class="built_in">require</span>(<span class="string">'react-router'</span>);
- <span class="keyword">var</span> match=Router.match;
- <span class="keyword">var</span> RoutingContext=Router.RoutingContext;
- <span class="keyword">var</span> routes = <span class="built_in">require</span>(<span class="string">"./src/routes"</span>);
+ var Router=require(&#39;react-router&#39;);
+ var match=Router.match;
+ var RoutingContext=Router.RoutingContext;
+ var routes = require(&quot;./src/routes&quot;);
 
- <span class="keyword">var</span> express=<span class="built_in">require</span>(<span class="string">"express"</span>);
- <span class="keyword">var</span> app = express();
- app.set(<span class="string">'view engine'</span>, <span class="string">'ejs'</span>);
- app.use(express.static(<span class="string">'public'</span>));
+ var express=require(&quot;express&quot;);
+ var app = express();
+ app.set(&#39;view engine&#39;, &#39;ejs&#39;);
+ app.use(express.static(&#39;public&#39;));
 
- app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>{
-     <span class="built_in">console</span>.log(req.url);
-     match({routes,location:req.url},<span class="function"><span class="keyword">function</span>(<span class="params">error, redirectLocation, renderProps</span>)</span>{
-         <span class="keyword">if</span> (error) {
-           res.status(<span class="number">500</span>).send(error.message)
-         } <span class="keyword">else</span> <span class="keyword">if</span> (redirectLocation) {
-           res.redirect(<span class="number">302</span>, redirectLocation.pathname + redirectLocation.search)
-         } <span class="keyword">else</span> <span class="keyword">if</span> (renderProps) {
-             <span class="built_in">console</span>.log(<span class="string">"render react router"</span>);
-             <span class="keyword">var</span> element=React.createFactory(RoutingContext)(renderProps);
-             <span class="keyword">var</span> elementStr=ReactDOMServer.renderToString(element);
-             <span class="comment">//res.status(200).send(elementStr);</span>
-             res.render(<span class="string">"index"</span>,{content:elementStr});
-         } <span class="keyword">else</span> {
-           res.status(<span class="number">404</span>).send(<span class="string">'Not found'</span>)
+ app.use(function(req, res, next) {
+     console.log(req.url);
+     match({routes,location:req.url},function(error, redirectLocation, renderProps){
+         if (error) {
+           res.status(500).send(error.message)
+         } else if (redirectLocation) {
+           res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+         } else if (renderProps) {
+             console.log(&quot;render react router&quot;);
+             var element=React.createFactory(RoutingContext)(renderProps);
+             var elementStr=ReactDOMServer.renderToString(element);
+             //res.status(200).send(elementStr);
+             res.render(&quot;index&quot;,{content:elementStr});
+         } else {
+           res.status(404).send(&#39;Not found&#39;)
          }
      })
  })
 
- app.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>)</span>{
-     <span class="keyword">if</span> (err) <span class="built_in">console</span>.log(err);
-       <span class="built_in">console</span>.log(<span class="string">'Listening at localhost:3000'</span>);
+ app.listen(3000,function(err, result){
+     if (err) console.log(err);
+       console.log(&#39;Listening at localhost:3000&#39;);
  });
 </code></pre>
 </li>
 <li><p>执行<code>node server</code>启动服务查看效果</p>
 </li>
 </ol>
-<h2 id="header-4">Issues</h2>
-<h3 id="header-5">1. Add <code>&lt;Routes baseHref&gt;</code></h3>
-<p><a href="https://github.com/rackt/react-router/issues/353">Issue on Github</a></p>
-<pre><code class="nulljavascript"><span class="keyword">import</span> { createHistory, useBasename } <span class="keyword">from</span> <span class="string">'history'</span>
+<h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues"></a>Issues</h2><h3 id="1-Add-lt-Routes-baseHref-gt"><a href="#1-Add-lt-Routes-baseHref-gt" class="headerlink" title="1. Add &lt;Routes baseHref&gt;"></a>1. Add <code>&lt;Routes baseHref&gt;</code></h3><p><a href="https://github.com/rackt/react-router/issues/353">Issue on Github</a></p>
+<pre><code class="nulljavascript">import { createHistory, useBasename } from &#39;history&#39;
 
-<span class="keyword">const</span> history = useBasename(createHistory)({
-  basename: <span class="string">'/my-custom-root'</span>
+const history = useBasename(createHistory)({
+  basename: &#39;/my-custom-root&#39;
 })
 </code></pre>
 <pre><code class="nulljavascript">&lt;Router history={history}&gt;
-    &lt;Route path="/" component={App}&gt;&lt;/Route&gt;
+    &lt;Route path=&quot;/&quot; component={App}&gt;&lt;/Route&gt;
 &lt;/Router&gt;
 
-&lt;Link path="/some_path"&gt;some_path&lt;/Link&gt;
+&lt;Link path=&quot;/some_path&quot;&gt;some_path&lt;/Link&gt;
 </code></pre>
-<h3 id="header-6">2. Passing props to routes</h3>
-<p><a href="https://github.com/rackt/react-router/issues/1531">Issue on Github</a></p>
+<h3 id="2-Passing-props-to-routes"><a href="#2-Passing-props-to-routes" class="headerlink" title="2. Passing props to routes"></a>2. Passing props to routes</h3><p><a href="https://github.com/rackt/react-router/issues/1531">Issue on Github</a></p>
 <pre><code class="nulljavascript">React.render((
-  <span class="xml"><span class="tag">&lt;<span class="name">Router</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">component</span>=<span class="string">{RootComp}</span> <span class="attr">myprop</span>=<span class="string">"foo"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"foo"</span> <span class="attr">component</span>=<span class="string">{FooComp}</span>&gt;</span>
-           <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">"bar"</span> <span class="attr">component</span>=<span class="string">{BarComp}</span> /&gt;</span>
-        <span class="tag">&lt;/<span class="name">Route</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">Route</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">Router</span>&gt;</span>
-), document.getElementById('example'));</span>
+  &lt;Router&gt;
+    &lt;Route path=&quot;/&quot; component={RootComp} myprop=&quot;foo&quot;&gt;
+        &lt;Route path=&quot;foo&quot; component={FooComp}&gt;
+           &lt;Route path=&quot;bar&quot; component={BarComp} /&gt;
+        &lt;/Route&gt;
+    &lt;/Route&gt;
+  &lt;/Router&gt;
+), document.getElementById(&#39;example&#39;));
 </code></pre>
 <p><strong>Option 1) With route attributes</strong></p>
-<pre><code class="nulljavascript"><span class="class"><span class="keyword">class</span> <span class="title">RootComp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
+<pre><code class="nulljavascript">class RootComp extends React.Component {
     render: {
-        <span class="keyword">this</span>.props.route.myprop <span class="comment">// == "foo" (this.props.routes[0].myprop)</span>
+        this.props.route.myprop // == &quot;foo&quot; (this.props.routes[0].myprop)
     }
 }
 </code></pre>
 <p><strong>Option 2) To first level children with React.cloneElement()</strong></p>
-<pre><code class="nulljavascript"><span class="class"><span class="keyword">class</span> <span class="title">RootComp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
+<pre><code class="nulljavascript">class RootComp extends React.Component {
     render: {
-        React.cloneElement(<span class="keyword">this</span>.props.children, {myprop: <span class="keyword">this</span>.route.myprop})
+        React.cloneElement(this.props.children, {myprop: this.route.myprop})
     }
 }
-<span class="class"><span class="keyword">class</span> <span class="title">FooComp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
+class FooComp extends React.Component {
     render: {
-        <span class="keyword">this</span>.props.myprop <span class="comment">// == "foo"</span>
+        this.props.myprop // == &quot;foo&quot;
     }
 }
-<span class="class"><span class="keyword">class</span> <span class="title">BarComp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
+class BarComp extends React.Component {
     render: {
-        <span class="keyword">this</span>.props.myprop <span class="comment">// == undefined</span>
+        this.props.myprop // == undefined
     }
 }
 </code></pre>
@@ -387,14 +381,13 @@
 <p><a href="https://github.com/rackt/react-router/blob/master/docs/API.md#createelementcomponent-props">Source</a></p>
 <pre><code class="nulljavascript">&lt;Router createElement={createElement} /&gt;
 
-<span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">Component, props</span>) </span>{
-   <span class="comment">// Add myprop to props for all route components</span>
-    _.extend(props, {myprop: <span class="string">"foo"</span>})
-  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">Component</span> {<span class="attr">...props</span>}/&gt;</span>
-}</span>
+function createElement(Component, props) {
+   // Add myprop to props for all route components
+    _.extend(props, {myprop: &quot;foo&quot;})
+  return &lt;Component {...props}/&gt;
+}
 </code></pre>
-<h2 id="header-7">Reference</h2>
-<ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://github.com/rackt/react-router">react-router on Github </a></li>
 <li><a href="https://github.com/sixDegree/react-advance">my demos</a></li>
 </ul>

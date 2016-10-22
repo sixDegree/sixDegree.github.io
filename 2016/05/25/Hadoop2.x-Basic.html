@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">HDFS</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">1.x缺点</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">2.x改进</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">HDFS示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Configuration</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Run</span></a></li></ol></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">MapReduce</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">1.x缺点</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">2.x改进</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Yarn</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Yarn配置示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Configuration</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Run</span></a></li></ol></li></ol></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#概述"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#HDFS"><span class="sidebar-nav nav-text">HDFS</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#1-x缺点"><span class="sidebar-nav nav-text">1.x缺点</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#2-x改进"><span class="sidebar-nav nav-text">2.x改进</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#HDFS示例"><span class="sidebar-nav nav-text">HDFS示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#Configuration"><span class="sidebar-nav nav-text">Configuration</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#Run"><span class="sidebar-nav nav-text">Run</span></a></li></ol></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#MapReduce"><span class="sidebar-nav nav-text">MapReduce</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#1-x缺点-1"><span class="sidebar-nav nav-text">1.x缺点</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#2-x改进-1"><span class="sidebar-nav nav-text">2.x改进</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Yarn"><span class="sidebar-nav nav-text">Yarn</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Yarn配置示例"><span class="sidebar-nav nav-text">Yarn配置示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#Configuration-1"><span class="sidebar-nav nav-text">Configuration</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#Run-1"><span class="sidebar-nav nav-text">Run</span></a></li></ol></li></ol></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,15 +123,12 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="header-1">概述</h2>
-<p>Hadoop2中有两个重要的变更：</p>
+    <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hadoop2中有两个重要的变更：</p>
 <ol>
 <li>DFS的NameNode可以以集群的方式布署，增强了NameNodes的水平扩展能力和高可用性，分别是:HDFS Federation与HA；</li>
 <li>MapReduce将JobTracker中的资源管理及任务生命周期管理（包括定时触发及监控），拆分成两个独立的组件，并更名为YARN（Yet Another Resource Negotiator）</li>
 </ol>
-<h2 id="header-2">HDFS</h2>
-<h3 id="header-3">1.x缺点</h3>
-<p>Namenode problems:</p>
+<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><h3 id="1-x缺点"><a href="#1-x缺点" class="headerlink" title="1.x缺点"></a>1.x缺点</h3><p>Namenode problems:</p>
 <ul>
 <li>Only One</li>
 <li>under great memory pressure</li>
@@ -142,13 +139,12 @@
 <li>No up-to-date FSIMAGE file</li>
 <li>No automatic failover</li>
 </ul>
-<h3 id="header-4">2.x改进</h3>
-<p>Muti-Namenode （水平扩展和高可用）</p>
+<h3 id="2-x改进"><a href="#2-x改进" class="headerlink" title="2.x改进"></a>2.x改进</h3><p>Muti-Namenode （水平扩展和高可用）</p>
 <ul>
 <li>Federation (different namespace)<ul>
 <li>多个Namenode，一组Datanode</li>
 <li>使用不同的HDFS目录（即不同的namespace，互不影响）</li>
-<li>应用举例：不用Federation HDFS配置使用不同的Block大小以处理不同的需求</li>
+<li>应用举例：不同Federation HDFS配置使用不同的Block大小以处理不同的需求</li>
 </ul>
 </li>
 <li>HA (same namespace)<ul>
@@ -166,9 +162,8 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2016/05/25/hdfs.png" alt="HDFS"><br>(图片来自 <a href="http://blog.csdn.net/jiewuyou">http://blog.csdn.net/jiewuyou</a>)</p>
-<h3 id="header-5">HDFS示例</h3>
-<p>Nodes DNS:</p>
+<p><img src="2016-05-25-Hadoop2.x-Basic/hdfs.png" alt="HDFS"><br>(图片来自 <a href="http://blog.csdn.net/jiewuyou">http://blog.csdn.net/jiewuyou</a>)</p>
+<h3 id="HDFS示例"><a href="#HDFS示例" class="headerlink" title="HDFS示例"></a>HDFS示例</h3><p>Nodes DNS:</p>
 <ul>
 <li>cluster1 namenode<ul>
 <li>masterA.cls1</li>
@@ -199,129 +194,128 @@
 </ul>
 </li>
 </ul>
-<h4 id="header-6">Configuration</h4>
-<ol>
+<h4 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h4><ol>
 <li><p>hadoop-env.sh (on all nodes)</p>
 <pre><code> export JAVA_HOME=/usr/local/jdk1.8
 </code></pre></li>
 <li><p>Cluster1 (on masterA.cls1,masterB.cls1)</p>
 <ul>
-<li>core-site.sh<pre><code class="nullxml">  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://cluster1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/usr/local/hadoop/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">name</span>&gt;</span>ha.zookeeper.quorum<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">value</span>&gt;</span>slave1.cls:2181,slave2.cls:2181,slave3.cls:2181<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<li>core-site.sh<pre><code class="nullxml">  &lt;property&gt;
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://cluster1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+    &lt;value&gt;/usr/local/hadoop/tmp&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;
+    &lt;value&gt;slave1.cls:2181,slave2.cls:2181,slave3.cls:2181&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
 <li><p>hdfs-site.xml</p>
-<pre><code class="nullxml">  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>3<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.nameservices<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>cluster1,cluster2<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="comment">&lt;!-- journal nodes --&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.shared.edits.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-       <span class="tag">&lt;<span class="name">value</span>&gt;</span>qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.journalnode.edits.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>/usr/local/hadoop/tmp/journal<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="comment">&lt;!-- Using ssh to switch namenode --&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.fencing.methods<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>sshfence<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.fencing.ssh.private-key-files<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>/root/.ssh/id_rsa<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<pre><code class="nullxml">  &lt;property&gt;
+      &lt;name&gt;dfs.replication&lt;/name&gt;
+      &lt;value&gt;3&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.nameservices&lt;/name&gt;
+      &lt;value&gt;cluster1,cluster2&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- journal nodes --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;
+       &lt;value&gt;qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;
+      &lt;value&gt;/usr/local/hadoop/tmp/journal&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- Using ssh to switch namenode --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;
+      &lt;value&gt;sshfence&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;
+      &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;
+  &lt;/property&gt;
 
-  <span class="comment">&lt;!-- Cluster1 --&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.namenodes.cluster1<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterA.cls1,masterB.cls1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster1.masterA.cls1<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterA.cls1:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.http-address.cluster1.masterA.cls1<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterA.cls1:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster1.masterB.cls1<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterB.cls1:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.http-address.cluster1.masterB.cls1<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterB.cls1:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.automatic-failover.enabled.cluster1<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.client.failover.proxy.provider.cluster1<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-       <span class="tag">&lt;<span class="name">value</span>&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="comment">&lt;!-- Cluster2 --&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.namenodes.cluster2<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterA.cls2,masterB.cls2<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster2.masterA.cls2<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterA.cls2:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.http-address.cluster2.masterA.cls2<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterA.cls2:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster2.masterB.cls2<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterB.cls2:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.http-address.cluster2.masterB.cls2<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterB.cls2:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.automatic-failover.enabled.cluster2<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.client.failover.proxy.provider.cluster2<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">value</span>&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+  &lt;!-- Cluster1 --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.namenodes.cluster1&lt;/name&gt;
+      &lt;value&gt;masterA.cls1,masterB.cls1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster1.masterA.cls1&lt;/name&gt;
+      &lt;value&gt;masterA.cls1:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster1.masterA.cls1&lt;/name&gt;
+      &lt;value&gt;masterA.cls1:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster1.masterB.cls1&lt;/name&gt;
+      &lt;value&gt;masterB.cls1:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster1.masterB.cls1&lt;/name&gt;
+      &lt;value&gt;masterB.cls1:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.automatic-failover.enabled.cluster1&lt;/name&gt;
+      &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.client.failover.proxy.provider.cluster1&lt;/name&gt;
+       &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- Cluster2 --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.namenodes.cluster2&lt;/name&gt;
+      &lt;value&gt;masterA.cls2,masterB.cls2&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster2.masterA.cls2&lt;/name&gt;
+      &lt;value&gt;masterA.cls2:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster2.masterA.cls2&lt;/name&gt;
+      &lt;value&gt;masterA.cls2:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster2.masterB.cls2&lt;/name&gt;
+      &lt;value&gt;masterB.cls2:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster2.masterB.cls2&lt;/name&gt;
+      &lt;value&gt;masterB.cls2:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.automatic-failover.enabled.cluster2&lt;/name&gt;
+      &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.client.failover.proxy.provider.cluster2&lt;/name&gt;
+      &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>Cluster2 (on masterA.cls2,masterB.cls2)</p>
 <ul>
-<li>core-site.sh (copy from cluster1) update:<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://cluster2<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<li>core-site.sh (copy from cluster1) update:<pre><code class="nullxml"> &lt;property&gt;
+     &lt;name&gt;fs.defaultFS&lt;/name&gt;
+     &lt;value&gt;hdfs://cluster2&lt;/value&gt;
+ &lt;/property&gt;
 </code></pre>
 <ul>
-<li>hdfs-site.xml (copy from cluster1) update:<pre><code class="nullxml"><span class="tag">&lt;<span class="name">property</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.shared.edits.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">value</span>&gt;</span>qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster2<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<li>hdfs-site.xml (copy from cluster1) update:<pre><code class="nullxml">&lt;property&gt;
+   &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;
+    &lt;value&gt;qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster2&lt;/value&gt;
+&lt;/property&gt;
 </code></pre>
 </li>
 </ul>
@@ -334,8 +328,7 @@
   slave3.cls
 </code></pre></li>
 </ol>
-<h4 id="header-7">Run</h4>
-<ol>
+<h4 id="Run"><a href="#Run" class="headerlink" title="Run"></a>Run</h4><ol>
 <li>start zookeeper<pre><code class="nullshell">  # slave1.cls,slave2.cls,slave3.cls
   zkServer.sh start
 </code></pre>
@@ -364,9 +357,7 @@
 </code></pre>
 </li>
 </ol>
-<h2 id="header-8">MapReduce</h2>
-<h3 id="header-9">1.x缺点</h3>
-<ul>
+<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><h3 id="1-x缺点-1"><a href="#1-x缺点-1" class="headerlink" title="1.x缺点"></a>1.x缺点</h3><ul>
 <li>JobTracker under greate pressure<ul>
 <li>Job Coordination</li>
 <li>Scheduling</li>
@@ -375,8 +366,7 @@
 </li>
 <li>Cluster 资源利用率不高 (不同作业需要搭建不同的集群环境)</li>
 </ul>
-<h3 id="header-10">2.x改进</h3>
-<p><img src="/2016/05/25/hadoop.png" alt="Hadoop"></p>
+<h3 id="2-x改进-1"><a href="#2-x改进-1" class="headerlink" title="2.x改进"></a>2.x改进</h3><p><img src="2016-05-25-Hadoop2.x-Basic/hadoop.png" alt="Hadoop"></p>
 <p>引入Yarn</p>
 <ul>
 <li>JobTracker的功能分离成Yarn的两个单独的组件完成<ul>
@@ -386,13 +376,12 @@
 </li>
 <li>Yarn具有通用性，因此整个集群也可作为其他计算框架的管理平台（例如Spark，Storm等）</li>
 </ul>
-<h3 id="header-11">Yarn</h3>
-<p>Yarn：</p>
+<h3 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h3><p>Yarn：</p>
 <ul>
 <li>一套资源统一管理和调度的平台</li>
 <li>可管理各种计算框架，包括 MapReduce 、 Spark 、 Strom 等</li>
 </ul>
-<p><img src="/2016/05/25/yarn.png" alt="Hadoop"></p>
+<p><img src="2016-05-25-Hadoop2.x-Basic/yarn.png" alt="Hadoop"></p>
 <p>说明：</p>
 <ol>
 <li><p>ResourceManager</p>
@@ -441,29 +430,26 @@
 </ul>
 </li>
 </ol>
-<h3 id="header-12">Yarn配置示例</h3>
-<h4 id="header-13">Configuration</h4>
-<ul>
-<li>mapred-site.xml<pre><code class="nullxml">  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<h3 id="Yarn配置示例"><a href="#Yarn配置示例" class="headerlink" title="Yarn配置示例"></a>Yarn配置示例</h3><h4 id="Configuration-1"><a href="#Configuration-1" class="headerlink" title="Configuration"></a>Configuration</h4><ul>
+<li>mapred-site.xml<pre><code class="nullxml">  &lt;property&gt;
+    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+    &lt;value&gt;yarn&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
-<li>yarn-site.xml<pre><code class="nullxml">  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-       <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-       <span class="tag">&lt;<span class="name">value</span>&gt;</span>masterA.cls1<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span>&gt;</span>
-       <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-       <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<li>yarn-site.xml<pre><code class="nullxml">  &lt;property&gt;
+       &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+       &lt;value&gt;masterA.cls1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+       &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+       &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+  &lt;/property&gt;
   ...
 </code></pre>
 </li>
 </ul>
-<h4 id="header-14">Run</h4>
-<pre><code class="nullshell"># masterA.cls1
+<h4 id="Run-1"><a href="#Run-1" class="headerlink" title="Run"></a>Run</h4><pre><code class="nullshell"># masterA.cls1
 sbin/start-yarn.sh
 
 sbin/stop-yarn.sh

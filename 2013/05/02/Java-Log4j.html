@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Slf4j</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Log4j</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">依赖包</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">配置appender</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">配置logger</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">rootLogger</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Logger</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">分离日志</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">后台使用</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">读取配置文件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">获取日志记录器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">插入记录信息</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">在Spring中使用log4j</span></a></li></ol></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Slf4j"><span class="sidebar-nav nav-text">Slf4j</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Log4j"><span class="sidebar-nav nav-text">Log4j</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#依赖包"><span class="sidebar-nav nav-text">依赖包</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#配置appender"><span class="sidebar-nav nav-text">配置appender</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#配置logger"><span class="sidebar-nav nav-text">配置logger</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#rootLogger"><span class="sidebar-nav nav-text">rootLogger</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#Logger"><span class="sidebar-nav nav-text">Logger</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#分离日志"><span class="sidebar-nav nav-text">分离日志</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#后台使用"><span class="sidebar-nav nav-text">后台使用</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#读取配置文件"><span class="sidebar-nav nav-text">读取配置文件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#获取日志记录器"><span class="sidebar-nav nav-text">获取日志记录器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-4"><a class="sidebar-nav nav-link" href="#插入记录信息"><span class="sidebar-nav nav-text">插入记录信息</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#在Spring中使用log4j"><span class="sidebar-nav nav-text">在Spring中使用log4j</span></a></li></ol></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,22 +123,18 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="header-1">Slf4j</h2>
-<p>Simple logging facade for Java (简单日记门面)：</p>
+    <h2 id="Slf4j"><a href="#Slf4j" class="headerlink" title="Slf4j"></a>Slf4j</h2><p>Simple logging facade for Java (简单日记门面)：</p>
 <p>是为各种loging APIs提供一个简单统一的接口<br>在部署时，选择不同的实现包，即可自动转换到不同的日志系统上</p>
 <p><img src="2013-05-01-Java/slf4j.png" alt="Slf4j"></p>
-<h2 id="header-2">Log4j</h2>
-<h3 id="header-3">依赖包</h3>
-<p>使用slf4j + log4j，实现日志管理：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<h2 id="Log4j"><a href="#Log4j" class="headerlink" title="Log4j"></a>Log4j</h2><h3 id="依赖包"><a href="#依赖包" class="headerlink" title="依赖包"></a>依赖包</h3><p>使用slf4j + log4j，实现日志管理：</p>
+<pre><code class="nullxml">&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+    &lt;version&gt;1.6.6&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>会自动关联依赖slf4j-api-xxx.jar和log4j-xxx.jar</p>
-<h3 id="header-4">配置appender</h3>
-<p>配置日志信息输出目的的</p>
+<h3 id="配置appender"><a href="#配置appender" class="headerlink" title="配置appender"></a>配置appender</h3><p>配置日志信息输出目的的</p>
 <pre><code>    log4j.appender.appenderName = appenderClass
     log4j.appender.appenderName.option1 = value1
     ...
@@ -164,67 +160,7 @@
 </code></pre><ul>
 <li>layout class： <code>extends Layout</code>，不同layout class，使用不同的可配置项</li>
 <li>例如：使用<code>org.apache.log4j.PatternLayout</code><pre><code>log4j.appender.activiti.layout.ConversionPattern= %p %d | %C{1}.%M | %m%n
-</code></pre><table class="table">
-<thead>
-<tr>
-<th>标识</th>
-<th>含义</th>
-<th>举例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>%c</code></td>
-<td>输出所属类的全名,%c{Num} ,Num类名输出的范围</td>
-<td>“com.sun.aaa.classB”, %C{2}将使日志输出输出范围为：aaa.classB</td>
-</tr>
-<tr>
-<td><code>%d</code></td>
-<td>输出日志时间点的日期或时间，默认格式为ISO8601, 可指定格式</td>
-<td>%d{yyy MMM dd HH：mm：ss，SSS}  2002年10月18日 22：10：28，921</td>
-</tr>
-<tr>
-<td><code>%l</code></td>
-<td>输出日志事件发生位置，包括类目名、发生线程，在代码中的行数</td>
-<td>Testlog4.main（TestLog4.java：10）</td>
-</tr>
-<tr>
-<td><code>%n</code></td>
-<td>换行符</td>
-<td>Windows平台为“rn”，Unix平台为“n”</td>
-</tr>
-<tr>
-<td><code>%m</code></td>
-<td>输出代码中指定信息</td>
-<td>info(“message”),输出message</td>
-</tr>
-<tr>
-<td><code>%p</code></td>
-<td>输出日志的优先级</td>
-<td>即DEBUG，INFO，WARN，ERROR，FATAL</td>
-</tr>
-<tr>
-<td><code>%r</code></td>
-<td>输出从启动到显示该条日志信息所耗费的时间（毫秒数）</td>
-<td></td>
-</tr>
-<tr>
-<td><code>%t</code></td>
-<td>输出产生该日志事件的线程名</td>
-<td></td>
-</tr>
-<tr>
-<td><code>%F</code></td>
-<td>输出日志消息产生时所在的文件名称</td>
-<td></td>
-</tr>
-<tr>
-<td><code>%L</code></td>
-<td>输出代码中的行号</td>
-</tr>
-</tbody>
-</table>
-<strong>PS：</strong>可以在<code>%</code>与模式字符之间加上修饰符来控制其最小宽度、最大宽度、和文本的对齐方式，eg：<code>%-20c</code> 指定输出category的名称最小的宽度是20，左对齐；<code>%.30c</code> 最大的长度是30,大于30的左边多出的字符截掉</li>
+</code></pre>| 标识 | 含义 |举例 |<br>|——–|——–|——–|<br>|   <code>%c</code>       |  输出所属类的全名,%c{Num} ,Num类名输出的范围       |    “com.sun.aaa.classB”, %C{2}将使日志输出输出范围为：aaa.classB   |<br>|  <code>%d</code>      |   输出日志时间点的日期或时间，默认格式为ISO8601, 可指定格式     |  %d{yyy MMM dd HH：mm：ss，SSS}  2002年10月18日 22：10：28，921   |<br>|   <code>%l</code>     |   输出日志事件发生位置，包括类目名、发生线程，在代码中的行数     |   Testlog4.main（TestLog4.java：10）    |<br>|    <code>%n</code>      |    换行符     |   Windows平台为“rn”，Unix平台为“n”    |<br>|     <code>%m</code>    |    输出代码中指定信息    |   info(“message”),输出message    |<br>|     <code>%p</code>   |    输出日志的优先级    |    即DEBUG，INFO，WARN，ERROR，FATAL    |<br>|     <code>%r</code>   |   输出从启动到显示该条日志信息所耗费的时间（毫秒数）     |       |<br>|    <code>%t</code>    |   输出产生该日志事件的线程名      |       |<br>|    <code>%F</code>    |   输出日志消息产生时所在的文件名称      |       |<br>|    <code>%L</code>    |   输出代码中的行号      |       |<br><strong>PS：</strong>可以在<code>%</code>与模式字符之间加上修饰符来控制其最小宽度、最大宽度、和文本的对齐方式，eg：<code>%-20c</code> 指定输出category的名称最小的宽度是20，左对齐；<code>%.30c</code> 最大的长度是30,大于30的左边多出的字符截掉</li>
 </ul>
 </li>
 </ul>
@@ -251,7 +187,7 @@
   log4j.appender.DailyFile.layout=org.apache.log4j.PatternLayout
   log4j.appender.DailyFile.layout.ConversionPattern=[R] %p %d | %C{1}.%M | %m%n
   log4j.appender.DailyFile.File=D:/logs/shuttle/shuttle
-  log4j.appender.DailyFile.DatePattern='.'yyyy-MM-dd'.log'
+  log4j.appender.DailyFile.DatePattern=&#39;.&#39;yyyy-MM-dd&#39;.log&#39;
 
   # 发送日志到指定邮件
   log4j.appender.Mail=org.apache.log4j.net.SMTPAppender
@@ -272,14 +208,12 @@
   log4j.appender.Database.driver=com.mysql.jdbc.Driver
   log4j.appender.Database.user=root
   log4j.appender.Database.password=xxx
-  log4j.appender.Database.sql=INSERT INTO LOG4J (Message) VALUES('=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n')
+  log4j.appender.Database.sql=INSERT INTO LOG4J (Message) VALUES(&#39;=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n&#39;)
 </code></pre></li>
 </ul>
-<h3 id="header-5">配置logger</h3>
-<p>定义了appender后，需将appender加入Logger，才可用</p>
+<h3 id="配置logger"><a href="#配置logger" class="headerlink" title="配置logger"></a>配置logger</h3><p>定义了appender后，需将appender加入Logger，才可用</p>
 <p>方式一：加入<code>log4j.rootLogger</code> （默认日志）<br>方式二：加入<code>log4j.logger</code> （指定日志）</p>
-<h4 id="header-6">rootLogger</h4>
-<p>设置根日志的级别和输出，是<strong>所有的日志的父类</strong>（相当于默认日志）</p>
+<h4 id="rootLogger"><a href="#rootLogger" class="headerlink" title="rootLogger"></a>rootLogger</h4><p>设置根日志的级别和输出，是<strong>所有的日志的父类</strong>（相当于默认日志）</p>
 <pre><code>  log4j.rootLogger=[level]，appenderName， ……，
 </code></pre><ul>
 <li><p><code>[level]</code>：日志的级别</p>
@@ -303,8 +237,7 @@
 </li>
 <li>例如： <code>log4j.rootLogger = info,stdout,F</code></li>
 </ul>
-<h4 id="header-7">Logger</h4>
-<p>例如：</p>
+<h4 id="Logger"><a href="#Logger" class="headerlink" title="Logger"></a>Logger</h4><p>例如：</p>
 <p>log4j.properties</p>
 <pre><code># appender
 log4j.appender.test1=org.apache.log4j.FileAppender
@@ -315,14 +248,13 @@ log4j.appender.test1.layout.ConversionPattern=%d %p [%c] - %m%n
 # logger
 log4j.logger.myTest1= info, test1
 </code></pre><p>Test:</p>
-<pre><code class="nulljava"><span class="meta">@Test</span>
-<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLogger</span><span class="params">()</span></span>{
-    Log logger = LogFactory.getLog(<span class="string">"myTest1"</span>);
-    logger.info(<span class="string">"xxxx"</span>);
+<pre><code class="nulljava">@Test
+public void testLogger(){
+    Log logger = LogFactory.getLog(&quot;myTest1&quot;);
+    logger.info(&quot;xxxx&quot;);
 }
 </code></pre>
-<h4 id="header-8">分离日志</h4>
-<p>在log4j中子日志输出，父日志也会相应的输出代码，可通过配置<code>additivity</code>分离日志</p>
+<h4 id="分离日志"><a href="#分离日志" class="headerlink" title="分离日志"></a>分离日志</h4><p>在log4j中子日志输出，父日志也会相应的输出代码，可通过配置<code>additivity</code>分离日志</p>
 <pre><code>log4j.additivity.loggerName=false    # 所需的内容从原有日志中分离，默认为true
 </code></pre><p>（<strong>PS：</strong> <code>additivity</code>的作用在于 children-logger是否使用顶层或父层的的配置)</p>
 <p>示例：</p>
@@ -361,20 +293,20 @@ log4j.logger.myTest1= info, test1
 log4j.logger.myTest2= info, test2
 log4j.additivity.myTest2 = false
 </code></pre><p>Test：</p>
-<pre><code class="nulljava">Logger logger=Logger.getLogger(<span class="keyword">this</span>.getClass());
-logger.debug(<span class="string">"Debug Message"</span>);
-logger.info(<span class="string">"Info Message"</span>);
+<pre><code class="nulljava">Logger logger=Logger.getLogger(this.getClass());
+logger.debug(&quot;Debug Message&quot;);
+logger.info(&quot;Info Message&quot;);
 
 
-Logger logger1=Logger.getLogger(<span class="string">"myTest1"</span>);
-logger1.debug(<span class="string">"Debug Message-1"</span>);
-logger1.info(<span class="string">"Info Message-1"</span>);
+Logger logger1=Logger.getLogger(&quot;myTest1&quot;);
+logger1.debug(&quot;Debug Message-1&quot;);
+logger1.info(&quot;Info Message-1&quot;);
 
 
-Logger logger2=Logger.getLogger(<span class="string">"myTest2"</span>);
-logger2.debug(<span class="string">"Debug Message-2"</span>);
-logger2.info(<span class="string">"Info Message-2"</span>);
-logger2.warn(<span class="string">"Warn Message-2"</span>);
+Logger logger2=Logger.getLogger(&quot;myTest2&quot;);
+logger2.debug(&quot;Debug Message-2&quot;);
+logger2.info(&quot;Info Message-2&quot;);
+logger2.warn(&quot;Warn Message-2&quot;);
 </code></pre>
 <p>Result：</p>
 <pre><code>test.log：
@@ -389,9 +321,7 @@ test2.log:
 使用myTest2的logger输出信息（warn级别及以上，因为Threshold设置为warn，且logger中设置的为info，info&lt;warn）
 
 test3.log 不生成 （因为没有被加入到logger中，且rootLogger中也没有加入）
-</code></pre><h3 id="header-9">后台使用</h3>
-<h4 id="header-10">读取配置文件</h4>
-<pre><code class="nulljava">#自动快速地使用缺省Log4j环境:log4j.properties
+</code></pre><h3 id="后台使用"><a href="#后台使用" class="headerlink" title="后台使用"></a>后台使用</h3><h4 id="读取配置文件"><a href="#读取配置文件" class="headerlink" title="读取配置文件"></a>读取配置文件</h4><pre><code class="nulljava">#自动快速地使用缺省Log4j环境:log4j.properties
 BasicConfigurator.configure();
 
 #读取使用Java的特性文件编写的配置文件
@@ -400,54 +330,51 @@ PropertyConfigurator.configure(String configFilename) ;
 # 读取XML形式的配置文件
 DOMConfigurator.configure(String filename);
 </code></pre>
-<h4 id="header-11">获取日志记录器</h4>
-<pre><code class="nulljava"><span class="comment">//使用Log4j获得logger对象</span>
+<h4 id="获取日志记录器"><a href="#获取日志记录器" class="headerlink" title="获取日志记录器"></a>获取日志记录器</h4><pre><code class="nulljava">//使用Log4j获得logger对象
 Logger logger = Logger.getLogger(xxx);
 
-<span class="comment">//使用Slf4J获得logger对象</span>
+//使用Slf4J获得logger对象
  Logger logger = LoggerFactory.getLogger(xxx);
 </code></pre>
-<h4 id="header-12">插入记录信息</h4>
-<pre><code class="nulljava">Logger.debug ( Object message ) ;
+<h4 id="插入记录信息"><a href="#插入记录信息" class="headerlink" title="插入记录信息"></a>插入记录信息</h4><pre><code class="nulljava">Logger.debug ( Object message ) ;
 Logger.info ( Object message ) ;
 Logger.warn ( Object message ) ;
 Logger.error ( Object message ) ;
 </code></pre>
-<h3 id="header-13">在Spring中使用log4j</h3>
-<ol>
+<h3 id="在Spring中使用log4j"><a href="#在Spring中使用log4j" class="headerlink" title="在Spring中使用log4j"></a>在Spring中使用log4j</h3><ol>
 <li><p>配置web.xml (在Spring配置基础上)，也可什么都不配，使用默认的即可</p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>log4jConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:log4j.properties<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
+<pre><code class="nullxml"> &lt;context-param&gt;
+     &lt;param-name&gt;log4jConfigLocation&lt;/param-name&gt;
+     &lt;param-value&gt;classpath*:log4j.properties&lt;/param-value&gt;
+ &lt;/context-param&gt;
 
- <span class="comment">&lt;!-- 3000表示 开一条watchdog线程每60秒扫描一下配置文件的变化;这样便于日志存放位置的改变 --&gt;</span>
- <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
-         <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>log4jRefreshInterval<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
-         <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>3000<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
- <span class="tag">&lt;<span class="name">listener</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.util.Log4jConfigListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>  
- <span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+ &lt;!-- 3000表示 开一条watchdog线程每60秒扫描一下配置文件的变化;这样便于日志存放位置的改变 --&gt;
+ &lt;context-param&gt;
+         &lt;param-name&gt;log4jRefreshInterval&lt;/param-name&gt;
+         &lt;param-value&gt;3000&lt;/param-value&gt;
+    &lt;/context-param&gt;
+ &lt;listener&gt;
+     &lt;listener-class&gt;org.springframework.web.util.Log4jConfigListener&lt;/listener-class&gt;  
+ &lt;/listener&gt;
 </code></pre>
 </li>
 <li><p>Bean中使用</p>
-<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SystemAnnualTask</span>
- </span>{
-     <span class="comment">//log4j获取Logger</span>
-     <span class="comment">//static Logger logger = Logger.getLogger(SystemAnnualTask.class);</span>
-     <span class="comment">//通过slf4j获取Logger</span>
-     <span class="keyword">static</span> Logger logger = LoggerFactory.getLogger(SystemAnnualTask.class);
+<pre><code class="nulljava"> public class SystemAnnualTask
+ {
+     //log4j获取Logger
+     //static Logger logger = Logger.getLogger(SystemAnnualTask.class);
+     //通过slf4j获取Logger
+     static Logger logger = LoggerFactory.getLogger(SystemAnnualTask.class);
 
-     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startAnnualProcess</span><span class="params">()</span></span>{
+     public void startAnnualProcess(){
          ...
          logger.info(xxx);
-         <span class="comment">//这里增加判断，提高效率（可不判断，直接调用）</span>
-         <span class="keyword">if</span> (logger.isDebugEnabled()){
+         //这里增加判断，提高效率（可不判断，直接调用）
+         if (logger.isDebugEnabled()){
              logger.debug(xxx);
          }
-         <span class="comment">//若使用Slf4j，则可如下使用：</span>
-         logger.info(<span class="string">"{} is {}"</span>, <span class="keyword">new</span> String[]{“x<span class="string">",“y"</span>});
+         //若使用Slf4j，则可如下使用：
+         logger.info(&quot;{} is {}&quot;, new String[]{“x&quot;,“y&quot;});
          ...
      }
  }

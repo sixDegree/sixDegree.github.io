@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Spring与Hibernate整合</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">事务的播特性</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">事务的隔离级别</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">声明式事务配置</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">综合示例(Security,MVC，Hibernate)</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">web.xml</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">beans.xml</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">xxx-servlet.xml</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">xxx-security.xml</span></a></li></ol></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Spring与Hibernate整合"><span class="sidebar-nav nav-text">Spring与Hibernate整合</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#事务的播特性"><span class="sidebar-nav nav-text">事务的播特性</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#事务的隔离级别"><span class="sidebar-nav nav-text">事务的隔离级别</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#声明式事务配置"><span class="sidebar-nav nav-text">声明式事务配置</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#综合示例-Security-MVC，Hibernate"><span class="sidebar-nav nav-text">综合示例(Security,MVC，Hibernate)</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#web-xml"><span class="sidebar-nav nav-text">web.xml</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#beans-xml"><span class="sidebar-nav nav-text">beans.xml</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#xxx-servlet-xml"><span class="sidebar-nav nav-text">xxx-servlet.xml</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#xxx-security-xml"><span class="sidebar-nav nav-text">xxx-security.xml</span></a></li></ol></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -125,9 +125,7 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="header-1">Spring与Hibernate整合</h2>
-<h3 id="header-2">事务的播特性</h3>
-<ol>
+    <h2 id="Spring与Hibernate整合"><a href="#Spring与Hibernate整合" class="headerlink" title="Spring与Hibernate整合"></a>Spring与Hibernate整合</h2><h3 id="事务的播特性"><a href="#事务的播特性" class="headerlink" title="事务的播特性"></a>事务的播特性</h3><ol>
 <li><code>propagation_required</code>:使用当前事务，无则创建开启</li>
 <li><code>propagation_supports</code>:使用当前事务，无则非事务执行</li>
 <li><code>propagation_mandatory</code>:使用当前事务，无则抛出异常</li>
@@ -136,115 +134,112 @@
 <li><code>propagation_never</code>:非事务执行，若存在一个活动事务，则抛出异常</li>
 <li><code>propagation_nested</code>：Spring特有，运行在当前事务的嵌套事务中，无则同<code>propagation_required</code></li>
 </ol>
-<h3 id="header-3">事务的隔离级别</h3>
-<ol>
+<h3 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h3><ol>
 <li><code>isolation_default</code>:Spring特有,使用后端数据库默认的隔离级别,另外四个与JDBC的隔离级别相对应</li>
 <li><code>isolation_read_uncommitted</code>:允许其他事务看到当前事务未提交的数据，可能产生脏读，不可重复读和幻读（事务最低的隔离级别）</li>
 <li><code>isolation_read_commited</code>:保证一个事务修改的数据提交后才能被另外一个事务读取</li>
 <li><code>isolation_repeatable_read</code>:提交数据只读，防止脏读，不可重复读，但可能出现幻像读<br>5.<code>isolation_serializable</code>:事务被处理为顺序执行，防止脏读，不可重复读，幻读（花费代价最高，最可靠的事务隔离级别）</li>
 </ol>
-<h3 id="header-4">声明式事务配置</h3>
-<ol>
+<h3 id="声明式事务配置"><a href="#声明式事务配置" class="headerlink" title="声明式事务配置"></a>声明式事务配置</h3><ol>
 <li>配置SessionFactory</li>
 <li>配置事务管理器</li>
 <li>事务的传播特性</li>
 <li>那些类那些方法使用事务</li>
 </ol>
 <p>注意加入连接池依赖包：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-dbcp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-dbcp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<pre><code class="nullxml">&lt;dependency&gt;
+    &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>配置示例：</p>
-<pre><code class="nullxml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>
-<span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
-        <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
-        <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
-        <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
-        <span class="attr">xsi:schemaLocation</span>=<span class="string">"
+<pre><code class="nullxml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xsi:schemaLocation=&quot;
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"</span>&gt;</span>
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd&quot;&gt;
 
-    <span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">context:annotation-config</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.golf"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc-prod.properties"</span>/&gt;</span>
+    &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
+    &lt;context:annotation-config/&gt;
+    &lt;context:component-scan base-package=&quot;com.golf&quot; /&gt;
+    &lt;context:property-placeholder location=&quot;classpath:jdbc-prod.properties&quot;/&gt;
 
-    <span class="comment">&lt;!-- dataSource --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span> <span class="attr">class</span>=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"${jdbc.driverClassName}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"${jdbc.url}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"${jdbc.username}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"${jdbc.password}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialSize"</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minIdle"</span> <span class="attr">value</span>=<span class="string">"2"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxActive"</span> <span class="attr">value</span>=<span class="string">"200"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"30"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWait"</span> <span class="attr">value</span>=<span class="string">"1000"</span>/&gt;</span>  
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"removeAbandoned"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
-        <span class="comment">&lt;!-- &lt;property name="logAbandoned" value="true"/&gt;   --&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationQuery"</span> <span class="attr">value</span>=<span class="string">"select 1 from dual"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    &lt;!-- dataSource --&gt;
+    &lt;bean id=&quot;dataSource&quot; destroy-method=&quot;close&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driverClassName}&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+        &lt;property name=&quot;initialSize&quot; value=&quot;1&quot;/&gt;
+        &lt;property name=&quot;minIdle&quot; value=&quot;2&quot;/&gt;
+        &lt;property name=&quot;maxActive&quot; value=&quot;200&quot;/&gt;
+        &lt;property name=&quot;maxIdle&quot; value=&quot;30&quot;/&gt;
+        &lt;property name=&quot;maxWait&quot; value=&quot;1000&quot;/&gt;  
+        &lt;property name=&quot;removeAbandoned&quot; value=&quot;true&quot;/&gt;
+        &lt;!-- &lt;property name=&quot;logAbandoned&quot; value=&quot;true&quot;/&gt;   --&gt;
+        &lt;property name=&quot;validationQuery&quot; value=&quot;select 1 from dual&quot;/&gt;
+        &lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot;/&gt;
+    &lt;/bean&gt;
 
-    <span class="comment">&lt;!-- 配置sessionFactory  --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate4.LocalSessionFactoryBean"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernateProperties"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">props</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dialect"</span>&gt;</span>${hibernate.dialect}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.id.new_generator_mappings"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.show_sql"</span>&gt;</span>${hibernate.show.sql}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.format_sql"</span>&gt;</span>${hibernate.format.sql}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="comment">&lt;!-- &lt;prop key="javax.persistence.validation.mode"&gt;none&lt;/prop&gt; --&gt;</span>
-            <span class="tag">&lt;/<span class="name">props</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"packagesToScan"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">list</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.golf.entity<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    &lt;!-- 配置sessionFactory  --&gt;
+    &lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.LocalSessionFactoryBean&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+        &lt;property name=&quot;hibernateProperties&quot;&gt;
+            &lt;props&gt;
+                &lt;prop key=&quot;hibernate.dialect&quot;&gt;${hibernate.dialect}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.id.new_generator_mappings&quot;&gt;true&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.show_sql&quot;&gt;${hibernate.show.sql}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.format_sql&quot;&gt;${hibernate.format.sql}&lt;/prop&gt;
+                &lt;!-- &lt;prop key=&quot;javax.persistence.validation.mode&quot;&gt;none&lt;/prop&gt; --&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;packagesToScan&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;com.golf.entity&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="comment">&lt;!-- 声明式事务 --&gt;</span>
-    <span class="comment">&lt;!-- 事务管理器 --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"txManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate4.HibernateTransactionManager"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sessionFactory"</span> <span class="attr">ref</span>=<span class="string">"sessionFactory"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-    <span class="comment">&lt;!-- 事务的传播特性 --&gt;</span>
-    <span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">"txAdvice"</span> <span class="attr">transaction-manager</span>=<span class="string">"txManager"</span> &gt;</span>
-        <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"list*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"get*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"detail*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span> /&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"test*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>  /&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"sendMail"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span> <span class="attr">no-rollback-for</span>=<span class="string">"Exception"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"getGrantedAuthorities"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"*"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span>
-    <span class="comment">&lt;!-- 参与事务的方法 --&gt;</span>
-      <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(* com.golf.service.*.*(..))"</span> <span class="attr">id</span>=<span class="string">"mySearchService"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"txAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"mySearchService"</span> <span class="attr">order</span>=<span class="string">"2"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span> 
+    &lt;!-- 声明式事务 --&gt;
+    &lt;!-- 事务管理器 --&gt;
+    &lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;&gt;
+        &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;!-- 事务的传播特性 --&gt;
+    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot; &gt;
+        &lt;tx:attributes&gt;
+            &lt;tx:method name=&quot;list*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;get*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;detail*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; /&gt;
+            &lt;tx:method name=&quot;test*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;  /&gt;
+            &lt;tx:method name=&quot;sendMail&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; no-rollback-for=&quot;Exception&quot;/&gt;
+            &lt;tx:method name=&quot;getGrantedAuthorities&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;false&quot;/&gt;
+            &lt;tx:method name=&quot;*&quot;/&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
+    &lt;!-- 参与事务的方法 --&gt;
+      &lt;aop:config&gt;
+        &lt;aop:pointcut expression=&quot;execution(* com.golf.service.*.*(..))&quot; id=&quot;mySearchService&quot;/&gt;
+        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;mySearchService&quot; order=&quot;2&quot;/&gt;
+    &lt;/aop:config&gt; 
 
-    <span class="comment">&lt;!-- 声明式日志 --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"loggerHandler"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.aop.LoggerHandler"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">"loggerHandler"</span> <span class="attr">order</span>=<span class="string">"1"</span>&gt;</span> 
-            <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public * com.golf.service.*.*(..))"</span> <span class="attr">id</span>=<span class="string">"method"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">"logAround"</span> <span class="attr">pointcut-ref</span>=<span class="string">"method"</span> /&gt;</span>
-        <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+    &lt;!-- 声明式日志 --&gt;
+    &lt;bean id=&quot;loggerHandler&quot; class=&quot;com.cj.support.aop.LoggerHandler&quot;/&gt;
+    &lt;aop:config&gt;
+        &lt;aop:aspect ref=&quot;loggerHandler&quot; order=&quot;1&quot;&gt; 
+            &lt;aop:pointcut expression=&quot;execution(public * com.golf.service.*.*(..))&quot; id=&quot;method&quot;/&gt;
+            &lt;aop:around method=&quot;logAround&quot; pointcut-ref=&quot;method&quot; /&gt;
+        &lt;/aop:aspect&gt;
+    &lt;/aop:config&gt;
+&lt;/beans&gt;
 </code></pre>
-<h2 id="header-5">综合示例(Security,MVC，Hibernate)</h2>
-<p>这里项目名为<code>golf</code></p>
+<h2 id="综合示例-Security-MVC，Hibernate"><a href="#综合示例-Security-MVC，Hibernate" class="headerlink" title="综合示例(Security,MVC，Hibernate)"></a>综合示例(Security,MVC，Hibernate)</h2><p>这里项目名为<code>golf</code></p>
 <p>注意加入这些框架的依赖包：</p>
 <ul>
 <li>Spring</li>
@@ -252,348 +247,344 @@
 <li>SpringSecurity</li>
 <li>Hibernate</li>
 </ul>
-<h3 id="header-6">web.xml</h3>
-<p>加载Spring&amp;SpringSecurity&amp;SpringMVC</p>
-<pre><code class="nullxml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>
-<span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/javaee"</span> <span class="attr">xmlns:web</span>=<span class="string">"http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span> <span class="attr">id</span>=<span class="string">"WebApp_ID"</span> <span class="attr">version</span>=<span class="string">"2.5"</span>&gt;</span>
+<h3 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h3><p>加载Spring&amp;SpringSecurity&amp;SpringMVC</p>
+<pre><code class="nullxml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:web=&quot;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt;
 
-   <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beans.xml,classpath*:golf-security.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
+   &lt;context-param&gt;
+        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+        &lt;param-value&gt;classpath*:beans.xml,classpath*:golf-security.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
 
-    <span class="comment">&lt;!-- Spring --&gt;</span>
-    <span class="tag">&lt;<span class="name">listener</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
-    <span class="comment">&lt;!-- Spring刷新Interceptor防止内存泄漏  --&gt;</span>
-    <span class="tag">&lt;<span class="name">listener</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.util.IntrospectorCleanupListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
-    <span class="comment">&lt;!-- 设置session 超时时间为20分钟  --&gt;</span>
-    <span class="tag">&lt;<span class="name">session-config</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>60<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">session-config</span>&gt;</span>
-    <span class="comment">&lt;!--通过HttpSessionEventPublisher,让servelt容器通知Spring Security session生命周期的事--&gt;</span>
-    <span class="tag">&lt;<span class="name">listener</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+    &lt;!-- Spring --&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+    &lt;/listener&gt;
+    &lt;!-- Spring刷新Interceptor防止内存泄漏  --&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.web.util.IntrospectorCleanupListener&lt;/listener-class&gt;
+    &lt;/listener&gt;
+    &lt;!-- 设置session 超时时间为20分钟  --&gt;
+    &lt;session-config&gt;
+        &lt;session-timeout&gt;60&lt;/session-timeout&gt;
+    &lt;/session-config&gt;
+    &lt;!--通过HttpSessionEventPublisher,让servelt容器通知Spring Security session生命周期的事--&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.security.web.session.HttpSessionEventPublisher&lt;/listener-class&gt;
+    &lt;/listener&gt;
 
-  <span class="comment">&lt;!-- 使用Spring中的过滤器解决在请求和应答中的中文乱码问题 --&gt;</span>
-    <span class="tag">&lt;<span class="name">filter</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">init-param</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>encoding<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span>
+  &lt;!-- 使用Spring中的过滤器解决在请求和应答中的中文乱码问题 --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
 
-   <span class="comment">&lt;!-- Spring Secutiry 过滤器链配置  --&gt;</span>
-    <span class="tag">&lt;<span class="name">filter</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span>
+   &lt;!-- Spring Secutiry 过滤器链配置  --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
 
-  <span class="comment">&lt;!-- Spring MVC --&gt;</span>
-   <span class="tag">&lt;<span class="name">servlet</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>golf<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>golf<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">web-app</span>&gt;</span>
+  &lt;!-- Spring MVC --&gt;
+   &lt;servlet&gt;
+        &lt;servlet-name&gt;golf&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;golf&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
 </code></pre>
-<h3 id="header-7">beans.xml</h3>
-<p>配置Spring（加入Hibernate配置）</p>
-<pre><code class="nullxml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>
-<span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
-        <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
-        <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
-        <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
-        <span class="attr">xmlns:jaxws</span>=<span class="string">"http://cxf.apache.org/jaxws"</span>
-        <span class="attr">xmlns:cxf</span>=<span class="string">"http://cxf.apache.org/core"</span>
-        <span class="attr">xmlns:task</span>=<span class="string">"http://www.springframework.org/schema/task"</span>
-        <span class="attr">xsi:schemaLocation</span>=<span class="string">"
+<h3 id="beans-xml"><a href="#beans-xml" class="headerlink" title="beans.xml"></a>beans.xml</h3><p>配置Spring（加入Hibernate配置）</p>
+<pre><code class="nullxml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;
+        xmlns:cxf=&quot;http://cxf.apache.org/core&quot;
+        xmlns:task=&quot;http://www.springframework.org/schema/task&quot;
+        xsi:schemaLocation=&quot;
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
-            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"</span>&gt;</span>
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&gt;
 
-    <span class="tag">&lt;<span class="name">task:annotation-driven</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>/&gt;</span>
+    &lt;task:annotation-driven/&gt;
+    &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
 
-    <span class="tag">&lt;<span class="name">context:annotation-config</span>/&gt;</span>
-    <span class="comment">&lt;!-- scan排除Controller--&gt;</span>
-    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.golf"</span> &gt;</span>
-        <span class="tag">&lt;<span class="name">context:exclude-filter</span> <span class="attr">type</span>=<span class="string">"regex"</span> <span class="attr">expression</span>=<span class="string">"com.golf.controller.*"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc-prod.properties"</span>/&gt;</span>
+    &lt;context:annotation-config/&gt;
+    &lt;!-- scan排除Controller--&gt;
+    &lt;context:component-scan base-package=&quot;com.golf&quot; &gt;
+        &lt;context:exclude-filter type=&quot;regex&quot; expression=&quot;com.golf.controller.*&quot;/&gt;
+    &lt;/context:component-scan&gt;
+    &lt;context:property-placeholder location=&quot;classpath:jdbc-prod.properties&quot;/&gt;
 
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span> <span class="attr">class</span>=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"${jdbc.driverClassName}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"${jdbc.url}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"${jdbc.username}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"${jdbc.password}"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialSize"</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minIdle"</span> <span class="attr">value</span>=<span class="string">"2"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxActive"</span> <span class="attr">value</span>=<span class="string">"200"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"30"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWait"</span> <span class="attr">value</span>=<span class="string">"1000"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"removeAbandoned"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
-        <span class="comment">&lt;!-- &lt;property name="logAbandoned" value="true"/&gt;   --&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationQuery"</span> <span class="attr">value</span>=<span class="string">"select 1 from dual"</span>/&gt;</span> 
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    &lt;bean id=&quot;dataSource&quot; destroy-method=&quot;close&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driverClassName}&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+        &lt;property name=&quot;initialSize&quot; value=&quot;1&quot;/&gt;
+        &lt;property name=&quot;minIdle&quot; value=&quot;2&quot;/&gt;
+        &lt;property name=&quot;maxActive&quot; value=&quot;200&quot;/&gt;
+        &lt;property name=&quot;maxIdle&quot; value=&quot;30&quot;/&gt;
+        &lt;property name=&quot;maxWait&quot; value=&quot;1000&quot;/&gt;
+        &lt;property name=&quot;removeAbandoned&quot; value=&quot;true&quot;/&gt;
+        &lt;!-- &lt;property name=&quot;logAbandoned&quot; value=&quot;true&quot;/&gt;   --&gt;
+        &lt;property name=&quot;validationQuery&quot; value=&quot;select 1 from dual&quot;/&gt; 
+        &lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot;/&gt;
+    &lt;/bean&gt;
 
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate4.LocalSessionFactoryBean"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernateProperties"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">props</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dialect"</span>&gt;</span>${hibernate.dialect}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.id.new_generator_mappings"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.show_sql"</span>&gt;</span>${hibernate.show.sql}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.format_sql"</span>&gt;</span>${hibernate.format.sql}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-                <span class="comment">&lt;!-- &lt;prop key="javax.persistence.validation.mode"&gt;none&lt;/prop&gt; --&gt;</span>
-            <span class="tag">&lt;/<span class="name">props</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"packagesToScan"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">list</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.golf.entity<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    &lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.LocalSessionFactoryBean&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+        &lt;property name=&quot;hibernateProperties&quot;&gt;
+            &lt;props&gt;
+                &lt;prop key=&quot;hibernate.dialect&quot;&gt;${hibernate.dialect}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.id.new_generator_mappings&quot;&gt;true&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.show_sql&quot;&gt;${hibernate.show.sql}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.format_sql&quot;&gt;${hibernate.format.sql}&lt;/prop&gt;
+                &lt;!-- &lt;prop key=&quot;javax.persistence.validation.mode&quot;&gt;none&lt;/prop&gt; --&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;packagesToScan&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;com.golf.entity&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="comment">&lt;!-- 声明式事务 --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"txManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate4.HibernateTransactionManager"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sessionFactory"</span> <span class="attr">ref</span>=<span class="string">"sessionFactory"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">"txAdvice"</span> <span class="attr">transaction-manager</span>=<span class="string">"txManager"</span> &gt;</span>
-        <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"list*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"get*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"detail*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span> /&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"test*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>  /&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"sendMail"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span> <span class="attr">no-rollback-for</span>=<span class="string">"Exception"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"getGrantedAuthorities"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"*"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(* com.golf.service.*.*(..))"</span> <span class="attr">id</span>=<span class="string">"mySearchService"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"txAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"mySearchService"</span> <span class="attr">order</span>=<span class="string">"2"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span>
+    &lt;!-- 声明式事务 --&gt;
+    &lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;&gt;
+        &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot; &gt;
+        &lt;tx:attributes&gt;
+            &lt;tx:method name=&quot;list*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;get*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;detail*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; /&gt;
+            &lt;tx:method name=&quot;test*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;  /&gt;
+            &lt;tx:method name=&quot;sendMail&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; no-rollback-for=&quot;Exception&quot;/&gt;
+            &lt;tx:method name=&quot;getGrantedAuthorities&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;false&quot;/&gt;
+            &lt;tx:method name=&quot;*&quot;/&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
+     &lt;aop:config&gt;
+        &lt;aop:pointcut expression=&quot;execution(* com.golf.service.*.*(..))&quot; id=&quot;mySearchService&quot;/&gt;
+        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;mySearchService&quot; order=&quot;2&quot;/&gt;
+    &lt;/aop:config&gt;
 
-    <span class="comment">&lt;!-- 声明式日志 --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"loggerHandler"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.aop.LoggerHandler"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">"loggerHandler"</span> <span class="attr">order</span>=<span class="string">"1"</span>&gt;</span> 
-            <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public * com.golf.service.*.*(..))"</span> <span class="attr">id</span>=<span class="string">"method"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">"logAround"</span> <span class="attr">pointcut-ref</span>=<span class="string">"method"</span> /&gt;</span>
-        <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span>
+    &lt;!-- 声明式日志 --&gt;
+    &lt;bean id=&quot;loggerHandler&quot; class=&quot;com.cj.support.aop.LoggerHandler&quot;/&gt;
+    &lt;aop:config&gt;
+        &lt;aop:aspect ref=&quot;loggerHandler&quot; order=&quot;1&quot;&gt; 
+            &lt;aop:pointcut expression=&quot;execution(public * com.golf.service.*.*(..))&quot; id=&quot;method&quot;/&gt;
+            &lt;aop:around method=&quot;logAround&quot; pointcut-ref=&quot;method&quot; /&gt;
+        &lt;/aop:aspect&gt;
+    &lt;/aop:config&gt;
 
-    <span class="comment">&lt;!-- Jackson ObjectMapper --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myObjectMapper"</span> <span class="attr">class</span>=<span class="string">"com.fasterxml.jackson.databind.ObjectMapper"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serializationInclusion"</span>&gt;</span>
-             <span class="tag">&lt;<span class="name">value</span> <span class="attr">type</span>=<span class="string">"com.fasterxml.jackson.annotation.JsonInclude.Include"</span>&gt;</span>NON_NULL<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-         <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+    &lt;!-- Jackson ObjectMapper --&gt;
+    &lt;bean id=&quot;myObjectMapper&quot; class=&quot;com.fasterxml.jackson.databind.ObjectMapper&quot;&gt;
+        &lt;property name=&quot;serializationInclusion&quot;&gt;
+             &lt;value type=&quot;com.fasterxml.jackson.annotation.JsonInclude.Include&quot;&gt;NON_NULL&lt;/value&gt;
+         &lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
 </code></pre>
-<h3 id="header-8">xxx-servlet.xml</h3>
-<p>配置SpringMVC</p>
-<pre><code class="nullxml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>
-<span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
-    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-    <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
-    <span class="attr">xmlns:mvc</span>=<span class="string">"http://www.springframework.org/schema/mvc"</span>
-    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
-    <span class="attr">xmlns:sec</span>=<span class="string">"http://www.springframework.org/schema/security"</span> 
-    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+<h3 id="xxx-servlet-xml"><a href="#xxx-servlet-xml" class="headerlink" title="xxx-servlet.xml"></a>xxx-servlet.xml</h3><p>配置SpringMVC</p>
+<pre><code class="nullxml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+    xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xmlns:sec=&quot;http://www.springframework.org/schema/security&quot; 
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span>
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd&quot;&gt;
 
-    <span class="comment">&lt;!-- 在Controlller中使用SpringSecurity SpEL注解，需配置：--&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:global-method-security</span> <span class="attr">pre-post-annotations</span>=<span class="string">"enabled"</span>/&gt;</span>
+    &lt;!-- 在Controlller中使用SpringSecurity SpEL注解，需配置：--&gt;
+    &lt;sec:global-method-security pre-post-annotations=&quot;enabled&quot;/&gt;
 
-    <span class="comment">&lt;!-- 使用Spring MVC所提供的注解驱动特性 --&gt;</span>
-    <span class="tag">&lt;<span class="name">mvc:annotation-driven</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">mvc:message-converters</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"</span>&gt;</span>
-                 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"objectMapper"</span> <span class="attr">ref</span>=<span class="string">"myObjectMapper"</span>/&gt;</span>
-            <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">mvc:message-converters</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">mvc:annotation-driven</span>&gt;</span>
+    &lt;!-- 使用Spring MVC所提供的注解驱动特性 --&gt;
+    &lt;mvc:annotation-driven&gt;
+      &lt;mvc:message-converters&gt;
+            &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+                 &lt;property name=&quot;objectMapper&quot; ref=&quot;myObjectMapper&quot;/&gt;
+            &lt;/bean&gt;
+        &lt;/mvc:message-converters&gt;
+    &lt;/mvc:annotation-driven&gt;
 
-    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.golf.controller"</span> <span class="attr">use-default-filters</span>=<span class="string">"false"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">context:include-filter</span> <span class="attr">type</span>=<span class="string">"annotation"</span> <span class="attr">expression</span>=<span class="string">"org.springframework.stereotype.Controller"</span>  /&gt;</span>
-        <span class="tag">&lt;<span class="name">context:include-filter</span> <span class="attr">type</span>=<span class="string">"annotation"</span> <span class="attr">expression</span>=<span class="string">"org.springframework.web.bind.annotation.ControllerAdvice"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span>
+    &lt;context:component-scan base-package=&quot;com.golf.controller&quot; use-default-filters=&quot;false&quot;&gt;
+        &lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot;  /&gt;
+        &lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.web.bind.annotation.ControllerAdvice&quot;/&gt;
+    &lt;/context:component-scan&gt;
 
-    <span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">mvc:interceptor</span>&gt;</span>
-            <span class="comment">&lt;!-- &lt;mvc:mapping path="/**" /&gt;
-            &lt;mvc:exclude-mapping path="/resources/**"/&gt; --&gt;</span>
-            <span class="tag">&lt;<span class="name">mvc:mapping</span> <span class="attr">path</span>=<span class="string">"/api/**"</span> /&gt;</span>
-            <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"com.cj.support.interceptor.MyHandlerPaginationInterceptor"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">mvc:interceptor</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span>
+    &lt;mvc:interceptors&gt;
+        &lt;mvc:interceptor&gt;
+            &lt;!-- &lt;mvc:mapping path=&quot;/**&quot; /&gt;
+            &lt;mvc:exclude-mapping path=&quot;/resources/**&quot;/&gt; --&gt;
+            &lt;mvc:mapping path=&quot;/api/**&quot; /&gt;
+            &lt;bean class=&quot;com.cj.support.interceptor.MyHandlerPaginationInterceptor&quot;/&gt;
+        &lt;/mvc:interceptor&gt;
+    &lt;/mvc:interceptors&gt;
 
-    <span class="tag">&lt;<span class="name">mvc:resources</span> <span class="attr">location</span>=<span class="string">"/resources/"</span> <span class="attr">mapping</span>=<span class="string">"/resources/**"</span>/&gt;</span> <span class="comment">&lt;!-- 会建立一个服务于静态资源的处理器 --&gt;</span>
-    <span class="comment">&lt;!-- Handler Static Resources: Order Last --&gt;</span>
-    <span class="tag">&lt;<span class="name">mvc:default-servlet-handler</span>/&gt;</span>
+    &lt;mvc:resources location=&quot;/resources/&quot; mapping=&quot;/resources/**&quot;/&gt; &lt;!-- 会建立一个服务于静态资源的处理器 --&gt;
+    &lt;!-- Handler Static Resources: Order Last --&gt;
+    &lt;mvc:default-servlet-handler/&gt;
 
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mediaTypes"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">map</span>&gt;</span>
-                <span class="comment">&lt;!-- &lt;entry key="html" value="text/html"/&gt; --&gt;</span>
-                <span class="tag">&lt;<span class="name">entry</span> <span class="attr">key</span>=<span class="string">"json"</span> <span class="attr">value</span>=<span class="string">"application/json"</span>/&gt;</span>
-            <span class="tag">&lt;/<span class="name">map</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-        <span class="comment">&lt;!-- &lt;property name="defaultContentType" value="text/html"/&gt; --&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewResolvers"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">list</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
-                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"viewClass"</span> <span class="attr">value</span>=<span class="string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span>
-                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/"</span>/&gt;</span>
-                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span>
-                <span class="tag">&lt;/<span class="name">bean</span>&gt;</span> 
-            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"defaultViews"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">list</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.json.MappingJackson2JsonView"</span> &gt;</span>
-                    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"objectMapper"</span> <span class="attr">ref</span>=<span class="string">"myObjectMapper"</span> /&gt;</span>
-                <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    &lt;bean class=&quot;org.springframework.web.servlet.view.ContentNegotiatingViewResolver&quot;&gt;
+        &lt;property name=&quot;mediaTypes&quot;&gt;
+            &lt;map&gt;
+                &lt;!-- &lt;entry key=&quot;html&quot; value=&quot;text/html&quot;/&gt; --&gt;
+                &lt;entry key=&quot;json&quot; value=&quot;application/json&quot;/&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+        &lt;!-- &lt;property name=&quot;defaultContentType&quot; value=&quot;text/html&quot;/&gt; --&gt;
+        &lt;property name=&quot;viewResolvers&quot;&gt;
+            &lt;list&gt;
+                &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+                    &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;
+                    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/&quot;/&gt;
+                    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+                &lt;/bean&gt; 
+            &lt;/list&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;defaultViews&quot;&gt;
+            &lt;list&gt;
+                &lt;bean class=&quot;org.springframework.web.servlet.view.json.MappingJackson2JsonView&quot; &gt;
+                    &lt;property name=&quot;objectMapper&quot; ref=&quot;myObjectMapper&quot; /&gt;
+                &lt;/bean&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="comment">&lt;!-- Upload --&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"multipartResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxUploadSize"</span> <span class="attr">value</span>=<span class="string">"1000000"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+    &lt;!-- Upload --&gt;
+    &lt;bean id=&quot;multipartResolver&quot; class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;
+        &lt;property name=&quot;maxUploadSize&quot; value=&quot;1000000&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
 </code></pre>
-<h3 id="header-9">xxx-security.xml</h3>
-<p>配置SpringSecurity: 这里使用UsernamePassword认证和ldap认证</p>
-<pre><code class="nullxml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span>
-<span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
-        <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
-        <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
-        <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
-        <span class="attr">xmlns:sec</span>=<span class="string">"http://www.springframework.org/schema/security"</span>
-        <span class="attr">xsi:schemaLocation</span>=<span class="string">"
+<h3 id="xxx-security-xml"><a href="#xxx-security-xml" class="headerlink" title="xxx-security.xml"></a>xxx-security.xml</h3><p>配置SpringSecurity: 这里使用UsernamePassword认证和ldap认证</p>
+<pre><code class="nullxml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xmlns:sec=&quot;http://www.springframework.org/schema/security&quot;
+        xsi:schemaLocation=&quot;
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span>
+            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd&quot;&gt;
 
-    <span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">pattern</span>=<span class="string">"/resources/**"</span>  <span class="attr">security</span>=<span class="string">"none"</span>/&gt;</span>
+    &lt;sec:http pattern=&quot;/resources/**&quot;  security=&quot;none&quot;/&gt;
 
-    <span class="comment">&lt;!-- Golf Web Security --&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:http</span>  <span class="attr">auto-config</span>=<span class="string">"false"</span> <span class="attr">use-expressions</span>=<span class="string">"true"</span> <span class="attr">entry-point-authentication-manager-ref</span>=<span class="string">"myAuthenticationManager"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:anonymous</span> <span class="attr">key</span>=<span class="string">"test"</span> <span class="attr">granted-authority</span>=<span class="string">"Guest"</span> <span class="attr">username</span>=<span class="string">"guest"</span>/&gt;</span>
+    &lt;!-- Golf Web Security --&gt;
+    &lt;sec:http  auto-config=&quot;false&quot; use-expressions=&quot;true&quot; entry-point-authentication-manager-ref=&quot;myAuthenticationManager&quot;&gt;
+        &lt;sec:anonymous key=&quot;test&quot; granted-authority=&quot;Guest&quot; username=&quot;guest&quot;/&gt;
 
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/page-**/**"</span> <span class="attr">access</span>=<span class="string">"authenticated"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/admin-**/**"</span> <span class="attr">access</span>=<span class="string">"hasRole('Admin')"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/page-**/**&quot; access=&quot;authenticated&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/admin-**/**&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
 
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/payments"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">access</span>=<span class="string">"hasRole('RequestUser')"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/payments/*/payed"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">access</span>=<span class="string">"hasRole('Payment')"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/receivers"</span> <span class="attr">method</span>=<span class="string">"GET"</span> <span class="attr">access</span>=<span class="string">"hasAnyRole('RequestUser','Admin')"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/receipts"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">access</span>=<span class="string">"authenticated and authentication.extra.orgType=='LingShan'"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/api/payments&quot; method=&quot;POST&quot; access=&quot;hasRole(&#39;RequestUser&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/payments/*/payed&quot; method=&quot;POST&quot; access=&quot;hasRole(&#39;Payment&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receivers&quot; method=&quot;GET&quot; access=&quot;hasAnyRole(&#39;RequestUser&#39;,&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receipts&quot; method=&quot;POST&quot; access=&quot;authenticated and authentication.extra.orgType==&#39;LingShan&#39;&quot;/&gt;
 
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/users/**"</span> <span class="attr">access</span>=<span class="string">"hasRole('Admin')"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/roles"</span> <span class="attr">access</span>=<span class="string">"hasRole('Admin')"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/receivers"</span> <span class="attr">method</span>=<span class="string">"POST"</span> <span class="attr">access</span>=<span class="string">"hasRole('Admin')"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/receivers/*/*"</span> <span class="attr">method</span>=<span class="string">"GET"</span> <span class="attr">access</span>=<span class="string">"hasRole('Admin')"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/api/users/**&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/roles&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receivers&quot; method=&quot;POST&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receivers/*/*&quot; method=&quot;GET&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
 
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/**"</span> <span class="attr">access</span>=<span class="string">"authenticated"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/"</span> <span class="attr">access</span>=<span class="string">"permitAll"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/login"</span> <span class="attr">access</span>=<span class="string">"permitAll"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/auth"</span> <span class="attr">access</span>=<span class="string">"permitAll"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/**"</span> <span class="attr">access</span>=<span class="string">"hasRole('Admin')"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/api/**&quot; access=&quot;authenticated&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/&quot; access=&quot;permitAll&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/login&quot; access=&quot;permitAll&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/auth&quot; access=&quot;permitAll&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/**&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
 
-        <span class="tag">&lt;<span class="name">sec:form-login</span> <span class="attr">login-processing-url</span>=<span class="string">"/api/j_spring_security_check"</span> <span class="attr">username-parameter</span>=<span class="string">"username"</span> <span class="attr">password-parameter</span>=<span class="string">"password"</span>
-            <span class="attr">login-page</span>=<span class="string">"/login"</span> <span class="attr">authentication-failure-url</span>=<span class="string">"/auth?error=UnAuthenticated"</span> <span class="attr">default-target-url</span>=<span class="string">"/auth"</span> /&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:logout</span> <span class="attr">logout-success-url</span>=<span class="string">"/auth"</span> <span class="attr">logout-url</span>=<span class="string">"/api/j_spring_security_logout"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:session-management</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:concurrency-control</span> <span class="attr">max-sessions</span>=<span class="string">"1"</span> <span class="attr">expired-url</span>= <span class="string">"/login?error=This session has been expired"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">sec:session-management</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:request-cache</span> <span class="attr">ref</span>=<span class="string">"nullRequestCache"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+        &lt;sec:form-login login-processing-url=&quot;/api/j_spring_security_check&quot; username-parameter=&quot;username&quot; password-parameter=&quot;password&quot;
+            login-page=&quot;/login&quot; authentication-failure-url=&quot;/auth?error=UnAuthenticated&quot; default-target-url=&quot;/auth&quot; /&gt;
+        &lt;sec:logout logout-success-url=&quot;/auth&quot; logout-url=&quot;/api/j_spring_security_logout&quot;/&gt;
+        &lt;sec:session-management&gt;
+            &lt;sec:concurrency-control max-sessions=&quot;1&quot; expired-url= &quot;/login?error=This session has been expired&quot;/&gt;
+        &lt;/sec:session-management&gt;
+        &lt;sec:request-cache ref=&quot;nullRequestCache&quot;/&gt;
+    &lt;/sec:http&gt;
 
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"nullRequestCache"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.savedrequest.NullRequestCache"</span>/&gt;</span>
+    &lt;bean id=&quot;nullRequestCache&quot; class=&quot;org.springframework.security.web.savedrequest.NullRequestCache&quot;/&gt;
 
-    <span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
-        <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span> /&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">ref</span>=<span class="string">"ldapAuthenticationProvider"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"com.golf.service.MyUserDetailsService"</span>/&gt;</span>
+    &lt;sec:authentication-manager id=&quot;myAuthenticationManager&quot; &gt;
+        &lt;sec:authentication-provider user-service-ref=&quot;myUserDetailsService&quot; /&gt;
+        &lt;sec:authentication-provider ref=&quot;ldapAuthenticationProvider&quot;/&gt;
+    &lt;/sec:authentication-manager&gt;
+    &lt;bean id=&quot;myUserDetailsService&quot; class=&quot;com.golf.service.MyUserDetailsService&quot;/&gt;
 
-     <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapAuthenticationProvider"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.LdapAuthenticationProvider"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"authenticator"</span> <span class="attr">ref</span>=<span class="string">"bindAuthenticator"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"authoritiesPopulator"</span> <span class="attr">ref</span>=<span class="string">"ldapAuthoritiesPopulator"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bindAuthenticator"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.BindAuthenticator"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"contextSource"</span> <span class="attr">ref</span>=<span class="string">"ldapServer"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userSearch"</span> <span class="attr">ref</span>=<span class="string">"ldapSearch"</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapAuthoritiesPopulator"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.security.ldap.MyLdapAuthoritiesPopulator"</span>/&gt;</span>
+     &lt;bean id=&quot;ldapAuthenticationProvider&quot; class=&quot;org.springframework.security.ldap.authentication.LdapAuthenticationProvider&quot;&gt;
+        &lt;constructor-arg name=&quot;authenticator&quot; ref=&quot;bindAuthenticator&quot;/&gt;
+        &lt;constructor-arg name=&quot;authoritiesPopulator&quot; ref=&quot;ldapAuthoritiesPopulator&quot;/&gt;
+    &lt;/bean&gt;
+     &lt;bean id=&quot;bindAuthenticator&quot; class=&quot;org.springframework.security.ldap.authentication.BindAuthenticator&quot;&gt;
+        &lt;constructor-arg name=&quot;contextSource&quot; ref=&quot;ldapServer&quot;/&gt;
+        &lt;property name=&quot;userSearch&quot; ref=&quot;ldapSearch&quot;&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;ldapAuthoritiesPopulator&quot; class=&quot;com.cj.support.security.ldap.MyLdapAuthoritiesPopulator&quot;/&gt;
 
-    <span class="comment">&lt;!-- Ldap Server &amp; Search Config --&gt;</span>
-     <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapSearch"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.search.FilterBasedLdapUserSearch"</span> &gt;</span>
-      <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"searchBase"</span> <span class="attr">value</span>=<span class="string">"ou=people"</span>/&gt;</span>   <span class="comment">&lt;!-- user-search-base --&gt;</span>
-      <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"searchFilter"</span> <span class="attr">value</span>=<span class="string">"(uid={0})"</span>/&gt;</span> <span class="comment">&lt;!-- user-search-filter --&gt;</span>
-      <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"contextSource"</span> <span class="attr">ref</span>=<span class="string">"ldapServer"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:ldap-server</span> <span class="attr">id</span>=<span class="string">"ldapServer"</span> <span class="attr">url</span>=<span class="string">"ldap://xxxx/o=xxxx"</span>  /&gt;</span>
-<span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+    &lt;!-- Ldap Server &amp; Search Config --&gt;
+     &lt;bean id=&quot;ldapSearch&quot; class=&quot;org.springframework.security.ldap.search.FilterBasedLdapUserSearch&quot; &gt;
+      &lt;constructor-arg name=&quot;searchBase&quot; value=&quot;ou=people&quot;/&gt;   &lt;!-- user-search-base --&gt;
+      &lt;constructor-arg name=&quot;searchFilter&quot; value=&quot;(uid={0})&quot;/&gt; &lt;!-- user-search-filter --&gt;
+      &lt;constructor-arg name=&quot;contextSource&quot; ref=&quot;ldapServer&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;sec:ldap-server id=&quot;ldapServer&quot; url=&quot;ldap://xxxx/o=xxxx&quot;  /&gt;
+&lt;/beans&gt;
 </code></pre>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserDetailsService</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span>
-</span>{
-    <span class="keyword">static</span> Logger logger = Logger.getLogger(GolfUserDetailsService.class);  
-    <span class="keyword">private</span> ISecurityService securityService;
-    <span class="function"><span class="keyword">public</span> ISecurityService <span class="title">getSecurityService</span><span class="params">()</span></span>{
-        <span class="keyword">return</span> securityService;
+<pre><code class="nulljava">public class MyUserDetailsService implements UserDetailsService
+{
+    static Logger logger = Logger.getLogger(GolfUserDetailsService.class);  
+    private ISecurityService securityService;
+    public ISecurityService getSecurityService(){
+        return securityService;
     }
-    <span class="meta">@Inject</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecurityService</span><span class="params">(ISecurityService securityService)</span></span>{
-        <span class="keyword">this</span>.securityService = securityService;
+    @Inject
+    public void setSecurityService(ISecurityService securityService){
+        this.securityService = securityService;
     }
 
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String account)</span>
-            <span class="keyword">throws</span> UsernameNotFoundException
-    </span>{
+    @Override
+    public UserDetails loadUserByUsername(String account)
+            throws UsernameNotFoundException
+    {
         List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
-        <span class="keyword">if</span>(glist==<span class="keyword">null</span> || glist.size()==<span class="number">0</span>)
-            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"No GrantedAuthority"</span>);
+        if(glist==null || glist.size()==0)
+            throw new UsernameNotFoundException(&quot;No GrantedAuthority&quot;);
         SysUser user=(SysUser)securityService.getUser(account);
-        <span class="keyword">if</span>(user!=<span class="keyword">null</span> )
-            <span class="keyword">return</span> <span class="keyword">new</span> MyUser(account,user.getPwd(),glist); <span class="comment">//MyUser implements UserDetails</span>
-        <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"Not Found"</span>);
+        if(user!=null )
+            return new MyUser(account,user.getPwd(),glist); //MyUser implements UserDetails
+        throw new UsernameNotFoundException(&quot;Not Found&quot;);
     }
 }
 </code></pre>

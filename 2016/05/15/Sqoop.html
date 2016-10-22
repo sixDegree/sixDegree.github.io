@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Import(MySQL=>HDFS)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Job</span></a></li></ol></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#概述"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#安装"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#使用示例"><span class="sidebar-nav nav-text">使用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#查询"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Import-MySQL-gt-HDFS"><span class="sidebar-nav nav-text">Import(MySQL=>HDFS)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Job"><span class="sidebar-nav nav-text">Job</span></a></li></ol></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,8 +123,7 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="header-1">概述</h2>
-<p>SQOOP – 使用MapReduce实现用于对数据进行导入导出</p>
+    <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>SQOOP – 使用MapReduce实现用于对数据进行导入导出</p>
 <ul>
 <li>Import: 把MySQL、Oracle等数据库中的数据导入到HDFS、Hive、HBase中</li>
 <li>Export: 把HDFS、Hive、HBase中的数据导出到MySQL、Oracle等数据库中</li>
@@ -132,9 +131,8 @@
 <li><a href="http://sqoop.apache.org/">官网</a></li>
 <li><a href="http://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html#_incremental_imports">用户手册</a></li>
 </ul>
-<p><img src="/2016/05/15/frame.png" alt="Export/Import"></p>
-<h2 id="header-2">安装</h2>
-<ol>
+<p><img src="2016-05-15-Sqoop/frame.png" alt="Export/Import"></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
 <li>下载解压</li>
 <li>配置环境变量（<code>/etc/profile</code>）<ul>
 <li>SQOOP_HOME</li>
@@ -144,9 +142,7 @@
 </li>
 <li>将要使用的JDBC Connector Jar包放入<code>$SQOOP_HOME/lib</code>下</li>
 </ol>
-<h2 id="header-3">使用示例</h2>
-<h3 id="header-4">查询</h3>
-<ul>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ul>
 <li><p>list databases</p>
 <pre><code>  sqoop list-databases \
   --connect jdbc:mysql://cj.storm:3306 --username root --password cj123
@@ -158,8 +154,7 @@
 <li>list jobs<pre><code>  sqoop job --list
 </code></pre></li>
 </ul>
-<h3 id="header-5">Import(MySQL=&gt;HDFS)</h3>
-<p>一些参数说明：</p>
+<h3 id="Import-MySQL-gt-HDFS"><a href="#Import-MySQL-gt-HDFS" class="headerlink" title="Import(MySQL=&gt;HDFS)"></a>Import(MySQL=&gt;HDFS)</h3><p>一些参数说明：</p>
 <ul>
 <li><code>-m &lt;num&gt;</code>: 使用的mapper数（注意：对于无主键的表，需要增加参数<code>--split-by xxx</code> 或 <code>-m 1</code>）</li>
 <li><code>--warehouse-dir &lt;path&gt;</code>: 指定存放的数据仓库（默认：<code>/user/{USER_NAME}</code>）</li>
@@ -175,15 +170,15 @@
  # final file: /output/log/part-m-00000
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
- --table log --fields-terminated-by ',' \
- --warehouse-dir '/output' \
+ --table log --fields-terminated-by &#39;,&#39; \
+ --warehouse-dir &#39;/output&#39; \
  -m 1
 
  # use --target-dir &amp; query
  # final file: /output/log_2/part-m-00000
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop  --username root --P \
- --query "select * from log where \$CONDITIONS" \
+ --query &quot;select * from log where \$CONDITIONS&quot; \
  --target-dir /output/log_2 \
  -m 1  
 
@@ -191,11 +186,11 @@
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
  --table log \
- --columns "ip,status,method" \
- --where "status='200' and method in ('GET','POST')"  \
+ --columns &quot;ip,status,method&quot; \
+ --where &quot;status=&#39;200&#39; and method in (&#39;GET&#39;,&#39;POST&#39;)&quot;  \
  -m 1  \
  --target-dir /output/log_3 \
- --fields-terminated-by ","
+ --fields-terminated-by &quot;,&quot;
 </code></pre>
 </li>
 <li><p><code>mysql table =&gt; hive table</code>:</p>
@@ -203,8 +198,8 @@
  sqoop import 
  --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 
  --table TBLS 
- --fields-terminated-by '\t'  
- --null-string '**'  
+ --fields-terminated-by &#39;\t&#39;  
+ --null-string &#39;**&#39;  
  -m 1 
  --hive-import
 
@@ -212,15 +207,15 @@
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 \
  --table TBLS \
- --fields-terminated-by '\t' \
- --null-string '**' \
+ --fields-terminated-by &#39;\t&#39; \
+ --null-string &#39;**&#39; \
  -m 1 \
  --hive-import \
- --hive-table 'tbls_2'
+ --hive-table &#39;tbls_2&#39;
 
  # check hive table
- hive -e 'describe formatted tbls'
- hive -e 'describe formatted tbls_2'
+ hive -e &#39;describe formatted tbls&#39;
+ hive -e &#39;describe formatted tbls_2&#39;
 </code></pre>
 </li>
 <li><p><code>mysql table schema =&gt; hive table schema</code>:</p>
@@ -233,8 +228,7 @@
 </code></pre>
 </li>
 </ol>
-<h3 id="header-6">Job</h3>
-<ol>
+<h3 id="Job"><a href="#Job" class="headerlink" title="Job"></a>Job</h3><ol>
 <li>create job:<pre><code class="nullshell"> sqoop job \
  --create myjob \
  -- import --connect jdbc:mysql://cj.storm:3306/hive  --username root -P \

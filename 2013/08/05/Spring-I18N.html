@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Resource文件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Locale解析器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Local拦截器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">前端静态文字国际化</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">后端动态信息国际化</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Resource文件"><span class="sidebar-nav nav-text">Resource文件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Locale解析器"><span class="sidebar-nav nav-text">Locale解析器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Local拦截器"><span class="sidebar-nav nav-text">Local拦截器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#前端静态文字国际化"><span class="sidebar-nav nav-text">前端静态文字国际化</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#后端动态信息国际化"><span class="sidebar-nav nav-text">后端动态信息国际化</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -125,12 +125,11 @@
     </ul>
   </section>
   <section class="post-content">
-    <h3 id="header-1">Resource文件</h3>
-<ol>
+    <h3 id="Resource文件"><a href="#Resource文件" class="headerlink" title="Resource文件"></a>Resource文件</h3><ol>
 <li><p>Register MessageSource</p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ResourceBundleMessageSource"</span> &gt;</span>
-      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basename"</span> <span class="attr">value</span>=<span class="string">"message"</span> /&gt;</span>  <span class="comment">&lt;!-- messages是配置文件的前缀 --&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span> &gt;</span>
+<pre><code class="nullxml"> &lt;bean id=&quot;messageSource&quot; class=&quot;org.springframework.context.support.ResourceBundleMessageSource&quot; &gt;
+      &lt;property name=&quot;basename&quot; value=&quot;message&quot; /&gt;  &lt;!-- messages是配置文件的前缀 --&gt;
+ &lt;/bean &gt;
 </code></pre>
 </li>
 <li><p>定义国际化需要的资源文件（置于classpath下），例如：</p>
@@ -147,8 +146,7 @@
 </li>
 </ol>
 <p><strong>PS</strong><br>因为ApplicationContext也是MessageSource接口的实现，故可以直接调用getMessage()方法</p>
-<h3 id="header-2">Locale解析器</h3>
-<p><code>LocaleResolver</code>（本地化解析器），会自动解析用户的本地化信息（即Locale），实现类：</p>
+<h3 id="Locale解析器"><a href="#Locale解析器" class="headerlink" title="Locale解析器"></a>Locale解析器</h3><p><code>LocaleResolver</code>（本地化解析器），会自动解析用户的本地化信息（即Locale），实现类：</p>
 <ul>
 <li><code>AcceptHeaderLocaleResolver</code> ：检查请求中客户端浏览器发送的<code>accept-language</code>头信息,包含客户端操作系统的本地化信息</li>
 <li><code>CookieLocaleResolver</code> ：检查客户端中的cookie是否包含本地化信息 ,若有就使用</li>
@@ -156,76 +154,73 @@
 <li><code>FixedLocaleResolver</code> ：返回一个固定的本地化信息,默认值为当前JVM的locale</li>
 </ul>
 <p>例如：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> =<span class="string">"localeResolver"</span> <span class="attr">class</span>= <span class="string">"org.springframework.web.servlet.i18n.SessionLocaleResolver"</span> &gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span> =<span class="string">"defaultLocale"</span> <span class="attr">value</span>=<span class="string">"zh_CN"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span> &gt;</span>
+<pre><code class="nullxml">&lt;bean id =&quot;localeResolver&quot; class= &quot;org.springframework.web.servlet.i18n.SessionLocaleResolver&quot; &gt;
+     &lt;property name =&quot;defaultLocale&quot; value=&quot;zh_CN&quot; /&gt;
+&lt;/bean &gt;
 </code></pre>
-<h3 id="header-3">Local拦截器</h3>
-<p>Local拦截器（可使用已有的，也可自定义处理）</p>
+<h3 id="Local拦截器"><a href="#Local拦截器" class="headerlink" title="Local拦截器"></a>Local拦截器</h3><p>Local拦截器（可使用已有的，也可自定义处理）</p>
 <p>例如：LocaleChangeInterceptor（拦截URL，获取Local参数值并进行本地化设置）</p>
 <p>LocaleChangeInterceptor源码：</p>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocaleChangeInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>{
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_PARAM_NAME = <span class="string">"locale"</span>;
-    <span class="keyword">private</span> String paramName = DEFAULT_PARAM_NAME;
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setParamName</span><span class="params">(String paramName)</span> </span>{
-        <span class="keyword">this</span>.paramName = paramName;
+<pre><code class="nulljava">public class LocaleChangeInterceptor extends HandlerInterceptorAdapter {
+    public static final String DEFAULT_PARAM_NAME = &quot;locale&quot;;
+    private String paramName = DEFAULT_PARAM_NAME;
+    public void setParamName(String paramName) {
+        this.paramName = paramName;
     }
-    <span class="function"><span class="keyword">public</span> String <span class="title">getParamName</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> <span class="keyword">this</span>.paramName;
+    public String getParamName() {
+        return this.paramName;
     }
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span>
-            <span class="keyword">throws</span> ServletException </span>{
-        String newLocale = request.getParameter(<span class="keyword">this</span>.paramName);
-        <span class="keyword">if</span> (newLocale != <span class="keyword">null</span>) {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws ServletException {
+        String newLocale = request.getParameter(this.paramName);
+        if (newLocale != null) {
             LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-            <span class="keyword">if</span> (localeResolver == <span class="keyword">null</span>) {
-                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"No LocaleResolver found: not in a DispatcherServlet request?"</span>);
+            if (localeResolver == null) {
+                throw new IllegalStateException(&quot;No LocaleResolver found: not in a DispatcherServlet request?&quot;);
             }
             localeResolver.setLocale(request, response, StringUtils.parseLocaleString(newLocale));
         }
-        <span class="comment">// Proceed in any case.</span>
-        <span class="keyword">return</span> <span class="keyword">true</span>;
+        // Proceed in any case.
+        return true;
     }
 }
 </code></pre>
 <p>配置使用：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> =<span class="string">"localeChangeInterceptor"</span> <span class="attr">class</span>= <span class="string">"org.springframework.web.servlet.i18n.LocaleChangeInterceptor"</span> &gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span> =<span class="string">"paramName"</span> <span class="attr">value</span>= <span class="string">"language"</span> /&gt;</span> <span class="comment">&lt;!-- 对URL中paramName为language的进行处理（默认paramName为local） --&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span> &gt;</span>
+<pre><code class="nullxml">&lt;bean id =&quot;localeChangeInterceptor&quot; class= &quot;org.springframework.web.servlet.i18n.LocaleChangeInterceptor&quot; &gt;
+    &lt;property name =&quot;paramName&quot; value= &quot;language&quot; /&gt; &lt;!-- 对URL中paramName为language的进行处理（默认paramName为local） --&gt;
+&lt;/bean &gt;
 
-<span class="comment">&lt;!-- 加入Local拦截器 --&gt;</span>
-<span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">ref</span>=<span class="string">"localeChangeInterceptor"</span>&gt;</span> <span class="comment">&lt;!-- 拦截所有的URL请求 --&gt;</span>
-    <span class="comment">&lt;!--
+&lt;!-- 加入Local拦截器 --&gt;
+&lt;mvc:interceptors&gt;
+    &lt;bean ref=&quot;localeChangeInterceptor&quot;&gt; &lt;!-- 拦截所有的URL请求 --&gt;
+    &lt;!--
     &lt;mvc:interceptor&gt;
-      &lt;mvc:mapping path="/**" /&gt;
-      &lt;mvc:exclude-mapping path="/resources/**"/&gt;
-      &lt;bean ref="localeChangeInterceptor"/&gt;
-    &lt;/mvc:interceptor&gt; --&gt;</span>
-<span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span>
+      &lt;mvc:mapping path=&quot;/**&quot; /&gt;
+      &lt;mvc:exclude-mapping path=&quot;/resources/**&quot;/&gt;
+      &lt;bean ref=&quot;localeChangeInterceptor&quot;/&gt;
+    &lt;/mvc:interceptor&gt; --&gt;
+&lt;/mvc:interceptors&gt;
 </code></pre>
-<h3 id="header-4">前端静态文字国际化</h3>
-<p>使用<code>&lt;spring:message&gt;</code></p>
-<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">%@taglib</span> <span class="attr">prefix</span>= <span class="string">"spring"</span> <span class="attr">uri</span> =<span class="string">"http://www.springframework.org/tags"</span> %&gt;</span>     
+<h3 id="前端静态文字国际化"><a href="#前端静态文字国际化" class="headerlink" title="前端静态文字国际化"></a>前端静态文字国际化</h3><p>使用<code>&lt;spring:message&gt;</code></p>
+<pre><code class="nullhtml">&lt;%@taglib prefix= &quot;spring&quot; uri =&quot;http://www.springframework.org/tags&quot; %&gt;     
 
-<span class="tag">&lt;<span class="name">li</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> =<span class="string">"?language=en"</span>&gt;</span><span class="tag">&lt; <span class="attr">spring:message</span> <span class="attr">code</span> =<span class="string">"language.en"</span> <span class="attr">text</span> =<span class="string">"English"</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">li</span>&gt;</span>
-<span class="tag">&lt;<span class="name">li</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> =<span class="string">"?language=zh_CN"</span>&gt;</span><span class="tag">&lt; <span class="attr">spring:message</span> <span class="attr">code</span> =<span class="string">"language.cn"</span> <span class="attr">text</span>= <span class="string">"Chinese"</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+&lt;li&gt;
+     &lt;a href =&quot;?language=en&quot;&gt;&lt; spring:message code =&quot;language.en&quot; text =&quot;English&quot; /&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+     &lt;a href =&quot;?language=zh_CN&quot;&gt;&lt; spring:message code =&quot;language.cn&quot; text= &quot;Chinese&quot; /&gt;&lt;/a&gt;
+&lt;/li&gt;
 
-MenuText : <span class="tag">&lt;<span class="name">spring:message</span> <span class="attr">code</span>=<span class="string">"menu.title"</span> <span class="attr">text</span>=<span class="string">"default text"</span> /&gt;</span>
+MenuText : &lt;spring:message code=&quot;menu.title&quot; text=&quot;default text&quot; /&gt;
 CurrentLocale : ${pageContext.response.locale}
 </code></pre>
-<h3 id="header-5">后端动态信息国际化</h3>
-<pre><code class="nulljava">RequestContext requestContext = <span class="keyword">new</span> RequestContext(request);
+<h3 id="后端动态信息国际化"><a href="#后端动态信息国际化" class="headerlink" title="后端动态信息国际化"></a>后端动态信息国际化</h3><pre><code class="nulljava">RequestContext requestContext = new RequestContext(request);
 Locale myLocale = requestContext.getLocale();
-System.out.println(<span class="string">"-------------------------------------"</span>);
+System.out.println(&quot;-------------------------------------&quot;);
 System.out.println(myLocale);
-System.out.println(requestContext.getMessage(<span class="string">"menu.title"</span>));
-System.out.println(requestContext.getMessage(<span class="string">"ctrl.auth.fail"</span>,<span class="keyword">new</span> Object[]{<span class="string">"Add"</span>,<span class="string">"R028394"</span>},<span class="string">"Operate Fail"</span>));
+System.out.println(requestContext.getMessage(&quot;menu.title&quot;));
+System.out.println(requestContext.getMessage(&quot;ctrl.auth.fail&quot;,new Object[]{&quot;Add&quot;,&quot;R028394&quot;},&quot;Operate Fail&quot;));
 </code></pre>
   </section>
 </article>
