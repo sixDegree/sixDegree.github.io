@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#连接查询"><span class="sidebar-nav nav-text">连接查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#rownum-rowid"><span class="sidebar-nav nav-text">rownum,rowid</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#row-number-dense-rank-rank"><span class="sidebar-nav nav-text">row_number,dense_rank,rank</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#重复记录"><span class="sidebar-nav nav-text">重复记录</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#行列转换"><span class="sidebar-nav nav-text">行列转换</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#分页"><span class="sidebar-nav nav-text">分页</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#合并多行记录"><span class="sidebar-nav nav-text">合并多行记录</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">连接查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">rownum,rowid</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">row_number,dense_rank,rank</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">重复记录</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">行列转换</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">分页</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">合并多行记录</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,7 +123,8 @@
     </ul>
   </section>
   <section class="post-content">
-    <h3 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h3><ul>
+    <h3 id="header-1">连接查询</h3>
+<ul>
 <li><code>inner join</code> ：AB交集 （等同于<code>join</code>,<code>,</code>）<ul>
 <li>显式：<code>select [cols_list] from a inner join b on [condition] where [condition]</code></li>
 <li>隐式：<code>select [cols_list] from a,b where [condition]</code></li>
@@ -148,7 +149,7 @@
 </ul>
 <p>示例：</p>
 <p>table a</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>id</th>
@@ -171,7 +172,7 @@
 </tbody>
 </table>
 <p>table b</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>id</th>
@@ -191,30 +192,133 @@
 </table>
 <ol>
 <li><p>使用<code>a left join b</code>+<code>and a</code></p>
-<pre><code class="nullsql"> select a.*,b.* from a left join b on a.id=b.id and a.type=&#39;a&#39;;
+<pre><code class="nullsql"> <span class="keyword">select</span> a.*,b.* <span class="keyword">from</span> a <span class="keyword">left</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id=b.id <span class="keyword">and</span> a.type=<span class="string">'a'</span>;
 </code></pre>
-<p> | a.id | a.type | b.id | b.class |<br> |——–|——–|——–|——–|<br> |   1     |    a    |    1   |    aa   |<br> |   2     |    a    |    2   |    bb   |<br> |   3     |    b    |       |       |</p>
+<table class="table">
+<thead>
+<tr>
+<th>a.id</th>
+<th>a.type</th>
+<th>b.id</th>
+<th>b.class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>1</td>
+<td>aa</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a</td>
+<td>2</td>
+<td>bb</td>
+</tr>
+<tr>
+<td>3</td>
+<td>b</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li><p>使用<code>a left join b</code>+<code>and b</code></p>
-<pre><code class="nullsql"> select a.*,b.* from a left join b on a.id=b.id and b.class=&#39;aa&#39;
+<pre><code class="nullsql"> <span class="keyword">select</span> a.*,b.* <span class="keyword">from</span> a <span class="keyword">left</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id=b.id <span class="keyword">and</span> b.class=<span class="string">'aa'</span>
 </code></pre>
-<p> | a.id | a.type | b.id | b.class |<br> |——–|——–|——–|——–|<br> |   1     |    a    |    1   |    aa   |<br> |   2     |    a    |       |       |<br> |   3     |    b    |       |       |</p>
+<table class="table">
+<thead>
+<tr>
+<th>a.id</th>
+<th>a.type</th>
+<th>b.id</th>
+<th>b.class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>1</td>
+<td>aa</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>b</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </li>
 <li><p>使用<code>left join</code>+<code>where</code></p>
-<pre><code class="nullsql"> select a.*,b.* from a left join b on a.id=b.id where a.type=&#39;a&#39;;
+<pre><code class="nullsql"> <span class="keyword">select</span> a.*,b.* <span class="keyword">from</span> a <span class="keyword">left</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id=b.id <span class="keyword">where</span> a.type=<span class="string">'a'</span>;
 </code></pre>
-<p> | a.id | a.type | b.id | b.class |<br> |——–|——–|——–|——–|<br> |   1     |    a    |    1   |    aa   |<br> |   2     |    a    |    2   |    bb   |</p>
+<table class="table">
+<thead>
+<tr>
+<th>a.id</th>
+<th>a.type</th>
+<th>b.id</th>
+<th>b.class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>1</td>
+<td>aa</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a</td>
+<td>2</td>
+<td>bb</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li><p>使用<code>inner join</code></p>
-<pre><code class="nullsql"> select a.*, b.* from a inner join b on a.id = b.id and a.type = &#39;a&#39;;
- select a.*, b.* from a inner join b on a.id = b.id where a.type = &#39;a&#39;;
- select a.*, b.* from a, b where a.id = b.id and a.type = &#39;a&#39;;
+<pre><code class="nullsql"> <span class="keyword">select</span> a.*, b.* <span class="keyword">from</span> a <span class="keyword">inner</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id = b.id <span class="keyword">and</span> a.type = <span class="string">'a'</span>;
+ <span class="keyword">select</span> a.*, b.* <span class="keyword">from</span> a <span class="keyword">inner</span> <span class="keyword">join</span> b <span class="keyword">on</span> a.id = b.id <span class="keyword">where</span> a.type = <span class="string">'a'</span>;
+ <span class="keyword">select</span> a.*, b.* <span class="keyword">from</span> a, b <span class="keyword">where</span> a.id = b.id <span class="keyword">and</span> a.type = <span class="string">'a'</span>;
 </code></pre>
-<p> | a.id | a.type | b.id | b.class |<br> |——–|——–|——–|——–|<br> |   1     |    a    |    1   |    aa   |<br> |   2     |    a    |    2   |    bb   |</p>
+<table class="table">
+<thead>
+<tr>
+<th>a.id</th>
+<th>a.type</th>
+<th>b.id</th>
+<th>b.class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>a</td>
+<td>1</td>
+<td>aa</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a</td>
+<td>2</td>
+<td>bb</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ol>
-<h3 id="rownum-rowid"><a href="#rownum-rowid" class="headerlink" title="rownum,rowid"></a>rownum,rowid</h3><p>（MySQL无rownum和rowid）</p>
-<table>
+<h3 id="header-2">rownum,rowid</h3>
+<p>（MySQL无rownum和rowid）</p>
+<table class="table">
 <thead>
 <tr>
 <th>rownum</th>
@@ -239,18 +343,19 @@
 <p>注意：</p>
 <ul>
 <li>都是伪列（可以理解成表中的一个列，但并不是你创建的）</li>
-<li>如果想让<code>rownum</code> 和<code>order by</code>一样的顺序 那么可以使用子查询：<pre><code class="nullsql">select rownum,t.* from (select * from table1 order by col1) t
+<li>如果想让<code>rownum</code> 和<code>order by</code>一样的顺序 那么可以使用子查询：<pre><code class="nullsql"><span class="keyword">select</span> <span class="keyword">rownum</span>,t.* <span class="keyword">from</span> (<span class="keyword">select</span> * <span class="keyword">from</span> table1 <span class="keyword">order</span> <span class="keyword">by</span> col1) t
 </code></pre>
 </li>
 </ul>
-<h3 id="row-number-dense-rank-rank"><a href="#row-number-dense-rank-rank" class="headerlink" title="row_number,dense_rank,rank"></a>row_number,dense_rank,rank</h3><ul>
+<h3 id="header-3">row_number,dense_rank,rank</h3>
+<ul>
 <li><code>row_number() over</code> : 排名顺序递增（相同记录排名不同）</li>
 <li><code>dense_rank()</code> : 排名顺序递增 （相同记录排名相同）</li>
 <li><code>rank()</code>：排名跳跃递增（相同记录排名相同， 在下一条不同记录间空出排名）</li>
 <li>注意：都是函数，返回一个值</li>
 </ul>
 <p><code>row_number() over</code> 使用示例：</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>empid</th>
@@ -306,12 +411,12 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="nullsql">SELECT 
+<pre><code class="nullsql"><span class="keyword">SELECT</span> 
 t.*, 
-Row_Number() OVER (partition by deptid ORDER BY salary desc) rownumber 
-FROM employee t
+Row_Number() <span class="keyword">OVER</span> (<span class="keyword">partition</span> <span class="keyword">by</span> deptid <span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">desc</span>) rownumber 
+<span class="keyword">FROM</span> employee t
 </code></pre>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>empid</th>
@@ -377,59 +482,61 @@ FROM employee t
 </tr>
 </tbody>
 </table>
-<h3 id="重复记录"><a href="#重复记录" class="headerlink" title="重复记录"></a>重复记录</h3><ol>
+<h3 id="header-4">重复记录</h3>
+<ol>
 <li><p>查找表中重复记录 （使用<code>count(?)&gt;1</code>）</p>
-<pre><code class="nullsql">select * from employee
-where deptid in (
- select deptid
- from employee
- group by deptid
- having count(deptid) &gt; 1
+<pre><code class="nullsql"><span class="keyword">select</span> * <span class="keyword">from</span> employee
+<span class="keyword">where</span> deptid <span class="keyword">in</span> (
+ <span class="keyword">select</span> deptid
+ <span class="keyword">from</span> employee
+ <span class="keyword">group</span> <span class="keyword">by</span> deptid
+ <span class="keyword">having</span> <span class="keyword">count</span>(deptid) &gt; <span class="number">1</span>
 )
 </code></pre>
 </li>
 <li><p>找表中非重复记录（使用<code>count(?)=1</code>或<code>distinct</code>）</p>
-<pre><code class="nullsql">select * from employee
-where deptid in (
- select deptid
- from employee
- group by deptid
- having count(deptid) =1
+<pre><code class="nullsql"><span class="keyword">select</span> * <span class="keyword">from</span> employee
+<span class="keyword">where</span> deptid <span class="keyword">in</span> (
+ <span class="keyword">select</span> deptid
+ <span class="keyword">from</span> employee
+ <span class="keyword">group</span> <span class="keyword">by</span> deptid
+ <span class="keyword">having</span> <span class="keyword">count</span>(deptid) =<span class="number">1</span>
 )
 </code></pre>
-<pre><code class="nullsql">select * from employee
-where deptid in (
- select distinct deptid
- from employee
+<pre><code class="nullsql"><span class="keyword">select</span> * <span class="keyword">from</span> employee
+<span class="keyword">where</span> deptid <span class="keyword">in</span> (
+ <span class="keyword">select</span> <span class="keyword">distinct</span> deptid
+ <span class="keyword">from</span> employee
 )
 </code></pre>
 </li>
 <li>让表中存在的重复记录只留一条<ul>
-<li>使用<code>group by</code><pre><code class="nullsql">SELECT deptid,max(salary) FROM employee group by deptid
+<li>使用<code>group by</code><pre><code class="nullsql"><span class="keyword">SELECT</span> deptid,<span class="keyword">max</span>(salary) <span class="keyword">FROM</span> employee <span class="keyword">group</span> <span class="keyword">by</span> deptid
 </code></pre>
 </li>
-<li>使用<code>row_number() over</code><pre><code class="nullsql">select * 
-from ( 
-  select 
-  Row_Number() over(partition by deptid order by salary) rank,
+<li>使用<code>row_number() over</code><pre><code class="nullsql"><span class="keyword">select</span> * 
+<span class="keyword">from</span> ( 
+  <span class="keyword">select</span> 
+  Row_Number() <span class="keyword">over</span>(<span class="keyword">partition</span> <span class="keyword">by</span> deptid <span class="keyword">order</span> <span class="keyword">by</span> salary) <span class="keyword">rank</span>,
   t.*
-  from employee t
+  <span class="keyword">from</span> employee t
 )
-where rank = 1
+<span class="keyword">where</span> <span class="keyword">rank</span> = <span class="number">1</span>
 </code></pre>
 </li>
-<li>使用<code>rownum</code> （效率低）<pre><code class="nullsql">select * 
-from employee t
-where rownum in  (
-  select max(rownum) from employee b where t.id = b.id group by deptid
+<li>使用<code>rownum</code> （效率低）<pre><code class="nullsql"><span class="keyword">select</span> * 
+<span class="keyword">from</span> employee t
+<span class="keyword">where</span> <span class="keyword">rownum</span> <span class="keyword">in</span>  (
+  <span class="keyword">select</span> <span class="keyword">max</span>(<span class="keyword">rownum</span>) <span class="keyword">from</span> employee b <span class="keyword">where</span> t.id = b.id <span class="keyword">group</span> <span class="keyword">by</span> deptid
 )
 </code></pre>
 </li>
 </ul>
 </li>
 </ol>
-<h3 id="行列转换"><a href="#行列转换" class="headerlink" title="行列转换"></a>行列转换</h3><p>示例1：</p>
-<table>
+<h3 id="header-5">行列转换</h3>
+<p>示例1：</p>
+<table class="table">
 <thead>
 <tr>
 <th>日期</th>
@@ -468,7 +575,7 @@ where rownum in  (
 </tbody>
 </table>
 <p>=&gt; </p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>日期</th>
@@ -491,40 +598,40 @@ where rownum in  (
 </table>
 <ol>
 <li><p>使用<code>distinct</code> +<code>left join</code></p>
-<pre><code class="nullsql">select A.date0, B.win, C.lost from
- (select distinct date as date0 from Table1) A
- left join  
- (select date as date0,count(*) as win from Table1 where rst=&#39;win&#39; group by date) B
- on A.date0=B.date0
- left join  
- (select date as date0,count(*) as lost from Table1 where rst=&#39;lost&#39; group by date) C
- on A.date0=C.date0
+<pre><code class="nullsql"><span class="keyword">select</span> A.date0, B.win, C.lost <span class="keyword">from</span>
+ (<span class="keyword">select</span> <span class="keyword">distinct</span> <span class="built_in">date</span> <span class="keyword">as</span> date0 <span class="keyword">from</span> Table1) A
+ <span class="keyword">left</span> <span class="keyword">join</span>  
+ (<span class="keyword">select</span> <span class="built_in">date</span> <span class="keyword">as</span> date0,<span class="keyword">count</span>(*) <span class="keyword">as</span> win <span class="keyword">from</span> Table1 <span class="keyword">where</span> rst=<span class="string">'win'</span> <span class="keyword">group</span> <span class="keyword">by</span> <span class="built_in">date</span>) B
+ <span class="keyword">on</span> A.date0=B.date0
+ <span class="keyword">left</span> <span class="keyword">join</span>  
+ (<span class="keyword">select</span> <span class="built_in">date</span> <span class="keyword">as</span> date0,<span class="keyword">count</span>(*) <span class="keyword">as</span> lost <span class="keyword">from</span> Table1 <span class="keyword">where</span> rst=<span class="string">'lost'</span> <span class="keyword">group</span> <span class="keyword">by</span> <span class="built_in">date</span>) C
+ <span class="keyword">on</span> A.date0=C.date0
 </code></pre>
 </li>
 <li><p>使用<code>sum</code>+<code>case when</code>+<code>count</code></p>
-<pre><code class="nullsql">select 日期 ,sum(结果1) as &#39;胜&#39;,sum(结果2) as &#39;负&#39;
-from (
- select 日期,
-  case when 结果=&#39;胜&#39; then count(结果) end AS 结果1, 
-  case when 结果=&#39;负&#39; then count(结果)  end AS 结果2 
-  from table_1 
-  group by 日期,结果
+<pre><code class="nullsql"><span class="keyword">select</span> 日期 ,<span class="keyword">sum</span>(结果<span class="number">1</span>) <span class="keyword">as</span> <span class="string">'胜'</span>,<span class="keyword">sum</span>(结果<span class="number">2</span>) <span class="keyword">as</span> <span class="string">'负'</span>
+<span class="keyword">from</span> (
+ <span class="keyword">select</span> 日期,
+  <span class="keyword">case</span> <span class="keyword">when</span> 结果=<span class="string">'胜'</span> <span class="keyword">then</span> <span class="keyword">count</span>(结果) <span class="keyword">end</span> <span class="keyword">AS</span> 结果<span class="number">1</span>, 
+  <span class="keyword">case</span> <span class="keyword">when</span> 结果=<span class="string">'负'</span> <span class="keyword">then</span> <span class="keyword">count</span>(结果)  <span class="keyword">end</span> <span class="keyword">AS</span> 结果<span class="number">2</span> 
+  <span class="keyword">from</span> table_1 
+  <span class="keyword">group</span> <span class="keyword">by</span> 日期,结果
 ) a
-group by 日期
-order by 日期 desc
+<span class="keyword">group</span> <span class="keyword">by</span> 日期
+<span class="keyword">order</span> <span class="keyword">by</span> 日期 <span class="keyword">desc</span>
 </code></pre>
 </li>
 <li><p>使用<code>sum</code>+<code>case when</code></p>
-<pre><code class="nullsql">select 日期,
-sum(case 结果 when &#39;胜&#39; then 1 else 0 end) as &#39;胜&#39;,
-sum(case 结果 when &#39;负&#39; then 1 else 0 end) as &#39;负&#39; 
-from t 
-group by 日期
+<pre><code class="nullsql"><span class="keyword">select</span> 日期,
+<span class="keyword">sum</span>(<span class="keyword">case</span> 结果 <span class="keyword">when</span> <span class="string">'胜'</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">as</span> <span class="string">'胜'</span>,
+<span class="keyword">sum</span>(<span class="keyword">case</span> 结果 <span class="keyword">when</span> <span class="string">'负'</span> <span class="keyword">then</span> <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) <span class="keyword">as</span> <span class="string">'负'</span> 
+<span class="keyword">from</span> t 
+<span class="keyword">group</span> <span class="keyword">by</span> 日期
 </code></pre>
 </li>
 </ol>
 <p>示例2：</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>Name</th>
@@ -566,7 +673,7 @@ group by 日期
 </tbody>
 </table>
 <p>=&gt;</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>姓名</th>
@@ -596,59 +703,61 @@ group by 日期
 </tr>
 </tbody>
 </table>
-<pre><code class="nullsql">select name 姓名,
-  max(case subject when &#39;语文&#39; then result else 0 end) 语文,
-  max(case subject when &#39;数学&#39; then result else 0 end) 数学,
-  max(case subject when &#39;物理&#39; then result else 0 end) 物理,
-  cast(avg(result*1.0) as decimal(18,2)) 平均分,
-  sum(result) 总分
-from tb
-group by name
+<pre><code class="nullsql"><span class="keyword">select</span> <span class="keyword">name</span> 姓名,
+  <span class="keyword">max</span>(<span class="keyword">case</span> subject <span class="keyword">when</span> <span class="string">'语文'</span> <span class="keyword">then</span> <span class="keyword">result</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) 语文,
+  <span class="keyword">max</span>(<span class="keyword">case</span> subject <span class="keyword">when</span> <span class="string">'数学'</span> <span class="keyword">then</span> <span class="keyword">result</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) 数学,
+  <span class="keyword">max</span>(<span class="keyword">case</span> subject <span class="keyword">when</span> <span class="string">'物理'</span> <span class="keyword">then</span> <span class="keyword">result</span> <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">end</span>) 物理,
+  <span class="keyword">cast</span>(<span class="keyword">avg</span>(<span class="keyword">result</span>*<span class="number">1.0</span>) <span class="keyword">as</span> <span class="built_in">decimal</span>(<span class="number">18</span>,<span class="number">2</span>)) 平均分,
+  <span class="keyword">sum</span>(<span class="keyword">result</span>) 总分
+<span class="keyword">from</span> tb
+<span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">name</span>
 </code></pre>
-<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><ol>
+<h3 id="header-6">分页</h3>
+<ol>
 <li><p>使用<code>top</code>+<code>not in</code> :</p>
-<pre><code class="nullsql">SELECT TOP 页大小 *
-FROM table1
-WHERE id NOT IN (
- SELECT TOP 页大小*(页数-1) id FROM table1 ORDER BY id 
+<pre><code class="nullsql"><span class="keyword">SELECT</span> TOP 页大小 *
+<span class="keyword">FROM</span> table1
+<span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">NOT</span> <span class="keyword">IN</span> (
+ <span class="keyword">SELECT</span> TOP 页大小*(页数<span class="number">-1</span>) <span class="keyword">id</span> <span class="keyword">FROM</span> table1 <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> 
 )
-ORDER BY id
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span>
 </code></pre>
 </li>
 <li><p>使用<code>top</code>+<code>&gt;</code>+<code>max(id)</code>：</p>
-<pre><code class="nullsql">SELECT TOP 页大小 *
-FROM table1
-WHERE id &gt; (
-SELECT 
-ISNULL(MAX(id),0) 
-FROM ( SELECT TOP 页大小*(页数-1) id FROM table1 ORDER BY id ) A
+<pre><code class="nullsql"><span class="keyword">SELECT</span> TOP 页大小 *
+<span class="keyword">FROM</span> table1
+<span class="keyword">WHERE</span> <span class="keyword">id</span> &gt; (
+<span class="keyword">SELECT</span> 
+<span class="keyword">ISNULL</span>(<span class="keyword">MAX</span>(<span class="keyword">id</span>),<span class="number">0</span>) 
+<span class="keyword">FROM</span> ( <span class="keyword">SELECT</span> TOP 页大小*(页数<span class="number">-1</span>) <span class="keyword">id</span> <span class="keyword">FROM</span> table1 <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span> ) A
 )
-ORDER BY id
+<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span>
 </code></pre>
 </li>
 <li><p>使用<code>row_number() over</code>：</p>
-<pre><code class="nullsql">SELECT TOP 页大小 *
-FROM (  
- SELECT ROW_NUMBER() OVER (ORDER BY id) AS rownumber,* FROM table1) A
-WHERE rownumber &gt; 页大小*(页数-1)
+<pre><code class="nullsql"><span class="keyword">SELECT</span> TOP 页大小 *
+<span class="keyword">FROM</span> (  
+ <span class="keyword">SELECT</span> ROW_NUMBER() <span class="keyword">OVER</span> (<span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">id</span>) <span class="keyword">AS</span> rownumber,* <span class="keyword">FROM</span> table1) A
+<span class="keyword">WHERE</span> rownumber &gt; 页大小*(页数<span class="number">-1</span>)
 </code></pre>
 </li>
 <li><p>使用<code>rownum</code></p>
-<pre><code class="nullsql">SELECT * 
-FROM (
- SELECT a.*, ROWNUM rn
- FROM (
-     SELECT * FROM t_employees ORDER BY first_name) a
- WHERE ROWNUM &lt;= 500
+<pre><code class="nullsql"><span class="keyword">SELECT</span> * 
+<span class="keyword">FROM</span> (
+ <span class="keyword">SELECT</span> a.*, <span class="keyword">ROWNUM</span> rn
+ <span class="keyword">FROM</span> (
+     <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> t_employees <span class="keyword">ORDER</span> <span class="keyword">BY</span> first_name) a
+ <span class="keyword">WHERE</span> <span class="keyword">ROWNUM</span> &lt;= <span class="number">500</span>
 )
-WHERE rn &gt; 480
+<span class="keyword">WHERE</span> rn &gt; <span class="number">480</span>
 </code></pre>
 </li>
 </ol>
 <p><strong>PS：</strong> Mysql分页</p>
-<pre><code class="nullsql">select * from tableName where 条件 limit (当前页码-1)*页面容量 , 页面容量
+<pre><code class="nullsql"><span class="keyword">select</span> * <span class="keyword">from</span> tableName <span class="keyword">where</span> 条件 <span class="keyword">limit</span> (当前页码<span class="number">-1</span>)*页面容量 , 页面容量
 </code></pre>
-<h3 id="合并多行记录"><a href="#合并多行记录" class="headerlink" title="合并多行记录"></a>合并多行记录</h3><table>
+<h3 id="header-7">合并多行记录</h3>
+<table class="table">
 <thead>
 <tr>
 <th>a</th>
@@ -683,7 +792,7 @@ WHERE rn &gt; 480
 </tbody>
 </table>
 <p>=&gt;</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>a</th>
@@ -707,21 +816,21 @@ WHERE rn &gt; 480
 </table>
 <ol>
 <li><p>创建一个合并的函数:</p>
-<pre><code class="nullsql">create function f_hb(@a int)
-returns varchar(8000)
-as
-begin
-declare @str varchar(8000)
-set @str = &#39;&#39;
-select @str = @str + &#39;,&#39; + cast(b as varchar) from tb where a = @a 
-set @str = right(@str , len(@str) - 1)
-return(@str)
-End
-go
+<pre><code class="nullsql"><span class="keyword">create</span> <span class="keyword">function</span> f_hb(@a <span class="built_in">int</span>)
+<span class="keyword">returns</span> <span class="built_in">varchar</span>(<span class="number">8000</span>)
+<span class="keyword">as</span>
+<span class="keyword">begin</span>
+<span class="keyword">declare</span> @<span class="keyword">str</span> <span class="built_in">varchar</span>(<span class="number">8000</span>)
+<span class="keyword">set</span> @<span class="keyword">str</span> = <span class="string">''</span>
+<span class="keyword">select</span> @<span class="keyword">str</span> = @<span class="keyword">str</span> + <span class="string">','</span> + <span class="keyword">cast</span>(b <span class="keyword">as</span> <span class="built_in">varchar</span>) <span class="keyword">from</span> tb <span class="keyword">where</span> a = @a 
+<span class="keyword">set</span> @<span class="keyword">str</span> = <span class="keyword">right</span>(@<span class="keyword">str</span> , <span class="keyword">len</span>(@<span class="keyword">str</span>) - <span class="number">1</span>)
+<span class="keyword">return</span>(@<span class="keyword">str</span>)
+<span class="keyword">End</span>
+<span class="keyword">go</span>
 </code></pre>
 </li>
 <li><p>调用自定义函数:</p>
-<pre><code class="nullsql">select distinct a ,f_hb(a) as b from tb
+<pre><code class="nullsql"><span class="keyword">select</span> <span class="keyword">distinct</span> a ,f_hb(a) <span class="keyword">as</span> b <span class="keyword">from</span> tb
 </code></pre>
 </li>
 </ol>

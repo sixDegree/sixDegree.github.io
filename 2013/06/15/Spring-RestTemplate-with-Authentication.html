@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#介绍"><span class="sidebar-nav nav-text">介绍</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#HttpClient"><span class="sidebar-nav nav-text">HttpClient</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#认证方案-authentication-schemes"><span class="sidebar-nav nav-text">认证方案(authentication schemes)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#用户凭证-Credentials"><span class="sidebar-nav nav-text">用户凭证(Credentials)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#认证Authentication"><span class="sidebar-nav nav-text">认证Authentication</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#认证状态-AuthState"><span class="sidebar-nav nav-text">认证状态(AuthState)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#执行上下文-HttpContext"><span class="sidebar-nav nav-text">执行上下文(HttpContext)</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Client端实现方案"><span class="sidebar-nav nav-text">Client端实现方案</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#构建BasicAuthentication"><span class="sidebar-nav nav-text">构建BasicAuthentication</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#构建DigestAuthentication"><span class="sidebar-nav nav-text">构建DigestAuthentication</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Server端进行认证"><span class="sidebar-nav nav-text">Server端进行认证</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#配置BasicAuthentication"><span class="sidebar-nav nav-text">配置BasicAuthentication</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#配置DigestAuthentication"><span class="sidebar-nav nav-text">配置DigestAuthentication</span></a></li></ol></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">介绍</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">HttpClient</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">认证方案(authentication schemes)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">用户凭证(Credentials)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">认证Authentication</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">认证状态(AuthState)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">执行上下文(HttpContext)</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Client端实现方案</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">构建BasicAuthentication</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">构建DigestAuthentication</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Server端进行认证</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">配置BasicAuthentication</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">配置DigestAuthentication</span></a></li></ol></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -125,7 +125,8 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>REST对于资源型服务接口来说很合适，同时特别适合对于效率要求很高，但是对于安全要求不高的场景</p>
+    <h2 id="header-1">介绍</h2>
+<p>REST对于资源型服务接口来说很合适，同时特别适合对于效率要求很高，但是对于安全要求不高的场景</p>
 <p>具体做法是：</p>
 <ol>
 <li>在每一个REST的call的头header（例如：@HeaderParam）都带user token 和 application ID</li>
@@ -140,25 +141,28 @@
 </ul>
 </li>
 </ol>
-<pre><code class="nulljava">//RestTemplate默认使用的HttpClient未设置凭证，stateless请求
-RestTemplate rt=new RestTemplate();
+<pre><code class="nulljava"><span class="comment">//RestTemplate默认使用的HttpClient未设置凭证，stateless请求</span>
+RestTemplate rt=<span class="keyword">new</span> RestTemplate();
 </code></pre>
-<h2 id="HttpClient"><a href="#HttpClient" class="headerlink" title="HttpClient"></a>HttpClient</h2><h3 id="认证方案-authentication-schemes"><a href="#认证方案-authentication-schemes" class="headerlink" title="认证方案(authentication schemes)"></a>认证方案(authentication schemes)</h3><p>Basic/Digest/NTLM 这些方案可用于服务器或代理对客户端的认证</p>
+<h2 id="header-2">HttpClient</h2>
+<h3 id="header-3">认证方案(authentication schemes)</h3>
+<p>Basic/Digest/NTLM 这些方案可用于服务器或代理对客户端的认证</p>
 <ul>
 <li><code>Basic</code> 基本认证:  以明码传送username和password(最不安全的一个方案)，一般使用 Basic +TLS/SSL 加密方式。[使用<code>UsernamePasswordCredentials</code>实例]</li>
 <li><code>Digest</code>摘要式认证： 传送用password对Server端发送的随机数（nonce）加密后生成的字符串 （比Basic安全） [使用<code>UsernamePasswordCredentials</code>实例]</li>
 <li><code>NTLM</code> 最复杂,认证了一个连接而不是一请求 [使用<code>NTCredentials</code>实例]</li>
 <li>自定义</li>
 </ul>
-<h3 id="用户凭证-Credentials"><a href="#用户凭证-Credentials" class="headerlink" title="用户凭证(Credentials)"></a>用户凭证(Credentials)</h3><ul>
+<h3 id="header-4">用户凭证(Credentials)</h3>
+<ul>
 <li>任何用户身份验证的过程都需要一组可以用于建立用户身份的凭据</li>
 <li>用户凭证的最简单的形式可以仅仅是用户名/密码对</li>
-<li><code>UsernamePasswordCredentials</code>代表了一组包含安全规则和明文密码的凭据<pre><code class="nulljava">  UsernamePasswordCredentials creds = new UsernamePasswordCredentials(&quot;user&quot;, &quot;pwd&quot;);
+<li><code>UsernamePasswordCredentials</code>代表了一组包含安全规则和明文密码的凭据<pre><code class="nulljava">  UsernamePasswordCredentials creds = <span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"user"</span>, <span class="string">"pwd"</span>);
   System.out.println(creds.getUserPrincipal().getName());
   System.out.println(creds.getPassword());
 </code></pre>
 </li>
-<li><code>NTCredentials</code>是微软Windows指定的实现，它包含了除了用户名/密码对外，一组额外的Windows指定的属性，比如用户域名的名字（相同的用户使用不同设置的认证可以属于不同的域）<pre><code class="nulljava">  NTCredentials creds = new NTCredentials(&quot;user&quot;, &quot;pwd&quot;, &quot;workstation&quot;, &quot;domain&quot;);
+<li><code>NTCredentials</code>是微软Windows指定的实现，它包含了除了用户名/密码对外，一组额外的Windows指定的属性，比如用户域名的名字（相同的用户使用不同设置的认证可以属于不同的域）<pre><code class="nulljava">  NTCredentials creds = <span class="keyword">new</span> NTCredentials(<span class="string">"user"</span>, <span class="string">"pwd"</span>, <span class="string">"workstation"</span>, <span class="string">"domain"</span>);
   System.out.println(creds.getUserPrincipal().getName());
   System.out.println(creds.getPassword());
 </code></pre>
@@ -168,16 +172,17 @@ RestTemplate rt=new RestTemplate();
 <li>认证范围包括：主机名<code>Hostname</code>，端口号<code>port</code>，领域名称<code>authScope</code>,访问空间<code>realm</code>,认证方案<code>authScheme</code></li>
 <li>当使用凭据提供器来注册凭据时，可以提供一个通配符（任意主机，任意端口，任意领域，任意模式）来替代确定的属性值</li>
 <li>如果直接匹配没有发现，<code>CredentialsProvider</code>期望被用来发现最匹配的特定范围</li>
-<li>eg:<pre><code class="nulljava">CredentialsProvider credsProvider = new BasicCredentialsProvider();
-credsProvider.setCredentials(new AuthScope(&quot;somehost&quot;, AuthScope.ANY_PORT),new UsernamePasswordCredentials(&quot;u1&quot;, &quot;p1&quot;));
-credsProvider.setCredentials(new AuthScope(&quot;somehost&quot;, 8080),new UsernamePasswordCredentials(&quot;u2&quot;, &quot;p2&quot;));
-credsProvider.setCredentials(new AuthScope(&quot;otherhost&quot;, 8080, AuthScope.ANY_REALM, &quot;ntlm&quot;),new UsernamePasswordCredentials(&quot;u3&quot;, &quot;p3&quot;));
+<li>eg:<pre><code class="nulljava">CredentialsProvider credsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
+credsProvider.setCredentials(<span class="keyword">new</span> AuthScope(<span class="string">"somehost"</span>, AuthScope.ANY_PORT),<span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"u1"</span>, <span class="string">"p1"</span>));
+credsProvider.setCredentials(<span class="keyword">new</span> AuthScope(<span class="string">"somehost"</span>, <span class="number">8080</span>),<span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"u2"</span>, <span class="string">"p2"</span>));
+credsProvider.setCredentials(<span class="keyword">new</span> AuthScope(<span class="string">"otherhost"</span>, <span class="number">8080</span>, AuthScope.ANY_REALM, <span class="string">"ntlm"</span>),<span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"u3"</span>, <span class="string">"p3"</span>));
 </code></pre>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="认证Authentication"><a href="#认证Authentication" class="headerlink" title="认证Authentication"></a>认证Authentication</h3><ul>
+<h3 id="header-5">认证Authentication</h3>
+<ul>
 <li>服务器认证(Server Authentication)：HttpClient处理服务器认证几乎是透明的，仅需要开发人员提供登录信息(login credentials)<ul>
 <li>登录信息保存在HttpState类的实例中</li>
 <li>可以通过 <code>setCredentials(String realm, Credentials cred)和getCredentials(String realm)</code>来获取或设置</li>
@@ -199,7 +204,8 @@ credsProvider.setCredentials(new AuthScope(&quot;otherhost&quot;, 8080, AuthScop
 </li>
 <li>代理认证(Proxy Authentication)： 除了登录信息需单独存放以外，代理认证与服务器认证几乎一致</li>
 </ul>
-<h3 id="认证状态-AuthState"><a href="#认证状态-AuthState" class="headerlink" title="认证状态(AuthState)"></a>认证状态(AuthState)</h3><p>用来跟踪关于认证过程状态的详细信息</p>
+<h3 id="header-6">认证状态(AuthState)</h3>
+<p>用来跟踪关于认证过程状态的详细信息</p>
 <ul>
 <li>在HTTP请求执行过程中，HttpClient创建2个<code>AuthState</code>的实例：<ul>
 <li>一个对于目标主机认证</li>
@@ -216,102 +222,106 @@ credsProvider.setCredentials(new AuthScope(&quot;otherhost&quot;, 8080, AuthScop
 </ul>
 </li>
 </ul>
-<h3 id="执行上下文-HttpContext"><a href="#执行上下文-HttpContext" class="headerlink" title="执行上下文(HttpContext)"></a>执行上下文(HttpContext)</h3><ul>
+<h3 id="header-7">执行上下文(HttpContext)</h3>
+<ul>
 <li>实际上是HttpClient用来在多次请求-响应的交互中，保持状态信息用的</li>
 <li>本地的HttpContext对象可以用于定制HTTP认证内容，并先于请求执行或在请求被执行之后检查它的状态</li>
 <li><p>eg:</p>
-<pre><code class="nulljava">HttpContext localContext = new BasicHttpContext();
-HttpResponse response = httpclient.execute(new HttpGet(&quot;http://localhost:8080/&quot;), localContext);
+<pre><code class="nulljava">HttpContext localContext = <span class="keyword">new</span> BasicHttpContext();
+HttpResponse response = httpclient.execute(<span class="keyword">new</span> HttpGet(<span class="string">"http://localhost:8080/"</span>), localContext);
 
 AuthState proxyAuthState = (AuthState) localContext.getAttribute(HttpClientContext.PROXY_AUTH_STATE);
-System.out.println(&quot;Proxy auth scope: &quot; + proxyAuthState.getAuthScope());
-System.out.println(&quot;Proxy auth scheme: &quot; + proxyAuthState.getAuthScheme());
-System.out.println(&quot;Proxy auth credentials: &quot; + proxyAuthState.getCredentials());
+System.out.println(<span class="string">"Proxy auth scope: "</span> + proxyAuthState.getAuthScope());
+System.out.println(<span class="string">"Proxy auth scheme: "</span> + proxyAuthState.getAuthScheme());
+System.out.println(<span class="string">"Proxy auth credentials: "</span> + proxyAuthState.getCredentials());
 
 AuthState targetAuthState = (AuthState) localContext.getAttribute(HttpClientContext.TARGET_AUTH_STATE);
-System.out.println(&quot;Target auth scope: &quot; + targetAuthState.getAuthScope());
-System.out.println(&quot;Target auth scheme: &quot; + targetAuthState.getAuthScheme());
-System.out.println(&quot;Target auth credentials: &quot; + targetAuthState.getCredentials());
+System.out.println(<span class="string">"Target auth scope: "</span> + targetAuthState.getAuthScope());
+System.out.println(<span class="string">"Target auth scheme: "</span> + targetAuthState.getAuthScheme());
+System.out.println(<span class="string">"Target auth credentials: "</span> + targetAuthState.getCredentials());
 </code></pre>
 </li>
 </ul>
-<h2 id="Client端实现方案"><a href="#Client端实现方案" class="headerlink" title="Client端实现方案"></a>Client端实现方案</h2><h3 id="构建BasicAuthentication"><a href="#构建BasicAuthentication" class="headerlink" title="构建BasicAuthentication"></a>构建BasicAuthentication</h3><p>在HttpHeader中明文发送Authentication，建议组合SSL/TLS加密使用</p>
+<h2 id="header-8">Client端实现方案</h2>
+<h3 id="header-9">构建BasicAuthentication</h3>
+<p>在HttpHeader中明文发送Authentication，建议组合SSL/TLS加密使用</p>
 <pre><code>Authorization: &quot;Basic &quot;+new String( Base64.encodeBase64((username:password).getBytes()) )
 </code></pre><p><strong>方案一：</strong>每次提交Request时,构建Authorization，放入<code>HttpHeader</code>中一并提交到Server</p>
-<pre><code class="nulljava">/*HttpClient*/
+<pre><code class="nulljava"><span class="comment">/*HttpClient*/</span>
 HttpClientBuilder builder=HttpClientBuilder.create();
-SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).useTLS().build();
-SSLConnectionSocketFactory connectionFactory = new SSLConnectionSocketFactory(sslContext, new AllowAllHostnameVerifier());
+SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">null</span>, <span class="keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
+SSLConnectionSocketFactory connectionFactory = <span class="keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="keyword">new</span> AllowAllHostnameVerifier());
 HttpClient client=builder.setSSLSocketFactory(connectionFactory).build();
 
-/*RestTemplate*/
-RestTemplate restTemplate=new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
+<span class="comment">/*RestTemplate*/</span>
+RestTemplate restTemplate=<span class="keyword">new</span> RestTemplate(<span class="keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient));
 
-/*Execute*/
-//HttpHeader
-String base64Creds = &quot;Basic &quot;+new String(Base64.encodeBase64((username+&quot;:&quot;+password).getBytes()));
-HttpHeaders headers = new HttpHeaders();
-headers.add(&quot;Authorization&quot;, &quot;Basic &quot; + base64Creds);
-HttpEntity&lt;Object&gt; requestEntity=new HttpEntity&lt;Object&gt;(headers);
+<span class="comment">/*Execute*/</span>
+<span class="comment">//HttpHeader</span>
+String base64Creds = <span class="string">"Basic "</span>+<span class="keyword">new</span> String(Base64.encodeBase64((username+<span class="string">":"</span>+password).getBytes()));
+HttpHeaders headers = <span class="keyword">new</span> HttpHeaders();
+headers.add(<span class="string">"Authorization"</span>, <span class="string">"Basic "</span> + base64Creds);
+HttpEntity&lt;Object&gt; requestEntity=<span class="keyword">new</span> HttpEntity&lt;Object&gt;(headers);
 
-ResponseEntity&lt;String&gt; response=restTemplate.exchange(this.serverUrl+page,HttpMethod.GET, requestEntity, String.class,null);
+ResponseEntity&lt;String&gt; response=restTemplate.exchange(<span class="keyword">this</span>.serverUrl+page,HttpMethod.GET, requestEntity, String.class,<span class="keyword">null</span>);
 </code></pre>
 <p><strong>方案二：</strong>在<code>HttpClient</code>的<code>CredentialsProvider</code>中维护<code>UsernamePasswordCrendential</code>，以后可直接提交Request</p>
-<pre><code class="nulljava">/*HttpClient*/
+<pre><code class="nulljava"><span class="comment">/*HttpClient*/</span>
 HttpClientBuilder builder=HttpClientBuilder.create();
-//1.SSL
-SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).useTLS().build();
-SSLConnectionSocketFactory connectionFactory = new SSLConnectionSocketFactory(sslContext, new AllowAllHostnameVerifier());
+<span class="comment">//1.SSL</span>
+SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">null</span>, <span class="keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
+SSLConnectionSocketFactory connectionFactory = <span class="keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="keyword">new</span> AllowAllHostnameVerifier());
 builder.setSSLSocketFactory(connectionFactory);
-//2.UsernamePasswordCredentials
-BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-credentialsProvider.setCredentials(authScope,new UsernamePasswordCredentials(username, password));
+<span class="comment">//2.UsernamePasswordCredentials</span>
+BasicCredentialsProvider credentialsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
+credentialsProvider.setCredentials(authScope,<span class="keyword">new</span> UsernamePasswordCredentials(username, password));
 builder.setDefaultCredentialsProvider(credentialsProvider);
-//3.build HttpClient
+<span class="comment">//3.build HttpClient</span>
 HttpClient client=builder.build();
 
-/*RestTemplate*/
-RestTemplate restTemplate=new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
+<span class="comment">/*RestTemplate*/</span>
+RestTemplate restTemplate=<span class="keyword">new</span> RestTemplate(<span class="keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient));
 
-/*Execute*/
-ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(this.serverUrl+page, String.class);
+<span class="comment">/*Execute*/</span>
+ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="keyword">this</span>.serverUrl+page, String.class);
 </code></pre>
 <p><strong>方案三：</strong>在<code>HttpContext</code>的<code>CredentialsProvider</code>中维护<code>UsernamePasswordCrendential</code>，以后可直接提交Request</p>
-<pre><code class="nulljava">/*HttpClient*/
+<pre><code class="nulljava"><span class="comment">/*HttpClient*/</span>
 HttpClientBuilder builder=HttpClientBuilder.create();
-SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).useTLS().build();
-SSLConnectionSocketFactory connectionFactory = new SSLConnectionSocketFactory(sslContext, new AllowAllHostnameVerifier());
+SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">null</span>, <span class="keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
+SSLConnectionSocketFactory connectionFactory = <span class="keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="keyword">new</span> AllowAllHostnameVerifier());
 HttpClient client=builder.setSSLSocketFactory(connectionFactory).build();
 
-/*扩展HttpComponentsClientHttpRequestFactory的createHttpContext方法*/
-//以后每次提交Request,都会调用BasicAuthRequestFactory的createHttpContext方法生成HttpContext附加到Request中
-    public class BasicAuthRequestFactory extends HttpComponentsClientHttpRequestFactory{
-        @Override
-        protected HttpContext createHttpContext(HttpMethod httpMethod, URI uri)
-        {
-            //1.set AuthScheme
-            HttpHost targetHost = new HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
-            AuthCache authCache = new BasicAuthCache();
-            BasicScheme basicAuth = new BasicScheme();
+<span class="comment">/*扩展HttpComponentsClientHttpRequestFactory的createHttpContext方法*/</span>
+<span class="comment">//以后每次提交Request,都会调用BasicAuthRequestFactory的createHttpContext方法生成HttpContext附加到Request中</span>
+    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicAuthRequestFactory</span> <span class="keyword">extends</span> <span class="title">HttpComponentsClientHttpRequestFactory</span></span>{
+        <span class="meta">@Override</span>
+        <span class="function"><span class="keyword">protected</span> HttpContext <span class="title">createHttpContext</span><span class="params">(HttpMethod httpMethod, URI uri)</span>
+        </span>{
+            <span class="comment">//1.set AuthScheme</span>
+            HttpHost targetHost = <span class="keyword">new</span> HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
+            AuthCache authCache = <span class="keyword">new</span> BasicAuthCache();
+            BasicScheme basicAuth = <span class="keyword">new</span> BasicScheme();
             authCache.put(targetHost, basicAuth);
             HttpClientContext localContext = HttpClientContext.create();
             localContext.setAttribute(HttpClientContext.AUTH_CACHE, authCache);
 
-            //2.set CredentialsProvider
-            BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-            credentialsProvider.setCredentials(new AuthScope(targetHost),new UsernamePasswordCredentials(username, password));
+            <span class="comment">//2.set CredentialsProvider</span>
+            BasicCredentialsProvider credentialsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
+            credentialsProvider.setCredentials(<span class="keyword">new</span> AuthScope(targetHost),<span class="keyword">new</span> UsernamePasswordCredentials(username, password));
             localContext.setCredentialsProvider(credentialsProvider);
-            return localContext;
+            <span class="keyword">return</span> localContext;
         }
     }
 
-/*RestTemplate*/
-RestTemplate restTemplate=new RestTemplate(new BasicAuthRequestFactory(httpClient)); 
+<span class="comment">/*RestTemplate*/</span>
+RestTemplate restTemplate=<span class="keyword">new</span> RestTemplate(<span class="keyword">new</span> BasicAuthRequestFactory(httpClient)); 
 
-/*Execute*/
-ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(this.serverUrl+page, String.class);
+<span class="comment">/*Execute*/</span>
+ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="keyword">this</span>.serverUrl+page, String.class);
 </code></pre>
-<h3 id="构建DigestAuthentication"><a href="#构建DigestAuthentication" class="headerlink" title="构建DigestAuthentication"></a>构建DigestAuthentication</h3><pre><code>Authorization: Digest username=&quot;Mufasa&quot;,
+<h3 id="header-10">构建DigestAuthentication</h3>
+<pre><code>Authorization: Digest username=&quot;Mufasa&quot;,
                      realm=&quot;testrealm@host.com&quot;,
                      nonce=&quot;dcd98b7102dd2f0e8b11d0f600bfb0c093&quot;,
                      uri=&quot;/dir/index.html&quot;,
@@ -331,28 +341,29 @@ ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(this.serverUrl+p
 </li>
 <li>digest认证不使用session，所以无法与rememberMe同用</li>
 </ul>
-<pre><code class="nulljava">@Override
-protected HttpContext createHttpContext(HttpMethod httpMethod, URI uri)
-{
-    HttpHost targetHost = new HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
-    AuthCache authCache = new BasicAuthCache();
-    DigestScheme digestAuth = new DigestScheme();
-    digestAuth.overrideParamter(&quot;realm&quot;, realm);
-    digestAuth.overrideParamter(&quot;nonce&quot;, Long.toString(new Random().nextLong(), 36));
+<pre><code class="nulljava"><span class="meta">@Override</span>
+<span class="function"><span class="keyword">protected</span> HttpContext <span class="title">createHttpContext</span><span class="params">(HttpMethod httpMethod, URI uri)</span>
+</span>{
+    HttpHost targetHost = <span class="keyword">new</span> HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
+    AuthCache authCache = <span class="keyword">new</span> BasicAuthCache();
+    DigestScheme digestAuth = <span class="keyword">new</span> DigestScheme();
+    digestAuth.overrideParamter(<span class="string">"realm"</span>, realm);
+    digestAuth.overrideParamter(<span class="string">"nonce"</span>, Long.toString(<span class="keyword">new</span> Random().nextLong(), <span class="number">36</span>));
     authCache.put(targetHost, digestAuth);
 
     HttpClientContext localContext = HttpClientContext.create();
     localContext.setAttribute(HttpClientContext.AUTH_CACHE, authCache);
 
-    if(this.username!=null){
-        BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(new AuthScope(targetHost),new UsernamePasswordCredentials(username, password));
+    <span class="keyword">if</span>(<span class="keyword">this</span>.username!=<span class="keyword">null</span>){
+        BasicCredentialsProvider credentialsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
+        credentialsProvider.setCredentials(<span class="keyword">new</span> AuthScope(targetHost),<span class="keyword">new</span> UsernamePasswordCredentials(username, password));
         localContext.setCredentialsProvider(credentialsProvider);
     }
-    return localContext;
+    <span class="keyword">return</span> localContext;
 }
 </code></pre>
-<h2 id="Server端进行认证"><a href="#Server端进行认证" class="headerlink" title="Server端进行认证"></a>Server端进行认证</h2><p>这里使用SpringSecurity</p>
+<h2 id="header-11">Server端进行认证</h2>
+<p>这里使用SpringSecurity</p>
 <p><strong> 注意：</strong></p>
 <ul>
 <li>一定要设置<code>create-session=&quot;stateless&quot;</code><ul>
@@ -363,39 +374,41 @@ protected HttpContext createHttpContext(HttpMethod httpMethod, URI uri)
 <li>多种authentication-manager,需设置id，而不是alias</li>
 <li>此认证浏览器Browser会记住Authentication，故主要用于Restful API无状态请求的认证中</li>
 </ul>
-<h3 id="配置BasicAuthentication"><a href="#配置BasicAuthentication" class="headerlink" title="配置BasicAuthentication"></a>配置BasicAuthentication</h3><pre><code class="nullxml">&lt;sec:http pattern=&quot;/vendor/**&quot; realm=&quot;shuttle vendors&quot; create-session=&quot;stateless&quot; authentication-manager-ref=&quot;vendorAuthenticationManager&quot;&gt;
-    &lt;sec:intercept-url pattern=&quot;/vendor/**&quot; access=&quot;ROLE_SUPPLIER&quot; /&gt;
-    &lt;sec:http-basic/&gt;
-&lt;/sec:http&gt;
-&lt;sec:authentication-manager id=&quot;vendorAuthenticationManager&quot;&gt;
-    &lt;sec:authentication-provider&gt;
-        &lt;sec:user-service id=&quot;vendorUserService&quot;&gt;
-            &lt;sec:user name=&quot;S001&quot; password=&quot;abc&quot; authorities=&quot;ROLE_SUPPLIER&quot; /&gt;
-            &lt;sec:user name=&quot;S002&quot; password=&quot;abc&quot; authorities=&quot;ROLE_SUPPLIER&quot; /&gt;
-        &lt;/sec:user-service&gt;
-    &lt;/sec:authentication-provider&gt;
-&lt;/sec:authentication-manager&gt;
+<h3 id="header-12">配置BasicAuthentication</h3>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">realm</span>=<span class="string">"shuttle vendors"</span> <span class="attr">create-session</span>=<span class="string">"stateless"</span> <span class="attr">authentication-manager-ref</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:http-basic</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">sec:user-service</span> <span class="attr">id</span>=<span class="string">"vendorUserService"</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S001"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S002"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
+        <span class="tag">&lt;/<span class="name">sec:user-service</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
-<h3 id="配置DigestAuthentication"><a href="#配置DigestAuthentication" class="headerlink" title="配置DigestAuthentication"></a>配置DigestAuthentication</h3><pre><code class="nullxml">&lt;sec:http pattern=&quot;/vendor/**&quot; create-session=&quot;stateless&quot; entry-point-ref=&quot;digestEntryPoint&quot; authentication-manager-ref=&quot;vendorAuthenticationManager&quot;&gt;
-    &lt;sec:intercept-url pattern=&quot;/vendor/**&quot; access=&quot;ROLE_SUPPLIER&quot; /&gt;
-    &lt;sec:custom-filter ref=&quot;digestFilter&quot; position=&quot;DIGEST_AUTH_FILTER&quot; /&gt;
-&lt;/sec:http&gt;
-&lt;bean id=&quot;digestFilter&quot; class=&quot;org.springframework.security.web.authentication.www.DigestAuthenticationFilter&quot;&gt;
-    &lt;property name=&quot;userDetailsService&quot; ref=&quot;vendorUserService&quot; /&gt;
-    &lt;property name=&quot;authenticationEntryPoint&quot; ref=&quot;digestEntryPoint&quot; /&gt;
-&lt;/bean&gt;
-&lt;bean id=&quot;digestEntryPoint&quot; class=&quot;org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint&quot;&gt;
-    &lt;property name=&quot;realmName&quot; value=&quot;shuttle vendors&quot; /&gt;
-    &lt;property name=&quot;key&quot; value=&quot;zero&quot; /&gt;
-&lt;/bean&gt;
-&lt;sec:authentication-manager id=&quot;vendorAuthenticationManager&quot;&gt;
-    &lt;sec:authentication-provider&gt;
-        &lt;sec:user-service id=&quot;vendorUserService&quot;&gt;
-            &lt;sec:user name=&quot;S001&quot; password=&quot;abc&quot; authorities=&quot;ROLE_SUPPLIER&quot; /&gt;
-            &lt;sec:user name=&quot;S002&quot; password=&quot;abc&quot; authorities=&quot;ROLE_SUPPLIER&quot; /&gt;
-        &lt;/sec:user-service&gt;
-    &lt;/sec:authentication-provider&gt;
-&lt;/sec:authentication-manager&gt;
+<h3 id="header-13">配置DigestAuthentication</h3>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">create-session</span>=<span class="string">"stateless"</span> <span class="attr">entry-point-ref</span>=<span class="string">"digestEntryPoint"</span> <span class="attr">authentication-manager-ref</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">ref</span>=<span class="string">"digestFilter"</span> <span class="attr">position</span>=<span class="string">"DIGEST_AUTH_FILTER"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationFilter"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"vendorUserService"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationEntryPoint"</span> <span class="attr">ref</span>=<span class="string">"digestEntryPoint"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestEntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"realmName"</span> <span class="attr">value</span>=<span class="string">"shuttle vendors"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"zero"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">sec:authentication-provider</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">sec:user-service</span> <span class="attr">id</span>=<span class="string">"vendorUserService"</span>&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S001"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
+            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S002"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
+        <span class="tag">&lt;/<span class="name">sec:user-service</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
   </section>
 </article>

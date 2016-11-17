@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#概述"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#使用示例"><span class="sidebar-nav nav-text">使用示例</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">使用示例</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,8 +123,9 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Flume 分布式的日志收集系统 <a href="https://flume.apache.org/FlumeUserGuide.html#setting-up-an-agent">官网手册</a></p>
-<p><img src="2016-05-20-flume/frame1.png" alt="Frame 1"></p>
+    <h2 id="header-1">概述</h2>
+<p>Flume 分布式的日志收集系统 <a href="https://flume.apache.org/FlumeUserGuide.html#setting-up-an-agent">官网手册</a></p>
+<p><img src="/2016/05/20/frame1.png" alt="Frame 1"></p>
 <ul>
 <li>agent：收集日志发送到目的地（运行在日志收集端的一个Java进程），包括三个核心组件：<ul>
 <li>source 收集日志（数据临时存放在channel中）<ul>
@@ -151,11 +152,12 @@
 <li>注意：<ul>
 <li>事务保证在event级别</li>
 <li>flume支持多级agent</li>
-<li>flume支持扇入(fan-in)，扇出(fan-out)<br>  <img src="2016-05-20-flume/frame2.png" alt="Frame 2"><br>  <img src="2016-05-20-flume/frame3.png" alt="Frame 3"></li>
+<li>flume支持扇入(fan-in)，扇出(fan-out)<br>  <img src="/2016/05/20/frame2.png" alt="Frame 2"><br>  <img src="/2016/05/20/frame3.png" alt="Frame 3"></li>
 </ul>
 </li>
 </ul>
-<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><ol>
+<h2 id="header-2">使用示例</h2>
+<ol>
 <li>安装：直接下载解压即可</li>
 <li><p>配置：在<code>$FLUME_HOME/conf</code>下添加一个配置文件（例如：<code>flume-conf-test1.properties</code>）</p>
 <pre><code class="nullvim"> # agent1表示代理名称
@@ -164,32 +166,32 @@
  agent1.channels=channel1
 
  # 配置source1
- # 1. Spooling Directory是监控指定文件夹中新文件的变化
+ # <span class="number">1</span>. Spooling Directory是监控指定文件夹中新文件的变化
  # 一旦新文件出现，就解析该文件内容，然后写入到channle
  # 写入完成后，标记该文件已完成或者删除该文件
- # 2. 添加Timestamp Interceptor
+ # <span class="number">2</span>. 添加Timestamp Interceptor
  # 在event的header中添加一个key叫timestamp,value为当前的时间戳
- agent1.sources.source1.type=spooldir
- agent1.sources.source1.spoolDir=/home/hadoop/input/flume
+ agent1.sources.source1.<span class="built_in">type</span>=spooldir
+ agent1.sources.source1.spoolDir=/home/hadoop/<span class="built_in">input</span>/flume
  agent1.sources.source1.channels=channel1
  agent1.sources.source1.fileHeader = false
  agent1.sources.source1.interceptors = i1
- agent1.sources.source1.interceptors.i1.type = timestamp
+ agent1.sources.source1.interceptors.i1.<span class="built_in">type</span> = timestamp
 
  # 配置sink1
- agent1.sinks.sink1.type=hdfs
- agent1.sinks.sink1.hdfs.path=hdfs://cj.storm:9000/output/flume
+ agent1.sinks.sink1.<span class="built_in">type</span>=hdfs
+ agent1.sinks.sink1.hdfs.path=hdf<span class="variable">s:</span>//cj.storm:<span class="number">9000</span>/output/flume
  agent1.sinks.sink1.hdfs.fileType=DataStream
  agent1.sinks.sink1.hdfs.writeFormat=TEXT
- # agent1.sinks.sink1.hdfs.rollInterval=0
- # agent1.sinks.sink1.hdfs.rollSize=10485760
+ # agent1.sinks.sink1.hdfs.rollInterval=<span class="number">0</span>
+ # agent1.sinks.sink1.hdfs.rollSize=<span class="number">10485760</span>
  agent1.sinks.sink1.channel=channel1
- agent1.sinks.sink1.hdfs.filePrefix=%Y-%m-%d
+ agent1.sinks.sink1.hdfs.filePrefix=%Y-%<span class="keyword">m</span>-%d
 
  # 配置channel1
- agent1.channels.channel1.type=file
- agent1.channels.channel1.checkpointDir=/home/hadoop/input/flume_tmp/checkpoint
- agent1.channels.channel1.dataDirs=/home/hadoop/input/flume_tmp/data
+ agent1.channels.channel1.<span class="built_in">type</span>=<span class="keyword">file</span>
+ agent1.channels.channel1.checkpointDir=/home/hadoop/<span class="built_in">input</span>/flume_tmp/checkpoint
+ agent1.channels.channel1.dataDirs=/home/hadoop/<span class="built_in">input</span>/flume_tmp/data
 </code></pre>
 </li>
 <li><p>测试</p>

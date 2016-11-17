@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Starter"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#安装"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Cmd"><span class="sidebar-nav nav-text">Cmd</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Java-API"><span class="sidebar-nav nav-text">Java API</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Reference"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Cmd</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Java API</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,7 +123,8 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="Starter"><a href="#Starter" class="headerlink" title="Starter"></a>Starter</h2><blockquote>
+    <h2 id="header-1">Starter</h2>
+<blockquote>
 <p>Kafka is a distributed, partitioned, replicated commit log service.</p>
 </blockquote>
 <p>基于zookeeper协调的分布式日志系统(分布式发布-订阅消息系统,也可以当做MQ系统)</p>
@@ -176,8 +177,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="2015-11-02-Kafka/kafka.png" alt="Kafka"></p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>直接下载解压，配置<code>$KAFKA_HOME/config/server.properties</code></p>
+<p><img src="/2015/11/02/kafka.png" alt="Kafka"></p>
+<h3 id="header-2">安装</h3>
+<p>直接下载解压，配置<code>$KAFKA_HOME/config/server.properties</code></p>
 <pre><code>broker.id=1            # 全局唯一
 port=9091              # 端口号
 zookeeper.connect=192.168.0.1:2181,192.168.0.2:2182,192.168.0.3:2183    # 配置zookeeper
@@ -186,7 +188,8 @@ num.replica.fetchers=2      # 复制数量
 log.dir=./logs              # 日志/消息存放路径
 ...
 </code></pre><p><strong>PS:</strong>注意要安装Zookeeper</p>
-<h3 id="Cmd"><a href="#Cmd" class="headerlink" title="Cmd"></a>Cmd</h3><ol>
+<h3 id="header-3">Cmd</h3>
+<ol>
 <li><p>启动Kafka (注意：先打开Zookeeper)</p>
 <pre><code>&gt; bin/kafka-server-start.sh config/server.properties &amp;
 </code></pre></li>
@@ -209,58 +212,60 @@ log.dir=./logs              # 日志/消息存放路径
 &gt; ls /brokers/topics
 </code></pre></li>
 </ol>
-<h3 id="Java-API"><a href="#Java-API" class="headerlink" title="Java API"></a>Java API</h3><p>依赖包:</p>
-<pre><code class="nullxml">&lt;dependency&gt;
-    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;
-    &lt;artifactId&gt;kafka_2.10&lt;/artifactId&gt;
-    &lt;version&gt;${kafka.version}&lt;/version&gt;
-&lt;/dependency&gt;
+<h3 id="header-4">Java API</h3>
+<p>依赖包:</p>
+<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.kafka<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>kafka_2.10<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${kafka.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
 </code></pre>
 <p>Producer:</p>
-<pre><code class="nulljava">Properties props = new Properties();
-props.put(&quot;metadata.broker.list&quot;, &quot;cj.storm:9092,cj.storm:9093,cj.storm:9094&quot;);
-props.put(&quot;serializer.class&quot;, &quot;kafka.serializer.StringEncoder&quot;);
+<pre><code class="nulljava">Properties props = <span class="keyword">new</span> Properties();
+props.put(<span class="string">"metadata.broker.list"</span>, <span class="string">"cj.storm:9092,cj.storm:9093,cj.storm:9094"</span>);
+props.put(<span class="string">"serializer.class"</span>, <span class="string">"kafka.serializer.StringEncoder"</span>);
 
-ProducerConfig config = new ProducerConfig(props);  
-Producer&lt;String, String&gt; producer = new Producer&lt;String, String&gt;(config);
+ProducerConfig config = <span class="keyword">new</span> ProducerConfig(props);  
+Producer&lt;String, String&gt; producer = <span class="keyword">new</span> Producer&lt;String, String&gt;(config);
 
-KeyedMessage&lt;String, String&gt; msg = new KeyedMessage&lt;String, String&gt;(&quot;order&quot;, &quot;test-kafka&quot;);
+KeyedMessage&lt;String, String&gt; msg = <span class="keyword">new</span> KeyedMessage&lt;String, String&gt;(<span class="string">"order"</span>, <span class="string">"test-kafka"</span>);
 producer.send(msg);
 
 producer.close();
 </code></pre>
 <p>Consumer:</p>
-<pre><code class="nulljava">Properties props = new Properties();
-props.put(&quot;zookeeper.connect&quot;, &quot;cj.storm:2181,cj.storm:2182,cj.storm:2183&quot;);
-props.put(&quot;group.id&quot;, &quot;test-consumer-group&quot;);
-props.put(&quot;zookeeper.session.timeout.ms&quot;, &quot;30000&quot;);
-props.put(&quot;zookeeper.sync.time.ms&quot;, &quot;200&quot;);
-props.put(&quot;auto.commit.interval.ms&quot;, &quot;1000&quot;);
+<pre><code class="nulljava">Properties props = <span class="keyword">new</span> Properties();
+props.put(<span class="string">"zookeeper.connect"</span>, <span class="string">"cj.storm:2181,cj.storm:2182,cj.storm:2183"</span>);
+props.put(<span class="string">"group.id"</span>, <span class="string">"test-consumer-group"</span>);
+props.put(<span class="string">"zookeeper.session.timeout.ms"</span>, <span class="string">"30000"</span>);
+props.put(<span class="string">"zookeeper.sync.time.ms"</span>, <span class="string">"200"</span>);
+props.put(<span class="string">"auto.commit.interval.ms"</span>, <span class="string">"1000"</span>);
 
-ConsumerConfig config = new ConsumerConfig(props);  
+ConsumerConfig config = <span class="keyword">new</span> ConsumerConfig(props);  
 ConsumerConnector consumer = Consumer.createJavaConsumerConnector(config);
 
-Map&lt;String, Integer&gt; topicCountMap = new HashMap&lt;String, Integer&gt;();
-topicCountMap.put(&quot;order&quot;, new Integer(1));
+Map&lt;String, Integer&gt; topicCountMap = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();
+topicCountMap.put(<span class="string">"order"</span>, <span class="keyword">new</span> Integer(<span class="number">1</span>));
 
-StringDecoder keyDecoder = new StringDecoder(new VerifiableProperties());
-StringDecoder valueDecoder = new StringDecoder(new VerifiableProperties());
+StringDecoder keyDecoder = <span class="keyword">new</span> StringDecoder(<span class="keyword">new</span> VerifiableProperties());
+StringDecoder valueDecoder = <span class="keyword">new</span> StringDecoder(<span class="keyword">new</span> VerifiableProperties());
 
-//直接byte[]接收
-Map&lt;String, List&lt;KafkaStream&lt;byte[], byte[]&gt;&gt;&gt; consumerMap = consumer.createMessageStreams(topicCountMap); 
-KafkaStream&lt;byte[], byte[]&gt; stream = consumerMap.get(topic).get(0); 
-ConsumerIterator&lt;byte[], byte[]&gt; it = stream.iterator(); 
-while (it.hasNext())
-    System.out.println(new String(it.next().message())); 
+<span class="comment">//直接byte[]接收</span>
+Map&lt;String, List&lt;KafkaStream&lt;<span class="keyword">byte</span>[], <span class="keyword">byte</span>[]&gt;&gt;&gt; consumerMap = consumer.createMessageStreams(topicCountMap); 
+KafkaStream&lt;<span class="keyword">byte</span>[], <span class="keyword">byte</span>[]&gt; stream = consumerMap.get(topic).get(<span class="number">0</span>); 
+ConsumerIterator&lt;<span class="keyword">byte</span>[], <span class="keyword">byte</span>[]&gt; it = stream.iterator(); 
+<span class="keyword">while</span> (it.hasNext())
+    System.out.println(<span class="keyword">new</span> String(it.next().message())); 
 
-//使用String接收
+<span class="comment">//使用String接收</span>
 Map&lt;String, List&lt;KafkaStream&lt;String, String&gt;&gt;&gt; consumerMap = consumer.createMessageStreams(topicCountMap,keyDecoder,valueDecoder);
-KafkaStream&lt;String, String&gt; stream = consumerMap.get(&quot;order&quot;).get(0);
+KafkaStream&lt;String, String&gt; stream = consumerMap.get(<span class="string">"order"</span>).get(<span class="number">0</span>);
 ConsumerIterator&lt;String, String&gt; it = stream.iterator();
-while (it.hasNext())
+<span class="keyword">while</span> (it.hasNext())
     System.out.println(it.next().message());
 </code></pre>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<h2 id="header-5">Reference</h2>
+<ul>
 <li><a href="http://www.infoq.com/cn/articles/apache-kafka/">Apache Kafka：下一代分布式消息系统</a></li>
 <li><a href="http://www.cnblogs.com/likehua/p/3999538.html">kafka入门：简介、使用场景、设计原理、主要配置及集群搭建</a></li>
 <li><a href="http://blog.csdn.net/xeseo/article/details/18311955">高性能消息系统——Kafka</a></li>

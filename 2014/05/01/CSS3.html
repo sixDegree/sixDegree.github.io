@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#media"><span class="sidebar-nav nav-text">@media</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#keyframes"><span class="sidebar-nav nav-text">@keyframes</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#font-face"><span class="sidebar-nav nav-text">@font-face</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">@media</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">@keyframes</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">@font-face</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,40 +123,43 @@
     </ul>
   </section>
   <section class="post-content">
-    <h3 id="media"><a href="#media" class="headerlink" title="@media"></a>@media</h3><p>媒体查询</p>
-<pre><code class="nullscss">$width-small: 500px;
-$width-medium: 800px;
-$width-large: 1200px;
-section.main { 
-    font-size: 16px; line-height: 1.4;
-    @media screen and (max-width: $width-large) { float: left; width: 65%; }
-    @media screen and (max-width: $width-medium) { float: none; width: auto; }
-    @media screen and (max-width: $width-small) { font-size: 12px; line-height: 1.4; }
+    <h3 id="header-1">@media</h3>
+<p>媒体查询</p>
+<pre><code class="nullscss"><span class="variable">$width-small</span>: <span class="number">500px</span>;
+<span class="variable">$width-medium</span>: <span class="number">800px</span>;
+<span class="variable">$width-large</span>: <span class="number">1200px</span>;
+<span class="selector-tag">section</span><span class="selector-class">.main</span> { 
+    <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="attribute">line-height</span>: <span class="number">1.4</span>;
+    @<span class="keyword">media</span> screen and (max-width: <span class="variable">$width-large</span>) { <span class="attribute">float</span>: left; <span class="attribute">width</span>: <span class="number">65%</span>; }
+    @<span class="keyword">media</span> screen and (max-width: <span class="variable">$width-medium</span>) { <span class="attribute">float</span>: none; <span class="attribute">width</span>: auto; }
+    @<span class="keyword">media</span> screen and (max-width: <span class="variable">$width-small</span>) { <span class="attribute">font-size</span>: <span class="number">12px</span>; <span class="attribute">line-height</span>: <span class="number">1.4</span>; }
 }
 </code></pre>
-<h3 id="keyframes"><a href="#keyframes" class="headerlink" title="@keyframes"></a>@keyframes</h3><p>定义动画</p>
+<h3 id="header-2">@keyframes</h3>
+<p>定义动画</p>
 <pre><code class="nullscss">@keyframes fontbulger {
   0% {
-    font-size: 10px;
+    <span class="attribute">font-size</span>: <span class="number">10px</span>;
   }
   30% {
-    font-size: 15px;
+    <span class="attribute">font-size</span>: <span class="number">15px</span>;
   }
   100% {
-    font-size: 12px;
+    <span class="attribute">font-size</span>: <span class="number">12px</span>;
   }
 }
 
-#box {
-   animation: fontbulger 2s infinite;
+<span class="selector-id">#box</span> {
+   <span class="attribute">animation</span>: fontbulger <span class="number">2s</span> infinite;
 }
 </code></pre>
-<h3 id="font-face"><a href="#font-face" class="headerlink" title="@font-face"></a>@font-face</h3><p>引入字体</p>
+<h3 id="header-3">@font-face</h3>
+<p>引入字体</p>
 <pre><code class="nullscss">@font-face {
-      font-family: &lt;YourWebFontName&gt;;
+      <span class="attribute">font-family</span>: &lt;YourWebFontName&gt;;
       src: &lt;source&gt; [&lt;format&gt;][,&lt;source&gt; [&lt;format&gt;]]*;
-      [font-weight: &lt;weight&gt;];
-      [font-style: &lt;style&gt;];
+      <span class="selector-attr">[font-weight: &lt;weight&gt;]</span>;
+      <span class="selector-attr">[font-style: &lt;style&gt;]</span>;
     }
 </code></pre>
   </section>

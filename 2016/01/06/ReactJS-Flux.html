@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Flux"><span class="sidebar-nav nav-text">Flux</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Reflux"><span class="sidebar-nav nav-text">Reflux</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Redux"><span class="sidebar-nav nav-text">Redux</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#基本使用示例"><span class="sidebar-nav nav-text">基本使用示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#高阶使用示例"><span class="sidebar-nav nav-text">高阶使用示例</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#Reference"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Flux</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Reflux</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Redux</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">基本使用示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">高阶使用示例</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -123,7 +123,8 @@
     </ul>
   </section>
   <section class="post-content">
-    <h2 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h2><p>单向数据流的架构模式（在 MVC 中属于M层）</p>
+    <h2 id="header-1">Flux</h2>
+<p>单向数据流的架构模式（在 MVC 中属于M层）</p>
 <pre><code>╔═════════╗       ╔════════╗       ╔═════════════════╗
 ║ Actions ║──────&gt;║ Stores ║──────&gt;║ View Components ║
 ╚═════════╝       ╚════════╝       ╚═════════════════╝
@@ -136,57 +137,58 @@
 <li>View 层响应change事件</li>
 </ul>
 <p>在flux思想之上，有很多优秀的库，比如：reflux，redux</p>
-<h2 id="Reflux"><a href="#Reflux" class="headerlink" title="Reflux"></a>Reflux</h2><p><a href="https://github.com/reflux/refluxjs">Github</a> | <a href="http://segmentfault.com/a/1190000002793786?utm_source=tuicool">Reflux 介绍</a> | <a href="http://abruzzi.github.com/2015/11/get-started-with-reflux">Sample</a></p>
+<h2 id="header-2">Reflux</h2>
+<p><a href="https://github.com/reflux/refluxjs">Github</a> | <a href="http://segmentfault.com/a/1190000002793786?utm_source=tuicool">Reflux 介绍</a> | <a href="http://abruzzi.github.com/2015/11/get-started-with-reflux">Sample</a></p>
 <p>下载包：</p>
 <pre><code>&gt; npm install reflux --save
 </code></pre><ol>
 <li><p>Action：定义方法</p>
-<pre><code class="nulljavascript">var Reflux=require(&quot;reflux&quot;);
-module.exports=Reflux.createActions([
- &quot;listXxx&quot;,
- &quot;getXxx&quot;,
- &quot;updateXxx&quot;,
- &quot;createXxx&quot;,
+<pre><code class="nulljavascript"><span class="keyword">var</span> Reflux=<span class="built_in">require</span>(<span class="string">"reflux"</span>);
+<span class="built_in">module</span>.exports=Reflux.createActions([
+ <span class="string">"listXxx"</span>,
+ <span class="string">"getXxx"</span>,
+ <span class="string">"updateXxx"</span>,
+ <span class="string">"createXxx"</span>,
  ...
 ])
 </code></pre>
 </li>
 <li><p>Store：监听actions</p>
-<pre><code class="nulljavascript"> //xxx-store.jsx
- var Reflux=require(&quot;reflux&quot;);
- var Api=require(&quot;../utils/api&quot;);
- var xxxActions=require(&quot;../actions/xxx-action&quot;);
+<pre><code class="nulljavascript"> <span class="comment">//xxx-store.jsx</span>
+ <span class="keyword">var</span> Reflux=<span class="built_in">require</span>(<span class="string">"reflux"</span>);
+ <span class="keyword">var</span> Api=<span class="built_in">require</span>(<span class="string">"../utils/api"</span>);
+ <span class="keyword">var</span> xxxActions=<span class="built_in">require</span>(<span class="string">"../actions/xxx-action"</span>);
 
- module.exports=Reflux.createStore({
-     listenables:[XxxActions],        // 监听actions
+ <span class="built_in">module</span>.exports=Reflux.createStore({
+     listenables:[XxxActions],        <span class="comment">// 监听actions</span>
      data:{},
 
-     //添加Action中定义的同名函数
-     listXxx:function(){
-         return Api.get(&quot;...&quot;)
-                 .then(function(json){
-                     if(json &amp;&amp; json.success)
-                         this.data=json.data;
-                     this.trigger(this.data,json);    //触发（监听此Store的Components会接收到）
-                 }.bind(this));
+     <span class="comment">//添加Action中定义的同名函数</span>
+     listXxx:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+         <span class="keyword">return</span> Api.get(<span class="string">"..."</span>)
+                 .then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>{
+                     <span class="keyword">if</span>(json &amp;&amp; json.success)
+                         <span class="keyword">this</span>.data=json.data;
+                     <span class="keyword">this</span>.trigger(<span class="keyword">this</span>.data,json);    <span class="comment">//触发（监听此Store的Components会接收到）</span>
+                 }.bind(<span class="keyword">this</span>));
      },
      ...
-     //也可添加Store自己的函数
+     <span class="comment">//也可添加Store自己的函数</span>
  });
 </code></pre>
 </li>
 <li><p>Component: 调用Action（会触发调用相应的Store方法）或Store方法，监听Store变化</p>
-<pre><code class="nulljavascript"> var Reflux=require(&quot;reflux&quot;);
- var XxxActions=require(&quot;../action/xxx-action&quot;);
- var XxxStore=require(&quot;../stores/xxx-store&quot;);
+<pre><code class="nulljavascript"> <span class="keyword">var</span> Reflux=<span class="built_in">require</span>(<span class="string">"reflux"</span>);
+ <span class="keyword">var</span> XxxActions=<span class="built_in">require</span>(<span class="string">"../action/xxx-action"</span>);
+ <span class="keyword">var</span> XxxStore=<span class="built_in">require</span>(<span class="string">"../stores/xxx-store"</span>);
 
- module.exports=React.createClass({
-     //监听Store，捕获到则调用onChange方法（相当于callback）
-     mixins:[Reflux.listenTo(XxxStore,&quot;onChange&quot;)],
-     onChange:function(data,result){
-         this.setState({...});
+ <span class="built_in">module</span>.exports=React.createClass({
+     <span class="comment">//监听Store，捕获到则调用onChange方法（相当于callback）</span>
+     mixins:[Reflux.listenTo(XxxStore,<span class="string">"onChange"</span>)],
+     onChange:<span class="function"><span class="keyword">function</span>(<span class="params">data,result</span>)</span>{
+         <span class="keyword">this</span>.setState({...});
      },
-     componentWillMount:function(){
+     componentWillMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
          XxxActions.listXxx();
      },
      ...
@@ -194,8 +196,9 @@ module.exports=Reflux.createActions([
 </code></pre>
 </li>
 </ol>
-<h2 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h2><p><a href="http://camsong.github.io/redux-in-chinese/">中文文档</a> | <a href="https://segmentfault.com/a/1190000003503338#articleHeader5">Redux 介绍</a> | <a href="http://zhenhua-lee.github.io/react/redux.html">解读redux工作原理</a></p>
-<p><img src="2016-01-03-ReactJS-Flux/redux.png" alt="redux"><br>（图片来自：<a href="http://staltz.com/unidirectional-user-interface-architectures.html）">http://staltz.com/unidirectional-user-interface-architectures.html）</a></p>
+<h2 id="header-3">Redux</h2>
+<p><a href="http://camsong.github.io/redux-in-chinese/">中文文档</a> | <a href="https://segmentfault.com/a/1190000003503338#articleHeader5">Redux 介绍</a> | <a href="http://zhenhua-lee.github.io/react/redux.html">解读redux工作原理</a></p>
+<p><img src="/2016/01/06/redux.png" alt="redux"><br>（图片来自：<a href="http://staltz.com/unidirectional-user-interface-architectures.html）">http://staltz.com/unidirectional-user-interface-architectures.html）</a></p>
 <p>store 是一个单一对象：</p>
 <ul>
 <li><code>store.getState()</code> ：获取reducer的root state</li>
@@ -206,108 +209,110 @@ module.exports=Reflux.createActions([
 <p>下载包：</p>
 <pre><code>&gt; npm install redux --save
 &gt; npm install react-redux --save
-</code></pre><h3 id="基本使用示例"><a href="#基本使用示例" class="headerlink" title="基本使用示例"></a>基本使用示例</h3><ol>
+</code></pre><h3 id="header-4">基本使用示例</h3>
+<ol>
 <li><p>Component</p>
-<pre><code class="nulljavascript"> var React=require(&quot;react&quot;);
- var ReactDOM=require(&quot;react-dom&quot;);
+<pre><code class="nulljavascript"> <span class="keyword">var</span> React=<span class="built_in">require</span>(<span class="string">"react"</span>);
+ <span class="keyword">var</span> ReactDOM=<span class="built_in">require</span>(<span class="string">"react-dom"</span>);
 
- var Counter=React.createClass({
-     render:function(){
-         return (
-           &lt;div&gt;
-             &lt;span&gt;{this.props.value}&lt;/span&gt;
-             &lt;button className=&quot;btn btn-default&quot; onClick={this.props.onIncreaseClick}&gt;Increase&lt;/button&gt;
-           &lt;/div&gt;
+ <span class="keyword">var</span> Counter=React.createClass({
+     render:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+         <span class="keyword">return</span> (
+           <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">span</span>&gt;</span>{this.props.value}<span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+             <span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">"btn btn-default"</span> <span class="attr">onClick</span>=<span class="string">{this.props.onIncreaseClick}</span>&gt;</span>Increase<span class="tag">&lt;/<span class="name">button</span>&gt;</span>
+           <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
          )
      }
  });
 </code></pre>
 </li>
 <li><p>Store</p>
-<pre><code class="nulljavascript"> var redux=require(&quot;redux&quot;);
+<pre><code class="nulljavascript"> <span class="keyword">var</span> redux=<span class="built_in">require</span>(<span class="string">"redux"</span>);
 
- var countRedux=function(state,action){
-     switch(action.type){
-         case &#39;INCREASE&#39;:
-             return state+action.step;
+ <span class="keyword">var</span> countRedux=<span class="function"><span class="keyword">function</span>(<span class="params">state,action</span>)</span>{
+     <span class="keyword">switch</span>(action.type){
+         <span class="keyword">case</span> <span class="string">'INCREASE'</span>:
+             <span class="keyword">return</span> state+action.step;
      }
-     return state;
+     <span class="keyword">return</span> state;
  }
 
- var store=redux.createStore(countRedux,0);
- store.subscribe(function(){
-     console.log(store.getState());
+ <span class="keyword">var</span> store=redux.createStore(countRedux,<span class="number">0</span>);
+ store.subscribe(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+     <span class="built_in">console</span>.log(store.getState());
  });
 </code></pre>
 </li>
 <li><p>Action</p>
-<pre><code class="nulljavascript"> var increaseAction={type:&#39;INCREASE&#39;,step:1};
- //test
+<pre><code class="nulljavascript"> <span class="keyword">var</span> increaseAction={type:<span class="string">'INCREASE'</span>,step:<span class="number">1</span>};
+ <span class="comment">//test</span>
  store.dispatch(increaseAction);
 </code></pre>
 </li>
 <li><p>Container</p>
-<pre><code class="nulljavascript"> var Provider=require(&quot;react-redux&quot;).Provider;
- var connect=require(&quot;react-redux&quot;).connect;
+<pre><code class="nulljavascript"> <span class="keyword">var</span> Provider=<span class="built_in">require</span>(<span class="string">"react-redux"</span>).Provider;
+ <span class="keyword">var</span> connect=<span class="built_in">require</span>(<span class="string">"react-redux"</span>).connect;
 
- //Map Redux state to component props
- function mapStateToProps(state){
-     return {count:state}
+ <span class="comment">//Map Redux state to component props</span>
+ <span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>)</span>{
+     <span class="keyword">return</span> {count:state}
  }
- //Map Redux dispatch to component props
- function mapDispatchToProps(dispatch){
-     return {
-         onIncreaseClick:function(){dispatch(increaseAction);}
+ <span class="comment">//Map Redux dispatch to component props</span>
+ <span class="function"><span class="keyword">function</span> <span class="title">mapDispatchToProps</span>(<span class="params">dispatch</span>)</span>{
+     <span class="keyword">return</span> {
+         onIncreaseClick:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{dispatch(increaseAction);}
      }
  }
 
- var App=connect(mapStateToProps,mapDispatchToProps)(Counter)
+ <span class="keyword">var</span> App=connect(mapStateToProps,mapDispatchToProps)(Counter)
 
- // render
+ <span class="comment">// render</span>
  ReactDOM.render(
-   &lt;Provider store={store}&gt;
-     &lt;App /&gt;
-   &lt;/Provider&gt;,
-   document.getElementById(&#39;app&#39;)
+   <span class="xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">{store}</span>&gt;</span>
+     <span class="tag">&lt;<span class="name">App</span> /&gt;</span>
+   <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span>,
+   <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)
  );
 </code></pre>
 </li>
 </ol>
-<h3 id="高阶使用示例"><a href="#高阶使用示例" class="headerlink" title="高阶使用示例"></a>高阶使用示例</h3><p><img src="2016-01-03-ReactJS-Flux/redux-book.png" alt="redux"><br>（图片来自：<a href="https://www.udemy.com/react-redux/">https://www.udemy.com/react-redux/</a> 教程）</p>
+<h3 id="header-5">高阶使用示例</h3>
+<p><img src="/2016/01/06/redux-book.png" alt="redux"><br>（图片来自：<a href="https://www.udemy.com/react-redux/">https://www.udemy.com/react-redux/</a> 教程）</p>
 <p><strong>要点：</strong></p>
 <ol>
-<li>Reducer:<pre><code class="nulljavascript"> var bookReducer=function(state,action){...};
- var activeBookReducer=function(state,action){...};
- module.exports=combineReducers({
+<li>Reducer:<pre><code class="nulljavascript"> <span class="keyword">var</span> bookReducer=<span class="function"><span class="keyword">function</span>(<span class="params">state,action</span>)</span>{...};
+ <span class="keyword">var</span> activeBookReducer=<span class="function"><span class="keyword">function</span>(<span class="params">state,action</span>)</span>{...};
+ <span class="built_in">module</span>.exports=combineReducers({
      books:booksReducer,
      activeBook:activeBookReducer
  })
 </code></pre>
 </li>
 <li><p>Action Creator:</p>
-<pre><code class="nulljavascript">     var selectBook=function(book){
-         console.log(&quot;Selectd:&quot;+book.title);
-         return {type:&quot;BOOK_SELECTED&quot;,payload:book};
+<pre><code class="nulljavascript">     <span class="keyword">var</span> selectBook=<span class="function"><span class="keyword">function</span>(<span class="params">book</span>)</span>{
+         <span class="built_in">console</span>.log(<span class="string">"Selectd:"</span>+book.title);
+         <span class="keyword">return</span> {type:<span class="string">"BOOK_SELECTED"</span>,payload:book};
      }
-     module.exports={
+     <span class="built_in">module</span>.exports={
          selectBook:selectBook
      }
 </code></pre>
 </li>
 <li><p>Container:</p>
-<pre><code class="nulljavascript"> var bindActionCreators=require(&quot;redux&quot;).bindActionCreators;
+<pre><code class="nulljavascript"> <span class="keyword">var</span> bindActionCreators=<span class="built_in">require</span>(<span class="string">"redux"</span>).bindActionCreators;
 
- function mapDispatchToProps(dispatch){
-     /*return {
-         selectBook:function(book){dispatch({type:&#39;BOOK_SELECTED&#39;,payload:book})}
-     }*/
-     return bindActionCreators(BookActions,dispatch);
+ <span class="function"><span class="keyword">function</span> <span class="title">mapDispatchToProps</span>(<span class="params">dispatch</span>)</span>{
+     <span class="comment">/*return {
+         selectBook:function(book){dispatch({type:'BOOK_SELECTED',payload:book})}
+     }*/</span>
+     <span class="keyword">return</span> bindActionCreators(BookActions,dispatch);
  }
 </code></pre>
 </li>
 </ol>
 <p><strong> 可使用middleware实现异步Action </strong> （例如使用<code>redux-promise</code> ）</p>
-<p><img src="2016-01-03-ReactJS-Flux/redux-book-middleware.png" alt="redux"><br>（图片来自：<a href="https://www.udemy.com/react-redux/">https://www.udemy.com/react-redux/</a> 教程）</p>
+<p><img src="/2016/01/06/redux-book-middleware.png" alt="redux"><br>（图片来自：<a href="https://www.udemy.com/react-redux/">https://www.udemy.com/react-redux/</a> 教程）</p>
 <p><strong>要点：</strong> 触发action，传递promise对象，使用middleware拦截直到响应，继续传递action到reducers</p>
 <ol>
 <li><p>下载包<code>redux-promise</code> (Redux Middleware) &amp; <code>axios</code> (Promise Request)：</p>
@@ -315,18 +320,18 @@ module.exports=Reflux.createActions([
 &gt; npm install axios --save
 </code></pre></li>
 <li><p>Action：</p>
-<pre><code class="nulljavascript"> {type:&#39;BOOK_LIST&#39;,payload:axios.get(url);}
+<pre><code class="nulljavascript"> {type:<span class="string">'BOOK_LIST'</span>,payload:axios.get(url);}
 </code></pre>
 </li>
 <li><p>Reducer:</p>
-<pre><code class="nulljavascript"> var booksReducer=function(state,action){
-     switch(action.type){
-         case &#39;BOOK_LIST&#39;:
-             if(action.payload.status==200){
-                 return [action.payload.data];
+<pre><code class="nulljavascript"> <span class="keyword">var</span> booksReducer=<span class="function"><span class="keyword">function</span>(<span class="params">state,action</span>)</span>{
+     <span class="keyword">switch</span>(action.type){
+         <span class="keyword">case</span> <span class="string">'BOOK_LIST'</span>:
+             <span class="keyword">if</span>(action.payload.status==<span class="number">200</span>){
+                 <span class="keyword">return</span> [action.payload.data];
              }
      }
-     return state;
+     <span class="keyword">return</span> state;
  }
 </code></pre>
 </li>
@@ -335,7 +340,8 @@ module.exports=Reflux.createActions([
 </ol>
 <p>var applyMiddleware=require(“redux”).applyMiddleware;<br>var ReduxPromise=require(“redux-promise”);<br>var createStoreWithMiddleware=applyMiddleware(ReduxPromise)(createStore);</p>
 <p>var store=createStoreWithMiddleware(booksReducers);<br>```</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<h2 id="header-6">Reference</h2>
+<ul>
 <li>Reflux <a href="https://github.com/reflux/refluxjs">Github</a> | <a href="http://segmentfault.com/a/1190000002793786?utm_source=tuicool">Reflux 介绍</a> | <a href="http://abruzzi.github.com/2015/11/get-started-with-reflux">Sample</a></li>
 <li>Redux <a href="https://github.com/rackt/react-redux">Github</a> | <a href="http://camsong.github.io/redux-in-chinese/index.html">中文文档</a> | <a href="https://segmentfault.com/a/1190000003503338#articleHeader5">Redux 介绍</a> | <a href="http://zhenhua-lee.github.io/react/redux.html">解读redux工作原理</a></li>
 <li><a href="https://github.com/sixDegree/react-advance">My Demos</a></li>

@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#cronExpression"><span class="sidebar-nav nav-text">cronExpression</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#Sample"><span class="sidebar-nav nav-text">Sample</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">cronExpression</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Sample</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -125,7 +125,8 @@
     </ul>
   </section>
   <section class="post-content">
-    <h3 id="cronExpression"><a href="#cronExpression" class="headerlink" title="cronExpression"></a>cronExpression</h3><table>
+    <h3 id="header-1">cronExpression</h3>
+<table class="table">
 <thead>
 <tr>
 <th>字段</th>
@@ -172,7 +173,7 @@
 </tbody>
 </table>
 <p>说明：</p>
-<table>
+<table class="table">
 <thead>
 <tr>
 <th>字符</th>
@@ -246,84 +247,85 @@
 <li><code>0 15 10 ? * 6L 2002-2005</code> 2002年至2005年的每月的最后一个星期五上午10:15触发</li>
 <li><code>0 15 10 ? * 6#3</code> 每月的第三个星期五上午10:15触发</li>
 </ul>
-<h3 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h3><pre><code class="nullxml">&lt;!-- 加入task命名空间--&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
-        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-        xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;
-        xmlns:cxf=&quot;http://cxf.apache.org/core&quot;
-        xmlns:task=&quot;http://www.springframework.org/schema/task&quot;
-        xsi:schemaLocation=&quot;
+<h3 id="header-2">Sample</h3>
+<pre><code class="nullxml"><span class="comment">&lt;!-- 加入task命名空间--&gt;</span>
+<span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
+        <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+        <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
+        <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
+        <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
+        <span class="attr">xmlns:jaxws</span>=<span class="string">"http://cxf.apache.org/jaxws"</span>
+        <span class="attr">xmlns:cxf</span>=<span class="string">"http://cxf.apache.org/core"</span>
+        <span class="attr">xmlns:task</span>=<span class="string">"http://www.springframework.org/schema/task"</span>
+        <span class="attr">xsi:schemaLocation</span>=<span class="string">"
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
-            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&gt;
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"</span>&gt;</span>
 
-&lt;task:annotation-driven/&gt;
+<span class="tag">&lt;<span class="name">task:annotation-driven</span>/&gt;</span>
 
-&lt;!-- Schedule Task  --&gt;
-&lt;bean id=&quot;smsDailyMessageTask&quot; class=&quot;com.cj.sms.task.SmsDailyMessageTask&quot;/&gt;
-&lt;bean id=&quot;smsBackTask&quot; class=&quot;com.cj.sms.task.SmsBackTask&quot;/&gt;
-&lt;task:scheduled-tasks&gt;
-    &lt;task:scheduled ref=&quot;smsDailyMessageTask&quot; method=&quot;insertDailyMessage&quot; cron=&quot;0 35 14 * * ?&quot;/&gt;
-    &lt;task:scheduled ref=&quot;smsBackTask&quot; method=&quot;alarmWarning&quot; cron=&quot;0 0/30 * * * ?&quot;/&gt;
-    &lt;task:scheduled ref=&quot;smsBackTask&quot; method=&quot;alarmThreadState&quot; cron=&quot;0 0/20 * * * ?&quot;  /&gt;
-&lt;/task:scheduled-tasks&gt;
+<span class="comment">&lt;!-- Schedule Task  --&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"smsDailyMessageTask"</span> <span class="attr">class</span>=<span class="string">"com.cj.sms.task.SmsDailyMessageTask"</span>/&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"smsBackTask"</span> <span class="attr">class</span>=<span class="string">"com.cj.sms.task.SmsBackTask"</span>/&gt;</span>
+<span class="tag">&lt;<span class="name">task:scheduled-tasks</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">task:scheduled</span> <span class="attr">ref</span>=<span class="string">"smsDailyMessageTask"</span> <span class="attr">method</span>=<span class="string">"insertDailyMessage"</span> <span class="attr">cron</span>=<span class="string">"0 35 14 * * ?"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">task:scheduled</span> <span class="attr">ref</span>=<span class="string">"smsBackTask"</span> <span class="attr">method</span>=<span class="string">"alarmWarning"</span> <span class="attr">cron</span>=<span class="string">"0 0/30 * * * ?"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">task:scheduled</span> <span class="attr">ref</span>=<span class="string">"smsBackTask"</span> <span class="attr">method</span>=<span class="string">"alarmThreadState"</span> <span class="attr">cron</span>=<span class="string">"0 0/20 * * * ?"</span>  /&gt;</span>
+<span class="tag">&lt;/<span class="name">task:scheduled-tasks</span>&gt;</span>
 
-&lt;!-- 通过AOP，可为task加入一些处理 --&gt;
-&lt;bean id=&quot;myScheduleTaskHandler&quot; class=&quot;com.cj.common.MyScheduleTaskHandler&quot;&gt;
-    &lt;property name=&quot;key&quot; value=&quot;${deploy.hostname}&quot;/&gt;
-    &lt;property name=&quot;isCheck&quot; value=&quot;${deploy.hostname.check}&quot;/&gt;
-&lt;/bean&gt;
-&lt;aop:config&gt;
-    &lt;aop:aspect ref=&quot;myScheduleTaskHandler&quot;&gt;
-        &lt;aop:pointcut expression=&quot;execution(public void com.cj.sms.task.*.start*())&quot; id=&quot;myTaskInterceptor&quot;/&gt;
-        &lt;aop:around method=&quot;aroundAdvice&quot; pointcut-ref=&quot;myTaskInterceptor&quot; /&gt;
-    &lt;/aop:aspect&gt;
-&lt;/aop:config&gt;
+<span class="comment">&lt;!-- 通过AOP，可为task加入一些处理 --&gt;</span>
+<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myScheduleTaskHandler"</span> <span class="attr">class</span>=<span class="string">"com.cj.common.MyScheduleTaskHandler"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"${deploy.hostname}"</span>/&gt;</span>
+    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"isCheck"</span> <span class="attr">value</span>=<span class="string">"${deploy.hostname.check}"</span>/&gt;</span>
+<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">"myScheduleTaskHandler"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public void com.cj.sms.task.*.start*())"</span> <span class="attr">id</span>=<span class="string">"myTaskInterceptor"</span>/&gt;</span>
+        <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">"aroundAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"myTaskInterceptor"</span> /&gt;</span>
+    <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span>
 </code></pre>
-<pre><code class="nulljava">public class SmsDailyMessageTask{
-    public void insertDailyMessage()
-    {...}
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmsDailyMessageTask</span></span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertDailyMessage</span><span class="params">()</span>
+    </span>{...}
 }
-public class SmsBackTask{
-    public void alarmWarning()
-    {...}
-    public void alarmThreadState()
-    {...}
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmsBackTask</span></span>{
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">alarmWarning</span><span class="params">()</span>
+    </span>{...}
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">alarmThreadState</span><span class="params">()</span>
+    </span>{...}
 }
 </code></pre>
-<pre><code class="nulljava">public class MyScheduleTaskHandler
-{
-    static Logger logger = Logger.getLogger(MyScheduleTaskHandler.class);
+<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyScheduleTaskHandler</span>
+</span>{
+    <span class="keyword">static</span> Logger logger = Logger.getLogger(MyScheduleTaskHandler.class);
 
-    private String key;
-    public String getKey(){return key;}
-    public void setKey(String key){this.key = key;}
+    <span class="keyword">private</span> String key;
+    <span class="function"><span class="keyword">public</span> String <span class="title">getKey</span><span class="params">()</span></span>{<span class="keyword">return</span> key;}
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(String key)</span></span>{<span class="keyword">this</span>.key = key;}
 
-    private Boolean isCheck;
-    public Boolean getIsCheck(){return isCheck;}
-    public void setIsCheck(Boolean isCheck){this.isCheck = isCheck;}
+    <span class="keyword">private</span> Boolean isCheck;
+    <span class="function"><span class="keyword">public</span> Boolean <span class="title">getIsCheck</span><span class="params">()</span></span>{<span class="keyword">return</span> isCheck;}
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIsCheck</span><span class="params">(Boolean isCheck)</span></span>{<span class="keyword">this</span>.isCheck = isCheck;}
 
-    public Object aroundAdvice(final ProceedingJoinPoint pjp) throws Throwable {
-        if(!this.isCheck)
-            return pjp.proceed();
-        try{
+    <span class="function"><span class="keyword">public</span> Object <span class="title">aroundAdvice</span><span class="params">(<span class="keyword">final</span> ProceedingJoinPoint pjp)</span> <span class="keyword">throws</span> Throwable </span>{
+        <span class="keyword">if</span>(!<span class="keyword">this</span>.isCheck)
+            <span class="keyword">return</span> pjp.proceed();
+        <span class="keyword">try</span>{
             InetAddress netAddress= InetAddress.getLocalHost();
             String hostName=netAddress.getHostName();
-            if(hostName!=null &amp;&amp; hostName.equals(key)){
-                System.out.println(&quot;Do Schedule Task---&quot;);
-                return pjp.proceed();
+            <span class="keyword">if</span>(hostName!=<span class="keyword">null</span> &amp;&amp; hostName.equals(key)){
+                System.out.println(<span class="string">"Do Schedule Task---"</span>);
+                <span class="keyword">return</span> pjp.proceed();
             }
-        }catch(UnknownHostException ex){
-            logger.error(&quot;Get HostName Error:&quot;+ex.getMessage());
+        }<span class="keyword">catch</span>(UnknownHostException ex){
+            logger.error(<span class="string">"Get HostName Error:"</span>+ex.getMessage());
         }
-        return null;
+        <span class="keyword">return</span> <span class="keyword">null</span>;
     }
 }
 </code></pre>

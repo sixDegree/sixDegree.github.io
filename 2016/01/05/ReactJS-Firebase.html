@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#直接使用firebase库"><span class="sidebar-nav nav-text">直接使用firebase库</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#通过reactFire使用firebase-（在React中）"><span class="sidebar-nav nav-text">通过reactFire使用firebase （在React中）</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">直接使用firebase库</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">通过reactFire使用firebase （在React中）</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -125,81 +125,83 @@
   <section class="post-content">
     <p>FireBase 提供实时数据云服务 <a href="https://www.firebase.com/docs/web/quickstart.html">Doc</a></p>
 <p><strong>直接上示例：</strong></p>
-<p><img src="2016-01-03-ReactJS-Firebase/firebase.PNG" alt="my firebase"><br>（下面示例使用的firebase结构）</p>
-<h3 id="直接使用firebase库"><a href="#直接使用firebase库" class="headerlink" title="直接使用firebase库"></a>直接使用firebase库</h3><pre><code class="nullvim">&gt; npm install firebase --save
+<p><img src="/2016/01/05/firebase.PNG" alt="my firebase"><br>（下面示例使用的firebase结构）</p>
+<h3 id="header-1">直接使用firebase库</h3>
+<pre><code class="nullvim">&gt; npm install firebase --save
 
 //或前端使用，直接从CDN获取
-&lt;script src=&quot;https://cdn.firebase.com/js/client/2.4.0/firebase.js&quot;&gt;&lt;/script&gt;
+&lt;script src=<span class="string">"https://cdn.firebase.com/js/client/2.4.0/firebase.js"</span>&gt;&lt;/script&gt;
 </code></pre>
-<pre><code class="nulljavascript">var Firebase=require(&quot;firebase&quot;);
-var DB_URL=&quot;https://&lt;YOUR-FIREBASE-APP&gt;.firebaseio.com/&quot;;
-var Fb=new Firebase(DB_URL);
+<pre><code class="nulljavascript"><span class="keyword">var</span> Firebase=<span class="built_in">require</span>(<span class="string">"firebase"</span>);
+<span class="keyword">var</span> DB_URL=<span class="string">"https://&lt;YOUR-FIREBASE-APP&gt;.firebaseio.com/"</span>;
+<span class="keyword">var</span> Fb=<span class="keyword">new</span> Firebase(DB_URL);
 
-/*
+<span class="comment">/*
 设置数据，可参考：https://www.firebase.com/docs/web/guide/saving-data.html
 set(),update(),push(),transaction( )
 push() function that generates a unique ID, or key, for each new child
-*/
-//username is key
-Fb.child(&quot;users&quot;).child(username).set({username:xxx,password:xxx});
-Fb.child(&quot;users&quot;).child(username).update({password:xxx});
+*/</span>
+<span class="comment">//username is key</span>
+Fb.child(<span class="string">"users"</span>).child(username).set({username:xxx,password:xxx});
+Fb.child(<span class="string">"users"</span>).child(username).update({password:xxx});
 
-//generate a uniqueID as key
-var usersRef=Fb.child(&quot;users&quot;).push();
-var id=usersRef.key();
+<span class="comment">//generate a uniqueID as key</span>
+<span class="keyword">var</span> usersRef=Fb.child(<span class="string">"users"</span>).push();
+<span class="keyword">var</span> id=usersRef.key();
 
-//uniqueID is key
+<span class="comment">//uniqueID is key</span>
 usersRef.push({username:xxx,password:xxx});
 usersRef.push().set({username:xxxx,password:xxx});
 
-/*
+<span class="comment">/*
 获取数据，可参考https://www.firebase.com/docs/web/guide/retrieving-data.html
 Get: (callback to read the data)
-    on(&#39;value&#39;,function(snapshot){xxxx})
-    once(&#39;value&#39;,function(snapshot){xxxx})
+    on('value',function(snapshot){xxxx})
+    once('value',function(snapshot){xxxx})
 Query:
-    orderByChild(&quot;xxx&quot;),orderByKey(),orderByValue(),orderByPriority()
+    orderByChild("xxx"),orderByKey(),orderByValue(),orderByPriority()
     limitToLast(count),limitToFirst(count)
     startAt(xxx),endAt(xxx),equalTo(xxx)
-*/
-Fb.child(&quot;users&quot;).child(username).once(&#39;value&#39;,function(snapshot){
-    console.log(snapshot.key());
-    console.log(snapshot.val());
-    if(snapshot.exists())
-        console.log(snapshot.child(&quot;password&quot;).val());
+*/</span>
+Fb.child(<span class="string">"users"</span>).child(username).once(<span class="string">'value'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">snapshot</span>)</span>{
+    <span class="built_in">console</span>.log(snapshot.key());
+    <span class="built_in">console</span>.log(snapshot.val());
+    <span class="keyword">if</span>(snapshot.exists())
+        <span class="built_in">console</span>.log(snapshot.child(<span class="string">"password"</span>).val());
 });
 </code></pre>
-<h3 id="通过reactFire使用firebase-（在React中）"><a href="#通过reactFire使用firebase-（在React中）" class="headerlink" title="通过reactFire使用firebase （在React中）"></a>通过reactFire使用firebase （在React中）</h3><pre><code class="nulljavascript">var ReactFire=require(&quot;reactfire&quot;);
-var Firebase=require(&quot;firebase&quot;);
+<h3 id="header-2">通过reactFire使用firebase （在React中）</h3>
+<pre><code class="nulljavascript"><span class="keyword">var</span> ReactFire=<span class="built_in">require</span>(<span class="string">"reactfire"</span>);
+<span class="keyword">var</span> Firebase=<span class="built_in">require</span>(<span class="string">"firebase"</span>);
 </code></pre>
-<pre><code class="nulljavascript">// Component中：
+<pre><code class="nulljavascript"><span class="comment">// Component中：</span>
 mixins:[ReactFire],
-getInitialState:function(){
-    return {
-        showForm:false,
-        newQuestion:null,
+getInitialState:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="keyword">return</span> {
+        showForm:<span class="literal">false</span>,
+        newQuestion:<span class="literal">null</span>,
         questions:[]
     }
 },
-componentWillMount:function(){
-    console.log(&quot;Question Will Mount...&quot;);
-    this.fb=new Firebase(rootUrl+&quot;questions/&quot;);
-    this.bindAsArray(this.fb,&quot;questions&quot;);        // =&gt; this.state.questions（当有变化时自动转换为数组，且调用this.setState({questions:xxx})； ）
-    this.fb.on(&quot;value&quot;,this.loadDataHandler);
+componentWillMount:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"Question Will Mount..."</span>);
+    <span class="keyword">this</span>.fb=<span class="keyword">new</span> Firebase(rootUrl+<span class="string">"questions/"</span>);
+    <span class="keyword">this</span>.bindAsArray(<span class="keyword">this</span>.fb,<span class="string">"questions"</span>);        <span class="comment">// =&gt; this.state.questions（当有变化时自动转换为数组，且调用this.setState({questions:xxx})； ）</span>
+    <span class="keyword">this</span>.fb.on(<span class="string">"value"</span>,<span class="keyword">this</span>.loadDataHandler);
 },
-loadDataHandler:function(){
-    console.log(&quot;Data Loaded&quot;);
+loadDataHandler:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
+    <span class="built_in">console</span>.log(<span class="string">"Data Loaded"</span>);
 },
-addNewQuestion:function(newQuestion){
-    //this.firebaseRefs.questions.push(newQuestion);
-    this.fb.push(newQuestion);
-    this.setState({newQuestion:newQuestion});
+addNewQuestion:<span class="function"><span class="keyword">function</span>(<span class="params">newQuestion</span>)</span>{
+    <span class="comment">//this.firebaseRefs.questions.push(newQuestion);</span>
+    <span class="keyword">this</span>.fb.push(newQuestion);
+    <span class="keyword">this</span>.setState({newQuestion:newQuestion});
 },
-voteUpdate:function(questionId,voteCount){
-    this.fb.child(questionId).update({voteCount:voteCount});
+voteUpdate:<span class="function"><span class="keyword">function</span>(<span class="params">questionId,voteCount</span>)</span>{
+    <span class="keyword">this</span>.fb.child(questionId).update({voteCount:voteCount});
 },
-removeItem:function(question){
-    this.fb.child(question[&quot;.key&quot;]).remove();
+removeItem:<span class="function"><span class="keyword">function</span>(<span class="params">question</span>)</span>{
+    <span class="keyword">this</span>.fb.child(question[<span class="string">".key"</span>]).remove();
 }
 </code></pre>
   </section>
