@@ -902,29 +902,29 @@ db1:xxx
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2015/05/01/NoSql-Redis.html';	
-		var disqus_title = 'NoSql之Redis';
-		var disqus_url = 'http://sixdegree.github.io/2015/05/01/NoSql-Redis.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

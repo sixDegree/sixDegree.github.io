@@ -128,9 +128,9 @@
     <h3 id="header-1">Resource文件</h3>
 <ol>
 <li><p>Register MessageSource</p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework.context.support.ResourceBundleMessageSource"</span> &gt;</span>
-      <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"basename"</span> <span class="attr">value</span>=<span class="string">"message"</span> /&gt;</span>  <span class="comment">&lt;!-- messages是配置文件的前缀 --&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span> &gt;</span>
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"messageSource"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.context.support.ResourceBundleMessageSource"</span> &gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"basename"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"message"</span> /&gt;</span>  <span class="hljs-comment">&lt;!-- messages是配置文件的前缀 --&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span> &gt;</span>
 </code></pre>
 </li>
 <li><p>定义国际化需要的资源文件（置于classpath下），例如：</p>
@@ -156,104 +156,104 @@
 <li><code>FixedLocaleResolver</code> ：返回一个固定的本地化信息,默认值为当前JVM的locale</li>
 </ul>
 <p>例如：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> =<span class="string">"localeResolver"</span> <span class="attr">class</span>= <span class="string">"org.springframework.web.servlet.i18n.SessionLocaleResolver"</span> &gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span> =<span class="string">"defaultLocale"</span> <span class="attr">value</span>=<span class="string">"zh_CN"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span> &gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span> =<span class="hljs-string">"localeResolver"</span> <span class="hljs-attr">class</span>= <span class="hljs-string">"org.springframework.web.servlet.i18n.SessionLocaleResolver"</span> &gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span> =<span class="hljs-string">"defaultLocale"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"zh_CN"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span> &gt;</span>
 </code></pre>
 <h3 id="header-3">Local拦截器</h3>
 <p>Local拦截器（可使用已有的，也可自定义处理）</p>
 <p>例如：LocaleChangeInterceptor（拦截URL，获取Local参数值并进行本地化设置）</p>
 <p>LocaleChangeInterceptor源码：</p>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocaleChangeInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>{
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DEFAULT_PARAM_NAME = <span class="string">"locale"</span>;
-    <span class="keyword">private</span> String paramName = DEFAULT_PARAM_NAME;
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setParamName</span><span class="params">(String paramName)</span> </span>{
-        <span class="keyword">this</span>.paramName = paramName;
+<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LocaleChangeInterceptor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HandlerInterceptorAdapter</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DEFAULT_PARAM_NAME = <span class="hljs-string">"locale"</span>;
+    <span class="hljs-keyword">private</span> String paramName = DEFAULT_PARAM_NAME;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setParamName</span><span class="hljs-params">(String paramName)</span> </span>{
+        <span class="hljs-keyword">this</span>.paramName = paramName;
     }
-    <span class="function"><span class="keyword">public</span> String <span class="title">getParamName</span><span class="params">()</span> </span>{
-        <span class="keyword">return</span> <span class="keyword">this</span>.paramName;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getParamName</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.paramName;
     }
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span>
-            <span class="keyword">throws</span> ServletException </span>{
-        String newLocale = request.getParameter(<span class="keyword">this</span>.paramName);
-        <span class="keyword">if</span> (newLocale != <span class="keyword">null</span>) {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">preHandle</span><span class="hljs-params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span>
+            <span class="hljs-keyword">throws</span> ServletException </span>{
+        String newLocale = request.getParameter(<span class="hljs-keyword">this</span>.paramName);
+        <span class="hljs-keyword">if</span> (newLocale != <span class="hljs-keyword">null</span>) {
             LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-            <span class="keyword">if</span> (localeResolver == <span class="keyword">null</span>) {
-                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"No LocaleResolver found: not in a DispatcherServlet request?"</span>);
+            <span class="hljs-keyword">if</span> (localeResolver == <span class="hljs-keyword">null</span>) {
+                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">"No LocaleResolver found: not in a DispatcherServlet request?"</span>);
             }
             localeResolver.setLocale(request, response, StringUtils.parseLocaleString(newLocale));
         }
-        <span class="comment">// Proceed in any case.</span>
-        <span class="keyword">return</span> <span class="keyword">true</span>;
+        <span class="hljs-comment">// Proceed in any case.</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
     }
 }
 </code></pre>
 <p>配置使用：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span> =<span class="string">"localeChangeInterceptor"</span> <span class="attr">class</span>= <span class="string">"org.springframework.web.servlet.i18n.LocaleChangeInterceptor"</span> &gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span> =<span class="string">"paramName"</span> <span class="attr">value</span>= <span class="string">"language"</span> /&gt;</span> <span class="comment">&lt;!-- 对URL中paramName为language的进行处理（默认paramName为local） --&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span> &gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span> =<span class="hljs-string">"localeChangeInterceptor"</span> <span class="hljs-attr">class</span>= <span class="hljs-string">"org.springframework.web.servlet.i18n.LocaleChangeInterceptor"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span> =<span class="hljs-string">"paramName"</span> <span class="hljs-attr">value</span>= <span class="hljs-string">"language"</span> /&gt;</span> <span class="hljs-comment">&lt;!-- 对URL中paramName为language的进行处理（默认paramName为local） --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span> &gt;</span>
 
-<span class="comment">&lt;!-- 加入Local拦截器 --&gt;</span>
-<span class="tag">&lt;<span class="name">mvc:interceptors</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">ref</span>=<span class="string">"localeChangeInterceptor"</span>&gt;</span> <span class="comment">&lt;!-- 拦截所有的URL请求 --&gt;</span>
-    <span class="comment">&lt;!--
+<span class="hljs-comment">&lt;!-- 加入Local拦截器 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">mvc:interceptors</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"localeChangeInterceptor"</span>&gt;</span> <span class="hljs-comment">&lt;!-- 拦截所有的URL请求 --&gt;</span>
+    <span class="hljs-comment">&lt;!--
     &lt;mvc:interceptor&gt;
       &lt;mvc:mapping path="/**" /&gt;
       &lt;mvc:exclude-mapping path="/resources/**"/&gt;
       &lt;bean ref="localeChangeInterceptor"/&gt;
     &lt;/mvc:interceptor&gt; --&gt;</span>
-<span class="tag">&lt;/<span class="name">mvc:interceptors</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">mvc:interceptors</span>&gt;</span>
 </code></pre>
 <h3 id="header-4">前端静态文字国际化</h3>
 <p>使用<code>&lt;spring:message&gt;</code></p>
-<pre><code class="nullhtml"><span class="tag">&lt;<span class="name">%@taglib</span> <span class="attr">prefix</span>= <span class="string">"spring"</span> <span class="attr">uri</span> =<span class="string">"http://www.springframework.org/tags"</span> %&gt;</span>     
+<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">%@taglib</span> <span class="hljs-attr">prefix</span>= <span class="hljs-string">"spring"</span> <span class="hljs-attr">uri</span> =<span class="hljs-string">"http://www.springframework.org/tags"</span> %&gt;</span>     
 
-<span class="tag">&lt;<span class="name">li</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> =<span class="string">"?language=en"</span>&gt;</span><span class="tag">&lt; <span class="attr">spring:message</span> <span class="attr">code</span> =<span class="string">"language.en"</span> <span class="attr">text</span> =<span class="string">"English"</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">li</span>&gt;</span>
-<span class="tag">&lt;<span class="name">li</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span> =<span class="string">"?language=zh_CN"</span>&gt;</span><span class="tag">&lt; <span class="attr">spring:message</span> <span class="attr">code</span> =<span class="string">"language.cn"</span> <span class="attr">text</span>= <span class="string">"Chinese"</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span> =<span class="hljs-string">"?language=en"</span>&gt;</span><span class="hljs-tag">&lt; <span class="hljs-attr">spring:message</span> <span class="hljs-attr">code</span> =<span class="hljs-string">"language.en"</span> <span class="hljs-attr">text</span> =<span class="hljs-string">"English"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span> =<span class="hljs-string">"?language=zh_CN"</span>&gt;</span><span class="hljs-tag">&lt; <span class="hljs-attr">spring:message</span> <span class="hljs-attr">code</span> =<span class="hljs-string">"language.cn"</span> <span class="hljs-attr">text</span>= <span class="hljs-string">"Chinese"</span> /&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
 
-MenuText : <span class="tag">&lt;<span class="name">spring:message</span> <span class="attr">code</span>=<span class="string">"menu.title"</span> <span class="attr">text</span>=<span class="string">"default text"</span> /&gt;</span>
+MenuText : <span class="hljs-tag">&lt;<span class="hljs-name">spring:message</span> <span class="hljs-attr">code</span>=<span class="hljs-string">"menu.title"</span> <span class="hljs-attr">text</span>=<span class="hljs-string">"default text"</span> /&gt;</span>
 CurrentLocale : ${pageContext.response.locale}
 </code></pre>
 <h3 id="header-5">后端动态信息国际化</h3>
-<pre><code class="nulljava">RequestContext requestContext = <span class="keyword">new</span> RequestContext(request);
+<pre><code class="nulljava">RequestContext requestContext = <span class="hljs-keyword">new</span> RequestContext(request);
 Locale myLocale = requestContext.getLocale();
-System.out.println(<span class="string">"-------------------------------------"</span>);
+System.out.println(<span class="hljs-string">"-------------------------------------"</span>);
 System.out.println(myLocale);
-System.out.println(requestContext.getMessage(<span class="string">"menu.title"</span>));
-System.out.println(requestContext.getMessage(<span class="string">"ctrl.auth.fail"</span>,<span class="keyword">new</span> Object[]{<span class="string">"Add"</span>,<span class="string">"R028394"</span>},<span class="string">"Operate Fail"</span>));
+System.out.println(requestContext.getMessage(<span class="hljs-string">"menu.title"</span>));
+System.out.println(requestContext.getMessage(<span class="hljs-string">"ctrl.auth.fail"</span>,<span class="hljs-keyword">new</span> Object[]{<span class="hljs-string">"Add"</span>,<span class="hljs-string">"R028394"</span>},<span class="hljs-string">"Operate Fail"</span>));
 </code></pre>
   </section>
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2013/08/05/Spring-I18N.html';	
-		var disqus_title = 'Spring应用之I18N';
-		var disqus_url = 'http://sixdegree.github.io/2013/08/05/Spring-I18N.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

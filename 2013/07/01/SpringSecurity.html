@@ -127,57 +127,57 @@
   <section class="post-content">
     <h2 id="header-1">依赖包</h2>
 <h3 id="header-2">基础包</h3>
-<pre><code class="nullxml"><span class="comment">&lt;!-- 核心框架和类 --&gt;</span>
-<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 核心框架和类 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 
-<span class="comment">&lt;!-- 支持web层 --&gt;</span>
-<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>    
+<span class="hljs-comment">&lt;!-- 支持web层 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>    
 
-<span class="comment">&lt;!-- 整体配置支持 --&gt;</span>
-<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 整体配置支持 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-config<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 
-<span class="comment">&lt;!-- 支持JSP标签库 --&gt;</span>
-<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-taglibs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">type</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">type</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 支持JSP标签库 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-taglibs<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>jar<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>compile<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 </code></pre>
 <h3 id="header-3">额外支持包</h3>
 <ol>
-<li>支持CAS<pre><code class="nullxml"> <span class="comment">&lt;!-- Addition: 支持CAS--&gt;</span>
- <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
- <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<li>支持CAS<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- Addition: 支持CAS--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-cas<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-cas-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 </code></pre>
 </li>
-<li>支持LDAP<pre><code class="nullxml"> <span class="comment">&lt;!-- Addition:支持LDAP --&gt;</span>
- <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-ldap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<li>支持LDAP<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- Addition:支持LDAP --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-ldap<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 </code></pre>
 </li>
 <li>支持ACL，加入<code>spring-security-acl-nnn.jar</code></li>
@@ -186,37 +186,37 @@
 <h2 id="header-4">装载SpringSecurity</h2>
 <h3 id="header-5">配置web.xml文件</h3>
 <ol>
-<li>context-param<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">context-param</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath*:beans.xml,classpath*:security.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span>
+<li>context-param<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">context-param</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath*:beans.xml,classpath*:security.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">context-param</span>&gt;</span>
 </code></pre>
 </li>
 <li>listener<ul>
-<li>加载Spring监听器 （因为下面的过滤器Filter中要使用到此Bean，所以使用Listener的方式加载spring）<pre><code class="nullxml"><span class="tag">&lt;<span class="name">listener</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+<li>加载Spring监听器 （因为下面的过滤器Filter中要使用到此Bean，所以使用Listener的方式加载spring）<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
 </code></pre>
 </li>
-<li>加载Security Session生命周期事件监听器<pre><code class="nullxml"><span class="comment">&lt;!--设置session 超时时间间隔：以分钟为单位，值必须为整数（如果值为零或负数，则表示会话将永远不会超时）--&gt;</span>
-<span class="tag">&lt;<span class="name">session-config</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>60<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">session-config</span>&gt;</span>
-<span class="tag">&lt;<span class="name">listener</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+<li>加载Security Session生命周期事件监听器<pre><code class="nullxml"><span class="hljs-comment">&lt;!--设置session 超时时间间隔：以分钟为单位，值必须为整数（如果值为零或负数，则表示会话将永远不会超时）--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">session-config</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">session-timeout</span>&gt;</span>60<span class="hljs-tag">&lt;/<span class="hljs-name">session-timeout</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">session-config</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
 </code></pre>
 </li>
 </ul>
 </li>
-<li>filter<pre><code class="nullxml"><span class="tag">&lt;<span class="name">filter</span>&gt;</span>
- <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
- <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">filter</span>&gt;</span>
-<span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span>
- <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>
- <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span>
+<li>filter<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span>
 </code></pre>
 </li>
 </ol>
@@ -235,7 +235,7 @@
 <li>Spring监听器<code>ContextLoaderListener</code>，初始化Spring容器（调用 <code>contextInitialized(ServletContextEvent event)</code>）<ul>
 <li><code>ServletContext sc= event.getServletContext();</code></li>
 <li><code>this.contextLoader.initWebApplicationContext(sc);</code><ul>
-<li>获取<code>&lt;context-param&gt;</code>中<code>contextConfigLocation</code>指定的配置文件<pre><code class="nulljava">context-param的值 = sc.getInitParameter(<span class="string">"context-param的键"</span>);
+<li>获取<code>&lt;context-param&gt;</code>中<code>contextConfigLocation</code>指定的配置文件<pre><code class="nulljava">context-param的值 = sc.getInitParameter(<span class="hljs-string">"context-param的键"</span>);
 </code></pre>
 </li>
 <li>交给<code>WebApplicationContext</code>，解析并注入配置文件中定义的Bean</li>
@@ -253,20 +253,20 @@
 </li>
 </ul>
 </li>
-<li>注意：Security配置文件需添加Spring Security命名空间）:<pre><code class="nullxml"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
-  <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-  <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
-  <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
-  <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
-  <span class="attr">xmlns:sec</span>=<span class="string">"http://www.springframework.org/schema/security"</span>
-  <span class="attr">xsi:schemaLocation</span>=<span class="string">"
+<li>注意：Security配置文件需添加Spring Security命名空间）:<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
+  <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
+  <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
+  <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
+  <span class="hljs-attr">xmlns:sec</span>=<span class="hljs-string">"http://www.springframework.org/schema/security"</span>
+  <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd"</span>&gt;</span>
   ...
-<span class="tag">&lt;/<span class="name">beans</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
 </code></pre>
 </li>
 </ul>
@@ -359,9 +359,9 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 <li>若发现过期了，则跳转到<code>expired-url</code>配置的url，或者响应session失效提示信息</li>
 </ul>
 <p>配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:session-management</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:concurrency-control</span> <span class="attr">max-sessions</span>=<span class="string">"1"</span> <span class="attr">error-if-maximum-exceeded</span>=<span class="string">"true"</span> <span class="attr">expired-url</span>= <span class="string">"/xxx"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:session-management</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:session-management</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:concurrency-control</span> <span class="hljs-attr">max-sessions</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">error-if-maximum-exceeded</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">expired-url</span>= <span class="hljs-string">"/xxx"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:session-management</span>&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -398,12 +398,12 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 <li>成功后交由有<code>logoutSuccessHandler</code>处理（跳转到指定URL）</li>
 </ul>
 <p>配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:logout</span>
-    <span class="attr">logout-success-url</span>=<span class="string">""</span>
-    <span class="attr">success-handler-ref</span>=<span class="string">""</span>
-    <span class="attr">logout-url</span>=<span class="string">""</span>
-    <span class="attr">invalidate-session</span>=<span class="string">"false"</span>
-    <span class="attr">deleteCookies</span>=<span class="string">“XXX,XXX”</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:logout</span>
+    <span class="hljs-attr">logout-success-url</span>=<span class="hljs-string">""</span>
+    <span class="hljs-attr">success-handler-ref</span>=<span class="hljs-string">""</span>
+    <span class="hljs-attr">logout-url</span>=<span class="hljs-string">""</span>
+    <span class="hljs-attr">invalidate-session</span>=<span class="hljs-string">"false"</span>
+    <span class="hljs-attr">deleteCookies</span>=<span class="hljs-string">“XXX,XXX”</span>
 /&gt;</span>
 </code></pre>
 <table class="table">
@@ -435,17 +435,17 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 <p><strong>PS: </strong></p>
 <p><code>logout-success-url</code> 和 <code>success-handler-ref</code> 只能设置其中之一</p>
 <ul>
-<li>使用<code>logout-success-url</code> ：<pre><code class="nullxml">  <span class="tag">&lt;<span class="name">sec:logout</span> <span class="attr">logout-success-url</span>=<span class="string">"/index"</span>/&gt;</span>
+<li>使用<code>logout-success-url</code> ：<pre><code class="nullxml">  <span class="hljs-tag">&lt;<span class="hljs-name">sec:logout</span> <span class="hljs-attr">logout-success-url</span>=<span class="hljs-string">"/index"</span>/&gt;</span>
 </code></pre>
 </li>
-<li>使用<code>success-handler-ref</code><pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:logout</span> <span class="attr">success-handler-ref</span>=<span class="string">"myLogoutSuccessHandler"</span>/&gt;</span>
-<span class="comment">&lt;!--
+<li>使用<code>success-handler-ref</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:logout</span> <span class="hljs-attr">success-handler-ref</span>=<span class="hljs-string">"myLogoutSuccessHandler"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!--
 myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 功能：为LogoutURL加入动态时间参数，以防止被浏览器缓存
 --&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myLogoutSuccessHandler"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.core.auth.MyLogoutSuccessHandler"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"logoutSuccessUrl"</span> <span class="attr">value</span>=<span class="string">"https://sso.seagate.com/logout.html?doc="</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myLogoutSuccessHandler"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.security.core.auth.MyLogoutSuccessHandler"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"logoutSuccessUrl"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"https://sso.seagate.com/logout.html?doc="</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 </li>
 </ul>
@@ -463,44 +463,44 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </li>
 </ul>
 <p>例如：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>&gt;</span>
     ...
-    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">position</span>=<span class="string">"PRE_AUTH_FILTER"</span> <span class="attr">ref</span>=<span class="string">"siteminderFilter"</span> /&gt;</span>
-<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:custom-filter</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"PRE_AUTH_FILTER"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"siteminderFilter"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"siteminderFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"principalRequestHeader"</span> <span class="attr">value</span>=<span class="string">"SM-USER"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionIfHeaderMissing"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"myAuthenticationManager"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"siteminderFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"principalRequestHeader"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"SM-USER"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"exceptionIfHeaderMissing"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"false"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myAuthenticationManager"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
 ```xml
-<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>&gt;</span>
     ...
-    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">position</span>=<span class="string">"PRE_AUTH_FILTER"</span> <span class="attr">ref</span>=<span class="string">"siteminderFilter"</span> /&gt;</span>
-<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:custom-filter</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"PRE_AUTH_FILTER"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"siteminderFilter"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"siteminderFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"principalRequestHeader"</span> <span class="attr">value</span>=<span class="string">"SM-USER"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"exceptionIfHeaderMissing"</span> <span class="attr">value</span>=<span class="string">"false"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"myAuthenticationManager"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"siteminderFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"principalRequestHeader"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"SM-USER"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"exceptionIfHeaderMissing"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"false"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myAuthenticationManager"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">ref</span>=<span class="string">"preauthAuthProvider"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myAuthenticationManager"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"preauthAuthProvider"</span> /&gt;</span>
     ...
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"preauthAuthProvider"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"preAuthenticatedUserDetailsService"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"userDetailsServiceWrapper"</span>  <span class="attr">class</span>=<span class="string">"org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"myUserDetailsService"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"preauthAuthProvider"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"preAuthenticatedUserDetailsService"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userDetailsServiceWrapper"</span>  <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userDetailsService"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myUserDetailsService"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span> 
 
-<span class="comment">&lt;!-- 通过myUserDetailsService获取用户权限列表--&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.security.service.MyUserDetailsService"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- 通过myUserDetailsService获取用户权限列表--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myUserDetailsService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.security.service.MyUserDetailsService"</span>/&gt;</span>
 </code></pre>
 <h3 id="header-14">700 CAS_FILTER</h3>
 <p>CAS认证过滤器（需手动注入）</p>
@@ -538,22 +538,22 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </li>
 </ul>
 <p>配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:form-login</span> 
-    <span class="attr">login-page</span>=<span class="string">"/index"</span> 
-    <span class="attr">authentication-failure-url</span>=<span class="string">"/index?login_error=t"</span> 
-    <span class="attr">default-target-url</span>=<span class="string">"/index"</span>
-    <span class="attr">login-processing-url</span>=<span class="string">"/common/login-process"</span> 
-    <span class="attr">password-parameter</span>=<span class="string">"myPassword"</span> 
-    <span class="attr">username-parameter</span>=<span class="string">"myUsername"</span> /&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:form-login</span> 
+    <span class="hljs-attr">login-page</span>=<span class="hljs-string">"/index"</span> 
+    <span class="hljs-attr">authentication-failure-url</span>=<span class="hljs-string">"/index?login_error=t"</span> 
+    <span class="hljs-attr">default-target-url</span>=<span class="hljs-string">"/index"</span>
+    <span class="hljs-attr">login-processing-url</span>=<span class="hljs-string">"/common/login-process"</span> 
+    <span class="hljs-attr">password-parameter</span>=<span class="hljs-string">"myPassword"</span> 
+    <span class="hljs-attr">username-parameter</span>=<span class="hljs-string">"myUsername"</span> /&gt;</span>
 </code></pre>
 <p>相当于：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"authenticationFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"authenticationManager"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"postOnly "</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>  <span class="comment">&lt;!-- 默认即为true，只处理post请求 --&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"filterProcessesUrl"</span> <span class="attr">value</span>=<span class="string">"/common/login-process"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"usernameParameter"</span> <span class="attr">value</span>=<span class="string">"myPassword "</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"passwordParameter"</span> <span class="attr">value</span>=<span class="string">"myUsername"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"authenticationFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"authenticationManager"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"postOnly "</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>  <span class="hljs-comment">&lt;!-- 默认即为true，只处理post请求 --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"filterProcessesUrl"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/common/login-process"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"usernameParameter"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"myPassword "</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"passwordParameter"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"myUsername"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -604,20 +604,20 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <h3 id="header-18">1100    DIGEST_AUTH_FILTER</h3>
 <p><strong><code>DigestAuthenticationFilter</code>: Digest认证过滤器(需手动注入)</strong></p>
 <pre><code class="nullxml">
-<span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">ref</span>=<span class="string">"digestFilter"</span> <span class="attr">position</span>=<span class="string">"DIGEST_AUTH_FILTER"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:custom-filter</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"digestFilter"</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"DIGEST_AUTH_FILTER"</span> /&gt;</span>
     ...
-<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationFilter"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"myUserService"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationEntryPoint"</span> <span class="attr">ref</span>=<span class="string">"digestEntryPoint"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"digestFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.www.DigestAuthenticationFilter"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userDetailsService"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myUserService"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationEntryPoint"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"digestEntryPoint"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestEntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"realmName"</span> <span class="attr">value</span>=<span class="string">"shuttle vendor"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"zero"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"digestEntryPoint"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"realmName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"shuttle vendor"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"key"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"zero"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 <h3 id="header-19">1200    BASIC_AUTH_FILTER</h3>
 <p><strong><code>BasicAuthenticationFilter</code>: 基本认证</strong></p>
@@ -628,8 +628,8 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <p>未认证用户发送一个请求Request时，会有<code>ExceptionTranslationFilter</code>捕获到<code>Authentication</code>或匿名用户引发的<code>AccessDeniedException</code>，并将此Request暂时保存到Session，供下次通过认证时恢复这个Request</p>
 <p><code>interface RequestCache</code>实现类有：<code>HttpSessionRequestCache</code>（默认）,<code>NullRequestCache</code></p>
 <p><strong>配置不恢复打断请求：</strong></p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:request-cache</span> <span class="attr">ref</span>=<span class="string">"nullRequestCache"</span>/&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"nullRequestCache"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.savedrequest.NullRequestCache"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:request-cache</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"nullRequestCache"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"nullRequestCache"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.savedrequest.NullRequestCache"</span>/&gt;</span>
 </code></pre>
 <h3 id="header-21">1400    SERVLET_API_SUPPORT_FILTER</h3>
 <p><strong><code>SecurityContextHolderAwareRequestFilter</code>: 封装一些ServletApi到Request对象</strong></p>
@@ -661,17 +661,17 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <p><code>Remember me</code>功能设置了一个cookie在用户的浏览器上，它包含一个Base64编码的字符串，包含以下内容：</p>
 <ul>
 <li>一个MD5的散列值，包括过期日期/时间、用户名和密码；</li>
-<li>应用的key值，是在<remember-me>元素的key属性中定义的</li>
+<li>应用的key值，是在<remember-me>元素的key属性中定义的</remember-me></li>
 </ul>
 <p>使用：</p>
 <ol>
 <li><p>通过配置<code>&lt;remember-me&gt;</code>，添加此Filter到过滤器链中</p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">sec:remember-me</span> 
-     <span class="attr">key</span>=<span class="string">""</span> 
-     <span class="attr">data-source-ref</span>=<span class="string">""</span> 
-     <span class="attr">user-service-ref</span>=<span class="string">""</span> 
-     <span class="attr">token-validity-seconds</span>=<span class="string">""</span> 
-     <span class="attr">token-repository-ref</span>=<span class="string">""</span>/&gt;</span>
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">sec:remember-me</span> 
+     <span class="hljs-attr">key</span>=<span class="hljs-string">""</span> 
+     <span class="hljs-attr">data-source-ref</span>=<span class="hljs-string">""</span> 
+     <span class="hljs-attr">user-service-ref</span>=<span class="hljs-string">""</span> 
+     <span class="hljs-attr">token-validity-seconds</span>=<span class="hljs-string">""</span> 
+     <span class="hljs-attr">token-repository-ref</span>=<span class="hljs-string">""</span>/&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -697,9 +697,9 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </table>
 </li>
 <li><p>在<code>&lt;form&gt;</code>中触发rememberMe功能</p>
-<pre><code class="nullxml"><span class="comment">&lt;!-- URL?_spring_security_ remember_me=true --&gt;</span>
-<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"remember"</span> <span class="attr">name</span>=<span class="string">"_spring_security_ remember_me"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
-<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"remember "</span>&gt;</span> Remember Me? <span class="tag">&lt;/<span class="name">label</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- URL?_spring_security_ remember_me=true --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"remember"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"_spring_security_ remember_me"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"remember "</span>&gt;</span> Remember Me? <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
 </code></pre>
 </li>
 </ol>
@@ -711,7 +711,7 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </ul>
 <p>即若前面Filter（UsernamePasswordAuthenticationFilter、BasicAuthenticationFilter、RememberMeAuthenticationFilter等）都未认证成功，则在当前的SecurityContext中添加一个经过匿名认证的token</p>
 <p><strong>配置：</strong></p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:anonymous</span> <span class="attr">key</span>=<span class="string">"test"</span> <span class="attr">granted-authority</span>=<span class="string">"ROLE_GUEST"</span> <span class="attr">username</span>=<span class="string">"guest"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:anonymous</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"test"</span> <span class="hljs-attr">granted-authority</span>=<span class="hljs-string">"ROLE_GUEST"</span> <span class="hljs-attr">username</span>=<span class="hljs-string">"guest"</span>/&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -739,9 +739,9 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <li>session并发控制：通过concurrency-control配置</li>
 </ol>
 <p><strong>配置security.xml：</strong></p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:session-management</span> <span class="attr">session-fixation-protection</span>=<span class="string">"migrateSession"</span> <span class="attr">invalid-session-url</span>=<span class="string">"/common/timeout.jsp"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:concurrency-control</span> <span class="attr">max-sessions</span>=<span class="string">"1"</span> <span class="attr">expired-url</span>= <span class="string">"/index?error=This session has been expired"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:session-management</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:session-management</span> <span class="hljs-attr">session-fixation-protection</span>=<span class="hljs-string">"migrateSession"</span> <span class="hljs-attr">invalid-session-url</span>=<span class="hljs-string">"/common/timeout.jsp"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:concurrency-control</span> <span class="hljs-attr">max-sessions</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">expired-url</span>= <span class="hljs-string">"/index?error=This session has been expired"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:session-management</span>&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -765,16 +765,16 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </tbody>
 </table>
 <p><strong>配置web.xml：</strong></p>
-<pre><code class="nullxml"><span class="comment">&lt;!-- 设置session 超时时间 --&gt;</span>
-<span class="tag">&lt;<span class="name">session-config</span>&gt;</span>
-         <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span>60<span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">session-config</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 设置session 超时时间 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">session-config</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">session-timeout</span>&gt;</span>60<span class="hljs-tag">&lt;/<span class="hljs-name">session-timeout</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">session-config</span>&gt;</span>
 
-<span class="comment">&lt;!-- 让servelt容器通知SpringSecurity session失效 --&gt;</span>
-<span class="comment">&lt;!-- HttpSessionEventPublisher监听器：主要监听sessionCreated、sessionDestroyed事件，发布通知--&gt;</span>
-<span class="tag">&lt;<span class="name">listener</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">listener</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 让servelt容器通知SpringSecurity session失效 --&gt;</span>
+<span class="hljs-comment">&lt;!-- HttpSessionEventPublisher监听器：主要监听sessionCreated、sessionDestroyed事件，发布通知--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
 </code></pre>
 <p><strong>PS：</strong><br><code>ConcurrentSessionFilter</code>过滤器也是处理session失效，但是它所处理的仅仅是封装后的<code>SessionInformation</code>类，如果这个类满足失效条件，再执行<code>session.invalidate</code>强制失效</p>
 <h3 id="header-26">1900    EXCEPTION_TRANSLATION_FILTER</h3>
@@ -795,11 +795,11 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </li>
 </ol>
 <p>配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"false"</span> 
-    <span class="attr">entry-point-ref</span>=<span class="string">"http403EntryPoint"</span> 
-    <span class="attr">access-denied-page</span>=<span class="string">"/home/accessDenied"</span> &gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">auto-config</span>=<span class="hljs-string">"false"</span> 
+    <span class="hljs-attr">entry-point-ref</span>=<span class="hljs-string">"http403EntryPoint"</span> 
+    <span class="hljs-attr">access-denied-page</span>=<span class="hljs-string">"/home/accessDenied"</span> &gt;</span>
     ...
-<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -820,11 +820,11 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </tbody>
 </table>
 <p>手动指定AuthenticationEntryPoint：</p>
-<pre><code class="nullxml"><span class="comment">&lt;!-- 
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 
 这里使用Security自带的AuthenticationEntryPoint，也可使用自定义的
 ( Response 403 error，msg: "Access Denied" )
 --&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"http403EntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"http403EntryPoint"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.Http403ForbiddenEntryPoint"</span>/&gt;</span>
 </code></pre>
 <h3 id="header-27">2000    FILTER_SECURITY_INTERCEPTOR</h3>
 <p><strong><code>FilterSecurityInterceptor</code>: Web级别的访问控制</strong></p>
@@ -838,21 +838,21 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </li>
 </ul>
 <p>配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">pattern</span>=<span class="string">"/resources/**"</span>  <span class="attr">security</span>=<span class="string">"none"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/resources/**"</span>  <span class="hljs-attr">security</span>=<span class="hljs-string">"none"</span>/&gt;</span>
 </code></pre>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/security/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/back/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN,ROLE_USER"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/security/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"ROLE_ADMIN"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/back/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"ROLE_ADMIN,ROLE_USER"</span>/&gt;</span>
     ...
-<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 </code></pre>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">use-expressions</span>=<span class="string">"true"</span> &gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/"</span> <span class="attr">access</span>=<span class="string">"hasRole('ROLE_GUEST') or authenticated"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/"</span> <span class="attr">access</span>=<span class="string">"permitAll"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-urlpattern="</span>/<span class="attr">admin</span>/**"<span class="attr">access</span>=<span class="string">"hasRole('ROLE_ADMIN')"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/api/**"</span> <span class="attr">method</span>=<span class="string">"GET"</span> <span class="attr">access</span>=<span class="string">"hasAnyRole('ROLE_USER','ROLE_ADMIN')"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">use-expressions</span>=<span class="hljs-string">"true"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('ROLE_GUEST') or authenticated"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"permitAll"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-urlpattern="</span>/<span class="hljs-attr">admin</span>/**"<span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('ROLE_ADMIN')"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/**"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"GET"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasAnyRole('ROLE_USER','ROLE_ADMIN')"</span>/&gt;</span>
     ...
-<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -950,12 +950,12 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <h3 id="header-28">2100    SWITCH_USER_FILTER</h3>
 <p><strong><code>SwitchUserFilter</code>: 切换用户</strong></p>
 <h2 id="header-29">http标签</h2>
-<p><code>HttpSecurityBeanDefinitionParser</code>解析<http>标签</p>
+<p><code>HttpSecurityBeanDefinitionParser</code>解析<http>标签</http></p>
 <p>最小化配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"true"</span> &gt;</span>
-        <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN"</span>/&gt;</span> 
-        <span class="comment">&lt;!--使用Ant风格的路径--&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">auto-config</span>=<span class="hljs-string">"true"</span> &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"ROLE_ADMIN"</span>/&gt;</span> 
+        <span class="hljs-comment">&lt;!--使用Ant风格的路径--&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 </code></pre>
 <ul>
 <li>使用<code>&lt;http&gt;</code>标签将会自动创建一个<code>FilterChainProxy</code>（它会委托给配置在<code>web.xml</code>中的<code>DelegatingFilterProxy</code>）以及链中的所有过滤器Bean</li>
@@ -963,12 +963,12 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <li>额外登陆页</li>
 <li>http基本认证</li>
 <li>登出功能</li>
-<li>即等价于显示配置了：<code>&lt;form-login/&gt;</code> ,<code>&lt;http-basic/&gt;</code> ,<code>&lt;logout/&gt;</code>标签<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"true"</span> &gt;</span>
-  <span class="tag">&lt;<span class="name">sec:form-login</span>/&gt;</span>
-  <span class="tag">&lt;<span class="name">sec:http-basic</span>/&gt;</span>
-  <span class="tag">&lt;<span class="name">sec:logout</span>/&gt;</span>
-  <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_ADMIN"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<li>即等价于显示配置了：<code>&lt;form-login/&gt;</code> ,<code>&lt;http-basic/&gt;</code> ,<code>&lt;logout/&gt;</code>标签<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">auto-config</span>=<span class="hljs-string">"true"</span> &gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">sec:form-login</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">sec:http-basic</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">sec:logout</span>/&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"ROLE_ADMIN"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 </code></pre>
 </li>
 </ul>
@@ -990,15 +990,15 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </li>
 </ol>
 <p>简单配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"authenticationManager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:user-service</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">authorities</span>=<span class="string">"ROLE_USER"</span> <span class="attr">name</span>=<span class="string">"tom"</span> <span class="attr">password</span>=<span class="string">"123"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">authorities</span>=<span class="string">"ROLE_USER"</span> <span class="attr">name</span>=<span class="string">"jerry"</span> <span class="attr">password</span>=<span class="string">"456"</span>/&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">authorities</span>=<span class="string">"ROLE_ADMIN"</span> <span class="attr">name</span>=<span class="string">"admin"</span> <span class="attr">password</span>=<span class="string">"111"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">sec:user-service</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"authenticationManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:user-service</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:user</span> <span class="hljs-attr">authorities</span>=<span class="hljs-string">"ROLE_USER"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"tom"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"123"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:user</span> <span class="hljs-attr">authorities</span>=<span class="hljs-string">"ROLE_USER"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jerry"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"456"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:user</span> <span class="hljs-attr">authorities</span>=<span class="hljs-string">"ROLE_ADMIN"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"admin"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"111"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sec:user-service</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
 <p><strong>PS：</strong><br>用户的认证信息通过<code>SecurityContextHolder</code>信息传递。<br>eg: <code>SecurityContextHolder.getContext().getAuthentication();</code></p>
 <p>Authentication接口可以实现的方法：</p>
@@ -1031,83 +1031,83 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <h3 id="header-31">JDBC认证</h3>
 <p>SpringSecurity使用<code>DaoAuthenticationProvider</code>支持<code>UsernamePasswordAuthenticationToken</code></p>
 <p>需使用自定义的<code>UserDetailsService</code>实现类，从DB获取用户信息构建<code>UserDetails</code>对象，例如：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.service.MyUserDetailsServiceImpl"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myUserDetailsService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.security.service.MyUserDetailsServiceImpl"</span>/&gt;</span>
 </code></pre>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserDetailsService</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span></span>{
-    <span class="keyword">static</span> Logger logger = Logger.getLogger(MyUserDetailsService.class);
-    <span class="keyword">private</span> ISecurityService securityService;
+<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyUserDetailsService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserDetailsService</span></span>{
+    <span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(MyUserDetailsService.class);
+    <span class="hljs-keyword">private</span> ISecurityService securityService;
 
-    <span class="function"><span class="keyword">public</span> ISecurityService <span class="title">getSecurityService</span><span class="params">()</span></span>{
-        <span class="keyword">return</span> securityService;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ISecurityService <span class="hljs-title">getSecurityService</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> securityService;
     }
-    <span class="meta">@Inject</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecurityService</span><span class="params">(ISecurityService securityService)</span></span>{
-        <span class="keyword">this</span>.securityService = securityService;
+    <span class="hljs-meta">@Inject</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSecurityService</span><span class="hljs-params">(ISecurityService securityService)</span></span>{
+        <span class="hljs-keyword">this</span>.securityService = securityService;
     }
 
-    <span class="meta">@Override</span>
-    <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String account)</span>
-            <span class="keyword">throws</span> UsernameNotFoundException</span>{
-        <span class="comment">//MyUser implements UserDetails, CredentialsContainer</span>
-        <span class="comment">//一般获取用户的account,password,salt信息</span>
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> UserDetails <span class="hljs-title">loadUserByUsername</span><span class="hljs-params">(String account)</span>
+            <span class="hljs-keyword">throws</span> UsernameNotFoundException</span>{
+        <span class="hljs-comment">//MyUser implements UserDetails, CredentialsContainer</span>
+        <span class="hljs-comment">//一般获取用户的account,password,salt信息</span>
         MyUser user=securityService.getUser(account);
-        <span class="keyword">if</span>(user==<span class="keyword">null</span>)
-            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"No User"</span>);
-        <span class="comment">//获取用户角色列表</span>
+        <span class="hljs-keyword">if</span>(user==<span class="hljs-keyword">null</span>)
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UsernameNotFoundException(<span class="hljs-string">"No User"</span>);
+        <span class="hljs-comment">//获取用户角色列表</span>
         List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
-        <span class="keyword">if</span>(glist==<span class="keyword">null</span> || glist.size()==<span class="number">0</span>)
-            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"No GrantedAuthority"</span>);
-        UserDetails userDetails=<span class="keyword">new</span> MyUser(user, glist);
-        <span class="keyword">return</span> userDetails;
+        <span class="hljs-keyword">if</span>(glist==<span class="hljs-keyword">null</span> || glist.size()==<span class="hljs-number">0</span>)
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UsernameNotFoundException(<span class="hljs-string">"No GrantedAuthority"</span>);
+        UserDetails userDetails=<span class="hljs-keyword">new</span> MyUser(user, glist);
+        <span class="hljs-keyword">return</span> userDetails;
     }
 }
 </code></pre>
 <h4 id="header-32">password使用plaintext明文（即不加密）</h4>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"myAuthenticationManager"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">user-service-ref</span>=<span class="hljs-string">"myUserDetailsService"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
 <h4 id="header-33">使用MD5+salt:username 加密 （即对{usermane}password加密）</h4>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:password-encoder</span> <span class="attr">hash</span>=<span class="string">"md5"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:salt-source</span> <span class="attr">user-property</span>=<span class="string">"username"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">sec:password-encoder</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">user-service-ref</span>=<span class="hljs-string">"myUserDetailsService"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:password-encoder</span> <span class="hljs-attr">hash</span>=<span class="hljs-string">"md5"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:salt-source</span> <span class="hljs-attr">user-property</span>=<span class="hljs-string">"username"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sec:password-encoder</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
 <p>相当于：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">authentication-manager</span> <span class="attr">alias</span>=<span class="string">"authenticationManager"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">password-encoder</span> <span class="attr">ref</span>=<span class="string">"passwordEncoder"</span>&gt;</span>
-      <span class="tag">&lt;<span class="name">salt-source</span> <span class="attr">ref</span>=<span class="string">"saltSource"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">password-encoder</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">authentication-provider</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">authentication-manager</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"authenticationManager"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">authentication-provider</span> <span class="hljs-attr">user-service-ref</span>=<span class="hljs-string">"myUserDetailsService"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">password-encoder</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"passwordEncoder"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">salt-source</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"saltSource"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">password-encoder</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">authentication-provider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">authentication-manager</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.authentication.encoding.Md5PasswordEncoder"</span> <span class="attr">id</span>=<span class="string">"passwordEncoder"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.authentication.encoding.Md5PasswordEncoder"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"passwordEncoder"</span>/&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.authentication.dao.ReflectionSaltSource"</span> <span class="attr">id</span>=<span class="string">"saltSource"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userPropertyToUse"</span> <span class="attr">value</span>=<span class="string">"username"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.authentication.dao.ReflectionSaltSource"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"saltSource"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userPropertyToUse"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"username"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 <h4 id="header-34">使用MD5+salt:radom 加密（推荐！）</h4>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"mySaltUserDetailsService"</span> &gt;</span>
-        <span class="tag">&lt;<span class="name">sec:password-encoder</span> <span class="attr">hash</span>=<span class="string">"md5"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:salt-source</span> <span class="attr">user-property</span>=<span class="string">"usersalt"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">sec:password-encoder</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"myAuthenticationManager"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">user-service-ref</span>=<span class="hljs-string">"mySaltUserDetailsService"</span> &gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:password-encoder</span> <span class="hljs-attr">hash</span>=<span class="hljs-string">"md5"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:salt-source</span> <span class="hljs-attr">user-property</span>=<span class="hljs-string">"usersalt"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sec:password-encoder</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
 <p><strong>PS：</strong>扩展数据库schema，salt要与用户记录一起保存在数据库<br>，eg: <code>SysUser(account,password,enable,usersalt)</code></p>
 <ul>
-<li>addUser/changePassword(SysUser u)<pre><code class="nulljava"><span class="keyword">int</span> salt=(<span class="keyword">int</span>)(Math.random()*<span class="number">1000000</span>);
+<li>addUser/changePassword(SysUser u)<pre><code class="nulljava"><span class="hljs-keyword">int</span> salt=(<span class="hljs-keyword">int</span>)(Math.random()*<span class="hljs-number">1000000</span>);
 u.setUsersalt(String.valueOf(salt));
 u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 </code></pre>
 </li>
-<li>SQL insert user<pre><code class="nullsql"><span class="keyword">insert</span> <span class="keyword">into</span> sys_user(username, <span class="keyword">password</span>, enabled, usersalt) <span class="keyword">values</span> (<span class="string">'admin'</span>,<span class="string">'admin'</span>,<span class="literal">true</span>,<span class="keyword">CAST</span>(<span class="keyword">RAND</span>()*<span class="number">1000000000</span> <span class="keyword">AS</span> <span class="built_in">varchar</span>));
+<li>SQL insert user<pre><code class="nullsql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> sys_user(username, <span class="hljs-keyword">password</span>, enabled, usersalt) <span class="hljs-keyword">values</span> (<span class="hljs-string">'admin'</span>,<span class="hljs-string">'admin'</span>,<span class="hljs-literal">true</span>,<span class="hljs-keyword">CAST</span>(<span class="hljs-keyword">RAND</span>()*<span class="hljs-number">1000000000</span> <span class="hljs-keyword">AS</span> <span class="hljs-built_in">varchar</span>));
 </code></pre>
 </li>
 </ul>
@@ -1119,11 +1119,11 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <li><code>boolean hideUserNotFoundExceptions = true;</code></li>
 </ul>
 <p>必须加入依赖包：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-ldap<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-ldap<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 </code></pre>
 <p>LDAP 介绍：</p>
 <ul>
@@ -1153,19 +1153,19 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 </li>
 </ul>
 <p>配置LdapServer：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:ldap-server</span> <span class="attr">url</span>=<span class="string">"ldap://ldap.sing.seagate.com:389/o=xxx"</span> <span class="attr">id</span>=<span class="string">"ldapServer"</span> /&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:ldap-server</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"ldap://ldap.sing.seagate.com:389/o=xxx"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapServer"</span> /&gt;</span>
 </code></pre>
 <h4 id="header-36">通过LDAP完成用户认证，并加载用户的权限列表</h4>
 <p>配置从LDAP上获取认证用户（包括角色列表），直接使用<code>LdapAuthenticationProvider</code>（下面示例使用密码对比认证）：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:ldap-authentication-provider</span>
-        <span class="attr">server-ref</span>=<span class="string">"ldapLocal"</span>
-        <span class="attr">user-search-base</span>=<span class="string">"ou=people"</span>
-        <span class="attr">user-search-filter</span>=<span class="string">"(uid={0})"</span>
-        <span class="attr">group-search-base</span>=<span class="string">"ou=Groups"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:password-compare</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:</span> <span class="attr">ldap-authentication-provider</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"myAuthenticationManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:ldap-authentication-provider</span>
+        <span class="hljs-attr">server-ref</span>=<span class="hljs-string">"ldapLocal"</span>
+        <span class="hljs-attr">user-search-base</span>=<span class="hljs-string">"ou=people"</span>
+        <span class="hljs-attr">user-search-filter</span>=<span class="hljs-string">"(uid={0})"</span>
+        <span class="hljs-attr">group-search-base</span>=<span class="hljs-string">"ou=Groups"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:password-compare</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:</span> <span class="hljs-attr">ldap-authentication-provider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
 <table class="table">
 <thead>
@@ -1216,84 +1216,84 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <h4 id="header-37">通过LDAP完成用户认证，从其他地方加载用户的权限列表</h4>
 <ol>
 <li><p>配置<code>AuthenticationManager</code> &amp; <code>LdapAuthenticationProvider</code></p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"myAuthenticationManager"</span>&gt;</span>
-     <span class="comment">&lt;!-- &lt;sec:ldap-authentication-provider  user-search-base="ou=people" user-search-filter="(uid={0})" /&gt; --&gt;</span>
-     <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">ref</span>=<span class="string">"ldapAuthenticationProvider"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"myAuthenticationManager"</span>&gt;</span>
+     <span class="hljs-comment">&lt;!-- &lt;sec:ldap-authentication-provider  user-search-base="ou=people" user-search-filter="(uid={0})" /&gt; --&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapAuthenticationProvider"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapAuthenticationProvider"</span> 
-     <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.LdapAuthenticationProvider"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"authenticator"</span> <span class="attr">ref</span>=<span class="string">"bindAuthenticator"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"authoritiesPopulator"</span> <span class="attr">ref</span>=<span class="string">"ldapAuthoritiesPopulator"</span>/&gt;</span>
-     <span class="comment">&lt;!-- &lt;property name="hideUserNotFoundExceptions" value="false"/&gt; --&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapAuthenticationProvider"</span> 
+     <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.ldap.authentication.LdapAuthenticationProvider"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticator"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"bindAuthenticator"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authoritiesPopulator"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapAuthoritiesPopulator"</span>/&gt;</span>
+     <span class="hljs-comment">&lt;!-- &lt;property name="hideUserNotFoundExceptions" value="false"/&gt; --&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>配置Provider中的<code>LdapAuthenticator</code>用于认证用户（<code>DirContextOperations</code>对象）</p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"bindAuthenticator"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.BindAuthenticator"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"contextSource"</span> <span class="attr">ref</span>=<span class="string">"ldapServer"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userSearch"</span> <span class="attr">ref</span>=<span class="string">"ldapSearch"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"bindAuthenticator"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.ldap.authentication.BindAuthenticator"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"contextSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapServer"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userSearch"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapSearch"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapSearch"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.search.FilterBasedLdapUserSearch"</span>&gt;</span>  
-   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"searchBase"</span> <span class="attr">value</span>=<span class="string">"ou=people"</span>/&gt;</span>   <span class="comment">&lt;!-- user-search-base --&gt;</span>  
-   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"searchFilter"</span> <span class="attr">value</span>=<span class="string">"(uid={0})"</span>/&gt;</span> <span class="comment">&lt;!-- user-search-filter --&gt;</span>
-   <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"contextSource"</span> <span class="attr">ref</span>=<span class="string">"ldapServer"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapSearch"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.ldap.search.FilterBasedLdapUserSearch"</span>&gt;</span>  
+   <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"searchBase"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ou=people"</span>/&gt;</span>   <span class="hljs-comment">&lt;!-- user-search-base --&gt;</span>  
+   <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"searchFilter"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"(uid={0})"</span>/&gt;</span> <span class="hljs-comment">&lt;!-- user-search-filter --&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"contextSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapServer"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>配置Provider中的<code>LdapAuthoritiesPopulator</code>用于获取权限信息列表（<code>Collection&lt;? extends GrantedAuthority&gt;</code>）</p>
 <ul>
 <li><p>方式1：扩展<code>UserDetailsService</code></p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator"</span> <span class="attr">id</span>=<span class="string">"ldapAuthoritiesPopulator"</span>&gt;</span>
- <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"myUserDetailsService"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapAuthoritiesPopulator"</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myUserDetailsService"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.service.MyUserDetailsServiceImpl"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myUserDetailsService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.security.service.MyUserDetailsServiceImpl"</span>/&gt;</span>
 </code></pre>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserDetailsService</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span></span>{
-  <span class="keyword">static</span> Logger logger = Logger.getLogger(MyUserDetailsService.class);
-  <span class="keyword">private</span> ISecurityService securityService;
+<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyUserDetailsService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserDetailsService</span></span>{
+  <span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(MyUserDetailsService.class);
+  <span class="hljs-keyword">private</span> ISecurityService securityService;
 
-  <span class="function"><span class="keyword">public</span> ISecurityService <span class="title">getSecurityService</span><span class="params">()</span></span>{
-      <span class="keyword">return</span> securityService;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> ISecurityService <span class="hljs-title">getSecurityService</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">return</span> securityService;
   }
-  <span class="meta">@Inject</span>
-  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecurityService</span><span class="params">(ISecurityService securityService)</span></span>{
-      <span class="keyword">this</span>.securityService = securityService;
+  <span class="hljs-meta">@Inject</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSecurityService</span><span class="hljs-params">(ISecurityService securityService)</span></span>{
+      <span class="hljs-keyword">this</span>.securityService = securityService;
   }
 
-  <span class="meta">@Override</span>
-  <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String account)</span>
-          <span class="keyword">throws</span> UsernameNotFoundException</span>{
-      <span class="comment">//获取用户角色列表</span>
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> UserDetails <span class="hljs-title">loadUserByUsername</span><span class="hljs-params">(String account)</span>
+          <span class="hljs-keyword">throws</span> UsernameNotFoundException</span>{
+      <span class="hljs-comment">//获取用户角色列表</span>
       List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
-      <span class="keyword">if</span>(glist==<span class="keyword">null</span> || glist.size()==<span class="number">0</span>)
-          <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"No GrantedAuthority"</span>);
-      UserDetails userDetails=<span class="keyword">new</span> User(account,<span class="keyword">null</span>,glist);
-      <span class="keyword">return</span> userDetails;
+      <span class="hljs-keyword">if</span>(glist==<span class="hljs-keyword">null</span> || glist.size()==<span class="hljs-number">0</span>)
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UsernameNotFoundException(<span class="hljs-string">"No GrantedAuthority"</span>);
+      UserDetails userDetails=<span class="hljs-keyword">new</span> User(account,<span class="hljs-keyword">null</span>,glist);
+      <span class="hljs-keyword">return</span> userDetails;
   }
 }
 </code></pre>
 </li>
 <li><p>方式二：扩展<code>LdapAuthoritiesPopulator</code></p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"ldapAuthoritiesPopulator"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.security.ldap.MyLdapAuthoritiesPopulator"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapAuthoritiesPopulator"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.security.ldap.MyLdapAuthoritiesPopulator"</span>/&gt;</span>
 </code></pre>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLdapAuthoritiesPopulator</span> <span class="keyword">implements</span> <span class="title">LdapAuthoritiesPopulator</span></span>{
-  <span class="keyword">static</span> Logger logger = Logger.getLogger(MyLdapAuthoritiesPopulator.class); 
-  <span class="keyword">private</span> ISecurityService securityService;
-  <span class="function"><span class="keyword">public</span> ISecurityService <span class="title">getSecurityService</span><span class="params">()</span></span>{
-      <span class="keyword">return</span> securityService;
+<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyLdapAuthoritiesPopulator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">LdapAuthoritiesPopulator</span></span>{
+  <span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(MyLdapAuthoritiesPopulator.class); 
+  <span class="hljs-keyword">private</span> ISecurityService securityService;
+  <span class="hljs-function"><span class="hljs-keyword">public</span> ISecurityService <span class="hljs-title">getSecurityService</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">return</span> securityService;
   }
-  <span class="meta">@Inject</span>
-  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSecurityService</span><span class="params">(ISecurityService securityService)</span></span>{
-      <span class="keyword">this</span>.securityService = securityService;
+  <span class="hljs-meta">@Inject</span>
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSecurityService</span><span class="hljs-params">(ISecurityService securityService)</span></span>{
+      <span class="hljs-keyword">this</span>.securityService = securityService;
   }
 
-  <span class="meta">@Override</span>
-  <span class="keyword">public</span> Collection&lt;? extends GrantedAuthority&gt; getGrantedAuthorities(
+  <span class="hljs-meta">@Override</span>
+  <span class="hljs-keyword">public</span> Collection&lt;? extends GrantedAuthority&gt; getGrantedAuthorities(
           DirContextOperations userData, String username){
-      <span class="keyword">return</span> securityService.getGrantedAuthorities(username);
+      <span class="hljs-keyword">return</span> securityService.getGrantedAuthorities(username);
   }
 }
 </code></pre>
@@ -1304,61 +1304,61 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <h3 id="header-38">CAS</h3>
 <ol>
 <li><p>使用必须额外加入CAS包</p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
- <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.security<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-security-cas-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">version</span>&gt;</span>${springSecurity.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
- <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-cas<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.security<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-security-cas-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${springSecurity.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>将<code>CasAuthenticationFilter</code>加入FilterChain，并注入<code>Cas AuthenticationEntryPoint</code></p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">auto-config</span>=<span class="string">"true"</span> <span class="attr">entry-point-ref</span>=<span class="string">"casAuthEntryPoint"</span> <span class="attr">access-denied-page</span>=<span class="string">"/home/accessDenied"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">ref</span>=<span class="string">"casAuthenticationFilter"</span> <span class="attr">position</span>=<span class="string">"CAS_FILTER"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">sec:logout</span> <span class="attr">logout-success-url</span>=<span class="string">"/index"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">auto-config</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">entry-point-ref</span>=<span class="hljs-string">"casAuthEntryPoint"</span> <span class="hljs-attr">access-denied-page</span>=<span class="hljs-string">"/home/accessDenied"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">sec:custom-filter</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"casAuthenticationFilter"</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"CAS_FILTER"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">sec:logout</span> <span class="hljs-attr">logout-success-url</span>=<span class="hljs-string">"/index"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>配置CAS 认证入口点<code>AuthenticationEntryPoint</code></p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casAuthEntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.web.CasAuthenticationEntryPoint"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"loginUrl"</span> <span class="attr">value</span>=<span class="string">"https://server:8443/cas/login"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serviceProperties"</span> <span class="attr">ref</span>=<span class="string">"casService"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>    
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"casAuthEntryPoint"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.cas.web.CasAuthenticationEntryPoint"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"loginUrl"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"https://server:8443/cas/login"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"serviceProperties"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"casService"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>    
 
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.ServiceProperties"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"service"</span> <span class="attr">value</span>=<span class="string">"http://localhost:8888/docms/j_spring_cas_security_check"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"casService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.cas.ServiceProperties"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"service"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"http://localhost:8888/docms/j_spring_cas_security_check"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>配置<code>CasAuthenticationFilter</code>，注入<code>authenticationManager</code></p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casAuthenticationFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.web.CasAuthenticationFilter"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"authenticationmanager"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"casAuthenticationFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.cas.web.CasAuthenticationFilter"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"authenticationmanager"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">alias</span>=<span class="string">"authenticationmanager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">ref</span>=<span class="string">"casAuthenticationProvider"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"authenticationmanager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"casAuthenticationProvider"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>配置<code>CasAuthenticationProvider</code></p>
-<pre><code class="nullxml"> <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casAuthenticationProvider"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.cas.authentication.CasAuthenticationProvider"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ticketValidator"</span> <span class="attr">ref</span>=<span class="string">"casTicketValidator"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"serviceProperties"</span> <span class="attr">ref</span>=<span class="string">"casService"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"docms"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationUserDetailsService"</span> <span class="attr">ref</span>=<span class="string">"authenticationUserDetailsService"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"casAuthenticationProvider"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.cas.authentication.CasAuthenticationProvider"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ticketValidator"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"casTicketValidator"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"serviceProperties"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"casService"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"key"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"docms"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationUserDetailsService"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"authenticationUserDetailsService"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"casTicketValidator"</span> <span class="attr">class</span>=<span class="string">"org.jasig.cas.client.validation.Cas20ServiceTicketValidator"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"https://server:8443/cas/"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"casTicketValidator"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.jasig.cas.client.validation.Cas20ServiceTicketValidator"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"https://server:8443/cas/"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"authenticationUserDetailsService"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper"</span>&gt;</span>
-         <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"userDetailsManager"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"authenticationUserDetailsService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userDetailsService"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"userDetailsManager"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 </li>
 </ol>
@@ -1421,131 +1421,131 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <p><strong>PS:</strong> 因为SpringSecurity自带的<code>FilterSecurityInterceptor</code> 会在<code>SecurityNamespaceHandler</code>中就加载构建，无法修改，故在此Filter之前构建自己的Filter进行授权处理</p>
 <ol>
 <li><p>配置</p>
-<pre><code class="nullxml"> <span class="comment">&lt;!-- 1. 设置Filter--&gt;</span>
- <span class="tag">&lt;<span class="name">sec:http</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">before</span>=<span class="string">"FILTER_SECURITY_INTERCEPTOR"</span> <span class="attr">ref</span>=<span class="string">"mySecurityFilter"</span> /&gt;</span>
-     <span class="comment">&lt;!-- 定义匿名用户--&gt;</span>
-     <span class="tag">&lt;<span class="name">sec:anonymous</span> <span class="attr">key</span>=<span class="string">"test"</span> <span class="attr">granted-authority</span>=<span class="string">"ROLE_GUEST"</span> <span class="attr">username</span>=<span class="string">"guest"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
+<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- 1. 设置Filter--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">sec:custom-filter</span> <span class="hljs-attr">before</span>=<span class="hljs-string">"FILTER_SECURITY_INTERCEPTOR"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"mySecurityFilter"</span> /&gt;</span>
+     <span class="hljs-comment">&lt;!-- 定义匿名用户--&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">sec:anonymous</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"test"</span> <span class="hljs-attr">granted-authority</span>=<span class="hljs-string">"ROLE_GUEST"</span> <span class="hljs-attr">username</span>=<span class="hljs-string">"guest"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
 
- <span class="comment">&lt;!-- 2. 自定义FilterSecurityInterceptor --&gt;</span>
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mySecurityFilter"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.core.filter.MySecurityFilter"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"securityMetadataSource"</span> <span class="attr">ref</span>=<span class="string">"mySecurityMetadataSource"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"accessDecisionManager"</span> <span class="attr">ref</span>=<span class="string">"myAccessDecisionManager"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationManager"</span> <span class="attr">ref</span>=<span class="string">"myAuthenticationManager"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-comment">&lt;!-- 2. 自定义FilterSecurityInterceptor --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mySecurityFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.security.core.filter.MySecurityFilter"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"securityMetadataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"mySecurityMetadataSource"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"accessDecisionManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myAccessDecisionManager"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myAuthenticationManager"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
- <span class="comment">&lt;!--3. 自定义SecurityMetadataSource --&gt;</span>
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"mySecurityMetadataSource"</span> <span class="attr">class</span>=<span class="string">"com.cj.support.security.intercept.MySecurityMetadataSource"</span>&gt;</span>
-         <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"securityService"</span> <span class="attr">ref</span>=<span class="string">"securityService"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-comment">&lt;!--3. 自定义SecurityMetadataSource --&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mySecurityMetadataSource"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.security.intercept.MySecurityMetadataSource"</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"securityService"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"securityService"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
- <span class="comment">&lt;!-- 4. 定义认证管理--&gt;</span>
- <span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"myAuthenticationManager"</span> &gt;</span>
-         <span class="tag">&lt;<span class="name">sec:authentication-provider</span> <span class="attr">user-service-ref</span>=<span class="string">"myUserDetailsService"</span> /&gt;</span>
- <span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+ <span class="hljs-comment">&lt;!-- 4. 定义认证管理--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myAuthenticationManager"</span> &gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">user-service-ref</span>=<span class="hljs-string">"myUserDetailsService"</span> /&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 
- <span class="comment">&lt;!-- 5. 自定义决策管理：增加匿名用户的访问控制--&gt;</span>
- <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myAccessDecisionManager"</span> <span class="attr">class</span>=<span class="string">"com.cj.security.core.access.MyAccessDecisionWithGuestManager"</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"anonymous"</span> <span class="attr">value</span>=<span class="string">"ROLE_GUEST"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+ <span class="hljs-comment">&lt;!-- 5. 自定义决策管理：增加匿名用户的访问控制--&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myAccessDecisionManager"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.security.core.access.MyAccessDecisionWithGuestManager"</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"anonymous"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ROLE_GUEST"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>自定义FilterSecurityInterceptor </p>
-<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySecurityFilter</span> <span class="keyword">extends</span> <span class="title">AbstractSecurityInterceptor</span> 
-                                 <span class="keyword">implements</span> <span class="title">Filter</span></span>{
+<pre><code class="nulljava"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MySecurityFilter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractSecurityInterceptor</span> 
+                                 <span class="hljs-keyword">implements</span> <span class="hljs-title">Filter</span></span>{
      ...
-     <span class="meta">@Override</span>
-     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response,
-             FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException</span>{
-         <span class="comment">//System.out.println("MySecurityFilter-------");</span>
-         FilterInvocation fi = <span class="keyword">new</span> FilterInvocation(request, response, chain);  
+     <span class="hljs-meta">@Override</span>
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doFilter</span><span class="hljs-params">(ServletRequest request, ServletResponse response,
+             FilterChain chain)</span> <span class="hljs-keyword">throws</span> IOException, ServletException</span>{
+         <span class="hljs-comment">//System.out.println("MySecurityFilter-------");</span>
+         FilterInvocation fi = <span class="hljs-keyword">new</span> FilterInvocation(request, response, chain);  
          invoke(fi);  
 
      }
-     <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">invoke</span><span class="params">(FilterInvocation fi)</span> <span class="keyword">throws</span> IOException, ServletException </span>{  
-         Collection&lt;ConfigAttribute&gt; attributes=<span class="keyword">this</span>.obtainSecurityMetadataSource().getAttributes(fi);
-         InterceptorStatusToken token = <span class="keyword">super</span>.beforeInvocation(fi);  
-         <span class="keyword">try</span> {  
+     <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">invoke</span><span class="hljs-params">(FilterInvocation fi)</span> <span class="hljs-keyword">throws</span> IOException, ServletException </span>{  
+         Collection&lt;ConfigAttribute&gt; attributes=<span class="hljs-keyword">this</span>.obtainSecurityMetadataSource().getAttributes(fi);
+         InterceptorStatusToken token = <span class="hljs-keyword">super</span>.beforeInvocation(fi);  
+         <span class="hljs-keyword">try</span> {  
              fi.getChain().doFilter(fi.getRequest(), fi.getResponse());  
-         } <span class="keyword">finally</span> {  
-             <span class="keyword">super</span>.afterInvocation(token, <span class="keyword">null</span>);
+         } <span class="hljs-keyword">finally</span> {  
+             <span class="hljs-keyword">super</span>.afterInvocation(token, <span class="hljs-keyword">null</span>);
          }
      }
  }
 </code></pre>
 </li>
 <li><p>自定义SecurityMetadataSource，在构造时加载所有访问控制信息</p>
-<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySecurityMetadataSource</span> <span class="keyword">implements</span> <span class="title">FilterInvocationSecurityMetadataSource</span> 
+<pre><code class="nulljava"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MySecurityMetadataSource</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">FilterInvocationSecurityMetadataSource</span> 
  </span>{
-     <span class="keyword">private</span> ISecurityService securityService;
-     <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;RequestMatcher, Collection&lt;ConfigAttribute&gt;&gt; resourceMap = <span class="keyword">null</span>;
+     <span class="hljs-keyword">private</span> ISecurityService securityService;
+     <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Map&lt;RequestMatcher, Collection&lt;ConfigAttribute&gt;&gt; resourceMap = <span class="hljs-keyword">null</span>;
 
-     <span class="function"><span class="keyword">public</span> <span class="title">MySecurityMetadataSource</span><span class="params">(ISecurityService securityService)</span> </span>{  
-         <span class="keyword">this</span>.securityService = securityService;  
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MySecurityMetadataSource</span><span class="hljs-params">(ISecurityService securityService)</span> </span>{  
+         <span class="hljs-keyword">this</span>.securityService = securityService;  
          resourceMap=securityService.loadResourceDefine();  
      }
-     <span class="meta">@Override</span>
-     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; clazz)</span></span>{
-         <span class="keyword">return</span> <span class="keyword">true</span>;
+     <span class="hljs-meta">@Override</span>
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">supports</span><span class="hljs-params">(Class&lt;?&gt; clazz)</span></span>{
+         <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
      }
 
-     <span class="comment">//其他方法实现，可参考DefaultFilterInvocationSecurityMetadataSource类</span>
+     <span class="hljs-comment">//其他方法实现，可参考DefaultFilterInvocationSecurityMetadataSource类</span>
      ...
  }
 </code></pre>
 </li>
 <li><p>自定义决策管理：增加匿名用户的访问控制判断</p>
-<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAccessDecisionWithGuestManager</span> <span class="keyword">implements</span> <span class="title">AccessDecisionManager</span></span>{
-     <span class="keyword">private</span> AuthenticationTrustResolver authenticationTrustResolver = <span class="keyword">new</span> AuthenticationTrustResolverImpl();
-     <span class="keyword">private</span> String anonymous=<span class="string">"ROLE_ANONYMOUS"</span>;
-     <span class="function"><span class="keyword">public</span> String <span class="title">getAnonymous</span><span class="params">()</span></span>{
-         <span class="keyword">return</span> anonymous;
+<pre><code class="nulljava"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyAccessDecisionWithGuestManager</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AccessDecisionManager</span></span>{
+     <span class="hljs-keyword">private</span> AuthenticationTrustResolver authenticationTrustResolver = <span class="hljs-keyword">new</span> AuthenticationTrustResolverImpl();
+     <span class="hljs-keyword">private</span> String anonymous=<span class="hljs-string">"ROLE_ANONYMOUS"</span>;
+     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getAnonymous</span><span class="hljs-params">()</span></span>{
+         <span class="hljs-keyword">return</span> anonymous;
      }
-     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAnonymous</span><span class="params">(String anonymous)</span></span>{
-         <span class="keyword">this</span>.anonymous = anonymous;
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAnonymous</span><span class="hljs-params">(String anonymous)</span></span>{
+         <span class="hljs-keyword">this</span>.anonymous = anonymous;
      }
-     <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isFullyAuthenticated</span><span class="params">(Authentication authentication)</span> </span>{
-         <span class="keyword">return</span> (!authenticationTrustResolver.isAnonymous(authentication) 
+     <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isFullyAuthenticated</span><span class="hljs-params">(Authentication authentication)</span> </span>{
+         <span class="hljs-keyword">return</span> (!authenticationTrustResolver.isAnonymous(authentication) 
          &amp;&amp; !authenticationTrustResolver.isRememberMe(authentication));
      }
-     <span class="meta">@Override</span>
-     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">decide</span><span class="params">(Authentication authentication, Object object,
+     <span class="hljs-meta">@Override</span>
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">decide</span><span class="hljs-params">(Authentication authentication, Object object,
      Collection&lt;ConfigAttribute&gt; configAttributes)</span>
-             <span class="keyword">throws</span> AccessDeniedException, InsufficientAuthenticationException</span>{
-         <span class="keyword">if</span>(configAttributes == <span class="keyword">null</span>) {
-             <span class="keyword">return</span>;
+             <span class="hljs-keyword">throws</span> AccessDeniedException, InsufficientAuthenticationException</span>{
+         <span class="hljs-keyword">if</span>(configAttributes == <span class="hljs-keyword">null</span>) {
+             <span class="hljs-keyword">return</span>;
          }
-         <span class="comment">//所请求的资源拥有的权限(一个资源对多个权限)  </span>
+         <span class="hljs-comment">//所请求的资源拥有的权限(一个资源对多个权限)  </span>
          Iterator&lt;ConfigAttribute&gt; iterator = configAttributes.iterator();  
-         <span class="keyword">while</span>(iterator.hasNext())  {  
+         <span class="hljs-keyword">while</span>(iterator.hasNext())  {  
              ConfigAttribute configAttribute = iterator.next();  
-             <span class="comment">//访问所请求资源所需要的权限  </span>
+             <span class="hljs-comment">//访问所请求资源所需要的权限  </span>
              String attribute = configAttribute.getAttribute(); 
-             <span class="comment">//System.out.println("needPermision:"+attribute);</span>
-             <span class="keyword">if</span>(<span class="keyword">this</span>.anonymous.equals(attribute)){
-                 <span class="keyword">if</span>(authenticationTrustResolver.isAnonymous(authentication) 
+             <span class="hljs-comment">//System.out.println("needPermision:"+attribute);</span>
+             <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.anonymous.equals(attribute)){
+                 <span class="hljs-keyword">if</span>(authenticationTrustResolver.isAnonymous(authentication) 
                          || isFullyAuthenticated(authentication)
                          || authenticationTrustResolver.isRememberMe(authentication))
-                     <span class="keyword">return</span>;
+                     <span class="hljs-keyword">return</span>;
              }
-             <span class="comment">//用户所拥有的权限authentication  </span>
-             <span class="keyword">for</span>(GrantedAuthority ga : authentication.getAuthorities()) {  
-                 <span class="keyword">if</span>(attribute.equals(ga.getAuthority())) 
-                     <span class="keyword">return</span>;  
+             <span class="hljs-comment">//用户所拥有的权限authentication  </span>
+             <span class="hljs-keyword">for</span>(GrantedAuthority ga : authentication.getAuthorities()) {  
+                 <span class="hljs-keyword">if</span>(attribute.equals(ga.getAuthority())) 
+                     <span class="hljs-keyword">return</span>;  
              }  
          }  
-         <span class="comment">//没有权限  </span>
-         <span class="keyword">throw</span> <span class="keyword">new</span> AccessDeniedException(<span class="string">"Access Denied -- You don't have permission!"</span>);  
+         <span class="hljs-comment">//没有权限  </span>
+         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> AccessDeniedException(<span class="hljs-string">"Access Denied -- You don't have permission!"</span>);  
      }
 
-     <span class="meta">@Override</span>
-     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(ConfigAttribute attribute)</span></span>{
-         <span class="keyword">return</span> <span class="keyword">true</span>;
+     <span class="hljs-meta">@Override</span>
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">supports</span><span class="hljs-params">(ConfigAttribute attribute)</span></span>{
+         <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
      }
-     <span class="meta">@Override</span>
-     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; clazz)</span></span>{
-         <span class="keyword">return</span> <span class="keyword">true</span>;
+     <span class="hljs-meta">@Override</span>
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">supports</span><span class="hljs-params">(Class&lt;?&gt; clazz)</span></span>{
+         <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
      }
  }
 </code></pre>
@@ -1561,28 +1561,28 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <h4 id="header-46">支持四种方法层的安全</h4>
 <ol>
 <li><p>Spring 简单注解：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">global-method-security</span> <span class="attr">secured-annotations</span>=<span class="string">"enabled"</span> /&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">global-method-security</span> <span class="hljs-attr">secured-annotations</span>=<span class="hljs-string">"enabled"</span> /&gt;</span>
 </code></pre>
 <ul>
-<li><code>@Secured</code><pre><code class="nulljava"><span class="comment">/*
+<li><code>@Secured</code><pre><code class="nulljava"><span class="hljs-comment">/*
 指认证的用户必须被授予"ROLE_SPITTER", "ROLE_ADMIN"其中的一个权限才能访问该方法；
 如果没有这两个中任何一个权限，将抛出异常或是AuthenticationException or AccessDeniedException的子异常;
 如果方法在Web请求中调用，异常将被SpringSecurity自动调用
 */</span>
-<span class="meta">@Secured</span>({<span class="string">"ROLE_SPITTER"</span>, <span class="string">"ROLE_ADMIN"</span>}) 
-<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSpittle</span><span class="params">(Spittle spittle)</span> </span>{ <span class="comment">// ... }</span>
+<span class="hljs-meta">@Secured</span>({<span class="hljs-string">"ROLE_SPITTER"</span>, <span class="hljs-string">"ROLE_ADMIN"</span>}) 
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addSpittle</span><span class="hljs-params">(Spittle spittle)</span> </span>{ <span class="hljs-comment">// ... }</span>
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>JSR-250标准：</p>
-<pre><code class="nullxml"><span class="comment">&lt;!--  JSR-250's @RolesAllowed与secured-annotations可同时被启用，
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!--  JSR-250's @RolesAllowed与secured-annotations可同时被启用，
 推荐使用该方式启用注解，因为他是Java的标准注解。--&gt;</span>
-<span class="tag">&lt;<span class="name">global-method-security</span> <span class="attr">jsr250-annotations</span>=<span class="string">"enabled"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">global-method-security</span> <span class="hljs-attr">jsr250-annotations</span>=<span class="hljs-string">"enabled"</span> /&gt;</span>
 </code></pre>
 <ul>
-<li><code>@RolesAllowed</code><pre><code class="nulljava"><span class="meta">@RolesAllowed</span>({<span class="string">"ROLE_USER"</span>,<span class="string">"ROLE_ADMIN"</span>})
-<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changePassword</span><span class="params">(String username, String password)</span></span>;
+<li><code>@RolesAllowed</code><pre><code class="nulljava"><span class="hljs-meta">@RolesAllowed</span>({<span class="hljs-string">"ROLE_USER"</span>,<span class="hljs-string">"ROLE_ADMIN"</span>})
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">changePassword</span><span class="hljs-params">(String username, String password)</span></span>;
 </code></pre>
 </li>
 <li><code>@PermitAll</code></li>
@@ -1590,25 +1590,25 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 </ul>
 </li>
 <li><p>Pre-/Post-invocation (可使用SpEL表达式)：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">global-method-security</span> <span class="attr">pre-post-annotations</span>=<span class="string">"enabled"</span> /&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">global-method-security</span> <span class="hljs-attr">pre-post-annotations</span>=<span class="hljs-string">"enabled"</span> /&gt;</span>
 </code></pre>
 <ul>
-<li><code>@PreAuthorized</code> : 基于表达式的结果在调用方法或类前限制被访问。<pre><code class="nulljava"><span class="comment">/*
+<li><code>@PreAuthorized</code> : 基于表达式的结果在调用方法或类前限制被访问。<pre><code class="nulljava"><span class="hljs-comment">/*
   拥有角色ROLE_SPITTER的用户的参数spittle字符只能少于140个,
 而拥有角色ROLE_PREMIUM的用户则不受此限制
 */</span>
-<span class="meta">@PreAuthorize</span>(<span class="string">"(hasRole('ROLE_SPITTER') and #spittle.text.length() &lt;= 140) or hasRole('ROLE_PREMIUM')"</span>) 
-<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addSpittle</span><span class="params">(Spittle spittle)</span> </span>{ ... }
+<span class="hljs-meta">@PreAuthorize</span>(<span class="hljs-string">"(hasRole('ROLE_SPITTER') and #spittle.text.length() &lt;= 140) or hasRole('ROLE_PREMIUM')"</span>) 
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addSpittle</span><span class="hljs-params">(Spittle spittle)</span> </span>{ ... }
 </code></pre>
 </li>
-<li><code>@PostAuthorized</code>：如果表达式结果为false，允许方法被调用，同时抛出一个安全异常。该注解主要是基于被保护的方法的返回值来决定执行表达式<pre><code class="nulljava"><span class="comment">/*
+<li><code>@PostAuthorized</code>：如果表达式结果为false，允许方法被调用，同时抛出一个安全异常。该注解主要是基于被保护的方法的返回值来决定执行表达式<pre><code class="nulljava"><span class="hljs-comment">/*
   当返回的Spittle对象属于被认证的用户时才可以访问该方法
   本例中returnObject是SpringEL提供的一个name用于方便获取返回的对象，
 而principal是SpringSecuroty提供的用于代表被当前认证的用户。
 如果认证失败，则AccessDeniedException异常将抛出
 */</span>
-<span class="meta">@PostAuthorize</span>(<span class="string">"returnObject.spitter.username == principal.username"</span>) 
-<span class="function"><span class="keyword">public</span> Spittle <span class="title">getSpittleById</span><span class="params">(<span class="keyword">long</span> id)</span> </span>{ ... }
+<span class="hljs-meta">@PostAuthorize</span>(<span class="hljs-string">"returnObject.spitter.username == principal.username"</span>) 
+<span class="hljs-function"><span class="hljs-keyword">public</span> Spittle <span class="hljs-title">getSpittleById</span><span class="hljs-params">(<span class="hljs-keyword">long</span> id)</span> </span>{ ... }
 </code></pre>
 </li>
 <li><code>@PreFilter</code>：允许一个方法被调用，但是用每一个表达式去过滤方法的结果。</li>
@@ -1616,28 +1616,28 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 </ul>
 </li>
 <li><p>使用protect-pointcut添加安全切点</p>
-<pre><code class="nullxml"> <span class="comment">&lt;!-- 
+<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- 
      该配置将识别任何拥有@Sensitive的方法
      access属性则指，认证的用户必须拥有的角色去访问表达式识别的
  --&gt;</span>
- <span class="tag">&lt;<span class="name">global-method-security</span>&gt;</span>
-     <span class="tag">&lt;<span class="name">protect-pointcut</span> <span class="attr">access</span>=<span class="string">"ROLE_SPITTER"</span>  <span class="attr">expression</span>=<span class="string">"execution(@com.habuma.spitter.Sensitive * *.*(String))"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">global-method-security</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">global-method-security</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">protect-pointcut</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"ROLE_SPITTER"</span>  <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(@com.habuma.spitter.Sensitive * *.*(String))"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">global-method-security</span>&gt;</span>
 </code></pre>
 </li>
 </ol>
 <h4 id="header-47">结合SpringMVC使用</h4>
 <ol>
 <li><p>在mvc的servlet配置文件（xxx-servlet.xml）:</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:global-method-security</span> <span class="attr">pre-post-annotations</span>=<span class="string">"enabled"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:global-method-security</span> <span class="hljs-attr">pre-post-annotations</span>=<span class="hljs-string">"enabled"</span>/&gt;</span>
 </code></pre>
 <p><strong>PS: </strong>若要在MVC Controller方法上加<code>@PreAuthorize</code>,<code>@PostAuthorize</code>,<code>@PreFilter</code>,<code>@PostFilter</code>，<br>此配置一定要放在spring mvc的xml中，否则无效</p>
 </li>
 <li><p>在XxxController方法上添加方法注解：</p>
-<pre><code class="nulljava"><span class="meta">@PostAuthorize</span>(<span class="string">"!(#type=='user' and returnObject[extra].senderType=='Group' and !hasRole('ROLE_GROUP'))"</span>)
-<span class="meta">@RequestMapping</span>(value={<span class="string">"/inputs/{type}/{status}/{id}"</span>},method=RequestMethod.GET)
-<span class="meta">@ResponseBody</span>
-<span class="function"><span class="keyword">public</span> Object <span class="title">getInput</span><span class="params">(@PathVariable(<span class="string">"type"</span>)</span> String type,@<span class="title">PathVariable</span><span class="params">(<span class="string">"status"</span>)</span> String status,@PathVariable <span class="keyword">int</span> id) </span>{ ... }
+<pre><code class="nulljava"><span class="hljs-meta">@PostAuthorize</span>(<span class="hljs-string">"!(#type=='user' and returnObject[extra].senderType=='Group' and !hasRole('ROLE_GROUP'))"</span>)
+<span class="hljs-meta">@RequestMapping</span>(value={<span class="hljs-string">"/inputs/{type}/{status}/{id}"</span>},method=RequestMethod.GET)
+<span class="hljs-meta">@ResponseBody</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">getInput</span><span class="hljs-params">(@PathVariable(<span class="hljs-string">"type"</span>)</span> String type,@<span class="hljs-title">PathVariable</span><span class="hljs-params">(<span class="hljs-string">"status"</span>)</span> String status,@PathVariable <span class="hljs-keyword">int</span> id) </span>{ ... }
 </code></pre>
 </li>
 </ol>
@@ -1645,29 +1645,29 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2013/07/01/SpringSecurity.html';	
-		var disqus_title = 'SpringSecurity';
-		var disqus_url = 'http://sixdegree.github.io/2013/07/01/SpringSecurity.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

@@ -50,7 +50,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Import(MySQL=>HDFS)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Job</span></a></li></ol></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Import(MySQL=&gt;HDFS)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Job</span></a></li></ol></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -129,8 +129,8 @@
 <li>Import: 把MySQL、Oracle等数据库中的数据导入到HDFS、Hive、HBase中</li>
 <li>Export: 把HDFS、Hive、HBase中的数据导出到MySQL、Oracle等数据库中</li>
 <li>注意：导入导出的事务是以Mapper任务为单位</li>
-<li><a href="http://sqoop.apache.org/">官网</a></li>
-<li><a href="http://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html#_incremental_imports">用户手册</a></li>
+<li><a href="http://sqoop.apache.org/" target="_blank" rel="noopener">官网</a></li>
+<li><a href="http://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html#_incremental_imports" target="_blank" rel="noopener">用户手册</a></li>
 </ul>
 <p><img src="/2016/05/15/frame.png" alt="Export/Import"></p>
 <h2 id="header-2">安装</h2>
@@ -171,23 +171,23 @@
 </ul>
 <ol>
 <li><p><code>mysql table =&gt; hdfs file</code>:</p>
-<pre><code class="nullshell"> # use --warehouse-dir
- # final file: /output/log/part-m-00000
+<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> use --warehouse-dir</span>
+<span class="hljs-meta"> #</span><span class="bash"> final file: /output/<span class="hljs-built_in">log</span>/part-m-00000</span>
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
  --table log --fields-terminated-by ',' \
  --warehouse-dir '/output' \
  -m 1
-
- # use --target-dir &amp; query
- # final file: /output/log_2/part-m-00000
+<span class="hljs-meta">
+ #</span><span class="bash"> use --target-dir &amp; query</span>
+<span class="hljs-meta"> #</span><span class="bash"> final file: /output/log_2/part-m-00000</span>
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop  --username root --P \
  --query "select * from log where \$CONDITIONS" \
  --target-dir /output/log_2 \
  -m 1  
-
- # use --target-dir &amp; columns &amp; where
+<span class="hljs-meta">
+ #</span><span class="bash"> use --target-dir &amp; columns &amp; <span class="hljs-built_in">where</span></span>
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
  --table log \
@@ -199,7 +199,7 @@
 </code></pre>
 </li>
 <li><p><code>mysql table =&gt; hive table</code>:</p>
-<pre><code class="nullshell"> # use hive-import
+<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> use hive-import</span>
  sqoop import 
  --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 
  --table TBLS 
@@ -207,8 +207,8 @@
  --null-string '**'  
  -m 1 
  --hive-import
-
- # use hive-import &amp; hive-table
+<span class="hljs-meta">
+ #</span><span class="bash"> use hive-import &amp; hive-table</span>
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 \
  --table TBLS \
@@ -217,19 +217,19 @@
  -m 1 \
  --hive-import \
  --hive-table 'tbls_2'
-
- # check hive table
+<span class="hljs-meta">
+ #</span><span class="bash"> check hive table</span>
  hive -e 'describe formatted tbls'
  hive -e 'describe formatted tbls_2'
 </code></pre>
 </li>
 <li><p><code>mysql table schema =&gt; hive table schema</code>:</p>
-<pre><code class="nullshell"> # just copy table schema (no data)
+<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> just copy table schema (no data)</span>
  sqoop create-hive-table \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
  --table log \
  --hive-table log_sqoop \
- --fields-terminated-by &#39;,&#39;
+ --fields-terminated-by ','
 </code></pre>
 </li>
 </ol>
@@ -261,29 +261,29 @@
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2016/05/15/Sqoop.html';	
-		var disqus_title = 'Sqoop';
-		var disqus_url = 'http://sixdegree.github.io/2016/05/15/Sqoop.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

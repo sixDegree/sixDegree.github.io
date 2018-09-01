@@ -248,16 +248,16 @@
 <li><code>0 15 10 ? * 6#3</code> 每月的第三个星期五上午10:15触发</li>
 </ul>
 <h3 id="header-2">Sample</h3>
-<pre><code class="nullxml"><span class="comment">&lt;!-- 加入task命名空间--&gt;</span>
-<span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span>
-        <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span>
-        <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span>
-        <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span>
-        <span class="attr">xmlns:jaxws</span>=<span class="string">"http://cxf.apache.org/jaxws"</span>
-        <span class="attr">xmlns:cxf</span>=<span class="string">"http://cxf.apache.org/core"</span>
-        <span class="attr">xmlns:task</span>=<span class="string">"http://www.springframework.org/schema/task"</span>
-        <span class="attr">xsi:schemaLocation</span>=<span class="string">"
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 加入task命名空间--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
+        <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+        <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
+        <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
+        <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
+        <span class="hljs-attr">xmlns:jaxws</span>=<span class="hljs-string">"http://cxf.apache.org/jaxws"</span>
+        <span class="hljs-attr">xmlns:cxf</span>=<span class="hljs-string">"http://cxf.apache.org/core"</span>
+        <span class="hljs-attr">xmlns:task</span>=<span class="hljs-string">"http://www.springframework.org/schema/task"</span>
+        <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
@@ -266,66 +266,66 @@
             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
             http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">task:annotation-driven</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">task:annotation-driven</span>/&gt;</span>
 
-<span class="comment">&lt;!-- Schedule Task  --&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"smsDailyMessageTask"</span> <span class="attr">class</span>=<span class="string">"com.cj.sms.task.SmsDailyMessageTask"</span>/&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"smsBackTask"</span> <span class="attr">class</span>=<span class="string">"com.cj.sms.task.SmsBackTask"</span>/&gt;</span>
-<span class="tag">&lt;<span class="name">task:scheduled-tasks</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">task:scheduled</span> <span class="attr">ref</span>=<span class="string">"smsDailyMessageTask"</span> <span class="attr">method</span>=<span class="string">"insertDailyMessage"</span> <span class="attr">cron</span>=<span class="string">"0 35 14 * * ?"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">task:scheduled</span> <span class="attr">ref</span>=<span class="string">"smsBackTask"</span> <span class="attr">method</span>=<span class="string">"alarmWarning"</span> <span class="attr">cron</span>=<span class="string">"0 0/30 * * * ?"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">task:scheduled</span> <span class="attr">ref</span>=<span class="string">"smsBackTask"</span> <span class="attr">method</span>=<span class="string">"alarmThreadState"</span> <span class="attr">cron</span>=<span class="string">"0 0/20 * * * ?"</span>  /&gt;</span>
-<span class="tag">&lt;/<span class="name">task:scheduled-tasks</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- Schedule Task  --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"smsDailyMessageTask"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.sms.task.SmsDailyMessageTask"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"smsBackTask"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.sms.task.SmsBackTask"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">task:scheduled-tasks</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">task:scheduled</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"smsDailyMessageTask"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"insertDailyMessage"</span> <span class="hljs-attr">cron</span>=<span class="hljs-string">"0 35 14 * * ?"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">task:scheduled</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"smsBackTask"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"alarmWarning"</span> <span class="hljs-attr">cron</span>=<span class="hljs-string">"0 0/30 * * * ?"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">task:scheduled</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"smsBackTask"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"alarmThreadState"</span> <span class="hljs-attr">cron</span>=<span class="hljs-string">"0 0/20 * * * ?"</span>  /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">task:scheduled-tasks</span>&gt;</span>
 
-<span class="comment">&lt;!-- 通过AOP，可为task加入一些处理 --&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"myScheduleTaskHandler"</span> <span class="attr">class</span>=<span class="string">"com.cj.common.MyScheduleTaskHandler"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"${deploy.hostname}"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"isCheck"</span> <span class="attr">value</span>=<span class="string">"${deploy.hostname.check}"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-<span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">aop:aspect</span> <span class="attr">ref</span>=<span class="string">"myScheduleTaskHandler"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(public void com.cj.sms.task.*.start*())"</span> <span class="attr">id</span>=<span class="string">"myTaskInterceptor"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">aop:around</span> <span class="attr">method</span>=<span class="string">"aroundAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"myTaskInterceptor"</span> /&gt;</span>
-    <span class="tag">&lt;/<span class="name">aop:aspect</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 通过AOP，可为task加入一些处理 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myScheduleTaskHandler"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.common.MyScheduleTaskHandler"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"key"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${deploy.hostname}"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"isCheck"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${deploy.hostname.check}"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspect</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myScheduleTaskHandler"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(public void com.cj.sms.task.*.start*())"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myTaskInterceptor"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">aop:around</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"aroundAdvice"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"myTaskInterceptor"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:aspect</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span>
 </code></pre>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmsDailyMessageTask</span></span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertDailyMessage</span><span class="params">()</span>
+<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmsDailyMessageTask</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insertDailyMessage</span><span class="hljs-params">()</span>
     </span>{...}
 }
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmsBackTask</span></span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">alarmWarning</span><span class="params">()</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SmsBackTask</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">alarmWarning</span><span class="hljs-params">()</span>
     </span>{...}
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">alarmThreadState</span><span class="params">()</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">alarmThreadState</span><span class="hljs-params">()</span>
     </span>{...}
 }
 </code></pre>
-<pre><code class="nulljava"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyScheduleTaskHandler</span>
+<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyScheduleTaskHandler</span>
 </span>{
-    <span class="keyword">static</span> Logger logger = Logger.getLogger(MyScheduleTaskHandler.class);
+    <span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(MyScheduleTaskHandler.class);
 
-    <span class="keyword">private</span> String key;
-    <span class="function"><span class="keyword">public</span> String <span class="title">getKey</span><span class="params">()</span></span>{<span class="keyword">return</span> key;}
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setKey</span><span class="params">(String key)</span></span>{<span class="keyword">this</span>.key = key;}
+    <span class="hljs-keyword">private</span> String key;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getKey</span><span class="hljs-params">()</span></span>{<span class="hljs-keyword">return</span> key;}
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setKey</span><span class="hljs-params">(String key)</span></span>{<span class="hljs-keyword">this</span>.key = key;}
 
-    <span class="keyword">private</span> Boolean isCheck;
-    <span class="function"><span class="keyword">public</span> Boolean <span class="title">getIsCheck</span><span class="params">()</span></span>{<span class="keyword">return</span> isCheck;}
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIsCheck</span><span class="params">(Boolean isCheck)</span></span>{<span class="keyword">this</span>.isCheck = isCheck;}
+    <span class="hljs-keyword">private</span> Boolean isCheck;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Boolean <span class="hljs-title">getIsCheck</span><span class="hljs-params">()</span></span>{<span class="hljs-keyword">return</span> isCheck;}
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setIsCheck</span><span class="hljs-params">(Boolean isCheck)</span></span>{<span class="hljs-keyword">this</span>.isCheck = isCheck;}
 
-    <span class="function"><span class="keyword">public</span> Object <span class="title">aroundAdvice</span><span class="params">(<span class="keyword">final</span> ProceedingJoinPoint pjp)</span> <span class="keyword">throws</span> Throwable </span>{
-        <span class="keyword">if</span>(!<span class="keyword">this</span>.isCheck)
-            <span class="keyword">return</span> pjp.proceed();
-        <span class="keyword">try</span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">aroundAdvice</span><span class="hljs-params">(<span class="hljs-keyword">final</span> ProceedingJoinPoint pjp)</span> <span class="hljs-keyword">throws</span> Throwable </span>{
+        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.isCheck)
+            <span class="hljs-keyword">return</span> pjp.proceed();
+        <span class="hljs-keyword">try</span>{
             InetAddress netAddress= InetAddress.getLocalHost();
             String hostName=netAddress.getHostName();
-            <span class="keyword">if</span>(hostName!=<span class="keyword">null</span> &amp;&amp; hostName.equals(key)){
-                System.out.println(<span class="string">"Do Schedule Task---"</span>);
-                <span class="keyword">return</span> pjp.proceed();
+            <span class="hljs-keyword">if</span>(hostName!=<span class="hljs-keyword">null</span> &amp;&amp; hostName.equals(key)){
+                System.out.println(<span class="hljs-string">"Do Schedule Task---"</span>);
+                <span class="hljs-keyword">return</span> pjp.proceed();
             }
-        }<span class="keyword">catch</span>(UnknownHostException ex){
-            logger.error(<span class="string">"Get HostName Error:"</span>+ex.getMessage());
+        }<span class="hljs-keyword">catch</span>(UnknownHostException ex){
+            logger.error(<span class="hljs-string">"Get HostName Error:"</span>+ex.getMessage());
         }
-        <span class="keyword">return</span> <span class="keyword">null</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
     }
 }
 </code></pre>
@@ -333,29 +333,29 @@
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2013/08/02/Spring-ScheduleTask.html';	
-		var disqus_title = 'Spring应用之ScheduleTask';
-		var disqus_url = 'http://sixdegree.github.io/2013/08/02/Spring-ScheduleTask.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

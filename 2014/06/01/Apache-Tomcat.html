@@ -375,15 +375,15 @@ access_log  error_log  httpd.pid
 <li>注意：在NameVirtualHost指令中指明IP地址并不会使服务器自动侦听那个IP地址<br>这里设定的IP地址必须对应服务器上的一个网络接口。</li>
 </ul>
 </li>
-<li><code>&lt;VirtualHost&gt;</code> 为建立的每个虚拟主机设定<VirtualHost>配置块，其中<ul>
+<li><code>&lt;VirtualHost&gt;</code> 为建立的每个虚拟主机设定<virtualhost>配置块，其中<ul>
 <li><code>ServerName</code> 指定伺服哪个主机</li>
 <li><code>DocumentRoot</code> 指令说明这个主机的内容存在于文件系统的什么地方</li>
 </ul>
-</li>
+</virtualhost></li>
 </ul>
 <h4 id="header-13">apache 日志</h4>
 <p>日志（Log）</p>
-<p>手册 <a href="http://httpd.apache.org/docs/2.4/logs.html">logs</a> | <a href="http://httpd.apache.org/docs/2.4/programs/rotatelogs.html">rotatelogs</a></p>
+<p>手册 <a href="http://httpd.apache.org/docs/2.4/logs.html" target="_blank" rel="noopener">logs</a> | <a href="http://httpd.apache.org/docs/2.4/programs/rotatelogs.html" target="_blank" rel="noopener">rotatelogs</a></p>
 <p>使用 <code>bin/rotatelogs</code>举例：</p>
 <pre><code>&gt; vi httpd.conf
 #rotatelogs logfile [ rotationtime [ offset ]] | [ filesizeM ]
@@ -599,23 +599,23 @@ JkLogFile "| /usr/local/apache2.4/bin/rotatelogs /usr/local/apache2.4/logs/mod_j
  &gt; source /etc/profile    #使其生效
 </code></pre></li>
 <li><p>configure： <code>vi conf/tomcat-users.xml</code></p>
-<pre><code class="nullxml"> <span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">'1.0'</span> encoding=<span class="string">'utf-8'</span><span class="meta">?&gt;</span></span>
- <span class="tag">&lt;<span class="name">tomcat-users</span>&gt;</span>
-     <span class="comment">&lt;!--
+<pre><code class="nullxml"> <span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">'1.0'</span> encoding=<span class="hljs-string">'utf-8'</span><span class="hljs-meta">?&gt;</span></span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">tomcat-users</span>&gt;</span>
+     <span class="hljs-comment">&lt;!--
      &lt;role rolename="tomcat"/&gt;
      &lt;role rolename="role1"/&gt;
      &lt;user username="tomcat" password="tomcat" roles="tomcat"/&gt;
      &lt;user username="both" password="tomcat" roles="tomcat,role1"/&gt;
      &lt;user username="role1" password="tomcat" roles="role1"/&gt;
      --&gt;</span>
-     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-gui"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-script"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"manager-jmx"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">role</span> <span class="attr">rolename</span>=<span class="string">"admin-gui"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">user</span> <span class="attr">password</span>=<span class="string">"admin123"</span> <span class="attr">roles</span>=<span class="string">"manager-gui"</span> <span class="attr">username</span>=<span class="string">"manager"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">user</span> <span class="attr">password</span>=<span class="string">"admin123"</span> <span class="attr">roles</span>=<span class="string">"manager-script"</span> <span class="attr">username</span>=<span class="string">"admin"</span>/&gt;</span>
-     <span class="tag">&lt;<span class="name">user</span> <span class="attr">password</span>=<span class="string">"admin123"</span> <span class="attr">roles</span>=<span class="string">"admin-gui"</span> <span class="attr">username</span>=<span class="string">"tomcat"</span>/&gt;</span>
- <span class="tag">&lt;/<span class="name">tomcat-users</span>&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">role</span> <span class="hljs-attr">rolename</span>=<span class="hljs-string">"manager-gui"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">role</span> <span class="hljs-attr">rolename</span>=<span class="hljs-string">"manager-script"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">role</span> <span class="hljs-attr">rolename</span>=<span class="hljs-string">"manager-jmx"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">role</span> <span class="hljs-attr">rolename</span>=<span class="hljs-string">"admin-gui"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">user</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"admin123"</span> <span class="hljs-attr">roles</span>=<span class="hljs-string">"manager-gui"</span> <span class="hljs-attr">username</span>=<span class="hljs-string">"manager"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">user</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"admin123"</span> <span class="hljs-attr">roles</span>=<span class="hljs-string">"manager-script"</span> <span class="hljs-attr">username</span>=<span class="hljs-string">"admin"</span>/&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">user</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"admin123"</span> <span class="hljs-attr">roles</span>=<span class="hljs-string">"admin-gui"</span> <span class="hljs-attr">username</span>=<span class="hljs-string">"tomcat"</span>/&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">tomcat-users</span>&gt;</span>
 </code></pre>
 </li>
 <li><p>打开防火墙 <code>iptables</code> 8080端口,使外部能访问</p>
@@ -876,73 +876,73 @@ worker.status.type=status
 <ul>
 <li><code>&gt; vi /usr/local/tomcat1/server.xml</code></li>
 <li><p><code>&gt; vi /usr/local/tomcat2/server.xml</code></p>
-<pre><code class="nullxml"><span class="comment">&lt;!-- 修改各个端口号--&gt;</span>
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 修改各个端口号--&gt;</span>
 
 # Shutdown Port 8005 =&gt; 7005，9005
-<span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">"8005"</span> <span class="attr">shutdown</span>=<span class="string">"SHUTDOWN"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Server</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"8005"</span> <span class="hljs-attr">shutdown</span>=<span class="hljs-string">"SHUTDOWN"</span>&gt;</span>
 ...
 
 # Http Connector Port 8080 =&gt; 7080,9080
-<span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"8080"</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">"HTTP/1.1"</span> <span class="hljs-attr">connectionTimeout</span>=<span class="hljs-string">"20000"</span> <span class="hljs-attr">redirectPort</span>=<span class="hljs-string">"8443"</span>/&gt;</span>
 
 # AJP Connector Port 8009 =&gt; 7009,9009
-<span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8009"</span> <span class="attr">protocol</span>=<span class="string">"AJP/1.3"</span> <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"8009"</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">"AJP/1.3"</span> <span class="hljs-attr">redirectPort</span>=<span class="hljs-string">"8443"</span> /&gt;</span>
 
 # Set jvmRoute to support load-balancing via AJP =&gt; jvmRoute="tomcat1",jvmRoute="tomcat2" 
 # 注意：jvmRoute取值必须要与mod_jk的workers.properties中设置的节点名称一致
-<span class="tag">&lt;<span class="name">Engine</span> <span class="attr">name</span>=<span class="string">"Catalina"</span> <span class="attr">defaultHost</span>=<span class="string">"localhost"</span>  <span class="attr">jvmRoute</span>=<span class="string">"..."</span> &gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Engine</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Catalina"</span> <span class="hljs-attr">defaultHost</span>=<span class="hljs-string">"localhost"</span>  <span class="hljs-attr">jvmRoute</span>=<span class="hljs-string">"..."</span> &gt;</span>
 ...
 </code></pre>
-<pre><code class="nullxml"><span class="comment">&lt;!-- 集群配置（tomcat1和tomcat2配置相同） --&gt;</span>
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 集群配置（tomcat1和tomcat2配置相同） --&gt;</span>
 
-<span class="comment">&lt;!-- Cluster Setting: tomcat1 &amp; tomcat2 server.xml (same) --&gt;</span>
-<span class="tag">&lt;<span class="name">Cluster</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.tcp.SimpleTcpCluster"</span> <span class="attr">channelSendOptions</span>=<span class="string">"8"</span>&gt;</span>
-<span class="tag">&lt;<span class="name">Manager</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.DeltaManager"</span>
-      <span class="attr">expireSessionsOnShutdown</span>=<span class="string">"false"</span>
-     <span class="attr">notifyListenersOnReplication</span>=<span class="string">"true"</span>/&gt;</span>
+<span class="hljs-comment">&lt;!-- Cluster Setting: tomcat1 &amp; tomcat2 server.xml (same) --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Cluster</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.ha.tcp.SimpleTcpCluster"</span> <span class="hljs-attr">channelSendOptions</span>=<span class="hljs-string">"8"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Manager</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.ha.session.DeltaManager"</span>
+      <span class="hljs-attr">expireSessionsOnShutdown</span>=<span class="hljs-string">"false"</span>
+     <span class="hljs-attr">notifyListenersOnReplication</span>=<span class="hljs-string">"true"</span>/&gt;</span>
 
-  <span class="tag">&lt;<span class="name">Channel</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.GroupChannel"</span>&gt;</span>
-      <span class="comment">&lt;!-- 
+  <span class="hljs-tag">&lt;<span class="hljs-name">Channel</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.tribes.group.GroupChannel"</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 
           bind="127.0.0.1" 如果主机有vpn-虚拟专用网络，需要要bind下，否则会导致session无法复制
           address="228.0.0.4" 广播地址，同一组tomcat集群一样
           port="45564"  同一组tomcat集群一样
       --&gt;</span>
-      <span class="tag">&lt;<span class="name">Membership</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.membership.McastService"</span> 
-          <span class="attr">address</span>=<span class="string">"228.0.0.4"</span>
-          <span class="attr">port</span>=<span class="string">"45564"</span>
-           <span class="attr">frequency</span>=<span class="string">"500"</span>
-          <span class="attr">dropTime</span>=<span class="string">"3000"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Membership</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.tribes.membership.McastService"</span> 
+          <span class="hljs-attr">address</span>=<span class="hljs-string">"228.0.0.4"</span>
+          <span class="hljs-attr">port</span>=<span class="hljs-string">"45564"</span>
+           <span class="hljs-attr">frequency</span>=<span class="hljs-string">"500"</span>
+          <span class="hljs-attr">dropTime</span>=<span class="hljs-string">"3000"</span>/&gt;</span>
 
-      <span class="comment">&lt;!-- 
+      <span class="hljs-comment">&lt;!-- 
           address="xxx" 修改为本机IP地址，如果用auto的话，在vmware里会与主机的实际ip产生冲突
           port="xxx" 若同一台上配置负载，要修改此端口，防止端口冲突不起作用
       --&gt;</span>
-      <span class="tag">&lt;<span class="name">Receiver</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.nio.NioReceiver"</span>  
-         <span class="attr">address</span>=<span class="string">"localhost"</span>
-         <span class="attr">port</span>=<span class="string">"4000"</span>
-         <span class="attr">autoBind</span>=<span class="string">"100"</span>
-        <span class="attr">selectorTimeout</span>=<span class="string">"5000"</span>
-         <span class="attr">maxThreads</span>=<span class="string">"6"</span>/&gt;</span>
-      <span class="tag">&lt;<span class="name">Sender</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.ReplicationTransmitter"</span>&gt;</span>  
-      <span class="tag">&lt;<span class="name">Transport</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.transport.nio.PooledParallelSender"</span>/&gt;</span>  
-      <span class="tag">&lt;/<span class="name">Sender</span>&gt;</span>  
-      <span class="tag">&lt;<span class="name">Interceptor</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.interceptors.TcpFailureDetector"</span>/&gt;</span>  
-      <span class="tag">&lt;<span class="name">Interceptor</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor"</span>/&gt;</span>  
-  <span class="tag">&lt;/<span class="name">Channel</span>&gt;</span>  
+      <span class="hljs-tag">&lt;<span class="hljs-name">Receiver</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.tribes.transport.nio.NioReceiver"</span>  
+         <span class="hljs-attr">address</span>=<span class="hljs-string">"localhost"</span>
+         <span class="hljs-attr">port</span>=<span class="hljs-string">"4000"</span>
+         <span class="hljs-attr">autoBind</span>=<span class="hljs-string">"100"</span>
+        <span class="hljs-attr">selectorTimeout</span>=<span class="hljs-string">"5000"</span>
+         <span class="hljs-attr">maxThreads</span>=<span class="hljs-string">"6"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Sender</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.tribes.transport.ReplicationTransmitter"</span>&gt;</span>  
+      <span class="hljs-tag">&lt;<span class="hljs-name">Transport</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.tribes.transport.nio.PooledParallelSender"</span>/&gt;</span>  
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Sender</span>&gt;</span>  
+      <span class="hljs-tag">&lt;<span class="hljs-name">Interceptor</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.tribes.group.interceptors.TcpFailureDetector"</span>/&gt;</span>  
+      <span class="hljs-tag">&lt;<span class="hljs-name">Interceptor</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.tribes.group.interceptors.MessageDispatch15Interceptor"</span>/&gt;</span>  
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Channel</span>&gt;</span>  
 
-  <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.tcp.ReplicationValve"</span> <span class="attr">filter</span>=<span class="string">""</span>/&gt;</span>  
-  <span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.JvmRouteBinderValve"</span>/&gt;</span>  
+  <span class="hljs-tag">&lt;<span class="hljs-name">Valve</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.ha.tcp.ReplicationValve"</span> <span class="hljs-attr">filter</span>=<span class="hljs-string">""</span>/&gt;</span>  
+  <span class="hljs-tag">&lt;<span class="hljs-name">Valve</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.ha.session.JvmRouteBinderValve"</span>/&gt;</span>  
 
-  <span class="tag">&lt;<span class="name">Deployer</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.deploy.FarmWarDeployer"</span>  
-          <span class="attr">tempDir</span>=<span class="string">"/tmp/war-temp/"</span>  
-          <span class="attr">deployDir</span>=<span class="string">"/tmp/war-deploy/"</span>  
-           <span class="attr">watchDir</span>=<span class="string">"/tmp/war-listen/"</span>  
-          <span class="attr">watchEnabled</span>=<span class="string">"false"</span>/&gt;</span>  
+  <span class="hljs-tag">&lt;<span class="hljs-name">Deployer</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.ha.deploy.FarmWarDeployer"</span>  
+          <span class="hljs-attr">tempDir</span>=<span class="hljs-string">"/tmp/war-temp/"</span>  
+          <span class="hljs-attr">deployDir</span>=<span class="hljs-string">"/tmp/war-deploy/"</span>  
+           <span class="hljs-attr">watchDir</span>=<span class="hljs-string">"/tmp/war-listen/"</span>  
+          <span class="hljs-attr">watchEnabled</span>=<span class="hljs-string">"false"</span>/&gt;</span>  
 
-  <span class="tag">&lt;<span class="name">ClusterListener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener"</span>/&gt;</span>  
-  <span class="tag">&lt;<span class="name">ClusterListener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.ha.session.ClusterSessionListener"</span>/&gt;</span>  
+  <span class="hljs-tag">&lt;<span class="hljs-name">ClusterListener</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener"</span>/&gt;</span>  
+  <span class="hljs-tag">&lt;<span class="hljs-name">ClusterListener</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.ha.session.ClusterSessionListener"</span>/&gt;</span>  
 
-<span class="tag">&lt;/<span class="name">Cluster</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Cluster</span>&gt;</span>
 </code></pre>
 </li>
 </ul>
@@ -986,20 +986,20 @@ worker.status.type=status
 &lt;/html&gt;
 </code></pre>
 </li>
-<li>web.xml:<pre><code class="nullxml"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"ISO-8859-1"</span><span class="meta">?&gt;</span></span>
-<span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee"</span>
-<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://xmlns.jcp.org/xml/ns/javaee
+<li>web.xml:<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"ISO-8859-1"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://xmlns.jcp.org/xml/ns/javaee"</span>
+<span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+<span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://xmlns.jcp.org/xml/ns/javaee
                     http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"</span>
-<span class="attr">version</span>=<span class="string">"3.1"</span>
-<span class="attr">metadata-complete</span>=<span class="string">"true"</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Welcome to Tomcat<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">description</span>&gt;</span>
+<span class="hljs-attr">version</span>=<span class="hljs-string">"3.1"</span>
+<span class="hljs-attr">metadata-complete</span>=<span class="hljs-string">"true"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">display-name</span>&gt;</span>Welcome to Tomcat<span class="hljs-tag">&lt;/<span class="hljs-name">display-name</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>
        Welcome to Tomcat
-  <span class="tag">&lt;/<span class="name">description</span>&gt;</span>
-  <span class="comment">&lt;!-- 表明集群下某一节点生成或改变的 Session ，将广播到该集群的其它节点 --&gt;</span>
-  <span class="tag">&lt;<span class="name">distributable</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">web-app</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 表明集群下某一节点生成或改变的 Session ，将广播到该集群的其它节点 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">distributable</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span>
 </code></pre>
 </li>
 </ul>
@@ -1151,12 +1151,12 @@ stick_session=true
 </ul>
 </li>
 <li><p>在 <code>server.xml</code> 中启用 SSL HTTP/1.1 连接器（已有配置，去除注释修改即可）</p>
-<pre><code class="nullxml"><span class="comment">&lt;!-- "keystorePass" 是生成 .keystore 文件的密码 --&gt;</span>
-<span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8443"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span>
-           <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">scheme</span>=<span class="string">"https"</span> <span class="attr">secure</span>=<span class="string">"true"</span>
-           <span class="attr">clientAuth</span>=<span class="string">"false"</span> <span class="attr">sslProtocol</span>=<span class="string">"TLS"</span>
-           <span class="attr">keystoreFile</span>=<span class="string">"tomcat.keystore"</span> 
-<span class="attr">keystorePass</span>=<span class="string">"123@com"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- "keystorePass" 是生成 .keystore 文件的密码 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"8443"</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">"HTTP/1.1"</span> <span class="hljs-attr">SSLEnabled</span>=<span class="hljs-string">"true"</span>
+           <span class="hljs-attr">maxThreads</span>=<span class="hljs-string">"150"</span> <span class="hljs-attr">scheme</span>=<span class="hljs-string">"https"</span> <span class="hljs-attr">secure</span>=<span class="hljs-string">"true"</span>
+           <span class="hljs-attr">clientAuth</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">sslProtocol</span>=<span class="hljs-string">"TLS"</span>
+           <span class="hljs-attr">keystoreFile</span>=<span class="hljs-string">"tomcat.keystore"</span> 
+<span class="hljs-attr">keystorePass</span>=<span class="hljs-string">"123@com"</span>/&gt;</span>
 </code></pre>
 <p>（若修改port，则需要将其他非SSL的redirectPort也进行修改）</p>
 </li>
@@ -1183,17 +1183,17 @@ stick_session=true
     at org.apache.catalina.core.StandardService.initInternal(StandardService.java:559)
 </code></pre><ul>
 <li><p>解决方案一：修改conf/server.xml，注释掉下面一段</p>
-<pre><code class="nullxml">  <span class="comment">&lt;!--APR library loader. Documentation at /docs/apr.html --&gt;</span>  
-  <span class="tag">&lt;<span class="name">Listener</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="attr">SSLEngine</span>=<span class="string">"on"</span> /&gt;</span>
+<pre><code class="nullxml">  <span class="hljs-comment">&lt;!--APR library loader. Documentation at /docs/apr.html --&gt;</span>  
+  <span class="hljs-tag">&lt;<span class="hljs-name">Listener</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"org.apache.catalina.core.AprLifecycleListener"</span> <span class="hljs-attr">SSLEngine</span>=<span class="hljs-string">"on"</span> /&gt;</span>
 </code></pre>
-<p>  但这样做将失去APR库的价值，Tomcat性能必然下降（<a href="http://wenson.iteye.com/blog/382738">APR库作用</a> ）</p>
+<p>  但这样做将失去APR库的价值，Tomcat性能必然下降（<a href="http://wenson.iteye.com/blog/382738" target="_blank" rel="noopener">APR库作用</a> ）</p>
 </li>
 <li><p>解决方案二：修改上面server.xml中protocol的配置为<code>protocol=&quot;org.apache.coyote.http11.Http11Protocol&quot;</code> （不启用APR）</p>
-<pre><code class="nullxml">   <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"443"</span> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11Protocol"</span> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span>
-                <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">scheme</span>=<span class="string">"https"</span> <span class="attr">secure</span>=<span class="string">"true"</span>
-                <span class="attr">clientAuth</span>=<span class="string">"false"</span> <span class="attr">sslProtocol</span>=<span class="string">"TLS"</span>
-                <span class="attr">keystoreFile</span>=<span class="string">"D:\Tomcat7.0\conf\.keystore"</span>
-                <span class="attr">keystorePass</span>=<span class="string">"xxxx"</span>/&gt;</span>
+<pre><code class="nullxml">   <span class="hljs-tag">&lt;<span class="hljs-name">Connector</span> <span class="hljs-attr">port</span>=<span class="hljs-string">"443"</span> <span class="hljs-attr">protocol</span>=<span class="hljs-string">"org.apache.coyote.http11.Http11Protocol"</span> <span class="hljs-attr">SSLEnabled</span>=<span class="hljs-string">"true"</span>
+                <span class="hljs-attr">maxThreads</span>=<span class="hljs-string">"150"</span> <span class="hljs-attr">scheme</span>=<span class="hljs-string">"https"</span> <span class="hljs-attr">secure</span>=<span class="hljs-string">"true"</span>
+                <span class="hljs-attr">clientAuth</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">sslProtocol</span>=<span class="hljs-string">"TLS"</span>
+                <span class="hljs-attr">keystoreFile</span>=<span class="hljs-string">"D:\Tomcat7.0\conf\.keystore"</span>
+                <span class="hljs-attr">keystorePass</span>=<span class="hljs-string">"xxxx"</span>/&gt;</span>
 </code></pre>
 </li>
 </ul>
@@ -1216,29 +1216,29 @@ stick_session=true
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2014/06/01/Apache-Tomcat.html';	
-		var disqus_title = 'Apache+Tomcat';
-		var disqus_url = 'http://sixdegree.github.io/2014/06/01/Apache-Tomcat.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

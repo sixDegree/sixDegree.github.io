@@ -141,8 +141,8 @@
 </ul>
 </li>
 </ol>
-<pre><code class="nulljava"><span class="comment">//RestTemplate默认使用的HttpClient未设置凭证，stateless请求</span>
-RestTemplate rt=<span class="keyword">new</span> RestTemplate();
+<pre><code class="nulljava"><span class="hljs-comment">//RestTemplate默认使用的HttpClient未设置凭证，stateless请求</span>
+RestTemplate rt=<span class="hljs-keyword">new</span> RestTemplate();
 </code></pre>
 <h2 id="header-2">HttpClient</h2>
 <h3 id="header-3">认证方案(authentication schemes)</h3>
@@ -157,12 +157,12 @@ RestTemplate rt=<span class="keyword">new</span> RestTemplate();
 <ul>
 <li>任何用户身份验证的过程都需要一组可以用于建立用户身份的凭据</li>
 <li>用户凭证的最简单的形式可以仅仅是用户名/密码对</li>
-<li><code>UsernamePasswordCredentials</code>代表了一组包含安全规则和明文密码的凭据<pre><code class="nulljava">  UsernamePasswordCredentials creds = <span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"user"</span>, <span class="string">"pwd"</span>);
+<li><code>UsernamePasswordCredentials</code>代表了一组包含安全规则和明文密码的凭据<pre><code class="nulljava">  UsernamePasswordCredentials creds = <span class="hljs-keyword">new</span> UsernamePasswordCredentials(<span class="hljs-string">"user"</span>, <span class="hljs-string">"pwd"</span>);
   System.out.println(creds.getUserPrincipal().getName());
   System.out.println(creds.getPassword());
 </code></pre>
 </li>
-<li><code>NTCredentials</code>是微软Windows指定的实现，它包含了除了用户名/密码对外，一组额外的Windows指定的属性，比如用户域名的名字（相同的用户使用不同设置的认证可以属于不同的域）<pre><code class="nulljava">  NTCredentials creds = <span class="keyword">new</span> NTCredentials(<span class="string">"user"</span>, <span class="string">"pwd"</span>, <span class="string">"workstation"</span>, <span class="string">"domain"</span>);
+<li><code>NTCredentials</code>是微软Windows指定的实现，它包含了除了用户名/密码对外，一组额外的Windows指定的属性，比如用户域名的名字（相同的用户使用不同设置的认证可以属于不同的域）<pre><code class="nulljava">  NTCredentials creds = <span class="hljs-keyword">new</span> NTCredentials(<span class="hljs-string">"user"</span>, <span class="hljs-string">"pwd"</span>, <span class="hljs-string">"workstation"</span>, <span class="hljs-string">"domain"</span>);
   System.out.println(creds.getUserPrincipal().getName());
   System.out.println(creds.getPassword());
 </code></pre>
@@ -172,10 +172,10 @@ RestTemplate rt=<span class="keyword">new</span> RestTemplate();
 <li>认证范围包括：主机名<code>Hostname</code>，端口号<code>port</code>，领域名称<code>authScope</code>,访问空间<code>realm</code>,认证方案<code>authScheme</code></li>
 <li>当使用凭据提供器来注册凭据时，可以提供一个通配符（任意主机，任意端口，任意领域，任意模式）来替代确定的属性值</li>
 <li>如果直接匹配没有发现，<code>CredentialsProvider</code>期望被用来发现最匹配的特定范围</li>
-<li>eg:<pre><code class="nulljava">CredentialsProvider credsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
-credsProvider.setCredentials(<span class="keyword">new</span> AuthScope(<span class="string">"somehost"</span>, AuthScope.ANY_PORT),<span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"u1"</span>, <span class="string">"p1"</span>));
-credsProvider.setCredentials(<span class="keyword">new</span> AuthScope(<span class="string">"somehost"</span>, <span class="number">8080</span>),<span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"u2"</span>, <span class="string">"p2"</span>));
-credsProvider.setCredentials(<span class="keyword">new</span> AuthScope(<span class="string">"otherhost"</span>, <span class="number">8080</span>, AuthScope.ANY_REALM, <span class="string">"ntlm"</span>),<span class="keyword">new</span> UsernamePasswordCredentials(<span class="string">"u3"</span>, <span class="string">"p3"</span>));
+<li>eg:<pre><code class="nulljava">CredentialsProvider credsProvider = <span class="hljs-keyword">new</span> BasicCredentialsProvider();
+credsProvider.setCredentials(<span class="hljs-keyword">new</span> AuthScope(<span class="hljs-string">"somehost"</span>, AuthScope.ANY_PORT),<span class="hljs-keyword">new</span> UsernamePasswordCredentials(<span class="hljs-string">"u1"</span>, <span class="hljs-string">"p1"</span>));
+credsProvider.setCredentials(<span class="hljs-keyword">new</span> AuthScope(<span class="hljs-string">"somehost"</span>, <span class="hljs-number">8080</span>),<span class="hljs-keyword">new</span> UsernamePasswordCredentials(<span class="hljs-string">"u2"</span>, <span class="hljs-string">"p2"</span>));
+credsProvider.setCredentials(<span class="hljs-keyword">new</span> AuthScope(<span class="hljs-string">"otherhost"</span>, <span class="hljs-number">8080</span>, AuthScope.ANY_REALM, <span class="hljs-string">"ntlm"</span>),<span class="hljs-keyword">new</span> UsernamePasswordCredentials(<span class="hljs-string">"u3"</span>, <span class="hljs-string">"p3"</span>));
 </code></pre>
 </li>
 </ul>
@@ -227,18 +227,18 @@ credsProvider.setCredentials(<span class="keyword">new</span> AuthScope(<span cl
 <li>实际上是HttpClient用来在多次请求-响应的交互中，保持状态信息用的</li>
 <li>本地的HttpContext对象可以用于定制HTTP认证内容，并先于请求执行或在请求被执行之后检查它的状态</li>
 <li><p>eg:</p>
-<pre><code class="nulljava">HttpContext localContext = <span class="keyword">new</span> BasicHttpContext();
-HttpResponse response = httpclient.execute(<span class="keyword">new</span> HttpGet(<span class="string">"http://localhost:8080/"</span>), localContext);
+<pre><code class="nulljava">HttpContext localContext = <span class="hljs-keyword">new</span> BasicHttpContext();
+HttpResponse response = httpclient.execute(<span class="hljs-keyword">new</span> HttpGet(<span class="hljs-string">"http://localhost:8080/"</span>), localContext);
 
 AuthState proxyAuthState = (AuthState) localContext.getAttribute(HttpClientContext.PROXY_AUTH_STATE);
-System.out.println(<span class="string">"Proxy auth scope: "</span> + proxyAuthState.getAuthScope());
-System.out.println(<span class="string">"Proxy auth scheme: "</span> + proxyAuthState.getAuthScheme());
-System.out.println(<span class="string">"Proxy auth credentials: "</span> + proxyAuthState.getCredentials());
+System.out.println(<span class="hljs-string">"Proxy auth scope: "</span> + proxyAuthState.getAuthScope());
+System.out.println(<span class="hljs-string">"Proxy auth scheme: "</span> + proxyAuthState.getAuthScheme());
+System.out.println(<span class="hljs-string">"Proxy auth credentials: "</span> + proxyAuthState.getCredentials());
 
 AuthState targetAuthState = (AuthState) localContext.getAttribute(HttpClientContext.TARGET_AUTH_STATE);
-System.out.println(<span class="string">"Target auth scope: "</span> + targetAuthState.getAuthScope());
-System.out.println(<span class="string">"Target auth scheme: "</span> + targetAuthState.getAuthScheme());
-System.out.println(<span class="string">"Target auth credentials: "</span> + targetAuthState.getCredentials());
+System.out.println(<span class="hljs-string">"Target auth scope: "</span> + targetAuthState.getAuthScope());
+System.out.println(<span class="hljs-string">"Target auth scheme: "</span> + targetAuthState.getAuthScheme());
+System.out.println(<span class="hljs-string">"Target auth credentials: "</span> + targetAuthState.getCredentials());
 </code></pre>
 </li>
 </ul>
@@ -247,78 +247,78 @@ System.out.println(<span class="string">"Target auth credentials: "</span> + tar
 <p>在HttpHeader中明文发送Authentication，建议组合SSL/TLS加密使用</p>
 <pre><code>Authorization: &quot;Basic &quot;+new String( Base64.encodeBase64((username:password).getBytes()) )
 </code></pre><p><strong>方案一：</strong>每次提交Request时,构建Authorization，放入<code>HttpHeader</code>中一并提交到Server</p>
-<pre><code class="nulljava"><span class="comment">/*HttpClient*/</span>
+<pre><code class="nulljava"><span class="hljs-comment">/*HttpClient*/</span>
 HttpClientBuilder builder=HttpClientBuilder.create();
-SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">null</span>, <span class="keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
-SSLConnectionSocketFactory connectionFactory = <span class="keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="keyword">new</span> AllowAllHostnameVerifier());
+SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
+SSLConnectionSocketFactory connectionFactory = <span class="hljs-keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="hljs-keyword">new</span> AllowAllHostnameVerifier());
 HttpClient client=builder.setSSLSocketFactory(connectionFactory).build();
 
-<span class="comment">/*RestTemplate*/</span>
-RestTemplate restTemplate=<span class="keyword">new</span> RestTemplate(<span class="keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient));
+<span class="hljs-comment">/*RestTemplate*/</span>
+RestTemplate restTemplate=<span class="hljs-keyword">new</span> RestTemplate(<span class="hljs-keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient));
 
-<span class="comment">/*Execute*/</span>
-<span class="comment">//HttpHeader</span>
-String base64Creds = <span class="string">"Basic "</span>+<span class="keyword">new</span> String(Base64.encodeBase64((username+<span class="string">":"</span>+password).getBytes()));
-HttpHeaders headers = <span class="keyword">new</span> HttpHeaders();
-headers.add(<span class="string">"Authorization"</span>, <span class="string">"Basic "</span> + base64Creds);
-HttpEntity&lt;Object&gt; requestEntity=<span class="keyword">new</span> HttpEntity&lt;Object&gt;(headers);
+<span class="hljs-comment">/*Execute*/</span>
+<span class="hljs-comment">//HttpHeader</span>
+String base64Creds = <span class="hljs-string">"Basic "</span>+<span class="hljs-keyword">new</span> String(Base64.encodeBase64((username+<span class="hljs-string">":"</span>+password).getBytes()));
+HttpHeaders headers = <span class="hljs-keyword">new</span> HttpHeaders();
+headers.add(<span class="hljs-string">"Authorization"</span>, <span class="hljs-string">"Basic "</span> + base64Creds);
+HttpEntity&lt;Object&gt; requestEntity=<span class="hljs-keyword">new</span> HttpEntity&lt;Object&gt;(headers);
 
-ResponseEntity&lt;String&gt; response=restTemplate.exchange(<span class="keyword">this</span>.serverUrl+page,HttpMethod.GET, requestEntity, String.class,<span class="keyword">null</span>);
+ResponseEntity&lt;String&gt; response=restTemplate.exchange(<span class="hljs-keyword">this</span>.serverUrl+page,HttpMethod.GET, requestEntity, String.class,<span class="hljs-keyword">null</span>);
 </code></pre>
 <p><strong>方案二：</strong>在<code>HttpClient</code>的<code>CredentialsProvider</code>中维护<code>UsernamePasswordCrendential</code>，以后可直接提交Request</p>
-<pre><code class="nulljava"><span class="comment">/*HttpClient*/</span>
+<pre><code class="nulljava"><span class="hljs-comment">/*HttpClient*/</span>
 HttpClientBuilder builder=HttpClientBuilder.create();
-<span class="comment">//1.SSL</span>
-SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">null</span>, <span class="keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
-SSLConnectionSocketFactory connectionFactory = <span class="keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="keyword">new</span> AllowAllHostnameVerifier());
+<span class="hljs-comment">//1.SSL</span>
+SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
+SSLConnectionSocketFactory connectionFactory = <span class="hljs-keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="hljs-keyword">new</span> AllowAllHostnameVerifier());
 builder.setSSLSocketFactory(connectionFactory);
-<span class="comment">//2.UsernamePasswordCredentials</span>
-BasicCredentialsProvider credentialsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
-credentialsProvider.setCredentials(authScope,<span class="keyword">new</span> UsernamePasswordCredentials(username, password));
+<span class="hljs-comment">//2.UsernamePasswordCredentials</span>
+BasicCredentialsProvider credentialsProvider = <span class="hljs-keyword">new</span> BasicCredentialsProvider();
+credentialsProvider.setCredentials(authScope,<span class="hljs-keyword">new</span> UsernamePasswordCredentials(username, password));
 builder.setDefaultCredentialsProvider(credentialsProvider);
-<span class="comment">//3.build HttpClient</span>
+<span class="hljs-comment">//3.build HttpClient</span>
 HttpClient client=builder.build();
 
-<span class="comment">/*RestTemplate*/</span>
-RestTemplate restTemplate=<span class="keyword">new</span> RestTemplate(<span class="keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient));
+<span class="hljs-comment">/*RestTemplate*/</span>
+RestTemplate restTemplate=<span class="hljs-keyword">new</span> RestTemplate(<span class="hljs-keyword">new</span> HttpComponentsClientHttpRequestFactory(httpClient));
 
-<span class="comment">/*Execute*/</span>
-ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="keyword">this</span>.serverUrl+page, String.class);
+<span class="hljs-comment">/*Execute*/</span>
+ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="hljs-keyword">this</span>.serverUrl+page, String.class);
 </code></pre>
 <p><strong>方案三：</strong>在<code>HttpContext</code>的<code>CredentialsProvider</code>中维护<code>UsernamePasswordCrendential</code>，以后可直接提交Request</p>
-<pre><code class="nulljava"><span class="comment">/*HttpClient*/</span>
+<pre><code class="nulljava"><span class="hljs-comment">/*HttpClient*/</span>
 HttpClientBuilder builder=HttpClientBuilder.create();
-SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="keyword">null</span>, <span class="keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
-SSLConnectionSocketFactory connectionFactory = <span class="keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="keyword">new</span> AllowAllHostnameVerifier());
+SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(<span class="hljs-keyword">null</span>, <span class="hljs-keyword">new</span> TrustSelfSignedStrategy()).useTLS().build();
+SSLConnectionSocketFactory connectionFactory = <span class="hljs-keyword">new</span> SSLConnectionSocketFactory(sslContext, <span class="hljs-keyword">new</span> AllowAllHostnameVerifier());
 HttpClient client=builder.setSSLSocketFactory(connectionFactory).build();
 
-<span class="comment">/*扩展HttpComponentsClientHttpRequestFactory的createHttpContext方法*/</span>
-<span class="comment">//以后每次提交Request,都会调用BasicAuthRequestFactory的createHttpContext方法生成HttpContext附加到Request中</span>
-    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicAuthRequestFactory</span> <span class="keyword">extends</span> <span class="title">HttpComponentsClientHttpRequestFactory</span></span>{
-        <span class="meta">@Override</span>
-        <span class="function"><span class="keyword">protected</span> HttpContext <span class="title">createHttpContext</span><span class="params">(HttpMethod httpMethod, URI uri)</span>
+<span class="hljs-comment">/*扩展HttpComponentsClientHttpRequestFactory的createHttpContext方法*/</span>
+<span class="hljs-comment">//以后每次提交Request,都会调用BasicAuthRequestFactory的createHttpContext方法生成HttpContext附加到Request中</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicAuthRequestFactory</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HttpComponentsClientHttpRequestFactory</span></span>{
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> HttpContext <span class="hljs-title">createHttpContext</span><span class="hljs-params">(HttpMethod httpMethod, URI uri)</span>
         </span>{
-            <span class="comment">//1.set AuthScheme</span>
-            HttpHost targetHost = <span class="keyword">new</span> HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
-            AuthCache authCache = <span class="keyword">new</span> BasicAuthCache();
-            BasicScheme basicAuth = <span class="keyword">new</span> BasicScheme();
+            <span class="hljs-comment">//1.set AuthScheme</span>
+            HttpHost targetHost = <span class="hljs-keyword">new</span> HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
+            AuthCache authCache = <span class="hljs-keyword">new</span> BasicAuthCache();
+            BasicScheme basicAuth = <span class="hljs-keyword">new</span> BasicScheme();
             authCache.put(targetHost, basicAuth);
             HttpClientContext localContext = HttpClientContext.create();
             localContext.setAttribute(HttpClientContext.AUTH_CACHE, authCache);
 
-            <span class="comment">//2.set CredentialsProvider</span>
-            BasicCredentialsProvider credentialsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
-            credentialsProvider.setCredentials(<span class="keyword">new</span> AuthScope(targetHost),<span class="keyword">new</span> UsernamePasswordCredentials(username, password));
+            <span class="hljs-comment">//2.set CredentialsProvider</span>
+            BasicCredentialsProvider credentialsProvider = <span class="hljs-keyword">new</span> BasicCredentialsProvider();
+            credentialsProvider.setCredentials(<span class="hljs-keyword">new</span> AuthScope(targetHost),<span class="hljs-keyword">new</span> UsernamePasswordCredentials(username, password));
             localContext.setCredentialsProvider(credentialsProvider);
-            <span class="keyword">return</span> localContext;
+            <span class="hljs-keyword">return</span> localContext;
         }
     }
 
-<span class="comment">/*RestTemplate*/</span>
-RestTemplate restTemplate=<span class="keyword">new</span> RestTemplate(<span class="keyword">new</span> BasicAuthRequestFactory(httpClient)); 
+<span class="hljs-comment">/*RestTemplate*/</span>
+RestTemplate restTemplate=<span class="hljs-keyword">new</span> RestTemplate(<span class="hljs-keyword">new</span> BasicAuthRequestFactory(httpClient)); 
 
-<span class="comment">/*Execute*/</span>
-ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="keyword">this</span>.serverUrl+page, String.class);
+<span class="hljs-comment">/*Execute*/</span>
+ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="hljs-keyword">this</span>.serverUrl+page, String.class);
 </code></pre>
 <h3 id="header-10">构建DigestAuthentication</h3>
 <pre><code>Authorization: Digest username=&quot;Mufasa&quot;,
@@ -341,25 +341,25 @@ ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="key
 </li>
 <li>digest认证不使用session，所以无法与rememberMe同用</li>
 </ul>
-<pre><code class="nulljava"><span class="meta">@Override</span>
-<span class="function"><span class="keyword">protected</span> HttpContext <span class="title">createHttpContext</span><span class="params">(HttpMethod httpMethod, URI uri)</span>
+<pre><code class="nulljava"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> HttpContext <span class="hljs-title">createHttpContext</span><span class="hljs-params">(HttpMethod httpMethod, URI uri)</span>
 </span>{
-    HttpHost targetHost = <span class="keyword">new</span> HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
-    AuthCache authCache = <span class="keyword">new</span> BasicAuthCache();
-    DigestScheme digestAuth = <span class="keyword">new</span> DigestScheme();
-    digestAuth.overrideParamter(<span class="string">"realm"</span>, realm);
-    digestAuth.overrideParamter(<span class="string">"nonce"</span>, Long.toString(<span class="keyword">new</span> Random().nextLong(), <span class="number">36</span>));
+    HttpHost targetHost = <span class="hljs-keyword">new</span> HttpHost(uri.getHost(), uri.getPort(),uri.getScheme());
+    AuthCache authCache = <span class="hljs-keyword">new</span> BasicAuthCache();
+    DigestScheme digestAuth = <span class="hljs-keyword">new</span> DigestScheme();
+    digestAuth.overrideParamter(<span class="hljs-string">"realm"</span>, realm);
+    digestAuth.overrideParamter(<span class="hljs-string">"nonce"</span>, Long.toString(<span class="hljs-keyword">new</span> Random().nextLong(), <span class="hljs-number">36</span>));
     authCache.put(targetHost, digestAuth);
 
     HttpClientContext localContext = HttpClientContext.create();
     localContext.setAttribute(HttpClientContext.AUTH_CACHE, authCache);
 
-    <span class="keyword">if</span>(<span class="keyword">this</span>.username!=<span class="keyword">null</span>){
-        BasicCredentialsProvider credentialsProvider = <span class="keyword">new</span> BasicCredentialsProvider();
-        credentialsProvider.setCredentials(<span class="keyword">new</span> AuthScope(targetHost),<span class="keyword">new</span> UsernamePasswordCredentials(username, password));
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.username!=<span class="hljs-keyword">null</span>){
+        BasicCredentialsProvider credentialsProvider = <span class="hljs-keyword">new</span> BasicCredentialsProvider();
+        credentialsProvider.setCredentials(<span class="hljs-keyword">new</span> AuthScope(targetHost),<span class="hljs-keyword">new</span> UsernamePasswordCredentials(username, password));
         localContext.setCredentialsProvider(credentialsProvider);
     }
-    <span class="keyword">return</span> localContext;
+    <span class="hljs-keyword">return</span> localContext;
 }
 </code></pre>
 <h2 id="header-11">Server端进行认证</h2>
@@ -375,68 +375,68 @@ ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(<span class="key
 <li>此认证浏览器Browser会记住Authentication，故主要用于Restful API无状态请求的认证中</li>
 </ul>
 <h3 id="header-12">配置BasicAuthentication</h3>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">realm</span>=<span class="string">"shuttle vendors"</span> <span class="attr">create-session</span>=<span class="string">"stateless"</span> <span class="attr">authentication-manager-ref</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:http-basic</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
-<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:user-service</span> <span class="attr">id</span>=<span class="string">"vendorUserService"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S001"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S002"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
-        <span class="tag">&lt;/<span class="name">sec:user-service</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/vendor/**"</span> <span class="hljs-attr">realm</span>=<span class="hljs-string">"shuttle vendors"</span> <span class="hljs-attr">create-session</span>=<span class="hljs-string">"stateless"</span> <span class="hljs-attr">authentication-manager-ref</span>=<span class="hljs-string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/vendor/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"ROLE_SUPPLIER"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:http-basic</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:user-service</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vendorUserService"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:user</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"S001"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"abc"</span> <span class="hljs-attr">authorities</span>=<span class="hljs-string">"ROLE_SUPPLIER"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:user</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"S002"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"abc"</span> <span class="hljs-attr">authorities</span>=<span class="hljs-string">"ROLE_SUPPLIER"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sec:user-service</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
 <h3 id="header-13">配置DigestAuthentication</h3>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">sec:http</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">create-session</span>=<span class="string">"stateless"</span> <span class="attr">entry-point-ref</span>=<span class="string">"digestEntryPoint"</span> <span class="attr">authentication-manager-ref</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:intercept-url</span> <span class="attr">pattern</span>=<span class="string">"/vendor/**"</span> <span class="attr">access</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:custom-filter</span> <span class="attr">ref</span>=<span class="string">"digestFilter"</span> <span class="attr">position</span>=<span class="string">"DIGEST_AUTH_FILTER"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:http</span>&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestFilter"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationFilter"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userDetailsService"</span> <span class="attr">ref</span>=<span class="string">"vendorUserService"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"authenticationEntryPoint"</span> <span class="attr">ref</span>=<span class="string">"digestEntryPoint"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"digestEntryPoint"</span> <span class="attr">class</span>=<span class="string">"org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"realmName"</span> <span class="attr">value</span>=<span class="string">"shuttle vendors"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"key"</span> <span class="attr">value</span>=<span class="string">"zero"</span> /&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-<span class="tag">&lt;<span class="name">sec:authentication-manager</span> <span class="attr">id</span>=<span class="string">"vendorAuthenticationManager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">sec:authentication-provider</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">sec:user-service</span> <span class="attr">id</span>=<span class="string">"vendorUserService"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S001"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
-            <span class="tag">&lt;<span class="name">sec:user</span> <span class="attr">name</span>=<span class="string">"S002"</span> <span class="attr">password</span>=<span class="string">"abc"</span> <span class="attr">authorities</span>=<span class="string">"ROLE_SUPPLIER"</span> /&gt;</span>
-        <span class="tag">&lt;/<span class="name">sec:user-service</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">sec:authentication-provider</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">sec:authentication-manager</span>&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/vendor/**"</span> <span class="hljs-attr">create-session</span>=<span class="hljs-string">"stateless"</span> <span class="hljs-attr">entry-point-ref</span>=<span class="hljs-string">"digestEntryPoint"</span> <span class="hljs-attr">authentication-manager-ref</span>=<span class="hljs-string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/vendor/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"ROLE_SUPPLIER"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:custom-filter</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"digestFilter"</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"DIGEST_AUTH_FILTER"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"digestFilter"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.www.DigestAuthenticationFilter"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userDetailsService"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"vendorUserService"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticationEntryPoint"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"digestEntryPoint"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"digestEntryPoint"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"realmName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"shuttle vendors"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"key"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"zero"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vendorAuthenticationManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">sec:user-service</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"vendorUserService"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:user</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"S001"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"abc"</span> <span class="hljs-attr">authorities</span>=<span class="hljs-string">"ROLE_SUPPLIER"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">sec:user</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"S002"</span> <span class="hljs-attr">password</span>=<span class="hljs-string">"abc"</span> <span class="hljs-attr">authorities</span>=<span class="hljs-string">"ROLE_SUPPLIER"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">sec:user-service</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-provider</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
 </code></pre>
   </section>
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2013/06/15/Spring-RestTemplate-with-Authentication.html';	
-		var disqus_title = 'Spring应用之RestTemplate with Authentication';
-		var disqus_url = 'http://sixdegree.github.io/2013/06/15/Spring-RestTemplate-with-Authentication.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

@@ -159,51 +159,51 @@
 <h3 id="header-3">基于nodeJS使用</h3>
 <p>示例：监听转译<code>./src/sass/style.scss</code>文件</p>
 <p>gulpfile：</p>
-<pre><code class="nulljs"><span class="keyword">var</span> gulp=<span class="built_in">require</span>(<span class="string">"gulp"</span>);
-<span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);
-<span class="function"><span class="keyword">function</span> <span class="title">sassBuild</span>(<span class="params">opts,filename</span>)</span>{
-    <span class="keyword">var</span> sassOptions = {
-      errLogToConsole: <span class="literal">true</span>,
-      outputStyle: <span class="string">'expanded'</span>,
-      loadPath:opts.loadPath
+<pre><code class="nulljs"><span class="hljs-keyword">var</span> gulp=<span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp"</span>);
+<span class="hljs-keyword">var</span> sass = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-sass'</span>);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sassBuild</span>(<span class="hljs-params">opts,filename</span>)</span>{
+    <span class="hljs-keyword">var</span> sassOptions = {
+      <span class="hljs-attr">errLogToConsole</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">outputStyle</span>: <span class="hljs-string">'expanded'</span>,
+      <span class="hljs-attr">loadPath</span>:opts.loadPath
     };
-    <span class="function"><span class="keyword">function</span> <span class="title">build</span>(<span class="params">event</span>)</span>{
-        <span class="keyword">if</span>(event)
-            <span class="built_in">console</span>.log(<span class="string">'File '</span> + event.path + <span class="string">' was '</span> + event.type);
-        gulp.src(opts.src+<span class="string">"/"</span>+filename+<span class="string">".scss"</span>)
-            .pipe(sass(sassOptions).on(<span class="string">'error'</span>, sass.logError))
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">build</span>(<span class="hljs-params">event</span>)</span>{
+        <span class="hljs-keyword">if</span>(event)
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'File '</span> + event.path + <span class="hljs-string">' was '</span> + event.type);
+        gulp.src(opts.src+<span class="hljs-string">"/"</span>+filename+<span class="hljs-string">".scss"</span>)
+            .pipe(sass(sassOptions).on(<span class="hljs-string">'error'</span>, sass.logError))
             .pipe(gulp.dest(opts.dest));
     }
     build();
-    gulp.watch(opts.src+<span class="string">"/**/*.scss"</span>,build);
+    gulp.watch(opts.src+<span class="hljs-string">"/**/*.scss"</span>,build);
 }
 
-gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>{
-    <span class="keyword">var</span> opts={
-        src:<span class="string">"./src/sass"</span>,
-        dest:<span class="string">"./public"</span>,
-        loadPath:<span class="string">"./src/sass"</span>
+gulp.task(<span class="hljs-string">'sass'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> opts={
+        <span class="hljs-attr">src</span>:<span class="hljs-string">"./src/sass"</span>,
+        <span class="hljs-attr">dest</span>:<span class="hljs-string">"./public"</span>,
+        <span class="hljs-attr">loadPath</span>:<span class="hljs-string">"./src/sass"</span>
     }；
-    sassBuild(opts,<span class="string">"style"</span>);
+    sassBuild(opts,<span class="hljs-string">"style"</span>);
 });
 </code></pre>
 <p>执行：</p>
 <pre><code>&gt; gulp sass
 </code></pre><h2 id="header-4">Sass语法</h2>
 <h3 id="header-5">注释</h3>
-<pre><code class="nullscss"><span class="comment">/* 多行注释，会出现在输出css中 */</span>
-<span class="comment">/*! 重要的注释，例如版权信息，作者，补丁的说明等（会出现在输出css中） */</span>
-<span class="comment">// 单行注释 ，私人的注释 （不会出现在输出css中）</span>
+<pre><code class="nullscss"><span class="hljs-comment">/* 多行注释，会出现在输出css中 */</span>
+<span class="hljs-comment">/*! 重要的注释，例如版权信息，作者，补丁的说明等（会出现在输出css中） */</span>
+<span class="hljs-comment">// 单行注释 ，私人的注释 （不会出现在输出css中）</span>
 </code></pre>
 <h3 id="header-6">导入</h3>
 <p><code>@import</code> 导入样式文件 (可不加文件扩展名，默认加载<code>.scss</code>,<code>.sass</code>文件)</p>
-<pre><code class="nullscss"><span class="comment">// Import other files </span>
-@<span class="keyword">import</span> <span class="string">"reset.scss"</span>;
-@<span class="keyword">import</span> <span class="string">"variables.scss"</span>;
-@<span class="keyword">import</span> <span class="string">"mixins.scss"</span>;
+<pre><code class="nullscss"><span class="hljs-comment">// Import other files </span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">"reset.scss"</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">"variables.scss"</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">"mixins.scss"</span>;
 
-<span class="comment">// Site-specific styles</span>
-<span class="selector-class">.foo</span> { … }
+<span class="hljs-comment">// Site-specific styles</span>
+<span class="hljs-selector-class">.foo</span> { … }
 </code></pre>
 <h3 id="header-7">变量</h3>
 <ul>
@@ -233,22 +233,22 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <li>在css输出文件中将会用变量值进行替换</li>
 </ul>
 <p>示例：</p>
-<pre><code class="nullscss"><span class="comment">/*声明变量*/</span>
-<span class="variable">$color</span>: <span class="number">#333</span>;
-<span class="variable">$bgcolor</span>:<span class="number">#f36</span>;
+<pre><code class="nullscss"><span class="hljs-comment">/*声明变量*/</span>
+<span class="hljs-variable">$color</span>: <span class="hljs-number">#333</span>;
+<span class="hljs-variable">$bgcolor</span>:<span class="hljs-number">#f36</span>;
 
-<span class="comment">/*引用变量*/</span>
-<span class="selector-tag">body</span> {
-    <span class="attribute">color</span>: <span class="variable">$color</span>;
-    <span class="attribute">background-color</span>: <span class="variable">$bgcolor</span>;
+<span class="hljs-comment">/*引用变量*/</span>
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">$color</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-variable">$bgcolor</span>;
 }
 </code></pre>
-<pre><code class="nullscss"><span class="comment">//多值变量</span>
-<span class="variable">$list</span> : ();
-<span class="variable">$list</span> : <span class="number">#b4d455</span>,<span class="number">42</span>,<span class="string">"awesome"</span>;
-<span class="variable">$list</span> : (<span class="number">#b4d455</span>,<span class="number">42</span>,<span class="string">"awesome"</span>);
-<span class="variable">$list</span> : ((<span class="string">"a1"</span>,<span class="string">"a2"</span>),(<span class="string">"b1"</span>,<span class="string">"b2"</span>));
-<span class="variable">$list</span> : <span class="string">"a1"</span> <span class="string">"a2"</span>,<span class="string">"b1"</span> <span class="string">"b2"</span>;    <span class="comment">//using different separators to distinguish levels</span>
+<pre><code class="nullscss"><span class="hljs-comment">//多值变量</span>
+<span class="hljs-variable">$list</span> : ();
+<span class="hljs-variable">$list</span> : <span class="hljs-number">#b4d455</span>,<span class="hljs-number">42</span>,<span class="hljs-string">"awesome"</span>;
+<span class="hljs-variable">$list</span> : (<span class="hljs-number">#b4d455</span>,<span class="hljs-number">42</span>,<span class="hljs-string">"awesome"</span>);
+<span class="hljs-variable">$list</span> : ((<span class="hljs-string">"a1"</span>,<span class="hljs-string">"a2"</span>),(<span class="hljs-string">"b1"</span>,<span class="hljs-string">"b2"</span>));
+<span class="hljs-variable">$list</span> : <span class="hljs-string">"a1"</span> <span class="hljs-string">"a2"</span>,<span class="hljs-string">"b1"</span> <span class="hljs-string">"b2"</span>;    <span class="hljs-comment">//using different separators to distinguish levels</span>
 </code></pre>
 <h3 id="header-8">嵌套</h3>
 <p>嵌套规则</p>
@@ -258,36 +258,36 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <li>使用<code>&amp;</code>这个特殊占位符替代当前父层选择器</li>
 </ul>
 <p>示例1：</p>
-<pre><code class="nullscss"><span class="selector-tag">section</span> { 
-    <span class="attribute">margin</span>: <span class="number">10px</span>; 
-    <span class="selector-tag">nav</span> {
-        <span class="attribute">height</span>: <span class="number">25px</span>;
-        &gt;<span class="selector-tag">a</span> {
-            <span class="attribute">color</span>: <span class="number">#0982c1</span>;
+<pre><code class="nullscss"><span class="hljs-selector-tag">section</span> { 
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>; 
+    <span class="hljs-selector-tag">nav</span> {
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
+        &gt;<span class="hljs-selector-tag">a</span> {
+            <span class="hljs-attribute">color</span>: <span class="hljs-number">#0982c1</span>;
             &amp;:hover{
-                <span class="attribute">text-decoration</span>: underline;
+                <span class="hljs-attribute">text-decoration</span>: underline;
             }
         }
     }
 }
 </code></pre>
 <p>=&gt; css</p>
-<pre><code class="nullcss"><span class="selector-tag">section</span> {<span class="attribute">margin</span>: <span class="number">10px</span>;}
-<span class="selector-tag">section</span> <span class="selector-tag">nav</span> {<span class="attribute">height</span>: <span class="number">25px</span>;}
-<span class="selector-tag">section</span> <span class="selector-tag">nav</span>&gt;<span class="selector-tag">a</span> {<span class="attribute">color</span>: <span class="number">#0982c1</span>;}
-<span class="selector-tag">section</span> <span class="selector-tag">nav</span>&gt;<span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> {<span class="attribute">text-decoration</span>: underline;}
+<pre><code class="nullcss"><span class="hljs-selector-tag">section</span> {<span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;}
+<span class="hljs-selector-tag">section</span> <span class="hljs-selector-tag">nav</span> {<span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;}
+<span class="hljs-selector-tag">section</span> <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">a</span> {<span class="hljs-attribute">color</span>: <span class="hljs-number">#0982c1</span>;}
+<span class="hljs-selector-tag">section</span> <span class="hljs-selector-tag">nav</span>&gt;<span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> {<span class="hljs-attribute">text-decoration</span>: underline;}
 </code></pre>
 <p>示例2：</p>
-<pre><code class="nullscss"><span class="selector-tag">section</span><span class="selector-class">.main</span> <span class="selector-tag">p</span> { 
-    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="number">0</span>; 
-    <span class="attribute">font-size</span>: <span class="number">18px</span>; 
-    <span class="attribute">line-height</span>: <span class="number">1.5</span>; 
-    <span class="selector-tag">body</span><span class="selector-class">.store</span> &amp; { <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="attribute">line-height</span>: <span class="number">1.4</span>; }
+<pre><code class="nullscss"><span class="hljs-selector-tag">section</span><span class="hljs-selector-class">.main</span> <span class="hljs-selector-tag">p</span> { 
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span> <span class="hljs-number">0</span>; 
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>; 
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>; 
+    <span class="hljs-selector-tag">body</span><span class="hljs-selector-class">.store</span> &amp; { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>; <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4</span>; }
 }
 </code></pre>
 <p>=&gt; css</p>
-<pre><code class="nullcss"><span class="selector-tag">section</span><span class="selector-class">.main</span> <span class="selector-tag">p</span> { <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">20px</span> <span class="number">0</span>; <span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="attribute">line-height</span>: <span class="number">1.5</span>; }
-<span class="selector-tag">body</span><span class="selector-class">.store</span> <span class="selector-tag">section</span><span class="selector-class">.main</span> <span class="selector-tag">p</span> { <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="attribute">line-height</span>: <span class="number">1.4</span>; }
+<pre><code class="nullcss"><span class="hljs-selector-tag">section</span><span class="hljs-selector-class">.main</span> <span class="hljs-selector-tag">p</span> { <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span> <span class="hljs-number">0</span>; <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>; <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.5</span>; }
+<span class="hljs-selector-tag">body</span><span class="hljs-selector-class">.store</span> <span class="hljs-selector-tag">section</span><span class="hljs-selector-class">.main</span> <span class="hljs-selector-tag">p</span> { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>; <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4</span>; }
 </code></pre>
 <h3 id="header-9">复用样式块</h3>
 <h4 id="header-10">定义复用样式块</h4>
@@ -300,10 +300,10 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <li>设置变量</li>
 </ul>
 </li>
-<li>使用<code>@include</code>调用<pre><code class="nullscss">@<span class="keyword">mixin</span> 名称（$参数名：参数值）{
-   <span class="comment">/*样式规则*/</span>
+<li>使用<code>@include</code>调用<pre><code class="nullscss">@<span class="hljs-keyword">mixin</span> 名称（$参数名：参数值）{
+   <span class="hljs-comment">/*样式规则*/</span>
    ...
-   @<span class="keyword">content</span>;
+   @<span class="hljs-keyword">content</span>;
 }
 </code></pre>
 </li>
@@ -313,7 +313,7 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <li>创建静态规则，本身不会输出到css中</li>
 <li>不能传递参数，设置变量</li>
 <li>使用<code>@extend</code>调用<pre><code class="nullscss">%名称 {
-   <span class="comment">/*样式规则*/</span>
+   <span class="hljs-comment">/*样式规则*/</span>
 }
 </code></pre>
 </li>
@@ -323,7 +323,7 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <li>创建静态规则，本身会输出到css中</li>
 <li>不能传递参数，设置变量</li>
 <li>使用<code>@extend</code>调用<pre><code class="nullscss">.名称 {
-   <span class="comment">/*样式规则*/</span>
+   <span class="hljs-comment">/*样式规则*/</span>
 }
 </code></pre>
 </li>
@@ -336,7 +336,7 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <li>用来调用<code>@mixin</code>定义的函数模块</li>
 <li>产生的样式是以复制拷贝的方式存在的</li>
 <li>多次调用同一个<code>@mixin</code>，编译出的CSS不会对其进行合并<pre><code class="nullscss">选择器{
-   @<span class="keyword">include</span> mixin名(参数值)；
+   @<span class="hljs-keyword">include</span> mixin名(参数值)；
 }
 </code></pre>
 </li>
@@ -346,8 +346,8 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <li>用来调用<code>.class</code>或者<code>%placeholders</code>定义的属性模块</li>
 <li>产生的样式是以组合申明的方式存在</li>
 <li>多次调用同一个<code>%Placeholders</code>或<code>.class</code>，编译出的CSS会对其进行合并<pre><code class="nullscss">选择器 {
-   @<span class="keyword">extend</span> .xxx
-   @<span class="keyword">extend</span> %xxx
+   @<span class="hljs-keyword">extend</span> .xxx
+   @<span class="hljs-keyword">extend</span> %xxx
 }
 </code></pre>
 </li>
@@ -357,155 +357,155 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <h4 id="header-12">使用示例</h4>
 <ul>
 <li><p><code>@mixin</code> + <code>@include</code></p>
-<pre><code class="nullscss"> @<span class="keyword">mixin</span> error(<span class="variable">$borderWidth</span>:<span class="number">2px</span>){
-     <span class="attribute">border</span>: <span class="variable">$borderWidth</span> solid <span class="number">#f00</span>;
-     <span class="attribute">color</span>: <span class="number">#f00</span>;
+<pre><code class="nullscss"> @<span class="hljs-keyword">mixin</span> error(<span class="hljs-variable">$borderWidth</span>:<span class="hljs-number">2px</span>){
+     <span class="hljs-attribute">border</span>: <span class="hljs-variable">$borderWidth</span> solid <span class="hljs-number">#f00</span>;
+     <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
  }
 
- <span class="comment">/*引用定义好的errorMixins：*/</span>
- <span class="selector-class">.generic-error</span> {
-     @<span class="keyword">include</span> error();
+ <span class="hljs-comment">/*引用定义好的errorMixins：*/</span>
+ <span class="hljs-selector-class">.generic-error</span> {
+     @<span class="hljs-keyword">include</span> error();
  }
- <span class="selector-class">.login-error</span> {
-     @<span class="keyword">include</span> error(<span class="number">3px</span>);
-     <span class="attribute">font-size</span>:<span class="number">13px</span>;
+ <span class="hljs-selector-class">.login-error</span> {
+     @<span class="hljs-keyword">include</span> error(<span class="hljs-number">3px</span>);
+     <span class="hljs-attribute">font-size</span>:<span class="hljs-number">13px</span>;
  }
- <span class="selector-class">.test-error</span>{
-     @<span class="keyword">include</span> error(<span class="variable">$testColor</span>:<span class="number">5px</span>);
-     <span class="attribute">font-size</span>:<span class="number">10px</span>;
+ <span class="hljs-selector-class">.test-error</span>{
+     @<span class="hljs-keyword">include</span> error(<span class="hljs-variable">$testColor</span>:<span class="hljs-number">5px</span>);
+     <span class="hljs-attribute">font-size</span>:<span class="hljs-number">10px</span>;
  }
 </code></pre>
 <p> =&gt; css</p>
-<pre><code class="nullcss"> <span class="selector-class">.generic-error</span> {
-     <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#f00</span>;
-     <span class="attribute">color</span>: <span class="number">#f00</span>;
+<pre><code class="nullcss"> <span class="hljs-selector-class">.generic-error</span> {
+     <span class="hljs-attribute">border</span>:<span class="hljs-number">2px</span> solid <span class="hljs-number">#f00</span>;
+     <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
  }
- <span class="selector-class">.login-error</span> { 
-     <span class="attribute">border</span>: <span class="number">3px</span> solid <span class="number">#f00</span>;
-     <span class="attribute">color</span>: <span class="number">#f00</span>;
-     <span class="attribute">font-size</span>:<span class="number">13px</span>;
+ <span class="hljs-selector-class">.login-error</span> { 
+     <span class="hljs-attribute">border</span>: <span class="hljs-number">3px</span> solid <span class="hljs-number">#f00</span>;
+     <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
+     <span class="hljs-attribute">font-size</span>:<span class="hljs-number">13px</span>;
  }
- <span class="selector-class">.test-error</span>{
-     <span class="attribute">border</span>: <span class="number">5px</span> solid <span class="number">#f00</span>;
-     <span class="attribute">color</span>: <span class="number">#f00</span>;
-     <span class="attribute">font-size</span>:<span class="number">10px</span>;
+ <span class="hljs-selector-class">.test-error</span>{
+     <span class="hljs-attribute">border</span>: <span class="hljs-number">5px</span> solid <span class="hljs-number">#f00</span>;
+     <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
+     <span class="hljs-attribute">font-size</span>:<span class="hljs-number">10px</span>;
  }
 </code></pre>
 </li>
 <li><p><code>@mixin</code>+<code>@content</code>+<code>@include</code></p>
-<pre><code class="nullscss">  @<span class="keyword">mixin</span> error(<span class="variable">$borderWidth</span>:<span class="number">2px</span>){
-      <span class="attribute">border</span>: <span class="variable">$borderWidth</span> solid <span class="number">#f00</span>;
-      <span class="attribute">color</span>: <span class="number">#f00</span>;
-      @<span class="keyword">content</span>;
+<pre><code class="nullscss">  @<span class="hljs-keyword">mixin</span> error(<span class="hljs-variable">$borderWidth</span>:<span class="hljs-number">2px</span>){
+      <span class="hljs-attribute">border</span>: <span class="hljs-variable">$borderWidth</span> solid <span class="hljs-number">#f00</span>;
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
+      @<span class="hljs-keyword">content</span>;
   }
-  <span class="selector-class">.generic-error</span> {
-      @<span class="keyword">include</span> error(){<span class="attribute">background</span>:<span class="number">#333</span>;}
+  <span class="hljs-selector-class">.generic-error</span> {
+      @<span class="hljs-keyword">include</span> error(){<span class="hljs-attribute">background</span>:<span class="hljs-number">#333</span>;}
   }
-  <span class="selector-class">.login-error</span> {
-      @<span class="keyword">include</span> error(<span class="number">3px</span>){<span class="attribute">background</span>:<span class="number">#eee</span>};
-      <span class="attribute">font-size</span>:<span class="number">13px</span>;
+  <span class="hljs-selector-class">.login-error</span> {
+      @<span class="hljs-keyword">include</span> error(<span class="hljs-number">3px</span>){<span class="hljs-attribute">background</span>:<span class="hljs-number">#eee</span>};
+      <span class="hljs-attribute">font-size</span>:<span class="hljs-number">13px</span>;
   }
 </code></pre>
 <p>  =&gt;css</p>
-<pre><code class="nullcss">  <span class="selector-class">.generic-error</span> {
-      <span class="attribute">border</span>:<span class="number">2px</span> solid <span class="number">#f00</span>;
-      <span class="attribute">color</span>: <span class="number">#f00</span>;
-      <span class="attribute">background</span>:<span class="number">#333</span>;
+<pre><code class="nullcss">  <span class="hljs-selector-class">.generic-error</span> {
+      <span class="hljs-attribute">border</span>:<span class="hljs-number">2px</span> solid <span class="hljs-number">#f00</span>;
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
+      <span class="hljs-attribute">background</span>:<span class="hljs-number">#333</span>;
   }
-  <span class="selector-class">.login-error</span> { 
-      <span class="attribute">border</span>: <span class="number">3px</span> solid <span class="number">#f00</span>;
-      <span class="attribute">color</span>: <span class="number">#f00</span>;
-      <span class="attribute">font-size</span>:<span class="number">13px</span>;
-      <span class="attribute">background</span>:<span class="number">#eee</span>;
+  <span class="hljs-selector-class">.login-error</span> { 
+      <span class="hljs-attribute">border</span>: <span class="hljs-number">3px</span> solid <span class="hljs-number">#f00</span>;
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#f00</span>;
+      <span class="hljs-attribute">font-size</span>:<span class="hljs-number">13px</span>;
+      <span class="hljs-attribute">background</span>:<span class="hljs-number">#eee</span>;
   }
 </code></pre>
 </li>
 <li><p><code>.class</code> + <code>@extend</code></p>
-<pre><code class="nullscss"> <span class="selector-class">.block</span> {
-     <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>;
-     <span class="attribute">padding</span>:<span class="number">2px</span>;
+<pre><code class="nullscss"> <span class="hljs-selector-class">.block</span> {
+     <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">5px</span>;
+     <span class="hljs-attribute">padding</span>:<span class="hljs-number">2px</span>;
  }
 
- <span class="selector-tag">p</span> {
-     @<span class="keyword">extend</span> .block;
-     <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;
+ <span class="hljs-selector-tag">p</span> {
+     @<span class="hljs-keyword">extend</span> .block;
+     <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
  }
- <span class="selector-tag">ul</span>,<span class="selector-tag">ol</span> {
-     @<span class="keyword">extend</span> .block;
-     <span class="attribute">color</span>:<span class="number">#333</span>;
-     <span class="attribute">text-transform</span>: uppercase;
+ <span class="hljs-selector-tag">ul</span>,<span class="hljs-selector-tag">ol</span> {
+     @<span class="hljs-keyword">extend</span> .block;
+     <span class="hljs-attribute">color</span>:<span class="hljs-number">#333</span>;
+     <span class="hljs-attribute">text-transform</span>: uppercase;
  }
 </code></pre>
 <p> =&gt; css</p>
-<pre><code class="nullcss"> <span class="selector-class">.block</span>,<span class="selector-tag">p</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span> {
-     <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>;
-     <span class="attribute">padding</span>:<span class="number">2px</span>;
+<pre><code class="nullcss"> <span class="hljs-selector-class">.block</span>,<span class="hljs-selector-tag">p</span>,<span class="hljs-selector-tag">ul</span>,<span class="hljs-selector-tag">ol</span> {
+     <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">5px</span>;
+     <span class="hljs-attribute">padding</span>:<span class="hljs-number">2px</span>;
  }
- <span class="selector-tag">p</span> {
-     <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;
+ <span class="hljs-selector-tag">p</span> {
+     <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
  }
- <span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>{
-     <span class="attribute">color</span>: <span class="number">#333</span>; <span class="attribute">text-transform</span>: uppercase;
+ <span class="hljs-selector-tag">ul</span>,<span class="hljs-selector-tag">ol</span>{
+     <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>; <span class="hljs-attribute">text-transform</span>: uppercase;
  }
 </code></pre>
 </li>
 <li><p><code>%</code> + <code>@extend</code></p>
 <pre><code class="nullscss">  %block {
-      <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>;
-      <span class="attribute">padding</span>:<span class="number">2px</span>;
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">5px</span>;
+      <span class="hljs-attribute">padding</span>:<span class="hljs-number">2px</span>;
   }
 
-  <span class="selector-tag">p</span> {
-      @<span class="keyword">extend</span> %block;
-      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;
+  <span class="hljs-selector-tag">p</span> {
+      @<span class="hljs-keyword">extend</span> %block;
+      <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
   }
-  <span class="selector-tag">ul</span>,<span class="selector-tag">ol</span> {
-      @<span class="keyword">extend</span> %block;
-      <span class="attribute">color</span>: <span class="number">#333</span>;
+  <span class="hljs-selector-tag">ul</span>,<span class="hljs-selector-tag">ol</span> {
+      @<span class="hljs-keyword">extend</span> %block;
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
       text-transfomr:uppercase;
   }
 </code></pre>
 <p>  =&gt; css</p>
-<pre><code class="nullcss">  <span class="selector-tag">p</span>, <span class="selector-tag">ul</span>, <span class="selector-tag">ol</span> { 
-      <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>; 
-      <span class="attribute">padding</span>: <span class="number">2px</span>; 
+<pre><code class="nullcss">  <span class="hljs-selector-tag">p</span>, <span class="hljs-selector-tag">ul</span>, <span class="hljs-selector-tag">ol</span> { 
+      <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">5px</span>; 
+      <span class="hljs-attribute">padding</span>: <span class="hljs-number">2px</span>; 
   }
-  <span class="selector-tag">p</span> {
-      <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;
+  <span class="hljs-selector-tag">p</span> {
+      <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#eee</span>;
   }
-  <span class="selector-tag">ul</span>, <span class="selector-tag">ol</span> {
-      <span class="attribute">color</span>: <span class="number">#333</span>;
-      <span class="attribute">text-transfomr</span>: uppercase;
+  <span class="hljs-selector-tag">ul</span>, <span class="hljs-selector-tag">ol</span> {
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;
+      <span class="hljs-attribute">text-transfomr</span>: uppercase;
   }
 </code></pre>
 </li>
 <li><p><code>@mixin</code> + <code>%Placeholders</code></p>
 <pre><code class="nullscss">  %grid {
-      <span class="attribute">box-sizing</span>: border-box;
-      <span class="attribute">display</span>: inline-block;
+      <span class="hljs-attribute">box-sizing</span>: border-box;
+      <span class="hljs-attribute">display</span>: inline-block;
   }
-  @<span class="keyword">mixin</span> grid(<span class="variable">$width</span>: 1){
-      @<span class="keyword">extend</span> %grid;
-      <span class="attribute">width</span>: percentage(<span class="variable">$width</span>);
+  @<span class="hljs-keyword">mixin</span> grid(<span class="hljs-variable">$width</span>: 1){
+      @<span class="hljs-keyword">extend</span> %grid;
+      <span class="hljs-attribute">width</span>: percentage(<span class="hljs-variable">$width</span>);
   }
 
-  <span class="selector-class">.grid-half</span>{
-      @<span class="keyword">include</span> grid(<span class="number">1</span>/<span class="number">2</span>);
+  <span class="hljs-selector-class">.grid-half</span>{
+      @<span class="hljs-keyword">include</span> grid(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>);
   }
-  <span class="selector-class">.grid-whird</span>{
-      @<span class="keyword">include</span> grid(<span class="number">1</span>/<span class="number">3</span>);
+  <span class="hljs-selector-class">.grid-whird</span>{
+      @<span class="hljs-keyword">include</span> grid(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>);
   }
 </code></pre>
 <p>  =&gt; css</p>
-<pre><code class="nullcss">  <span class="selector-class">.grid-half</span>, <span class="selector-class">.grid-third</span> {
-    <span class="attribute">box-sizing</span>: border-box;
-    <span class="attribute">display</span>: inline-block;
+<pre><code class="nullcss">  <span class="hljs-selector-class">.grid-half</span>, <span class="hljs-selector-class">.grid-third</span> {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">display</span>: inline-block;
   }
-  <span class="selector-class">.grid-half</span> {
-    <span class="attribute">width</span>: <span class="number">50%</span>;
+  <span class="hljs-selector-class">.grid-half</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;
   }
-  <span class="selector-class">.grid-third</span> {
-    <span class="attribute">width</span>: <span class="number">33.33333%</span>;
+  <span class="hljs-selector-class">.grid-third</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">33.33333%</span>;
   }
 </code></pre>
 </li>
@@ -514,56 +514,56 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 <h4 id="header-14">循环</h4>
 <ul>
 <li><code>@for</code><ul>
-<li>关键字<code>through</code>表示包括<code>end</code>这个数<pre><code class="nullscss"><span class="comment">//[start,end]</span>
-@<span class="keyword">for</span> <span class="variable">$i</span> from <span class="variable">$start</span> through <span class="variable">$end</span> {
+<li>关键字<code>through</code>表示包括<code>end</code>这个数<pre><code class="nullscss"><span class="hljs-comment">//[start,end]</span>
+@<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from <span class="hljs-variable">$start</span> through <span class="hljs-variable">$end</span> {
   ...
 }
 </code></pre>
 </li>
-<li>关键字<code>to</code>表示不包括<code>end</code>这个数<pre><code class="nullscss"><span class="comment">//[start,end)</span>
-@<span class="keyword">for</span> <span class="variable">$i</span> from <span class="variable">$start</span> to <span class="variable">$end</span> {
+<li>关键字<code>to</code>表示不包括<code>end</code>这个数<pre><code class="nullscss"><span class="hljs-comment">//[start,end)</span>
+@<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from <span class="hljs-variable">$start</span> to <span class="hljs-variable">$end</span> {
   ...
 }
 </code></pre>
 </li>
 </ul>
 </li>
-<li><code>@each</code><pre><code class="nullscss">  @<span class="keyword">each</span> <span class="variable">$var</span> in <span class="variable">$someList</span> { 
+<li><code>@each</code><pre><code class="nullscss">  @<span class="hljs-keyword">each</span> <span class="hljs-variable">$var</span> in <span class="hljs-variable">$someList</span> { 
       ...
   }
 </code></pre>
 </li>
 </ul>
 <p>示例：</p>
-<pre><code class="nullscss"><span class="variable">$slider-list</span>:(red,green ,blue,yellow);
+<pre><code class="nullscss"><span class="hljs-variable">$slider-list</span>:(red,green ,blue,yellow);
 
-<span class="comment">//使用@for</span>
-@<span class="keyword">for</span> <span class="variable">$i</span> from 1 through length(<span class="variable">$slider-list</span>){
-  <span class="selector-class">.slider-</span># {<span class="variable">$i</span>}{
-    <span class="attribute">background</span>:nth(<span class="variable">$slider-list</span> ,<span class="variable">$i</span>);
+<span class="hljs-comment">//使用@for</span>
+@<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span> from 1 through length(<span class="hljs-variable">$slider-list</span>){
+  <span class="hljs-selector-class">.slider-</span># {<span class="hljs-variable">$i</span>}{
+    <span class="hljs-attribute">background</span>:nth(<span class="hljs-variable">$slider-list</span> ,<span class="hljs-variable">$i</span>);
   }
 }
 
-<span class="comment">//使用@each</span>
-@<span class="keyword">each</span> <span class="variable">$color</span> in <span class="variable">$slider-list</span>{
-  <span class="variable">$index</span>: index(<span class="variable">$slider-list</span> ,<span class="variable">$color</span>);
-  <span class="selector-class">.slider-</span># {<span class="variable">$index</span>}{
-    <span class="attribute">background</span>:<span class="variable">$color</span>;
+<span class="hljs-comment">//使用@each</span>
+@<span class="hljs-keyword">each</span> <span class="hljs-variable">$color</span> in <span class="hljs-variable">$slider-list</span>{
+  <span class="hljs-variable">$index</span>: index(<span class="hljs-variable">$slider-list</span> ,<span class="hljs-variable">$color</span>);
+  <span class="hljs-selector-class">.slider-</span># {<span class="hljs-variable">$index</span>}{
+    <span class="hljs-attribute">background</span>:<span class="hljs-variable">$color</span>;
   }
 }
 </code></pre>
 <h4 id="header-15">判断</h4>
 <ul>
-<li><code>@if</code>,<code>@else if</code>,<code>@else</code><pre><code class="nullscss">  @<span class="keyword">if</span> 条件<span class="number">1</span>{
+<li><code>@if</code>,<code>@else if</code>,<code>@else</code><pre><code class="nullscss">  @<span class="hljs-keyword">if</span> 条件<span class="hljs-number">1</span>{
       ...
-  }@<span class="keyword">else</span> if 条件<span class="number">2</span>{
+  }@<span class="hljs-keyword">else</span> if 条件<span class="hljs-number">2</span>{
       ...
-  }@<span class="keyword">else</span>{
+  }@<span class="hljs-keyword">else</span>{
       ...
   }
 </code></pre>
-<pre><code class="nullscss">  <span class="comment">//三目判断：第一个表示条件，第二个表示条件为真的值，第三个表示为假的值</span>
-  if(<span class="variable">$condition</span>, <span class="variable">$if-true</span>, <span class="variable">$if-false</span>)
+<pre><code class="nullscss">  <span class="hljs-comment">//三目判断：第一个表示条件，第二个表示条件为真的值，第三个表示为假的值</span>
+  if(<span class="hljs-variable">$condition</span>, <span class="hljs-variable">$if-true</span>, <span class="hljs-variable">$if-false</span>)
 </code></pre>
 </li>
 <li>条件：<ul>
@@ -573,25 +573,25 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 </li>
 </ul>
 <p>示例：</p>
-<pre><code class="nullscss">@<span class="keyword">if</span> not(<span class="variable">$a</span>){
-    <span class="selector-tag">p</span>{
-        <span class="attribute">color</span>:red;
+<pre><code class="nullscss">@<span class="hljs-keyword">if</span> not(<span class="hljs-variable">$a</span>){
+    <span class="hljs-selector-tag">p</span>{
+        <span class="hljs-attribute">color</span>:red;
     }
 }
 </code></pre>
-<pre><code class="nullscss"><span class="selector-tag">body</span> {
-    @<span class="keyword">if</span> <span class="variable">$theme</span> == red {
-        <span class="attribute">background</span>: rgba(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);
-    } @<span class="keyword">else</span> if <span class="variable">$theme</span> == yellow {
-        <span class="attribute">background</span>: rgba(<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">0.5</span>);
-    } @<span class="keyword">else</span> if <span class="variable">$theme</span> == black {
-        <span class="attribute">background</span>: rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);
+<pre><code class="nullscss"><span class="hljs-selector-tag">body</span> {
+    @<span class="hljs-keyword">if</span> <span class="hljs-variable">$theme</span> == red {
+        <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
+    } @<span class="hljs-keyword">else</span> if <span class="hljs-variable">$theme</span> == yellow {
+        <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
+    } @<span class="hljs-keyword">else</span> if <span class="hljs-variable">$theme</span> == black {
+        <span class="hljs-attribute">background</span>: rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.5</span>);
     }
 }
 </code></pre>
-<pre><code class="nullscss"><span class="variable">$fontBold</span>: true;
-<span class="selector-class">.title</span> {
-    <span class="attribute">font-weight</span>: @if(<span class="variable">$fontBold</span>, bold, normal);        <span class="comment">//bold</span>
+<pre><code class="nullscss"><span class="hljs-variable">$fontBold</span>: true;
+<span class="hljs-selector-class">.title</span> {
+    <span class="hljs-attribute">font-weight</span>: @if(<span class="hljs-variable">$fontBold</span>, bold, normal);        <span class="hljs-comment">//bold</span>
 }
 </code></pre>
 <h4 id="header-16">function</h4>
@@ -601,13 +601,13 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 }
 </code></pre>
 <p>示例：</p>
-<pre><code class="nullscss"><span class="comment">// px转em</span>
-@function pxToEm(<span class="variable">$px</span>, <span class="variable">$base</span>: 16) {
-    @return (<span class="variable">$px</span> / <span class="variable">$base</span>) * 1em;
+<pre><code class="nullscss"><span class="hljs-comment">// px转em</span>
+@function pxToEm(<span class="hljs-variable">$px</span>, <span class="hljs-variable">$base</span>: 16) {
+    @return (<span class="hljs-variable">$px</span> / <span class="hljs-variable">$base</span>) * 1em;
 }
 
-<span class="selector-tag">p</span>{
-    <span class="attribute">font-size</span>:pxToEm(<span class="number">20</span>);
+<span class="hljs-selector-tag">p</span>{
+    <span class="hljs-attribute">font-size</span>:pxToEm(<span class="hljs-number">20</span>);
 }
 </code></pre>
 <p>附：Sass内置的一些函数</p>
@@ -625,29 +625,29 @@ gulp.task(<span class="string">'sass'</span>, <span class="function"><span class
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2014/04/01/Sass.html';	
-		var disqus_title = 'Sass';
-		var disqus_url = 'http://sixdegree.github.io/2014/04/01/Sass.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

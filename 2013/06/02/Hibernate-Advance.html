@@ -128,35 +128,35 @@
     <h2 id="header-1">Native SQL</h2>
 <h3 id="header-2">简单查询</h3>
 <ol>
-<li>返回<code>List&lt;Object[]&gt;</code><pre><code class="nulljava"> String sql = <span class="string">"select s.rollNo, s.name, s.address from Student s"</span>;
+<li>返回<code>List&lt;Object[]&gt;</code><pre><code class="nulljava"> String sql = <span class="hljs-string">"select s.rollNo, s.name, s.address from Student s"</span>;
  SQLQuery query = session.createSQLQuery(sql);
  List list = query.list();
  Iterator iterator = list.iterator();
- <span class="keyword">for</span> (Iterator it = query.iterate(); it.hasNext();) {
+ <span class="hljs-keyword">for</span> (Iterator it = query.iterate(); it.hasNext();) {
          Object[] object = (Object[]) it.next();
-         System.out.println(object[<span class="number">0</span>]);
-         System.out.println(object[<span class="number">1</span>]);
-         System.out.println(object[<span class="number">2</span>]);
+         System.out.println(object[<span class="hljs-number">0</span>]);
+         System.out.println(object[<span class="hljs-number">1</span>]);
+         System.out.println(object[<span class="hljs-number">2</span>]);
  }
 </code></pre>
 </li>
 <li><p>返回<code>List&lt;Map&gt;</code>,使用<code>setResultTransformer</code></p>
-<pre><code class="nulljava"> String sql = <span class="string">"select s.roll_no, s.name, s.address from student s"</span>;
+<pre><code class="nulljava"> String sql = <span class="hljs-string">"select s.roll_no, s.name, s.address from student s"</span>;
  SQLQuery query = session.createSQLQuery(sql)
      .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 
  List list = query.list();
  Iterator iterator = list.iterator();
- <span class="keyword">while</span> (iterator.hasNext()) {
+ <span class="hljs-keyword">while</span> (iterator.hasNext()) {
      Map map = (Map) iterator.next();
-     System.out.println(map.get(<span class="string">"roll_no"</span>));
-     System.out.println(map.get(<span class="string">"name"</span>));
-     System.out.println(map.get(<span class="string">"address"</span>));
+     System.out.println(map.get(<span class="hljs-string">"roll_no"</span>));
+     System.out.println(map.get(<span class="hljs-string">"name"</span>));
+     System.out.println(map.get(<span class="hljs-string">"address"</span>));
  }
 </code></pre>
 </li>
 <li><p>返回持久化对象<code>List&lt;Clazz&gt;</code>，使用<code>addEntity</code></p>
-<pre><code class="nulljava"> String sql = <span class="string">"select s.roll_no, s.name, s.address from student s"</span>;
+<pre><code class="nulljava"> String sql = <span class="hljs-string">"select s.roll_no, s.name, s.address from student s"</span>;
  SQLQuery query = session.createSQLQuery(sql)
      .addEntity(Student.class);
  List&lt;Student&gt; query=(List&lt;Student&gt;)query.list();
@@ -166,19 +166,19 @@
 <h3 id="header-3">多表复杂查询，返回未关联对象</h3>
 <ol>
 <li><p>返回多个持久化对象<code>List&lt;Object[]&gt;</code>，使用<code>addEntity</code></p>
-<pre><code class="nulljava"> String sql=<span class="string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
+<pre><code class="nulljava"> String sql=<span class="hljs-string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
  SQLQuery q= session.createSQLQuery(sql)
-         .addEntity(<span class="string">"p"</span>, Person.class)
-         .addEntity(<span class="string">"b"</span>, Book.class);
+         .addEntity(<span class="hljs-string">"p"</span>, Person.class)
+         .addEntity(<span class="hljs-string">"b"</span>, Book.class);
  List&lt;Object[]&gt; peopleWithBooks=(List&lt;Object[]&gt;)q.list();
 </code></pre>
 <p> =&gt;Oject[0]:<code>Person</code><br> =&gt;Oject[1]:<code>Book</code><br> <strong>PS</strong>: <code>{p.*}</code>向别名为p的这个对象注入所有属性值，<code>{}</code>占位符里是对象的属性,而非列名</p>
 </li>
 <li><p>返回托管对象<code>List&lt;XxxVo&gt;</code>，使用<code>addEntity</code> &amp; <code>setResultTransformer</code></p>
-<pre><code class="nulljava"> String sql=<span class="string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
+<pre><code class="nulljava"> String sql=<span class="hljs-string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
  SQLQuery q= session.createSQLQuery(sql)
-         .addEntity(<span class="string">"p"</span>, Person.class)
-         .addEntity(<span class="string">"b"</span>, Book.class);
+         .addEntity(<span class="hljs-string">"p"</span>, Person.class)
+         .addEntity(<span class="hljs-string">"b"</span>, Book.class);
  q.setResultTransformer(Transformers.aliasToBean(PeopleWithBooksVo.class));
  List&lt;PeopleWithBooksVo&gt; peopleWithBooks=(List&lt;PeopleWithBooksVo&gt;)q.list();
 </code></pre>
@@ -223,10 +223,10 @@
 </ul>
 <ol>
 <li><p>返回<code>List&lt;Object[]&gt;</code>，使用<code>addEntity</code> &amp; <code>addJoin</code></p>
-<pre><code class="nulljava"> String sql=<span class="string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
+<pre><code class="nulljava"> String sql=<span class="hljs-string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
  SQLQuery q=session.createSQLQuery(sql)
-     .addEntity(<span class="string">"p"</span>, Person.class)
-     .addJoin(<span class="string">"b"</span>, <span class="string">"person.books"</span>);
+     .addEntity(<span class="hljs-string">"p"</span>, Person.class)
+     .addJoin(<span class="hljs-string">"b"</span>, <span class="hljs-string">"person.books"</span>);
  List&lt;Oject[]&gt; list = (List&lt;Oject[]&gt;) q.list();
 </code></pre>
 <p> =&gt;<code>List&lt;Object[]&gt;</code> (Object：Person，Book)，结果如下：</p>
@@ -247,11 +247,11 @@
       &#39;- Book(3)
 </code></pre></li>
 <li><p>返回<code>List&lt;Clazz&gt;</code>，使用<code>addEntity</code>&amp;<code>addJoin</code> &amp; <code>setResultTransformer</code></p>
-<pre><code class="nulljava"> String sql=<span class="string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
+<pre><code class="nulljava"> String sql=<span class="hljs-string">"select {p.*}, {b.*} from person p, book b where &lt;complicated join&gt;"</span>;
  SQLQuery q=session.createSQLQuery(sql)
-     .addEntity(<span class="string">"p"</span>, Person.class)
-     .addJoin(<span class="string">"b"</span>, <span class="string">"person.books"</span>);
- q.addEntity(<span class="string">"p"</span>, Person.class);
+     .addEntity(<span class="hljs-string">"p"</span>, Person.class)
+     .addJoin(<span class="hljs-string">"b"</span>, <span class="hljs-string">"person.books"</span>);
+ q.addEntity(<span class="hljs-string">"p"</span>, Person.class);
  q.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
  List&lt; Person&gt;list = (List&lt;Person&gt;) q.list();
 </code></pre>
@@ -269,90 +269,90 @@
 <p>如果不设置addScalar方法可能会报转型错误的异常</p>
 <ol>
 <li>Hibernate 3:<pre><code class="nulljava"> SQLQuery q = session.createSQLQuery(queryString)
-         .addScalar(<span class="string">"UNAME"</span>,Hibernate.STRING)
-         .addScalar(<span class="string">"COM"</span>,Hibernate.STRING)
-         .addScalar(<span class="string">"COM_DATE"</span>,Hibernate.DATE) 
-         .setString(<span class="string">"id"</span>, Id).list();
+         .addScalar(<span class="hljs-string">"UNAME"</span>,Hibernate.STRING)
+         .addScalar(<span class="hljs-string">"COM"</span>,Hibernate.STRING)
+         .addScalar(<span class="hljs-string">"COM_DATE"</span>,Hibernate.DATE) 
+         .setString(<span class="hljs-string">"id"</span>, Id).list();
 </code></pre>
 </li>
-<li>Hibernate4:<pre><code class="nulljava">    q.addScalar(<span class="string">"UNAME"</span>, StringType.INSTANCE)
-     .addScalar(<span class="string">"COM"</span>, StringType.INSTANCE)
-     .addScalar(<span class="string">"COM_DATE"</span>, DateType.INSTANCE)
+<li>Hibernate4:<pre><code class="nulljava">    q.addScalar(<span class="hljs-string">"UNAME"</span>, StringType.INSTANCE)
+     .addScalar(<span class="hljs-string">"COM"</span>, StringType.INSTANCE)
+     .addScalar(<span class="hljs-string">"COM_DATE"</span>, DateType.INSTANCE)
 </code></pre>
 </li>
 </ol>
 <h3 id="header-6">使用<code>ResultTransformer</code> 返回托管对象</h3>
 <ol>
 <li><p>使用已有的<code>ResultTransformer</code><br> DTO：</p>
-<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedClauseSearchResultDTO</span></span>{ 
-     <span class="keyword">private</span> Date effectiveDate;
-     <span class="keyword">private</span> String status;
+<pre><code class="nulljava"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AdvancedClauseSearchResultDTO</span></span>{ 
+     <span class="hljs-keyword">private</span> Date effectiveDate;
+     <span class="hljs-keyword">private</span> String status;
      …
-     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getEffectiveDate</span><span class="params">()</span> </span>{
-         <span class="keyword">return</span> effectiveDate;
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getEffectiveDate</span><span class="hljs-params">()</span> </span>{
+         <span class="hljs-keyword">return</span> effectiveDate;
      }
-     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEffectiveDate</span><span class="params">(Date aDate)</span> </span>{
-         Date now = <span class="keyword">new</span> Date(System.currentTimeMillis());
-         <span class="keyword">if</span> (now.before(effectiveDate)) {
-             <span class="keyword">this</span>.status = <span class="string">"Pending"</span>;
-         } <span class="keyword">else</span> <span class="keyword">if</span> (now.after(terminationDate)) {
-             <span class="keyword">this</span>.status = <span class="string">"Terminated"</span>;
-         } <span class="keyword">else</span> {
-             <span class="keyword">this</span>.status = <span class="string">"Active"</span>;
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setEffectiveDate</span><span class="hljs-params">(Date aDate)</span> </span>{
+         Date now = <span class="hljs-keyword">new</span> Date(System.currentTimeMillis());
+         <span class="hljs-keyword">if</span> (now.before(effectiveDate)) {
+             <span class="hljs-keyword">this</span>.status = <span class="hljs-string">"Pending"</span>;
+         } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (now.after(terminationDate)) {
+             <span class="hljs-keyword">this</span>.status = <span class="hljs-string">"Terminated"</span>;
+         } <span class="hljs-keyword">else</span> {
+             <span class="hljs-keyword">this</span>.status = <span class="hljs-string">"Active"</span>;
          }
-         <span class="keyword">this</span>.effectiveDate = aDate;
+         <span class="hljs-keyword">this</span>.effectiveDate = aDate;
      }
  }
 </code></pre>
 <p> 使用：</p>
 <pre><code class="nulljava"> SQLQuery q  = session.createSQLQuery(sb.toString());    
  query.setResultTransformer(Transformers.aliasToBean(AdvancedClauseSearchResultDTO.class));
- <span class="keyword">return</span> (List&lt;AdvancedClauseSearchResultDTO&gt;)query.list();
+ <span class="hljs-keyword">return</span> (List&lt;AdvancedClauseSearchResultDTO&gt;)query.list();
 </code></pre>
 </li>
 <li><p>自定义<code>ResultTransformer</code></p>
-<pre><code class="nulljava"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdvancedClauseSearchResultTransformer</span> <span class="keyword">implements</span> <span class="title">ResultTransformer</span> </span>{
-     <span class="comment">//Use the aliasTransformer to do most of the work</span>
+<pre><code class="nulljava"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AdvancedClauseSearchResultTransformer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ResultTransformer</span> </span>{
+     <span class="hljs-comment">//Use the aliasTransformer to do most of the work</span>
      ResultTransformer aliasTransformer = Transformers.aliasToBean(AdvancedClauseSearchResultDTO.class);
 
-     <span class="meta">@Override</span>
-     <span class="function"><span class="keyword">public</span> List <span class="title">transformList</span><span class="params">(List list)</span> </span>{
+     <span class="hljs-meta">@Override</span>
+     <span class="hljs-function"><span class="hljs-keyword">public</span> List <span class="hljs-title">transformList</span><span class="hljs-params">(List list)</span> </span>{
      List&lt;AdvancedClauseSearchResultDTO&gt; result = aliasTransformer.transformList(list);
-         <span class="comment">//for each row, set the status field</span>
-        <span class="keyword">for</span> (AdvancedClauseSearchResultDTO dto : result) {
-             String status = <span class="keyword">null</span>;
+         <span class="hljs-comment">//for each row, set the status field</span>
+        <span class="hljs-keyword">for</span> (AdvancedClauseSearchResultDTO dto : result) {
+             String status = <span class="hljs-keyword">null</span>;
              Date effectiveDate = dto.getEffectiveDate();
              Date terminationDate = dto.getTerminationDate();
-             Date now = <span class="keyword">new</span> Date(System.currentTimeMillis());
-             <span class="keyword">if</span> (now.before(effectiveDate)) {
-                 status = <span class="string">"Pending"</span>;
-             } <span class="keyword">else</span> <span class="keyword">if</span> (now.after(terminationDate)) {
-                 status = <span class="string">"Terminated"</span>;
-             } <span class="keyword">else</span> {
-                 status = <span class="string">"Active"</span>;
+             Date now = <span class="hljs-keyword">new</span> Date(System.currentTimeMillis());
+             <span class="hljs-keyword">if</span> (now.before(effectiveDate)) {
+                 status = <span class="hljs-string">"Pending"</span>;
+             } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (now.after(terminationDate)) {
+                 status = <span class="hljs-string">"Terminated"</span>;
+             } <span class="hljs-keyword">else</span> {
+                 status = <span class="hljs-string">"Active"</span>;
              }
              dto.setStatus(status);
 
-             <span class="keyword">if</span> (StringUtils.isNotEmpty(dto.getReasonForAmendment())){
+             <span class="hljs-keyword">if</span> (StringUtils.isNotEmpty(dto.getReasonForAmendment())){
                  dto.setAmended(Boolean.TRUE);
-             }<span class="keyword">else</span>{
+             }<span class="hljs-keyword">else</span>{
                  dto.setAmended(Boolean.FALSE);
              }
          }
-         <span class="keyword">return</span> result;
+         <span class="hljs-keyword">return</span> result;
      }
 
-     <span class="meta">@Override</span>
-     <span class="function"><span class="keyword">public</span> Object <span class="title">transformTuple</span><span class="params">(Object[] os, String[] strings)</span> </span>{
+     <span class="hljs-meta">@Override</span>
+     <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">transformTuple</span><span class="hljs-params">(Object[] os, String[] strings)</span> </span>{
          Object result = aliasTransformer.transformTuple(os, strings);
-         <span class="keyword">return</span> result;
+         <span class="hljs-keyword">return</span> result;
      }
  }
 </code></pre>
 <p> 使用：</p>
 <pre><code class="nulljava"> SQLQuery q  = session.createSQLQuery(sb.toString());
- q.setResultTransformer(<span class="keyword">new</span> AdvancedClauseSearchResultTransformer());
- <span class="keyword">return</span> (List&lt;AdvancedClauseSearchResultDTO&gt;)query.list();
+ q.setResultTransformer(<span class="hljs-keyword">new</span> AdvancedClauseSearchResultTransformer());
+ <span class="hljs-keyword">return</span> (List&lt;AdvancedClauseSearchResultDTO&gt;)query.list();
 </code></pre>
 </li>
 </ol>
@@ -366,21 +366,21 @@
 <h2 id="header-8">QBC</h2>
 <p>参考文章：</p>
 <ul>
-<li><a href="http://what-when-how.com/hibernate/advanced-query-options-hibernate/">Advanced query options (Hibernate)</a></li>
-<li><a href="https://docs.jboss.org/hibernate/orm/3.3/reference/en/html/querycriteria.html">Chapter 15. Criteria Queries</a></li>
+<li><a href="http://what-when-how.com/hibernate/advanced-query-options-hibernate/" target="_blank" rel="noopener">Advanced query options (Hibernate)</a></li>
+<li><a href="https://docs.jboss.org/hibernate/orm/3.3/reference/en/html/querycriteria.html" target="_blank" rel="noopener">Chapter 15. Criteria Queries</a></li>
 </ul>
 <h3 id="header-9">setFetchMode</h3>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
-    .add( Restrictions.like(<span class="string">"name"</span>, <span class="string">"Fritz%"</span>) )
-    .setFetchMode(<span class="string">"mate"</span>, FetchMode.JOIN)
-    .setFetchMode(<span class="string">"kittens"</span>, FetchMode.JOIN)
+    .add( Restrictions.like(<span class="hljs-string">"name"</span>, <span class="hljs-string">"Fritz%"</span>) )
+    .setFetchMode(<span class="hljs-string">"mate"</span>, FetchMode.JOIN)
+    .setFetchMode(<span class="hljs-string">"kittens"</span>, FetchMode.JOIN)
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (each Cat: mate,kittens)<br>=&gt; This query will fetch both mate and kittens by outer join.</p>
 <p><code>FetchType</code>与<code>FetchMode</code>：</p>
-<pre><code class="nulljava"><span class="meta">@OneToMany</span>(mappedBy=<span class="string">"item"</span>,cascade=CascadeType.ALL,fetch=FetchType.EAGER) 
+<pre><code class="nulljava"><span class="hljs-meta">@OneToMany</span>(mappedBy=<span class="hljs-string">"item"</span>,cascade=CascadeType.ALL,fetch=FetchType.EAGER) 
 
-<span class="meta">@Fetch</span>(value=FetchMode.SUBSELECT)
+<span class="hljs-meta">@Fetch</span>(value=FetchMode.SUBSELECT)
 </code></pre>
 <p>两者比较：</p>
 <ul>
@@ -406,179 +406,179 @@
 }
 </code></pre><p>使用示例：</p>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
-    .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
-    .createCriteria(<span class="string">"kittens"</span>)
-    .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
+    .add(Restrictions.like(<span class="hljs-string">"name"</span>, <span class="hljs-string">"F%"</span>) )
+    .createCriteria(<span class="hljs-string">"kittens"</span>)
+    .add(Restrictions.like(<span class="hljs-string">"name"</span>, <span class="hljs-string">"F%"</span>) )
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (<strong>Cat:  no kittens</strong>)<br>=&gt; The second createCriteria() returns a new instance of Criteria that refers to the elements of the kittens collection.</p>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
-    .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
-    .createCriteria(<span class="string">"kittens"</span>,JoinType.LEFT_OUTER_JOIN)
-    .add(Restrictions.like(<span class="string">"name"</span>, <span class="string">"F%"</span>) )
+    .add(Restrictions.like(<span class="hljs-string">"name"</span>, <span class="hljs-string">"F%"</span>) )
+    .createCriteria(<span class="hljs-string">"kittens"</span>,JoinType.LEFT_OUTER_JOIN)
+    .add(Restrictions.like(<span class="hljs-string">"name"</span>, <span class="hljs-string">"F%"</span>) )
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (<strong>Cat:  kittens</strong>)</p>
 <h3 id="header-11">createAlias</h3>
 <p>createAlias定义：return the criteria who create sub Criteria (默认使用INNER_JOIN)</p>
-<pre><code class="nulljava"><span class="function"><span class="keyword">public</span> Criteria <span class="title">createAlias</span><span class="params">(String associationPath, String alias, <span class="keyword">int</span> joinType)</span> </span>{
-    <span class="keyword">new</span> Subcriteria( <span class="keyword">this</span>, associationPath, alias, joinType );
-    <span class="keyword">return</span> <span class="keyword">this</span>;
+<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> Criteria <span class="hljs-title">createAlias</span><span class="hljs-params">(String associationPath, String alias, <span class="hljs-keyword">int</span> joinType)</span> </span>{
+    <span class="hljs-keyword">new</span> Subcriteria( <span class="hljs-keyword">this</span>, associationPath, alias, joinType );
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
 }
 </code></pre>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
-    .createAlias(<span class="string">"kittens"</span>, <span class="string">"kt"</span>)
-    .createAlias(<span class="string">"mate"</span>, <span class="string">"mt"</span>)
-    .add(Restrictions.eqProperty(<span class="string">"kt.name"</span>, <span class="string">"mt.name"</span>) )
+    .createAlias(<span class="hljs-string">"kittens"</span>, <span class="hljs-string">"kt"</span>)
+    .createAlias(<span class="hljs-string">"mate"</span>, <span class="hljs-string">"mt"</span>)
+    .add(Restrictions.eqProperty(<span class="hljs-string">"kt.name"</span>, <span class="hljs-string">"mt.name"</span>) )
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (<strong>Cat: no kittens and mate</strong>)<br>=&gt; createAlias() does not create a new instance of Criteria</p>
 <pre><code class="nulljava">List cats = sess.createCriteria(Cat.class)
-    .createAlias(<span class="string">"kittens"</span>, <span class="string">"kt"</span>,JoinType.LEFT_OUTER_JOIN)
-    .createAlias(<span class="string">"mate"</span>, <span class="string">"mt"</span>,JoinType.LEFT_OUTER_JOIN)
-    .add(Restrictions.eqProperty(<span class="string">"kt.name"</span>, <span class="string">"mt.name"</span>) )
+    .createAlias(<span class="hljs-string">"kittens"</span>, <span class="hljs-string">"kt"</span>,JoinType.LEFT_OUTER_JOIN)
+    .createAlias(<span class="hljs-string">"mate"</span>, <span class="hljs-string">"mt"</span>,JoinType.LEFT_OUTER_JOIN)
+    .add(Restrictions.eqProperty(<span class="hljs-string">"kt.name"</span>, <span class="hljs-string">"mt.name"</span>) )
     .list();
 </code></pre>
 <p>=&gt; <code>List&lt;Cat&gt;</code> (<strong>Cat:  kittens and mate</strong>)</p>
 <h3 id="header-12">Join Restriction</h3>
 <p>类似查询：<code>select * from A left join B on A.xx=B.xx and B.yy=zz where ...</code></p>
 <pre><code class="nulljava">DetachedCriteria detachedCriteria=DetachedCriteria.forClass(SysMenu.class)
-                      .addOrder(Order.asc(<span class="string">"parent"</span> ))
-                      .addOrder(Order.asc(<span class="string">"menuOrder"</span> ))
-                      <span class="comment">//使用createCriteria或createAlias都可</span>
-                      .createAlias(<span class="string">"sysRoleMenus"</span>, <span class="string">"rm"</span>, JoinType.LEFT_OUTER_JOIN,Restrictions.eq(<span class="string">"sysRole.id"</span>, roleId));
+                      .addOrder(Order.asc(<span class="hljs-string">"parent"</span> ))
+                      .addOrder(Order.asc(<span class="hljs-string">"menuOrder"</span> ))
+                      <span class="hljs-comment">//使用createCriteria或createAlias都可</span>
+                      .createAlias(<span class="hljs-string">"sysRoleMenus"</span>, <span class="hljs-string">"rm"</span>, JoinType.LEFT_OUTER_JOIN,Restrictions.eq(<span class="hljs-string">"sysRole.id"</span>, roleId));
 </code></pre>
 <p>=&gt; <code>List&lt;SysMenu&gt;</code> (<strong>SysMenu : no sysRoleMenus</strong>)</p>
 <p>（HQL可使用<code>with</code>关键字实现）</p>
 <h3 id="header-13">exist - subquery</h3>
 <p>Sample1:</p>
-<pre><code class="nullsql"><span class="keyword">select</span> A.*
-<span class="keyword">FROM</span> AETABLE A
-<span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span>
+<pre><code class="nullsql"><span class="hljs-keyword">select</span> A.*
+<span class="hljs-keyword">FROM</span> AETABLE A
+<span class="hljs-keyword">where</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span>
 (
-    <span class="keyword">select</span> entryid
-    <span class="keyword">FROM</span> AETABLE B
-    <span class="keyword">where</span> B.classpk = A.classpk
-    <span class="keyword">and</span> B.userid = A.userid
-    <span class="keyword">and</span> B.modifiedDate &gt; A.modifiedDate
-)<span class="keyword">and</span> userid = <span class="number">10146</span>
+    <span class="hljs-keyword">select</span> entryid
+    <span class="hljs-keyword">FROM</span> AETABLE B
+    <span class="hljs-keyword">where</span> B.classpk = A.classpk
+    <span class="hljs-keyword">and</span> B.userid = A.userid
+    <span class="hljs-keyword">and</span> B.modifiedDate &gt; A.modifiedDate
+)<span class="hljs-keyword">and</span> userid = <span class="hljs-number">10146</span>
 </code></pre>
 <p>Assuming property / class names match column / table names above:</p>
-<pre><code class="nulljava">DetachedCriteria subquery = DetachedCriteria.forClass(AETable.class, <span class="string">"b"</span>)
- .add(Property.forName(<span class="string">"b.classpk"</span>).eqProperty(<span class="string">"a.classpk"</span>))
- .add(Property.forName(<span class="string">"b.userid"</span>).eqProperty(<span class="string">"a.userid"</span>))
- .add(Property.forName(<span class="string">"b.modifiedDate"</span>).gtProperty(<span class="string">"a.modifiedDate"</span>));
+<pre><code class="nulljava">DetachedCriteria subquery = DetachedCriteria.forClass(AETable.class, <span class="hljs-string">"b"</span>)
+ .add(Property.forName(<span class="hljs-string">"b.classpk"</span>).eqProperty(<span class="hljs-string">"a.classpk"</span>))
+ .add(Property.forName(<span class="hljs-string">"b.userid"</span>).eqProperty(<span class="hljs-string">"a.userid"</span>))
+ .add(Property.forName(<span class="hljs-string">"b.modifiedDate"</span>).gtProperty(<span class="hljs-string">"a.modifiedDate"</span>));
 
-Criteria criteria = session.createCriteria(AETable.class, <span class="string">"a"</span>)
- .add(Property.forName(<span class="string">"userid"</span>).eq(<span class="keyword">new</span> Integer(<span class="number">10146</span>)))
+Criteria criteria = session.createCriteria(AETable.class, <span class="hljs-string">"a"</span>)
+ .add(Property.forName(<span class="hljs-string">"userid"</span>).eq(<span class="hljs-keyword">new</span> Integer(<span class="hljs-number">10146</span>)))
  .add(Subqueries.notExists(subquery);
 </code></pre>
 <p>If the entryid is not the primary key, need to add projection.</p>
-<pre><code class="nulljava">DetachedCriteria subquery = DetachedCriteria.forClass(AETable.class, <span class="string">"b"</span>)
- .add(Property.forName(<span class="string">"b.classpk"</span>).eqProperty(<span class="string">"a.classpk"</span>))
- .add(Property.forName(<span class="string">"b.userid"</span>).eqProperty(<span class="string">"a.userid"</span>))
- .add(Property.forName(<span class="string">"b.modifiedDate"</span>).gtProperty(<span class="string">"a.modifiedDate"</span>))
- .setProjection(Projections.property(<span class="string">"entryId"</span>));  <span class="comment">// Additional projection property</span>
+<pre><code class="nulljava">DetachedCriteria subquery = DetachedCriteria.forClass(AETable.class, <span class="hljs-string">"b"</span>)
+ .add(Property.forName(<span class="hljs-string">"b.classpk"</span>).eqProperty(<span class="hljs-string">"a.classpk"</span>))
+ .add(Property.forName(<span class="hljs-string">"b.userid"</span>).eqProperty(<span class="hljs-string">"a.userid"</span>))
+ .add(Property.forName(<span class="hljs-string">"b.modifiedDate"</span>).gtProperty(<span class="hljs-string">"a.modifiedDate"</span>))
+ .setProjection(Projections.property(<span class="hljs-string">"entryId"</span>));  <span class="hljs-comment">// Additional projection property</span>
 
-Criteria criteria = session.createCriteria(AETable.class, <span class="string">"a"</span>)
- .add(Property.forName(<span class="string">"userid"</span>).eq(<span class="keyword">new</span> Integer(<span class="number">10146</span>)))
+Criteria criteria = session.createCriteria(AETable.class, <span class="hljs-string">"a"</span>)
+ .add(Property.forName(<span class="hljs-string">"userid"</span>).eq(<span class="hljs-keyword">new</span> Integer(<span class="hljs-number">10146</span>)))
  .add(Subqueries.notExists(subquery);
 </code></pre>
 <p>Sample2:</p>
-<pre><code class="nullsql"><span class="keyword">SELECT</span> *
- <span class="keyword">FROM</span> PIZZA_ORDER
- <span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="number">1</span>
-                 <span class="keyword">FROM</span> PIZZA
-                 <span class="keyword">WHERE</span> PIZZA.pizza_size_id = <span class="number">1</span> 
-                 <span class="keyword">AND</span> PIZZA.pizza_order_id = PIZZA_ORDER.pizza_order_id)
+<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> *
+ <span class="hljs-keyword">FROM</span> PIZZA_ORDER
+ <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">EXISTS</span> (<span class="hljs-keyword">SELECT</span> <span class="hljs-number">1</span>
+                 <span class="hljs-keyword">FROM</span> PIZZA
+                 <span class="hljs-keyword">WHERE</span> PIZZA.pizza_size_id = <span class="hljs-number">1</span> 
+                 <span class="hljs-keyword">AND</span> PIZZA.pizza_order_id = PIZZA_ORDER.pizza_order_id)
 </code></pre>
-<pre><code class="nulljava">DetachedCriteria sizeCriteria = DetachedCriteria.forClass(Pizza.class,<span class="string">"pizza"</span>)
- .add(<span class="string">"pizza_size_id"</span>,<span class="number">1</span>)
- .add(Property.forName(<span class="string">"pizza.pizza_order_id"</span>).eqProperty(<span class="string">"pizzaOrder.pizza_order_id"</span>));
+<pre><code class="nulljava">DetachedCriteria sizeCriteria = DetachedCriteria.forClass(Pizza.class,<span class="hljs-string">"pizza"</span>)
+ .add(<span class="hljs-string">"pizza_size_id"</span>,<span class="hljs-number">1</span>)
+ .add(Property.forName(<span class="hljs-string">"pizza.pizza_order_id"</span>).eqProperty(<span class="hljs-string">"pizzaOrder.pizza_order_id"</span>));
 
-Criteria criteria = Criteria.forClass(PizzaOrder.class,<span class="string">"pizzaOrder"</span>)
+Criteria criteria = Criteria.forClass(PizzaOrder.class,<span class="hljs-string">"pizzaOrder"</span>)
  .add(Subqueries.exists(
-    sizeCriteria.setProjection(Projections.property(<span class="string">"pizza.id"</span>))
+    sizeCriteria.setProjection(Projections.property(<span class="hljs-string">"pizza.id"</span>))
 ));
 
 List&lt;pizzaOrder&gt; ordersWithOneSmallPizza = criteria.list();
 </code></pre>
 <p>Sample3:</p>
-<pre><code class="nullsql"><span class="keyword">select</span> *
- <span class="keyword">from</span> shuttle_station
- <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">in</span> (
-    <span class="keyword">select</span> station_id 
-    <span class="keyword">from</span> shuttle_route_schedule rs <span class="keyword">left</span> <span class="keyword">join</span> shuttle_route 
-    <span class="keyword">where</span> active=<span class="number">1</span> <span class="keyword">and</span> expireTime <span class="keyword">is</span> <span class="literal">null</span>
+<pre><code class="nullsql"><span class="hljs-keyword">select</span> *
+ <span class="hljs-keyword">from</span> shuttle_station
+ <span class="hljs-keyword">where</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">in</span> (
+    <span class="hljs-keyword">select</span> station_id 
+    <span class="hljs-keyword">from</span> shuttle_route_schedule rs <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> shuttle_route 
+    <span class="hljs-keyword">where</span> active=<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> expireTime <span class="hljs-keyword">is</span> <span class="hljs-literal">null</span>
 )
 </code></pre>
-<pre><code class="nulljava">DetachedCriteria subCriteria=DetachedCriteria.forClass(ShuttleRouteSchedule.class,<span class="string">"rs"</span>)
-    .add(Restrictions.eq(<span class="string">"active"</span>, <span class="keyword">true</span>))
-    .add(Restrictions.isNull(<span class="string">"expireTime"</span>))
-    .setProjection(Projections.distinct(Projections.property(<span class="string">"station.id"</span>)));
+<pre><code class="nulljava">DetachedCriteria subCriteria=DetachedCriteria.forClass(ShuttleRouteSchedule.class,<span class="hljs-string">"rs"</span>)
+    .add(Restrictions.eq(<span class="hljs-string">"active"</span>, <span class="hljs-keyword">true</span>))
+    .add(Restrictions.isNull(<span class="hljs-string">"expireTime"</span>))
+    .setProjection(Projections.distinct(Projections.property(<span class="hljs-string">"station.id"</span>)));
 
 DetachedCriteria detachedCriteria=DetachedCriteria.forClass(ShuttleStation.class)
-    .createAlias(<span class="string">"stationShifts"</span>,<span class="string">"ea"</span>, JoinType.LEFT_OUTER_JOIN)
-    .add(Subqueries.propertyIn(<span class="string">"id"</span>, subCriteria));
+    .createAlias(<span class="hljs-string">"stationShifts"</span>,<span class="hljs-string">"ea"</span>, JoinType.LEFT_OUTER_JOIN)
+    .add(Subqueries.propertyIn(<span class="hljs-string">"id"</span>, subCriteria));
 </code></pre>
 <h3 id="header-14">通用查询封装示例</h3>
-<p><strong>PS:</strong>  使用过setProjection获取信息后，重置为null，返回的不再是RootEntity~！<br>参考文章: <a href="http://blog.xebia.com/2008/12/11/sorting-and-pagination-with-hibernate-criteria-how-it-can-go-wrong-with-joins/">Sorting And Pagination With Hibernate Criteria - How It Can Go Wrong With Joins</a></p>
-<pre><code class="nulljava"><span class="meta">@Override</span>
-<span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)
-<span class="function"><span class="keyword">public</span> List&lt;T&gt; <span class="title">list</span><span class="params">(DetachedCriteria detachedCriteria,<span class="keyword">boolean</span> byPage)</span>
+<p><strong>PS:</strong>  使用过setProjection获取信息后，重置为null，返回的不再是RootEntity~！<br>参考文章: <a href="http://blog.xebia.com/2008/12/11/sorting-and-pagination-with-hibernate-criteria-how-it-can-go-wrong-with-joins/" target="_blank" rel="noopener">Sorting And Pagination With Hibernate Criteria - How It Can Go Wrong With Joins</a></p>
+<pre><code class="nulljava"><span class="hljs-meta">@Override</span>
+<span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">"unchecked"</span>)
+<span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;T&gt; <span class="hljs-title">list</span><span class="hljs-params">(DetachedCriteria detachedCriteria,<span class="hljs-keyword">boolean</span> byPage)</span>
 </span>{
-    Criteria criteria=<span class="keyword">null</span>;
-    <span class="keyword">if</span>(detachedCriteria!=<span class="keyword">null</span>)
+    Criteria criteria=<span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">if</span>(detachedCriteria!=<span class="hljs-keyword">null</span>)
         criteria=detachedCriteria.getExecutableCriteria(getSession());
-    <span class="keyword">else</span>
-        criteria=<span class="keyword">this</span>.getSession().createCriteria(<span class="keyword">this</span>.getEntityClass());
+    <span class="hljs-keyword">else</span>
+        criteria=<span class="hljs-keyword">this</span>.getSession().createCriteria(<span class="hljs-keyword">this</span>.getEntityClass());
 
-    <span class="keyword">if</span> (byPage &amp;&amp; PaginationUtils.exist()){
+    <span class="hljs-keyword">if</span> (byPage &amp;&amp; PaginationUtils.exist()){
         ResultTransformer resultTransformer=((CriteriaImpl)criteria).getResultTransformer();
 
         Object total = criteria.setProjection(Projections.rowCount()).uniqueResult(); 
-        <span class="comment">//System.out.println(total.toString());</span>
+        <span class="hljs-comment">//System.out.println(total.toString());</span>
         Pagination p=PaginationUtils.getPagination();
         p.setTotal(Integer.valueOf(total.toString()));
 
-        criteria.setProjection(<span class="keyword">null</span>); 
+        criteria.setProjection(<span class="hljs-keyword">null</span>); 
         criteria.setResultTransformer(resultTransformer);
 
         criteria.setFirstResult(p.getStart());  
         criteria.setMaxResults(p.getLimit()); 
-        <span class="keyword">if</span> (p.getSorter() != <span class="keyword">null</span> &amp;&amp; p.getSorter().length()!=<span class="number">0</span>) {
-            <span class="keyword">if</span>(<span class="string">"DESC"</span>.equalsIgnoreCase(PaginationUtils.getOrder()))
+        <span class="hljs-keyword">if</span> (p.getSorter() != <span class="hljs-keyword">null</span> &amp;&amp; p.getSorter().length()!=<span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">if</span>(<span class="hljs-string">"DESC"</span>.equalsIgnoreCase(PaginationUtils.getOrder()))
                 criteria.addOrder(Order.desc(PaginationUtils.getSorter()));
-            <span class="keyword">else</span>
+            <span class="hljs-keyword">else</span>
                 criteria.addOrder(Order.asc(PaginationUtils.getSorter()));
         }
     }
-    <span class="keyword">return</span> criteria.list(); 
+    <span class="hljs-keyword">return</span> criteria.list(); 
 }
 </code></pre>
-<pre><code class="nulljava"><span class="meta">@Override</span>
-<span class="keyword">public</span> List&lt;?&gt; listByHql(String hql, Object... params) {
-    <span class="comment">//this.getEntityClass();</span>
-    <span class="keyword">if</span> (PaginationUtils.exist() &amp;&amp; PaginationUtils.getSorter() != <span class="keyword">null</span> &amp;&amp; PaginationUtils.getSorter().length()!=<span class="number">0</span>) {
-        hql += <span class="string">" order by "</span> + PaginationUtils.getSorter() + <span class="string">" "</span>
+<pre><code class="nulljava"><span class="hljs-meta">@Override</span>
+<span class="hljs-keyword">public</span> List&lt;?&gt; listByHql(String hql, Object... params) {
+    <span class="hljs-comment">//this.getEntityClass();</span>
+    <span class="hljs-keyword">if</span> (PaginationUtils.exist() &amp;&amp; PaginationUtils.getSorter() != <span class="hljs-keyword">null</span> &amp;&amp; PaginationUtils.getSorter().length()!=<span class="hljs-number">0</span>) {
+        hql += <span class="hljs-string">" order by "</span> + PaginationUtils.getSorter() + <span class="hljs-string">" "</span>
                 + PaginationUtils.getOrder();
     }
     Query query = createHQLQuery(hql, params);
 
-    <span class="keyword">if</span> (PaginationUtils.exist()) {
-        Query countQuery = createHQLQuery(<span class="string">"select count(*) "</span>
+    <span class="hljs-keyword">if</span> (PaginationUtils.exist()) {
+        Query countQuery = createHQLQuery(<span class="hljs-string">"select count(*) "</span>
                 + removeSelect(hql), params);
-        <span class="keyword">int</span> total = Integer.valueOf(countQuery.uniqueResult().toString());
+        <span class="hljs-keyword">int</span> total = Integer.valueOf(countQuery.uniqueResult().toString());
         PaginationUtils.setTotal(total);
 
         query.setFirstResult(PaginationUtils.getStart()).setMaxResults(
                 PaginationUtils.getLimit());
     }
-    <span class="keyword">return</span> query.list();
+    <span class="hljs-keyword">return</span> query.list();
 }
 </code></pre>
 <h2 id="header-15">TableGenerator</h2>
-<p>参考文章：<a href="http://www.ibm.com/developerworks/cn/java/j-lo-tablegenerator/">探索 Hibernate 新 TableGenerator 机制</a></p>
+<p>参考文章：<a href="http://www.ibm.com/developerworks/cn/java/j-lo-tablegenerator/" target="_blank" rel="noopener">探索 Hibernate 新 TableGenerator 机制</a></p>
 <h3 id="header-16">TableGenerator 注解和类</h3>
 <p><code>@TableGenerator</code> 注解是 JPA 规范中的注解，用于确定 TABLE 主键生成器的各个参数，具体的功能要由 JPA 提供者来实现</p>
 <p>Hibernate 中实现该注解的<code>TableGenerator 类</code>有两个：</p>
@@ -587,20 +587,20 @@ DetachedCriteria detachedCriteria=DetachedCriteria.forClass(ShuttleStation.class
 <li>新 TableGenerator，指的是 org.hibernate.id.enhanced.TableGenerator</li>
 </ol>
 <h3 id="header-17">使用JPA注解：@TableGenerator</h3>
-<pre><code class="nulljava"><span class="meta">@Id</span>
-<span class="meta">@GeneratedValue</span>(strategy=GenerationType.TABLE,generator=<span class="string">"teacherID"</span>)
-<span class="meta">@TableGenerator</span>(name=<span class="string">"teacherID"</span>,
-        table=<span class="string">"teacherID_DB"</span>,
-        pkColumnName=<span class="string">"key_value"</span>,
-        pkColumnValue=<span class="string">"pk_value"</span>,
-        valueColumnName=<span class="string">"teacher"</span>,
-        allocationSize=<span class="number">1</span>)     <span class="comment">//注意 initialValue 参数无效</span>
-<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>{
-    <span class="keyword">return</span> id;
+<pre><code class="nulljava"><span class="hljs-meta">@Id</span>
+<span class="hljs-meta">@GeneratedValue</span>(strategy=GenerationType.TABLE,generator=<span class="hljs-string">"teacherID"</span>)
+<span class="hljs-meta">@TableGenerator</span>(name=<span class="hljs-string">"teacherID"</span>,
+        table=<span class="hljs-string">"teacherID_DB"</span>,
+        pkColumnName=<span class="hljs-string">"key_value"</span>,
+        pkColumnValue=<span class="hljs-string">"pk_value"</span>,
+        valueColumnName=<span class="hljs-string">"teacher"</span>,
+        allocationSize=<span class="hljs-number">1</span>)     <span class="hljs-comment">//注意 initialValue 参数无效</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> id;
 }
 </code></pre>
 <p><strong>PS</strong>： 默认使用旧的TableGenerator类，若要使用新的，需配置：</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.id.new_generator_mappings"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hibernate.id.new_generator_mappings"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
 </code></pre>
 <h3 id="header-18">使用Hibernate注解：@GenericGenerator</h3>
 <p>新 TableGenerator 的一些功能不在 JPA 中，因此不能使用 JPA 的 <code>@TableGenerator</code> 注解，而是要使用 Hibernate 自身的 <code>@GenericGenerator</code> 注解</p>
@@ -666,23 +666,23 @@ DetachedCriteria detachedCriteria=DetachedCriteria.forClass(ShuttleStation.class
 </tbody>
 </table>
 <p><img src="/2013/06/02/tableGenerator-params.png" alt="TableGenerator Parameters"></p>
-<pre><code class="nulljava"><span class="meta">@GenericGenerator</span>( name=<span class="string">"id_gen"</span>, strategy=<span class="string">"enhanced-table"</span>,
+<pre><code class="nulljava"><span class="hljs-meta">@GenericGenerator</span>( name=<span class="hljs-string">"id_gen"</span>, strategy=<span class="hljs-string">"enhanced-table"</span>,
 parameters = {
-       <span class="meta">@Parameter</span>( name = <span class="string">"table_name"</span>, value = <span class="string">"enhanced_gen"</span>),
-       <span class="meta">@Parameter</span>( name =<span class="string">"value_column_name"</span>, value = <span class="string">"next"</span>),
-       <span class="meta">@Parameter</span>( name = <span class="string">"segment_column_name"</span>,value = <span class="string">"segment_name"</span>),
-       <span class="meta">@Parameter</span>( name = <span class="string">"segment_value"</span>, value = <span class="string">"emp_seq"</span>),
-       <span class="meta">@Parameter</span>( name = <span class="string">"increment_size"</span>, value = <span class="string">"10"</span>),
-       <span class="meta">@Parameter</span>( name = <span class="string">"optimizer"</span>,value = <span class="string">"pooled-lo"</span>)
+       <span class="hljs-meta">@Parameter</span>( name = <span class="hljs-string">"table_name"</span>, value = <span class="hljs-string">"enhanced_gen"</span>),
+       <span class="hljs-meta">@Parameter</span>( name =<span class="hljs-string">"value_column_name"</span>, value = <span class="hljs-string">"next"</span>),
+       <span class="hljs-meta">@Parameter</span>( name = <span class="hljs-string">"segment_column_name"</span>,value = <span class="hljs-string">"segment_name"</span>),
+       <span class="hljs-meta">@Parameter</span>( name = <span class="hljs-string">"segment_value"</span>, value = <span class="hljs-string">"emp_seq"</span>),
+       <span class="hljs-meta">@Parameter</span>( name = <span class="hljs-string">"increment_size"</span>, value = <span class="hljs-string">"10"</span>),
+       <span class="hljs-meta">@Parameter</span>( name = <span class="hljs-string">"optimizer"</span>,value = <span class="hljs-string">"pooled-lo"</span>)
 })
-<span class="meta">@Id</span>
-<span class="meta">@GeneratedValue</span>(generator=<span class="string">"id_gen"</span>)
-<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>{
-    <span class="keyword">return</span> id;
+<span class="hljs-meta">@Id</span>
+<span class="hljs-meta">@GeneratedValue</span>(generator=<span class="hljs-string">"id_gen"</span>)
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> id;
 }
 </code></pre>
 <p><strong>PS</strong>： 注意配置使用新的TableGenerator</p>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.id.new_generator_mappings"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hibernate.id.new_generator_mappings"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
 </code></pre>
 <h3 id="header-19">Hibernate的Optimizer优化器</h3>
 <p>Optimizer 名字及实现类：</p>
@@ -727,107 +727,107 @@ parameters = {
 <ol>
 <li>自定义TableGenerator：<code>MyFormatTableGenerator</code> （implements org.hibernate.id.enhanced.TableGenerator）</li>
 <li>自定义Optimizer：<code>MyPooledOptimizer</code> （extends OptimizerSupport implements InitialValueAwareOptimizer）</li>
-<li>使用：<pre><code class="nulljava"> <span class="meta">@Id</span>
- <span class="meta">@Column</span>(name = <span class="string">"req_id"</span>, unique = <span class="keyword">true</span>, nullable = <span class="keyword">false</span>, length = <span class="number">10</span>)
- <span class="meta">@GeneratedValue</span>(strategy = GenerationType. TABLE, generator = <span class="string">"myFormatTableGenerator"</span> )
- <span class="meta">@GenericGenerator</span>(name = <span class="string">"myFormatTableGenerator"</span>, strategy = <span class="string">"com.cj.support.hibernate.MyFormatTableGenerator"</span> , parameters = {
-  <span class="meta">@Parameter</span>(name = <span class="string">"format"</span>, value = <span class="string">"R%2$ty-%1$05d"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator.TABLE_PARAM, value = <span class="string">"tb_generator"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator.SEGMENT_COLUMN_PARAM, value = <span class="string">"gen_name"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator.SEGMENT_VALUE_PARAM, value = <span class="string">"Request_PK"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator.VALUE_COLUMN_PARAM, value = <span class="string">"gen_value"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator.INITIAL_PARAM, value = <span class="string">"1"</span>),
-  <span class="meta">@Parameter</span>(name = TableGenerator.INCREMENT_PARAM, value = <span class="string">"20"</span>)
+<li>使用：<pre><code class="nulljava"> <span class="hljs-meta">@Id</span>
+ <span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"req_id"</span>, unique = <span class="hljs-keyword">true</span>, nullable = <span class="hljs-keyword">false</span>, length = <span class="hljs-number">10</span>)
+ <span class="hljs-meta">@GeneratedValue</span>(strategy = GenerationType. TABLE, generator = <span class="hljs-string">"myFormatTableGenerator"</span> )
+ <span class="hljs-meta">@GenericGenerator</span>(name = <span class="hljs-string">"myFormatTableGenerator"</span>, strategy = <span class="hljs-string">"com.cj.support.hibernate.MyFormatTableGenerator"</span> , parameters = {
+  <span class="hljs-meta">@Parameter</span>(name = <span class="hljs-string">"format"</span>, value = <span class="hljs-string">"R%2$ty-%1$05d"</span>),
+  <span class="hljs-meta">@Parameter</span>(name = TableGenerator.TABLE_PARAM, value = <span class="hljs-string">"tb_generator"</span>),
+  <span class="hljs-meta">@Parameter</span>(name = TableGenerator.SEGMENT_COLUMN_PARAM, value = <span class="hljs-string">"gen_name"</span>),
+  <span class="hljs-meta">@Parameter</span>(name = TableGenerator.SEGMENT_VALUE_PARAM, value = <span class="hljs-string">"Request_PK"</span>),
+  <span class="hljs-meta">@Parameter</span>(name = TableGenerator.VALUE_COLUMN_PARAM, value = <span class="hljs-string">"gen_value"</span>),
+  <span class="hljs-meta">@Parameter</span>(name = TableGenerator.INITIAL_PARAM, value = <span class="hljs-string">"1"</span>),
+  <span class="hljs-meta">@Parameter</span>(name = TableGenerator.INCREMENT_PARAM, value = <span class="hljs-string">"20"</span>)
  })
- <span class="function"><span class="keyword">public</span> String <span class="title">getReqId</span><span class="params">()</span></span>{
-     <span class="keyword">return</span> <span class="keyword">this</span>. reqId;
+ <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getReqId</span><span class="hljs-params">()</span></span>{
+     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>. reqId;
  }
 </code></pre>
 </li>
 </ol>
 <h2 id="header-21">Spring中配置Hibernate</h2>
-<pre><code class="nullxml"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:jdbc-prod.properties"</span>/&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">destroy-method</span>=<span class="string">"close"</span> <span class="attr">class</span>=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClassName"</span> <span class="attr">value</span>=<span class="string">"${jdbc.driverClassName}"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"url"</span> <span class="attr">value</span>=<span class="string">"${jdbc.url}"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"${jdbc.username}"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"${jdbc.password}"</span>/&gt;</span>
+<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">context:property-placeholder</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"classpath:jdbc-prod.properties"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">"close"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driverClassName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.driverClassName}"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.url}"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.username}"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.password}"</span>/&gt;</span>
 
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"initialSize"</span> <span class="attr">value</span>=<span class="string">"1"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"minIdle"</span> <span class="attr">value</span>=<span class="string">"2"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxActive"</span> <span class="attr">value</span>=<span class="string">"200"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxIdle"</span> <span class="attr">value</span>=<span class="string">"30"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"maxWait"</span> <span class="attr">value</span>=<span class="string">"1000"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"removeAbandoned"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
-    <span class="comment">&lt;!-- &lt;property name="logAbandoned" value="true"/&gt;   --&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"validationQuery"</span> <span class="attr">value</span>=<span class="string">"select 1 from dual"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"testOnBorrow"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"initialSize"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"minIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxActive"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"200"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"30"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxWait"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1000"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"removeAbandoned"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+    <span class="hljs-comment">&lt;!-- &lt;property name="logAbandoned" value="true"/&gt;   --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"validationQuery"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"select 1 from dual"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"testOnBorrow"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"sessionFactory"</span> <span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate4.LocalSessionFactoryBean"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> /&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernateProperties"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">props</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.dialect"</span>&gt;</span>${hibernate.dialect}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.id.new_generator_mappings"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.show_sql"</span>&gt;</span>${hibernate.show.sql}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"hibernate.format_sql"</span>&gt;</span>${hibernate.format.sql}<span class="tag">&lt;/<span class="name">prop</span>&gt;</span>
-            <span class="comment">&lt;!-- &lt;prop key="javax.persistence.validation.mode"&gt;none&lt;/prop&gt; --&gt;</span>
-        <span class="tag">&lt;/<span class="name">props</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sessionFactory"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.orm.hibernate4.LocalSessionFactoryBean"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hibernateProperties"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">props</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.dialect"</span>&gt;</span>${hibernate.dialect}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.id.new_generator_mappings"</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.show_sql"</span>&gt;</span>${hibernate.show.sql}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.format_sql"</span>&gt;</span>${hibernate.format.sql}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
+            <span class="hljs-comment">&lt;!-- &lt;prop key="javax.persistence.validation.mode"&gt;none&lt;/prop&gt; --&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">props</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
 
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"packagesToScan"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">list</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.golf.entity<span class="tag">&lt;/<span class="name">value</span>&gt;</span>
-        <span class="tag">&lt;/<span class="name">list</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">property</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"packagesToScan"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>com.golf.entity<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
 
-<span class="comment">&lt;!-- 声明式事务 --&gt;</span>
-<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"txManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.orm.hibernate4.HibernateTransactionManager"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"sessionFactory"</span> <span class="attr">ref</span>=<span class="string">"sessionFactory"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">bean</span>&gt;</span>
-<span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">"txAdvice"</span> <span class="attr">transaction-manager</span>=<span class="string">"txManager"</span> &gt;</span>
-    <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"list*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"get*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"test*"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span>  /&gt;</span>
-        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"sendMail"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span> <span class="attr">no-rollback-for</span>=<span class="string">"Exception"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"*"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span>
- <span class="tag">&lt;<span class="name">aop:config</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(* com.cj.service.*.*(..))"</span> <span class="attr">id</span>=<span class="string">"mySearchService"</span>/&gt;</span>
-    <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"txAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"mySearchService"</span>/&gt;</span>
-<span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span>
+<span class="hljs-comment">&lt;!-- 声明式事务 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txManager"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.orm.hibernate4.HibernateTransactionManager"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sessionFactory"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"sessionFactory"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">"txManager"</span> &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"list*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"get*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"test*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>  /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sendMail"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">no-rollback-for</span>=<span class="hljs-string">"Exception"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"*"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span>
+ <span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(* com.cj.service.*.*(..))"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mySearchService"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">aop:advisor</span> <span class="hljs-attr">advice-ref</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"mySearchService"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span>
 </code></pre>
   </section>
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2013/06/02/Hibernate-Advance.html';	
-		var disqus_title = 'Hibernate进阶';
-		var disqus_url = 'http://sixdegree.github.io/2013/06/02/Hibernate-Advance.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>

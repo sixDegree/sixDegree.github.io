@@ -230,7 +230,7 @@
 <li><code>dev</code>     【接口设备文件目录，如had表示硬盘】</li>
 <li><code>proc</code> 【目前系统核心与程序执行的信息】</li>
 </ul>
-<pre><code class="nullbash">&gt; ls <span class="_">-l</span>
+<pre><code class="nullbash">&gt; ls -l
 -rw-r--r--| 1 | tom | policeman  |    11 |  Dec 9 09:32   | myTest.java
 </code></pre>
 <ul>
@@ -383,11 +383,11 @@ tom:x:503:503::/home/tom:/bin/bash
 <li>举例来说，我们使用 cat 去读取 /etc/man.config，就会升级该文件的 atime</li>
 </ul>
 </li>
-<li>示例:<pre><code class="nullbash">&gt; ls <span class="_">-l</span> /etc/man.config
+<li>示例:<pre><code class="nullbash">&gt; ls -l /etc/man.config
 -rw-r--r-- 1 root root 4617 Jan  6  2007 /etc/man.config
-&gt; ls <span class="_">-l</span> --time=atime /etc/man.config
+&gt; ls -l --time=atime /etc/man.config
 -rw-r--r-- 1 root root 4617 Sep 25 17:54 /etc/man.config
-&gt; ls <span class="_">-l</span> --time=ctime /etc/man.config
+&gt; ls -l --time=ctime /etc/man.config
 -rw-r--r-- 1 root root 4617 Sep  4 18:03 /etc/man.config
 </code></pre>
 </li>
@@ -430,26 +430,26 @@ test.sh &gt; /tmp/test.log 2&gt;&amp;1
 </li>
 </ul>
 <h3 id="header-8">环境变量</h3>
-<pre><code class="nullbash"><span class="comment"># 查看环境变量</span>
+<pre><code class="nullbash"><span class="hljs-comment"># 查看环境变量</span>
 &gt; env
 
-<span class="comment"># 查看某个环境变量</span>
-&gt; <span class="built_in">echo</span> 变量名
+<span class="hljs-comment"># 查看某个环境变量</span>
+&gt; <span class="hljs-built_in">echo</span> 变量名
 
-<span class="comment"># 设置一个新变量</span>
-&gt; <span class="built_in">export</span> 变量名=变量值
+<span class="hljs-comment"># 设置一个新变量</span>
+&gt; <span class="hljs-built_in">export</span> 变量名=变量值
 
-<span class="comment"># 在原变量值得基础上更新</span>
-&gt; <span class="built_in">export</span> 变量名=$变量名:xxx
+<span class="hljs-comment"># 在原变量值得基础上更新</span>
+&gt; <span class="hljs-built_in">export</span> 变量名=$变量名:xxx
 
-<span class="comment"># 清除某环境变量</span>
-&gt; <span class="built_in">unset</span> 变量名
+<span class="hljs-comment"># 清除某环境变量</span>
+&gt; <span class="hljs-built_in">unset</span> 变量名
 </code></pre>
 <p>例如：</p>
-<pre><code class="nullbash"><span class="built_in">export</span> TEST=<span class="string">"test"</span>      <span class="comment"># 增加一个变量</span>
-env|grep TEST           <span class="comment"># 输出结果:   TEST=test</span>
-<span class="built_in">unset</span> TEST              <span class="comment"># 删除</span>
-env|grepTEST            <span class="comment"># 没有输出,证明变量TEST已不存在</span>
+<pre><code class="nullbash"><span class="hljs-built_in">export</span> TEST=<span class="hljs-string">"test"</span>      <span class="hljs-comment"># 增加一个变量</span>
+env|grep TEST           <span class="hljs-comment"># 输出结果:   TEST=test</span>
+<span class="hljs-built_in">unset</span> TEST              <span class="hljs-comment"># 删除</span>
+env|grepTEST            <span class="hljs-comment"># 没有输出,证明变量TEST已不存在</span>
 </code></pre>
 <ul>
 <li><code>/etc/profile</code> 全局的环境变量文件，只要登陆系统的用户都会执行里面的ENV环境变量设置</li>
@@ -542,15 +542,15 @@ reboot            现在重新启动计算机
 startx             进入图形界面
 
 su -         切换用户
-<span class="built_in">logout</span>    用户注销
+<span class="hljs-built_in">logout</span>    用户注销
 tab 快捷键，自动补全
 
-man         【相当于<span class="built_in">help</span>】
+man         【相当于<span class="hljs-built_in">help</span>】
 dir
-ls <span class="_">-a</span>         【显示隐藏文件】
-ls <span class="_">-l</span>         【显示长列表格式】
-<span class="built_in">cd</span>          【改变目录】
-<span class="built_in">pwd</span>       【显示当前工作目录】
+ls -a         【显示隐藏文件】
+ls -l         【显示长列表格式】
+<span class="hljs-built_in">cd</span>          【改变目录】
+<span class="hljs-built_in">pwd</span>       【显示当前工作目录】
 mkdir     【建立目录】
 rmdir     【删除空目录】
 touch     【建立空文件】
@@ -564,16 +564,16 @@ rm
 rm -rf             【删除所有内容，r表示递归，f表示强制】
 
 ln                 【建立符合连接】
-ln <span class="_">-s</span> 源目标
-ln <span class="_">-s</span> /etc/inittab inittab 【inittab 指向实际文件 /etc/inittab】
+ln -s 源目标
+ln -s /etc/inittab inittab 【inittab 指向实际文件 /etc/inittab】
 
 find 目录 -name aaa.java
 find 目录 -amin -10 【 10分钟内存取的文件或目录 atime小时】
 find 目录 -cmin -10 【 10分钟内更改的文件或目录 ctime小时 +表示前】
 find 目录 -size +10k【 大小为10k的文件 】
 
-shell <span class="built_in">history</span> 查阅历史记录命令
-<span class="built_in">history</span> 5 【 显示最近使用的5个命令 】
+shell <span class="hljs-built_in">history</span> 查阅历史记录命令
+<span class="hljs-built_in">history</span> 5 【 显示最近使用的5个命令 】
 !5          【 执行历史编号为5的命令 】
 !ls          【 执行最后一次以ls开头的命令 】
 </code></pre>
@@ -589,23 +589,23 @@ SZ1SA006
 &gt; logname
 cim1tdtp
 
-&gt; <span class="built_in">echo</span> <span class="variable">$LOGNAME</span>
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$LOGNAME</span>
 cim1tdtp
 
-&gt; whoami     <span class="comment"># 显示有效的当前用户</span>
+&gt; whoami     <span class="hljs-comment"># 显示有效的当前用户</span>
 cim1tdtp
 </code></pre>
 <h3 id="header-12">ls mv rm</h3>
 <ol>
 <li><p><code>ls</code>列出文件 / 文件夾  ls</p>
-<pre><code class="nullbash"> <span class="comment"># 列出文件夾個數</span>
- ls <span class="_">-l</span> | grep ^d | wc <span class="_">-l</span>
+<pre><code class="nullbash"> <span class="hljs-comment"># 列出文件夾個數</span>
+ ls -l | grep ^d | wc -l
 
- <span class="comment"># 列出非文件夾個數</span>
- ls <span class="_">-l</span> | grep -v ^d | wc <span class="_">-l</span>
+ <span class="hljs-comment"># 列出非文件夾個數</span>
+ ls -l | grep -v ^d | wc -l
 
- <span class="comment"># ls -F: 把文件按照类型归类（会在末尾加上/ *等符号标识）</span>
- <span class="comment"># grep /$ 挑出以/结尾的行 ；PS:/标识是目录</span>
+ <span class="hljs-comment"># ls -F: 把文件按照类型归类（会在末尾加上/ *等符号标识）</span>
+ <span class="hljs-comment"># grep /$ 挑出以/结尾的行 ；PS:/标识是目录</span>
  ls -F | grep /$
 </code></pre>
 </li>
@@ -615,7 +615,7 @@ cim1tdtp
 </code></pre>
 </li>
 <li><p><code>rm</code> 刪除文件或目錄</p>
-<pre><code class="nullbash"> rm [-dfirv][--help][--version][文件或目录...]
+<pre><code class="nullbash"> rm [-dfirv][--<span class="hljs-built_in">help</span>][--version][文件或目录...]
 </code></pre>
 </li>
 </ol>
@@ -628,23 +628,23 @@ cim1tdtp
 <li><code>--help</code>  在线帮助。</li>
 <li><code>--version</code> 显示版本信息</li>
 <li><p>注意：删除目录必须加上参数<code>-r</code>，否则预设仅会删除文件</p>
-<pre><code class="nullbash">  <span class="comment">#刪除文件</span>
+<pre><code class="nullbash">  <span class="hljs-comment">#刪除文件</span>
   rm file
 
-  <span class="comment">#删除所有C语言程式档；删除前逐一询问确认</span>
+  <span class="hljs-comment">#删除所有C语言程式档；删除前逐一询问确认</span>
   rm -i *.c
 
-  <span class="comment">#刪除文件夾</span>
+  <span class="hljs-comment">#刪除文件夾</span>
   rm -r dir
 
-  <span class="comment">#批量刪除符合條件的文件</span>
-  ls <span class="_">-d</span> * | grep -v tar | xargs -n5 rm -r
+  <span class="hljs-comment">#批量刪除符合條件的文件</span>
+  ls -d * | grep -v tar | xargs -n5 rm -r
 </code></pre>
 </li>
 </ul>
 <h3 id="header-13">tar,gzip,zip</h3>
-<pre><code class="nullbash">ls <span class="_">-d</span> * | xargs -n5 -i tar -cf {}.tar {}
-ls <span class="_">-d</span> * | xargs -n5 -i zip -r <span class="string">"{}.zip"</span> {}
+<pre><code class="nullbash">ls -d * | xargs -n5 -i tar -cf {}.tar {}
+ls -d * | xargs -n5 -i zip -r <span class="hljs-string">"{}.zip"</span> {}
 </code></pre>
 <ol>
 <li><p>tar</p>
@@ -675,15 +675,15 @@ ls <span class="_">-d</span> * | xargs -n5 -i zip -r <span class="string">"{}.zi
 </ul>
 </li>
 <li><p>示例：</p>
-<pre><code class="nullbash"><span class="comment"># 将test文件夹打包为test.tar</span>
-tar cvf test.tar <span class="built_in">test</span>                <span class="comment">#將test文件夾打包為test.tar</span>
-<span class="comment"># 将test.tar包进行压缩为test.tar.Z文件</span>
+<pre><code class="nullbash"><span class="hljs-comment"># 将test文件夹打包为test.tar</span>
+tar cvf test.tar <span class="hljs-built_in">test</span>                <span class="hljs-comment">#將test文件夾打包為test.tar</span>
+<span class="hljs-comment"># 将test.tar包进行压缩为test.tar.Z文件</span>
 compress test.tar
 
-<span class="comment"># 解压FileName.Z文件</span>
+<span class="hljs-comment"># 解压FileName.Z文件</span>
 uncompress FileName.Z
 
-<span class="comment"># 一步到位，直接解压解包</span>
+<span class="hljs-comment"># 一步到位，直接解压解包</span>
 uncompress &lt; test.tar.Z | tar xf
 </code></pre>
 </li>
@@ -707,10 +707,10 @@ uncompress &lt; test.tar.Z | tar xf
 </ul>
 </li>
 <li><p>示例：</p>
-<pre><code class="nullbash"><span class="comment"># 压缩</span>
+<pre><code class="nullbash"><span class="hljs-comment"># 压缩</span>
 gzip FileName
 
-<span class="comment"># 解压缩</span>
+<span class="hljs-comment"># 解压缩</span>
 gzip -dv FileName
 </code></pre>
 </li>
@@ -735,49 +735,49 @@ gzip -dv FileName
 </ul>
 </li>
 <li><p>示例</p>
-<pre><code class="nullbash">  <span class="comment">#压缩文件夹</span>
-  zip -r test.zip <span class="built_in">test</span>
+<pre><code class="nullbash">  <span class="hljs-comment">#压缩文件夹</span>
+  zip -r test.zip <span class="hljs-built_in">test</span>
 
-  <span class="comment">#解压</span>
+  <span class="hljs-comment">#解压</span>
   unzip test.zip
 </code></pre>
 </li>
-<li>更多<a href="http://www.cnblogs.com/say0507/archive/2011/03/31/2001459.html">参考</a></li>
+<li>更多<a href="http://www.cnblogs.com/say0507/archive/2011/03/31/2001459.html" target="_blank" rel="noopener">参考</a></li>
 </ul>
 <h3 id="header-14">ps,kill</h3>
 <p>查杀进程</p>
-<pre><code class="nullbash">ps -ef | grep nationz | grep <span class="string">"sh -c"</span> | awk <span class="string">'{print $2}'</span> | xargs -i <span class="built_in">kill</span> -9 {}
-ps <span class="_">-e</span> -o pid -o comm
+<pre><code class="nullbash">ps -ef | grep nationz | grep <span class="hljs-string">"sh -c"</span> | awk <span class="hljs-string">'{print $2}'</span> | xargs -i <span class="hljs-built_in">kill</span> -9 {}
+ps -e -o pid -o comm
 ps -ax -o pid -o comm | grep oic
 ps -ax -o pid -o comm | grep oic
-ps <span class="_">-e</span> -o pid -o comm | grep oic | awk <span class="string">'{print $1}'</span> | xargs -n2 -i <span class="built_in">kill</span> -9 {}
-<span class="built_in">kill</span> -9 `ps <span class="_">-a</span> -o pid -o comm | grep oic | awk <span class="string">'{print $1}'</span>`
+ps -e -o pid -o comm | grep oic | awk <span class="hljs-string">'{print $1}'</span> | xargs -n2 -i <span class="hljs-built_in">kill</span> -9 {}
+<span class="hljs-built_in">kill</span> -9 `ps -a -o pid -o comm | grep oic | awk <span class="hljs-string">'{print $1}'</span>`
 </code></pre>
 <h3 id="header-15">jobs,fg,bg</h3>
 <pre><code class="nullbash">&gt; sleep 15 &amp;
 [1] 2706
 
-<span class="comment">#列出当前活动作业</span>
-&gt; <span class="built_in">jobs</span>
+<span class="hljs-comment">#列出当前活动作业</span>
+&gt; <span class="hljs-built_in">jobs</span>
 [1]  + Running              sleep 15
 
-<span class="comment"># 显示作业号，PID</span>
-<span class="comment"># jobs -l</span>
+<span class="hljs-comment"># 显示作业号，PID</span>
+<span class="hljs-comment"># jobs -l</span>
 [1]  +  2706 Running              sleep 15
 
-&gt; <span class="built_in">jobs</span>
+&gt; <span class="hljs-built_in">jobs</span>
 [1]    Done                 sleep 15
 
-&gt; sleep 15            <span class="comment">#按^Z停止sleep命令（sleep没有使用CPU但被挂起在后台）</span>
+&gt; sleep 15            <span class="hljs-comment">#按^Z停止sleep命令（sleep没有使用CPU但被挂起在后台）</span>
 ^Z
 Stopped (user)
 
-&gt; <span class="built_in">bg</span>                <span class="comment">#使最后一个后台作业在后台开始执行</span>
+&gt; <span class="hljs-built_in">bg</span>                <span class="hljs-comment">#使最后一个后台作业在后台开始执行</span>
 [1]  + sleep 15 &amp;
-&gt; <span class="built_in">jobs</span>
+&gt; <span class="hljs-built_in">jobs</span>
 [1]  + Running              sleep 15
 
-&gt; <span class="built_in">fg</span> %1            <span class="comment">#将编号为[1]的作业拿到前台</span>
+&gt; <span class="hljs-built_in">fg</span> %1            <span class="hljs-comment">#将编号为[1]的作业拿到前台</span>
 sleep 15
 </code></pre>
 <h3 id="header-16">du,mount</h3>
@@ -796,9 +796,9 @@ sleep 15
 <li>如果挂载了多块硬盘，每个硬盘有多个分区，就是用fdisk</li>
 </ul>
 </li>
-<li>eg:<pre><code class="nullbash">du <span class="_">-a</span>
-du -h | awk <span class="string">'$1 ~ /G/'</span>
-du -h | awk <span class="string">'$1 ~ /M/'</span>
+<li>eg:<pre><code class="nullbash">du -a
+du -h | awk <span class="hljs-string">'$1 ~ /G/'</span>
+du -h | awk <span class="hljs-string">'$1 ~ /M/'</span>
 du -ks /tmp
 df -k
 </code></pre>
@@ -806,10 +806,10 @@ df -k
 </ul>
 </li>
 <li><p>装载 mount</p>
-<pre><code class="nullbash"> <span class="comment"># 装载</span>
+<pre><code class="nullbash"> <span class="hljs-comment"># 装载</span>
  mount [-t vfstype] [-o options] device dir
 
- <span class="comment"># 卸载</span>
+ <span class="hljs-comment"># 卸载</span>
  umount dir
 </code></pre>
 </li>
@@ -860,7 +860,7 @@ df -k
 </li>
 </ul>
 </li>
-<li><p>更多<a href="http://www.cnblogs.com/xd502djj/p/3809375.html">参考</a></p>
+<li><p>更多<a href="http://www.cnblogs.com/xd502djj/p/3809375.html" target="_blank" rel="noopener">参考</a></p>
 </li>
 </ul>
 <h3 id="header-17">重执行命令</h3>
@@ -874,32 +874,32 @@ df -k
 <pre><code class="nullbash">cat file1 file2 file3
 ( 0     1        2     3   )
 
-ls !:2    <span class="comment"># ls file2</span>
-ls !^    <span class="comment"># ls file1</span>
-ls !$    <span class="comment"># ls file3</span>
-ls !*    <span class="comment"># ls file1 file2 file3</span>
-!!:p        <span class="comment"># ls file1 file2 file3     (打印但不执行历史清单中的最后一个命令，更新历史清单)</span>
+ls !:2    <span class="hljs-comment"># ls file2</span>
+ls !^    <span class="hljs-comment"># ls file1</span>
+ls !$    <span class="hljs-comment"># ls file3</span>
+ls !*    <span class="hljs-comment"># ls file1 file2 file3</span>
+!!:p        <span class="hljs-comment"># ls file1 file2 file3     (打印但不执行历史清单中的最后一个命令，更新历史清单)</span>
 </code></pre>
-<pre><code class="nullbash"><span class="comment"># 从历史清单中取得最后一个命令重新执行</span>
+<pre><code class="nullbash"><span class="hljs-comment"># 从历史清单中取得最后一个命令重新执行</span>
 !!
 
-<span class="comment"># 重新执行历史清单中的第三个命令</span>
+<span class="hljs-comment"># 重新执行历史清单中的第三个命令</span>
 !3
 
-<span class="comment"># 重新执行历史清单中以d开头的最后一个命令</span>
+<span class="hljs-comment"># 重新执行历史清单中以d开头的最后一个命令</span>
 !d
 </code></pre>
 </li>
 </ul>
 </li>
-<li><code>^</code> 编辑前一个命令的一种快捷方法<pre><code class="nullbash"><span class="comment"># 替换历史清单中最后一个命令中的字母</span>
-<span class="comment"># 用一个t取得第一次出现的r</span>
+<li><code>^</code> 编辑前一个命令的一种快捷方法<pre><code class="nullbash"><span class="hljs-comment"># 替换历史清单中最后一个命令中的字母</span>
+<span class="hljs-comment"># 用一个t取得第一次出现的r</span>
 ^r^t
 </code></pre>
 </li>
 </ul>
 <h3 id="header-18">cut</h3>
-<pre><code class="nullbash">cut -b|c|f list [<span class="_">-d</span> delim][<span class="_">-s</span>][file ...]
+<pre><code class="nullbash">cut -b|c|f list [-d delim][-s][file ...]
 </code></pre>
 <p>从指定的范围中提取信息</p>
 <ul>
@@ -926,15 +926,15 @@ ls !*    <span class="comment"># ls file1 file2 file3</span>
 </li>
 </ul>
 <p>示例：</p>
-<pre><code class="nullbash">cut -c 1-5,10-14 <span class="built_in">test</span>
-cut <span class="_">-f</span> 1,3 <span class="built_in">test</span>
-cut <span class="_">-d</span><span class="string">'|'</span> <span class="_">-f</span>2  1.test &gt; 2.test
-cut <span class="_">-d</span><span class="string">':'</span> <span class="_">-f</span>1,2  1.test &gt; 2.test 
-cut <span class="_">-d</span><span class="string">':'</span> <span class="_">-f</span>1-4 /etc/passwd | head -10
-cut <span class="_">-d</span><span class="string">':'</span> <span class="_">-f</span> 1-4 /etc/passwd | head -10
+<pre><code class="nullbash">cut -c 1-5,10-14 <span class="hljs-built_in">test</span>
+cut -f 1,3 <span class="hljs-built_in">test</span>
+cut -d<span class="hljs-string">'|'</span> -f2  1.test &gt; 2.test
+cut -d<span class="hljs-string">':'</span> -f1,2  1.test &gt; 2.test 
+cut -d<span class="hljs-string">':'</span> -f1-4 /etc/passwd | head -10
+cut -d<span class="hljs-string">':'</span> -f 1-4 /etc/passwd | head -10
 </code></pre>
 <h3 id="header-19">find</h3>
-<pre><code class="nullbash">find  path  -option  [  -print ]  [ -exec|-ok  <span class="built_in">command</span> ]  {} \;
+<pre><code class="nullbash">find  path  -option  [  -<span class="hljs-built_in">print</span> ]  [ -<span class="hljs-built_in">exec</span>|-ok  <span class="hljs-built_in">command</span> ]  {} \;
 </code></pre>
 <ul>
 <li><p><code>path</code>:     查找目录</p>
@@ -1029,62 +1029,62 @@ cut <span class="_">-d</span><span class="string">':'</span> <span class="_">-f<
 </ul>
 <p>注意：</p>
 <p>使用<code>-exec</code>时，find命令将所有匹配到的文件一起传递给exec执行<br>可能会出现溢出错误（参数列太长”，“参数列溢出”，…）<br>可能会出现进程过多，系统性能下降的问题（有些系统中会为处理每一个匹配到的文件而发起一个相应的进程）<br>建议使用<code>xargs</code>分批获取和传入参数，且只有一个进程，eg：</p>
-<pre><code class="nullbash"><span class="comment"># 查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件</span>
-&gt; find . -type f -print | xargs file
+<pre><code class="nullbash"><span class="hljs-comment"># 查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件</span>
+&gt; find . -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">print</span> | xargs file
 
 ./.kde/Autostart/Autorun.desktop: UTF-8 Unicode English text
 ./.kde/Autostart/.directory:      ISO-8859 text\
 ......
 </code></pre>
 <p>使用示例：</p>
-<pre><code class="nullbash"><span class="comment"># 当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限</span>
-find . -perm -7 -print | xargs chmod o-w
+<pre><code class="nullbash"><span class="hljs-comment"># 当前目录下查找所有用户具有读、写和执行权限的文件，并收回相应的写权限</span>
+find . -perm -7 -<span class="hljs-built_in">print</span> | xargs chmod o-w
 
-<span class="comment"># 用grep命令在所有的普通文件中搜索hostname这个词</span>
-find . -type f -print | xargs grep <span class="string">"hostname"</span>    
+<span class="hljs-comment"># 用grep命令在所有的普通文件中搜索hostname这个词</span>
+find . -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">print</span> | xargs grep <span class="hljs-string">"hostname"</span>    
 
-<span class="comment"># 查找系统中所有文件长度为0的普通文件，并列出它们的完整路径</span>
-find / -type f -size 0 -exec ls <span class="_">-l</span> {  } \;
+<span class="hljs-comment"># 查找系统中所有文件长度为0的普通文件，并列出它们的完整路径</span>
+find / -<span class="hljs-built_in">type</span> f -size 0 -<span class="hljs-built_in">exec</span> ls -l {  } \;
 
-<span class="comment"># 让当前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件</span>
-find . -type f -perm 644 -exec ls <span class="_">-l</span> {  } \;
+<span class="hljs-comment"># 让当前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件</span>
+find . -<span class="hljs-built_in">type</span> f -perm 644 -<span class="hljs-built_in">exec</span> ls -l {  } \;
 
-<span class="comment"># 查找/var/logs目录中更改时间在7日以前的普通文件，并在删除之前询问它们</span>
-find /var/logs -type f -mtime +7 -ok rm {  } \;    
+<span class="hljs-comment"># 查找/var/logs目录中更改时间在7日以前的普通文件，并在删除之前询问它们</span>
+find /var/logs -<span class="hljs-built_in">type</span> f -mtime +7 -ok rm {  } \;    
 
-<span class="comment">#查找系统中所有属于root组的文件</span>
-find . -group root -exec ls <span class="_">-l</span> {  } \;
+<span class="hljs-comment">#查找系统中所有属于root组的文件</span>
+find . -group root -<span class="hljs-built_in">exec</span> ls -l {  } \;
 
-<span class="comment"># 删除当目录中访问时间在7日以来、含有数字后缀的admin.log文件</span>
-find . -name <span class="string">"admin.log[0-9][0-9][0-9]"</span> -atime -7  -ok rm {  } \;
+<span class="hljs-comment"># 删除当目录中访问时间在7日以来、含有数字后缀的admin.log文件</span>
+find . -name <span class="hljs-string">"admin.log[0-9][0-9][0-9]"</span> -atime -7  -ok rm {  } \;
 
-<span class="comment">#查找当前文件系统中的所有目录并排序</span>
-find . -type d | sort
+<span class="hljs-comment">#查找当前文件系统中的所有目录并排序</span>
+find . -<span class="hljs-built_in">type</span> d | sort
 
-<span class="comment"># 从当前目录开始，向下扫描查找类型是普通文件的所有.html文件</span>
-find -name <span class="string">"*.html"</span> -type f    
+<span class="hljs-comment"># 从当前目录开始，向下扫描查找类型是普通文件的所有.html文件</span>
+find -name <span class="hljs-string">"*.html"</span> -<span class="hljs-built_in">type</span> f    
 
-<span class="comment"># 返回文件权限和时间信息(-iname：表示区分大小写)</span>
-find -user chen -iname <span class="string">"*.html"</span> -ls
+<span class="hljs-comment"># 返回文件权限和时间信息(-iname：表示区分大小写)</span>
+find -user chen -iname <span class="hljs-string">"*.html"</span> -ls
 
-<span class="comment"># 在/logos 下查找5天内修改的普通日志文件并删除</span>
-find /logos -type f -mtime -5 -exec rm {} /;
+<span class="hljs-comment"># 在/logos 下查找5天内修改的普通日志文件并删除</span>
+find /logos -<span class="hljs-built_in">type</span> f -mtime -5 -<span class="hljs-built_in">exec</span> rm {} /;
 
-<span class="comment">#查找2004-11-30 16:36:37时更改过的文件</span>
-find ./ -name <span class="string">"*php"</span> |  ls <span class="_">-l</span> --full-time <span class="variable">$A</span> 2&gt;/dev/null | grep <span class="string">"2004-11-30 16:36:37"</span>
+<span class="hljs-comment">#查找2004-11-30 16:36:37时更改过的文件</span>
+find ./ -name <span class="hljs-string">"*php"</span> |  ls -l --full-time <span class="hljs-variable">$A</span> 2&gt;/dev/null | grep <span class="hljs-string">"2004-11-30 16:36:37"</span>
 
-<span class="comment"># 文件查找</span>
+<span class="hljs-comment"># 文件查找</span>
 
-find . -ctime +365  -type d -exec ls -ld {} \; &gt;test.txt
-find . -ctime +365  -type d -exec ls -ld {} \; &gt;test.txt
+find . -ctime +365  -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> ls -ld {} \; &gt;test.txt
+find . -ctime +365  -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> ls -ld {} \; &gt;test.txt
 
-find . -name <span class="string">"*.txt"</span> -print 
-find . -name *.* -ctime -365 -type d -exec mv {} temp/ \;
-find . -name *.* -ctime -365 -type d -exec mv {} temp/ \;
-find . -name *.gz -ctime -365 -exec ls <span class="_">-l</span> {} \
+find . -name <span class="hljs-string">"*.txt"</span> -<span class="hljs-built_in">print</span> 
+find . -name *.* -ctime -365 -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> mv {} temp/ \;
+find . -name *.* -ctime -365 -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> mv {} temp/ \;
+find . -name *.gz -ctime -365 -<span class="hljs-built_in">exec</span> ls -l {} \
 
-find .  -type d -exec ls -ld {} \; &gt;test.txt
-find .  -type d -exec ls -ld {} \; &gt;test.txt
+find .  -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> ls -ld {} \; &gt;test.txt
+find .  -<span class="hljs-built_in">type</span> d -<span class="hljs-built_in">exec</span> ls -ld {} \; &gt;test.txt
 </code></pre>
 <h3 id="header-20">xargs</h3>
 <p><code>xargs [-0epns] [ command [initial-arguments] ]</code></p>
@@ -1104,7 +1104,7 @@ find .  -type d -exec ls -ld {} \; &gt;test.txt
 <p>參數：</p>
 <ol>
 <li><p><code>-i</code> 选项告诉xargs用每项的名称替换<code>{}</code></p>
-<pre><code class="nullbash"> find ./ -type f -print | xargs -i mv <span class="_">-f</span> {} ./newdir
+<pre><code class="nullbash"> find ./ -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">print</span> | xargs -i mv -f {} ./newdir
 </code></pre>
 </li>
 <li><p><code>-t</code>选项指示xargs先打印要运行的命令，然后再执行</p>
@@ -1112,33 +1112,33 @@ find .  -type d -exec ls -ld {} \; &gt;test.txt
 </code></pre>
 </li>
 <li><p><code>-0</code> 将输入的特殊字元（例如<code>,</code>, <code>\</code>, 空白键等）还原成一般字元，可用于正确地处理了新行和空格</p>
-<pre><code class="nullbash"> <span class="comment"># 查找tmp目录下以core命名的文件，然后删除</span>
+<pre><code class="nullbash"> <span class="hljs-comment"># 查找tmp目录下以core命名的文件，然后删除</span>
 
- <span class="comment"># 如果文件名字包含新行或者空格的话，这条命令将会被错误操作</span>
-  find /tmp -name core -type f -print | xargs /bin/rm <span class="_">-f</span>
+ <span class="hljs-comment"># 如果文件名字包含新行或者空格的话，这条命令将会被错误操作</span>
+  find /tmp -name core -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">print</span> | xargs /bin/rm -f
 
- <span class="comment"># 这条命令就正确地处理了新行和空格，有可能带来的错误</span>
- find /tmp -name core -type f -print0 | xargs -0 /bin/rm <span class="_">-f</span>
+ <span class="hljs-comment"># 这条命令就正确地处理了新行和空格，有可能带来的错误</span>
+ find /tmp -name core -<span class="hljs-built_in">type</span> f -print0 | xargs -0 /bin/rm -f
 </code></pre>
 </li>
 <li><p><code>-p</code> 它使操作具有可交互性，在执行每个指令的 argument 时，都会询问使用者的意思：</p>
-<pre><code class="nullbash"><span class="comment"># xarg要求在运行每个命令之前进行确认，按下"y"，则执行</span>
-file * | grep ASCII | cut <span class="_">-d</span><span class="string">":"</span> <span class="_">-f</span>1 | xargs -p vi 
+<pre><code class="nullbash"><span class="hljs-comment"># xarg要求在运行每个命令之前进行确认，按下"y"，则执行</span>
+file * | grep ASCII | cut -d<span class="hljs-string">":"</span> -f1 | xargs -p vi 
 vi alert_DBA102.log dba102_cjq0_14493.trc dba102_mmnl_14497.trc dba102_reco_14491.trc dba102_rvwr_14518.trc ?...
 </code></pre>
 </li>
 <li><p><code>-r</code> 如果没有要运行的内容，该命令退出：</p>
-<pre><code class="nullbash">file * | grep SSSSSS | cut <span class="_">-d</span><span class="string">":"</span> <span class="_">-f</span>1 | xargs -t -r wc <span class="_">-l</span> $
+<pre><code class="nullbash">file * | grep SSSSSS | cut -d<span class="hljs-string">":"</span> -f1 | xargs -t -r wc -l $
 </code></pre>
 </li>
 <li><p><code>-n</code> 指定每次从输入源中取几行数据（限制单个命令行的参数个数）：</p>
-<pre><code class="nullbash"> <span class="comment"># 限制每个命令行仅使用两个参数</span>
- file * | grep ASCII | cut <span class="_">-d</span><span class="string">":"</span> <span class="_">-f</span>1 | xargs -t -n2 ls -ltr
+<pre><code class="nullbash"> <span class="hljs-comment"># 限制每个命令行仅使用两个参数</span>
+ file * | grep ASCII | cut -d<span class="hljs-string">":"</span> -f1 | xargs -t -n2 ls -ltr
 </code></pre>
 </li>
 <li><p><code>-e</code>  : EOF (end of file) 后面可接一个字串，代表结束标识（当 xargs 分析到这个字串时，就会停止继续工作）</p>
-<pre><code class="nullbash"><span class="comment"># 当分析到 lp 就结束这串指令 (注意 -e'lp' 是连在一起的，中间没有空白键)</span>
-cut <span class="_">-d</span><span class="string">':'</span> <span class="_">-f</span>1 &lt; /etc/passwd | xargs <span class="_">-e</span><span class="string">'lp'</span> finger
+<pre><code class="nullbash"><span class="hljs-comment"># 当分析到 lp 就结束这串指令 (注意 -e'lp' 是连在一起的，中间没有空白键)</span>
+cut -d<span class="hljs-string">':'</span> -f1 &lt; /etc/passwd | xargs -e<span class="hljs-string">'lp'</span> finger
 </code></pre>
 </li>
 <li><p><code>-s</code> : 每次的输出的最大bytes</p>
@@ -1152,7 +1152,7 @@ cut <span class="_">-d</span><span class="string">':'</span> <span class="_">-f<
 <li>利用 cut 取出帐号名称</li>
 <li>用 head 取出三个帐号</li>
 <li><p>由 xargs 将三个帐号的名称变成 finger 后面需要的参数</p>
-<pre><code class="nullbash">&gt; cut <span class="_">-d</span> <span class="string">':'</span> <span class="_">-f</span>1 &lt; /etc/passwd | head -n 3 | xargs finger    
+<pre><code class="nullbash">&gt; cut -d <span class="hljs-string">':'</span> -f1 &lt; /etc/passwd | head -n 3 | xargs finger    
 
 Login name: root                        In real life: Super-User
 Directory: /                            Shell: /sbin/sh
@@ -1163,13 +1163,13 @@ No Plan.
 
 Login name: daemon
 Directory: /
-Never logged in.
+Never logged <span class="hljs-keyword">in</span>.
 No unread mail
 No Plan.
 
 Login name: bin
 Directory: /usr/bin
-Never logged in.
+Never logged <span class="hljs-keyword">in</span>.
 No unread mail
 No Plan.
 </code></pre>
@@ -1187,8 +1187,8 @@ No Plan.
 </li>
 <li><p>迁移文件</p>
 <pre><code class="nullbash"> cat temp.txt | xargs -n1 -i mv {} bak/
- ls *100[9]* | xargs -t -i mv {} <span class="string">"/db/data/autoftp/sent/tsmc/stdfbak/"</span>
- ls *100[7]*.gz | xargs -t -i -n1  mv {} <span class="string">"/db/data/autoftp/sent/tsmc/stdfbak/"</span>{}
+ ls *100[9]* | xargs -t -i mv {} <span class="hljs-string">"/db/data/autoftp/sent/tsmc/stdfbak/"</span>
+ ls *100[7]*.gz | xargs -t -i -n1  mv {} <span class="hljs-string">"/db/data/autoftp/sent/tsmc/stdfbak/"</span>{}
 </code></pre>
 </li>
 <li><p><code>xargs</code>与<code>grep</code>使用比较</p>
@@ -1213,8 +1213,8 @@ No Plan.
 </ol>
 <h3 id="header-21">awk</h3>
 <p>文本分析工具</p>
-<pre><code class="nullbash">nawk <span class="string">'/pattern/{action}'</span> filename
-cmd | nawk <span class="string">'/pattern/{action}'</span> filename
+<pre><code class="nullbash">nawk <span class="hljs-string">'/pattern/{action}'</span> filename
+cmd | nawk <span class="hljs-string">'/pattern/{action}'</span> filename
 </code></pre>
 <ul>
 <li>把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理</li>
@@ -1246,8 +1246,8 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 <li>打印输出函数：print，printf<ul>
 <li><code>print \b,\f,\n,\r,\t,\c</code></li>
 <li><code>printf %c,%d,%e,%f,%o,%s,%x</code> 格式化特制的輸出</li>
-<li>eg:<pre><code class="nullbash">{<span class="built_in">print</span> <span class="string">"\t\tHave a nice day,"</span> <span class="variable">$1</span>,<span class="variable">$2</span> <span class="string">"\!"</span>}
-{<span class="built_in">printf</span> <span class="string">"%The name is: -15s ;ID is %8d\n"</span>,<span class="variable">$1</span>,<span class="variable">$3</span>}
+<li>eg:<pre><code class="nullbash">{<span class="hljs-built_in">print</span> <span class="hljs-string">"\t\tHave a nice day,"</span> <span class="hljs-variable">$1</span>,<span class="hljs-variable">$2</span> <span class="hljs-string">"\!"</span>}
+{<span class="hljs-built_in">printf</span> <span class="hljs-string">"%The name is: -15s ;ID is %8d\n"</span>,<span class="hljs-variable">$1</span>,<span class="hljs-variable">$3</span>}
 </code></pre>
 </li>
 </ul>
@@ -1257,60 +1257,60 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 </li>
 <li>编程：<code>if/else</code>,<code>BEGIN/END</code>,<code>while</code>,<code>for</code></li>
 <li><p>示例：</p>
-<pre><code class="nullbash">  <span class="comment"># pattern</span>
-  nawk <span class="string">'/Mary/'</span> file1.txt
-  nawk <span class="string">'$1 ~ /[Bb]ill/'</span> file2.txt
+<pre><code class="nullbash">  <span class="hljs-comment"># pattern</span>
+  nawk <span class="hljs-string">'/Mary/'</span> file1.txt
+  nawk <span class="hljs-string">'$1 ~ /[Bb]ill/'</span> file2.txt
 
-  <span class="comment"># action：print</span>
-  nawk <span class="string">'{print $1,$2}'</span> file1.txt
-  nawk  <span class="string">'/^[A-Z][a-z]+/{print "Hello "$0}'</span> file1.txt
+  <span class="hljs-comment"># action：print</span>
+  nawk <span class="hljs-string">'{print $1,$2}'</span> file1.txt
+  nawk  <span class="hljs-string">'/^[A-Z][a-z]+/{print "Hello "$0}'</span> file1.txt
 
-  <span class="comment"># -F</span>
-  nawk -F: <span class="string">'/Tom Jones/{print $0,NF}'</span> file1.txt
-  nawk -F<span class="string">'[ :\t]'</span> <span class="string">'/Tom Jones/{print $0,NF}'</span> file1.txt
+  <span class="hljs-comment"># -F</span>
+  nawk -F: <span class="hljs-string">'/Tom Jones/{print $0,NF}'</span> file1.txt
+  nawk -F<span class="hljs-string">'[ :\t]'</span> <span class="hljs-string">'/Tom Jones/{print $0,NF}'</span> file1.txt
 
-  <span class="comment"># argv</span>
-  nawk <span class="string">'BEGIN{print substr(ARGV[1],11,1)}'</span> <span class="variable">$argv</span>[2]
+  <span class="hljs-comment"># argv</span>
+  nawk <span class="hljs-string">'BEGIN{print substr(ARGV[1],11,1)}'</span> <span class="hljs-variable">$argv</span>[2]
 
-  <span class="comment"># cmd | awk</span>
-  ps -ef | grep ftp | grep Feb | awk <span class="string">'{print $11}'</span> | uniq | more
+  <span class="hljs-comment"># cmd | awk</span>
+  ps -ef | grep ftp | grep Feb | awk <span class="hljs-string">'{print $11}'</span> | uniq | more
 
-  <span class="comment"># 批量重命名</span>
-  ls *.tar | awk -F<span class="string">"."</span> <span class="string">'{print $1"."$2"."$3"."$4,$1"."$2"."$3".1"}'</span>| xargs -n2 mv
-  ls * | awk -F<span class="string">"."</span> <span class="string">'{print $1"."$2"."$3,$1"."$2}'</span> | xargs -n2 mv
-  ls * | awk -F<span class="string">"."</span> <span class="string">'{print $1"."$2"."$3,$1"."$2"."$3".1"}'</span> | xargs -n2 mv
+  <span class="hljs-comment"># 批量重命名</span>
+  ls *.tar | awk -F<span class="hljs-string">"."</span> <span class="hljs-string">'{print $1"."$2"."$3"."$4,$1"."$2"."$3".1"}'</span>| xargs -n2 mv
+  ls * | awk -F<span class="hljs-string">"."</span> <span class="hljs-string">'{print $1"."$2"."$3,$1"."$2}'</span> | xargs -n2 mv
+  ls * | awk -F<span class="hljs-string">"."</span> <span class="hljs-string">'{print $1"."$2"."$3,$1"."$2"."$3".1"}'</span> | xargs -n2 mv
 </code></pre>
 </li>
 </ul>
 <p>awk编程示例：</p>
 <ol>
 <li><p>解析文档（关联数组，统计，printf，算数运算，sort应用）</p>
-<pre><code class="nullbash"> <span class="comment">#! /bin/csh</span>
-  <span class="built_in">echo</span> Begin
-  <span class="built_in">set</span> resultFile = myResult.txt
-  <span class="comment"># get head </span>
-  <span class="comment">#head -8 Testdata.log | awk -F, '{print $1":"$2}'     &gt; $resultFile</span>
-  awk -F, <span class="string">'NR==1 {print $1":"$2 }'</span> Testdata.log    &gt; <span class="variable">$resultFile</span>
-  nawk -F, <span class="string">'NR==2 {print $1":"tolower($2) }'</span> Testdata.log &gt;&gt; <span class="variable">$resultFile</span>
-  awk -F, <span class="string">'NR==3,NR==8 {print $1":"$2 }'</span> Testdata.log &gt;&gt; <span class="variable">$resultFile</span>
+<pre><code class="nullbash"> <span class="hljs-comment">#! /bin/csh</span>
+  <span class="hljs-built_in">echo</span> Begin
+  <span class="hljs-built_in">set</span> resultFile = myResult.txt
+  <span class="hljs-comment"># get head </span>
+  <span class="hljs-comment">#head -8 Testdata.log | awk -F, '{print $1":"$2}'     &gt; $resultFile</span>
+  awk -F, <span class="hljs-string">'NR==1 {print $1":"$2 }'</span> Testdata.log    &gt; <span class="hljs-variable">$resultFile</span>
+  nawk -F, <span class="hljs-string">'NR==2 {print $1":"tolower($2) }'</span> Testdata.log &gt;&gt; <span class="hljs-variable">$resultFile</span>
+  awk -F, <span class="hljs-string">'NR==3,NR==8 {print $1":"$2 }'</span> Testdata.log &gt;&gt; <span class="hljs-variable">$resultFile</span>
 
-  <span class="built_in">echo</span> StartDate:`awk -F, <span class="string">'NR==9{print $2}'</span> Testdata.log | cut -c1-8`  &gt;&gt; <span class="variable">$resultFile</span>
-  <span class="built_in">echo</span> StartTime:`awk -F, <span class="string">'NR==9{print $2}'</span> Testdata.log | cut -c9-14` &gt;&gt; <span class="variable">$resultFile</span>
+  <span class="hljs-built_in">echo</span> StartDate:`awk -F, <span class="hljs-string">'NR==9{print $2}'</span> Testdata.log | cut -c1-8`  &gt;&gt; <span class="hljs-variable">$resultFile</span>
+  <span class="hljs-built_in">echo</span> StartTime:`awk -F, <span class="hljs-string">'NR==9{print $2}'</span> Testdata.log | cut -c9-14` &gt;&gt; <span class="hljs-variable">$resultFile</span>
 
- <span class="comment"># get Passdie,Grossdie,Yeild</span>
- awk -F, <span class="string">'NR&gt;10 { grossdie++;if($5=="P") count++}END
- {printf("Passdie:%d\nGrossdie:%d\nYield:%.2f\n\n",count,grossdie,count/grossdie*100)} '</span> Testdata.log     &gt;&gt;<span class="variable">$resultFile</span>
+ <span class="hljs-comment"># get Passdie,Grossdie,Yeild</span>
+ awk -F, <span class="hljs-string">'NR&gt;10 { grossdie++;if($5=="P") count++}END
+ {printf("Passdie:%d\nGrossdie:%d\nYield:%.2f\n\n",count,grossdie,count/grossdie*100)} '</span> Testdata.log     &gt;&gt;<span class="hljs-variable">$resultFile</span>
 
- <span class="comment"># get x,y,bin,site,status,[ bin Summary ]</span>
- awk -F, <span class="string">'NR&gt;10{print "x="$1,"y="$2,"bin="$3,"site="$4,"status="$5}'</span> Testdata.log &gt;&gt; <span class="variable">$resultFile</span>
- <span class="built_in">echo</span> &gt;&gt; <span class="variable">$resultFile</span>
- <span class="built_in">echo</span> <span class="string">"[bin summary]"</span> &gt;&gt; <span class="variable">$resultFile</span>
- <span class="built_in">echo</span> &gt;&gt; <span class="variable">$resultFile</span>
- awk -F, <span class="string">'NR&gt;10{count[$3]++;}END{for(i in count){print "bin"i":"count[i] | "sort -t: +0.3n"}}'</span> Testdata.log      &gt;&gt; <span class="variable">$resultFile</span>
- <span class="built_in">echo</span> End\!
- <span class="built_in">exit</span>
+ <span class="hljs-comment"># get x,y,bin,site,status,[ bin Summary ]</span>
+ awk -F, <span class="hljs-string">'NR&gt;10{print "x="$1,"y="$2,"bin="$3,"site="$4,"status="$5}'</span> Testdata.log &gt;&gt; <span class="hljs-variable">$resultFile</span>
+ <span class="hljs-built_in">echo</span> &gt;&gt; <span class="hljs-variable">$resultFile</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">"[bin summary]"</span> &gt;&gt; <span class="hljs-variable">$resultFile</span>
+ <span class="hljs-built_in">echo</span> &gt;&gt; <span class="hljs-variable">$resultFile</span>
+ awk -F, <span class="hljs-string">'NR&gt;10{count[$3]++;}END{for(i in count){print "bin"i":"count[i] | "sort -t: +0.3n"}}'</span> Testdata.log      &gt;&gt; <span class="hljs-variable">$resultFile</span>
+ <span class="hljs-built_in">echo</span> End\!
+ <span class="hljs-built_in">exit</span>
 </code></pre>
-<pre><code class="nullbash"> awk -F, <span class="string">'NR&gt;10{count[$3]++; print "x="$1,"y="$2,"bin="$3,"site="$4,"status="$5 }END{ printf("\n[bin     summary]\n"); for(i in count){print "bin"i":"count[i] | "sort -t: +0.3n" };Close "sort -t: +0.3n"}'</span> Testdata.log
+<pre><code class="nullbash"> awk -F, <span class="hljs-string">'NR&gt;10{count[$3]++; print "x="$1,"y="$2,"bin="$3,"site="$4,"status="$5 }END{ printf("\n[bin     summary]\n"); for(i in count){print "bin"i":"count[i] | "sort -t: +0.3n" };Close "sort -t: +0.3n"}'</span> Testdata.log
 </code></pre>
 </li>
 <li><p>根据传入参数去除重复行</p>
@@ -1327,15 +1327,15 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 </code></pre>
 </li>
 <li><p>去除重复的行</p>
-<pre><code class="nullbash">  <span class="comment"># 根据第三列判断重复行</span>
-  &gt; awk -F<span class="string">"|"</span> <span class="string">'{a[$3]=$0}END{for (i in a) print a[i]}'</span>  uniqueTest.txt
+<pre><code class="nullbash">  <span class="hljs-comment"># 根据第三列判断重复行</span>
+  &gt; awk -F<span class="hljs-string">"|"</span> <span class="hljs-string">'{a[$3]=$0}END{for (i in a) print a[i]}'</span>  uniqueTest.txt
 
   222|15|2401444|32722200|4124|1|
   222|15|2401474|32253847|7419|1|
   222|15|2401668|3273877|4114|1|
 
-  <span class="comment"># 根据第三第四列组合判断重复行</span>
-  &gt; awk -F<span class="string">"|"</span> <span class="string">'{a[$3$4]=$0;b[$3$4]=NR}END{for (i in a) print b[i] " " a[i]}'</span>  uniqueTest.txt
+  <span class="hljs-comment"># 根据第三第四列组合判断重复行</span>
+  &gt; awk -F<span class="hljs-string">"|"</span> <span class="hljs-string">'{a[$3$4]=$0;b[$3$4]=NR}END{for (i in a) print b[i] " " a[i]}'</span>  uniqueTest.txt
 
   3 222|15|2401444|32722200|4124|1|
   2 222|15|2401444|3273847|3274|1|
@@ -1344,9 +1344,9 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 </code></pre>
 </li>
 <li><p>传入参数</p>
-<pre><code class="nullbash">  &gt; <span class="built_in">set</span> xField = 3
-  &gt; <span class="built_in">set</span> yField=4
-  &gt; awk -F<span class="string">"|"</span> <span class="string">'{a[$x$y]=$0;b[$x$y]=NR}END{for (i in a) print b[i] " " a[i]}'</span> x=<span class="string">"<span class="variable">$xField</span>"</span> y=<span class="string">"<span class="variable">$yField</span>"</span> uniqueTest.txt
+<pre><code class="nullbash">  &gt; <span class="hljs-built_in">set</span> xField = 3
+  &gt; <span class="hljs-built_in">set</span> yField=4
+  &gt; awk -F<span class="hljs-string">"|"</span> <span class="hljs-string">'{a[$x$y]=$0;b[$x$y]=NR}END{for (i in a) print b[i] " " a[i]}'</span> x=<span class="hljs-string">"<span class="hljs-variable">$xField</span>"</span> y=<span class="hljs-string">"<span class="hljs-variable">$yField</span>"</span> uniqueTest.txt
 </code></pre>
 </li>
 </ul>
@@ -1359,11 +1359,11 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 <li>m:     月（1-12）   </li>
 <li>d:     一星期內的天（0~6，0為星期天）</li>
 <li>cmd：要運行的程序，程序被送入shell執行</li>
-<li>例如：<pre><code class="nullbash"><span class="comment"># MIN   HOUR   DAY   MONTH   DAYOFWEEK  COMMAND</span>
-10         6          *           *           *               date       test.sh <span class="comment"># 每天早上6:10   </span>
-0         */2         *           *           *               date       test.sh <span class="comment"># 每隔两小时</span>
-0     23-7/2，8         *          *           *               date  test.sh <span class="comment"># 晚上11点到早上7点之间，每隔一小时</span>
-0         11          4         *           mon-wed            date    test.sh <span class="comment"># 每月的4号与每星期一至星期三的早上11点</span>
+<li>例如：<pre><code class="nullbash"><span class="hljs-comment"># MIN   HOUR   DAY   MONTH   DAYOFWEEK  COMMAND</span>
+10         6          *           *           *               date       test.sh <span class="hljs-comment"># 每天早上6:10   </span>
+0         */2         *           *           *               date       test.sh <span class="hljs-comment"># 每隔两小时</span>
+0     23-7/2，8         *          *           *               date  test.sh <span class="hljs-comment"># 晚上11点到早上7点之间，每隔一小时</span>
+0         11          4         *           mon-wed            date    test.sh <span class="hljs-comment"># 每月的4号与每星期一至星期三的早上11点</span>
 </code></pre>
 </li>
 </ul>
@@ -1375,7 +1375,7 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 <li><code>crontab    -e[user]</code>            編輯用戶目前的crontab.</li>
 <li><code>crontab    -d[user]</code>            刪除用戶目前的crontab.</li>
 <li><code>crontab    -c dir</code>                指定crontab的目錄</li>
-<li>eg: 列出用戶目前的crontab<pre><code class="nullbash">&gt; crontab <span class="_">-l</span>
+<li>eg: 列出用戶目前的crontab<pre><code class="nullbash">&gt; crontab -l
 10 6 * * * hello.sh
 40 10 01 * * java -jar InitContract.jar &gt;/dev/null
 00 16 * * * /bin/ksh leave.sh &gt; leave_update.log
@@ -1385,40 +1385,40 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 <p>示例：</p>
 <ol>
 <li>编写shell，并赋予执行权限<pre><code class="nullbash">chmod +x file.sh
-<span class="comment"># csh -x file.sh</span>
-<span class="comment"># ksh -x file.sh</span>
+<span class="hljs-comment"># csh -x file.sh</span>
+<span class="hljs-comment"># ksh -x file.sh</span>
 </code></pre>
 </li>
-<li>导出现有crontab<pre><code class="nullbash">crontab <span class="_">-l</span> &gt; <span class="built_in">test</span>_crontab
+<li>导出现有crontab<pre><code class="nullbash">crontab -l &gt; test_crontab
 </code></pre>
 </li>
-<li>编辑导出的crontab文件，添加crontab任务<pre><code class="nullbash">vi <span class="built_in">test</span>_crontab
+<li>编辑导出的crontab文件，添加crontab任务<pre><code class="nullbash">vi test_crontab
 </code></pre>
 </li>
-<li>导入新的crontab文件，使其生效<pre><code class="nullbash">crontab <span class="built_in">test</span>_crontab
+<li>导入新的crontab文件，使其生效<pre><code class="nullbash">crontab test_crontab
 </code></pre>
 </li>
 </ol>
 <h2 id="header-23">Shell</h2>
-<pre><code class="nullbash"><span class="comment"># 查看當前使用的Shell</span>
-&gt; <span class="built_in">echo</span> <span class="variable">$SHELL</span>
+<pre><code class="nullbash"><span class="hljs-comment"># 查看當前使用的Shell</span>
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$SHELL</span>
 /bin/sh
 
-<span class="comment"># 查看当前shell的进程号</span>
-&gt; <span class="built_in">echo</span> $$
+<span class="hljs-comment"># 查看当前shell的进程号</span>
+&gt; <span class="hljs-built_in">echo</span> $$
 12282
 
-<span class="comment"># ps-A看自己shell的pid</span>
+<span class="hljs-comment"># ps-A看自己shell的pid</span>
 &gt; ps -A | grep 12282
 12282 pts/19   0:00 sh
 
-<span class="comment"># 启动一个新的K Shell进程，用exit退出</span>
+<span class="hljs-comment"># 启动一个新的K Shell进程，用exit退出</span>
 &gt; ksh
-&gt; <span class="built_in">exit</span>
+&gt; <span class="hljs-built_in">exit</span>
 
-<span class="comment"># 启动一个新的C Shell进程，用exit退出</span>
+<span class="hljs-comment"># 启动一个新的C Shell进程，用exit退出</span>
 &gt; csh
-&gt; <span class="built_in">exit</span>
+&gt; <span class="hljs-built_in">exit</span>
 </code></pre>
 <ol>
 <li><p>命令回传值 <code>$?</code></p>
@@ -1434,13 +1434,13 @@ cmd | nawk <span class="string">'/pattern/{action}'</span> filename
 </ul>
 </li>
 <li><p>示例：</p>
-<pre><code class="nullbash"><span class="comment"># 自动判断，如果没有该目录就给予创建</span>
+<pre><code class="nullbash"><span class="hljs-comment"># 自动判断，如果没有该目录就给予创建</span>
 ls /tmp/abc || mkdir /tmp/abc
 
-<span class="comment"># 以 ls 测试 /tmp/vbirding 是否存在</span>
-<span class="comment"># 若存在则显示 "exist"</span>
-<span class="comment"># 若不存在，则显示 "not exist"</span>
-ls /tmp/vbirding &amp;&amp; <span class="built_in">echo</span> <span class="string">"exist"</span> || <span class="built_in">echo</span> <span class="string">"not exist"</span>
+<span class="hljs-comment"># 以 ls 测试 /tmp/vbirding 是否存在</span>
+<span class="hljs-comment"># 若存在则显示 "exist"</span>
+<span class="hljs-comment"># 若不存在，则显示 "not exist"</span>
+ls /tmp/vbirding &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">"exist"</span> || <span class="hljs-built_in">echo</span> <span class="hljs-string">"not exist"</span>
 </code></pre>
 </li>
 </ul>
@@ -1542,12 +1542,12 @@ ls /tmp/vbirding &amp;&amp; <span class="built_in">echo</span> <span class="stri
 </li>
 <li>注意： 使用 <code>:</code> 则变量不存在或为空字符串则是一个效果</li>
 <li><p>打印变量</p>
-<pre><code class="nullbash">&gt; <span class="built_in">echo</span> <span class="variable">$var</span>
+<pre><code class="nullbash">&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$var</span>
 1
 
-<span class="comment"># 扩展$var并添加串work</span>
-<span class="comment"># {} 把该变量从给它添加的字符里分离出来</span>
-&gt; <span class="built_in">echo</span> <span class="variable">${var}</span>work
+<span class="hljs-comment"># 扩展$var并添加串work</span>
+<span class="hljs-comment"># {} 把该变量从给它添加的字符里分离出来</span>
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">${var}</span>work
 1work
 </code></pre>
 </li>
@@ -1556,17 +1556,17 @@ ls /tmp/vbirding &amp;&amp; <span class="built_in">echo</span> <span class="stri
 <li><p>日期date</p>
 <pre><code class="nullbash"> &gt; date
  Tue Feb  7 15:35:15 CST 2012
- &gt; <span class="built_in">echo</span> `date +%y%m%d`
+ &gt; <span class="hljs-built_in">echo</span> `date +%y%m%d`
  120207
- &gt; <span class="built_in">echo</span> `date +%Y/%m/%d`
+ &gt; <span class="hljs-built_in">echo</span> `date +%Y/%m/%d`
  2012/02/07
- &gt; <span class="built_in">echo</span> `date <span class="string">'+%H%M%S'</span>`
+ &gt; <span class="hljs-built_in">echo</span> `date <span class="hljs-string">'+%H%M%S'</span>`
  153255
- &gt; <span class="built_in">echo</span> `date +%D`
+ &gt; <span class="hljs-built_in">echo</span> `date +%D`
  02/07/12
- &gt; <span class="built_in">echo</span> `date +%h`
+ &gt; <span class="hljs-built_in">echo</span> `date +%h`
  Feb
- &gt;  <span class="built_in">echo</span> `date <span class="string">'+%Y/%m/%d %H:%M:%S'</span>`
+ &gt;  <span class="hljs-built_in">echo</span> `date <span class="hljs-string">'+%Y/%m/%d %H:%M:%S'</span>`
  2012/02/07 15:32:35
 </code></pre>
 <pre><code> date1=$(date --date=&#39;2 days ago&#39; +%Y%m%d)  # 前两天的日期
@@ -1579,14 +1579,14 @@ ls /tmp/vbirding &amp;&amp; <span class="built_in">echo</span> <span class="stri
  file3=${filename}${date3}
 </code></pre></li>
 <li><p>命令替换：将命令放入反引号</p>
-<pre><code class="nullbash"> &gt; <span class="built_in">set</span> d = `date`    <span class="comment"># 产生的值是一个数组</span>
- &gt; <span class="built_in">echo</span> <span class="variable">$d</span>[1]
+<pre><code class="nullbash"> &gt; <span class="hljs-built_in">set</span> d = `date`    <span class="hljs-comment"># 产生的值是一个数组</span>
+ &gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$d</span>[1]
  Tue
 
- &gt; <span class="built_in">set</span> d=<span class="string">"`date`"</span>    <span class="comment"># 输出封装在双引号里，所以是一个单串</span>
- &gt; <span class="built_in">echo</span> <span class="variable">$d</span>[1]
+ &gt; <span class="hljs-built_in">set</span> d=<span class="hljs-string">"`date`"</span>    <span class="hljs-comment"># 输出封装在双引号里，所以是一个单串</span>
+ &gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$d</span>[1]
  Tue Feb 7 13:33:06 CST 2012
- &gt; <span class="built_in">echo</span> <span class="variable">$d</span>[2]
+ &gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$d</span>[2]
  Subscript out of range
 
  &gt; cal 2 2012
@@ -1597,7 +1597,7 @@ ls /tmp/vbirding &amp;&amp; <span class="built_in">echo</span> <span class="stri
  12 13 14 15 16 17 18
  19 20 21 22 23 24 25
  26 27 28 29
- &gt; <span class="built_in">echo</span> Hello `cal 2 2012`        <span class="comment"># 输出每个换行符都用一个空格代替</span>
+ &gt; <span class="hljs-built_in">echo</span> Hello `cal 2 2012`        <span class="hljs-comment"># 输出每个换行符都用一个空格代替</span>
  Hello February 2012 S M Tu W Th F S 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
 </code></pre>
 </li>
@@ -1607,8 +1607,8 @@ ls /tmp/vbirding &amp;&amp; <span class="built_in">echo</span> <span class="stri
 <li><p><code>#!/bin/csh</code></p>
 </li>
 <li><p>用户接收 <code>$&lt;</code></p>
-<pre><code class="nullbash"><span class="built_in">echo</span> -n <span class="string">"What is your name? "</span>    <span class="comment"># -n 取消末尾的换行</span>
-<span class="built_in">set</span> name = $&lt;
+<pre><code class="nullbash"><span class="hljs-built_in">echo</span> -n <span class="hljs-string">"What is your name? "</span>    <span class="hljs-comment"># -n 取消末尾的换行</span>
+<span class="hljs-built_in">set</span> name = $&lt;
 </code></pre>
 </li>
 <li><p>测试变量是否被设置 <code>$?var</code></p>
@@ -1619,24 +1619,24 @@ ls /tmp/vbirding &amp;&amp; <span class="built_in">echo</span> <span class="stri
 </ul>
 </li>
 <li><p>命令行变元<code>$xxx</code></p>
-<pre><code class="nullbash"><span class="variable">$0</span>,<span class="variable">$1</span>,<span class="variable">$2</span>,...
+<pre><code class="nullbash"><span class="hljs-variable">$0</span>,<span class="hljs-variable">$1</span>,<span class="hljs-variable">$2</span>,...
 $*
-<span class="variable">$argv</span>[0]
-<span class="variable">$argv</span>[1],<span class="variable">$argv</span>[2],...<span class="variable">$argv</span>[<span class="variable">$#argv</span>]
-<span class="variable">$argv</span>[*],<span class="variable">$argv</span>
+<span class="hljs-variable">$argv</span>[0]
+<span class="hljs-variable">$argv</span>[1],<span class="hljs-variable">$argv</span>[2],...<span class="hljs-variable">$argv</span>[<span class="hljs-variable">$#argv</span>]
+<span class="hljs-variable">$argv</span>[*],<span class="hljs-variable">$argv</span>
 </code></pre>
 </li>
 <li><p>数值运算</p>
 <pre><code class="nullbash"> &gt; @ sum = 4 + 6
- &gt; <span class="built_in">echo</span> <span class="variable">$sum</span>
+ &gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$sum</span>
  10
 
  &gt; @ sum ++
- &gt; <span class="built_in">echo</span> <span class="variable">$sum</span>
+ &gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$sum</span>
  11
 
  &gt; @ sum += 3
- &gt; <span class="built_in">echo</span> <span class="variable">$sum</span>
+ &gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$sum</span>
  14
 </code></pre>
 </li>
@@ -1647,43 +1647,43 @@ $*
 <li><code>$var[*]</code> ,<code>$var</code> 打印所有元素</li>
 <li><code>$var[..]</code> 获取某个数组元素（数组从1～len）</li>
 <li><p><code>shift var</code> 数组左移一个元素</p>
-<pre><code class="nullbash">&gt; <span class="built_in">set</span> name = <span class="string">"Hello GoodBye Sir"</span>
-&gt; <span class="built_in">echo</span> <span class="variable">$name</span>[1]
+<pre><code class="nullbash">&gt; <span class="hljs-built_in">set</span> name = <span class="hljs-string">"Hello GoodBye Sir"</span>
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$name</span>[1]
 Hello GoodBye Sir
-&gt; <span class="built_in">echo</span> <span class="variable">$name</span>[2]
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$name</span>[2]
 Subscript out of range
 
-<span class="comment"># 将变量封装在()中，创建一个叫做fruit的数组</span>
-&gt; <span class="built_in">set</span> fruit = (<span class="variable">$name</span>)
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>
+<span class="hljs-comment"># 将变量封装在()中，创建一个叫做fruit的数组</span>
+&gt; <span class="hljs-built_in">set</span> fruit = (<span class="hljs-variable">$name</span>)
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>
 Hello GoodBye Sir
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>[2]
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>[2]
 GoodBye
 </code></pre>
-<pre><code class="nullbash"><span class="comment"># 创建数组</span>
-&gt; <span class="built_in">set</span> fruit = ( app1 app2 app3 )
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>
+<pre><code class="nullbash"><span class="hljs-comment"># 创建数组</span>
+&gt; <span class="hljs-built_in">set</span> fruit = ( app1 app2 app3 )
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>
 app1 app2 app3
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>[*]
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>[*]
 app1 app2 app3
 
-<span class="comment"># 查询</span>
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>[1]
+<span class="hljs-comment"># 查询</span>
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>[1]
 app1
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>[2-3]
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>[2-3]
 app2 app3
-&gt; <span class="built_in">echo</span> <span class="variable">$#fruit</span>
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$#fruit</span>
 3
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>[<span class="variable">$#fruit</span>]
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>[<span class="hljs-variable">$#fruit</span>]
 app3
 
-<span class="comment"># 操作</span>
-&gt; <span class="built_in">set</span> fruit[2] = bana
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>
+<span class="hljs-comment"># 操作</span>
+&gt; <span class="hljs-built_in">set</span> fruit[2] = bana
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>
 app1 bana app3
 
-&gt; <span class="built_in">shift</span> fruit
-&gt; <span class="built_in">echo</span> <span class="variable">$fruit</span>
+&gt; <span class="hljs-built_in">shift</span> fruit
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fruit</span>
 bana app3
 </code></pre>
 </li>
@@ -1691,43 +1691,43 @@ bana app3
 </li>
 <li><p>条件表达式</p>
 <ul>
-<li><code>==</code>,<code>!=</code>,<code>&gt;</code>,<code>&gt;=</code>,<code>&lt;</code>,<code>&lt;=</code>,<code>~</code>,<code>!~</code>,<code>!</code>,<code>||</code>,<code>&amp;&amp;</code><pre><code class="nullbash"><span class="keyword">if</span> ( <span class="variable">$answer</span> =~ [Yy]* ) <span class="keyword">then</span>
-<span class="keyword">if</span> ( <span class="variable">$status</span> == 0 ) <span class="keyword">then</span>
-<span class="keyword">if</span> ( $?prompt ) <span class="keyword">then</span>
-<span class="keyword">if</span> ( <span class="string">"<span class="variable">$name</span>"</span> != <span class="string">"KK"</span> ) <span class="keyword">then</span>                <span class="comment">#使用“”防止name中不止一个词而发生异常</span>
-<span class="keyword">if</span> ( (<span class="string">"<span class="variable">$x</span>"</span> &amp;&amp; <span class="string">"<span class="variable">$y</span>"</span> ) || ! <span class="string">"<span class="variable">$z</span>"</span> ) <span class="keyword">then</span>            <span class="comment"># ! 后面必须有一个空格</span>
+<li><code>==</code>,<code>!=</code>,<code>&gt;</code>,<code>&gt;=</code>,<code>&lt;</code>,<code>&lt;=</code>,<code>~</code>,<code>!~</code>,<code>!</code>,<code>||</code>,<code>&amp;&amp;</code><pre><code class="nullbash"><span class="hljs-keyword">if</span> ( <span class="hljs-variable">$answer</span> =~ [Yy]* ) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">if</span> ( <span class="hljs-variable">$status</span> == 0 ) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">if</span> ( $?prompt ) <span class="hljs-keyword">then</span>
+<span class="hljs-keyword">if</span> ( <span class="hljs-string">"<span class="hljs-variable">$name</span>"</span> != <span class="hljs-string">"KK"</span> ) <span class="hljs-keyword">then</span>                <span class="hljs-comment">#使用“”防止name中不止一个词而发生异常</span>
+<span class="hljs-keyword">if</span> ( (<span class="hljs-string">"<span class="hljs-variable">$x</span>"</span> &amp;&amp; <span class="hljs-string">"<span class="hljs-variable">$y</span>"</span> ) || ! <span class="hljs-string">"<span class="hljs-variable">$z</span>"</span> ) <span class="hljs-keyword">then</span>            <span class="hljs-comment"># ! 后面必须有一个空格</span>
 </code></pre>
 </li>
-<li><code>-r</code>,<code>-w</code>,<code>-x</code>,<code>-o</code><pre><code class="nullbash"><span class="keyword">if</span> ( -r <span class="variable">$file</span> &amp;&amp; -w <span class="variable">$file</span> ) <span class="keyword">then</span>
+<li><code>-r</code>,<code>-w</code>,<code>-x</code>,<code>-o</code><pre><code class="nullbash"><span class="hljs-keyword">if</span> ( -r <span class="hljs-variable">$file</span> &amp;&amp; -w <span class="hljs-variable">$file</span> ) <span class="hljs-keyword">then</span>
 </code></pre>
 </li>
-<li><code>-e</code>,<code>-z</code>,<code>-f</code>,<code>-d</code><pre><code class="nullbash"><span class="keyword">if</span> ( ! <span class="_">-d</span> <span class="variable">$file</span> ) <span class="keyword">then</span>
+<li><code>-e</code>,<code>-z</code>,<code>-f</code>,<code>-d</code><pre><code class="nullbash"><span class="hljs-keyword">if</span> ( ! -d <span class="hljs-variable">$file</span> ) <span class="hljs-keyword">then</span>
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>条件判断</p>
 <ul>
-<li><code>if/else if/else/endif</code><pre><code class="nullbash"><span class="keyword">if</span> ( exp1 ) <span class="keyword">then</span>
-  <span class="built_in">echo</span> <span class="string">"case1"</span>
-<span class="keyword">else</span> <span class="keyword">if</span> ( exp2 ) <span class="keyword">then</span>
-  <span class="built_in">echo</span> <span class="string">"case2"</span>
-<span class="keyword">else</span> <span class="keyword">if</span> ( exp3 ) <span class="keyword">then</span>
-  <span class="built_in">echo</span> <span class="string">"case3"</span>
-<span class="keyword">else</span>
-  <span class="built_in">echo</span> <span class="string">"case4"</span>
+<li><code>if/else if/else/endif</code><pre><code class="nullbash"><span class="hljs-keyword">if</span> ( exp1 ) <span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"case1"</span>
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( exp2 ) <span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"case2"</span>
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( exp3 ) <span class="hljs-keyword">then</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"case3"</span>
+<span class="hljs-keyword">else</span>
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"case4"</span>
 endif
 </code></pre>
 </li>
 <li><code>switch/case/breaksw/endsw</code><pre><code class="nullbash">switch ( str )
-<span class="keyword">case</span> red:
-  <span class="built_in">echo</span> <span class="string">"case1"</span>
+<span class="hljs-keyword">case</span> red:
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"case1"</span>
   breaksw
-<span class="keyword">case</span> bl*:
-  <span class="built_in">echo</span> <span class="string">"case2"</span>
+<span class="hljs-keyword">case</span> bl*:
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"case2"</span>
   breaksw
-<span class="keyword">case</span> [56].c:
-  <span class="built_in">echo</span> <span class="string">"case1"</span>
+<span class="hljs-keyword">case</span> [56].c:
+  <span class="hljs-built_in">echo</span> <span class="hljs-string">"case1"</span>
   breaksw
 default:
   breaksw
@@ -1739,41 +1739,41 @@ endsw
 <li><p>循环</p>
 <ul>
 <li><code>foreach var (list) cmd end</code><pre><code class="nullbash">  foreach person (`cat maillist`)
-      <span class="built_in">echo</span> <span class="variable">$preson</span>
+      <span class="hljs-built_in">echo</span> <span class="hljs-variable">$preson</span>
   end
 </code></pre>
 <pre><code class="nullbash">  foreach file (*.c)
-      <span class="built_in">echo</span> <span class="variable">$file</span>
+      <span class="hljs-built_in">echo</span> <span class="hljs-variable">$file</span>
   end
 </code></pre>
 </li>
-<li><code>while(exp) cmd end</code><pre><code class="nullbash">  <span class="keyword">while</span> ( <span class="variable">$num</span> &lt; 10 )
-      <span class="built_in">echo</span> <span class="variable">$num</span>
+<li><code>while(exp) cmd end</code><pre><code class="nullbash">  <span class="hljs-keyword">while</span> ( <span class="hljs-variable">$num</span> &lt; 10 )
+      <span class="hljs-built_in">echo</span> <span class="hljs-variable">$num</span>
       @ num++
   end
 </code></pre>
-<pre><code class="nullbash">  <span class="keyword">while</span> ( <span class="string">"<span class="variable">$answer</span>"</span> != <span class="string">"Bye"</span> )
-      <span class="built_in">set</span> answer = $&lt;
+<pre><code class="nullbash">  <span class="hljs-keyword">while</span> ( <span class="hljs-string">"<span class="hljs-variable">$answer</span>"</span> != <span class="hljs-string">"Bye"</span> )
+      <span class="hljs-built_in">set</span> answer = $&lt;
   end
 </code></pre>
-<pre><code class="nullbash">  <span class="keyword">while</span> (<span class="variable">$#argv</span>)
-      <span class="built_in">echo</span> <span class="variable">$argv</span>
-      <span class="built_in">shift</span>
+<pre><code class="nullbash">  <span class="hljs-keyword">while</span> (<span class="hljs-variable">$#argv</span>)
+      <span class="hljs-built_in">echo</span> <span class="hljs-variable">$argv</span>
+      <span class="hljs-built_in">shift</span>
   end
 </code></pre>
-<pre><code class="nullbash">  <span class="keyword">while</span> (1)
+<pre><code class="nullbash">  <span class="hljs-keyword">while</span> (1)
       cmd
-      <span class="keyword">if</span> () <span class="keyword">then</span>
-          <span class="built_in">break</span>
-      <span class="keyword">else</span> <span class="keyword">if</span> () <span class="keyword">then</span>
-          <span class="built_in">continue</span>
-      <span class="keyword">else</span>
+      <span class="hljs-keyword">if</span> () <span class="hljs-keyword">then</span>
+          <span class="hljs-built_in">break</span>
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> () <span class="hljs-keyword">then</span>
+          <span class="hljs-built_in">continue</span>
+      <span class="hljs-keyword">else</span>
           cmd
       endif
   end
 </code></pre>
 </li>
-<li><code>repeat n cmd</code><pre><code class="nullbash">  repeat 3 <span class="built_in">echo</span> hello
+<li><code>repeat n cmd</code><pre><code class="nullbash">  repeat 3 <span class="hljs-built_in">echo</span> hello
 </code></pre>
 </li>
 </ul>
@@ -1782,217 +1782,217 @@ endsw
 <p>示例</p>
 <ol>
 <li><p>设置变量</p>
-<pre><code class="nullbash"> <span class="built_in">set</span> FTP_FTSERVER  = (10.7.49.15 10.7.49.17 10.7.49.152 10.7.54.2) 
- <span class="built_in">set</span> ServletURL = http://10.7.33.16/cim/servlet
- <span class="built_in">set</span> Rawdata = <span class="variable">$downup</span>\/<span class="variable">$LOTNO</span>-<span class="variable">$CPNO</span>
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> FTP_FTSERVER  = (10.7.49.15 10.7.49.17 10.7.49.152 10.7.54.2) 
+ <span class="hljs-built_in">set</span> ServletURL = http://10.7.33.16/cim/servlet
+ <span class="hljs-built_in">set</span> Rawdata = <span class="hljs-variable">$downup</span>\/<span class="hljs-variable">$LOTNO</span>-<span class="hljs-variable">$CPNO</span>
 </code></pre>
-<pre><code class="nullbash"> <span class="built_in">set</span> tdtplogfile = /home/klt/<span class="built_in">log</span>/tdtp_1.`date <span class="string">'+%Y%m%d'</span>`    
- <span class="built_in">set</span> LOGS =  /db/data/autoftp/logs/pixart/`/usr/ucb/whoami`
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> tdtplogfile = /home/klt/<span class="hljs-built_in">log</span>/tdtp_1.`date <span class="hljs-string">'+%Y%m%d'</span>`    
+ <span class="hljs-built_in">set</span> LOGS =  /db/data/autoftp/logs/pixart/`/usr/ucb/whoami`
 </code></pre>
-<pre><code class="nullbash"> <span class="built_in">set</span> tmpfile = /home/klt/wgetlog/$$
- <span class="built_in">set</span> TEMPLASER = /home/cim1tdtp/temp/<span class="string">"<span class="variable">$LLOTNO</span><span class="variable">$WAFNUM</span>"</span>-$$.asc
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> tmpfile = /home/klt/wgetlog/$$
+ <span class="hljs-built_in">set</span> TEMPLASER = /home/cim1tdtp/temp/<span class="hljs-string">"<span class="hljs-variable">$LLOTNO</span><span class="hljs-variable">$WAFNUM</span>"</span>-$$.asc
 </code></pre>
-<pre><code class="nullbash"> <span class="built_in">set</span> lenOfPfile = `<span class="built_in">echo</span> <span class="variable">$proberfile</span> | cut <span class="_">-d</span> <span class="string">'/'</span> <span class="_">-f</span>8 | awk <span class="string">'{print length($1)}'</span>`
- <span class="built_in">set</span> lenOfWno   = `<span class="built_in">echo</span> <span class="variable">$proberfile</span> | cut <span class="_">-d</span> <span class="string">'/'</span> <span class="_">-f</span>8 | cut <span class="_">-d</span> <span class="string">'.'</span> <span class="_">-f</span>1 | awk <span class="string">'{print length($1)}'</span>`
- @ lenOfWno = <span class="variable">$lenOfWno</span> + 2
- <span class="built_in">set</span> partlotno = `<span class="built_in">echo</span> <span class="variable">$proberfile</span> | cut <span class="_">-d</span> <span class="string">'/'</span> <span class="_">-f</span>8 | cut -c <span class="variable">$lenOfWno</span>-<span class="variable">$lenOfPfile</span>`
- <span class="built_in">echo</span> partlotno is <span class="variable">$partlotno</span>
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> lenOfPfile = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$proberfile</span> | cut -d <span class="hljs-string">'/'</span> -f8 | awk <span class="hljs-string">'{print length($1)}'</span>`
+ <span class="hljs-built_in">set</span> lenOfWno   = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$proberfile</span> | cut -d <span class="hljs-string">'/'</span> -f8 | cut -d <span class="hljs-string">'.'</span> -f1 | awk <span class="hljs-string">'{print length($1)}'</span>`
+ @ lenOfWno = <span class="hljs-variable">$lenOfWno</span> + 2
+ <span class="hljs-built_in">set</span> partlotno = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$proberfile</span> | cut -d <span class="hljs-string">'/'</span> -f8 | cut -c <span class="hljs-variable">$lenOfWno</span>-<span class="hljs-variable">$lenOfPfile</span>`
+ <span class="hljs-built_in">echo</span> partlotno is <span class="hljs-variable">$partlotno</span>
 
- <span class="built_in">set</span> fproberfile = `ls /db/prober/map/<span class="variable">$testgrp</span>/<span class="variable">$Rawdata</span>/<span class="variable">$partlotno</span>=* | tail -1`      
- <span class="built_in">set</span> fpfilelength = ` <span class="built_in">echo</span> <span class="variable">$fproberfile</span> | awk <span class="string">'{print length($1)}'</span>`
+ <span class="hljs-built_in">set</span> fproberfile = `ls /db/prober/map/<span class="hljs-variable">$testgrp</span>/<span class="hljs-variable">$Rawdata</span>/<span class="hljs-variable">$partlotno</span>=* | tail -1`      
+ <span class="hljs-built_in">set</span> fpfilelength = ` <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fproberfile</span> | awk <span class="hljs-string">'{print length($1)}'</span>`
 </code></pre>
-<pre><code class="nullbash"> <span class="built_in">set</span> cpNo = `<span class="built_in">echo</span> <span class="variable">$configArr</span>[1] | cut -c 3- `
- <span class="built_in">set</span> USER_COUNTS = `who | grep klt | wc <span class="_">-l</span>`
- <span class="built_in">set</span> os = `uname`
- <span class="built_in">set</span> RETURNVALUE=`<span class="built_in">echo</span> <span class="variable">$TMPLINE</span> |awk -F\| <span class="string">'{print $1}'</span>`
- <span class="built_in">set</span> RemoteHost = `who am i |awk  <span class="string">'{print $NF}'</span> | awk -F\( <span class="string">'{print $2}'</span>  | awk -F\) <span class="string">'{print $1}'</span> | awk -F. <span class="string">'{print $1}'</span> `
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> cpNo = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$configArr</span>[1] | cut -c 3- `
+ <span class="hljs-built_in">set</span> USER_COUNTS = `who | grep klt | wc -l`
+ <span class="hljs-built_in">set</span> os = `uname`
+ <span class="hljs-built_in">set</span> RETURNVALUE=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$TMPLINE</span> |awk -F\| <span class="hljs-string">'{print $1}'</span>`
+ <span class="hljs-built_in">set</span> RemoteHost = `who am i |awk  <span class="hljs-string">'{print $NF}'</span> | awk -F\( <span class="hljs-string">'{print $2}'</span>  | awk -F\) <span class="hljs-string">'{print $1}'</span> | awk -F. <span class="hljs-string">'{print $1}'</span> `
 </code></pre>
 </li>
 <li><p>接收用户输入</p>
 <ul>
-<li>存入一个变量<pre><code class="nullbash"><span class="built_in">echo</span> CPNO:
-<span class="built_in">set</span> CPNO = $&lt;
+<li>存入一个变量<pre><code class="nullbash"><span class="hljs-built_in">echo</span> CPNO:
+<span class="hljs-built_in">set</span> CPNO = $&lt;
 </code></pre>
 </li>
 <li><p>存入数组，小写转换为大写，获取字符串长度，设置变量</p>
-<pre><code class="nullbash"><span class="built_in">echo</span>   CPNO Flotno WaferNum PROBERIP TESTGROUP UP 
-<span class="built_in">set</span> tempfile    = $&lt;
-<span class="built_in">set</span> file    = (<span class="variable">$tempfile</span>)
+<pre><code class="nullbash"><span class="hljs-built_in">echo</span>   CPNO Flotno WaferNum PROBERIP TESTGROUP UP 
+<span class="hljs-built_in">set</span> tempfile    = $&lt;
+<span class="hljs-built_in">set</span> file    = (<span class="hljs-variable">$tempfile</span>)
 
-<span class="keyword">if</span> ( <span class="variable">$#file</span> == 6 ) <span class="keyword">then</span>  
-  <span class="built_in">set</span> CPNO         = `<span class="built_in">echo</span> <span class="variable">$file</span>[1] | tr <span class="string">"[:lower:]"</span> <span class="string">"[:upper:]"</span> `  
-  <span class="built_in">set</span> equip        = <span class="variable">$file</span>[4]
-  <span class="built_in">set</span> numchar      = ` <span class="built_in">echo</span> <span class="variable">$WAFERNUM</span> | awk <span class="string">'{print length($1)}'</span>`    
+<span class="hljs-keyword">if</span> ( <span class="hljs-variable">$#file</span> == 6 ) <span class="hljs-keyword">then</span>  
+  <span class="hljs-built_in">set</span> CPNO         = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$file</span>[1] | tr <span class="hljs-string">"[:lower:]"</span> <span class="hljs-string">"[:upper:]"</span> `  
+  <span class="hljs-built_in">set</span> equip        = <span class="hljs-variable">$file</span>[4]
+  <span class="hljs-built_in">set</span> numchar      = ` <span class="hljs-built_in">echo</span> <span class="hljs-variable">$WAFERNUM</span> | awk <span class="hljs-string">'{print length($1)}'</span>`    
 endif
 
-<span class="keyword">if</span> ( <span class="variable">$numchar</span> == 1 ) <span class="keyword">then</span>
-      <span class="built_in">set</span> WAFERNUM = 0<span class="string">"<span class="variable">$WAFERNUM</span>"</span>
+<span class="hljs-keyword">if</span> ( <span class="hljs-variable">$numchar</span> == 1 ) <span class="hljs-keyword">then</span>
+      <span class="hljs-built_in">set</span> WAFERNUM = 0<span class="hljs-string">"<span class="hljs-variable">$WAFERNUM</span>"</span>
 endif
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>if 判断</p>
-<pre><code class="nullbash"> <span class="keyword">if</span> (<span class="_">-e</span> <span class="variable">$tmpfile</span>) <span class="keyword">then</span>
-     <span class="built_in">echo</span> `date <span class="string">'+%H:%M:%S'</span>` &gt;&gt; <span class="variable">$tdtplogfile</span>    
+<pre><code class="nullbash"> <span class="hljs-keyword">if</span> (-e <span class="hljs-variable">$tmpfile</span>) <span class="hljs-keyword">then</span>
+     <span class="hljs-built_in">echo</span> `date <span class="hljs-string">'+%H:%M:%S'</span>` &gt;&gt; <span class="hljs-variable">$tdtplogfile</span>    
  endif
 
- <span class="keyword">if</span> ( ! <span class="_">-d</span> <span class="variable">$LOGS</span> ) <span class="keyword">then</span> 
-     mkdir -p <span class="variable">$LOGS</span>
+ <span class="hljs-keyword">if</span> ( ! -d <span class="hljs-variable">$LOGS</span> ) <span class="hljs-keyword">then</span> 
+     mkdir -p <span class="hljs-variable">$LOGS</span>
  endif
 
- <span class="keyword">if</span> ( ! <span class="_">-d</span> <span class="variable">$FTP_SRC_DIR</span> ) <span class="keyword">then</span>
-     mkdir <span class="variable">$FTP_SRC_DIR</span>
-     chmod 777 <span class="variable">$FTP_SRC_DIR</span>
+ <span class="hljs-keyword">if</span> ( ! -d <span class="hljs-variable">$FTP_SRC_DIR</span> ) <span class="hljs-keyword">then</span>
+     mkdir <span class="hljs-variable">$FTP_SRC_DIR</span>
+     chmod 777 <span class="hljs-variable">$FTP_SRC_DIR</span>
  endif
 </code></pre>
-<pre><code class="nullbash"> <span class="keyword">if</span> ( <span class="variable">$USER_COUNTS</span> &gt; 3 ) <span class="keyword">then</span> 
-     <span class="built_in">echo</span> <span class="string">"Too Many User Execute TDTP manual(Default:3 users), Please wait..."</span>
-     <span class="built_in">echo</span> <span class="string">"You can contact with user, and list as follows:"</span>
+<pre><code class="nullbash"> <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$USER_COUNTS</span> &gt; 3 ) <span class="hljs-keyword">then</span> 
+     <span class="hljs-built_in">echo</span> <span class="hljs-string">"Too Many User Execute TDTP manual(Default:3 users), Please wait..."</span>
+     <span class="hljs-built_in">echo</span> <span class="hljs-string">"You can contact with user, and list as follows:"</span>
      who | grep klt
-     ps -ef | grep <span class="string">" klt "</span>
-     <span class="built_in">exit</span>
+     ps -ef | grep <span class="hljs-string">" klt "</span>
+     <span class="hljs-built_in">exit</span>
  endif
 
- <span class="keyword">if</span> (<span class="variable">$os</span> =~ [Ll][Ii][Nn][Uu][Xx]) <span class="keyword">then</span>
-     <span class="built_in">set</span> wget = <span class="variable">$srcpath</span><span class="string">"download-Linux"</span>    
- <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable">$os</span> =~ [Ss][Uu][Nn][Oo][Ss]) <span class="keyword">then</span>
-     <span class="keyword">if</span> ( `hostname` =~ [Jj]995*) <span class="keyword">then</span>
-         <span class="built_in">set</span> wget = <span class="variable">$srcpath</span><span class="string">"download-SunOS41"</span>
-     <span class="keyword">else</span>
-         <span class="built_in">set</span> wget = <span class="variable">$srcpath</span><span class="string">"download-SunOS"</span> 
+ <span class="hljs-keyword">if</span> (<span class="hljs-variable">$os</span> =~ [Ll][Ii][Nn][Uu][Xx]) <span class="hljs-keyword">then</span>
+     <span class="hljs-built_in">set</span> wget = <span class="hljs-variable">$srcpath</span><span class="hljs-string">"download-Linux"</span>    
+ <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable">$os</span> =~ [Ss][Uu][Nn][Oo][Ss]) <span class="hljs-keyword">then</span>
+     <span class="hljs-keyword">if</span> ( `hostname` =~ [Jj]995*) <span class="hljs-keyword">then</span>
+         <span class="hljs-built_in">set</span> wget = <span class="hljs-variable">$srcpath</span><span class="hljs-string">"download-SunOS41"</span>
+     <span class="hljs-keyword">else</span>
+         <span class="hljs-built_in">set</span> wget = <span class="hljs-variable">$srcpath</span><span class="hljs-string">"download-SunOS"</span> 
      endif
  endif
 
- <span class="keyword">if</span> (<span class="variable">$os</span> !~ [Ll][Ii][Nn][Uu][Xx]) <span class="keyword">then</span>
-     unsetenv <span class="variable">$PGM_WGETPATH</span>
+ <span class="hljs-keyword">if</span> (<span class="hljs-variable">$os</span> !~ [Ll][Ii][Nn][Uu][Xx]) <span class="hljs-keyword">then</span>
+     unsetenv <span class="hljs-variable">$PGM_WGETPATH</span>
  endif
 </code></pre>
-<pre><code class="nullbash"> <span class="comment"># $status : </span>
- <span class="comment"># grep 找到所寻找的模式 0; 找不到该模式 1; 找不到文件 2 ;</span>
- <span class="comment"># awk / sed 不论搜索的模式是否成功 0 ; 语法错误 非0</span>
+<pre><code class="nullbash"> <span class="hljs-comment"># $status : </span>
+ <span class="hljs-comment"># grep 找到所寻找的模式 0; 找不到该模式 1; 找不到文件 2 ;</span>
+ <span class="hljs-comment"># awk / sed 不论搜索的模式是否成功 0 ; 语法错误 非0</span>
 
-  grep <span class="string">"tw.com.kyec.cim.cp.task.TaskTDTPProber: true"</span> <span class="variable">$tmpfile</span>  &gt; &amp;  /dev/null
-   <span class="keyword">if</span> (<span class="variable">$status</span> == 0 ) <span class="keyword">then</span>
-       <span class="built_in">echo</span> TDTP have <span class="keyword">done</span> <span class="variable">$proberfile</span>
-   <span class="keyword">else</span> 
-      <span class="built_in">echo</span> failed to <span class="keyword">do</span> TDTP <span class="variable">$proberfile</span>
+  grep <span class="hljs-string">"tw.com.kyec.cim.cp.task.TaskTDTPProber: true"</span> <span class="hljs-variable">$tmpfile</span>  &gt; &amp;  /dev/null
+   <span class="hljs-keyword">if</span> (<span class="hljs-variable">$status</span> == 0 ) <span class="hljs-keyword">then</span>
+       <span class="hljs-built_in">echo</span> TDTP have <span class="hljs-keyword">done</span> <span class="hljs-variable">$proberfile</span>
+   <span class="hljs-keyword">else</span> 
+      <span class="hljs-built_in">echo</span> failed to <span class="hljs-keyword">do</span> TDTP <span class="hljs-variable">$proberfile</span>
    endif
 
-  <span class="built_in">set</span> fproberfile = `ls /db/prober/map/<span class="variable">$testertype</span>/up/<span class="variable">$templotno</span>/<span class="variable">$partlotno</span>=* | tail -1`
-  <span class="built_in">set</span> fpfilelength = ` <span class="built_in">echo</span> <span class="variable">$fproberfile</span> | awk <span class="string">'{print length($1)}'</span>`
+  <span class="hljs-built_in">set</span> fproberfile = `ls /db/prober/map/<span class="hljs-variable">$testertype</span>/up/<span class="hljs-variable">$templotno</span>/<span class="hljs-variable">$partlotno</span>=* | tail -1`
+  <span class="hljs-built_in">set</span> fpfilelength = ` <span class="hljs-built_in">echo</span> <span class="hljs-variable">$fproberfile</span> | awk <span class="hljs-string">'{print length($1)}'</span>`
 </code></pre>
 </li>
 <li><p>foreach 循环</p>
-<pre><code class="nullbash"> foreach FTP_SERVER ( `<span class="built_in">echo</span> <span class="variable">$FTP_FTSERVER</span>`)
-     /usr/sbin/ping <span class="variable">$FTP_SERVER</span> | grep alive                 &gt;&amp; /dev/null
-     <span class="keyword">if</span> ( <span class="variable">$status</span> != 0 ) <span class="keyword">then</span>
-         <span class="built_in">echo</span> Server can\<span class="string">'t connect to $FTP_SERVER           &gt;&gt; $FTP_LOG
+<pre><code class="nullbash"> foreach FTP_SERVER ( `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$FTP_FTSERVER</span>`)
+     /usr/sbin/ping <span class="hljs-variable">$FTP_SERVER</span> | grep alive                 &gt;&amp; /dev/null
+     <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$status</span> != 0 ) <span class="hljs-keyword">then</span>
+         <span class="hljs-built_in">echo</span> Server can\<span class="hljs-string">'t connect to $FTP_SERVER           &gt;&gt; $FTP_LOG
          continue
      endif
  end</span>
 </code></pre>
-<pre><code class="nullbash"> <span class="built_in">set</span> count = 1
- foreach filename (`cat <span class="variable">$FileList</span>`)
-     <span class="built_in">set</span> klotno = `<span class="built_in">echo</span> <span class="variable">$filename</span> | cut <span class="_">-d</span><span class="string">'-'</span> <span class="_">-f</span>1`
-     <span class="built_in">set</span> barcode = `<span class="built_in">echo</span> <span class="variable">$filename</span> | cut <span class="_">-d</span><span class="string">'_'</span> <span class="_">-f</span>1`
-     <span class="built_in">set</span> filetime = `<span class="built_in">echo</span> <span class="variable">$filename</span> | cut <span class="_">-d</span><span class="string">'_'</span> <span class="_">-f</span>2 | cut -c 1-12`
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> count = 1
+ foreach filename (`cat <span class="hljs-variable">$FileList</span>`)
+     <span class="hljs-built_in">set</span> klotno = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$filename</span> | cut -d<span class="hljs-string">'-'</span> -f1`
+     <span class="hljs-built_in">set</span> barcode = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$filename</span> | cut -d<span class="hljs-string">'_'</span> -f1`
+     <span class="hljs-built_in">set</span> filetime = `<span class="hljs-built_in">echo</span> <span class="hljs-variable">$filename</span> | cut -d<span class="hljs-string">'_'</span> -f2 | cut -c 1-12`
 
-     <span class="keyword">if</span> ( <span class="variable">$klotno</span> == <span class="variable">$lotno</span> ) <span class="keyword">then</span>
-         <span class="built_in">set</span> cmdStr = <span class="string">"<span class="variable">$ServletURL</span>/chkWfrStatus?CUST=ZKT&amp;2DBARCODE=<span class="variable">${barcode}</span>&amp;STNO=1&amp;FILETIME=<span class="variable">${filetime}</span>&amp;TESTER=E320_BDB01&amp;HEAD=1"</span>
-         <span class="variable">$WGET</span> -q -O <span class="variable">$tmpfile</span> <span class="string">"<span class="variable">$cmdStr</span>"</span>
+     <span class="hljs-keyword">if</span> ( <span class="hljs-variable">$klotno</span> == <span class="hljs-variable">$lotno</span> ) <span class="hljs-keyword">then</span>
+         <span class="hljs-built_in">set</span> cmdStr = <span class="hljs-string">"<span class="hljs-variable">$ServletURL</span>/chkWfrStatus?CUST=ZKT&amp;2DBARCODE=<span class="hljs-variable">${barcode}</span>&amp;STNO=1&amp;FILETIME=<span class="hljs-variable">${filetime}</span>&amp;TESTER=E320_BDB01&amp;HEAD=1"</span>
+         <span class="hljs-variable">$WGET</span> -q -O <span class="hljs-variable">$tmpfile</span> <span class="hljs-string">"<span class="hljs-variable">$cmdStr</span>"</span>
          @ count++
-     <span class="keyword">else</span>
-         <span class="built_in">echo</span> <span class="string">"<span class="variable">$klotno</span> != <span class="variable">$lotno</span>"</span> &gt;&gt; <span class="variable">$logfile</span>
+     <span class="hljs-keyword">else</span>
+         <span class="hljs-built_in">echo</span> <span class="hljs-string">"<span class="hljs-variable">$klotno</span> != <span class="hljs-variable">$lotno</span>"</span> &gt;&gt; <span class="hljs-variable">$logfile</span>
      endif     
  end
 </code></pre>
 </li>
 <li><p>while 循环</p>
-<pre><code class="nullbash"> <span class="built_in">set</span> waferno = 1
- <span class="keyword">while</span> ( <span class="variable">$waferno</span> &lt; 26 ) 
-     @ waferno = <span class="variable">$waferno</span> + 1
-     <span class="keyword">if</span> (<span class="variable">$waferno</span> &lt; 10 ) <span class="keyword">then</span>
-         <span class="built_in">continue</span>
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> waferno = 1
+ <span class="hljs-keyword">while</span> ( <span class="hljs-variable">$waferno</span> &lt; 26 ) 
+     @ waferno = <span class="hljs-variable">$waferno</span> + 1
+     <span class="hljs-keyword">if</span> (<span class="hljs-variable">$waferno</span> &lt; 10 ) <span class="hljs-keyword">then</span>
+         <span class="hljs-built_in">continue</span>
      endif
  end
 </code></pre>
-<pre><code class="nullbash"> <span class="keyword">while</span> ( <span class="variable">$#argv</span> &gt; 0 )
-     <span class="built_in">set</span> args = <span class="string">"<span class="variable">$args</span> <span class="variable">$argv</span>[1]"</span>
-     <span class="built_in">shift</span> argv
+<pre><code class="nullbash"> <span class="hljs-keyword">while</span> ( <span class="hljs-variable">$#argv</span> &gt; 0 )
+     <span class="hljs-built_in">set</span> args = <span class="hljs-string">"<span class="hljs-variable">$args</span> <span class="hljs-variable">$argv</span>[1]"</span>
+     <span class="hljs-built_in">shift</span> argv
  end
 </code></pre>
 </li>
 <li><p>压缩/解压缩</p>
-<pre><code class="nullbash"> unzip -o <span class="variable">$FTP_AIM_DIR</span>/<span class="variable">$LOTNO</span>/<span class="variable">$TEMP_FILE</span> <span class="_">-d</span> <span class="variable">$FTP_AIM_DIR</span>/<span class="variable">$LOTNO</span>/
- unzip <span class="variable">$TEMP_ZIP1</span>.zip <span class="_">-d</span> <span class="variable">$TEMP_ZIP1</span>.ZIP 
- uncompress &lt; <span class="variable">$FTP_AIM_DIR</span>/<span class="variable">$LOTNO</span>/<span class="variable">$TEMP_FILE</span> | tar xf -
+<pre><code class="nullbash"> unzip -o <span class="hljs-variable">$FTP_AIM_DIR</span>/<span class="hljs-variable">$LOTNO</span>/<span class="hljs-variable">$TEMP_FILE</span> -d <span class="hljs-variable">$FTP_AIM_DIR</span>/<span class="hljs-variable">$LOTNO</span>/
+ unzip <span class="hljs-variable">$TEMP_ZIP1</span>.zip -d <span class="hljs-variable">$TEMP_ZIP1</span>.ZIP 
+ uncompress &lt; <span class="hljs-variable">$FTP_AIM_DIR</span>/<span class="hljs-variable">$LOTNO</span>/<span class="hljs-variable">$TEMP_FILE</span> | tar xf -
 
- tar -cvf <span class="variable">$DirName</span><span class="string">".tar"</span> <span class="variable">$DirName</span>
- compress <span class="variable">$DirName</span><span class="string">".tar"</span>
+ tar -cvf <span class="hljs-variable">$DirName</span><span class="hljs-string">".tar"</span> <span class="hljs-variable">$DirName</span>
+ compress <span class="hljs-variable">$DirName</span><span class="hljs-string">".tar"</span>
 </code></pre>
 </li>
 <li><p>环境变量设置</p>
-<pre><code class="nullbash"> <span class="built_in">set</span> srcpath = <span class="string">"/cim/pgm/prod/"</span>
- setenv PGM_WGETPATH <span class="variable">$srcpath</span>
+<pre><code class="nullbash"> <span class="hljs-built_in">set</span> srcpath = <span class="hljs-string">"/cim/pgm/prod/"</span>
+ setenv PGM_WGETPATH <span class="hljs-variable">$srcpath</span>
 
  setenv CIM_AUTO_INVOKED_PRCESS /home/asx/bin/auto_prober_klt.sh
- setenv CDC_PROBERD_LICENSE <span class="string">"O54k43jL7aI2LGaBo6bf6IxaLPQtc2"</span>
+ setenv CDC_PROBERD_LICENSE <span class="hljs-string">"O54k43jL7aI2LGaBo6bf6IxaLPQtc2"</span>
 </code></pre>
 </li>
 <li><p>FTP</p>
-<pre><code class="nullbash"> <span class="comment"># ftp -inv $FTP_SERVER</span>
- <span class="built_in">echo</span> user <span class="variable">$FTP_USER</span> <span class="variable">$FTP_PASSWORD</span>    &gt;&gt; <span class="variable">$FTP_CMD_FILE</span>
- <span class="built_in">echo</span> <span class="built_in">cd</span> /down                        &gt;&gt; <span class="variable">$FTP_CMD_FILE</span>
- <span class="built_in">echo</span> bin                             &gt;&gt; <span class="variable">$FTP_CMD_FILE</span>            
- <span class="built_in">echo</span> put <span class="variable">$file</span>                       &gt;&gt; <span class="variable">$FTP_CMD_FILE</span>
- <span class="built_in">echo</span> <span class="built_in">bye</span>                             &gt;&gt; <span class="variable">$FTP_CMD_FILE</span>
+<pre><code class="nullbash"> <span class="hljs-comment"># ftp -inv $FTP_SERVER</span>
+ <span class="hljs-built_in">echo</span> user <span class="hljs-variable">$FTP_USER</span> <span class="hljs-variable">$FTP_PASSWORD</span>    &gt;&gt; <span class="hljs-variable">$FTP_CMD_FILE</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-built_in">cd</span> /down                        &gt;&gt; <span class="hljs-variable">$FTP_CMD_FILE</span>
+ <span class="hljs-built_in">echo</span> bin                             &gt;&gt; <span class="hljs-variable">$FTP_CMD_FILE</span>            
+ <span class="hljs-built_in">echo</span> put <span class="hljs-variable">$file</span>                       &gt;&gt; <span class="hljs-variable">$FTP_CMD_FILE</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-built_in">bye</span>                             &gt;&gt; <span class="hljs-variable">$FTP_CMD_FILE</span>
 
- ftp -inv <span class="variable">$FTP_SERVER</span> &lt; <span class="variable">$FTP_CMD_FILE</span>
- <span class="built_in">echo</span> <span class="string">"OK\!"</span>
+ ftp -inv <span class="hljs-variable">$FTP_SERVER</span> &lt; <span class="hljs-variable">$FTP_CMD_FILE</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">"OK\!"</span>
 </code></pre>
-<pre><code class="nullbash"> <span class="built_in">echo</span> user <span class="variable">$FTP_USER</span> <span class="variable">$FTP_PASSWD</span>           &gt;   <span class="variable">$FTP_CMD_FILE</span>
- <span class="built_in">echo</span> <span class="built_in">cd</span> <span class="variable">$FTP_DIR_A</span>                        &gt;&gt;  <span class="variable">$FTP_CMD_FILE</span>
- <span class="built_in">echo</span> bin                                  &gt;&gt;  <span class="variable">$FTP_CMD_FILE</span>
+<pre><code class="nullbash"> <span class="hljs-built_in">echo</span> user <span class="hljs-variable">$FTP_USER</span> <span class="hljs-variable">$FTP_PASSWD</span>           &gt;   <span class="hljs-variable">$FTP_CMD_FILE</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-built_in">cd</span> <span class="hljs-variable">$FTP_DIR_A</span>                        &gt;&gt;  <span class="hljs-variable">$FTP_CMD_FILE</span>
+ <span class="hljs-built_in">echo</span> bin                                  &gt;&gt;  <span class="hljs-variable">$FTP_CMD_FILE</span>
 
- <span class="built_in">echo</span> <span class="string">"mget C*.TXT"</span>                         &gt;&gt;  <span class="variable">$FTP_CMD_FILE</span>
- <span class="built_in">echo</span> <span class="string">"mdir C*.TXT <span class="variable">$DB_LOG</span>"</span>                 &gt;&gt;  <span class="variable">$FTP_CMD_FILE</span> 
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">"mget C*.TXT"</span>                         &gt;&gt;  <span class="hljs-variable">$FTP_CMD_FILE</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">"mdir C*.TXT <span class="hljs-variable">$DB_LOG</span>"</span>                 &gt;&gt;  <span class="hljs-variable">$FTP_CMD_FILE</span> 
  foreach TEMP_FILE ( C*.TXT )
-     <span class="built_in">echo</span> <span class="string">"del <span class="variable">$TEMP_FILE</span>"</span>                  &gt;&gt;   <span class="variable">$FTP_CMD_FILE</span> 
+     <span class="hljs-built_in">echo</span> <span class="hljs-string">"del <span class="hljs-variable">$TEMP_FILE</span>"</span>                  &gt;&gt;   <span class="hljs-variable">$FTP_CMD_FILE</span> 
  end
- ls *.zip | awk <span class="string">'{printf "del %s\n",$1}'</span>     &gt;&gt;   <span class="variable">$FTP_CMD_FILE</span>    
- <span class="built_in">echo</span> <span class="built_in">bye</span>                                    &gt;&gt;  <span class="variable">$FTP_CMD_FILE</span>
+ ls *.zip | awk <span class="hljs-string">'{printf "del %s\n",$1}'</span>     &gt;&gt;   <span class="hljs-variable">$FTP_CMD_FILE</span>    
+ <span class="hljs-built_in">echo</span> <span class="hljs-built_in">bye</span>                                    &gt;&gt;  <span class="hljs-variable">$FTP_CMD_FILE</span>
 
- <span class="built_in">echo</span> <span class="string">"## start get emap data from csmc ftp Server at `date` ##"</span>  &gt;&gt;  <span class="variable">$FTP_LOG</span>
- (ftp -inv <span class="variable">$FTP_SERVER</span> &lt; <span class="variable">$FTP_CMD_FILE</span>)       &gt;&gt;  <span class="variable">$FTP_LOG</span>
- <span class="built_in">echo</span> <span class="string">"## end get emap data from csmc ftp Server at`date` ##"</span>     &gt;&gt;  <span class="variable">$FTP_LOG</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">"## start get emap data from csmc ftp Server at `date` ##"</span>  &gt;&gt;  <span class="hljs-variable">$FTP_LOG</span>
+ (ftp -inv <span class="hljs-variable">$FTP_SERVER</span> &lt; <span class="hljs-variable">$FTP_CMD_FILE</span>)       &gt;&gt;  <span class="hljs-variable">$FTP_LOG</span>
+ <span class="hljs-built_in">echo</span> <span class="hljs-string">"## end get emap data from csmc ftp Server at`date` ##"</span>     &gt;&gt;  <span class="hljs-variable">$FTP_LOG</span>
 </code></pre>
 </li>
 <li><p>特殊命令</p>
-<pre><code class="nullbash"> java -classpath .:/home/asx/proberlog/classes12.jar probLogScan <span class="variable">$proberfile</span> /home/asx/proberlog/  
- unix2dos   <span class="variable">$LLOTNO</span><span class="variable">$WAFNUM</span>.asc     <span class="variable">$LLOTNO</span><span class="variable">$WAFNUM</span>.asc
- <span class="built_in">exec</span> /home/asx/bin/cdc_proberd &gt; /home/asx/bin/cdc_screen.log.`date <span class="string">'+%Y%m%d'</span>` 
- last | grep logged | grep tsk | grep <span class="variable">$RemoteHost</span> &gt;&amp; /dev/null 
- /home/asx/bin/auto_prober_real_klt.sh <span class="variable">$1</span>  <span class="variable">$2</span> &amp;
+<pre><code class="nullbash"> java -classpath .:/home/asx/proberlog/classes12.jar probLogScan <span class="hljs-variable">$proberfile</span> /home/asx/proberlog/  
+ unix2dos   <span class="hljs-variable">$LLOTNO</span><span class="hljs-variable">$WAFNUM</span>.asc     <span class="hljs-variable">$LLOTNO</span><span class="hljs-variable">$WAFNUM</span>.asc
+ <span class="hljs-built_in">exec</span> /home/asx/bin/cdc_proberd &gt; /home/asx/bin/cdc_screen.log.`date <span class="hljs-string">'+%Y%m%d'</span>` 
+ last | grep logged | grep tsk | grep <span class="hljs-variable">$RemoteHost</span> &gt;&amp; /dev/null 
+ /home/asx/bin/auto_prober_real_klt.sh <span class="hljs-variable">$1</span>  <span class="hljs-variable">$2</span> &amp;
 
- sed -n 17,<span class="string">"<span class="variable">$FILE_LENGTH</span>"</span>p <span class="variable">$FILE</span> &gt; <span class="variable">$tmpfile</span>
- <span class="built_in">set</span> CAT_X = `perl <span class="_">-e</span> <span class="string">'while(&lt;&gt;){$count+= s/X//g;} print "$count";'</span> <span class="variable">$tmpfile</span>` 
+ sed -n 17,<span class="hljs-string">"<span class="hljs-variable">$FILE_LENGTH</span>"</span>p <span class="hljs-variable">$FILE</span> &gt; <span class="hljs-variable">$tmpfile</span>
+ <span class="hljs-built_in">set</span> CAT_X = `perl -e <span class="hljs-string">'while(&lt;&gt;){$count+= s/X//g;} print "$count";'</span> <span class="hljs-variable">$tmpfile</span>` 
 
- <span class="built_in">set</span> lineSting =  `sed -n <span class="variable">$line</span><span class="string">"p"</span> <span class="variable">$FILE_SHARE_TMP</span>`
+ <span class="hljs-built_in">set</span> lineSting =  `sed -n <span class="hljs-variable">$line</span><span class="hljs-string">"p"</span> <span class="hljs-variable">$FILE_SHARE_TMP</span>`
 </code></pre>
 </li>
 <li><p>使用wget 触发 Servlet</p>
-<pre><code class="nullbash"><span class="built_in">set</span> WGET = /cim/bin/wget/ADVAN/wget
-<span class="variable">$WGET</span> -q -O <span class="variable">$tmpfile</span>  <span class="string">"<span class="variable">$ServletURL</span>/CpTrigger?TASK=<span class="variable">$TASK</span>"</span>
+<pre><code class="nullbash"><span class="hljs-built_in">set</span> WGET = /cim/bin/wget/ADVAN/wget
+<span class="hljs-variable">$WGET</span> -q -O <span class="hljs-variable">$tmpfile</span>  <span class="hljs-string">"<span class="hljs-variable">$ServletURL</span>/CpTrigger?TASK=<span class="hljs-variable">$TASK</span>"</span>
 </code></pre>
 </li>
 <li><p>调用java</p>
-<pre><code class="nullbash"><span class="meta">#! /bin/csh</span>
-<span class="comment">#classpath=.:$JAVA_HOME/lib/tools.jar:/home/cim1tdtp/oracle.jar</span>
-<span class="built_in">set</span> srcPath=<span class="string">"/db/data/CGSPGM/exec"</span>
-<span class="built_in">cd</span> <span class="variable">$srcPath</span>
-<span class="built_in">echo</span> `java ParseRawForCGS` &gt;&gt; insertResult.txt
-<span class="built_in">exit</span>
+<pre><code class="nullbash"><span class="hljs-meta">#! /bin/csh</span>
+<span class="hljs-comment">#classpath=.:$JAVA_HOME/lib/tools.jar:/home/cim1tdtp/oracle.jar</span>
+<span class="hljs-built_in">set</span> srcPath=<span class="hljs-string">"/db/data/CGSPGM/exec"</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$srcPath</span>
+<span class="hljs-built_in">echo</span> `java ParseRawForCGS` &gt;&gt; insertResult.txt
+<span class="hljs-built_in">exit</span>
 </code></pre>
 </li>
 </ol>
@@ -2001,24 +2001,24 @@ endif
 <li><p><code>#!/bin/ksh</code></p>
 </li>
 <li><p>读取用户输入<code>read</code></p>
-<pre><code class="nullbash"> <span class="built_in">read</span>                <span class="comment"># $REPLY</span>
- <span class="built_in">read</span> answer
- <span class="built_in">print</span> <span class="variable">$answer</span>
- <span class="built_in">read</span> first middle last
- <span class="built_in">read</span> -u3 name        <span class="comment"># -u 从文件描述符中读取一行存储到变量name中</span>
+<pre><code class="nullbash"> <span class="hljs-built_in">read</span>                <span class="hljs-comment"># $REPLY</span>
+ <span class="hljs-built_in">read</span> answer
+ <span class="hljs-built_in">print</span> <span class="hljs-variable">$answer</span>
+ <span class="hljs-built_in">read</span> first middle last
+ <span class="hljs-built_in">read</span> -u3 name        <span class="hljs-comment"># -u 从文件描述符中读取一行存储到变量name中</span>
 
- <span class="keyword">while</span> <span class="built_in">read</span> -u3 line1 &amp;&amp; <span class="built_in">read</span> -u4 line2
- <span class="keyword">do</span>
-     <span class="built_in">print</span> <span class="string">"<span class="variable">$line1</span>:<span class="variable">$line2</span>"</span>
- <span class="keyword">done</span> 3&lt;<span class="variable">$1</span> 4&lt;<span class="variable">$2</span>
+ <span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> -u3 line1 &amp;&amp; <span class="hljs-built_in">read</span> -u4 line2
+ <span class="hljs-keyword">do</span>
+     <span class="hljs-built_in">print</span> <span class="hljs-string">"<span class="hljs-variable">$line1</span>:<span class="hljs-variable">$line2</span>"</span>
+ <span class="hljs-keyword">done</span> 3&lt;<span class="hljs-variable">$1</span> 4&lt;<span class="hljs-variable">$2</span>
 </code></pre>
 </li>
 <li><p>只读 <code>readonly</code></p>
-<pre><code class="nullbash"> &gt; <span class="built_in">readonly</span> name=Tom
- &gt; <span class="built_in">print</span> <span class="variable">$name</span>
+<pre><code class="nullbash"> &gt; <span class="hljs-built_in">readonly</span> name=Tom
+ &gt; <span class="hljs-built_in">print</span> <span class="hljs-variable">$name</span>
  Tom
  &gt; name=Joe
- ksh: name: is <span class="built_in">read</span> only
+ ksh: name: is <span class="hljs-built_in">read</span> only
 </code></pre>
 </li>
 <li><p><code>typeset</code>  设置变量属性</p>
@@ -2031,27 +2031,27 @@ endif
 <li><code>-Z</code> width 在width宽度之内右对齐</li>
 <li><code>-x</code> 设置一个全局变量。相当于 export</li>
 <li><p><code>-r</code> 设置一个变量具有只读属性，相当于readonly</p>
-<pre><code class="nullbash">&gt; <span class="built_in">typeset</span> -i num        <span class="comment"># 整数</span>
-&gt; <span class="built_in">typeset</span> -i2 num        <span class="comment"># 将数值num转换为二进制,i后面为进制数</span>
-&gt; <span class="built_in">print</span> <span class="variable">$num</span>
-2<span class="comment">#111</span>
+<pre><code class="nullbash">&gt; <span class="hljs-built_in">typeset</span> -i num        <span class="hljs-comment"># 整数</span>
+&gt; <span class="hljs-built_in">typeset</span> -i2 num        <span class="hljs-comment"># 将数值num转换为二进制,i后面为进制数</span>
+&gt; <span class="hljs-built_in">print</span> <span class="hljs-variable">$num</span>
+2<span class="hljs-comment">#111</span>
 
 &gt; kk=5.6
-&gt; <span class="built_in">typeset</span> -i kk
-&gt; <span class="built_in">echo</span> <span class="variable">$kk</span>
+&gt; <span class="hljs-built_in">typeset</span> -i kk
+&gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$kk</span>
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>history</p>
-<pre><code class="nullbash"> <span class="built_in">history</span>
- <span class="built_in">history</span> -n            <span class="comment"># print without line numbers</span>
- <span class="built_in">history</span> 8            <span class="comment"># list form 8th command to present</span>
- <span class="built_in">history</span> -3            <span class="comment"># list this command and  the 3 preceding it</span>
- <span class="built_in">history</span> -1 -5          <span class="comment"># list last 5 commands,preceding this one in reversed order</span>
- <span class="built_in">history</span> -5 -1          <span class="comment"># list last 5 commands,preceding this one in order</span>
- <span class="built_in">history</span> ls <span class="built_in">echo</span>     <span class="comment"># display from most recent "ls" command to most recent "echo" command</span>
- <span class="built_in">history</span> -r ls <span class="built_in">echo</span>     <span class="comment"># -r reverses the list</span>
+<pre><code class="nullbash"> <span class="hljs-built_in">history</span>
+ <span class="hljs-built_in">history</span> -n            <span class="hljs-comment"># print without line numbers</span>
+ <span class="hljs-built_in">history</span> 8            <span class="hljs-comment"># list form 8th command to present</span>
+ <span class="hljs-built_in">history</span> -3            <span class="hljs-comment"># list this command and  the 3 preceding it</span>
+ <span class="hljs-built_in">history</span> -1 -5          <span class="hljs-comment"># list last 5 commands,preceding this one in reversed order</span>
+ <span class="hljs-built_in">history</span> -5 -1          <span class="hljs-comment"># list last 5 commands,preceding this one in order</span>
+ <span class="hljs-built_in">history</span> ls <span class="hljs-built_in">echo</span>     <span class="hljs-comment"># display from most recent "ls" command to most recent "echo" command</span>
+ <span class="hljs-built_in">history</span> -r ls <span class="hljs-built_in">echo</span>     <span class="hljs-comment"># -r reverses the list</span>
 </code></pre>
 </li>
 <li><p><code>r</code> 重新执行命令</p>
@@ -2062,35 +2062,35 @@ endif
 </code></pre>
 </li>
 <li><p>别名 <code>alias</code></p>
-<pre><code class="nullbash"> <span class="built_in">alias</span> c1=<span class="string">'clear'</span>
- <span class="built_in">alias</span> l=<span class="string">'ls -laF'</span>
- <span class="built_in">unalias</span> c1
- <span class="built_in">alias</span> -t
+<pre><code class="nullbash"> <span class="hljs-built_in">alias</span> c1=<span class="hljs-string">'clear'</span>
+ <span class="hljs-built_in">alias</span> l=<span class="hljs-string">'ls -laF'</span>
+ <span class="hljs-built_in">unalias</span> c1
+ <span class="hljs-built_in">alias</span> -t
 </code></pre>
 </li>
 <li><p>命令行变元</p>
-<pre><code class="nullbash"> &gt; <span class="built_in">set</span> tom joe sam
- &gt; <span class="built_in">echo</span> $*
+<pre><code class="nullbash"> &gt; <span class="hljs-built_in">set</span> tom joe sam
+ &gt; <span class="hljs-built_in">echo</span> $*
  tom joe sam
 
- &gt; <span class="built_in">shift</span>
- &gt; <span class="built_in">echo</span> $*
+ &gt; <span class="hljs-built_in">shift</span>
+ &gt; <span class="hljs-built_in">echo</span> $*
  joe sam
- &gt; <span class="built_in">echo</span> <span class="variable">$#</span>
+ &gt; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$#</span>
  2
 
- &gt; <span class="built_in">set</span> $(date)
- &gt; <span class="built_in">print</span> $*
+ &gt; <span class="hljs-built_in">set</span> $(date)
+ &gt; <span class="hljs-built_in">print</span> $*
  Wed Feb 8 14:41:11 CST 2012
- &gt; <span class="built_in">shift</span> 3
- &gt; <span class="built_in">print</span> $*
+ &gt; <span class="hljs-built_in">shift</span> 3
+ &gt; <span class="hljs-built_in">print</span> $*
  14:41:11 CST 2012
 </code></pre>
 </li>
 <li><p>算数运算</p>
 <pre><code class="nullbash"> num=5
- <span class="built_in">let</span> num=num+2        <span class="comment"># (( num=num+2))</span>
- <span class="built_in">print</span> <span class="variable">$num</span>
+ <span class="hljs-built_in">let</span> num=num+2        <span class="hljs-comment"># (( num=num+2))</span>
+ <span class="hljs-built_in">print</span> <span class="hljs-variable">$num</span>
 </code></pre>
 </li>
 <li><p>数组</p>
@@ -2099,31 +2099,31 @@ endif
 <li><code>${var[*]}</code> 打印数组</li>
 <li><code>${var[..]}</code> 获取数组某元素值</li>
 </ul>
-<pre><code class="nullbash">&gt; <span class="built_in">typeset</span> -i names[4]
+<pre><code class="nullbash">&gt; <span class="hljs-built_in">typeset</span> -i names[4]
 &gt; names[0]=30
 
-&gt; <span class="built_in">set</span> -A fruit apples pears bananana
-&gt; <span class="built_in">print</span> <span class="variable">$fruit</span>
+&gt; <span class="hljs-built_in">set</span> -A fruit apples pears bananana
+&gt; <span class="hljs-built_in">print</span> <span class="hljs-variable">$fruit</span>
 apples
-&gt; <span class="built_in">print</span> <span class="variable">${fruit[1]}</span>
+&gt; <span class="hljs-built_in">print</span> <span class="hljs-variable">${fruit[1]}</span>
 pears
 
-&gt; <span class="built_in">print</span> <span class="variable">${fruit[*]}</span>
+&gt; <span class="hljs-built_in">print</span> <span class="hljs-variable">${fruit[*]}</span>
 apples pears bananana
-&gt; <span class="built_in">print</span> <span class="variable">${#fruit[*]}</span>  <span class="comment"># 数组长度</span>
+&gt; <span class="hljs-built_in">print</span> <span class="hljs-variable">${#fruit[*]}</span>  <span class="hljs-comment"># 数组长度</span>
 3
 </code></pre>
 </li>
 <li><p>函数</p>
-<pre><code class="nullbash"><span class="keyword">function</span> funcName { cmd;}
-<span class="variable">$funcName</span>
+<pre><code class="nullbash"><span class="hljs-keyword">function</span> funcName { cmd;}
+<span class="hljs-variable">$funcName</span>
 </code></pre>
-<pre><code class="nullbash"><span class="keyword">function</span> funCName {<span class="built_in">print</span> <span class="string">"Hi <span class="variable">$1</span> and <span class="variable">$2</span>"</span>;)
-<span class="variable">$funcName</span> tom joe
+<pre><code class="nullbash"><span class="hljs-keyword">function</span> funCName {<span class="hljs-built_in">print</span> <span class="hljs-string">"Hi <span class="hljs-variable">$1</span> and <span class="hljs-variable">$2</span>"</span>;)
+<span class="hljs-variable">$funcName</span> tom joe
 
-&gt; <span class="built_in">typeset</span> <span class="_">-f</span> funCName                <span class="comment"># list function define</span>
-&gt; <span class="built_in">typeset</span> +f funCName                <span class="comment"># list function name</span>
-&gt; <span class="built_in">unset</span> <span class="_">-f</span> funCName                  <span class="comment"># clear funtion</span>
+&gt; <span class="hljs-built_in">typeset</span> -f funCName                <span class="hljs-comment"># list function define</span>
+&gt; <span class="hljs-built_in">typeset</span> +f funCName                <span class="hljs-comment"># list function name</span>
+&gt; <span class="hljs-built_in">unset</span> -f funCName                  <span class="hljs-comment"># clear funtion</span>
 </code></pre>
 </li>
 <li><p>条件判断</p>
@@ -2133,26 +2133,26 @@ apples pears bananana
 <li>逻辑操作符: <code>&amp;&amp;</code>,<code>||</code>,<code>!</code></li>
 <li><code>[]</code> 等价于旧 test 命令 (<code>[</code> 后面必须有空格)</li>
 <li><code>[[]]</code> / <code>(())</code> 等价于新test 命令,允许使用Shell元字符扩展<pre><code class="nullbash">&gt; name=Tom
-&gt; <span class="built_in">test</span> <span class="variable">$name</span>=Tome
-&gt; [ <span class="variable">$name</span> = Tom ]
-&gt; [[ <span class="variable">$name</span> = [Tt]?m ]]
+&gt; <span class="hljs-built_in">test</span> <span class="hljs-variable">$name</span>=Tome
+&gt; [ <span class="hljs-variable">$name</span> = Tom ]
+&gt; [[ <span class="hljs-variable">$name</span> = [Tt]?m ]]
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>判断</p>
 <ul>
-<li><code>if/elif/else/fi</code><pre><code class="nullbash"><span class="keyword">if</span> [[ ... ]]
-<span class="keyword">then</span>
+<li><code>if/elif/else/fi</code><pre><code class="nullbash"><span class="hljs-keyword">if</span> [[ ... ]]
+<span class="hljs-keyword">then</span>
   cmd
-<span class="keyword">elif</span> [[ ... ]]
+<span class="hljs-keyword">elif</span> [[ ... ]]
   cmd
-<span class="keyword">else</span>
+<span class="hljs-keyword">else</span>
   cmd
-<span class="keyword">fi</span>
+<span class="hljs-keyword">fi</span>
 </code></pre>
 </li>
-<li><code>case/esac</code><pre><code class="nullbash"><span class="keyword">case</span> var <span class="keyword">in</span>
+<li><code>case/esac</code><pre><code class="nullbash"><span class="hljs-keyword">case</span> var <span class="hljs-keyword">in</span>
 value1)
   cmd
   ;;
@@ -2162,7 +2162,7 @@ value2)
 *)
   cmd
   ;;
-<span class="keyword">esac</span>
+<span class="hljs-keyword">esac</span>
 </code></pre>
 </li>
 </ul>
@@ -2170,155 +2170,155 @@ value2)
 <li><p>循环</p>
 <ul>
 <li><p><code>for var in list do cmd done</code></p>
-<pre><code class="nullbash">  <span class="keyword">for</span> person <span class="keyword">in</span> `cat mylist`    <span class="comment"># for person in $(&lt;mylist)</span>
-  <span class="keyword">do</span>
-      <span class="built_in">print</span> <span class="variable">$person</span>
-  <span class="keyword">done</span>
+<pre><code class="nullbash">  <span class="hljs-keyword">for</span> person <span class="hljs-keyword">in</span> `cat mylist`    <span class="hljs-comment"># for person in $(&lt;mylist)</span>
+  <span class="hljs-keyword">do</span>
+      <span class="hljs-built_in">print</span> <span class="hljs-variable">$person</span>
+  <span class="hljs-keyword">done</span>
 </code></pre>
 <p>-<code>while [[expr]] do cmd done</code></p>
-<pre><code class="nullbash">  <span class="keyword">while</span> (( num &lt; 10 ))
-  <span class="keyword">do</span>
-      <span class="built_in">print</span> <span class="variable">$num</span>
+<pre><code class="nullbash">  <span class="hljs-keyword">while</span> (( num &lt; 10 ))
+  <span class="hljs-keyword">do</span>
+      <span class="hljs-built_in">print</span> <span class="hljs-variable">$num</span>
       (( num=num+1))
-  <span class="keyword">done</span>
+  <span class="hljs-keyword">done</span>
 </code></pre>
-<pre><code class="nullbash">  <span class="keyword">while</span> [[ <span class="variable">$answer</span> != <span class="string">"Tom"</span> ]]
-  <span class="keyword">do</span>
-      <span class="built_in">print</span> <span class="string">"wrong!"</span>
-      <span class="built_in">read</span> answer
-  <span class="keyword">done</span>
+<pre><code class="nullbash">  <span class="hljs-keyword">while</span> [[ <span class="hljs-variable">$answer</span> != <span class="hljs-string">"Tom"</span> ]]
+  <span class="hljs-keyword">do</span>
+      <span class="hljs-built_in">print</span> <span class="hljs-string">"wrong!"</span>
+      <span class="hljs-built_in">read</span> answer
+  <span class="hljs-keyword">done</span>
 </code></pre>
-<pre><code class="nullbash">  cat <span class="variable">$1</span> | <span class="keyword">while</span> <span class="built_in">read</span> line
-  <span class="keyword">do</span>
-      <span class="built_in">print</span> <span class="variable">$line</span>
+<pre><code class="nullbash">  cat <span class="hljs-variable">$1</span> | <span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line
+  <span class="hljs-keyword">do</span>
+      <span class="hljs-built_in">print</span> <span class="hljs-variable">$line</span>
 
-  <span class="keyword">done</span> &gt; tmp$$
+  <span class="hljs-keyword">done</span> &gt; tmp$$
 </code></pre>
 </li>
 <li><code>until [[expr]] do cmd done</code><pre><code class="nullbash">  until who | grep linda
-  <span class="keyword">do</span>    
+  <span class="hljs-keyword">do</span>    
       sleep 5
-  <span class="keyword">done</span>
+  <span class="hljs-keyword">done</span>
 </code></pre>
 </li>
-<li><code>select</code><pre><code class="nullbash"> select var <span class="keyword">in</span> wordlist
- <span class="keyword">do</span>
+<li><code>select</code><pre><code class="nullbash"> select var <span class="hljs-keyword">in</span> wordlist
+ <span class="hljs-keyword">do</span>
      cmd
- <span class="keyword">done</span>
+ <span class="hljs-keyword">done</span>
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p><code>IFS</code> : shell 内部分隔符</p>
 <pre><code class="nullbash">names=Tom:Dick:Sam:John
-OldIFS=<span class="string">"<span class="variable">$IFS</span>"</span>
-IFS=<span class="string">":"</span>
-<span class="keyword">for</span> person <span class="keyword">in</span> <span class="variable">$names</span>
-<span class="keyword">do</span>
-    <span class="built_in">print</span> Hi <span class="variable">$preson</span>
-<span class="keyword">done</span>
-IFS=<span class="string">"<span class="variable">$OldIFS</span>"</span>
+OldIFS=<span class="hljs-string">"<span class="hljs-variable">$IFS</span>"</span>
+IFS=<span class="hljs-string">":"</span>
+<span class="hljs-keyword">for</span> person <span class="hljs-keyword">in</span> <span class="hljs-variable">$names</span>
+<span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">print</span> Hi <span class="hljs-variable">$preson</span>
+<span class="hljs-keyword">done</span>
+IFS=<span class="hljs-string">"<span class="hljs-variable">$OldIFS</span>"</span>
 </code></pre>
 </li>
 </ol>
 <p>使用示例：</p>
 <ol>
 <li><p>压缩备份资料(压缩文件夹)</p>
-<pre><code class="nullbash"> <span class="comment">#!/bin/ksh</span>
- <span class="built_in">read</span> zipPath
- <span class="built_in">echo</span> <span class="variable">$zipPath</span>
- <span class="built_in">cd</span>     <span class="variable">$zipPath</span>
+<pre><code class="nullbash"> <span class="hljs-comment">#!/bin/ksh</span>
+ <span class="hljs-built_in">read</span> zipPath
+ <span class="hljs-built_in">echo</span> <span class="hljs-variable">$zipPath</span>
+ <span class="hljs-built_in">cd</span>     <span class="hljs-variable">$zipPath</span>
 
- <span class="comment"># tar, compress</span>
- <span class="keyword">for</span> DirName <span class="keyword">in</span> `ls `
- <span class="keyword">do</span>
-     tar -cvf <span class="variable">$DirName</span><span class="string">".tar"</span> <span class="variable">$DirName</span>
-     compress <span class="variable">$DirName</span><span class="string">".tar"</span>
- <span class="keyword">done</span>
+ <span class="hljs-comment"># tar, compress</span>
+ <span class="hljs-keyword">for</span> DirName <span class="hljs-keyword">in</span> `ls `
+ <span class="hljs-keyword">do</span>
+     tar -cvf <span class="hljs-variable">$DirName</span><span class="hljs-string">".tar"</span> <span class="hljs-variable">$DirName</span>
+     compress <span class="hljs-variable">$DirName</span><span class="hljs-string">".tar"</span>
+ <span class="hljs-keyword">done</span>
 
- <span class="comment"># zip</span>
- <span class="keyword">for</span> DirName <span class="keyword">in</span> `ls `
-     <span class="keyword">do</span>
-         <span class="built_in">echo</span> <span class="variable">$DirName</span>
-         zip -r <span class="variable">$DirName</span><span class="string">".zip"</span> <span class="variable">$DirName</span>
-         rm -r <span class="variable">$DirName</span>
-     <span class="keyword">done</span>
+ <span class="hljs-comment"># zip</span>
+ <span class="hljs-keyword">for</span> DirName <span class="hljs-keyword">in</span> `ls `
+     <span class="hljs-keyword">do</span>
+         <span class="hljs-built_in">echo</span> <span class="hljs-variable">$DirName</span>
+         zip -r <span class="hljs-variable">$DirName</span><span class="hljs-string">".zip"</span> <span class="hljs-variable">$DirName</span>
+         rm -r <span class="hljs-variable">$DirName</span>
+     <span class="hljs-keyword">done</span>
 
- <span class="comment">#collectData=$zipPath/1.txt</span>
- <span class="comment">#echo $collectData</span>
- <span class="comment">#while read DirName</span>
- <span class="comment">#do</span>
- <span class="comment">#        echo $DirName</span>
- <span class="comment">#        zip -r $DirName".zip" $DirName</span>
- <span class="comment">#        rm -r $DirName</span>
- <span class="comment">#done &lt; $collectData</span>
+ <span class="hljs-comment">#collectData=$zipPath/1.txt</span>
+ <span class="hljs-comment">#echo $collectData</span>
+ <span class="hljs-comment">#while read DirName</span>
+ <span class="hljs-comment">#do</span>
+ <span class="hljs-comment">#        echo $DirName</span>
+ <span class="hljs-comment">#        zip -r $DirName".zip" $DirName</span>
+ <span class="hljs-comment">#        rm -r $DirName</span>
+ <span class="hljs-comment">#done &lt; $collectData</span>
 
- <span class="built_in">echo</span> OK
- <span class="built_in">exit</span>
+ <span class="hljs-built_in">echo</span> OK
+ <span class="hljs-built_in">exit</span>
 </code></pre>
 </li>
 <li><p>If</p>
-<pre><code class="nullbash"> <span class="keyword">if</span> [ ! <span class="_">-d</span> <span class="variable">$generatePath</span> ]
- <span class="keyword">then</span>
-     mkdir <span class="variable">$generatePath</span>
- <span class="keyword">fi</span>
+<pre><code class="nullbash"> <span class="hljs-keyword">if</span> [ ! -d <span class="hljs-variable">$generatePath</span> ]
+ <span class="hljs-keyword">then</span>
+     mkdir <span class="hljs-variable">$generatePath</span>
+ <span class="hljs-keyword">fi</span>
 
- <span class="keyword">if</span> [ <span class="_">-f</span> <span class="variable">$filePathWithName</span> ]
- <span class="keyword">then</span>
-     <span class="keyword">if</span> [[ <span class="variable">$cpno</span> <span class="_">-eq</span> 1 ]] 
-     <span class="keyword">then</span>
-         awk <span class="string">'NR&gt;21 {print $3" "$4" "$5" "$6" "$7" "$8}'</span> <span class="variable">$filePathWithName</span> &gt; <span class="variable">$generatePath</span>/<span class="variable">$wafid</span>
-     <span class="keyword">else</span>
-         awk <span class="string">'NR&gt;21 {print $3" "$4" "$5" "$6" "$7}'</span> <span class="variable">$filePathWithName</span> &gt; <span class="variable">$generatePath</span>/<span class="variable">$wafid</span>
-     <span class="keyword">fi</span>
-     <span class="built_in">echo</span> <span class="string">"OK : <span class="variable">$wafid</span> "</span> &gt;&gt; <span class="variable">$resultLog</span>
- <span class="keyword">else</span>
-     <span class="built_in">echo</span> <span class="string">"FAIL : <span class="variable">$count</span> <span class="variable">$filePathWithName</span> unfound"</span> &gt;&gt; <span class="variable">$resultLog</span>
-     <span class="built_in">echo</span> <span class="string">"FAIL : <span class="variable">$count</span> <span class="variable">$filePathWithName</span> unfound"</span> &gt;&gt;<span class="variable">$FailLog</span>
- <span class="keyword">fi</span>
+ <span class="hljs-keyword">if</span> [ -f <span class="hljs-variable">$filePathWithName</span> ]
+ <span class="hljs-keyword">then</span>
+     <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$cpno</span> -eq 1 ]] 
+     <span class="hljs-keyword">then</span>
+         awk <span class="hljs-string">'NR&gt;21 {print $3" "$4" "$5" "$6" "$7" "$8}'</span> <span class="hljs-variable">$filePathWithName</span> &gt; <span class="hljs-variable">$generatePath</span>/<span class="hljs-variable">$wafid</span>
+     <span class="hljs-keyword">else</span>
+         awk <span class="hljs-string">'NR&gt;21 {print $3" "$4" "$5" "$6" "$7}'</span> <span class="hljs-variable">$filePathWithName</span> &gt; <span class="hljs-variable">$generatePath</span>/<span class="hljs-variable">$wafid</span>
+     <span class="hljs-keyword">fi</span>
+     <span class="hljs-built_in">echo</span> <span class="hljs-string">"OK : <span class="hljs-variable">$wafid</span> "</span> &gt;&gt; <span class="hljs-variable">$resultLog</span>
+ <span class="hljs-keyword">else</span>
+     <span class="hljs-built_in">echo</span> <span class="hljs-string">"FAIL : <span class="hljs-variable">$count</span> <span class="hljs-variable">$filePathWithName</span> unfound"</span> &gt;&gt; <span class="hljs-variable">$resultLog</span>
+     <span class="hljs-built_in">echo</span> <span class="hljs-string">"FAIL : <span class="hljs-variable">$count</span> <span class="hljs-variable">$filePathWithName</span> unfound"</span> &gt;&gt;<span class="hljs-variable">$FailLog</span>
+ <span class="hljs-keyword">fi</span>
 </code></pre>
-<pre><code class="nullbash"> <span class="keyword">if</span> [ <span class="variable">$TEMPMAXNUM</span> <span class="_">-lt</span> 50 ]
- <span class="keyword">if</span> [ <span class="variable">$NUM</span> <span class="_">-eq</span> <span class="string">"0"</span> ]
- <span class="keyword">if</span> [ <span class="_">-f</span> <span class="variable">$FTP_SRC_DIR</span>/<span class="variable">$CUSTOMER</span>/<span class="variable">$FILE</span> ]
- <span class="keyword">if</span> [[ <span class="variable">$LOCAL_SIZE</span> == <span class="variable">$REMOTE_SIZE</span> ]]
+<pre><code class="nullbash"> <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$TEMPMAXNUM</span> -lt 50 ]
+ <span class="hljs-keyword">if</span> [ <span class="hljs-variable">$NUM</span> -eq <span class="hljs-string">"0"</span> ]
+ <span class="hljs-keyword">if</span> [ -f <span class="hljs-variable">$FTP_SRC_DIR</span>/<span class="hljs-variable">$CUSTOMER</span>/<span class="hljs-variable">$FILE</span> ]
+ <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$LOCAL_SIZE</span> == <span class="hljs-variable">$REMOTE_SIZE</span> ]]
 </code></pre>
-<pre><code class="nullbash"> <span class="keyword">if</span> [ <span class="_">-f</span> <span class="variable">$FTP_SRC_DIR</span>/<span class="variable">$CUSTOMER</span>/<span class="variable">$FYLE_TYPE</span>/*H2T340* ]
- <span class="keyword">then</span>
-     <span class="keyword">if</span> [ ! <span class="_">-d</span> <span class="variable">$FTP_SRC_DIR</span>/<span class="variable">$CUSTOMER</span>/<span class="variable">$FYLE_TYPE</span>/stdfFilter ] 
-     <span class="keyword">then</span>
-         mkdir <span class="variable">$FTP_SRC_DIR</span>/<span class="variable">$CUSTOMER</span>/<span class="variable">$FYLE_TYPE</span>/stdfFilter
-     <span class="keyword">fi</span>
-     <span class="built_in">echo</span> <span class="variable">$FTP_SRC_DIR</span>/<span class="variable">$CUSTOMER</span>/<span class="variable">$FYLE_TYPE</span>/*H2T340*
-     mv <span class="variable">$FTP_SRC_DIR</span>/<span class="variable">$CUSTOMER</span>/<span class="variable">$FYLE_TYPE</span>/*H2T340* <span class="variable">$FTP_SRC_DIR</span>/<span class="variable">$CUSTOMER</span>/<span class="variable">$FYLE_TYPE</span>/stdfFilter/
-     <span class="built_in">echo</span> <span class="string">"move to stdfFilter ok"</span>
- <span class="keyword">fi</span>
+<pre><code class="nullbash"> <span class="hljs-keyword">if</span> [ -f <span class="hljs-variable">$FTP_SRC_DIR</span>/<span class="hljs-variable">$CUSTOMER</span>/<span class="hljs-variable">$FYLE_TYPE</span>/*H2T340* ]
+ <span class="hljs-keyword">then</span>
+     <span class="hljs-keyword">if</span> [ ! -d <span class="hljs-variable">$FTP_SRC_DIR</span>/<span class="hljs-variable">$CUSTOMER</span>/<span class="hljs-variable">$FYLE_TYPE</span>/stdfFilter ] 
+     <span class="hljs-keyword">then</span>
+         mkdir <span class="hljs-variable">$FTP_SRC_DIR</span>/<span class="hljs-variable">$CUSTOMER</span>/<span class="hljs-variable">$FYLE_TYPE</span>/stdfFilter
+     <span class="hljs-keyword">fi</span>
+     <span class="hljs-built_in">echo</span> <span class="hljs-variable">$FTP_SRC_DIR</span>/<span class="hljs-variable">$CUSTOMER</span>/<span class="hljs-variable">$FYLE_TYPE</span>/*H2T340*
+     mv <span class="hljs-variable">$FTP_SRC_DIR</span>/<span class="hljs-variable">$CUSTOMER</span>/<span class="hljs-variable">$FYLE_TYPE</span>/*H2T340* <span class="hljs-variable">$FTP_SRC_DIR</span>/<span class="hljs-variable">$CUSTOMER</span>/<span class="hljs-variable">$FYLE_TYPE</span>/stdfFilter/
+     <span class="hljs-built_in">echo</span> <span class="hljs-string">"move to stdfFilter ok"</span>
+ <span class="hljs-keyword">fi</span>
 </code></pre>
 </li>
 <li><p>while</p>
 <pre><code class="nullbash"> count=1
- <span class="keyword">while</span> <span class="built_in">read</span> line
- <span class="keyword">do</span>
-    <span class="built_in">echo</span> <span class="variable">$count</span> `date <span class="string">'+%m%d%H%M'</span>` :<span class="variable">$line</span>    &gt;&gt; <span class="variable">$resultLog</span>
-    filename=`<span class="built_in">echo</span> <span class="variable">$line</span> | awk  <span class="string">'{print $6}'</span>`
-    generatePath=<span class="variable">$resultPath</span>/<span class="variable">$klotNo</span>
+ <span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> line
+ <span class="hljs-keyword">do</span>
+    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$count</span> `date <span class="hljs-string">'+%m%d%H%M'</span>` :<span class="hljs-variable">$line</span>    &gt;&gt; <span class="hljs-variable">$resultLog</span>
+    filename=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$line</span> | awk  <span class="hljs-string">'{print $6}'</span>`
+    generatePath=<span class="hljs-variable">$resultPath</span>/<span class="hljs-variable">$klotNo</span>
 
-    <span class="built_in">let</span> i=count%5 
-    <span class="keyword">if</span> [[ <span class="variable">$i</span> == 0 ]] 
-    <span class="keyword">then</span>
-         <span class="built_in">echo</span> <span class="string">"********************************************"</span> &gt;&gt; <span class="variable">$resultLog</span>
-         <span class="built_in">echo</span> <span class="variable">$count</span>
-    <span class="keyword">fi</span> 
-    <span class="built_in">let</span> count=count+1 
- <span class="keyword">done</span> &lt; <span class="variable">$collectData</span>
+    <span class="hljs-built_in">let</span> i=count%5 
+    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$i</span> == 0 ]] 
+    <span class="hljs-keyword">then</span>
+         <span class="hljs-built_in">echo</span> <span class="hljs-string">"********************************************"</span> &gt;&gt; <span class="hljs-variable">$resultLog</span>
+         <span class="hljs-built_in">echo</span> <span class="hljs-variable">$count</span>
+    <span class="hljs-keyword">fi</span> 
+    <span class="hljs-built_in">let</span> count=count+1 
+ <span class="hljs-keyword">done</span> &lt; <span class="hljs-variable">$collectData</span>
 </code></pre>
 <pre><code class="nullbash"> usedFilePathLength=1 
- <span class="keyword">while</span> (( <span class="variable">$usedFilePathLength</span> &lt; <span class="variable">${#arrayFileDir[*]}</span>-1 ))  
- <span class="keyword">do</span>
-      <span class="built_in">echo</span> mkdir <span class="variable">${arrayFileDir[$usedFilePathLength]}</span> &gt;&gt; <span class="variable">$FTP_CMD_FILE</span>
-      <span class="built_in">echo</span> <span class="built_in">cd</span> <span class="variable">${arrayFileDir[$usedFilePathLength]}</span>    &gt;&gt; <span class="variable">$FTP_CMD_FILE</span> 
-      <span class="built_in">cd</span> <span class="variable">${arrayFileDir[$usedFilePathLength]}</span> 
-      <span class="built_in">let</span> usedFilePathLength=usedFilePathLength+1
- <span class="keyword">done</span>
+ <span class="hljs-keyword">while</span> (( <span class="hljs-variable">$usedFilePathLength</span> &lt; <span class="hljs-variable">${#arrayFileDir[*]}</span>-1 ))  
+ <span class="hljs-keyword">do</span>
+      <span class="hljs-built_in">echo</span> mkdir <span class="hljs-variable">${arrayFileDir[$usedFilePathLength]}</span> &gt;&gt; <span class="hljs-variable">$FTP_CMD_FILE</span>
+      <span class="hljs-built_in">echo</span> <span class="hljs-built_in">cd</span> <span class="hljs-variable">${arrayFileDir[$usedFilePathLength]}</span>    &gt;&gt; <span class="hljs-variable">$FTP_CMD_FILE</span> 
+      <span class="hljs-built_in">cd</span> <span class="hljs-variable">${arrayFileDir[$usedFilePathLength]}</span> 
+      <span class="hljs-built_in">let</span> usedFilePathLength=usedFilePathLength+1
+ <span class="hljs-keyword">done</span>
 </code></pre>
 </li>
 </ol>
@@ -2327,45 +2327,45 @@ IFS=<span class="string">"<span class="variable">$OldIFS</span>"</span>
 <li><p><code>#!/bin/bash</code></p>
 </li>
 <li><p>read</p>
-<pre><code class="nullbash"><span class="built_in">read</span> -p <span class="string">"Please input your first name: "</span> firstname  <span class="comment"># 提示使用者输入</span>
-<span class="built_in">read</span> -p <span class="string">"Please input your last name:  "</span> lastname   <span class="comment"># 提示使用者输入</span>
-<span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"\nYour full name is: <span class="variable">$firstname</span> <span class="variable">$lastname</span>"</span> <span class="comment"># 结果输出</span>
+<pre><code class="nullbash"><span class="hljs-built_in">read</span> -p <span class="hljs-string">"Please input your first name: "</span> firstname  <span class="hljs-comment"># 提示使用者输入</span>
+<span class="hljs-built_in">read</span> -p <span class="hljs-string">"Please input your last name:  "</span> lastname   <span class="hljs-comment"># 提示使用者输入</span>
+<span class="hljs-built_in">echo</span> -e <span class="hljs-string">"\nYour full name is: <span class="hljs-variable">$firstname</span> <span class="hljs-variable">$lastname</span>"</span> <span class="hljs-comment"># 结果输出</span>
 </code></pre>
 </li>
 <li><p>数值运算 ( bash shell 默认仅支持到整数的数据 )</p>
 <pre><code class="nullbash">var=$((运算内容))
-<span class="built_in">echo</span> $(( 13 % 3 ))
+<span class="hljs-built_in">echo</span> $(( 13 % 3 ))
 </code></pre>
 </li>
 </ol>
-<p>更多可参考：<a href="http://vbird.dic.ksu.edu.tw/linux_basic/0320bash.php">鸟哥的Linux私房菜</a></p>
+<p>更多可参考：<a href="http://vbird.dic.ksu.edu.tw/linux_basic/0320bash.php" target="_blank" rel="noopener">鸟哥的Linux私房菜</a></p>
   </section>
 </article>
 
       <hr/>
-      <section class="post-comment">
-	<!-- disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变-->
-<div id="disqus_thread"> 
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</div>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
 
-	<script type="text/javascript">
-		var disqus_shortname = 'sixdegreespace'; 
-		var disqus_identifier = '2014/07/01/Linux.html';	
-		var disqus_title = 'Linux';
-		var disqus_url = 'http://sixdegree.github.io/2014/07/01/Linux.html' ;
-		//var disqus_category_id = '4262241'; 
-
-		(function() {
-		    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-		    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-		    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
 
 
- 
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  owner: 'sixdegree',
+	  repo: 'sixDegree.github.io',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
+	  },
+	})
+	gitment.render('gitment_container')
+</script>
+	
 </section>
+
     </div>
   </div>
 </body>
