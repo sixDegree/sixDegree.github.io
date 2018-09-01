@@ -2305,12 +2305,13 @@ session.invalidate();    <span class="hljs-comment">//销毁会话</span>
 
 <script type="text/javascript">
 	var gitment = new Gitment({
+	  id: document.location.pathname,
 	  owner: 'sixDegree',
 	  repo: 'blogComment',
 	  oauth: {
 	    client_id: '36a09bb7399efe69c6ce',
-	    client_secret: 'f28f2c5fff964d8e5d1a6ebdee77e6a890a8ac94',
-	  },
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
 	})
 	gitment.render('gitment_container')
 </script>
