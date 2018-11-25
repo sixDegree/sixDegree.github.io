@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -192,7 +195,7 @@
 </table>
 <ol>
 <li><p>使用<code>a left join b</code>+<code>and a</code></p>
-<pre><code class="nullsql"> <span class="hljs-keyword">select</span> a.*,b.* <span class="hljs-keyword">from</span> a <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> b <span class="hljs-keyword">on</span> a.id=b.id <span class="hljs-keyword">and</span> a.type=<span class="hljs-string">'a'</span>;
+<pre><code class="lang-sql"> select a.*,b.* from a left join b on a.id=b.id and a.type=&#39;a&#39;;
 </code></pre>
 <table class="table">
 <thead>
@@ -225,7 +228,7 @@
 </table>
 </li>
 <li><p>使用<code>a left join b</code>+<code>and b</code></p>
-<pre><code class="nullsql"> <span class="hljs-keyword">select</span> a.*,b.* <span class="hljs-keyword">from</span> a <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> b <span class="hljs-keyword">on</span> a.id=b.id <span class="hljs-keyword">and</span> b.class=<span class="hljs-string">'aa'</span>
+<pre><code class="lang-sql"> select a.*,b.* from a left join b on a.id=b.id and b.class=&#39;aa&#39;
 </code></pre>
 <table class="table">
 <thead>
@@ -258,7 +261,7 @@
 </table>
 </li>
 <li><p>使用<code>left join</code>+<code>where</code></p>
-<pre><code class="nullsql"> <span class="hljs-keyword">select</span> a.*,b.* <span class="hljs-keyword">from</span> a <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> b <span class="hljs-keyword">on</span> a.id=b.id <span class="hljs-keyword">where</span> a.type=<span class="hljs-string">'a'</span>;
+<pre><code class="lang-sql"> select a.*,b.* from a left join b on a.id=b.id where a.type=&#39;a&#39;;
 </code></pre>
 <table class="table">
 <thead>
@@ -286,9 +289,9 @@
 </table>
 </li>
 <li><p>使用<code>inner join</code></p>
-<pre><code class="nullsql"> <span class="hljs-keyword">select</span> a.*, b.* <span class="hljs-keyword">from</span> a <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> b <span class="hljs-keyword">on</span> a.id = b.id <span class="hljs-keyword">and</span> a.type = <span class="hljs-string">'a'</span>;
- <span class="hljs-keyword">select</span> a.*, b.* <span class="hljs-keyword">from</span> a <span class="hljs-keyword">inner</span> <span class="hljs-keyword">join</span> b <span class="hljs-keyword">on</span> a.id = b.id <span class="hljs-keyword">where</span> a.type = <span class="hljs-string">'a'</span>;
- <span class="hljs-keyword">select</span> a.*, b.* <span class="hljs-keyword">from</span> a, b <span class="hljs-keyword">where</span> a.id = b.id <span class="hljs-keyword">and</span> a.type = <span class="hljs-string">'a'</span>;
+<pre><code class="lang-sql"> select a.*, b.* from a inner join b on a.id = b.id and a.type = &#39;a&#39;;
+ select a.*, b.* from a inner join b on a.id = b.id where a.type = &#39;a&#39;;
+ select a.*, b.* from a, b where a.id = b.id and a.type = &#39;a&#39;;
 </code></pre>
 <table class="table">
 <thead>
@@ -343,7 +346,7 @@
 <p>注意：</p>
 <ul>
 <li>都是伪列（可以理解成表中的一个列，但并不是你创建的）</li>
-<li>如果想让<code>rownum</code> 和<code>order by</code>一样的顺序 那么可以使用子查询：<pre><code class="nullsql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">rownum</span>,t.* <span class="hljs-keyword">from</span> (<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> table1 <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> col1) t
+<li>如果想让<code>rownum</code> 和<code>order by</code>一样的顺序 那么可以使用子查询：<pre><code class="lang-sql">select rownum,t.* from (select * from table1 order by col1) t
 </code></pre>
 </li>
 </ul>
@@ -411,10 +414,10 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> 
+<pre><code class="lang-sql">SELECT 
 t.*, 
-Row_Number() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> deptid <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> salary <span class="hljs-keyword">desc</span>) rownumber 
-<span class="hljs-keyword">FROM</span> employee t
+Row_Number() OVER (partition by deptid ORDER BY salary desc) rownumber 
+FROM employee t
 </code></pre>
 <table class="table">
 <thead>
@@ -485,49 +488,49 @@ Row_Number() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">
 <h3 id="header-4">重复记录</h3>
 <ol>
 <li><p>查找表中重复记录 （使用<code>count(?)&gt;1</code>）</p>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> employee
-<span class="hljs-keyword">where</span> deptid <span class="hljs-keyword">in</span> (
- <span class="hljs-keyword">select</span> deptid
- <span class="hljs-keyword">from</span> employee
- <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> deptid
- <span class="hljs-keyword">having</span> <span class="hljs-keyword">count</span>(deptid) &gt; <span class="hljs-number">1</span>
+<pre><code class="lang-sql">select * from employee
+where deptid in (
+ select deptid
+ from employee
+ group by deptid
+ having count(deptid) &gt; 1
 )
 </code></pre>
 </li>
 <li><p>找表中非重复记录（使用<code>count(?)=1</code>或<code>distinct</code>）</p>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> employee
-<span class="hljs-keyword">where</span> deptid <span class="hljs-keyword">in</span> (
- <span class="hljs-keyword">select</span> deptid
- <span class="hljs-keyword">from</span> employee
- <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> deptid
- <span class="hljs-keyword">having</span> <span class="hljs-keyword">count</span>(deptid) =<span class="hljs-number">1</span>
+<pre><code class="lang-sql">select * from employee
+where deptid in (
+ select deptid
+ from employee
+ group by deptid
+ having count(deptid) =1
 )
 </code></pre>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> employee
-<span class="hljs-keyword">where</span> deptid <span class="hljs-keyword">in</span> (
- <span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> deptid
- <span class="hljs-keyword">from</span> employee
+<pre><code class="lang-sql">select * from employee
+where deptid in (
+ select distinct deptid
+ from employee
 )
 </code></pre>
 </li>
 <li>让表中存在的重复记录只留一条<ul>
-<li>使用<code>group by</code><pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> deptid,<span class="hljs-keyword">max</span>(salary) <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> deptid
+<li>使用<code>group by</code><pre><code class="lang-sql">SELECT deptid,max(salary) FROM employee group by deptid
 </code></pre>
 </li>
-<li>使用<code>row_number() over</code><pre><code class="nullsql"><span class="hljs-keyword">select</span> * 
-<span class="hljs-keyword">from</span> ( 
-  <span class="hljs-keyword">select</span> 
-  Row_Number() <span class="hljs-keyword">over</span>(<span class="hljs-keyword">partition</span> <span class="hljs-keyword">by</span> deptid <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> salary) <span class="hljs-keyword">rank</span>,
+<li>使用<code>row_number() over</code><pre><code class="lang-sql">select * 
+from ( 
+  select 
+  Row_Number() over(partition by deptid order by salary) rank,
   t.*
-  <span class="hljs-keyword">from</span> employee t
+  from employee t
 )
-<span class="hljs-keyword">where</span> <span class="hljs-keyword">rank</span> = <span class="hljs-number">1</span>
+where rank = 1
 </code></pre>
 </li>
-<li>使用<code>rownum</code> （效率低）<pre><code class="nullsql"><span class="hljs-keyword">select</span> * 
-<span class="hljs-keyword">from</span> employee t
-<span class="hljs-keyword">where</span> <span class="hljs-keyword">rownum</span> <span class="hljs-keyword">in</span>  (
-  <span class="hljs-keyword">select</span> <span class="hljs-keyword">max</span>(<span class="hljs-keyword">rownum</span>) <span class="hljs-keyword">from</span> employee b <span class="hljs-keyword">where</span> t.id = b.id <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> deptid
+<li>使用<code>rownum</code> （效率低）<pre><code class="lang-sql">select * 
+from employee t
+where rownum in  (
+  select max(rownum) from employee b where t.id = b.id group by deptid
 )
 </code></pre>
 </li>
@@ -598,35 +601,35 @@ Row_Number() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">
 </table>
 <ol>
 <li><p>使用<code>distinct</code> +<code>left join</code></p>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> A.date0, B.win, C.lost <span class="hljs-keyword">from</span>
- (<span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> <span class="hljs-built_in">date</span> <span class="hljs-keyword">as</span> date0 <span class="hljs-keyword">from</span> Table1) A
- <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span>  
- (<span class="hljs-keyword">select</span> <span class="hljs-built_in">date</span> <span class="hljs-keyword">as</span> date0,<span class="hljs-keyword">count</span>(*) <span class="hljs-keyword">as</span> win <span class="hljs-keyword">from</span> Table1 <span class="hljs-keyword">where</span> rst=<span class="hljs-string">'win'</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-built_in">date</span>) B
- <span class="hljs-keyword">on</span> A.date0=B.date0
- <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span>  
- (<span class="hljs-keyword">select</span> <span class="hljs-built_in">date</span> <span class="hljs-keyword">as</span> date0,<span class="hljs-keyword">count</span>(*) <span class="hljs-keyword">as</span> lost <span class="hljs-keyword">from</span> Table1 <span class="hljs-keyword">where</span> rst=<span class="hljs-string">'lost'</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-built_in">date</span>) C
- <span class="hljs-keyword">on</span> A.date0=C.date0
+<pre><code class="lang-sql">select A.date0, B.win, C.lost from
+ (select distinct date as date0 from Table1) A
+ left join  
+ (select date as date0,count(*) as win from Table1 where rst=&#39;win&#39; group by date) B
+ on A.date0=B.date0
+ left join  
+ (select date as date0,count(*) as lost from Table1 where rst=&#39;lost&#39; group by date) C
+ on A.date0=C.date0
 </code></pre>
 </li>
 <li><p>使用<code>sum</code>+<code>case when</code>+<code>count</code></p>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> 日期 ,<span class="hljs-keyword">sum</span>(结果<span class="hljs-number">1</span>) <span class="hljs-keyword">as</span> <span class="hljs-string">'胜'</span>,<span class="hljs-keyword">sum</span>(结果<span class="hljs-number">2</span>) <span class="hljs-keyword">as</span> <span class="hljs-string">'负'</span>
-<span class="hljs-keyword">from</span> (
- <span class="hljs-keyword">select</span> 日期,
-  <span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> 结果=<span class="hljs-string">'胜'</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">count</span>(结果) <span class="hljs-keyword">end</span> <span class="hljs-keyword">AS</span> 结果<span class="hljs-number">1</span>, 
-  <span class="hljs-keyword">case</span> <span class="hljs-keyword">when</span> 结果=<span class="hljs-string">'负'</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">count</span>(结果)  <span class="hljs-keyword">end</span> <span class="hljs-keyword">AS</span> 结果<span class="hljs-number">2</span> 
-  <span class="hljs-keyword">from</span> table_1 
-  <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 日期,结果
+<pre><code class="lang-sql">select 日期 ,sum(结果1) as &#39;胜&#39;,sum(结果2) as &#39;负&#39;
+from (
+ select 日期,
+  case when 结果=&#39;胜&#39; then count(结果) end AS 结果1, 
+  case when 结果=&#39;负&#39; then count(结果)  end AS 结果2 
+  from table_1 
+  group by 日期,结果
 ) a
-<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 日期
-<span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> 日期 <span class="hljs-keyword">desc</span>
+group by 日期
+order by 日期 desc
 </code></pre>
 </li>
 <li><p>使用<code>sum</code>+<code>case when</code></p>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> 日期,
-<span class="hljs-keyword">sum</span>(<span class="hljs-keyword">case</span> 结果 <span class="hljs-keyword">when</span> <span class="hljs-string">'胜'</span> <span class="hljs-keyword">then</span> <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">end</span>) <span class="hljs-keyword">as</span> <span class="hljs-string">'胜'</span>,
-<span class="hljs-keyword">sum</span>(<span class="hljs-keyword">case</span> 结果 <span class="hljs-keyword">when</span> <span class="hljs-string">'负'</span> <span class="hljs-keyword">then</span> <span class="hljs-number">1</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">end</span>) <span class="hljs-keyword">as</span> <span class="hljs-string">'负'</span> 
-<span class="hljs-keyword">from</span> t 
-<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> 日期
+<pre><code class="lang-sql">select 日期,
+sum(case 结果 when &#39;胜&#39; then 1 else 0 end) as &#39;胜&#39;,
+sum(case 结果 when &#39;负&#39; then 1 else 0 end) as &#39;负&#39; 
+from t 
+group by 日期
 </code></pre>
 </li>
 </ol>
@@ -703,58 +706,58 @@ Row_Number() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">
 </tr>
 </tbody>
 </table>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">name</span> 姓名,
-  <span class="hljs-keyword">max</span>(<span class="hljs-keyword">case</span> subject <span class="hljs-keyword">when</span> <span class="hljs-string">'语文'</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">result</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">end</span>) 语文,
-  <span class="hljs-keyword">max</span>(<span class="hljs-keyword">case</span> subject <span class="hljs-keyword">when</span> <span class="hljs-string">'数学'</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">result</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">end</span>) 数学,
-  <span class="hljs-keyword">max</span>(<span class="hljs-keyword">case</span> subject <span class="hljs-keyword">when</span> <span class="hljs-string">'物理'</span> <span class="hljs-keyword">then</span> <span class="hljs-keyword">result</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span> <span class="hljs-keyword">end</span>) 物理,
-  <span class="hljs-keyword">cast</span>(<span class="hljs-keyword">avg</span>(<span class="hljs-keyword">result</span>*<span class="hljs-number">1.0</span>) <span class="hljs-keyword">as</span> <span class="hljs-built_in">decimal</span>(<span class="hljs-number">18</span>,<span class="hljs-number">2</span>)) 平均分,
-  <span class="hljs-keyword">sum</span>(<span class="hljs-keyword">result</span>) 总分
-<span class="hljs-keyword">from</span> tb
-<span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">name</span>
+<pre><code class="lang-sql">select name 姓名,
+  max(case subject when &#39;语文&#39; then result else 0 end) 语文,
+  max(case subject when &#39;数学&#39; then result else 0 end) 数学,
+  max(case subject when &#39;物理&#39; then result else 0 end) 物理,
+  cast(avg(result*1.0) as decimal(18,2)) 平均分,
+  sum(result) 总分
+from tb
+group by name
 </code></pre>
 <h3 id="header-6">分页</h3>
 <ol>
 <li><p>使用<code>top</code>+<code>not in</code> :</p>
-<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> TOP 页大小 *
-<span class="hljs-keyword">FROM</span> table1
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
- <span class="hljs-keyword">SELECT</span> TOP 页大小*(页数<span class="hljs-number">-1</span>) <span class="hljs-keyword">id</span> <span class="hljs-keyword">FROM</span> table1 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">id</span> 
+<pre><code class="lang-sql">SELECT TOP 页大小 *
+FROM table1
+WHERE id NOT IN (
+ SELECT TOP 页大小*(页数-1) id FROM table1 ORDER BY id 
 )
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">id</span>
+ORDER BY id
 </code></pre>
 </li>
 <li><p>使用<code>top</code>+<code>&gt;</code>+<code>max(id)</code>：</p>
-<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> TOP 页大小 *
-<span class="hljs-keyword">FROM</span> table1
-<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">id</span> &gt; (
-<span class="hljs-keyword">SELECT</span> 
-<span class="hljs-keyword">ISNULL</span>(<span class="hljs-keyword">MAX</span>(<span class="hljs-keyword">id</span>),<span class="hljs-number">0</span>) 
-<span class="hljs-keyword">FROM</span> ( <span class="hljs-keyword">SELECT</span> TOP 页大小*(页数<span class="hljs-number">-1</span>) <span class="hljs-keyword">id</span> <span class="hljs-keyword">FROM</span> table1 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">id</span> ) A
+<pre><code class="lang-sql">SELECT TOP 页大小 *
+FROM table1
+WHERE id &gt; (
+SELECT 
+ISNULL(MAX(id),0) 
+FROM ( SELECT TOP 页大小*(页数-1) id FROM table1 ORDER BY id ) A
 )
-<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">id</span>
+ORDER BY id
 </code></pre>
 </li>
 <li><p>使用<code>row_number() over</code>：</p>
-<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> TOP 页大小 *
-<span class="hljs-keyword">FROM</span> (  
- <span class="hljs-keyword">SELECT</span> ROW_NUMBER() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> <span class="hljs-keyword">id</span>) <span class="hljs-keyword">AS</span> rownumber,* <span class="hljs-keyword">FROM</span> table1) A
-<span class="hljs-keyword">WHERE</span> rownumber &gt; 页大小*(页数<span class="hljs-number">-1</span>)
+<pre><code class="lang-sql">SELECT TOP 页大小 *
+FROM (  
+ SELECT ROW_NUMBER() OVER (ORDER BY id) AS rownumber,* FROM table1) A
+WHERE rownumber &gt; 页大小*(页数-1)
 </code></pre>
 </li>
 <li><p>使用<code>rownum</code></p>
-<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> * 
-<span class="hljs-keyword">FROM</span> (
- <span class="hljs-keyword">SELECT</span> a.*, <span class="hljs-keyword">ROWNUM</span> rn
- <span class="hljs-keyword">FROM</span> (
-     <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> t_employees <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> first_name) a
- <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">ROWNUM</span> &lt;= <span class="hljs-number">500</span>
+<pre><code class="lang-sql">SELECT * 
+FROM (
+ SELECT a.*, ROWNUM rn
+ FROM (
+     SELECT * FROM t_employees ORDER BY first_name) a
+ WHERE ROWNUM &lt;= 500
 )
-<span class="hljs-keyword">WHERE</span> rn &gt; <span class="hljs-number">480</span>
+WHERE rn &gt; 480
 </code></pre>
 </li>
 </ol>
 <p><strong>PS：</strong> Mysql分页</p>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> tableName <span class="hljs-keyword">where</span> 条件 <span class="hljs-keyword">limit</span> (当前页码<span class="hljs-number">-1</span>)*页面容量 , 页面容量
+<pre><code class="lang-sql">select * from tableName where 条件 limit (当前页码-1)*页面容量 , 页面容量
 </code></pre>
 <h3 id="header-7">合并多行记录</h3>
 <table class="table">
@@ -816,21 +819,21 @@ Row_Number() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">
 </table>
 <ol>
 <li><p>创建一个合并的函数:</p>
-<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">function</span> f_hb(@a <span class="hljs-built_in">int</span>)
-<span class="hljs-keyword">returns</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">8000</span>)
-<span class="hljs-keyword">as</span>
-<span class="hljs-keyword">begin</span>
-<span class="hljs-keyword">declare</span> @<span class="hljs-keyword">str</span> <span class="hljs-built_in">varchar</span>(<span class="hljs-number">8000</span>)
-<span class="hljs-keyword">set</span> @<span class="hljs-keyword">str</span> = <span class="hljs-string">''</span>
-<span class="hljs-keyword">select</span> @<span class="hljs-keyword">str</span> = @<span class="hljs-keyword">str</span> + <span class="hljs-string">','</span> + <span class="hljs-keyword">cast</span>(b <span class="hljs-keyword">as</span> <span class="hljs-built_in">varchar</span>) <span class="hljs-keyword">from</span> tb <span class="hljs-keyword">where</span> a = @a 
-<span class="hljs-keyword">set</span> @<span class="hljs-keyword">str</span> = <span class="hljs-keyword">right</span>(@<span class="hljs-keyword">str</span> , <span class="hljs-keyword">len</span>(@<span class="hljs-keyword">str</span>) - <span class="hljs-number">1</span>)
-<span class="hljs-keyword">return</span>(@<span class="hljs-keyword">str</span>)
-<span class="hljs-keyword">End</span>
-<span class="hljs-keyword">go</span>
+<pre><code class="lang-sql">create function f_hb(@a int)
+returns varchar(8000)
+as
+begin
+declare @str varchar(8000)
+set @str = &#39;&#39;
+select @str = @str + &#39;,&#39; + cast(b as varchar) from tb where a = @a 
+set @str = right(@str , len(@str) - 1)
+return(@str)
+End
+go
 </code></pre>
 </li>
 <li><p>调用自定义函数:</p>
-<pre><code class="nullsql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> a ,f_hb(a) <span class="hljs-keyword">as</span> b <span class="hljs-keyword">from</span> tb
+<pre><code class="lang-sql">select distinct a ,f_hb(a) as b from tb
 </code></pre>
 </li>
 </ol>
@@ -874,10 +877,17 @@ Row_Number() <span class="hljs-keyword">OVER</span> (<span class="hljs-keyword">
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

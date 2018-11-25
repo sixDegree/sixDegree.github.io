@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -118,8 +121,6 @@
           
             <a href="/tags.html#tag-Java">Java</a>
           
-            <a href="/tags.html#tag-Webservice">Webservice</a>
-          
         </li>
       
     </ul>
@@ -185,98 +186,98 @@
 </ul>
 <h3 id="header-2">WSDL</h3>
 <p>以XML的形式描述方法签名：<code>返回值 方法名（传入参数）</code></p>
-<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> standalone=<span class="hljs-string">"no"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:definitions</span> <span class="hljs-attr">xmlns:soap</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/wsdl/soap/"</span> 
-    <span class="hljs-attr">xmlns:tns</span>=<span class="hljs-string">"http://ws.cj.com/student"</span> 
-    <span class="hljs-attr">xmlns:wsdl</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/wsdl/"</span> 
-    <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span> 
-    <span class="hljs-attr">name</span>=<span class="hljs-string">"OperationWsService"</span> 
-    <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">"http://ws.cj.com/student"</span>&gt;</span>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;wsdl:definitions xmlns:soap=&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot; 
+    xmlns:tns=&quot;http://ws.cj.com/student&quot; 
+    xmlns:wsdl=&quot;http://schemas.xmlsoap.org/wsdl/&quot; 
+    xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; 
+    name=&quot;OperationWsService&quot; 
+    targetNamespace=&quot;http://ws.cj.com/student&quot;&gt;
 
-    <span class="hljs-comment">&lt;!-- type：定义访问类型 --&gt;</span>
-    <span class="hljs-comment">&lt;!-- message：定义消息，用来传递信息 --&gt;</span>
-    <span class="hljs-comment">&lt;!-- portType：指明接口名称和接口中的服务 --&gt;</span>
-    <span class="hljs-comment">&lt;!-- binding：绑定接口，指定消息传递和呈现所使用的格式 --&gt;</span>
-    <span class="hljs-comment">&lt;!-- service ：指定服务发布的一些信息 --&gt;</span>
+    &lt;!-- type：定义访问类型 --&gt;
+    &lt;!-- message：定义消息，用来传递信息 --&gt;
+    &lt;!-- portType：指明接口名称和接口中的服务 --&gt;
+    &lt;!-- binding：绑定接口，指定消息传递和呈现所使用的格式 --&gt;
+    &lt;!-- service ：指定服务发布的一些信息 --&gt;
 
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:definitions</span>&gt;</span>
+&lt;/wsdl:definitions&gt;
 </code></pre>
 <h4 id="header-3">type</h4>
 <p>定义访问类型 (complexType：复杂type定义，即对“tns”的对象进行定义)</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:types</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">xsd:schema</span> <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">"http://www.example.org/student/"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUser"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:addUser"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUserResponse"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:addUserResponse"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUser"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:listUser"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUserResponse"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:listUserResponse"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserException"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:UserException"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licenseInfo"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:licenseInfo"</span>/&gt;</span>
+<pre><code class="lang-xml">&lt;wsdl:types&gt;
+    &lt;xsd:schema targetNamespace=&quot;http://www.example.org/student/&quot;&gt;
+        &lt;xsd:element name=&quot;addUser&quot; type=&quot;tns:addUser&quot;/&gt;
+        &lt;xsd:element name=&quot;addUserResponse&quot; type=&quot;tns:addUserResponse&quot;/&gt;
+        &lt;xsd:element name=&quot;listUser&quot; type=&quot;tns:listUser&quot;/&gt;
+        &lt;xsd:element name=&quot;listUserResponse&quot; type=&quot;tns:listUserResponse&quot;/&gt;
+        &lt;xsd:element name=&quot;UserException&quot; type=&quot;tns:UserException&quot;/&gt;
+        &lt;xsd:element name=&quot;licenseInfo&quot; type=&quot;tns:licenseInfo&quot;/&gt;
 
-        <span class="hljs-comment">&lt;!-- 复杂类型定义 --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:int"</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:string"</span>/&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:string"</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
+        &lt;!-- 复杂类型定义 --&gt;
+        &lt;xsd:complexType name=&quot;user&quot;&gt;
+            &lt;xsd:sequence&gt;
+                &lt;xsd:element name=&quot;id&quot; type=&quot;xsd:int&quot;/&gt;
+                &lt;xsd:element name=&quot;username&quot; type=&quot;xsd:string&quot;/&gt;
+                &lt;xsd:element name=&quot;password&quot; type=&quot;xsd:string&quot; /&gt;
+            &lt;/xsd:sequence&gt;
+        &lt;/xsd:complexType&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUser"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:user"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUserResponse"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"id"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:int"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
+        &lt;xsd:complexType name=&quot;addUser&quot;&gt;
+            &lt;xsd:sequence&gt;
+                &lt;xsd:element name=&quot;user&quot; type=&quot;tns:user&quot;/&gt;
+            &lt;/xsd:sequence&gt;
+        &lt;/xsd:complexType&gt;
+        &lt;xsd:complexType name=&quot;addUserResponse&quot;&gt;
+            &lt;xsd:sequence&gt;
+                &lt;xsd:element name=&quot;id&quot; type=&quot;xsd:int&quot;/&gt;
+            &lt;/xsd:sequence&gt;
+        &lt;/xsd:complexType&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUser"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUserResponse"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">maxOccurs</span>=<span class="hljs-string">"unbounded"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"user"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:user"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
+        &lt;xsd:complexType name=&quot;listUser&quot;&gt;
+            &lt;xsd:sequence/&gt;
+        &lt;/xsd:complexType&gt;
+        &lt;xsd:complexType name=&quot;listUserResponse&quot;&gt;
+            &lt;xsd:sequence minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;
+                &lt;xsd:element name=&quot;user&quot; type=&quot;tns:user&quot;/&gt;
+            &lt;/xsd:sequence&gt;
+        &lt;/xsd:complexType&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserException"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:string"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
+        &lt;xsd:complexType name=&quot;UserException&quot;&gt;
+            &lt;xsd:sequence&gt;
+                &lt;xsd:element name=&quot;message&quot; type=&quot;xsd:string&quot;/&gt;
+            &lt;/xsd:sequence&gt;
+        &lt;/xsd:complexType&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licenseInfo"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"registerUser"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:user"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
+        &lt;xsd:complexType name=&quot;licenseInfo&quot;&gt;
+            &lt;xsd:sequence&gt;
+                &lt;xsd:element name=&quot;registerUser&quot; type=&quot;tns:user&quot;/&gt;
+            &lt;/xsd:sequence&gt;
+        &lt;/xsd:complexType&gt;
 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:schema</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:types</span>&gt;</span>
+    &lt;/xsd:schema&gt;
+&lt;/wsdl:types&gt;
 </code></pre>
 <p>可定义在外部文件xsd中然后再wsdl中引用</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:types</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- 引入xsd,没有搭建web服务器时使用wsimport会找不到xsd文件 --&gt;</span>
-    <span class="hljs-comment">&lt;!--方法一
+<pre><code class="lang-xml">&lt;wsdl:types&gt;
+    &lt;!-- 引入xsd,没有搭建web服务器时使用wsimport会找不到xsd文件 --&gt;
+    &lt;!--方法一
     &lt;xsd:schema&gt;
-        &lt;xsd:import namespace="http://ws.cj.com/student/" schemaLocation="student.xsd"/&gt;
-    &lt;/xsd:schema&gt;--&gt;</span>
+        &lt;xsd:import namespace=&quot;http://ws.cj.com/student/&quot; schemaLocation=&quot;student.xsd&quot;/&gt;
+    &lt;/xsd:schema&gt;--&gt;
 
-    <span class="hljs-comment">&lt;!-- 方法二 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">xsd:schema</span> <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">"http://ws.cj.com/student/"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">xsd:include</span> <span class="hljs-attr">schemaLocation</span>=<span class="hljs-string">"operation.xsd"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:schema</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:types</span>&gt;</span>
+    &lt;!-- 方法二 --&gt;
+    &lt;xsd:schema targetNamespace=&quot;http://ws.cj.com/student/&quot;&gt;
+        &lt;xsd:include schemaLocation=&quot;operation.xsd&quot;/&gt;
+    &lt;/xsd:schema&gt;
+&lt;/wsdl:types&gt;
 </code></pre>
 <p>xsd文件:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">xsd:schema</span> <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span>
-    <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">"http://ws.cj.com/student"</span>
-    <span class="hljs-attr">xmlns:tns</span>=<span class="hljs-string">"http://ws.cj.com/student"</span>
-    <span class="hljs-attr">elementFormDefault</span>=<span class="hljs-string">"unqualified"</span>&gt;</span> <span class="hljs-comment">&lt;!-- 默认为 qualified --&gt;</span>
+<pre><code class="lang-xml">&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+    targetNamespace=&quot;http://ws.cj.com/student&quot;
+    xmlns:tns=&quot;http://ws.cj.com/student&quot;
+    elementFormDefault=&quot;unqualified&quot;&gt; &lt;!-- 默认为 qualified --&gt;
     ...
-<span class="hljs-tag">&lt;/<span class="hljs-name">xsd:schema</span>&gt;</span>
+&lt;/xsd:schema&gt;
 </code></pre>
 <h4 id="header-4">message</h4>
 <p>定义消息，用来传递信息 （SOPA协议通过Soap Message来传递）</p>
@@ -285,42 +286,42 @@
 <li>request(in)</li>
 <li>response(out)</li>
 </ul>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUser"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:addUser"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUser"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUserResponse"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:addUserResponse"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUserResponse"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUser"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:listUser"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUser"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUserResponse"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:listUserResponse"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUserResponse"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- Exception message --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserException"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:UserException"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserException"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- Header message --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licenseInfo"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:licenseInfo"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licenseInfo"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
+<pre><code class="lang-xml">&lt;wsdl:message name=&quot;addUser&quot;&gt;
+    &lt;wsdl:part element=&quot;tns:addUser&quot; name=&quot;addUser&quot;/&gt;
+&lt;/wsdl:message&gt;
+&lt;wsdl:message name=&quot;addUserResponse&quot;&gt;
+    &lt;wsdl:part element=&quot;tns:addUserResponse&quot; name=&quot;addUserResponse&quot;/&gt;
+&lt;/wsdl:message&gt;
+&lt;wsdl:message name=&quot;listUser&quot;&gt;
+    &lt;wsdl:part element=&quot;tns:listUser&quot; name=&quot;listUser&quot;/&gt;
+&lt;/wsdl:message&gt;
+&lt;wsdl:message name=&quot;listUserResponse&quot;&gt;
+    &lt;wsdl:part element=&quot;tns:listUserResponse&quot; name=&quot;listUserResponse&quot;/&gt;
+&lt;/wsdl:message&gt;
+&lt;!-- Exception message --&gt;
+&lt;wsdl:message name=&quot;UserException&quot;&gt;
+    &lt;wsdl:part element=&quot;tns:UserException&quot; name=&quot;UserException&quot;/&gt;
+&lt;/wsdl:message&gt;
+&lt;!-- Header message --&gt;
+&lt;wsdl:message name=&quot;licenseInfo&quot;&gt;
+    &lt;wsdl:part element=&quot;tns:licenseInfo&quot; name=&quot;licenseInfo&quot;/&gt;
+&lt;/wsdl:message&gt;
 </code></pre>
 <h4 id="header-5">portType</h4>
 <p>portType：指明接口名称和接口中的服务</p>
 <p>通过operation指定接口中的方法（服务），绑定相应的in和out的消息<br>（其中input表示参数，output表示返回值）</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:portType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"IUserWsService"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUser"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:input</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:addUser"</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:output</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:addUserResponse"</span>/&gt;</span>
-          <span class="hljs-comment">&lt;!-- Exception fault--&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:fault</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserException"</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:UserException"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:operation</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUser"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:input</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:listUser"</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:output</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:listUserResponse"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:operation</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:portType</span>&gt;</span>
+<pre><code class="lang-xml">&lt;wsdl:portType name=&quot;IUserWsService&quot;&gt;
+    &lt;wsdl:operation name=&quot;addUser&quot;&gt;
+          &lt;wsdl:input message=&quot;tns:addUser&quot;/&gt;
+          &lt;wsdl:output message=&quot;tns:addUserResponse&quot;/&gt;
+          &lt;!-- Exception fault--&gt;
+          &lt;wsdl:fault name=&quot;UserException&quot; message=&quot;tns:UserException&quot;/&gt;
+    &lt;/wsdl:operation&gt;
+    &lt;wsdl:operation name=&quot;listUser&quot;&gt;
+          &lt;wsdl:input message=&quot;tns:listUser&quot;/&gt;
+          &lt;wsdl:output message=&quot;tns:listUserResponse&quot;/&gt;
+    &lt;/wsdl:operation&gt;
+&lt;/wsdl:portType&gt;
 </code></pre>
 <h4 id="header-6">binding</h4>
 <p>绑定接口，指定消息传递和呈现所使用的格式</p>
@@ -334,39 +335,39 @@
 <li>encode(早期，jdk6以前)</li>
 <li>literal(jdk1.6以后)</li>
 </ul>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:binding</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserWsServiceSOAP"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:IUserWsService"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">soap:binding</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"document"</span> <span class="hljs-attr">transport</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/http"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"addUser"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:input</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-            <span class="hljs-comment">&lt;!-- Header --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:header</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span> <span class="hljs-attr">part</span>=<span class="hljs-string">"licenseInfo"</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:licenseInfo"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:input</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:output</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:output</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:fault</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserException"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:fault</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserException"</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:fault</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:operation</span>&gt;</span>
+<pre><code class="lang-xml">&lt;wsdl:binding name=&quot;UserWsServiceSOAP&quot; type=&quot;tns:IUserWsService&quot;&gt;
+    &lt;soap:binding style=&quot;document&quot; transport=&quot;http://schemas.xmlsoap.org/soap/http&quot;/&gt;
+    &lt;wsdl:operation name=&quot;addUser&quot;&gt;
+        &lt;wsdl:input&gt;
+            &lt;soap:body use=&quot;literal&quot;/&gt;
+            &lt;!-- Header --&gt;
+            &lt;soap:header use=&quot;literal&quot; part=&quot;licenseInfo&quot; message=&quot;tns:licenseInfo&quot;/&gt;
+        &lt;/wsdl:input&gt;
+        &lt;wsdl:output&gt;
+            &lt;soap:body use=&quot;literal&quot;/&gt;
+        &lt;/wsdl:output&gt;
+        &lt;wsdl:fault name=&quot;UserException&quot;&gt;
+            &lt;soap:fault name=&quot;UserException&quot; use=&quot;literal&quot;/&gt;
+        &lt;/wsdl:fault&gt;
+    &lt;/wsdl:operation&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"listUser"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:input</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:input</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:output</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:output</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:operation</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:binding</span>&gt;</span>
+    &lt;wsdl:operation name=&quot;listUser&quot;&gt;
+        &lt;wsdl:input&gt;
+            &lt;soap:body use=&quot;literal&quot;/&gt;
+        &lt;/wsdl:input&gt;
+        &lt;wsdl:output&gt;
+            &lt;soap:body use=&quot;literal&quot;/&gt;
+        &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+&lt;/wsdl:binding&gt;
 </code></pre>
 <h4 id="header-7">service</h4>
 <p>指定服务发布的一些信息</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:service</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserWsService"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:port</span> <span class="hljs-attr">binding</span>=<span class="hljs-string">"tns:UserWsServiceSOAP"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserWsServicePort"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">soap:address</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"http://localhost:9090/us"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:port</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:service</span>&gt;</span>
+<pre><code class="lang-xml">&lt;wsdl:service name=&quot;UserWsService&quot;&gt;
+    &lt;wsdl:port binding=&quot;tns:UserWsServiceSOAP&quot; name=&quot;UserWsServicePort&quot;&gt;
+      &lt;soap:address location=&quot;http://localhost:9090/us&quot;/&gt;
+    &lt;/wsdl:port&gt;
+&lt;/wsdl:service&gt;
 </code></pre>
 <h3 id="header-8">SOAP</h3>
 <p>SOAP （Simple Object Access Protocal）简单对象访问协议<br>通过xml存储对象，通过element元素组装信息，通过Soap Message传递信息</p>
@@ -378,24 +379,24 @@
 <p>输入wsdl地址：<code>http://localhost:8888/ns?wsdl</code>，查看Status下的Source，得到如下：</p>
 <ol>
 <li><p>SOAP Request Envelope: </p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">soapenv:Envelope</span> <span class="hljs-attr">xmlns:soapenv</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/envelope/"</span>     <span class="hljs-attr">xmlns:q0</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span> <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span>     <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">soapenv:Body</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">q0:minus</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>50<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>30<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-       <span class="hljs-tag">&lt;/<span class="hljs-name">q0:minus</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">soapenv:Body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">soapenv:Envelope</span>&gt;</span>
+<pre><code class="lang-xml">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;     xmlns:q0=&quot;http://first.ws.my.cj.com/&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+ &lt;soapenv:Body&gt;
+     &lt;q0:minus&gt;
+           &lt;a&gt;50&lt;/a&gt;
+           &lt;b&gt;30&lt;/b&gt;
+       &lt;/q0:minus&gt;
+ &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
 </code></pre>
 </li>
 <li><p>SOAP Response Envelope:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">S:Envelope</span> <span class="hljs-attr">xmlns:S</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/envelope/"</span> <span class="hljs-attr">xmlns:SOAP-</span>    <span class="hljs-attr">ENV</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/envelope/"</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">S:Body</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">ns2:minusResponse</span> <span class="hljs-attr">xmlns:ns2</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-name">minusResult</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">minusResult</span>&gt;</span>
-       <span class="hljs-tag">&lt;/<span class="hljs-name">ns2:minusResponse</span>&gt;</span>
-   <span class="hljs-tag">&lt;/<span class="hljs-name">S:Body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">S:Envelope</span>&gt;</span>
+<pre><code class="lang-xml">&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:SOAP-    ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+ &lt;S:Body&gt;
+     &lt;ns2:minusResponse xmlns:ns2=&quot;http://first.ws.my.cj.com/&quot;&gt;
+           &lt;minusResult&gt;20&lt;/minusResult&gt;
+       &lt;/ns2:minusResponse&gt;
+   &lt;/S:Body&gt;
+&lt;/S:Envelope&gt;
 </code></pre>
 </li>
 </ol>
@@ -463,19 +464,19 @@
 </li>
 <li>根据wsdl生成WebService接口类<ul>
 <li>使用<code>wsimport</code>命令根据wsdl文件生成</li>
-<li>生成的Interface接口类将作为Server端的WebService接口，如<pre><code class="nulljava"><span class="hljs-meta">@WebService</span>(name = <span class="hljs-string">"IUserWsService"</span>, targetNamespace = <span class="hljs-string">"http://www.my.org/user"</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserWsService</span> </span>{...}
+<li>生成的Interface接口类将作为Server端的WebService接口，如<pre><code class="lang-java">@WebService(name = &quot;IUserWsService&quot;, targetNamespace = &quot;http://www.my.org/user&quot;)
+public interface IUserWsService {...}
 </code></pre>
 </li>
 </ul>
 </li>
-<li>实现WebService接口（指定 wsdlLocation）<pre><code class="nulljava"> <span class="hljs-meta">@WebService</span>(endpointInterface=<span class="hljs-string">"com.cj.my.ws.thrid.IUserWsService"</span>
-     ,targetNamespace=<span class="hljs-string">"http://www.my.org/user"</span>
-     <span class="hljs-comment">//,wsdlLocation="/WEB-INF/wsdl/user.wsdl"  //在tomcat中发布服务</span>
-     ,wsdlLocation=<span class="hljs-string">"META-INF/wsdl/user.wsdl"</span>
-     ,serviceName=<span class="hljs-string">"UserWsService"</span>
-     ,portName=<span class="hljs-string">"UserWsServicePort"</span>)
- <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserWsService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IUserWsService</span></span>
+<li>实现WebService接口（指定 wsdlLocation）<pre><code class="lang-java"> @WebService(endpointInterface=&quot;com.cj.my.ws.thrid.IUserWsService&quot;
+     ,targetNamespace=&quot;http://www.my.org/user&quot;
+     //,wsdlLocation=&quot;/WEB-INF/wsdl/user.wsdl&quot;  //在tomcat中发布服务
+     ,wsdlLocation=&quot;META-INF/wsdl/user.wsdl&quot;
+     ,serviceName=&quot;UserWsService&quot;
+     ,portName=&quot;UserWsServicePort&quot;)
+ public class UserWsService implements IUserWsService
 </code></pre>
 </li>
 <li>发布服务</li>
@@ -486,11 +487,11 @@
 <li>可以重新制定命名空间</li>
 <li>注意：需要在实现类中也重新指定命名空间（<code>@WebService(targetNamespace=&quot;http://www.cj.test/&quot;)</code>）</li>
 </ul>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ServerApp</span></span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>{
-        <span class="hljs-comment">//wsdl文件发布地址</span>
-        String address=<span class="hljs-string">"http://localhost:8888/ns"</span>;
-        Endpoint.publish(address, <span class="hljs-keyword">new</span> OperationWsServiceImpl()); <span class="hljs-comment">//IOperationWsService实现类</span>
+<pre><code class="lang-java">public class ServerApp{
+    public static void main(String[] args){
+        //wsdl文件发布地址
+        String address=&quot;http://localhost:8888/ns&quot;;
+        Endpoint.publish(address, new OperationWsServiceImpl()); //IOperationWsService实现类
     }
 }
 </code></pre>
@@ -498,11 +499,11 @@
 <ol>
 <li>将wsdl文件置于WEB-INF下</li>
 <li>修改服务实现类注解中的wsdlLocation属性（eg：<code>wsdlLocation=&quot;/WEB-INF/wsdl/user.wsdl&quot;</code>）</li>
-<li>编写<code>sun-jaxws.xml</code>置于WEB-INF下<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">endpoints</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://java.sun.com/xml/ns/jax-ws/ri/runtime"</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"2.0"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">endpoint</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"UserWsService"</span> 
-    <span class="hljs-attr">implementation</span>=<span class="hljs-string">"com.cj.my.ws.thrid.UserWsService"</span> <span class="hljs-attr">url-pattern</span>=<span class="hljs-string">"/us"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">endpoints</span>&gt;</span>
+<li>编写<code>sun-jaxws.xml</code>置于WEB-INF下<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;endpoints xmlns=&quot;http://java.sun.com/xml/ns/jax-ws/ri/runtime&quot; version=&quot;2.0&quot;&gt;
+&lt;endpoint name=&quot;UserWsService&quot; 
+    implementation=&quot;com.cj.my.ws.thrid.UserWsService&quot; url-pattern=&quot;/us&quot;/&gt;
+&lt;/endpoints&gt;
 </code></pre>
 </li>
 <li>发布服务</li>
@@ -510,111 +511,111 @@
 <h4 id="header-17">发布独立的JAX-WS端点</h4>
 <p>通过Spring独立发布</p>
 <p>加入依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.sun.xml.ws<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jaxws-rt<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.2.9-b14002<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.sun.xml.ws&lt;/groupId&gt;
+    &lt;artifactId&gt;jaxws-rt&lt;/artifactId&gt;
+    &lt;version&gt;2.2.9-b14002&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <ol>
 <li><p>web.xml中添加（在配置Spring基础上）：</p>
-<pre><code class="nullxml"> <span class="hljs-comment">&lt;!--发布WebService到Web容器中（需配置在SpringListener之前） --&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;!--发布WebService到Web容器中（需配置在SpringListener之前） --&gt;
+ &lt;listener&gt;
+     &lt;listener-class&gt;
          com.sun.xml.ws.transport.http.servlet.WSServletContextListener
-     <span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
+     &lt;/listener-class&gt;
+ &lt;/listener&gt;
 
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
-     <span class="hljs-comment">&lt;!--和sun-jaxws.xml中的name一致 --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>UserWsService<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>com.sun.xml.ws.transport.http.servlet.WSServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>UserWsService<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span> 
-     <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/us<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+ &lt;servlet&gt;
+     &lt;!--和sun-jaxws.xml中的name一致 --&gt;
+     &lt;servlet-name&gt;UserWsService&lt;/servlet-name&gt;
+     &lt;servlet-class&gt;com.sun.xml.ws.transport.http.servlet.WSServlet&lt;/servlet-class&gt;
+ &lt;/servlet&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;UserWsService&lt;/servlet-name&gt; 
+     &lt;url-pattern&gt;/us&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
 </code></pre>
 </li>
 <li><p>beans.xml</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-         <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-         <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
-         <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"..."</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.cj.my.ws"</span> /&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspectj-autoproxy</span> <span class="hljs-attr">proxy-target-class</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+<pre><code class="lang-xml"> &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+         xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+         xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+         xsi:schemaLocation=&quot;...&quot;&gt;
+     &lt;context:annotation-config/&gt;
+     &lt;context:component-scan base-package=&quot;com.cj.my.ws&quot; /&gt;
+     &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
 
-     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"baseAddress"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"http://localhost:8080/ss/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+     &lt;bean class=&quot;org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter&quot;&gt;
+         &lt;property name=&quot;baseAddress&quot; value=&quot;http://localhost:8080/ss/&quot;&gt;&lt;/property&gt;
+     &lt;/bean&gt;
+ &lt;/beans&gt;
 </code></pre>
 </li>
 </ol>
 <h4 id="header-18">发布兼容JAX-WS端点的Web</h4>
 <p>通过jax-spring整合</p>
 <p>加入依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.jvnet.jax-ws-commons.spring<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jaxws-spring<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.9<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.jvnet.jax-ws-commons.spring&lt;/groupId&gt;
+  &lt;artifactId&gt;jaxws-spring&lt;/artifactId&gt;
+  &lt;version&gt;1.9&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <ol>
 <li><p>web.xml中添加（在配置Spring基础上）：</p>
-<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- 使用WSSpringServlet来管理--&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>UserWsService<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>com.sun.xml.ws.transport.http.servlet.WSSpringServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>UserWsService<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/us<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;!-- 使用WSSpringServlet来管理--&gt;
+ &lt;servlet&gt;
+     &lt;servlet-name&gt;UserWsService&lt;/servlet-name&gt;
+     &lt;servlet-class&gt;com.sun.xml.ws.transport.http.servlet.WSSpringServlet&lt;/servlet-class&gt;
+ &lt;/servlet&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;UserWsService&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/us&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
 </code></pre>
 </li>
 <li><p>beans.xml</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-         <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-         <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
-         <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-         <span class="hljs-attr">xmlns:ws</span>=<span class="hljs-string">"http://jax-ws.dev.java.net/spring/core"</span>
-         <span class="hljs-attr">xmlns:wss</span>=<span class="hljs-string">"http://jax-ws.dev.java.net/spring/servlet"</span>
-         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"...
+<pre><code class="lang-xml"> &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+         xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+         xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+         xmlns:ws=&quot;http://jax-ws.dev.java.net/spring/core&quot;
+         xmlns:wss=&quot;http://jax-ws.dev.java.net/spring/servlet&quot;
+         xsi:schemaLocation=&quot;...
      http://jax-ws.dev.java.net/spring/core http://jax-ws.dev.java.net/spring/core.xsd
-     http://jax-ws.dev.java.net/spring/servlet http://jax-ws.dev.java.net/spring/servlet.xsd"</span>&gt;</span>
+     http://jax-ws.dev.java.net/spring/servlet http://jax-ws.dev.java.net/spring/servlet.xsd&quot;&gt;
 
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.cj.my.ws"</span> /&gt;</span>    
-     <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspectj-autoproxy</span> <span class="hljs-attr">proxy-target-class</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+     &lt;context:annotation-config/&gt;
+     &lt;context:component-scan base-package=&quot;com.cj.my.ws&quot; /&gt;    
+     &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
 
-     <span class="hljs-comment">&lt;!-- 让userWsService被Spring管理 --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">wss:binding</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"/us"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">wss:service</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">ws:service</span> <span class="hljs-attr">bean</span>=<span class="hljs-string">"#userWsService"</span>&gt;</span> <span class="hljs-comment">&lt;!-- 指明webservice的注入对象，注意需加个# --&gt;</span>
-                 <span class="hljs-comment">&lt;!-- 将wsdl的外部xsd文件加入 --&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">ws:metadata</span>&gt;</span>
-                     <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/WEB-INF/wsdl/user.xsd<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-                 <span class="hljs-tag">&lt;/<span class="hljs-name">ws:metadata</span>&gt;</span>
-             <span class="hljs-tag">&lt;/<span class="hljs-name">ws:service</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-name">wss:service</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">wss:binding</span>&gt;</span>
+     &lt;!-- 让userWsService被Spring管理 --&gt;
+     &lt;wss:binding url=&quot;/us&quot;&gt;
+         &lt;wss:service&gt;
+             &lt;ws:service bean=&quot;#userWsService&quot;&gt; &lt;!-- 指明webservice的注入对象，注意需加个# --&gt;
+                 &lt;!-- 将wsdl的外部xsd文件加入 --&gt;
+                 &lt;ws:metadata&gt;
+                     &lt;value&gt;/WEB-INF/wsdl/user.xsd&lt;/value&gt;
+                 &lt;/ws:metadata&gt;
+             &lt;/ws:service&gt;
+         &lt;/wss:service&gt;
+     &lt;/wss:binding&gt;
 
-     <span class="hljs-comment">&lt;!-- 建议在配置文件中手动注入，若使用Annotation：@Service("userWsService")可能会找不到--&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userWsService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.my.ws.thrid.UserWsService"</span> /&gt;</span> 
- <span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+     &lt;!-- 建议在配置文件中手动注入，若使用Annotation：@Service(&quot;userWsService&quot;)可能会找不到--&gt;
+     &lt;bean id=&quot;userWsService&quot; class=&quot;com.cj.my.ws.thrid.UserWsService&quot; /&gt; 
+ &lt;/beans&gt;
 </code></pre>
 </li>
 </ol>
 <h2 id="header-19">Jax-ws (Client端)</h2>
 <h3 id="header-20">基于SOAP的通讯方式（直接传递SOAP消息）</h3>
 <ul>
-<li>Message方式：格式化为xml进行消息传递<pre><code class="nulljava">  Dispatch&lt;SOAPMessage&gt; dispatch=service.createDispatch(
-      <span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"MyServiceImplPort"</span>),
+<li>Message方式：格式化为xml进行消息传递<pre><code class="lang-java">  Dispatch&lt;SOAPMessage&gt; dispatch=service.createDispatch(
+      new QName(this.ns,&quot;MyServiceImplPort&quot;),
       SOAPMessage.class,
       Service.Mode.MESSAGE);
   SOAPMessage message=MessageFactory.newInstance().createMessage();
@@ -623,12 +624,12 @@
   ...
 </code></pre>
 </li>
-<li>Payload方式：格式化为String(将对象编排与反编排)进行消息传递<pre><code class="nulljava">  Dispatch&lt;Source&gt; dispatch=service.createDispatch(
-      <span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"MyServiceImplPort"</span>),
+<li>Payload方式：格式化为String(将对象编排与反编排)进行消息传递<pre><code class="lang-java">  Dispatch&lt;Source&gt; dispatch=service.createDispatch(
+      new QName(this.ns,&quot;MyServiceImplPort&quot;),
       Source.class,
       Service.Mode.PAYLOAD);
   ...
-  StreamSource rs=<span class="hljs-keyword">new</span> StreamSource(<span class="hljs-keyword">new</span> StringReader(payload));
+  StreamSource rs=new StreamSource(new StringReader(payload));
   Source response=dispatch.invoke(rs);
   ...
 </code></pre>
@@ -637,166 +638,166 @@
 <p><strong>PS：</strong>通过Dispatch发送</p>
 <h4 id="header-21">Message方式（xml）</h4>
 <p>格式化为xml进行处理</p>
-<pre><code class="nulljava"><span class="hljs-comment">// ClientTest:</span>
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test02</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">try</span>{
-        <span class="hljs-comment">//1.创建服务Service</span>
-        URL url = <span class="hljs-keyword">new</span> URL(<span class="hljs-keyword">this</span>.wsdl);
-        QName qname = <span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"MyServiceImplService"</span>);
+<pre><code class="lang-java">// ClientTest:
+@Test
+public void test02(){
+    try{
+        //1.创建服务Service
+        URL url = new URL(this.wsdl);
+        QName qname = new QName(this.ns,&quot;MyServiceImplService&quot;);
         Service service=Service.create(url, qname);
 
-        <span class="hljs-comment">//2.创建Dispatch(基于Message方式：格式化为xml进行处理)</span>
-        QName pname=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"MyServiceImplPort"</span>);
-        <span class="hljs-comment">//createDispatch(portName,classType,mode)</span>
+        //2.创建Dispatch(基于Message方式：格式化为xml进行处理)
+        QName pname=new QName(this.ns,&quot;MyServiceImplPort&quot;);
+        //createDispatch(portName,classType,mode)
         Dispatch&lt;SOAPMessage&gt; dispatch=service.createDispatch(pname,
             SOAPMessage.class,Service.Mode.MESSAGE);
 
-        <span class="hljs-comment">//3.创建SOAPMessage</span>
+        //3.创建SOAPMessage
         SOAPMessage message=MessageFactory.newInstance().createMessage();
         SOAPEnvelope envelope=message.getSOAPPart().getEnvelope();
         SOAPBody body=envelope.getBody();
 
-        <span class="hljs-comment">//4.创建QName即节点以指定消息中传递的数据</span>
-        QName ename=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"minus"</span>,<span class="hljs-string">"ns"</span>);
+        //4.创建QName即节点以指定消息中传递的数据
+        QName ename=new QName(this.ns,&quot;minus&quot;,&quot;ns&quot;);
         SOAPBodyElement bodyElement=body.addBodyElement(ename);
-        bodyElement.addChildElement(<span class="hljs-string">"a"</span>).setValue(<span class="hljs-string">"50"</span>);
-        bodyElement.addChildElement(<span class="hljs-string">"b"</span>).setValue(<span class="hljs-string">"30"</span>);
+        bodyElement.addChildElement(&quot;a&quot;).setValue(&quot;50&quot;);
+        bodyElement.addChildElement(&quot;b&quot;).setValue(&quot;30&quot;);
         message.writeTo(System.out);
         System.out.println();
 
-        <span class="hljs-comment">//5.通过Dispatch传递消息，会返回响应消息</span>
+        //5.通过Dispatch传递消息，会返回响应消息
         SOAPMessage response=dispatch.invoke(message);
         response.writeTo(System.out);
         System.out.println();
 
-        <span class="hljs-comment">//将响应的消息转换为dom对象（可通过Xpath等多种方式完成对响应数据的处理）</span>
+        //将响应的消息转换为dom对象（可通过Xpath等多种方式完成对响应数据的处理）
         SOAPBody responseBody=response.getSOAPPart().getEnvelope().getBody();
         Document doc=responseBody.extractContentAsDocument();
-        String str=doc.getElementsByTagName(<span class="hljs-string">"minusResult"</span>).item(<span class="hljs-number">0</span>).getTextContent();
+        String str=doc.getElementsByTagName(&quot;minusResult&quot;).item(0).getTextContent();
         System.out.println(str);
 
-    }<span class="hljs-keyword">catch</span> (Exception e){
+    }catch (Exception e){
         System.out.println(e.getMessage());
     }
 }
 </code></pre>
 <p>发送的消息如下：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Envelope</span> <span class="hljs-attr">xmlns:SOAP-ENV</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/envelope/"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Header</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ns:minus</span> <span class="hljs-attr">xmlns:ns</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>50<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>30<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ns:minus</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Envelope</span>&gt;</span>
+<pre><code class="lang-xml">&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+    &lt;SOAP-ENV:Header/&gt;
+    &lt;SOAP-ENV:Body&gt;
+        &lt;ns:minus xmlns:ns=&quot;http://first.ws.my.cj.com/&quot;&gt;
+            &lt;a&gt;50&lt;/a&gt;
+            &lt;b&gt;30&lt;/b&gt;
+        &lt;/ns:minus&gt;
+    &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;
 </code></pre>
 <p>得到响应消息如下：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">S:Envelope</span> <span class="hljs-attr">xmlns:S</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/envelope/"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">S:Header</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">S:Body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ns2:minusResponse</span> <span class="hljs-attr">xmlns:ns2</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">minusResult</span>&gt;</span>20<span class="hljs-tag">&lt;/<span class="hljs-name">minusResult</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">ns2:minusResponse</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">S:Body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">S:Envelope</span>&gt;</span>
+<pre><code class="lang-xml">&lt;S:Envelope xmlns:S=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+    &lt;S:Header/&gt;
+    &lt;S:Body&gt;
+        &lt;ns2:minusResponse xmlns:ns2=&quot;http://first.ws.my.cj.com/&quot;&gt;
+            &lt;minusResult&gt;20&lt;/minusResult&gt;
+        &lt;/ns2:minusResponse&gt;
+    &lt;/S:Body&gt;
+&lt;/S:Envelope&gt;
 </code></pre>
 <h4 id="header-22">Payload方式（String）</h4>
 <p>通过字符串(将对象编排与反编排)进行消息的传递，会自动对字符串进行编码</p>
 <p>发送（payload）：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">ns:addStudent</span> <span class="hljs-attr">xmlns:ns</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ns2:student</span> <span class="hljs-attr">xmlns:ns2</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">age</span>&gt;</span>18<span class="hljs-tag">&lt;/<span class="hljs-name">age</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>0<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Lucy<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sex</span>&gt;</span>Female<span class="hljs-tag">&lt;/<span class="hljs-name">sex</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ns2:student</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ns:addStudent</span>&gt;</span>
+<pre><code class="lang-xml">&lt;ns:addStudent xmlns:ns=&quot;http://first.ws.my.cj.com/&quot;&gt;
+    &lt;ns2:student xmlns:ns2=&quot;http://first.ws.my.cj.com/&quot;&gt;
+        &lt;age&gt;18&lt;/age&gt;
+        &lt;id&gt;0&lt;/id&gt;
+        &lt;name&gt;Lucy&lt;/name&gt;
+        &lt;sex&gt;Female&lt;/sex&gt;
+    &lt;/ns2:student&gt;
+&lt;/ns:addStudent&gt;
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-comment">// ClientTest:</span>
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test03</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">try</span>{
-        <span class="hljs-comment">//1.创建服务Service</span>
-        URL url = <span class="hljs-keyword">new</span> URL(<span class="hljs-keyword">this</span>.wsdl);
-        QName qname = <span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"MyServiceImplService"</span>);
+<pre><code class="lang-java">// ClientTest:
+@Test
+public void test03(){
+    try{
+        //1.创建服务Service
+        URL url = new URL(this.wsdl);
+        QName qname = new QName(this.ns,&quot;MyServiceImplService&quot;);
         Service service=Service.create(url, qname);
 
-        <span class="hljs-comment">//2.创建Dispatch(基于Payload,通过源数据Source的方式传递)</span>
-        QName dname=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"MyServiceImplPort"</span>);
+        //2.创建Dispatch(基于Payload,通过源数据Source的方式传递)
+        QName dname=new QName(this.ns,&quot;MyServiceImplPort&quot;);
         Dispatch&lt;Source&gt; dispatch=service.createDispatch(dname,
         Source.class,Service.Mode.PAYLOAD);
 
-        <span class="hljs-comment">//3. 创建对象</span>
-        Student student=<span class="hljs-keyword">new</span> Student();
-        student.setId(<span class="hljs-number">5</span>);
-        student.setName(<span class="hljs-string">"Lucy"</span>);
-        student.setAge(<span class="hljs-number">18</span>);
+        //3. 创建对象
+        Student student=new Student();
+        student.setId(5);
+        student.setName(&quot;Lucy&quot;);
+        student.setAge(18);
         student.setSex(Gender.FEMALE);
 
-        <span class="hljs-comment">//4. 使用Marshaller编排对象：根据对象组建xml字符串</span>
+        //4. 使用Marshaller编排对象：根据对象组建xml字符串
         JAXBContext ctx=JAXBContext.newInstance(AddStudent.class);
-        AddStudent addStudent=<span class="hljs-keyword">new</span> AddStudent();
+        AddStudent addStudent=new AddStudent();
         addStudent.setStudent(student);
-        QName sname=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"addStudent"</span>);
-        JAXBElement&lt;AddStudent&gt; element=<span class="hljs-keyword">new</span> JAXBElement&lt;AddStudent&gt;(sname,AddStudent.class,addStudent);
+        QName sname=new QName(this.ns,&quot;addStudent&quot;);
+        JAXBElement&lt;AddStudent&gt; element=new JAXBElement&lt;AddStudent&gt;(sname,AddStudent.class,addStudent);
 
         Marshaller mar=ctx.createMarshaller();
-        <span class="hljs-comment">//fragement 默认为false，会创建头信息：&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
-        mar.setProperty(Marshaller.JAXB_FRAGMENT,<span class="hljs-keyword">true</span>);
-        StringWriter writer= <span class="hljs-keyword">new</span> StringWriter();
+        //fragement 默认为false，会创建头信息：&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+        mar.setProperty(Marshaller.JAXB_FRAGMENT,true);
+        StringWriter writer= new StringWriter();
         mar.marshal(element, writer);
 
         String payload=writer.toString();
-        System.out.println(<span class="hljs-string">"payload:"</span>+payload);
+        System.out.println(&quot;payload:&quot;+payload);
 
-        <span class="hljs-comment">//6.通过Dispatch传递payload</span>
-        StreamSource rs=<span class="hljs-keyword">new</span> StreamSource(<span class="hljs-keyword">new</span> StringReader(payload));
+        //6.通过Dispatch传递payload
+        StreamSource rs=new StreamSource(new StringReader(payload));
         Source response=dispatch.invoke(rs);
 
-        <span class="hljs-comment">//7.处理响应信息</span>
-        System.out.println(response <span class="hljs-keyword">instanceof</span> StAXSource);
+        //7.处理响应信息
+        System.out.println(response instanceof StAXSource);
 
-        <span class="hljs-comment">//使用Transformer对象将Source转换为dom对象</span>
+        //使用Transformer对象将Source转换为dom对象
         Transformer trans=TransformerFactory.newInstance().newTransformer();
-        DOMResult result=<span class="hljs-keyword">new</span> DOMResult();
+        DOMResult result=new DOMResult();
         trans.transform(response, result);
 
-        <span class="hljs-comment">//通过XPath处理相应信息</span>
+        //通过XPath处理相应信息
         XPath xpath=XPathFactory.newInstance().newXPath();
-        NodeList nodeList=(NodeList)xpath.evaluate(<span class="hljs-string">"//student"</span>,
+        NodeList nodeList=(NodeList)xpath.evaluate(&quot;//student&quot;,
             result.getNode(),XPathConstants.NODESET);
 
-        <span class="hljs-comment">//使用Unmarshaller反编排：将xml节点转换回对象</span>
-        <span class="hljs-comment">//Student stu=(Student)ctx.createUnmarshaller().unmarshal(nodeList.item(0));</span>
+        //使用Unmarshaller反编排：将xml节点转换回对象
+        //Student stu=(Student)ctx.createUnmarshaller().unmarshal(nodeList.item(0));
         JAXBElement&lt;Student&gt; resultElement=ctx.createUnmarshaller()
-                            .unmarshal(nodeList.item(<span class="hljs-number">0</span>), Student.class);
+                            .unmarshal(nodeList.item(0), Student.class);
         Student stu=resultElement.getValue();
-        System.out.println(stu.getId()+<span class="hljs-string">"|"</span>+stu.getName()+<span class="hljs-string">"|"</span>+stu.getAge()+<span class="hljs-string">"|"</span>+stu.getSex());
-    }<span class="hljs-keyword">catch</span> (Exception e){
-        System.out.println(<span class="hljs-string">"Exception:"</span>+e.getMessage());
+        System.out.println(stu.getId()+&quot;|&quot;+stu.getName()+&quot;|&quot;+stu.getAge()+&quot;|&quot;+stu.getSex());
+    }catch (Exception e){
+        System.out.println(&quot;Exception:&quot;+e.getMessage());
         e.printStackTrace();
     }
 }
 </code></pre>
 <h4 id="header-23">扩展：增加消息头</h4>
-<pre><code class="nulljava"><span class="hljs-comment">//创建SOAPHeader</span>
+<pre><code class="lang-java">//创建SOAPHeader
 SOAPHeader header=envelope.getHeader();
-<span class="hljs-keyword">if</span>(header==<span class="hljs-keyword">null</span>)
+if(header==null)
     header=envelope.addHeader();
-QName hName=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"authInfo"</span>,<span class="hljs-string">"ns"</span>);
-header.addHeaderElement(hName).setValue(<span class="hljs-string">"auth:tom"</span>);
+QName hName=new QName(this.ns,&quot;authInfo&quot;,&quot;ns&quot;);
+header.addHeaderElement(hName).setValue(&quot;auth:tom&quot;);
 </code></pre>
 <p>创建的消息（Result）如下：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Envelope</span> <span class="hljs-attr">xmlns:SOAP-ENV</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/envelope/"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Header</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ns:authInfo</span> <span class="hljs-attr">xmlns:ns</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span>&gt;</span>auth:tom<span class="hljs-tag">&lt;/<span class="hljs-name">ns:authInfo</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Header</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">ns:list</span> <span class="hljs-attr">xmlns:ns</span>=<span class="hljs-string">"http://first.ws.my.cj.com/"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">SOAP-ENV:Envelope</span>&gt;</span>
+<pre><code class="lang-xml">&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+    &lt;SOAP-ENV:Header&gt;
+        &lt;ns:authInfo xmlns:ns=&quot;http://first.ws.my.cj.com/&quot;&gt;auth:tom&lt;/ns:authInfo&gt;
+    &lt;/SOAP-ENV:Header&gt;
+    &lt;SOAP-ENV:Body&gt;
+        &lt;ns:list xmlns:ns=&quot;http://first.ws.my.cj.com/&quot;/&gt;
+    &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;
 </code></pre>
 <h3 id="header-24">基于Jax-ws的通讯方式（封装了SOAP消息）</h3>
 <ol>
@@ -809,38 +810,38 @@ header.addHeaderElement(hName).setValue(<span class="hljs-string">"auth:tom"</sp
 </ol>
 <h4 id="header-25">据wsdl中的service创建Service</h4>
 <p>wsdl文件中：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:service</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"OperationWsService"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:port</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"OperationWsServicePort"</span> <span class="hljs-attr">binding</span>=<span class="hljs-string">"tns:OperationWsServiceSOAP"</span> &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">soap:address</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"http://localhost:8888/ns"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:port</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:service</span>&gt;</span>
+<pre><code class="lang-xml">&lt;wsdl:service name=&quot;OperationWsService&quot;&gt;
+    &lt;wsdl:port name=&quot;OperationWsServicePort&quot; binding=&quot;tns:OperationWsServiceSOAP&quot; &gt;
+        &lt;soap:address location=&quot;http://localhost:8888/ns&quot;/&gt;
+    &lt;/wsdl:port&gt;
+&lt;/wsdl:service&gt;
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>{
-    OperationWsService service=<span class="hljs-keyword">new</span> OperationWsService ();
+<pre><code class="lang-java">public static void main(String[] args){
+    OperationWsService service=new OperationWsService ();
     IOperationWsService operationWsService=service.getOperationWsServicePort();
-    <span class="hljs-comment">//调用实现方法</span>
-    System.out.println(operationWsService.plus(<span class="hljs-number">34</span>, <span class="hljs-number">56</span>));
+    //调用实现方法
+    System.out.println(operationWsService.plus(34, 56));
 }
 </code></pre>
 <h4 id="header-26">据wsdl中的definitions创建Service</h4>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">wsdl:definitions</span> <span class="hljs-attr">xmlns:soap</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/wsdl/soap/"</span> 
-        <span class="hljs-attr">xmlns:tns</span>=<span class="hljs-string">"http://ws.cj.com/student"</span> 
-        <span class="hljs-attr">xmlns:wsdl</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/wsdl/"</span> 
-        <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span> 
-        <span class="hljs-attr">name</span>=<span class="hljs-string">"OperationWsService"</span> 
-        <span class="hljs-attr">targetNamespace</span>=<span class="hljs-string">"http://ws.cj.com/student"</span>&gt;</span>
+<pre><code class="lang-xml">&lt;wsdl:definitions xmlns:soap=&quot;http://schemas.xmlsoap.org/wsdl/soap/&quot; 
+        xmlns:tns=&quot;http://ws.cj.com/student&quot; 
+        xmlns:wsdl=&quot;http://schemas.xmlsoap.org/wsdl/&quot; 
+        xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; 
+        name=&quot;OperationWsService&quot; 
+        targetNamespace=&quot;http://ws.cj.com/student&quot;&gt;
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> MalformedURLException</span>{
-    URL url=<span class="hljs-keyword">new</span> URL(<span class="hljs-string">"http://localhost:8888/ns?wsdl"</span>); 
-    <span class="hljs-comment">//命名Qname(命名空间,服务名称)</span>
-    QName qname=<span class="hljs-keyword">new</span> QName(<span class="hljs-string">"http://ws.cj.com/student"</span>,<span class="hljs-string">"OperationWsService"</span>);
-    <span class="hljs-comment">//相当于创建了&lt;OperationWsService xmln=”http://ws.cj.com/student”&gt;节点</span>
+<pre><code class="lang-java">public static void main(String[] args) throws MalformedURLException{
+    URL url=new URL(&quot;http://localhost:8888/ns?wsdl&quot;); 
+    //命名Qname(命名空间,服务名称)
+    QName qname=new QName(&quot;http://ws.cj.com/student&quot;,&quot;OperationWsService&quot;);
+    //相当于创建了&lt;OperationWsService xmln=”http://ws.cj.com/student”&gt;节点
 
-    OperationWsService service=<span class="hljs-keyword">new</span> OperationWsService(url, qname);
+    OperationWsService service=new OperationWsService(url, qname);
     IOperationWsService operationWsService=service.getPort(IOperationWsService.class);
 
-    <span class="hljs-comment">//调用实现方法</span>
-    System.out.println(operationWsService.plus(<span class="hljs-number">34</span>, <span class="hljs-number">56</span>));
+    //调用实现方法
+    System.out.println(operationWsService.plus(34, 56));
 }
 </code></pre>
 <h2 id="header-27">Jax-ws (Handler)</h2>
@@ -880,59 +881,59 @@ header.addHeaderElement(hName).setValue(<span class="hljs-string">"auth:tom"</sp
 </li>
 </ul>
 <p>示例：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XxxHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SOAPHandler</span>&lt;<span class="hljs-title">SOAPMessageContext</span>&gt;
-    @<span class="hljs-title">Override</span>
-    <span class="hljs-title">public</span> <span class="hljs-title">boolean</span> <span class="hljs-title">handleMessage</span>(<span class="hljs-title">SOAPMessageContext</span> <span class="hljs-title">context</span>)</span>{
+<pre><code class="lang-java">public class XxxHandler implements SOAPHandler&lt;SOAPMessageContext&gt;
+    @Override
+    public boolean handleMessage(SOAPMessageContext context){
         Boolean out=(Boolean)context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-        <span class="hljs-keyword">if</span>(out)
-            System.out.println(<span class="hljs-string">"XxxHandler out"</span>);
-        <span class="hljs-keyword">else</span>
-            System.out.println(<span class="hljs-string">"XxxHandler in"</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        if(out)
+            System.out.println(&quot;XxxHandler out&quot;);
+        else
+            System.out.println(&quot;XxxHandler in&quot;);
+        return true;
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">handleFault</span><span class="hljs-params">(SOAPMessageContext context)</span></span>{
-        System.out.println(<span class="hljs-string">"XxxHandle Fault"</span>);
-        <span class="hljs-keyword">try</span>{
+    @Override
+    public boolean handleFault(SOAPMessageContext context){
+        System.out.println(&quot;XxxHandle Fault&quot;);
+        try{
             SOAPMessage message =context.getMessage();
             SOAPEnvelope envelope=message.getSOAPPart().getEnvelope();
             SOAPFault fault=envelope.getBody().getFault();
-            <span class="hljs-keyword">if</span>(fault!=<span class="hljs-keyword">null</span>)
-                System.out.println(<span class="hljs-string">"Handle1 Fault:"</span>+fault.getFaultString());
-        } <span class="hljs-keyword">catch</span> (SOAPException e){
+            if(fault!=null)
+                System.out.println(&quot;Handle1 Fault:&quot;+fault.getFaultString());
+        } catch (SOAPException e){
             e.printStackTrace();
-        } <span class="hljs-keyword">catch</span> (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
-        }<span class="hljs-keyword">catch</span>(SOAPFaultException e)<span class="hljs-comment">//不会触发此异常！</span>
+        }catch(SOAPFaultException e)//不会触发此异常！
         {
-            System.out.println(<span class="hljs-string">"Handler1 Fault catch SOAPFaultException"</span>);
+            System.out.println(&quot;Handler1 Fault catch SOAPFaultException&quot;);
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        return true;
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">close</span><span class="hljs-params">(MessageContext context)</span>
-    </span>{}
+    @Override
+    public void close(MessageContext context)
+    {}
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Set&lt;QName&gt; <span class="hljs-title">getHeaders</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    @Override
+    public Set&lt;QName&gt; getHeaders(){
+        return null;
     }
 }
 </code></pre>
 <h3 id="header-29">配置使用</h3>
 <ul>
-<li>配置Handler过滤链文件 (eg: <code>handler-chain.xml</code>， 置于classpath下)<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> standalone=<span class="hljs-string">"yes"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">javaee:handler-chains</span> 
-   <span class="hljs-attr">xmlns:javaee</span>=<span class="hljs-string">"http://java.sun.com/xml/ns/javaee"</span> 
-   <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">javaee:handler-chain</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">javaee:handler</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">javaee:handler-class</span>&gt;</span>com.cj.my.ws.handler.LicenseHandler<span class="hljs-tag">&lt;/<span class="hljs-name">javaee:handler-class</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">javaee:handler</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">javaee:handler-chain</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">javaee:handler-chains</span>&gt;</span>
+<li>配置Handler过滤链文件 (eg: <code>handler-chain.xml</code>， 置于classpath下)<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;yes&quot;?&gt;
+&lt;javaee:handler-chains 
+   xmlns:javaee=&quot;http://java.sun.com/xml/ns/javaee&quot; 
+   xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+&lt;javaee:handler-chain&gt;
+  &lt;javaee:handler&gt;
+    &lt;javaee:handler-class&gt;com.cj.my.ws.handler.LicenseHandler&lt;/javaee:handler-class&gt;
+  &lt;/javaee:handler&gt;
+&lt;/javaee:handler-chain&gt;
+&lt;/javaee:handler-chains&gt;
 </code></pre>
 </li>
 <li>在WebService实现类上添加@HandlerChain注解（eg：<code>@HandlerChain(file=&quot;handler-chain.xml&quot;)</code></li>
@@ -951,22 +952,22 @@ header.addHeaderElement(hName).setValue(<span class="hljs-string">"auth:tom"</sp
 </li>
 </ul>
 <h3 id="header-31">依赖包</h3>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.cxf<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cxf-rt-frontend-jaxws<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${cxf.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.cxf<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cxf-rt-transports-http<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${cxf.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- 使用jetty容器时才需要此包--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.cxf<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cxf-rt-transports-http-jetty<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${cxf.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;
+    &lt;artifactId&gt;cxf-rt-frontend-jaxws&lt;/artifactId&gt;
+    &lt;version&gt;${cxf.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;
+    &lt;artifactId&gt;cxf-rt-transports-http&lt;/artifactId&gt;
+    &lt;version&gt;${cxf.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- 使用jetty容器时才需要此包--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.cxf&lt;/groupId&gt;
+    &lt;artifactId&gt;cxf-rt-transports-http-jetty&lt;/artifactId&gt;
+    &lt;version&gt;${cxf.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <h3 id="header-32">生成代码</h3>
 <p>示例：使用契约优先的方式</p>
@@ -989,51 +990,51 @@ header.addHeaderElement(hName).setValue(<span class="hljs-string">"auth:tom"</sp
 <h3 id="header-33">使用</h3>
 <h4 id="header-34">Server端</h4>
 <p>方式一：使用JaxWs API 发布服务</p>
-<pre><code class="nulljava">Endpoint.publish(<span class="hljs-string">"http://localhost:9090/my/us"</span>, <span class="hljs-keyword">new</span> UserWsService());
+<pre><code class="lang-java">Endpoint.publish(&quot;http://localhost:9090/my/us&quot;, new UserWsService());
 </code></pre>
 <p>方式二：使用服务发布工厂<code>JaxWsServerFactoryBean</code>发布服务（默认使用“代码优先”）</p>
-<pre><code class="nulljava">JaxWsServerFactoryBean serverFactory=<span class="hljs-keyword">new</span> JaxWsServerFactoryBean();
-serverFactory.setAddress(<span class="hljs-string">"http://localhost:9090/my/us"</span>);
-serverFactory.setServiceBean(<span class="hljs-keyword">new</span> UserWsService());
+<pre><code class="lang-java">JaxWsServerFactoryBean serverFactory=new JaxWsServerFactoryBean();
+serverFactory.setAddress(&quot;http://localhost:9090/my/us&quot;);
+serverFactory.setServiceBean(new UserWsService());
 serverFactory.setServiceClass(IUserWsService.class);
 
-<span class="hljs-comment">//为访问增加相应的Interceptor来处理in/out消息</span>
-serverFactory.getInInterceptors().add(<span class="hljs-keyword">new</span> LoggingInInterceptor());
-serverFactory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LoggingOutInterceptor());
+//为访问增加相应的Interceptor来处理in/out消息
+serverFactory.getInInterceptors().add(new LoggingInInterceptor());
+serverFactory.getOutInterceptors().add(new LoggingOutInterceptor());
 
-<span class="hljs-comment">//需要设置以下参数才能基于“契约优先”发布(会自动对应外部xsd文件)</span>
-serverFactory.setWsdlLocation(<span class="hljs-string">"META-INF/wsdl/user.wsdl"</span>);
-serverFactory.setServiceName(<span class="hljs-keyword">new</span> QName(<span class="hljs-string">"http://www.my.org/user"</span>,<span class="hljs-string">"UserWsService"</span>));
+//需要设置以下参数才能基于“契约优先”发布(会自动对应外部xsd文件)
+serverFactory.setWsdlLocation(&quot;META-INF/wsdl/user.wsdl&quot;);
+serverFactory.setServiceName(new QName(&quot;http://www.my.org/user&quot;,&quot;UserWsService&quot;));
 
-<span class="hljs-comment">//增加自定义Handler</span>
-<span class="hljs-comment">//serverFactory.getHandlers().add(new LicenseHandler());</span>
-<span class="hljs-comment">//可使用Interceptor代替Handler</span>
-serverFactory.getInInterceptors().add(<span class="hljs-keyword">new</span> LicenseInInterceptor());
+//增加自定义Handler
+//serverFactory.getHandlers().add(new LicenseHandler());
+//可使用Interceptor代替Handler
+serverFactory.getInInterceptors().add(new LicenseInInterceptor());
 
 serverFactory.create();
 </code></pre>
 <h4 id="header-35">Client端</h4>
 <p>方式一：使用 JaxWs API 进行客户端调用</p>
-<pre><code class="nulljava">UserWsService service=<span class="hljs-keyword">new</span> UserWsService();
+<pre><code class="lang-java">UserWsService service=new UserWsService();
 IUserWsService userService=service.getUserWsServicePort();
-System.out.println(userService.addTest(<span class="hljs-number">23</span>, <span class="hljs-number">45</span>));
+System.out.println(userService.addTest(23, 45));
 </code></pre>
 <p>方式二：使用代理工厂<code>JaxWsProxyFactoryBean</code>进行客户端调用</p>
-<pre><code class="nulljava">JaxWsProxyFactoryBean factory = <span class="hljs-keyword">new</span> JaxWsProxyFactoryBean();
-factory.setAddress(<span class="hljs-string">"http://localhost:9090/my/us"</span>);
+<pre><code class="lang-java">JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
+factory.setAddress(&quot;http://localhost:9090/my/us&quot;);
 factory.setServiceClass(IUserWsService.class);
 
-<span class="hljs-comment">//为访问增加相应的Interceptor来处理in/out消息</span>
-factory.getInInterceptors().add(<span class="hljs-keyword">new</span> LoggingInInterceptor());
-factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LoggingOutInterceptor());
+//为访问增加相应的Interceptor来处理in/out消息
+factory.getInInterceptors().add(new LoggingInInterceptor());
+factory.getOutInterceptors().add(new LoggingOutInterceptor());
 
-<span class="hljs-comment">//增加SOAPHandler</span>
-<span class="hljs-comment">//factory.getHandlers().add(new LicenseHandler());</span>
-<span class="hljs-comment">//可以使用Interceptor代替Handler</span>
-factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LicenseOutInterceptor());
+//增加SOAPHandler
+//factory.getHandlers().add(new LicenseHandler());
+//可以使用Interceptor代替Handler
+factory.getOutInterceptors().add(new LicenseOutInterceptor());
 
 IUserWsService userService=(IUserWsService)factory.create();
-System.out.println(userService.addTest(<span class="hljs-number">23</span>, <span class="hljs-number">45</span>));
+System.out.println(userService.addTest(23, 45));
 </code></pre>
 <h3 id="header-36">结合Spring</h3>
 <p>使用Spring管理</p>
@@ -1041,61 +1042,61 @@ System.out.println(userService.addTest(<span class="hljs-number">23</span>, <spa
 <p>发布WebService到Web容器中，并通过Spring管理WebService</p>
 <ol>
 <li><p>配置<code>web.xml</code></p>
-<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- 添加CXF的servlet监听请求 --&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>CXFServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.apache.cxf.transport.servlet.CXFServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>CXFServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/service/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;!-- 添加CXF的servlet监听请求 --&gt;
+ &lt;servlet&gt;
+     &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;
+     &lt;servlet-class&gt;org.apache.cxf.transport.servlet.CXFServlet&lt;/servlet-class&gt;
+ &lt;/servlet&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;CXFServlet&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/service/*&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
 </code></pre>
 </li>
 <li><p>配置<code>beans.xml</code></p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-         <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-         <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
-         <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-         <span class="hljs-attr">xmlns:jaxws</span>=<span class="hljs-string">"http://cxf.apache.org/jaxws"</span>
-         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">" ...
-             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd"</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+         xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+         xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+         xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;
+         xsi:schemaLocation=&quot; ...
+             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd&quot;&gt;
 
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.cj.my.ws.service"</span> /&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspectj-autoproxy</span> <span class="hljs-attr">proxy-target-class</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+     &lt;context:annotation-config/&gt;
+     &lt;context:component-scan base-package=&quot;com.cj.my.ws.service&quot; /&gt;
+     &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
 
-     <span class="hljs-comment">&lt;!-- 导入cxf--&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"classpath:META-INF/cxf/cxf.xml"</span>/&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"classpath:META-INF/cxf/cxf-extension-jaxws.xml"</span>/&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">import</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"classpath:META-INF/cxf/cxf-servlet.xml"</span>/&gt;</span>
+     &lt;!-- 导入cxf--&gt;
+     &lt;import resource=&quot;classpath:META-INF/cxf/cxf.xml&quot;/&gt;
+     &lt;import resource=&quot;classpath:META-INF/cxf/cxf-extension-jaxws.xml&quot;/&gt;
+     &lt;import resource=&quot;classpath:META-INF/cxf/cxf-servlet.xml&quot;/&gt;
 
-     <span class="hljs-comment">&lt;!-- 发布服务--&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+     &lt;!-- 发布服务--&gt;
+ &lt;/beans&gt;
 </code></pre>
 <ul>
-<li>发布方式一：使用<code>&lt;jaxws:endpoint&gt;</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userWsService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.my.ws.cxf.UserWsService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">jaxws:endpoint</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userWS"</span> <span class="hljs-attr">implementor</span>=<span class="hljs-string">"#userWsService"</span> <span class="hljs-attr">address</span>=<span class="hljs-string">"/us"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">jaxws:inInterceptors</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ipInInterceptor"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.my.ws.cxf.interceptor.IpInInterceptor"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:inInterceptors</span>&gt;</span>
-  <span class="hljs-comment">&lt;!--  &lt;jaxws:outFaultInterceptors&gt;
-      &lt;bean id="loggerOutInterceptor" class="org.apache.cxf.interceptor.LoggingOutInterceptor"/&gt;
-      &lt;bean id="faultOutInterceptor" class="org.apache.cxf.interceptor.FaultOutInterceptor"/&gt;
-  &lt;/jaxws:outFaultInterceptors&gt; --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">jaxws:handlers</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"backWsLogHandler"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.my.ws.cxf.handler.BackWsLogHandler"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- &lt;bean id="licenseHandler" class="com.cj.my.ws.cxf.handler.LicenseHandler"&gt;&lt;/bean&gt; --&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:handlers</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:endpoint</span>&gt;</span>
+<li>发布方式一：使用<code>&lt;jaxws:endpoint&gt;</code><pre><code class="lang-xml">&lt;bean id=&quot;userWsService&quot; class=&quot;com.cj.my.ws.cxf.UserWsService&quot; /&gt;
+&lt;jaxws:endpoint id=&quot;userWS&quot; implementor=&quot;#userWsService&quot; address=&quot;/us&quot;&gt;
+  &lt;jaxws:inInterceptors&gt;
+      &lt;bean id=&quot;ipInInterceptor&quot; class=&quot;com.cj.my.ws.cxf.interceptor.IpInInterceptor&quot;/&gt;
+  &lt;/jaxws:inInterceptors&gt;
+  &lt;!--  &lt;jaxws:outFaultInterceptors&gt;
+      &lt;bean id=&quot;loggerOutInterceptor&quot; class=&quot;org.apache.cxf.interceptor.LoggingOutInterceptor&quot;/&gt;
+      &lt;bean id=&quot;faultOutInterceptor&quot; class=&quot;org.apache.cxf.interceptor.FaultOutInterceptor&quot;/&gt;
+  &lt;/jaxws:outFaultInterceptors&gt; --&gt;
+  &lt;jaxws:handlers&gt;
+      &lt;bean id=&quot;backWsLogHandler&quot; class=&quot;com.cj.my.ws.cxf.handler.BackWsLogHandler&quot;&gt;&lt;/bean&gt;
+      &lt;!-- &lt;bean id=&quot;licenseHandler&quot; class=&quot;com.cj.my.ws.cxf.handler.LicenseHandler&quot;&gt;&lt;/bean&gt; --&gt;
+  &lt;/jaxws:handlers&gt;
+&lt;/jaxws:endpoint&gt;
 </code></pre>
 </li>
-<li>发布方式二：使用<code>&lt;jaxws:server&gt;</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">jaxws:server</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userWS"</span> <span class="hljs-attr">serviceClass</span>=<span class="hljs-string">"com.cj.my.ws.cxf.IUserWsService"</span> <span class="hljs-attr">address</span>=<span class="hljs-string">"/us"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">jaxws:serviceBean</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.my.ws.cxf.UserWsService"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:serviceBean</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:server</span>&gt;</span>
+<li>发布方式二：使用<code>&lt;jaxws:server&gt;</code><pre><code class="lang-xml">&lt;jaxws:server id=&quot;userWS&quot; serviceClass=&quot;com.cj.my.ws.cxf.IUserWsService&quot; address=&quot;/us&quot;&gt;
+  &lt;jaxws:serviceBean&gt;
+      &lt;bean class=&quot;com.cj.my.ws.cxf.UserWsService&quot;/&gt;
+  &lt;/jaxws:serviceBean&gt;
+&lt;/jaxws:server&gt;
 </code></pre>
 </li>
 <li>其实<code>&lt;jaxws:server&gt;</code> 和<code>&lt;jaxws:endpoint&gt;</code> 是等效的，都用于发布Web 服务<ul>
@@ -1108,38 +1109,38 @@ System.out.println(userService.addTest(<span class="hljs-number">23</span>, <spa
 <h4 id="header-38">Client端</h4>
 <p>通过Spring注入WebService Client</p>
 <p>使用<code>&lt;jaxws:client&gt;</code>:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-        <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-        <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
-        <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-        <span class="hljs-attr">xmlns:jaxws</span>=<span class="hljs-string">"http://cxf.apache.org/jaxws"</span>
-        <span class="hljs-attr">xmlns:cxf</span>=<span class="hljs-string">"http://cxf.apache.org/core"</span>
-        <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"
+<pre><code class="lang-xml">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;
+        xmlns:cxf=&quot;http://cxf.apache.org/core&quot;
+        xsi:schemaLocation=&quot;
             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
-            http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd"</span>&gt;</span>
+            http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd&quot;&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.cj.my.ws"</span>/&gt;</span>
+&lt;context:component-scan base-package=&quot;com.cj.my.ws&quot;/&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">jaxws:client</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userWsService"</span> 
-        <span class="hljs-attr">serviceClass</span>=<span class="hljs-string">"com.cj.my.ws.cxf.client.IUserWsService"</span> 
-        <span class="hljs-attr">address</span>=<span class="hljs-string">"http://localhost:9090/my/service/us"</span> &gt;</span>
-    <span class="hljs-comment">&lt;!-- &lt;jaxws:handlers&gt;
-        &lt;ref bean="licenseHandler"/&gt;
-    &lt;/jaxws:handlers&gt; --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:client</span>&gt;</span>
+&lt;jaxws:client id=&quot;userWsService&quot; 
+        serviceClass=&quot;com.cj.my.ws.cxf.client.IUserWsService&quot; 
+        address=&quot;http://localhost:9090/my/service/us&quot; &gt;
+    &lt;!-- &lt;jaxws:handlers&gt;
+        &lt;ref bean=&quot;licenseHandler&quot;/&gt;
+    &lt;/jaxws:handlers&gt; --&gt;
+&lt;/jaxws:client&gt;
 </code></pre>
 <p>测试：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@RunWith</span>(SpringJUnit4ClassRunner.class)
-<span class="hljs-meta">@ContextConfiguration</span>(<span class="hljs-string">"classpath:beans.xml"</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClientSpringTest</span>
-</span>{
-    <span class="hljs-meta">@Inject</span>
-    <span class="hljs-keyword">private</span> IUserWsService userWsService=<span class="hljs-keyword">null</span>;
+<pre><code class="lang-java">@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(&quot;classpath:beans.xml&quot;)
+public class ClientSpringTest
+{
+    @Inject
+    private IUserWsService userWsService=null;
 
-    <span class="hljs-meta">@Test</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAddTest</span><span class="hljs-params">()</span></span>{
-        System.out.println(userWsService.addTest(<span class="hljs-number">23</span>, <span class="hljs-number">45</span>));
+    @Test
+    public void testAddTest(){
+        System.out.println(userWsService.addTest(23, 45));
     }
 }
 </code></pre>
@@ -1147,21 +1148,21 @@ System.out.println(userService.addTest(<span class="hljs-number">23</span>, <spa
 <h4 id="header-40">自定义拦截器</h4>
 <p>CXF中有一些常用的拦截器（例如：LoggingOutInterceptor，LoggingInInterceptor）</p>
 <p>也可自定义拦截器，例如：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestOutInterceptor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractSoapInterceptor</span></span>{
-    <span class="hljs-keyword">private</span> String ns=<span class="hljs-string">"http://www.my.org/user"</span>;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">TestOutInterceptor</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">super</span>(Phase.WRITE);
+<pre><code class="lang-java">public class TestOutInterceptor extends AbstractSoapInterceptor{
+    private String ns=&quot;http://www.my.org/user&quot;;
+    public TestOutInterceptor(){
+        super(Phase.WRITE);
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(SoapMessage message)</span> <span class="hljs-keyword">throws</span> Fault</span>{
-        System.out.println(<span class="hljs-string">"TestOutInterceptor------------"</span>);
-        <span class="hljs-keyword">try</span>{
-            DataBinding dataBinding=<span class="hljs-keyword">new</span> JAXBDataBinding(String.class);
-            QName qname=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"testInfo"</span>);
-            Header header=<span class="hljs-keyword">new</span> Header(qname, <span class="hljs-string">"test 88"</span>, dataBinding);
+    @Override
+    public void handleMessage(SoapMessage message) throws Fault{
+        System.out.println(&quot;TestOutInterceptor------------&quot;);
+        try{
+            DataBinding dataBinding=new JAXBDataBinding(String.class);
+            QName qname=new QName(this.ns,&quot;testInfo&quot;);
+            Header header=new Header(qname, &quot;test 88&quot;, dataBinding);
             message.getHeaders().add(header);
-        } <span class="hljs-keyword">catch</span> (JAXBException e){
+        } catch (JAXBException e){
             e.printStackTrace();
         }
     }
@@ -1170,54 +1171,54 @@ System.out.println(userService.addTest(<span class="hljs-number">23</span>, <spa
 <h4 id="header-41">添加拦截器</h4>
 <p>方法一：<code>JaxWsServerFactoryBean</code></p>
 <p>Server端：</p>
-<pre><code class="nulljava">JaxWsServerFactoryBean serverFactory=<span class="hljs-keyword">new</span> JaxWsServerFactoryBean();
+<pre><code class="lang-java">JaxWsServerFactoryBean serverFactory=new JaxWsServerFactoryBean();
 ...
-serverFactory.getInInterceptors().add(<span class="hljs-keyword">new</span> LicenseInInterceptor());
+serverFactory.getInInterceptors().add(new LicenseInInterceptor());
 </code></pre>
 <p>Client端：</p>
-<pre><code class="nulljava">JaxWsProxyFactoryBean factory = <span class="hljs-keyword">new</span> JaxWsProxyFactoryBean();
+<pre><code class="lang-java">JaxWsProxyFactoryBean factory = new JaxWsProxyFactoryBean();
 ...
-factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LicenseOutInterceptor());
+factory.getOutInterceptors().add(new LicenseOutInterceptor());
 </code></pre>
 <p>方法二：Annotation</p>
 <p>Server端：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@InInterceptors</span>(interceptors={<span class="hljs-string">"com.cj.my.ws.cxf.interceptor.LicenseInInterceptor"</span>})
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserWsService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IUserWsService</span></span>
+<pre><code class="lang-java">@InInterceptors(interceptors={&quot;com.cj.my.ws.cxf.interceptor.LicenseInInterceptor&quot;})
+public class UserWsService implements IUserWsService
 </code></pre>
 <p>Client端：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@OutInterceptors</span>(interceptors={
-        <span class="hljs-string">"com.cj.my.ws.cxf.interceptor.TestOutInterceptor"</span>,
-        <span class="hljs-string">"com.cj.my.ws.cxf.interceptor.LicenseOutInterceptor"</span>,
-        <span class="hljs-string">"org.apache.cxf.interceptor.LoggingOutInterceptor"</span>})
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserWsService</span></span>
+<pre><code class="lang-java">@OutInterceptors(interceptors={
+        &quot;com.cj.my.ws.cxf.interceptor.TestOutInterceptor&quot;,
+        &quot;com.cj.my.ws.cxf.interceptor.LicenseOutInterceptor&quot;,
+        &quot;org.apache.cxf.interceptor.LoggingOutInterceptor&quot;})
+public interface IUserWsService
 </code></pre>
 <p>方法三：基于Spring，在Spring配置文件(eg: <code>beans.xml</code>)中添加</p>
 <ul>
 <li>全局配置（使用<code>&lt;cxf:bus&gt;</code>）<ul>
-<li>即作为Client端和Server端都有效（即：对你访问第三方的WebService接口和别人访问你发布出去的WebService接口,都起到拦截作用 ）<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">cxf:bus</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">cxf:outInterceptors</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ref</span> <span class="hljs-attr">bean</span>=<span class="hljs-string">"loggingOutInterceptor"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">cxf:outInterceptors</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">cxf:inInterceptors</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ref</span> <span class="hljs-attr">bean</span>=<span class="hljs-string">"loggingInInterceptor"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">cxf:inInterceptors</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">cxf:bus</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"loggingOutInterceptor"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.cxf.interceptor.LoggingOutInterceptor"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"loggingInInterceptor"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.cxf.interceptor.LoggingInInterceptor"</span>/&gt;</span>
+<li>即作为Client端和Server端都有效（即：对你访问第三方的WebService接口和别人访问你发布出去的WebService接口,都起到拦截作用 ）<pre><code class="lang-xml">&lt;cxf:bus&gt;
+  &lt;cxf:outInterceptors&gt;
+      &lt;ref bean=&quot;loggingOutInterceptor&quot;/&gt;
+  &lt;/cxf:outInterceptors&gt;
+  &lt;cxf:inInterceptors&gt;
+      &lt;ref bean=&quot;loggingInInterceptor&quot;/&gt;
+  &lt;/cxf:inInterceptors&gt;
+&lt;/cxf:bus&gt;
+&lt;bean id=&quot;loggingOutInterceptor&quot; class=&quot;org.apache.cxf.interceptor.LoggingOutInterceptor&quot;/&gt;
+&lt;bean id=&quot;loggingInInterceptor&quot; class=&quot;org.apache.cxf.interceptor.LoggingInInterceptor&quot;/&gt;
 </code></pre>
 </li>
 </ul>
 </li>
 <li>局部（针对某个WebService）：<ul>
 <li>Server端：配置在<code>&lt;jaxws:server&gt;</code>或<code>&lt;jaxws:endpoint&gt;</code>中</li>
-<li>Client端：配置在<code>&lt;jaxws:client&gt;</code>中，例如：<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">jaxws:client</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"userWsService"</span>
-      <span class="hljs-attr">serviceClass</span>=<span class="hljs-string">"com.cj.my.ws.cxf.client.IUserWsService"</span> 
-      <span class="hljs-attr">address</span>=<span class="hljs-string">"http://localhost:9090/my/service/us"</span> &gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">jaxws:handlers</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">ref</span> <span class="hljs-attr">bean</span>=<span class="hljs-string">"licenseHandler"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:handlers</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">jaxws:client</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"licenseHandler"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.my.ws.cxf.handler.LicenseHandler"</span>/&gt;</span>
+<li>Client端：配置在<code>&lt;jaxws:client&gt;</code>中，例如：<pre><code class="lang-xml">&lt;jaxws:client id=&quot;userWsService&quot;
+      serviceClass=&quot;com.cj.my.ws.cxf.client.IUserWsService&quot; 
+      address=&quot;http://localhost:9090/my/service/us&quot; &gt;
+  &lt;jaxws:handlers&gt;
+      &lt;ref bean=&quot;licenseHandler&quot;/&gt;
+  &lt;/jaxws:handlers&gt;
+&lt;/jaxws:client&gt;
+&lt;bean id=&quot;licenseHandler&quot; class=&quot;com.cj.my.ws.cxf.handler.LicenseHandler&quot;/&gt;
 </code></pre>
 </li>
 </ul>
@@ -1233,35 +1234,35 @@ factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LicenseOu
 </ul>
 <ol>
 <li><p>wsdl文件中：</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"uploadFile"</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:base64Binary"</span> <span class="hljs-attr">nillable</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">minOccurs</span>=<span class="hljs-string">"0"</span>/&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;xsd:complexType name=&quot;uploadFile&quot;&gt;
+     &lt;xsd:sequence&gt;
+         &lt;xsd:element name=&quot;file&quot; type=&quot;xsd:base64Binary&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;/&gt;
+     &lt;/xsd:sequence&gt;
+ &lt;/xsd:complexType&gt;
 </code></pre>
 </li>
 <li><p>Server端WebService实现类</p>
-<pre><code class="nulljava"> <span class="hljs-meta">@MTOM</span>
- <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserWsService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IUserWsService</span></span>{
+<pre><code class="lang-java"> @MTOM
+ public class UserWsService implements IUserWsService{
      ...
-     <span class="hljs-meta">@Override</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">uploadFile</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] file)</span></span>{
-         SimpleDateFormat sdf=<span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">"yyyymmddhhMMss"</span>);
-         String fileName=sdf.format(<span class="hljs-keyword">new</span> Date());    
-         FileOutputStream fos = <span class="hljs-keyword">null</span>;
+     @Override
+     public boolean uploadFile(byte[] file){
+         SimpleDateFormat sdf=new SimpleDateFormat(&quot;yyyymmddhhMMss&quot;);
+         String fileName=sdf.format(new Date());    
+         FileOutputStream fos = null;
          System.out.println(file);
-         <span class="hljs-keyword">try</span> {
-             fos = <span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">"d:/webservice/"</span>+fileName+<span class="hljs-string">".jpg"</span>);
+         try {
+             fos = new FileOutputStream(&quot;d:/webservice/&quot;+fileName+&quot;.jpg&quot;);
              fos.write(file);
              fos.flush();
-             <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
-         } <span class="hljs-keyword">catch</span> (Exception e) {
-             <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
-         } <span class="hljs-keyword">finally</span> {
-             <span class="hljs-keyword">try</span> {
+             return true;
+         } catch (Exception e) {
+             return false;
+         } finally {
+             try {
                  fos.close();
-             } <span class="hljs-keyword">catch</span> (IOException e) {
-                 <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+             } catch (IOException e) {
+                 return false;
              }
          }
      }
@@ -1269,22 +1270,22 @@ factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LicenseOu
 </code></pre>
 </li>
 <li><p>Client端调用测试</p>
-<pre><code class="nulljava"> <span class="hljs-meta">@Before</span>
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> MalformedURLException</span>{
-     URL url=<span class="hljs-keyword">new</span> URL(<span class="hljs-keyword">this</span>.wsdl);
-     QName qname = <span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns, <span class="hljs-string">"UserWsService"</span>);
-     <span class="hljs-keyword">this</span>.service=<span class="hljs-keyword">new</span> UserWsService(url,qname);
-     <span class="hljs-comment">//this.userService=service.getUserWsServicePort();</span>
-     <span class="hljs-keyword">this</span>.userService=service.getUserWsServicePort(<span class="hljs-keyword">new</span> MTOMFeature());
+<pre><code class="lang-java"> @Before
+ public void init() throws MalformedURLException{
+     URL url=new URL(this.wsdl);
+     QName qname = new QName(this.ns, &quot;UserWsService&quot;);
+     this.service=new UserWsService(url,qname);
+     //this.userService=service.getUserWsServicePort();
+     this.userService=service.getUserWsServicePort(new MTOMFeature());
  }
 
- <span class="hljs-meta">@Test</span>
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testUploadFile</span><span class="hljs-params">()</span></span>{
-     <span class="hljs-keyword">try</span> {
-         <span class="hljs-keyword">byte</span>[] file = FileUtils.readFileToByteArray(<span class="hljs-keyword">new</span> File(<span class="hljs-string">"E:\\picture\\123.jpg"</span>));
-         <span class="hljs-keyword">boolean</span> result=userService.uploadFile(file);
+ @Test
+ public void testUploadFile(){
+     try {
+         byte[] file = FileUtils.readFileToByteArray(new File(&quot;E:\\picture\\123.jpg&quot;));
+         boolean result=userService.uploadFile(file);
          System.out.println(result);
-     } <span class="hljs-keyword">catch</span> (IOException e) {
+     } catch (IOException e) {
          e.printStackTrace();
      }
  }
@@ -1293,219 +1294,219 @@ factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LicenseOu
 </ol>
 <h3 id="header-44">消息头处理</h3>
 <p>wsdl文件中：</p>
-<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 创建消息头元素 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licenseInfo"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:string"</span> /&gt;</span>
+<pre><code class="lang-xml">&lt;!-- 创建消息头元素 --&gt;
+&lt;xsd:element name=&quot;licenseInfo&quot; type=&quot;xsd:string&quot; /&gt;
 
-<span class="hljs-comment">&lt;!-- 创建消息头信息 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licenseInfo"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"licenseInfo"</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:licenseInfo"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
+&lt;!-- 创建消息头信息 --&gt;
+&lt;wsdl:message name=&quot;licenseInfo&quot;&gt;
+      &lt;wsdl:part name=&quot;licenseInfo&quot; element=&quot;tns:licenseInfo&quot; /&gt;
+&lt;/wsdl:message&gt;
 
-<span class="hljs-comment">&lt;!-- 为某个特定的方法绑定消息头（也可不加，作为全局，通过Handler统一判断处理）--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:binding</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"OperationWsServiceSOAP"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:IOperationWsService"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">soap:binding</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"document"</span> <span class="hljs-attr">transport</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/http"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"divide"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:input</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:header</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span> <span class="hljs-attr">part</span>=<span class="hljs-string">"licenseInfo"</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:licenseInfo"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:input</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:output</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:output</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:operation</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:binding</span>&gt;</span>
+&lt;!-- 为某个特定的方法绑定消息头（也可不加，作为全局，通过Handler统一判断处理）--&gt;
+&lt;wsdl:binding name=&quot;OperationWsServiceSOAP&quot; type=&quot;tns:IOperationWsService&quot;&gt;
+    &lt;soap:binding style=&quot;document&quot; transport=&quot;http://schemas.xmlsoap.org/soap/http&quot;/&gt;
+    &lt;wsdl:operation name=&quot;divide&quot;&gt;
+        &lt;wsdl:input&gt;
+            &lt;soap:body use=&quot;literal&quot;/&gt;
+            &lt;soap:header use=&quot;literal&quot; part=&quot;licenseInfo&quot; message=&quot;tns:licenseInfo&quot; /&gt;
+        &lt;/wsdl:input&gt;
+        &lt;wsdl:output&gt;
+            &lt;soap:body use=&quot;literal&quot;/&gt;
+            &lt;/wsdl:output&gt;
+    &lt;/wsdl:operation&gt;
+&lt;/wsdl:binding&gt;
 </code></pre>
 <h4 id="header-45">显示处理</h4>
 <p>Server端声明（显示的声明一个参数获取头部信息 ）：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IOperationWsService</span></span>{
+<pre><code class="lang-java">public interface IOperationWsService{
     ...
 
-    <span class="hljs-comment">//添加接口，用于显示获取licenseInfo</span>
-    <span class="hljs-meta">@WebMethod</span>
-    <span class="hljs-meta">@WebResult</span>(name = <span class="hljs-string">"divideResult"</span>, targetNamespace = <span class="hljs-string">""</span>)
-    <span class="hljs-meta">@RequestWrapper</span>(localName = <span class="hljs-string">"divide"</span>, targetNamespace = <span class="hljs-string">"http://www.example.org/student/"</span>,     className = <span class="hljs-string">"com.cj.my.ws.second.client.Divide"</span>)
-    <span class="hljs-meta">@ResponseWrapper</span>(localName = <span class="hljs-string">"divideResponse"</span>, targetNamespace = <span class="hljs-string">"http://www.example.org/student/"</span>,     className = <span class="hljs-string">"com.cj.my.ws.second.client.DivideResponse"</span>)
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">divide</span><span class="hljs-params">(
-    @WebParam(name = <span class="hljs-string">"a"</span>, targetNamespace = <span class="hljs-string">""</span>)</span> <span class="hljs-keyword">int</span> a,
-    @<span class="hljs-title">WebParam</span><span class="hljs-params">(name = <span class="hljs-string">"b"</span>, targetNamespace = <span class="hljs-string">""</span>)</span> <span class="hljs-keyword">int</span> b,
-    @<span class="hljs-title">WebParam</span><span class="hljs-params">(name=<span class="hljs-string">"licenseInfo"</span>,header=<span class="hljs-keyword">true</span>)</span> String licenseInfo)</span>;
+    //添加接口，用于显示获取licenseInfo
+    @WebMethod
+    @WebResult(name = &quot;divideResult&quot;, targetNamespace = &quot;&quot;)
+    @RequestWrapper(localName = &quot;divide&quot;, targetNamespace = &quot;http://www.example.org/student/&quot;,     className = &quot;com.cj.my.ws.second.client.Divide&quot;)
+    @ResponseWrapper(localName = &quot;divideResponse&quot;, targetNamespace = &quot;http://www.example.org/student/&quot;,     className = &quot;com.cj.my.ws.second.client.DivideResponse&quot;)
+    public int divide(
+    @WebParam(name = &quot;a&quot;, targetNamespace = &quot;&quot;) int a,
+    @WebParam(name = &quot;b&quot;, targetNamespace = &quot;&quot;) int b,
+    @WebParam(name=&quot;licenseInfo&quot;,header=true) String licenseInfo);
 }
 </code></pre>
 <p>Client端调用：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClientApp</span></span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span></span>{
-    OperationWsService service=<span class="hljs-keyword">new</span> OperationWsService ();
+<pre><code class="lang-java">public class ClientApp{
+    public static void main(String[] args){
+    OperationWsService service=new OperationWsService ();
     IOperationWsService operationWsService=service.getOperationWsServicePort();
-    System.out.println(operationWsService.divide(<span class="hljs-number">30</span>, <span class="hljs-number">0</span>,<span class="hljs-string">"123"</span>));
+    System.out.println(operationWsService.divide(30, 0,&quot;123&quot;));
     }
 }
 </code></pre>
 <h4 id="header-46">通过SOAPHandler处理</h4>
 <p>Server端自定义SOAPHandler：<code>LicenseHandler</code> （in 时使用）</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicenseHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SOAPHandler</span>&lt;<span class="hljs-title">SOAPMessageContext</span>&gt;</span>{
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(SOAPMessageContext context)</span></span>{
-        <span class="hljs-keyword">try</span>{
+<pre><code class="lang-java">public class LicenseHandler implements SOAPHandler&lt;SOAPMessageContext&gt;{
+    @Override
+    public boolean handleMessage(SOAPMessageContext context){
+        try{
             Boolean out=(Boolean)context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-            <span class="hljs-keyword">if</span>(!out){
+            if(!out){
                 SOAPMessage message=context.getMessage();
                 SOAPEnvelope envelope=message.getSOAPPart().getEnvelope();
                 SOAPBody body=envelope.getBody();
 
-                String partName=body.getChildNodes().item(<span class="hljs-number">0</span>).getLocalName();
-                <span class="hljs-keyword">if</span>(<span class="hljs-string">"list"</span>.equals(partName) || <span class="hljs-string">"addUser"</span>.equals(partName)){
+                String partName=body.getChildNodes().item(0).getLocalName();
+                if(&quot;list&quot;.equals(partName) || &quot;addUser&quot;.equals(partName)){
                 SOAPHeader header=envelope.getHeader();
-                <span class="hljs-keyword">if</span>(header==<span class="hljs-keyword">null</span> || header.getFirstChild()==<span class="hljs-keyword">null</span>){
-                    <span class="hljs-comment">//将错误信息加入SOAPBody中</span>
+                if(header==null || header.getFirstChild()==null){
+                    //将错误信息加入SOAPBody中
                     SOAPFault fault=body.addFault();
-                    fault.setFaultString(<span class="hljs-string">"头部信息不能为空"</span>);
-                    <span class="hljs-comment">//return false;</span>
-                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> SOAPFaultException(fault);
+                    fault.setFaultString(&quot;头部信息不能为空&quot;);
+                    //return false;
+                    throw new SOAPFaultException(fault);
                 }
 
-                <span class="hljs-comment">/*
+                /*
                 //此方法会将头信息detach分离出来，接下来的程序就不能再取到了
-                @SuppressWarnings("unchecked")
+                @SuppressWarnings(&quot;unchecked&quot;)
                 Iterator&lt;SOAPHeaderElement&gt; it =header.extractAllHeaderElements();
                 while(it.hasNext()){
-                    System.out.println("header:"+it.next().getTextContent());
-                }*/</span>
+                    System.out.println(&quot;header:&quot;+it.next().getTextContent());
+                }*/
 
                 NodeList nodeList=header.getChildNodes();
-                <span class="hljs-comment">//NodeList nodeList=header.getElementsByTagName("ns:licenseInfo");</span>
-                System.out.println(<span class="hljs-string">"header--"</span>+nodeList.item(<span class="hljs-number">0</span>).getTextContent());
+                //NodeList nodeList=header.getElementsByTagName(&quot;ns:licenseInfo&quot;);
+                System.out.println(&quot;header--&quot;+nodeList.item(0).getTextContent());
                 }
             }
-        } <span class="hljs-keyword">catch</span> (SOAPException e){
+        } catch (SOAPException e){
             e.printStackTrace();
-        } <span class="hljs-keyword">catch</span> (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        return true;
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">handleFault</span><span class="hljs-params">(SOAPMessageContext context)</span></span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    @Override
+    public boolean handleFault(SOAPMessageContext context){
+        return false;
     }
 }
 </code></pre>
 <p>Client端自定义SOAPHandler：<code>LicenseHandler</code> （out 时使用）</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicenseHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">SOAPHandler</span>&lt;<span class="hljs-title">SOAPMessageContext</span>&gt;</span>{
-    <span class="hljs-keyword">private</span> String wsdl=<span class="hljs-string">"http://localhost:9090/us?wsdl"</span>;
-    <span class="hljs-keyword">private</span> String ns=<span class="hljs-string">"http://www.my.org/user"</span>;
+<pre><code class="lang-java">public class LicenseHandler implements SOAPHandler&lt;SOAPMessageContext&gt;{
+    private String wsdl=&quot;http://localhost:9090/us?wsdl&quot;;
+    private String ns=&quot;http://www.my.org/user&quot;;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(SOAPMessageContext context)</span></span>{    
-        <span class="hljs-keyword">try</span>{
+    @Override
+    public boolean handleMessage(SOAPMessageContext context){    
+        try{
             Boolean out=(Boolean)context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
-            <span class="hljs-keyword">if</span>(out){
+            if(out){
                 SOAPMessage message=context.getMessage();
                 SOAPEnvelope envelope=message.getSOAPPart().getEnvelope();
                 SOAPBody body=envelope.getBody();
                 String partName=body.getFirstChild().getLocalName();
-                System.out.println(<span class="hljs-string">"partName:"</span>+partName);
-                <span class="hljs-keyword">if</span>(!<span class="hljs-string">"addUser"</span>.equals(partName))
-                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+                System.out.println(&quot;partName:&quot;+partName);
+                if(!&quot;addUser&quot;.equals(partName))
+                    return true;
 
                 SOAPHeader header=envelope.getHeader();
-                <span class="hljs-keyword">if</span>(header==<span class="hljs-keyword">null</span>)
+                if(header==null)
                     header=envelope.addHeader();
 
-                User regUser=<span class="hljs-keyword">new</span> User();
-                regUser.setId(<span class="hljs-number">18</span>);
-                regUser.setUsername(<span class="hljs-string">"RegisterUser"</span>);
-                regUser.setPassword(<span class="hljs-string">"888"</span>);
-                LicenseInfo licenseInfo=<span class="hljs-keyword">new</span> LicenseInfo();
+                User regUser=new User();
+                regUser.setId(18);
+                regUser.setUsername(&quot;RegisterUser&quot;);
+                regUser.setPassword(&quot;888&quot;);
+                LicenseInfo licenseInfo=new LicenseInfo();
                 licenseInfo.setRegisterUser(regUser);
 
                 JAXBContext ctx=JAXBContext.newInstance(LicenseInfo.class);
-                QName sname=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"licenseInfo"</span>);
-                JAXBElement&lt;LicenseInfo&gt; element=<span class="hljs-keyword">new</span> JAXBElement&lt;LicenseInfo&gt;(sname,LicenseInfo.class,licenseInfo);
+                QName sname=new QName(this.ns,&quot;licenseInfo&quot;);
+                JAXBElement&lt;LicenseInfo&gt; element=new JAXBElement&lt;LicenseInfo&gt;(sname,LicenseInfo.class,licenseInfo);
 
                 Marshaller mar=ctx.createMarshaller();
-                mar.setProperty(Marshaller.JAXB_FRAGMENT,<span class="hljs-keyword">true</span>);
-                mar.setProperty(Marshaller.JAXB_ENCODING, <span class="hljs-string">"UTF-8"</span>);
+                mar.setProperty(Marshaller.JAXB_FRAGMENT,true);
+                mar.setProperty(Marshaller.JAXB_ENCODING, &quot;UTF-8&quot;);
                 mar.marshal(element, header);
 
                 message.writeTo(System.out);
                 System.out.println();
             }
-        } <span class="hljs-keyword">catch</span> (SOAPException e){
+        } catch (SOAPException e){
             e.printStackTrace();
-        } <span class="hljs-keyword">catch</span> (JAXBException e){
+        } catch (JAXBException e){
             e.printStackTrace();
-        }<span class="hljs-keyword">catch</span> (IOException e){
+        }catch (IOException e){
             e.printStackTrace();
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+        return true;
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">handleFault</span><span class="hljs-params">(SOAPMessageContext context)</span></span>{
-        <span class="hljs-keyword">try</span>{
+    @Override
+    public boolean handleFault(SOAPMessageContext context){
+        try{
             SOAPMessage message=context.getMessage();
             message.writeTo(System.out);
             System.out.println();
-        } <span class="hljs-keyword">catch</span> (SOAPException e){
+        } catch (SOAPException e){
             e.printStackTrace();
-        } <span class="hljs-keyword">catch</span> (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        return false;
     }
 
 }
 </code></pre>
 <h4 id="header-47">通过SoapInterceptor处理</h4>
 <p>Server端In Interceptor</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicenseInInterceptor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractSoapInterceptor</span></span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LicenseInInterceptor</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">super</span>(Phase.POST_UNMARSHAL);
+<pre><code class="lang-java">public class LicenseInInterceptor extends AbstractSoapInterceptor{
+    public LicenseInInterceptor(){
+        super(Phase.POST_UNMARSHAL);
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(SoapMessage message)</span> <span class="hljs-keyword">throws</span> Fault</span>{
-        QName qname=<span class="hljs-keyword">new</span> QName(<span class="hljs-string">"http://www.my.org/user"</span>,<span class="hljs-string">"licenseInfo"</span>);
+    @Override
+    public void handleMessage(SoapMessage message) throws Fault{
+        QName qname=new QName(&quot;http://www.my.org/user&quot;,&quot;licenseInfo&quot;);
         Header header=message.getHeader(qname);
-        <span class="hljs-keyword">if</span>(header!=<span class="hljs-keyword">null</span>){
+        if(header!=null){
             Object obj=header.getObject();
-            <span class="hljs-keyword">if</span>(obj <span class="hljs-keyword">instanceof</span>  Node){
+            if(obj instanceof  Node){
                 Element e=(Element) obj;
                 NodeList nodeList=e.getChildNodes();
-                <span class="hljs-comment">//System.out.println(nodeList.item(0).getTextContent());</span>
-                Node node=nodeList.item(<span class="hljs-number">0</span>);
-                <span class="hljs-keyword">if</span>(node==<span class="hljs-keyword">null</span> || !node.getTextContent().equals(<span class="hljs-string">"RegisterUser888"</span>))
-                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> Fault(<span class="hljs-keyword">new</span> Exception(<span class="hljs-string">"licenseInfo isn't correct!"</span>));
+                //System.out.println(nodeList.item(0).getTextContent());
+                Node node=nodeList.item(0);
+                if(node==null || !node.getTextContent().equals(&quot;RegisterUser888&quot;))
+                    throw new Fault(new Exception(&quot;licenseInfo isn&#39;t correct!&quot;));
             }
         }
     }
 }
 </code></pre>
 <p>Client端Out Interceptor</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LicenseOutInterceptor</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractSoapInterceptor</span></span>{
-    <span class="hljs-keyword">private</span> String ns=<span class="hljs-string">"http://www.my.org/user"</span>;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LicenseOutInterceptor</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">super</span>(Phase.WRITE);
+<pre><code class="lang-java">public class LicenseOutInterceptor extends AbstractSoapInterceptor{
+    private String ns=&quot;http://www.my.org/user&quot;;
+    public LicenseOutInterceptor(){
+        super(Phase.WRITE);
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleMessage</span><span class="hljs-params">(SoapMessage message)</span> <span class="hljs-keyword">throws</span> Fault</span>{
-        <span class="hljs-keyword">try</span>{
-            User regUser=<span class="hljs-keyword">new</span> User();
-            regUser.setId(<span class="hljs-number">18</span>);
-            regUser.setUsername(<span class="hljs-string">"RegisterUser"</span>);
-            regUser.setPassword(<span class="hljs-string">"888"</span>);
-            LicenseInfo licenseInfo=<span class="hljs-keyword">new</span> LicenseInfo();
+    @Override
+    public void handleMessage(SoapMessage message) throws Fault{
+        try{
+            User regUser=new User();
+            regUser.setId(18);
+            regUser.setUsername(&quot;RegisterUser&quot;);
+            regUser.setPassword(&quot;888&quot;);
+            LicenseInfo licenseInfo=new LicenseInfo();
             licenseInfo.setRegisterUser(regUser);
 
-            DataBinding dataBinding=<span class="hljs-keyword">new</span> JAXBDataBinding(LicenseInfo.class);
-            QName qname=<span class="hljs-keyword">new</span> QName(<span class="hljs-keyword">this</span>.ns,<span class="hljs-string">"licenseInfo"</span>);
+            DataBinding dataBinding=new JAXBDataBinding(LicenseInfo.class);
+            QName qname=new QName(this.ns,&quot;licenseInfo&quot;);
 
-            Header header=<span class="hljs-keyword">new</span> Header(qname, licenseInfo, dataBinding);
+            Header header=new Header(qname, licenseInfo, dataBinding);
             message.getHeaders().add(header);
 
         } 
-        <span class="hljs-keyword">catch</span> (JAXBException e){
+        catch (JAXBException e){
             e.printStackTrace();
         }
     }
@@ -1514,43 +1515,43 @@ factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LicenseOu
 <h3 id="header-48">Exception异常处理</h3>
 <p>使用非运行期异常</p>
 <p>wsdl文件中（将异常对象封装成一个Message）：</p>
-<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- 创建异常对象 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"StudentException"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:StudentException"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">xsd:complexType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"StudentException"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">xsd:sequence</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">xsd:element</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"xsd:string"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">xsd:sequence</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">xsd:complexType</span>&gt;</span>
+<pre><code class="lang-xml">&lt;!-- 创建异常对象 --&gt;
+&lt;xsd:element name=&quot;StudentException&quot; type=&quot;tns:StudentException&quot;/&gt;
+&lt;xsd:complexType name=&quot;StudentException&quot;&gt;
+&lt;xsd:sequence&gt;
+&lt;xsd:element name=&quot;message&quot; type=&quot;xsd:string&quot; /&gt;
+&lt;/xsd:sequence&gt;
+&lt;/xsd:complexType&gt;
 
-<span class="hljs-comment">&lt;!-- 创建异常消息 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:message</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"StudentException"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:part</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"StudentException"</span> <span class="hljs-attr">element</span>=<span class="hljs-string">"tns:StudentException"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:message</span>&gt;</span>
+&lt;!-- 创建异常消息 --&gt;
+&lt;wsdl:message name=&quot;StudentException&quot;&gt;
+      &lt;wsdl:part name=&quot;StudentException&quot; element=&quot;tns:StudentException&quot; /&gt;
+&lt;/wsdl:message&gt;
 
-<span class="hljs-comment">&lt;!-- 声明某接口（服务）的异常消息 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:portType</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"IOperationWsService"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"plus"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:input</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:plus"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:output</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:plusResponse"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:fault</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"StudentException"</span> <span class="hljs-attr">message</span>=<span class="hljs-string">"tns:StudentException"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:operation</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:portType</span>&gt;</span>
+&lt;!-- 声明某接口（服务）的异常消息 --&gt;
+&lt;wsdl:portType name=&quot;IOperationWsService&quot;&gt;
+    &lt;wsdl:operation name=&quot;plus&quot;&gt;
+      &lt;wsdl:input message=&quot;tns:plus&quot;/&gt;
+      &lt;wsdl:output message=&quot;tns:plusResponse&quot;/&gt;
+      &lt;wsdl:fault name=&quot;StudentException&quot; message=&quot;tns:StudentException&quot;/&gt;
+    &lt;/wsdl:operation&gt;
+&lt;/wsdl:portType&gt;
 
-<span class="hljs-comment">&lt;!-- 为特定方法绑定异常形式 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">wsdl:binding</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"OperationWsServiceSOAP"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tns:IOperationWsService"</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">soap:binding</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"document"</span> <span class="hljs-attr">transport</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/soap/http"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:operation</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"plus"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:input</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:input</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:output</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">soap:body</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:output</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">wsdl:fault</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"StudentException"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">soap:fault</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"StudentException"</span> <span class="hljs-attr">use</span>=<span class="hljs-string">"literal"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:fault</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:operation</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">wsdl:binding</span>&gt;</span>
+&lt;!-- 为特定方法绑定异常形式 --&gt;
+&lt;wsdl:binding name=&quot;OperationWsServiceSOAP&quot; type=&quot;tns:IOperationWsService&quot;&gt;
+   &lt;soap:binding style=&quot;document&quot; transport=&quot;http://schemas.xmlsoap.org/soap/http&quot;/&gt;
+    &lt;wsdl:operation name=&quot;plus&quot;&gt;
+      &lt;wsdl:input&gt;
+        &lt;soap:body use=&quot;literal&quot;/&gt;
+      &lt;/wsdl:input&gt;
+      &lt;wsdl:output&gt;
+        &lt;soap:body use=&quot;literal&quot;/&gt;
+      &lt;/wsdl:output&gt;
+      &lt;wsdl:fault name=&quot;StudentException&quot;&gt;
+        &lt;soap:fault name=&quot;StudentException&quot; use=&quot;literal&quot;/&gt;
+      &lt;/wsdl:fault&gt;
+    &lt;/wsdl:operation&gt;
+&lt;/wsdl:binding&gt;
 </code></pre>
 <p>Server端处理</p>
 <ul>
@@ -1561,25 +1562,25 @@ factory.getOutInterceptors().add(<span class="hljs-keyword">new</span> LicenseOu
 </ul>
 <p>模拟：</p>
 <p>Server端 （WebService实现类）：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Override</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isExist</span><span class="hljs-params">(Integer id)</span> <span class="hljs-keyword">throws</span> StudentException</span>{
-    <span class="hljs-keyword">if</span>(id&lt;<span class="hljs-number">0</span>)
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> StudentException(<span class="hljs-string">"illegal input param:"</span>+id);
-    <span class="hljs-keyword">for</span>(Student student:studentList){
-        <span class="hljs-keyword">if</span>(student.getId()==id)
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+<pre><code class="lang-java">@Override
+public boolean isExist(Integer id) throws StudentException{
+    if(id&lt;0)
+        throw new StudentException(&quot;illegal input param:&quot;+id);
+    for(Student student:studentList){
+        if(student.getId()==id)
+            return true;
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    return false;
 }
 </code></pre>
 <p>Client端调用：</p>
-<pre><code class="nulljava"><span class="hljs-comment">//调用实现方法isExist,获取StudentException(wsimport命令自动生成的是：StudentException_Exception)</span>
-<span class="hljs-keyword">try</span>{
-<span class="hljs-keyword">boolean</span> result = myService.isExist(-<span class="hljs-number">1</span>);
+<pre><code class="lang-java">//调用实现方法isExist,获取StudentException(wsimport命令自动生成的是：StudentException_Exception)
+try{
+boolean result = myService.isExist(-1);
 System.out.println(result);
-System.out.println(<span class="hljs-string">"--------------------------"</span>);
+System.out.println(&quot;--------------------------&quot;);
 }
-<span class="hljs-keyword">catch</span> (StudentException_Exception e){
+catch (StudentException_Exception e){
     System.out.println(e.getMessage());
 }
 </code></pre>
@@ -1592,10 +1593,10 @@ System.out.println(<span class="hljs-string">"--------------------------"</span>
 <li>通过轮询该 Response 对象来检查是否有应答消息到达</li>
 <li><code>Response implements java.util.concurrency.Future&lt;T&gt;</code></li>
 <li><code>Non-blocking polling</code>（非阻塞轮询）<ul>
-<li>尝试获得结果之前，调用非阻塞方法<code>Response&lt;T&gt;.isDone()</code>来检查响应消息是否到达<pre><code class="nulljava">Response&lt;StartResponse&gt; rs=backService.startAsync();
-<span class="hljs-keyword">while</span>(!rs.isDone()){
-Thread.sleep(<span class="hljs-number">100</span>);
-System.out.println(<span class="hljs-string">"Non-blocking polling(无阻塞轮询)-------"</span>);
+<li>尝试获得结果之前，调用非阻塞方法<code>Response&lt;T&gt;.isDone()</code>来检查响应消息是否到达<pre><code class="lang-java">Response&lt;StartResponse&gt; rs=backService.startAsync();
+while(!rs.isDone()){
+Thread.sleep(100);
+System.out.println(&quot;Non-blocking polling(无阻塞轮询)-------&quot;);
 }
 StartResponse startResponse = rs.get();
 System.out.println(startResponse.getResult());
@@ -1604,7 +1605,7 @@ System.out.println(startResponse.getResult());
 </ul>
 </li>
 <li><code>Blocking polling</code> (阻塞轮询）<ul>
-<li>立即调用<code>Response&lt;T&gt;.get()</code>，阻塞至响应到达（可以指定一个超时时长作为可选项）<pre><code class="nulljava">Response&lt;StartResponse&gt; rs=backService.startAsync();
+<li>立即调用<code>Response&lt;T&gt;.get()</code>，阻塞至响应到达（可以指定一个超时时长作为可选项）<pre><code class="lang-java">Response&lt;StartResponse&gt; rs=backService.startAsync();
 StartResponse startResponse=rs.get(5L, java.util.concurrent.TimeUnit.SECONDS);
 System.out.println(startResponse.getResult());
 </code></pre>
@@ -1623,20 +1624,20 @@ System.out.println(startResponse.getResult());
 <p>使用示例：</p>
 <ol>
 <li><p>新建<code>binding.xml</code>文件（打开异步调用特性，进行绑定声明）</p>
-<pre><code class="nullxml"> <span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
- <span class="hljs-tag">&lt;<span class="hljs-name">bindings</span> <span class="hljs-attr">xmlns:xsd</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema"</span>
-     <span class="hljs-attr">xmlns:wsdl</span>=<span class="hljs-string">"http://schemas.xmlsoap.org/wsdl/"</span> 
-     <span class="hljs-attr">wsdlLocation</span>=<span class="hljs-string">"http://localhost:9090/sms/comm/service/bs?wsdl"</span>  
-     <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://java.sun.com/xml/ns/jaxws"</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;bindings xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+     xmlns:wsdl=&quot;http://schemas.xmlsoap.org/wsdl/&quot; 
+     wsdlLocation=&quot;http://localhost:9090/sms/comm/service/bs?wsdl&quot;  
+     xmlns=&quot;http://java.sun.com/xml/ns/jaxws&quot;&gt;
 
-     <span class="hljs-comment">&lt;!-- 只想对一个端口“iHelloWorld”生成异步方法，可以在绑定声明中指定
-     &lt;bindings node="wsdl:definitions/wsdl:portType[@name='iHelloWorld']"&gt;
-      --&gt;</span>
-     <span class="hljs-comment">&lt;!-- 把node设为“wsdl:definitions”，表示对整个WSDL契约起作用 --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">bindings</span> <span class="hljs-attr">node</span>=<span class="hljs-string">"wsdl:definitions"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">enableAsyncMapping</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">enableAsyncMapping</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">bindings</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">bindings</span>&gt;</span>
+     &lt;!-- 只想对一个端口“iHelloWorld”生成异步方法，可以在绑定声明中指定
+     &lt;bindings node=&quot;wsdl:definitions/wsdl:portType[@name=&#39;iHelloWorld&#39;]&quot;&gt;
+      --&gt;
+     &lt;!-- 把node设为“wsdl:definitions”，表示对整个WSDL契约起作用 --&gt;
+     &lt;bindings node=&quot;wsdl:definitions&quot;&gt;
+         &lt;enableAsyncMapping&gt;true&lt;/enableAsyncMapping&gt;
+     &lt;/bindings&gt;
+ &lt;/bindings&gt;
 </code></pre>
 </li>
 <li><p>生成相应的带异步支持的stub代码</p>
@@ -1647,92 +1648,92 @@ System.out.println(startResponse.getResult());
 </code></pre></li>
 <li>服务接口类的方法多出两个方法声明</li>
 <li><p>例如<code>destroy()</code>方法，会多出：</p>
-<pre><code class="nulljava">  <span class="hljs-comment">/**
+<pre><code class="lang-java">  /**
   * 异步调用的轮询方式
-  * <span class="hljs-doctag">@return</span> returns javax.xml.ws.Response&lt;com.cj.sms.client.back.DestroyResponse&gt;
-  */</span>
-  <span class="hljs-meta">@WebMethod</span>(operationName = <span class="hljs-string">"destroy"</span>)
-  <span class="hljs-meta">@RequestWrapper</span>(localName = <span class="hljs-string">"destroy"</span>, targetNamespace = <span class="hljs-string">"http://ws.sms.cj.com/back"</span>, className = <span class="hljs-string">"com.cj.sms.client.back.Destroy"</span>)
-  <span class="hljs-meta">@ResponseWrapper</span>(localName = <span class="hljs-string">"destroyResponse"</span>, targetNamespace = <span class="hljs-string">"http://ws.sms.cj.com/back"</span>, className = <span class="hljs-string">"com.cj.sms.client.back.DestroyResponse"</span>)
-  <span class="hljs-function"><span class="hljs-keyword">public</span> Response&lt;DestroyResponse&gt; <span class="hljs-title">destroyAsync</span><span class="hljs-params">()</span></span>;
+  * @return returns javax.xml.ws.Response&lt;com.cj.sms.client.back.DestroyResponse&gt;
+  */
+  @WebMethod(operationName = &quot;destroy&quot;)
+  @RequestWrapper(localName = &quot;destroy&quot;, targetNamespace = &quot;http://ws.sms.cj.com/back&quot;, className = &quot;com.cj.sms.client.back.Destroy&quot;)
+  @ResponseWrapper(localName = &quot;destroyResponse&quot;, targetNamespace = &quot;http://ws.sms.cj.com/back&quot;, className = &quot;com.cj.sms.client.back.DestroyResponse&quot;)
+  public Response&lt;DestroyResponse&gt; destroyAsync();
 
-  <span class="hljs-comment">/**
+  /**
   * 异步调用的回调方式
-  * <span class="hljs-doctag">@param</span> asyncHandler
-  * <span class="hljs-doctag">@return</span> returns java.util.concurrent.Future&lt;? extends java.lang.Object&gt;
-  */</span>
-  <span class="hljs-meta">@WebMethod</span>(operationName = <span class="hljs-string">"destroy"</span>)
-  <span class="hljs-meta">@RequestWrapper</span>(localName = <span class="hljs-string">"destroy"</span>, targetNamespace = <span class="hljs-string">"http://ws.sms.cj.com/back"</span>, className = <span class="hljs-string">"com.cj.sms.client.back.Destroy"</span>)
-  <span class="hljs-meta">@ResponseWrapper</span>(localName = <span class="hljs-string">"destroyResponse"</span>, targetNamespace = <span class="hljs-string">"http://ws.sms.cj.com/back"</span>, className = <span class="hljs-string">"com.cj.sms.client.back.DestroyResponse"</span>)
-  <span class="hljs-keyword">public</span> Future&lt;?&gt; destroyAsync(
-  <span class="hljs-meta">@WebParam</span>(name = <span class="hljs-string">"asyncHandler"</span>, targetNamespace = <span class="hljs-string">""</span>)AsyncHandler&lt;DestroyResponse&gt; asyncHandler);
+  * @param asyncHandler
+  * @return returns java.util.concurrent.Future&lt;? extends java.lang.Object&gt;
+  */
+  @WebMethod(operationName = &quot;destroy&quot;)
+  @RequestWrapper(localName = &quot;destroy&quot;, targetNamespace = &quot;http://ws.sms.cj.com/back&quot;, className = &quot;com.cj.sms.client.back.Destroy&quot;)
+  @ResponseWrapper(localName = &quot;destroyResponse&quot;, targetNamespace = &quot;http://ws.sms.cj.com/back&quot;, className = &quot;com.cj.sms.client.back.DestroyResponse&quot;)
+  public Future&lt;?&gt; destroyAsync(
+  @WebParam(name = &quot;asyncHandler&quot;, targetNamespace = &quot;&quot;)AsyncHandler&lt;DestroyResponse&gt; asyncHandler);
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>测试</p>
 <ul>
-<li>测试轮询方式<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStart</span><span class="hljs-params">()</span></span>{
-  <span class="hljs-keyword">try</span>{
+<li>测试轮询方式<pre><code class="lang-java">public void testStart(){
+  try{
       Response&lt;StartResponse&gt; rs=backService.startAsync();
-      <span class="hljs-keyword">while</span>(!rs.isDone()){  
-              Thread.sleep(<span class="hljs-number">100</span>);
-              System.out.println(<span class="hljs-string">"Non-blocking polling(无阻塞轮询)-------"</span>);  
+      while(!rs.isDone()){  
+              Thread.sleep(100);
+              System.out.println(&quot;Non-blocking polling(无阻塞轮询)-------&quot;);  
          }
-      <span class="hljs-comment">//如果没有前面isDone的检测，此处就退化为阻塞式轮询</span>
+      //如果没有前面isDone的检测，此处就退化为阻塞式轮询
       StartResponse startResponse = rs.get();
-      <span class="hljs-comment">//也可设置一个超时时长做为选项</span>
-      <span class="hljs-comment">//StartResponse startResponse=rs.get(5L, java.util.concurrent.TimeUnit.SECONDS);</span>
+      //也可设置一个超时时长做为选项
+      //StartResponse startResponse=rs.get(5L, java.util.concurrent.TimeUnit.SECONDS);
       System.out.println(startResponse.getResult());
-  }<span class="hljs-keyword">catch</span>(SOAPFaultException e){
+  }catch(SOAPFaultException e){
       System.out.println(e.getMessage());
-  }<span class="hljs-keyword">catch</span> (InterruptedException e){
+  }catch (InterruptedException e){
       e.printStackTrace();
-  } <span class="hljs-keyword">catch</span> (ExecutionException e){
+  } catch (ExecutionException e){
       e.printStackTrace();
   }
 }
 </code></pre>
 </li>
 <li><p>测试回调方式</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDestroy</span><span class="hljs-params">()</span></span>{
-  <span class="hljs-keyword">try</span>{
-      <span class="hljs-comment">//destroyHandler=new WsDestroyAsyncHandler();</span>
+<pre><code class="lang-java">@Test
+public void testDestroy(){
+  try{
+      //destroyHandler=new WsDestroyAsyncHandler();
 
-      <span class="hljs-comment">//返回的 Future&lt;?&gt; 对象只是用来检测一个响应是否已经到达</span>
-      <span class="hljs-comment">//响应消息的值只在回调对象WsDestroyAsyncHandler中可得</span>
+      //返回的 Future&lt;?&gt; 对象只是用来检测一个响应是否已经到达
+      //响应消息的值只在回调对象WsDestroyAsyncHandler中可得
       Future&lt;?&gt; future=backService.destroyAsync(destroyHandler);
-      <span class="hljs-keyword">while</span>(!future.isDone()){  
-              Thread.sleep(<span class="hljs-number">10000</span>);  
-              System.out.println(<span class="hljs-string">"异步方法(回调)--------------"</span>);  
+      while(!future.isDone()){  
+              Thread.sleep(10000);  
+              System.out.println(&quot;异步方法(回调)--------------&quot;);  
           }  
       System.out.println(destroyHandler.getResponseText());    
-  }<span class="hljs-keyword">catch</span>(SOAPFaultException e){
+  }catch(SOAPFaultException e){
       System.out.println(e.getMessage());
-  }<span class="hljs-keyword">catch</span> (InterruptedException e){
+  }catch (InterruptedException e){
       e.printStackTrace();
   }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-comment">//自定义回调类</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WsDestroyAsyncHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AsyncHandler</span>&lt;<span class="hljs-title">DestroyResponse</span>&gt;</span>{
-  <span class="hljs-keyword">private</span> DestroyResponse destroyResponse;
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">handleResponse</span><span class="hljs-params">(Response&lt;DestroyResponse&gt; res)</span></span>{
-      <span class="hljs-keyword">try</span>{
-          <span class="hljs-comment">//获取响应数据，并把它存放到成员变量destroyResponse中</span>
+<pre><code class="lang-java">//自定义回调类
+public class WsDestroyAsyncHandler implements AsyncHandler&lt;DestroyResponse&gt;{
+  private DestroyResponse destroyResponse;
+  @Override
+  public void handleResponse(Response&lt;DestroyResponse&gt; res){
+      try{
+          //获取响应数据，并把它存放到成员变量destroyResponse中
           destroyResponse=res.get();
-          System.out.println(<span class="hljs-string">"result:"</span>+destroyResponse.getResult());
-      } <span class="hljs-keyword">catch</span> (InterruptedException e){
+          System.out.println(&quot;result:&quot;+destroyResponse.getResult());
+      } catch (InterruptedException e){
           e.printStackTrace();
-      } <span class="hljs-keyword">catch</span> (ExecutionException e){
+      } catch (ExecutionException e){
           e.printStackTrace();
       }
   }
-  <span class="hljs-comment">//方便从响应中提炼出主要的输出参数</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getResponseText</span><span class="hljs-params">()</span></span>{
-      <span class="hljs-keyword">return</span> destroyResponse.getResult();
+  //方便从响应中提炼出主要的输出参数
+  public String getResponseText(){
+      return destroyResponse.getResult();
   }
 }
 </code></pre>
@@ -1775,10 +1776,17 @@ System.out.println(startResponse.getResult());
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -127,79 +130,79 @@
 <p>使用 react-router 实现前端路由：建立在history上，方便进行路由管理</p>
 <ol>
 <li><p>下载</p>
-<pre><code class="nullvim"> &gt; npm install react-router --save
- &gt; npm install <span class="hljs-keyword">history</span> --save
+<pre><code class="lang-vim"> &gt; npm install react-router --save
+ &gt; npm install history --save
 </code></pre>
 </li>
 <li><p>加载</p>
-<pre><code class="nulljavascript"> <span class="hljs-comment">//app.js</span>
- <span class="hljs-keyword">var</span> React=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react"</span>);
- <span class="hljs-keyword">var</span> ReactDOM=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dom"</span>);
+<pre><code class="lang-javascript"> //app.js
+ var React=require(&quot;react&quot;);
+ var ReactDOM=require(&quot;react-dom&quot;);
 
- <span class="hljs-keyword">var</span> ReactRouter=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react-router"</span>);
- <span class="hljs-keyword">var</span> Router=ReactRouter.Router;
- <span class="hljs-keyword">var</span> Route=ReactRouter.Route;
+ var ReactRouter=require(&quot;react-router&quot;);
+ var Router=ReactRouter.Router;
+ var Route=ReactRouter.Route;
 </code></pre>
 </li>
 <li><p>使用Router</p>
 <ul>
 <li><p>方式1：</p>
-<pre><code class="nulljavascript">  <span class="hljs-keyword">var</span> routes=(
+<pre><code class="lang-javascript">  var routes=(
       &lt;Router&gt;
-          &lt;Route path="/" component={App}&gt;
-              &lt;Route path="child/:id" component={Child} /&gt;
-              &lt;Route path="*" component={NoMatch} /&gt;
+          &lt;Route path=&quot;/&quot; component={App}&gt;
+              &lt;Route path=&quot;child/:id&quot; component={Child} /&gt;
+              &lt;Route path=&quot;*&quot; component={NoMatch} /&gt;
           &lt;/Route&gt;
       &lt;/Router&gt;
   );
-  ReactDOM.render(routes,document.getElementById("app"));
+  ReactDOM.render(routes,document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 <li><p>方式二：</p>
-<pre><code class="nulljavascript">  <span class="hljs-keyword">var</span> routes={
-      <span class="hljs-attr">path</span>:<span class="hljs-string">'/'</span>,
-      <span class="hljs-attr">component</span>:App,
-      <span class="hljs-attr">childRoutes</span>:[
-          {<span class="hljs-attr">path</span>:<span class="hljs-string">"/child/:id"</span>,<span class="hljs-attr">component</span>:Child},
-          {<span class="hljs-attr">path</span>:<span class="hljs-string">"*"</span>,<span class="hljs-attr">component</span>:NoMatch}
+<pre><code class="lang-javascript">  var routes={
+      path:&#39;/&#39;,
+      component:App,
+      childRoutes:[
+          {path:&quot;/child/:id&quot;,component:Child},
+          {path:&quot;*&quot;,component:NoMatch}
       ]
   };
-  ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">routes</span>=<span class="hljs-string">{routes}</span> /&gt;</span>,document.getElementById("app"));</span>
+  ReactDOM.render(&lt;Router routes={routes} /&gt;,document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>定义Components</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> App=React.createClass({
-     <span class="hljs-attr">render</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-         <span class="hljs-keyword">return</span> (
-             <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">Header</span>/&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"container"</span>&gt;</span>
-                     {this.props.children || "Welcome !"}
-                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-             <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<pre><code class="lang-javascript"> var App=React.createClass({
+     render:function(){
+         return (
+             &lt;div&gt;
+                 &lt;Header/&gt;
+                 &lt;div className=&quot;container&quot;&gt;
+                     {this.props.children || &quot;Welcome !&quot;}
+                 &lt;/div&gt;
+             &lt;/div&gt;
          )
      }
  });
 
- <span class="hljs-keyword">var</span> Header=React.createClass({
-     <span class="hljs-attr">render</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-         <span class="hljs-keyword">return</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>)
+ var Header=React.createClass({
+     render:function(){
+         return (&lt;h1&gt;Header&lt;/h1&gt;)
      }
  })
 
- <span class="hljs-keyword">var</span> Child=React.createClass({
-     <span class="hljs-attr">render</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-         <span class="hljs-keyword">return</span> (
-             <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span> I am Child {this.props.params.id} ! <span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span>
+ var Child=React.createClass({
+     render:function(){
+         return (
+             &lt;h3&gt; I am Child {this.props.params.id} ! &lt;/h3&gt;
          )
      }
  });
 
- <span class="hljs-keyword">var</span> NoMatch=React.createClass({
-     <span class="hljs-attr">render</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-         <span class="hljs-keyword">return</span> (<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>No Match !<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span>)
+ var NoMatch=React.createClass({
+     render:function(){
+         return (&lt;h3&gt;No Match !&lt;/h3&gt;)
      }
  })
 </code></pre>
@@ -209,123 +212,123 @@
 <h2 id="header-2">History</h2>
 <ol>
 <li><p><code>createHashHistory</code> (default) : 通过 hash 来实现，可以通过 window.location.hash 读取到 # 后的内容</p>
-<pre><code class="nulljavascript"> <span class="hljs-comment">//has queryKey, eg: ?_k=ckuvup -&gt; remove queryKey:</span>
- ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">routes</span>=<span class="hljs-string">{routes}</span> 
-     <span class="hljs-attr">history</span>=<span class="hljs-string">{createHashHistory({queryKey:false})}/</span>&gt;</span>,
-     document.getElementById("app"));</span>
+<pre><code class="lang-javascript"> //has queryKey, eg: ?_k=ckuvup -&gt; remove queryKey:
+ ReactDOM.render(&lt;Router routes={routes} 
+     history={createHashHistory({queryKey:false})}/&gt;,
+     document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 <li><p><code>createMemoryHistory</code> (test)</p>
 </li>
 <li><p><code>createBrowserHistory</code>    (production): run on server，HTML5 才有的新 API，可以用来操作浏览器的 session history (会话历史)</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> createBrowserHistory =<span class="hljs-built_in">require</span>(<span class="hljs-string">"history/lib/createBrowserHistory"</span>);
- ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">routes</span>=<span class="hljs-string">{routes}</span> <span class="hljs-attr">history</span>=<span class="hljs-string">{createBrowserHistory()}</span> /&gt;</span>,
-     document.getElementById("app"));</span>
+<pre><code class="lang-javascript"> var createBrowserHistory =require(&quot;history/lib/createBrowserHistory&quot;);
+ ReactDOM.render(&lt;Router routes={routes} history={createBrowserHistory()} /&gt;,
+     document.getElementById(&quot;app&quot;));
 </code></pre>
 <p> Run Based on nodeJS (cmd: node app):</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">const</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
- <span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">'path'</span>)
- <span class="hljs-keyword">const</span> port = process.env.PORT || <span class="hljs-number">3000</span>
- <span class="hljs-keyword">const</span> app = express()
+<pre><code class="lang-javascript"> const express = require(&#39;express&#39;)
+ const path = require(&#39;path&#39;)
+ const port = process.env.PORT || 3000
+ const app = express()
 
- <span class="hljs-comment">// serve static assets normally</span>
- app.use(express.static(__dirname + <span class="hljs-string">'/public'</span>))
+ // serve static assets normally
+ app.use(express.static(__dirname + &#39;/public&#39;))
 
- <span class="hljs-comment">// handle every other route with index.html, which will contain</span>
- <span class="hljs-comment">// a script tag to your application's JavaScript file(s).</span>
- app.get(<span class="hljs-string">'*'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">request, response</span>)</span>{
-   response.sendFile(path.resolve(__dirname, <span class="hljs-string">'public'</span>, <span class="hljs-string">'index.html'</span>))
+ // handle every other route with index.html, which will contain
+ // a script tag to your application&#39;s JavaScript file(s).
+ app.get(&#39;*&#39;, function (request, response){
+   response.sendFile(path.resolve(__dirname, &#39;public&#39;, &#39;index.html&#39;))
  })
 
  app.listen(port)
- <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"server started on port "</span> + port)
+ console.log(&quot;server started on port &quot; + port)
 </code></pre>
 </li>
 </ol>
 <h2 id="header-3">使用Isomorphic</h2>
 <ol>
 <li><p><code>routes.jsx</code> 定义需要同构的React Routes：</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> Main=<span class="hljs-built_in">require</span>(<span class="hljs-string">"./src/main"</span>);
- <span class="hljs-keyword">var</span> Child=<span class="hljs-built_in">require</span>(<span class="hljs-string">"./src/child"</span>);
+<pre><code class="lang-javascript"> var Main=require(&quot;./src/main&quot;);
+ var Child=require(&quot;./src/child&quot;);
 
- <span class="hljs-keyword">var</span> routes={
-     <span class="hljs-attr">path</span>:<span class="hljs-string">'/'</span>,
-     <span class="hljs-attr">component</span>:Main,
-     <span class="hljs-attr">childRoutes</span>:[
-         {<span class="hljs-attr">path</span>:<span class="hljs-string">"/child/:id"</span>,<span class="hljs-attr">component</span>:Child},
-         {<span class="hljs-attr">path</span>:<span class="hljs-string">"*"</span>,<span class="hljs-attr">component</span>:NoMatch}
+ var routes={
+     path:&#39;/&#39;,
+     component:Main,
+     childRoutes:[
+         {path:&quot;/child/:id&quot;,component:Child},
+         {path:&quot;*&quot;,component:NoMatch}
      ]
  };
- <span class="hljs-built_in">module</span>.exports=routes;
+ module.exports=routes;
 </code></pre>
 </li>
 <li><p><code>app.jsx</code> 实现Client端渲染：</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> routes=<span class="hljs-built_in">require</span>(<span class="hljs-string">"./src/routes"</span>);
- <span class="hljs-keyword">var</span> createBrowserHistory =<span class="hljs-built_in">require</span>(<span class="hljs-string">"history/lib/createBrowserHistory"</span>);
- ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">routes</span>=<span class="hljs-string">{routes}</span> <span class="hljs-attr">history</span>=<span class="hljs-string">{createBrowserHistory()}</span> /&gt;</span>,
-     document.getElementById("app"));</span>
+<pre><code class="lang-javascript"> var routes=require(&quot;./src/routes&quot;);
+ var createBrowserHistory =require(&quot;history/lib/createBrowserHistory&quot;);
+ ReactDOM.render(&lt;Router routes={routes} history={createBrowserHistory()} /&gt;,
+     document.getElementById(&quot;app&quot;));
 </code></pre>
 </li>
 <li><p><code>app.js</code> 编译生成的Client端可执行的js文件</p>
-<pre><code class="nullvim"> &gt; browserify app.jsx -t babelify --presets react -o app.js --extension .jsx
+<pre><code class="lang-vim"> &gt; browserify app.jsx -t babelify --presets react -o app.js --extension .jsx
 </code></pre>
 </li>
 <li><p><code>index.ejs</code> 定义主页面，加载上面生成的Client的js文件<code>app.js</code></p>
-<pre><code class="nullhtml"> <span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Hello React-Router <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<pre><code class="lang-html"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+   &lt;meta charset=&quot;UTF-8&quot;&gt;
+   &lt;title&gt;Hello React-Router &lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
 
-   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">content</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+   &lt;div id=&quot;app&quot;&gt;&lt;%- content %&gt;&lt;/div&gt;
 
-   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/libs/react/react.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/libs/react/react-dom.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/app.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+   &lt;script type=&quot;text/javascript&quot; src=&quot;/libs/react/react.js&quot;&gt;&lt;/script&gt;
+   &lt;script type=&quot;text/javascript&quot; src=&quot;/libs/react/react-dom.js&quot;&gt;&lt;/script&gt;
+   &lt;script type=&quot;text/javascript&quot; src=&quot;/app.js&quot;&gt;&lt;/script&gt;
 
- <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+ &lt;/body&gt;
+ &lt;/html&gt;
 </code></pre>
 </li>
 <li><p><code>server.js</code> 定义Server端响应渲染</p>
-<pre><code class="nulljavascript"> <span class="hljs-built_in">require</span>(<span class="hljs-string">'babel-core/register'</span>);
- <span class="hljs-keyword">var</span> React=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react"</span>);
- <span class="hljs-keyword">var</span> ReactDOMServer=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dom/server"</span>);
+<pre><code class="lang-javascript"> require(&#39;babel-core/register&#39;);
+ var React=require(&quot;react&quot;);
+ var ReactDOMServer=require(&quot;react-dom/server&quot;);
 
- <span class="hljs-keyword">var</span> Router=<span class="hljs-built_in">require</span>(<span class="hljs-string">'react-router'</span>);
- <span class="hljs-keyword">var</span> match=Router.match;
- <span class="hljs-keyword">var</span> RoutingContext=Router.RoutingContext;
- <span class="hljs-keyword">var</span> routes = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./src/routes"</span>);
+ var Router=require(&#39;react-router&#39;);
+ var match=Router.match;
+ var RoutingContext=Router.RoutingContext;
+ var routes = require(&quot;./src/routes&quot;);
 
- <span class="hljs-keyword">var</span> express=<span class="hljs-built_in">require</span>(<span class="hljs-string">"express"</span>);
- <span class="hljs-keyword">var</span> app = express();
- app.set(<span class="hljs-string">'view engine'</span>, <span class="hljs-string">'ejs'</span>);
- app.use(express.static(<span class="hljs-string">'public'</span>));
+ var express=require(&quot;express&quot;);
+ var app = express();
+ app.set(&#39;view engine&#39;, &#39;ejs&#39;);
+ app.use(express.static(&#39;public&#39;));
 
- app.use(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{
-     <span class="hljs-built_in">console</span>.log(req.url);
-     match({routes,<span class="hljs-attr">location</span>:req.url},<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, redirectLocation, renderProps</span>)</span>{
-         <span class="hljs-keyword">if</span> (error) {
-           res.status(<span class="hljs-number">500</span>).send(error.message)
-         } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (redirectLocation) {
-           res.redirect(<span class="hljs-number">302</span>, redirectLocation.pathname + redirectLocation.search)
-         } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (renderProps) {
-             <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"render react router"</span>);
-             <span class="hljs-keyword">var</span> element=React.createFactory(RoutingContext)(renderProps);
-             <span class="hljs-keyword">var</span> elementStr=ReactDOMServer.renderToString(element);
-             <span class="hljs-comment">//res.status(200).send(elementStr);</span>
-             res.render(<span class="hljs-string">"index"</span>,{<span class="hljs-attr">content</span>:elementStr});
-         } <span class="hljs-keyword">else</span> {
-           res.status(<span class="hljs-number">404</span>).send(<span class="hljs-string">'Not found'</span>)
+ app.use(function(req, res, next) {
+     console.log(req.url);
+     match({routes,location:req.url},function(error, redirectLocation, renderProps){
+         if (error) {
+           res.status(500).send(error.message)
+         } else if (redirectLocation) {
+           res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+         } else if (renderProps) {
+             console.log(&quot;render react router&quot;);
+             var element=React.createFactory(RoutingContext)(renderProps);
+             var elementStr=ReactDOMServer.renderToString(element);
+             //res.status(200).send(elementStr);
+             res.render(&quot;index&quot;,{content:elementStr});
+         } else {
+           res.status(404).send(&#39;Not found&#39;)
          }
      })
  })
 
- app.listen(<span class="hljs-number">3000</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, result</span>)</span>{
-     <span class="hljs-keyword">if</span> (err) <span class="hljs-built_in">console</span>.log(err);
-       <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Listening at localhost:3000'</span>);
+ app.listen(3000,function(err, result){
+     if (err) console.log(err);
+       console.log(&#39;Listening at localhost:3000&#39;);
  });
 </code></pre>
 </li>
@@ -335,63 +338,63 @@
 <h2 id="header-4">Issues</h2>
 <h3 id="header-5">1. Add <code>&lt;Routes baseHref&gt;</code></h3>
 <p><a href="https://github.com/rackt/react-router/issues/353" target="_blank" rel="noopener">Issue on Github</a></p>
-<pre><code class="nulljavascript"><span class="hljs-keyword">import</span> { createHistory, useBasename } <span class="hljs-keyword">from</span> <span class="hljs-string">'history'</span>
+<pre><code class="lang-javascript">import { createHistory, useBasename } from &#39;history&#39;
 
-<span class="hljs-keyword">const</span> history = useBasename(createHistory)({
-  <span class="hljs-attr">basename</span>: <span class="hljs-string">'/my-custom-root'</span>
+const history = useBasename(createHistory)({
+  basename: &#39;/my-custom-root&#39;
 })
 </code></pre>
-<pre><code class="nulljavascript">&lt;Router history={history}&gt;
-    &lt;Route path="/" component={App}&gt;&lt;/Route&gt;
+<pre><code class="lang-javascript">&lt;Router history={history}&gt;
+    &lt;Route path=&quot;/&quot; component={App}&gt;&lt;/Route&gt;
 &lt;/Router&gt;
 
-&lt;Link path="/some_path"&gt;some_path&lt;/Link&gt;
+&lt;Link path=&quot;/some_path&quot;&gt;some_path&lt;/Link&gt;
 </code></pre>
 <h3 id="header-6">2. Passing props to routes</h3>
 <p><a href="https://github.com/rackt/react-router/issues/1531" target="_blank" rel="noopener">Issue on Github</a></p>
-<pre><code class="nulljavascript">React.render((
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Router</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{RootComp}</span> <span class="hljs-attr">myprop</span>=<span class="hljs-string">"foo"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"foo"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{FooComp}</span>&gt;</span>
-           <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"bar"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{BarComp}</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span>
-), document.getElementById('example'));</span>
+<pre><code class="lang-javascript">React.render((
+  &lt;Router&gt;
+    &lt;Route path=&quot;/&quot; component={RootComp} myprop=&quot;foo&quot;&gt;
+        &lt;Route path=&quot;foo&quot; component={FooComp}&gt;
+           &lt;Route path=&quot;bar&quot; component={BarComp} /&gt;
+        &lt;/Route&gt;
+    &lt;/Route&gt;
+  &lt;/Router&gt;
+), document.getElementById(&#39;example&#39;));
 </code></pre>
 <p><strong>Option 1) With route attributes</strong></p>
-<pre><code class="nulljavascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RootComp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code class="lang-javascript">class RootComp extends React.Component {
     render: {
-        <span class="hljs-keyword">this</span>.props.route.myprop <span class="hljs-comment">// == "foo" (this.props.routes[0].myprop)</span>
+        this.props.route.myprop // == &quot;foo&quot; (this.props.routes[0].myprop)
     }
 }
 </code></pre>
 <p><strong>Option 2) To first level children with React.cloneElement()</strong></p>
-<pre><code class="nulljavascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RootComp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code class="lang-javascript">class RootComp extends React.Component {
     render: {
-        React.cloneElement(<span class="hljs-keyword">this</span>.props.children, {<span class="hljs-attr">myprop</span>: <span class="hljs-keyword">this</span>.route.myprop})
+        React.cloneElement(this.props.children, {myprop: this.route.myprop})
     }
 }
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FooComp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+class FooComp extends React.Component {
     render: {
-        <span class="hljs-keyword">this</span>.props.myprop <span class="hljs-comment">// == "foo"</span>
+        this.props.myprop // == &quot;foo&quot;
     }
 }
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BarComp</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+class BarComp extends React.Component {
     render: {
-        <span class="hljs-keyword">this</span>.props.myprop <span class="hljs-comment">// == undefined</span>
+        this.props.myprop // == undefined
     }
 }
 </code></pre>
 <p><strong>Option 3) To all route components with Router.createElement</strong></p>
 <p><a href="https://github.com/rackt/react-router/blob/master/docs/API.md#createelementcomponent-props" target="_blank" rel="noopener">Source</a></p>
-<pre><code class="nulljavascript">&lt;Router createElement={createElement} /&gt;
+<pre><code class="lang-javascript">&lt;Router createElement={createElement} /&gt;
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createElement</span>(<span class="hljs-params">Component, props</span>) </span>{
-   <span class="hljs-comment">// Add myprop to props for all route components</span>
-    _.extend(props, {<span class="hljs-attr">myprop</span>: <span class="hljs-string">"foo"</span>})
-  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span> {<span class="hljs-attr">...props</span>}/&gt;</span>
-}</span>
+function createElement(Component, props) {
+   // Add myprop to props for all route components
+    _.extend(props, {myprop: &quot;foo&quot;})
+  return &lt;Component {...props}/&gt;
+}
 </code></pre>
 <h2 id="header-7">Reference</h2>
 <ul>
@@ -433,10 +436,17 @@
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

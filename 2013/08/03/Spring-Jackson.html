@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -126,10 +129,10 @@
   </section>
   <section class="post-content">
     <p>加入依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.fasterxml.jackson.jaxrs<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jackson-jaxrs-json-provider<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+  &lt;groupId&gt;com.fasterxml.jackson.jaxrs&lt;/groupId&gt;
+  &lt;artifactId&gt;jackson-jaxrs-json-provider&lt;/artifactId&gt;
+&lt;/dependency&gt;
 </code></pre>
 <h2 id="header-1">动态过滤属性</h2>
 <h3 id="header-2">问题描述</h3>
@@ -160,54 +163,54 @@
 <h3 id="header-3">解决方案</h3>
 <p><strong>方式一：</strong>在类属性上加入注解<code>@JsonManagedReference</code>,<code>@JsonBackReference</code></p>
 <ul>
-<li>User类中（父）：<pre><code class="nulljava"><span class="hljs-meta">@JsonManagedReference</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> Set&lt;Article&gt; <span class="hljs-title">getArticles</span><span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> articles;
+<li>User类中（父）：<pre><code class="lang-java">@JsonManagedReference
+public Set&lt;Article&gt; getArticles() {
+  return articles;
 }
 </code></pre>
 </li>
-<li>Article类中（子）：<pre><code class="nulljava"><span class="hljs-meta">@JsonBackReference</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">getUser</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">return</span> user;
+<li>Article类中（子）：<pre><code class="lang-java">@JsonBackReference
+public User getUser() {
+    return user;
 }
 </code></pre>
 </li>
-<li>Result:<pre><code class="nulljava">UserJson {<span class="hljs-string">"name"</span>:<span class="hljs-string">"chris"</span>,<span class="hljs-string">"createDate"</span>:<span class="hljs-string">"2012-04-18"</span>,<span class="hljs-string">"articles"</span>:[{<span class="hljs-string">"title"</span>:<span class="hljs-string">"title"</span>}]}
-ArticleJson {<span class="hljs-string">"title"</span>:<span class="hljs-string">"title"</span>}
+<li>Result:<pre><code class="lang-java">UserJson {&quot;name&quot;:&quot;chris&quot;,&quot;createDate&quot;:&quot;2012-04-18&quot;,&quot;articles&quot;:[{&quot;title&quot;:&quot;title&quot;}]}
+ArticleJson {&quot;title&quot;:&quot;title&quot;}
 </code></pre>
 </li>
 </ul>
 <p><strong>方式二：</strong>加在类属性上加入注解<code>@JsonIgnore</code></p>
 <ul>
-<li>User类中（父）：<pre><code class="nulljava"><span class="hljs-meta">@JsonIgnore</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> Set&lt;ArticleB&gt; <span class="hljs-title">getArticles</span><span class="hljs-params">()</span> </span>{ 
-     <span class="hljs-keyword">return</span> articles; 
+<li>User类中（父）：<pre><code class="lang-java">@JsonIgnore
+public Set&lt;ArticleB&gt; getArticles() { 
+     return articles; 
 }
 </code></pre>
 </li>
-<li>Result:<pre><code class="nulljava">UserJson {<span class="hljs-string">"name"</span>:<span class="hljs-string">"chris"</span>,<span class="hljs-string">"createDate"</span>:<span class="hljs-string">"2014-07-23 11:03:44"</span>}
-ArticleJson {<span class="hljs-string">"title"</span>:<span class="hljs-string">"title"</span>,<span class="hljs-string">"user"</span>:{<span class="hljs-string">"name"</span>:<span class="hljs-string">"chris"</span>,<span class="hljs-string">"createDate"</span>:<span class="hljs-string">"2014-07-23 11:03:44"</span>}}
+<li>Result:<pre><code class="lang-java">UserJson {&quot;name&quot;:&quot;chris&quot;,&quot;createDate&quot;:&quot;2014-07-23 11:03:44&quot;}
+ArticleJson {&quot;title&quot;:&quot;title&quot;,&quot;user&quot;:{&quot;name&quot;:&quot;chris&quot;,&quot;createDate&quot;:&quot;2014-07-23 11:03:44&quot;}}
 </code></pre>
 </li>
 </ul>
 <p><strong>方式三：</strong> 在类上加入注解<code>@JsonIgnoreProperties</code></p>
 <ul>
-<li>User类上（父）：<pre><code class="nulljava"><span class="hljs-meta">@JsonIgnoreProperties</span>(<span class="hljs-string">"articles"</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>{...}
+<li>User类上（父）：<pre><code class="lang-java">@JsonIgnoreProperties(&quot;articles&quot;)
+public class User{...}
 </code></pre>
 </li>
 <li>Result(同方式二)</li>
 </ul>
 <p><strong>方式四：</strong><code>@JsonFilter</code> + <code>Jacksons filter</code></p>
 <ul>
-<li>User类上:<pre><code class="nulljava"><span class="hljs-meta">@JsonFilter</span> (<span class="hljs-string">"myFilter"</span> )
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span></span>{...}
+<li>User类上:<pre><code class="lang-java">@JsonFilter (&quot;myFilter&quot; )
+public class User{...}
 </code></pre>
 </li>
-<li>测试：<pre><code class="nulljava">String userJson = Jacksons.me().filter(<span class="hljs-string">"myFilter"</span> , <span class="hljs-string">"articles"</span> ).readAsString(user);
+<li>测试：<pre><code class="lang-java">String userJson = Jacksons.me().filter(&quot;myFilter&quot; , &quot;articles&quot; ).readAsString(user);
 </code></pre>
 </li>
-<li>Result:<pre><code class="nulljava">UserJson {<span class="hljs-string">"name"</span>:<span class="hljs-string">"chris"</span>,<span class="hljs-string">"createDate"</span>:<span class="hljs-string">"2014-07-23 11:08:46"</span>}
+<li>Result:<pre><code class="lang-java">UserJson {&quot;name&quot;:&quot;chris&quot;,&quot;createDate&quot;:&quot;2014-07-23 11:08:46&quot;}
 </code></pre>
 </li>
 <li>注意：<ul>
@@ -219,29 +222,29 @@ ArticleJson {<span class="hljs-string">"title"</span>:<span class="hljs-string">
 </ul>
 <p><strong>方式五：</strong><code>@JsonIgnoreProperties</code> +<code>Jacksons addMixInAnnotations</code></p>
 <ul>
-<li>添加过滤类：<pre><code class="nulljava"><span class="hljs-meta">@JsonIgnoreProperties</span> (<span class="hljs-string">"articles"</span> )
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">MixInUser</span></span>{}      <span class="hljs-comment">// class 或interface都可</span>
+<li>添加过滤类：<pre><code class="lang-java">@JsonIgnoreProperties (&quot;articles&quot; )
+public interface MixInUser{}      // class 或interface都可
 </code></pre>
 </li>
-<li>测试：<pre><code class="nulljava">String mixInUser = Jacksons.me().addMixInAnnotations(User. <span class="hljs-class"><span class="hljs-keyword">class</span> , <span class="hljs-title">MixInUser</span>.<span class="hljs-title">class</span> ).<span class="hljs-title">readAsString</span>(<span class="hljs-title">user</span>)</span>;
+<li>测试：<pre><code class="lang-java">String mixInUser = Jacksons.me().addMixInAnnotations(User. class , MixInUser.class ).readAsString(user);
 </code></pre>
 </li>
-<li>Result:<pre><code class="nulljava">UserJson {<span class="hljs-string">"name"</span>:<span class="hljs-string">"chris"</span>,<span class="hljs-string">"createDate"</span>:<span class="hljs-string">"2014-07-23 11:10:43"</span>}
+<li>Result:<pre><code class="lang-java">UserJson {&quot;name&quot;:&quot;chris&quot;,&quot;createDate&quot;:&quot;2014-07-23 11:10:43&quot;}
 </code></pre>
 </li>
 </ul>
 <h3 id="header-4">单向过滤</h3>
 <p>使用<code>@JsonIgnore</code>+<code>@JsonProperty</code></p>
 <p>应用： JsonDeserialize时过滤某属性，JsonSerialize时保留属性</p>
-<pre><code class="nulljava"><span class="hljs-meta">@JsonIgnore</span>
-<span class="hljs-keyword">private</span> Date createDate;
-<span class="hljs-meta">@JsonProperty</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> Date <span class="hljs-title">getCreateDate</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.createDate;
+<pre><code class="lang-java">@JsonIgnore
+private Date createDate;
+@JsonProperty
+public Date getCreateDate(){
+    return this.createDate;
 }
-<span class="hljs-meta">@JsonIgnore</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setCreateDate</span><span class="hljs-params">(Date createDate)</span></span>{
-    <span class="hljs-keyword">this</span>.createDate=createDate;
+@JsonIgnore
+public void setCreateDate(Date createDate){
+    this.createDate=createDate;
 }
 </code></pre>
 <h2 id="header-5">动态解析</h2>
@@ -251,41 +254,41 @@ ArticleJson {<span class="hljs-string">"title"</span>:<span class="hljs-string">
 </ul>
 <p>使用举例：</p>
 <ol>
-<li>POJO：<pre><code class="nulljava"> <span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"evalContent"</span>, nullable = <span class="hljs-keyword">false</span>)
- <span class="hljs-meta">@Lob</span>
- <span class="hljs-meta">@JsonSerialize</span>(using=CustomContentSerialize.class)
- <span class="hljs-keyword">public</span> <span class="hljs-keyword">byte</span>[] getEvalContent(){
-     <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.evalContent;
+<li>POJO：<pre><code class="lang-java"> @Column(name = &quot;evalContent&quot;, nullable = false)
+ @Lob
+ @JsonSerialize(using=CustomContentSerialize.class)
+ public byte[] getEvalContent(){
+     return this.evalContent;
  }
- <span class="hljs-meta">@JsonDeserialize</span>(using=CustomContentDeserialize.class)
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setEvalContent</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] evalContent)</span></span>{
-     <span class="hljs-keyword">this</span>.evalContent = evalContent;
+ @JsonDeserialize(using=CustomContentDeserialize.class)
+ public void setEvalContent(byte[] evalContent){
+     this.evalContent = evalContent;
  }
 </code></pre>
 </li>
-<li>Serialize：Read Object to JsonString（CustomContentSerialize: byte[] to String）<pre><code class="nulljava"> public class CustomContentSerialize extends JsonSerializer&lt;byte[]&gt; {
+<li>Serialize：Read Object to JsonString（CustomContentSerialize: byte[] to String）<pre><code class="lang-java"> public class CustomContentSerialize extends JsonSerializer&lt;byte[]&gt; {
      @Override
      public void serialize(byte[] value, JsonGenerator jgen,
              SerializerProvider provider) throws IOException,
              JsonProcessingException
      {
-         System.out.println("CustomContentSerialize------------");
-         String content=new String(value,"UTF-8");
+         System.out.println(&quot;CustomContentSerialize------------&quot;);
+         String content=new String(value,&quot;UTF-8&quot;);
          /*System.out.println(content);*/
          jgen.writeString(content);
      }  
  }
 </code></pre>
 </li>
-<li>Deserialize：Read JsonString to Object （CustomContentDeserialize: String to byte[]）<pre><code class="nulljava"> public class CustomContentDeserialize extends JsonDeserializer&lt;byte[]&gt; {
+<li>Deserialize：Read JsonString to Object （CustomContentDeserialize: String to byte[]）<pre><code class="lang-java"> public class CustomContentDeserialize extends JsonDeserializer&lt;byte[]&gt; {
      @Override
      public byte[] deserialize(JsonParser jp, DeserializationContext ctxt)
              throws IOException, JsonProcessingException
      {
-         //System.out.println("CustomContentDeserialize-----------");
+         //System.out.println(&quot;CustomContentDeserialize-----------&quot;);
          String content=jp.getText();
          //System.out.println(content);
-         return content.getBytes("UTF-8");
+         return content.getBytes(&quot;UTF-8&quot;);
      }
  }
 </code></pre>
@@ -297,41 +300,41 @@ ArticleJson {<span class="hljs-string">"title"</span>:<span class="hljs-string">
 <ul>
 <li>序列化时自动转换时间格式为<code>yyyy-MM-dd HH:mm:ss</code></li>
 <li><p>序列化时对一些特殊字符进行转换（为防止Xss恶意攻击）</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyDateObjectMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ObjectMapper</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">InitializingBean</span>  </span>{
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">293736193275041317L</span>;
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyDateObjectMapper</span><span class="hljs-params">()</span> </span>{
-      _serializationConfig = _serializationConfig.with(<span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>));
-      <span class="hljs-keyword">this</span>.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, <span class="hljs-keyword">true</span>);
-      <span class="hljs-keyword">this</span>.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, <span class="hljs-keyword">false</span>);
+<pre><code class="lang-java">public class MyDateObjectMapper extends ObjectMapper implements InitializingBean  {
+  private static final long serialVersionUID = 293736193275041317L;
+  public MyDateObjectMapper() {
+      _serializationConfig = _serializationConfig.with(new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;));
+      this.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+      this.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
   }
 
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> doHtmlXssSerializer=<span class="hljs-keyword">false</span>;
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isDoHtmlXssSerializer</span><span class="hljs-params">()</span></span>{
-      <span class="hljs-keyword">return</span> doHtmlXssSerializer;
+  private boolean doHtmlXssSerializer=false;
+  public boolean isDoHtmlXssSerializer(){
+      return doHtmlXssSerializer;
   }
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setDoHtmlXssSerializer</span><span class="hljs-params">(<span class="hljs-keyword">boolean</span> doHtmlXssSerializer)</span></span>{
-      <span class="hljs-keyword">this</span>.doHtmlXssSerializer = doHtmlXssSerializer;
+  public void setDoHtmlXssSerializer(boolean doHtmlXssSerializer){
+      this.doHtmlXssSerializer = doHtmlXssSerializer;
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterPropertiesSet</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception</span>{
-      System.out.println(<span class="hljs-string">"doHtmlXssSerializer-----------"</span>);
-      <span class="hljs-keyword">if</span>(doHtmlXssSerializer){
-           SimpleModule <span class="hljs-keyword">module</span> = <span class="hljs-keyword">new</span> SimpleModule(<span class="hljs-string">"HTML XSS Serializer"</span>);
-           <span class="hljs-keyword">module</span>.addSerializer(<span class="hljs-keyword">new</span> JsonHtmlXssSerializer(String.class));
-           <span class="hljs-keyword">this</span>.registerModule(<span class="hljs-keyword">module</span>);
+  @Override
+  public void afterPropertiesSet() throws Exception{
+      System.out.println(&quot;doHtmlXssSerializer-----------&quot;);
+      if(doHtmlXssSerializer){
+           SimpleModule module = new SimpleModule(&quot;HTML XSS Serializer&quot;);
+           module.addSerializer(new JsonHtmlXssSerializer(String.class));
+           this.registerModule(module);
       }
   }
 }
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonHtmlXssSerializer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StdSerializer</span>&lt;<span class="hljs-title">String</span>&gt;</span>{
-  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-title">JsonHtmlXssSerializer</span><span class="hljs-params">(Class&lt;String&gt; t)</span></span>{
-      <span class="hljs-keyword">super</span>(t);
+public class JsonHtmlXssSerializer extends StdSerializer&lt;String&gt;{
+  protected JsonHtmlXssSerializer(Class&lt;String&gt; t){
+      super(t);
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">serialize</span><span class="hljs-params">(String value, JsonGenerator jgen,SerializerProvider provider)</span> <span class="hljs-keyword">throws</span> IOException,JsonProcessingException</span>{
-      <span class="hljs-keyword">if</span> (value != <span class="hljs-keyword">null</span>) {
-           String encodedValue=value.replaceAll(<span class="hljs-string">"&lt;"</span>, <span class="hljs-string">"&amp;lt;"</span>).replaceAll(<span class="hljs-string">"&gt;"</span>, <span class="hljs-string">"&amp;gt;"</span>);
-           System.out.println(<span class="hljs-string">"encodedValue:"</span>+encodedValue);
+  @Override
+  public void serialize(String value, JsonGenerator jgen,SerializerProvider provider) throws IOException,JsonProcessingException{
+      if (value != null) {
+           String encodedValue=value.replaceAll(&quot;&lt;&quot;, &quot;&amp;lt;&quot;).replaceAll(&quot;&gt;&quot;, &quot;&amp;gt;&quot;);
+           System.out.println(&quot;encodedValue:&quot;+encodedValue);
            jgen.writeString(encodedValue);
         }
   }
@@ -341,47 +344,47 @@ ArticleJson {<span class="hljs-string">"title"</span>:<span class="hljs-string">
 </ul>
 </li>
 <li><p>Spring MVC 中注入自定义的<code>ObjectMapper</code> （配置<code>xxx-servlet.xml</code>）</p>
-<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- Jackson ObjectMapper --&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myObjectMapper"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.jackson.MyDateObjectMapper"</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"serializationInclusion"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"com.fasterxml.jackson.annotation.JsonInclude.Include"</span>&gt;</span>NON_NULL<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"doHtmlXssSerializer"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"false"</span>/&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;!-- Jackson ObjectMapper --&gt;
+ &lt;bean id=&quot;myObjectMapper&quot; class=&quot;com.cj.support.jackson.MyDateObjectMapper&quot;&gt;
+     &lt;property name=&quot;serializationInclusion&quot;&gt;
+          &lt;value type=&quot;com.fasterxml.jackson.annotation.JsonInclude.Include&quot;&gt;NON_NULL&lt;/value&gt;
+      &lt;/property&gt;
+      &lt;property name=&quot;doHtmlXssSerializer&quot; value=&quot;false&quot;/&gt;
+ &lt;/bean&gt;
 
- <span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">mvc:message-converters</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"</span>&gt;</span>
-             <span class="hljs-comment">&lt;!-- 这里注入自定义的ObjectMapper --&gt;</span>
-              <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"objectMapper"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myObjectMapper"</span>/&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:message-converters</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:annotation-driven</span>&gt;</span>
+ &lt;mvc:annotation-driven&gt;
+   &lt;mvc:message-converters&gt;
+         &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+             &lt;!-- 这里注入自定义的ObjectMapper --&gt;
+              &lt;property name=&quot;objectMapper&quot; ref=&quot;myObjectMapper&quot;/&gt;
+         &lt;/bean&gt;
+     &lt;/mvc:message-converters&gt;
+ &lt;/mvc:annotation-driven&gt;
 
- <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mediaTypes"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">map</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">entry</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"json"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"application/json"</span>/&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-name">map</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewResolvers"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewClass"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"prefix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/WEB-INF/"</span>/&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"suffix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">".jsp"</span>/&gt;</span>
-             <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span> 
-         <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"defaultViews"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.json.MappingJackson2JsonView"</span> &gt;</span>
-                 <span class="hljs-comment">&lt;!-- 这里注入自定义的ObjectMapper --&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"objectMapper"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myObjectMapper"</span> /&gt;</span>
-             <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+ &lt;bean class=&quot;org.springframework.web.servlet.view.ContentNegotiatingViewResolver&quot;&gt;
+     &lt;property name=&quot;mediaTypes&quot;&gt;
+         &lt;map&gt;
+             &lt;entry key=&quot;json&quot; value=&quot;application/json&quot;/&gt;
+         &lt;/map&gt;
+     &lt;/property&gt;
+     &lt;property name=&quot;viewResolvers&quot;&gt;
+         &lt;list&gt;
+             &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+                 &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;
+                 &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/&quot;/&gt;
+                 &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+             &lt;/bean&gt; 
+         &lt;/list&gt;
+     &lt;/property&gt;
+     &lt;property name=&quot;defaultViews&quot;&gt;
+         &lt;list&gt;
+             &lt;bean class=&quot;org.springframework.web.servlet.view.json.MappingJackson2JsonView&quot; &gt;
+                 &lt;!-- 这里注入自定义的ObjectMapper --&gt;
+                 &lt;property name=&quot;objectMapper&quot; ref=&quot;myObjectMapper&quot; /&gt;
+             &lt;/bean&gt;
+         &lt;/list&gt;
+     &lt;/property&gt;
+ &lt;/bean&gt;
 </code></pre>
 </li>
 </ol>
@@ -420,10 +423,17 @@ ArticleJson {<span class="hljs-string">"title"</span>:<span class="hljs-string">
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -214,54 +217,54 @@ log.dir=./logs              # 日志/消息存放路径
 </ol>
 <h3 id="header-4">Java API</h3>
 <p>依赖包:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.kafka<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>kafka_2.10<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${kafka.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;
+    &lt;artifactId&gt;kafka_2.10&lt;/artifactId&gt;
+    &lt;version&gt;${kafka.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>Producer:</p>
-<pre><code class="nulljava">Properties props = <span class="hljs-keyword">new</span> Properties();
-props.put(<span class="hljs-string">"metadata.broker.list"</span>, <span class="hljs-string">"cj.storm:9092,cj.storm:9093,cj.storm:9094"</span>);
-props.put(<span class="hljs-string">"serializer.class"</span>, <span class="hljs-string">"kafka.serializer.StringEncoder"</span>);
+<pre><code class="lang-java">Properties props = new Properties();
+props.put(&quot;metadata.broker.list&quot;, &quot;cj.storm:9092,cj.storm:9093,cj.storm:9094&quot;);
+props.put(&quot;serializer.class&quot;, &quot;kafka.serializer.StringEncoder&quot;);
 
-ProducerConfig config = <span class="hljs-keyword">new</span> ProducerConfig(props);  
-Producer&lt;String, String&gt; producer = <span class="hljs-keyword">new</span> Producer&lt;String, String&gt;(config);
+ProducerConfig config = new ProducerConfig(props);  
+Producer&lt;String, String&gt; producer = new Producer&lt;String, String&gt;(config);
 
-KeyedMessage&lt;String, String&gt; msg = <span class="hljs-keyword">new</span> KeyedMessage&lt;String, String&gt;(<span class="hljs-string">"order"</span>, <span class="hljs-string">"test-kafka"</span>);
+KeyedMessage&lt;String, String&gt; msg = new KeyedMessage&lt;String, String&gt;(&quot;order&quot;, &quot;test-kafka&quot;);
 producer.send(msg);
 
 producer.close();
 </code></pre>
 <p>Consumer:</p>
-<pre><code class="nulljava">Properties props = <span class="hljs-keyword">new</span> Properties();
-props.put(<span class="hljs-string">"zookeeper.connect"</span>, <span class="hljs-string">"cj.storm:2181,cj.storm:2182,cj.storm:2183"</span>);
-props.put(<span class="hljs-string">"group.id"</span>, <span class="hljs-string">"test-consumer-group"</span>);
-props.put(<span class="hljs-string">"zookeeper.session.timeout.ms"</span>, <span class="hljs-string">"30000"</span>);
-props.put(<span class="hljs-string">"zookeeper.sync.time.ms"</span>, <span class="hljs-string">"200"</span>);
-props.put(<span class="hljs-string">"auto.commit.interval.ms"</span>, <span class="hljs-string">"1000"</span>);
+<pre><code class="lang-java">Properties props = new Properties();
+props.put(&quot;zookeeper.connect&quot;, &quot;cj.storm:2181,cj.storm:2182,cj.storm:2183&quot;);
+props.put(&quot;group.id&quot;, &quot;test-consumer-group&quot;);
+props.put(&quot;zookeeper.session.timeout.ms&quot;, &quot;30000&quot;);
+props.put(&quot;zookeeper.sync.time.ms&quot;, &quot;200&quot;);
+props.put(&quot;auto.commit.interval.ms&quot;, &quot;1000&quot;);
 
-ConsumerConfig config = <span class="hljs-keyword">new</span> ConsumerConfig(props);  
+ConsumerConfig config = new ConsumerConfig(props);  
 ConsumerConnector consumer = Consumer.createJavaConsumerConnector(config);
 
-Map&lt;String, Integer&gt; topicCountMap = <span class="hljs-keyword">new</span> HashMap&lt;String, Integer&gt;();
-topicCountMap.put(<span class="hljs-string">"order"</span>, <span class="hljs-keyword">new</span> Integer(<span class="hljs-number">1</span>));
+Map&lt;String, Integer&gt; topicCountMap = new HashMap&lt;String, Integer&gt;();
+topicCountMap.put(&quot;order&quot;, new Integer(1));
 
-StringDecoder keyDecoder = <span class="hljs-keyword">new</span> StringDecoder(<span class="hljs-keyword">new</span> VerifiableProperties());
-StringDecoder valueDecoder = <span class="hljs-keyword">new</span> StringDecoder(<span class="hljs-keyword">new</span> VerifiableProperties());
+StringDecoder keyDecoder = new StringDecoder(new VerifiableProperties());
+StringDecoder valueDecoder = new StringDecoder(new VerifiableProperties());
 
-<span class="hljs-comment">//直接byte[]接收</span>
-Map&lt;String, List&lt;KafkaStream&lt;<span class="hljs-keyword">byte</span>[], <span class="hljs-keyword">byte</span>[]&gt;&gt;&gt; consumerMap = consumer.createMessageStreams(topicCountMap); 
-KafkaStream&lt;<span class="hljs-keyword">byte</span>[], <span class="hljs-keyword">byte</span>[]&gt; stream = consumerMap.get(topic).get(<span class="hljs-number">0</span>); 
-ConsumerIterator&lt;<span class="hljs-keyword">byte</span>[], <span class="hljs-keyword">byte</span>[]&gt; it = stream.iterator(); 
-<span class="hljs-keyword">while</span> (it.hasNext())
-    System.out.println(<span class="hljs-keyword">new</span> String(it.next().message())); 
+//直接byte[]接收
+Map&lt;String, List&lt;KafkaStream&lt;byte[], byte[]&gt;&gt;&gt; consumerMap = consumer.createMessageStreams(topicCountMap); 
+KafkaStream&lt;byte[], byte[]&gt; stream = consumerMap.get(topic).get(0); 
+ConsumerIterator&lt;byte[], byte[]&gt; it = stream.iterator(); 
+while (it.hasNext())
+    System.out.println(new String(it.next().message())); 
 
-<span class="hljs-comment">//使用String接收</span>
+//使用String接收
 Map&lt;String, List&lt;KafkaStream&lt;String, String&gt;&gt;&gt; consumerMap = consumer.createMessageStreams(topicCountMap,keyDecoder,valueDecoder);
-KafkaStream&lt;String, String&gt; stream = consumerMap.get(<span class="hljs-string">"order"</span>).get(<span class="hljs-number">0</span>);
+KafkaStream&lt;String, String&gt; stream = consumerMap.get(&quot;order&quot;).get(0);
 ConsumerIterator&lt;String, String&gt; it = stream.iterator();
-<span class="hljs-keyword">while</span> (it.hasNext())
+while (it.hasNext())
     System.out.println(it.next().message());
 </code></pre>
 <h2 id="header-5">Reference</h2>
@@ -305,10 +308,17 @@ ConsumerIterator&lt;String, String&gt; it = stream.iterator();
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

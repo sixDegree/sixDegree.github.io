@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -189,30 +192,30 @@
 </li>
 <li>配置（<code>$HIVE_HOME/conf</code>目录下）<ul>
 <li><code>hive-log4j.properties.template</code> =&gt; <code>hive-log4j.properties</code></li>
-<li><code>hive-default.xml.template</code> =&gt; <code>hive-site.xml</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/user/hive/warehouse<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hive.exec.stagingdir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/tmp/hive/.hive-staging<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hive.exec.scratchdir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/tmp/hive<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hive.exec.local.scratchdir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/tmp/hive<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hive.downloaded.resources.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/tmp/hive/${hive.session.id}_resources<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hive.server2.logging.operation.log.location<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/tmp/hive/operation_logs<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li><code>hive-default.xml.template</code> =&gt; <code>hive-site.xml</code><pre><code class="lang-xml">&lt;property&gt;
+ &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
+ &lt;value&gt;/user/hive/warehouse&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;hive.exec.stagingdir&lt;/name&gt;
+ &lt;value&gt;/tmp/hive/.hive-staging&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;hive.exec.scratchdir&lt;/name&gt;
+ &lt;value&gt;/tmp/hive&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;hive.exec.local.scratchdir&lt;/name&gt;
+ &lt;value&gt;/tmp/hive&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;hive.downloaded.resources.dir&lt;/name&gt;
+ &lt;value&gt;/tmp/hive/${hive.session.id}_resources&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;hive.server2.logging.operation.log.location&lt;/name&gt;
+ &lt;value&gt;/tmp/hive/operation_logs&lt;/value&gt;
+&lt;/property&gt;
 </code></pre>
 </li>
 </ul>
@@ -229,8 +232,8 @@ hadoop fs -chmod g+w /user/hive/warehouse
 <li><p>使用外部数据库（例如MySQL）作为Hive的metastore：</p>
 <ol>
 <li><p>安装MySQL</p>
-<pre><code class="nullvim">&gt; rpm -<span class="hljs-keyword">qa</span> |<span class="hljs-keyword">grep</span> mysql             # 检查mysql
-&gt; rpm -<span class="hljs-keyword">e</span> --nodeps mysql           # 强力卸载mysql
+<pre><code class="lang-vim">&gt; rpm -qa |grep mysql             # 检查mysql
+&gt; rpm -e --nodeps mysql           # 强力卸载mysql
 
 &gt; rpm -i mysql-server-********    # 安装mysql服务端
 &gt; rpm -i mysql-client-********    # 安装mysql客户端
@@ -239,31 +242,31 @@ hadoop fs -chmod g+w /user/hive/warehouse
 &gt; mysql_secure_installation       # 设置root用户密码
 </code></pre>
 </li>
-<li>mysql 连接权限修改<pre><code class="nullvim">&gt; mysql -u root -p
+<li>mysql 连接权限修改<pre><code class="lang-vim">&gt; mysql -u root -p
 mysql&gt; use mysql;
 mysql&gt; select host,user from user;
-mysql&gt; grant all privileges on *.* to 'root'@'%' identified by 'mypassword' with grant option;
+mysql&gt; grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &#39;mypassword&#39; with grant option;
 mysql&gt; select host,user from user;
 mysql&gt; flush privileges;
 </code></pre>
 </li>
 <li>添加mysql的jdbc驱动包（置于到<code>$HIVE_HOME/lib</code>目录下）</li>
-<li>添加配置Hive （<code>$HIVE_HOME/conf/hive-site.xml</code>）<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>jdbc:mysql://cj.storm:3306/hive?createDatabaseIfNotExist=true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>root<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>admin<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li>添加配置Hive （<code>$HIVE_HOME/conf/hive-site.xml</code>）<pre><code class="lang-xml">&lt;property&gt;
+ &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
+ &lt;value&gt;jdbc:mysql://cj.storm:3306/hive?createDatabaseIfNotExist=true&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;
+ &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
+ &lt;value&gt;root&lt;/value&gt;
+&lt;/property&gt;
+&lt;property&gt;
+ &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
+ &lt;value&gt;admin&lt;/value&gt;
+&lt;/property&gt;
 </code></pre>
 </li>
 </ol>
@@ -282,7 +285,7 @@ mysql&gt; flush privileges;
 </ul>
 </li>
 <li>验证<ul>
-<li>Hive命令<pre><code class="nullvim">&gt; hive -help
+<li>Hive命令<pre><code class="lang-vim">&gt; hive -help
 &gt; hive
 hive&gt; show databases;
 OK
@@ -298,7 +301,7 @@ hive&gt; exit;
 <h2 id="header-5">HiveQL</h2>
 <h3 id="header-6">数据库</h3>
 <p>类似传统数据库的DataBase，系统默认使用数据库<code>default</code>，也可指定</p>
-<pre><code class="nullvim">&gt; hive
+<pre><code class="lang-vim">&gt; hive
 hive&gt; create database &lt;数据库名&gt; ;
 hive&gt; use &lt;数据库名&gt; ;
 ...
@@ -308,7 +311,7 @@ hive&gt; drop database  &lt;数据库名&gt; cascade;
 <h3 id="header-7">表</h3>
 <ul>
 <li><p>查看表：</p>
-<pre><code class="nullsql"># 查看所有的表
+<pre><code class="lang-sql"># 查看所有的表
 show tables; 
 # 支持模糊查询
 show tables &#39;*tmp*&#39;; 
@@ -321,26 +324,26 @@ describe tmp_tb;
 describe formatted tmp_tb;
 </code></pre>
 </li>
-<li>修改表结构（alter）<pre><code class="nullsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> tmp_tb <span class="hljs-keyword">add</span> <span class="hljs-keyword">columns</span> (cols,<span class="hljs-keyword">string</span>);
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> tmp_tb <span class="hljs-keyword">add</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">day</span>=<span class="hljs-string">'2016-04-01'</span>,city=<span class="hljs-string">'wx'</span>);
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> tmp_tb <span class="hljs-keyword">drop</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">partition</span> (daytime=<span class="hljs-string">'2016-05-01'</span>,city=<span class="hljs-string">'sz'</span>);
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> tmp_tb clustered <span class="hljs-keyword">by</span> (ip) <span class="hljs-keyword">into</span> <span class="hljs-number">3</span> buckets;
+<li>修改表结构（alter）<pre><code class="lang-sql">alter table tmp_tb add columns (cols,string);
+alter table tmp_tb add if not exists partition(day=&#39;2016-04-01&#39;,city=&#39;wx&#39;);
+alter table tmp_tb drop if exists partition (daytime=&#39;2016-05-01&#39;,city=&#39;sz&#39;);
+alter table tmp_tb clustered by (ip) into 3 buckets;
 </code></pre>
 </li>
-<li>删除表（drop）<pre><code class="nullsql"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span>
+<li>删除表（drop）<pre><code class="lang-sql">drop table
 </code></pre>
 </li>
-<li>清空表 （truncate）<pre><code class="nullsql"># 无法清空外部表
+<li>清空表 （truncate）<pre><code class="lang-sql"># 无法清空外部表
 truncate table table_name;  # 不指定分区，将清空表中的所有分区
 truncate table table_name partition (dt=&#39;20080808&#39;);
 </code></pre>
 </li>
 <li><p>视图（view）</p>
-<pre><code class="nullsql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> v1 <span class="hljs-keyword">AS</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> t1;
+<pre><code class="lang-sql">CREATE VIEW v1 AS select * from t1;
 </code></pre>
 </li>
 <li><p>创建表</p>
-<pre><code class="nullsql"># 创建表
+<pre><code class="lang-sql"># 创建表
 Create [EXTERNAL] TABLE [IF NOT EXISTS] table_name 
   [(col_name data_type, ...)]
   [PARTITIONED BY (col_name data_type, ...)] 
@@ -377,26 +380,26 @@ CREATE [EXTERNAL] TABLE target_table LIKE source_table [LOCATION hdfs_path];
 </li>
 <li><p>加载数据(Load dataset)</p>
 <ul>
-<li>LOAD Cmd：将HDFS文件导入已创建的Hive表（加载时不做检查，查询时检查）<pre><code class="nullsql"><span class="hljs-keyword">LOAD</span> <span class="hljs-keyword">DATA</span> [<span class="hljs-keyword">LOCAL</span>] INPATH <span class="hljs-string">'filepath'</span> [OVERWRITE] 
-<span class="hljs-keyword">INTO</span> <span class="hljs-keyword">TABLE</span> tablename
-[<span class="hljs-keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...)]
+<li>LOAD Cmd：将HDFS文件导入已创建的Hive表（加载时不做检查，查询时检查）<pre><code class="lang-sql">LOAD DATA [LOCAL] INPATH &#39;filepath&#39; [OVERWRITE] 
+INTO TABLE tablename
+[PARTITION (partcol1=val1, partcol2=val2 ...)]
 </code></pre>
-<pre><code class="nullsql">!hadoop fs -ls input/hive/stocks_db;
-<span class="hljs-keyword">load</span> <span class="hljs-keyword">data</span> inpath <span class="hljs-string">'input/hive/stocks_db'</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> stocks;
+<pre><code class="lang-sql">!hadoop fs -ls input/hive/stocks_db;
+load data inpath &#39;input/hive/stocks_db&#39; into table stocks;
 </code></pre>
 </li>
-<li>CTAS：将Hive查询结果存放入一个新创表，原子级（select失败，table不会创建），目标表不能是分区表和外部表<pre><code class="nullsql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> [<span class="hljs-keyword">IF</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>] table_name 
-<span class="hljs-keyword">AS</span> <span class="hljs-keyword">SELECT</span> …
+<li>CTAS：将Hive查询结果存放入一个新创表，原子级（select失败，table不会创建），目标表不能是分区表和外部表<pre><code class="lang-sql">CREATE TABLE [IF NOT EXISTS] table_name 
+AS SELECT …
 </code></pre>
-<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> stocks_ctas <span class="hljs-keyword">as</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> stocks;
+<pre><code class="lang-sql">create table stocks_ctas as select * from stocks;
 </code></pre>
 </li>
 <li><p>INSERT…SELECT：将Hive查询结果存入一个已创表</p>
-<pre><code class="nullsql"><span class="hljs-keyword">INSERT</span> OVERWRITE|<span class="hljs-keyword">INTO</span> <span class="hljs-keyword">TABLE</span> tablename 
-[<span class="hljs-keyword">PARTITION</span> (partcol1=val1, partcol2=val2 ...)] 
-select_statement <span class="hljs-keyword">FROM</span> from_statement
+<pre><code class="lang-sql">INSERT OVERWRITE|INTO TABLE tablename 
+[PARTITION (partcol1=val1, partcol2=val2 ...)] 
+select_statement FROM from_statement
 </code></pre>
-<pre><code class="nullsql">insert into table stocks_ctas select s.* from stocks s;
+<pre><code class="lang-sql">insert into table stocks_ctas select s.* from stocks s;
 insert overwrite table stocks_ctas select s.* from stocks s;
 
 # 可以在同一个查询中使用多个insert子句
@@ -406,10 +409,10 @@ insert into t2 select id,tel
 where age&gt;25
 </code></pre>
 </li>
-<li>LOCATION：指定Hive表数据文件位置（注意：不会再移动数据文件到Hive配置的数据仓库中）<pre><code class="nullsql">!hadoop fs -ls /user/hive/input/hive/stocks_db;
-<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> stocks_loc(...) 
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span>
-location <span class="hljs-string">'/user/hive/input/hive/stocks_db'</span>;
+<li>LOCATION：指定Hive表数据文件位置（注意：不会再移动数据文件到Hive配置的数据仓库中）<pre><code class="lang-sql">!hadoop fs -ls /user/hive/input/hive/stocks_db;
+create table stocks_loc(...) 
+row format delimited fields terminated by &#39;,&#39;
+location &#39;/user/hive/input/hive/stocks_db&#39;;
 </code></pre>
 </li>
 </ul>
@@ -449,7 +452,7 @@ location <span class="hljs-string">'/user/hive/input/hive/stocks_db'</span>;
 </li>
 </ol>
 <h3 id="header-8">分区表</h3>
-<pre><code class="nullsql"># 使用普通表，会scan整张表，效率低
+<pre><code class="lang-sql"># 使用普通表，会scan整张表，效率低
 select * from stocks where symbol=&#39;XYZ&#39; and ymd=&#39;2003-02-01&#39;;
 
 # 使用分区表，会先找到对应分区列目录，效率高
@@ -457,41 +460,41 @@ select * from stocks_partition where symbol=&#39;XYZ&#39; and ymd=&#39;2003-02-0
 </code></pre>
 <p>分区表（partition table）<br>粗粒度的划分，分区列成了目录（为虚拟列），条件查询时可定位到目录提高效率</p>
 <ul>
-<li>创建分区表<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> stocks_partition(
-  col1 <span class="hljs-keyword">string</span>,
-  col2 <span class="hljs-keyword">string</span>,
-  exch_name <span class="hljs-keyword">string</span>,
-  yr <span class="hljs-built_in">int</span>
+<li>创建分区表<pre><code class="lang-sql">create table if not exists stocks_partition(
+  col1 string,
+  col2 string,
+  exch_name string,
+  yr int
 )
-partitioned <span class="hljs-keyword">by</span> (symbol <span class="hljs-keyword">string</span>)
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> ;
+partitioned by (symbol string)
+row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
 </li>
 <li><p>加载数据</p>
 <ul>
 <li><p>Using <code>insert</code></p>
-<pre><code class="nullsql"># add partition(symbol=B7J) data:
-insert into table stocks_partition partition(symbol='B7J')
-select col1,col2,exch_name,yr from stocks where symbol ='B7J';
+<pre><code class="lang-sql"># add partition(symbol=B7J) data:
+insert into table stocks_partition partition(symbol=&#39;B7J&#39;)
+select col1,col2,exch_name,yr from stocks where symbol =&#39;B7J&#39;;
 
 # add partition(symbol=BB3) data:
-insert into table stocks_partition partition(symbol='BB3')
-select col1,col2,exch_name,yr from stocks where symbol ='BB3';
+insert into table stocks_partition partition(symbol=&#39;BB3&#39;)
+select col1,col2,exch_name,yr from stocks where symbol =&#39;BB3&#39;;
 
 =&gt; 也合并成一个insert
 from stocks
-insert into table stocks_partition partition(symbol='B7J')
-select col1,col2,exch_name,yr from stocks where symbol='B7J'
-insert into table stocks_partition partition(symbol='BB3')
-select col1,col2,exch_name,yr from stocks where symbol ='BB3';
+insert into table stocks_partition partition(symbol=&#39;B7J&#39;)
+select col1,col2,exch_name,yr from stocks where symbol=&#39;B7J&#39;
+insert into table stocks_partition partition(symbol=&#39;BB3&#39;)
+select col1,col2,exch_name,yr from stocks where symbol =&#39;BB3&#39;;
 
 # 注意：如下方式是错误的
-insert overwrite table stocks_partition partition(symbol='APPL')
-select col1,col2,exch_name,yr from stocks where symbol='ZUU';
+insert overwrite table stocks_partition partition(symbol=&#39;APPL&#39;)
+select col1,col2,exch_name,yr from stocks where symbol=&#39;ZUU&#39;;
 </code></pre>
 </li>
 <li><p>Using <code>location</code></p>
-<pre><code class="nullsql"># add partition(symbol=ZUU) data:
+<pre><code class="lang-sql"># add partition(symbol=ZUU) data:
 insert overwrite directory &#39;output/hive/stocks-zuu&#39;
 select col1,col2,exch_name,yr from stocks where symbol=&#39;ZUU&#39;;
 
@@ -501,11 +504,11 @@ location &#39;/output/hive/stocks-zuu&#39;
 </li>
 </ul>
 </li>
-<li>添加删除分区<pre><code class="nullsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> stocks_partition <span class="hljs-keyword">add</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">partition</span>(symbol=<span class="hljs-string">'ZUU'</span>);
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> stocks_partition <span class="hljs-keyword">drop</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">partition</span>(symbol=<span class="hljs-string">'ZUU'</span>);
+<li>添加删除分区<pre><code class="lang-sql">alter table stocks_partition add if not exists partition(symbol=&#39;ZUU&#39;);
+alter table stocks_partition drop if exists partition(symbol=&#39;ZUU&#39;);
 </code></pre>
 </li>
-<li>查看表分区 <pre><code class="nullsql">hive&gt; show partitions stocks_partition
+<li>查看表分区 <pre><code class="lang-sql">hive&gt; show partitions stocks_partition
 OK
 symbol=B7K
 symbol=BB3
@@ -513,7 +516,7 @@ symbol=ZUU
 </code></pre>
 </li>
 <li><p>数据查询</p>
-<pre><code class="nullsql">selecet * from stocks_partitions where symbol=&#39;XYZ&#39; and ymd=&#39;2003-02-01&#39;;
+<pre><code class="lang-sql">selecet * from stocks_partitions where symbol=&#39;XYZ&#39; and ymd=&#39;2003-02-01&#39;;
 
 # 若设置了strict方式，则select的where中一定要包含partition column条件查询
 set hive.mapred.mode=strict;
@@ -522,19 +525,19 @@ select * from stocks_partitions where ymd=&#39;2003-02-01&#39;;
 </li>
 <li><p>动态分区</p>
 <ul>
-<li>创建动态分区表<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> stocks_dynamic_partition(
- col1 <span class="hljs-keyword">string</span>,
- col2 <span class="hljs-keyword">string</span>
+<li>创建动态分区表<pre><code class="lang-sql">create table if not exists stocks_dynamic_partition(
+ col1 string,
+ col2 string
 )
-partitioned <span class="hljs-keyword">by</span> (exch_name <span class="hljs-keyword">string</span>,yr <span class="hljs-built_in">int</span>,sym <span class="hljs-keyword">string</span>)
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> ;
+partitioned by (exch_name string,yr int,sym string)
+row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
 </li>
-<li>启动动态分区<pre><code class="nullsql"><span class="hljs-keyword">set</span> hive.exec.dynamic.partition=<span class="hljs-literal">true</span>;
+<li>启动动态分区<pre><code class="lang-sql">set hive.exec.dynamic.partition=true;
 </code></pre>
 </li>
 <li><p>加载数据（注意：默认动态分区要求至少有一个静态分区）</p>
-<pre><code class="nullsql"># 如下方式，默认会报错
+<pre><code class="lang-sql"># 如下方式，默认会报错
 # SemanticException:dynamic partition strict mode requires at least one static partition column
 insert overwrite table stocks_dynamic_partition partition(exch_name,yr,symbol)
 select col1,col2,exch_name,year(ymd),symbol from stocks;
@@ -543,16 +546,16 @@ select col1,col2,exch_name,year(ymd),symbol from stocks;
 set hive.exec.dynamic.partition.mode=nostrict;
 
 =&gt; 解决方案2：
-insert overwrite table stocks_dynamic_partition partition(exch_name='ABCSE',yr,symbol)
+insert overwrite table stocks_dynamic_partition partition(exch_name=&#39;ABCSE&#39;,yr,symbol)
 select col1,col2,exch_name,year(ymd),symbol from stocks;
 </code></pre>
 <ul>
-<li>查看表<pre><code class="nullsql"><span class="hljs-keyword">show</span> <span class="hljs-keyword">partitions</span> stocks_dynamic_partition;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> stocks_dynamic_partition <span class="hljs-keyword">where</span> exch_name=<span class="hljs-string">'ABCSE'</span> <span class="hljs-keyword">and</span> yr=<span class="hljs-number">2013</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">10</span>;
+<li>查看表<pre><code class="lang-sql">show partitions stocks_dynamic_partition;
+select * from stocks_dynamic_partition where exch_name=&#39;ABCSE&#39; and yr=2013 limit 10;
 </code></pre>
 </li>
-<li>注意动态分区的分区数量是有限制的，可根据需要扩大设置（不推荐partition数量过多）：<pre><code class="nullsql"><span class="hljs-keyword">set</span> hive.exec.max.dynamic.partitions=<span class="hljs-number">1000</span>;
-<span class="hljs-keyword">set</span> hive.exec.max.dynamic.partitions.pernode=<span class="hljs-number">500</span>;
+<li>注意动态分区的分区数量是有限制的，可根据需要扩大设置（不推荐partition数量过多）：<pre><code class="lang-sql">set hive.exec.max.dynamic.partitions=1000;
+set hive.exec.max.dynamic.partitions.pernode=500;
 </code></pre>
 </li>
 <li>数据表的目录结构<pre><code>stocks_dynamic_partition/exch_name=ABCSE/yr=2013/symbol=GEL/
@@ -576,17 +579,17 @@ stocks_dynamic_partition/exch_name=ABCSE/yr=2014/symbol=GEL/
 </li>
 </ul>
 <ul>
-<li>创建表<pre><code class="nullsql"> # 必须设置这个数据，hive才会按照你设置的桶的个数去生成数据
+<li>创建表<pre><code class="lang-sql"> # 必须设置这个数据，hive才会按照你设置的桶的个数去生成数据
  set hive.enforce.bucketing = true;
  create table t4(id int) clustered by(id) into 4 buckets;
 </code></pre>
 </li>
-<li>插入数据<pre><code class="nullsql"> insert into table t4 select id from t3;      # 追加
+<li>插入数据<pre><code class="lang-sql"> insert into table t4 select id from t3;      # 追加
  insert overrite table t4 select id from t3;  # 全部重写
 </code></pre>
 </li>
 <li><p>抽样查询</p>
-<pre><code class="nullsql"># 查询带桶的表(在一部分桶上检索，效率高)
+<pre><code class="lang-sql"># 查询带桶的表(在一部分桶上检索，效率高)
 select * from t4 tablesample(bucket 1 out of 4 on id);
 
 # 不带桶的表(会在整个数据集上检索，效率低)
@@ -600,7 +603,7 @@ t4/000000_2
 t4/000000_3
 </code></pre></li>
 <li><p>分区+分桶：</p>
-<pre><code class="nullsql"># 创建表
+<pre><code class="lang-sql"># 创建表
 create table if not exists stocks_bucket(
   col1 string,
   col2 string,
@@ -610,7 +613,7 @@ partitioned by (exch_name string,yr string)
 clustered by (symbol) into 3 buckets
 row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
-<pre><code class="nullsql"># 设置动态分区和使用桶
+<pre><code class="lang-sql"># 设置动态分区和使用桶
 set hive.exec.dynamic.partition=true;
 set hive.enforce.bucketing = true; 
 
@@ -618,11 +621,11 @@ set hive.enforce.bucketing = true;
 insert into table stocks_bucket partition (exch_name=&#39;ABCE&#39;,yr)
 select col1,col2,year(ymd) from stocks
 </code></pre>
-<pre><code class="nullsql"># 抽样查询对比
+<pre><code class="lang-sql"># 抽样查询对比
 select * from stocks tablesample(bucket 3 out of 5 on symbol) s;        # 低效
 select * from stocks_bucket tablesample(bucket 3 out of 5 on symbol) s; # 高效
 </code></pre>
-<pre><code class="nullsql"># 数据表的目录结构
+<pre><code class="lang-sql"># 数据表的目录结构
 stocks_bucket/exch_name=ABCE/yr=2013
 stocks_bucket/exch_name=ABCE/yr=2013/000000_0
 stocks_bucket/exch_name=ABCE/yr=2013/000000_1
@@ -658,7 +661,7 @@ stocks_bucket/exch_name=ABCE/yr=2014/000000_2
 </ul>
 </li>
 <li><p>示例：</p>
-<pre><code class="nullsql"># 1. t1 为未分桶表
+<pre><code class="lang-sql"># 1. t1 为未分桶表
 # 1.1 scan全表，根据col1分为10个桶，从第3个桶中取数据；
 select * from t1 tablesample(bucket 3 out of 10 on col1);
 
@@ -688,12 +691,12 @@ select * from t2 tablesample(bucket 3 out of 20 on col1);
 </li>
 </ul>
 <h3 id="header-11">单表查询</h3>
-<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> [ALL | <span class="hljs-keyword">DISTINCT</span>] select_expr, select_expr, ...
-  <span class="hljs-keyword">FROM</span> table_reference 
-  [<span class="hljs-keyword">WHERE</span> condition] 
-  [<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> col_list] [<span class="hljs-keyword">Having</span> condition]
-  [CLUSTER <span class="hljs-keyword">BY</span> col_list | [<span class="hljs-keyword">DISTRIBUTE</span> <span class="hljs-keyword">BY</span> col_list] [<span class="hljs-keyword">SORT</span> <span class="hljs-keyword">BY</span> col_list] | [<span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> col_list] ]
-  [<span class="hljs-keyword">LIMIT</span> <span class="hljs-built_in">number</span>]
+<pre><code class="lang-sql">SELECT [ALL | DISTINCT] select_expr, select_expr, ...
+  FROM table_reference 
+  [WHERE condition] 
+  [GROUP BY col_list] [Having condition]
+  [CLUSTER BY col_list | [DISTRIBUTE BY col_list] [SORT BY col_list] | [ORDER BY col_list] ]
+  [LIMIT number]
 </code></pre>
 <ul>
 <li>where：过滤（mapper端）</li>
@@ -706,22 +709,22 @@ select * from t2 tablesample(bucket 3 out of 20 on col1);
 </ul>
 <p>示例：</p>
 <ul>
-<li>加查询结果写入HDFS中<pre><code class="nullsql"><span class="hljs-keyword">insert</span> overwrite <span class="hljs-keyword">local</span> <span class="hljs-keyword">directory</span> <span class="hljs-string">'/home/hive/output/hive/stocks'</span>
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span>
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> stocks <span class="hljs-keyword">distributed</span> <span class="hljs-keyword">by</span> symbol <span class="hljs-keyword">sort</span> <span class="hljs-keyword">by</span> symbol <span class="hljs-keyword">asc</span>,price_close <span class="hljs-keyword">desc</span>;
+<li>加查询结果写入HDFS中<pre><code class="lang-sql">insert overwrite local directory &#39;/home/hive/output/hive/stocks&#39;
+row format delimited fields terminated by &#39;,&#39;
+select * from stocks distributed by symbol sort by symbol asc,price_close desc;
 </code></pre>
 </li>
-<li>全局排序 order by<pre><code class="nullsql"># 无论设置了多少个reducer，这里只会使用一个reducer（数据量很大时效率低）
+<li>全局排序 order by<pre><code class="lang-sql"># 无论设置了多少个reducer，这里只会使用一个reducer（数据量很大时效率低）
 set mapreduce.job.reduces=3;
 select * from stocks order by price_close desc;
 </code></pre>
 </li>
-<li>局部排序 sort by<pre><code class="nullsql"># 每个reducer中排序
+<li>局部排序 sort by<pre><code class="lang-sql"># 每个reducer中排序
 set mapreduce.job.reduces=3;
 select * from stocks sort by price_close desc;
 </code></pre>
 </li>
-<li>分区 distribute/cluster by<pre><code class="nullsql"># distribute by 控制某个特定行应该到哪个reducer
+<li>分区 distribute/cluster by<pre><code class="lang-sql"># distribute by 控制某个特定行应该到哪个reducer
 # sort by 为每个reducer产生一个排好序的文件
 # distribute by + sort by = cluster by
 set mapreduce.job.reduces=3;
@@ -729,11 +732,11 @@ select * from stocks distributed by symbol sort by symbol asc;
 select * from stocks cluster by symbol;
 </code></pre>
 </li>
-<li>聚合操作 group by<pre><code class="nullsql"><span class="hljs-keyword">select</span> symbol,<span class="hljs-keyword">count</span>(*) <span class="hljs-keyword">from</span> stocks <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> symbol;
+<li>聚合操作 group by<pre><code class="lang-sql">select symbol,count(*) from stocks group by symbol;
 </code></pre>
 </li>
-<li>Top N查询<pre><code class="nullsql"><span class="hljs-keyword">SET</span> mapred.reduce.tasks = <span class="hljs-number">1</span>
-<span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> sales <span class="hljs-keyword">SORT</span> <span class="hljs-keyword">BY</span> amount <span class="hljs-keyword">DESC</span> <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">5</span>
+<li>Top N查询<pre><code class="lang-sql">SET mapred.reduce.tasks = 1
+SELECT * FROM sales SORT BY amount DESC LIMIT 5
 </code></pre>
 </li>
 </ul>
@@ -741,13 +744,13 @@ select * from stocks cluster by symbol;
 <ul>
 <li><p>使用Join</p>
 <ul>
-<li><code>{inner} join</code>,<code>{left|right|full} [outer] join</code>,<code>cross join</code><pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> a.* <span class="hljs-keyword">FROM</span> a <span class="hljs-keyword">JOIN</span> b <span class="hljs-keyword">ON</span> (a.id = b.id <span class="hljs-keyword">AND</span> a.department = b.department);
-<span class="hljs-keyword">SELECT</span> a.* <span class="hljs-keyword">FROM</span> a <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> b <span class="hljs-keyword">ON</span> (a.id = b.id <span class="hljs-keyword">AND</span> a.department = b.department);
-<span class="hljs-keyword">SELECT</span> a.val, b.val, c.val <span class="hljs-keyword">FROM</span> a <span class="hljs-keyword">JOIN</span> b <span class="hljs-keyword">ON</span> (a.key = b.key1) <span class="hljs-keyword">JOIN</span> c <span class="hljs-keyword">ON</span> (c.key = b.key2);
+<li><code>{inner} join</code>,<code>{left|right|full} [outer] join</code>,<code>cross join</code><pre><code class="lang-sql">SELECT a.* FROM a JOIN b ON (a.id = b.id AND a.department = b.department);
+SELECT a.* FROM a LEFT JOIN b ON (a.id = b.id AND a.department = b.department);
+SELECT a.val, b.val, c.val FROM a JOIN b ON (a.key = b.key1) JOIN c ON (c.key = b.key2);
 </code></pre>
 </li>
-<li>特例：<code>LEFT SEMI JOIN</code><pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> a.key, a.value <span class="hljs-keyword">FROM</span> a <span class="hljs-keyword">WHERE</span> a.key <span class="hljs-keyword">in</span> (<span class="hljs-keyword">SELECT</span> b.key <span class="hljs-keyword">FROM</span> B);
-<span class="hljs-keyword">SELECT</span> a.key, a.val <span class="hljs-keyword">FROM</span> a <span class="hljs-keyword">LEFT</span> SEMI <span class="hljs-keyword">JOIN</span> b <span class="hljs-keyword">ON</span> (a.key = b.key);
+<li>特例：<code>LEFT SEMI JOIN</code><pre><code class="lang-sql">SELECT a.key, a.value FROM a WHERE a.key in (SELECT b.key FROM B);
+SELECT a.key, a.val FROM a LEFT SEMI JOIN b ON (a.key = b.key);
 </code></pre>
 </li>
 </ul>
@@ -771,17 +774,17 @@ select * from stocks cluster by symbol;
 <li><p>Hive中的join操作</p>
 <ul>
 <li><p>join操作是在where操作之前执行，即where条件不能起到减少join数据的作用，应尽量在<code>on</code>中加入约束条件</p>
-<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> a.val, b.val <span class="hljs-keyword">FROM</span> a 
-<span class="hljs-keyword">JOIN</span> b <span class="hljs-keyword">ON</span> (a.key=b.key)
-<span class="hljs-keyword">WHERE</span> a.ds=<span class="hljs-string">'2009-07-07'</span> <span class="hljs-keyword">AND</span> b.ds=<span class="hljs-string">'2009-07-07'</span>
+<pre><code class="lang-sql">SELECT a.val, b.val FROM a 
+JOIN b ON (a.key=b.key)
+WHERE a.ds=&#39;2009-07-07&#39; AND b.ds=&#39;2009-07-07&#39;
 
 =&gt; 优化为：
-<span class="hljs-keyword">SELECT</span> a.val, b.val <span class="hljs-keyword">FROM</span> a 
-<span class="hljs-keyword">JOIN</span> b <span class="hljs-keyword">ON</span> (a.key=b.key <span class="hljs-keyword">AND</span> b.ds=<span class="hljs-string">'2009-07-07'</span> <span class="hljs-keyword">AND</span> a.ds=<span class="hljs-string">'2009-07-07'</span>)
+SELECT a.val, b.val FROM a 
+JOIN b ON (a.key=b.key AND b.ds=&#39;2009-07-07&#39; AND a.ds=&#39;2009-07-07&#39;)
 </code></pre>
 </li>
 <li><p>多表连接，会转换成多个MR Job，但关联条件相同的多表join会自动优化成一个mapreduce job</p>
-<pre><code class="nullsql"># 在两个mapred程序中执行join
+<pre><code class="lang-sql"># 在两个mapred程序中执行join
 SELECT a.val, b.val, c.val FROM a 
 JOIN b ON (a.key = b.key1) 
 JOIN c ON (c.key = b.key2)
@@ -792,18 +795,18 @@ JOIN b ON (a.key = b.key1)
 JOIN c ON (c.key = b.key1)
 </code></pre>
 </li>
-<li>多表连接，前一个join生成的数据会缓存到内存，通过stream取后一张表数据，应尽量将记录多的表放在后面join，也可使用<code>/*+ STREAMTABLE(table) */</code>指定将哪个大表stream化<pre><code class="nullsql"><span class="hljs-keyword">SELECT</span> <span class="hljs-comment">/*+ STREAMTABLE(a) */</span> a.val, b.val, c.val <span class="hljs-keyword">FROM</span> a 
-<span class="hljs-keyword">JOIN</span> b <span class="hljs-keyword">ON</span> (a.key = b.key1) 
-<span class="hljs-keyword">JOIN</span> c <span class="hljs-keyword">ON</span> (c.key = b.key1)
+<li>多表连接，前一个join生成的数据会缓存到内存，通过stream取后一张表数据，应尽量将记录多的表放在后面join，也可使用<code>/*+ STREAMTABLE(table) */</code>指定将哪个大表stream化<pre><code class="lang-sql">SELECT /*+ STREAMTABLE(a) */ a.val, b.val, c.val FROM a 
+JOIN b ON (a.key = b.key1) 
+JOIN c ON (c.key = b.key1)
 </code></pre>
 </li>
 <li><p>Map Side Join</p>
 <ul>
-<li>可在查询中使用<code>/*+ mapjoin(table) */</code> 指定将哪个小表装载到DistributeCache中<pre><code class="nullsql"># 注意： 这里无法使用a FULL/RIGHT JOIN b
+<li>可在查询中使用<code>/*+ mapjoin(table) */</code> 指定将哪个小表装载到DistributeCache中<pre><code class="lang-sql"># 注意： 这里无法使用a FULL/RIGHT JOIN b
 SELECT /*+ MAPJOIN(b) */ a.key, a.value FROM a join b on a.key = b.key;
 </code></pre>
 </li>
-<li>Auto Map Side Join：系统自动判断使用mapjoin（由参数hive.auto.convert.join决定，默认为true）<pre><code class="nullsql"># Local Task 中找出符合mapjoin条件的表，装载到DistributeCache中，后续使用map join；若未找到符合条件的表，则使用common join
+<li>Auto Map Side Join：系统自动判断使用mapjoin（由参数hive.auto.convert.join决定，默认为true）<pre><code class="lang-sql"># Local Task 中找出符合mapjoin条件的表，装载到DistributeCache中，后续使用map join；若未找到符合条件的表，则使用common join
 set hive.auto.convert.join=true;
 # 根据参数hive.mapjoin.smalltable.filesize的设置判断mapjoin的表
 SELECT a.key, a.value FROM a join b on a.key = b.key;
@@ -816,7 +819,7 @@ SELECT a.key, a.value FROM a join b on a.key = b.key;
 # hive.mapjoin.cache.numrows
 </code></pre></li>
 <li><p>Sort Map Bucket Map Join：根据join key将各个关联表进行Bucket，提高join效率</p>
-<pre><code class="nullsql"># 创建分桶表
+<pre><code class="lang-sql"># 创建分桶表
 create table a_smb(...) clustered by (key) sort by (key) into 10 buckets;
 create table b_smb(...) clustered by (key) sort by (key) into 5 buckets;
 
@@ -846,22 +849,22 @@ select * from a_smb a join b_smb on a.key=b.key;
 <li>log格式:<pre><code>127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] &quot;GET /apache_pb.gif HTTP/1.0&quot; 200 2326
 </code></pre></li>
 <li><p>创建表:</p>
-<pre><code class="nullsql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> apachelog (
-host <span class="hljs-keyword">STRING</span>,
-<span class="hljs-keyword">identity</span> <span class="hljs-keyword">STRING</span>,
-username <span class="hljs-keyword">STRING</span>,
-<span class="hljs-keyword">time</span> <span class="hljs-keyword">STRING</span>,
-request <span class="hljs-keyword">STRING</span>,
-<span class="hljs-keyword">status</span> <span class="hljs-keyword">STRING</span>,
-<span class="hljs-keyword">size</span> <span class="hljs-keyword">STRING</span>,
-referer <span class="hljs-keyword">STRING</span>,
-<span class="hljs-keyword">agent</span> <span class="hljs-keyword">STRING</span>)
-<span class="hljs-keyword">ROW</span> <span class="hljs-keyword">FORMAT</span> SERDE <span class="hljs-string">'org.apache.hadoop.hive.contrib.serde2.RegexSerDe'</span>
-<span class="hljs-keyword">WITH</span> SERDEPROPERTIES (
-  <span class="hljs-string">"input.regex"</span> = <span class="hljs-string">"([^ ]*) ([^ ]*) ([^ ]*) (-|\\[[^\\]]*\\]) ([^ \"]*|\"[^\"]*\") (-|[0-9]*) (-|[0-9]*)(?: ([^ \"]*|\".*\") ([^ \"]*|\".*\"))?"</span>,
-  <span class="hljs-string">"output.format.string"</span> = <span class="hljs-string">"%1$s %2$s %3$s %4$s %5$s %6$s %7$s %8$s %9$s"</span>
+<pre><code class="lang-sql">CREATE TABLE apachelog (
+host STRING,
+identity STRING,
+username STRING,
+time STRING,
+request STRING,
+status STRING,
+size STRING,
+referer STRING,
+agent STRING)
+ROW FORMAT SERDE &#39;org.apache.hadoop.hive.contrib.serde2.RegexSerDe&#39;
+WITH SERDEPROPERTIES (
+  &quot;input.regex&quot; = &quot;([^ ]*) ([^ ]*) ([^ ]*) (-|\\[[^\\]]*\\]) ([^ \&quot;]*|\&quot;[^\&quot;]*\&quot;) (-|[0-9]*) (-|[0-9]*)(?: ([^ \&quot;]*|\&quot;.*\&quot;) ([^ \&quot;]*|\&quot;.*\&quot;))?&quot;,
+  &quot;output.format.string&quot; = &quot;%1$s %2$s %3$s %4$s %5$s %6$s %7$s %8$s %9$s&quot;
 )
-<span class="hljs-keyword">STORED</span> <span class="hljs-keyword">AS</span> TEXTFILE;
+STORED AS TEXTFILE;
 </code></pre>
 </li>
 <li><p>添加jar包到hive的执行环境:</p>
@@ -882,32 +885,32 @@ select status,count(*) from apachelog group by status;
 </ul>
 <h3 id="header-15">示例2：创建内部表</h3>
 <ul>
-<li>创建内部表log:<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">log</span>(
-  ip <span class="hljs-keyword">string</span>,
-  datetime <span class="hljs-keyword">string</span>,
-  method <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">url</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">status</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">size</span> <span class="hljs-keyword">string</span>
+<li>创建内部表log:<pre><code class="lang-sql">create table log(
+  ip string,
+  datetime string,
+  method string,
+  url string,
+  status string,
+  size string
 )
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> ;
+row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
 </li>
 <li><p>插入数据:</p>
-<pre><code class="nullsql">insert into table log 
-select host,time,substring(split(request,' ')[0],2) as method,split(request,' ')[1] as url,status,size from apachelog; 
+<pre><code class="lang-sql">insert into table log 
+select host,time,substring(split(request,&#39; &#39;)[0],2) as method,split(request,&#39; &#39;)[1] as url,status,size from apachelog; 
 
 # 重新过滤掉某些数据（hive中没有delete操作，只能overwrite）
 insert overwrite table log 
-select * from log where length(method)&lt;7 and method in ('GET','POST','PUT','DELETE','OPTION','HEAD');
+select * from log where length(method)&lt;7 and method in (&#39;GET&#39;,&#39;POST&#39;,&#39;PUT&#39;,&#39;DELETE&#39;,&#39;OPTION&#39;,&#39;HEAD&#39;);
 </code></pre>
 </li>
 <li><p>查询:</p>
-<pre><code class="nullsql"><span class="hljs-keyword">describe</span> formatted <span class="hljs-keyword">log</span>;
+<pre><code class="lang-sql">describe formatted log;
 
-<span class="hljs-keyword">set</span> mapred.reduce.tasks=<span class="hljs-number">3</span>;
-<span class="hljs-keyword">select</span> method <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">length</span>(method)&lt;<span class="hljs-number">7</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> method;
-<span class="hljs-keyword">select</span> <span class="hljs-keyword">status</span>,method,<span class="hljs-keyword">count</span>(*) <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">group</span> <span class="hljs-keyword">by</span> <span class="hljs-keyword">status</span>,method;
+set mapred.reduce.tasks=3;
+select method from log where length(method)&lt;7 group by method;
+select status,method,count(*) from log group by status,method;
 </code></pre>
 </li>
 <li>HDFS目录:<pre><code>/user/hive/warehouse/log
@@ -916,47 +919,47 @@ select * from log where length(method)&lt;7 and method in ('GET','POST','PUT','D
 </ul>
 <h3 id="header-16">示例3：内部静态分区表</h3>
 <ul>
-<li>创建内部分区表log_partition:（注意分区字段不能包含在建表字段中）<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> log_partition(
-  ip <span class="hljs-keyword">string</span>,
-  datetime <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">url</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">size</span> <span class="hljs-keyword">string</span>
+<li>创建内部分区表log_partition:（注意分区字段不能包含在建表字段中）<pre><code class="lang-sql">create table log_partition(
+  ip string,
+  datetime string,
+  url string,
+  size string
 )
-partitioned <span class="hljs-keyword">by</span> (<span class="hljs-keyword">status</span> <span class="hljs-keyword">string</span>,method <span class="hljs-keyword">string</span>)
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> ;
+partitioned by (status string,method string)
+row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
 </li>
 <li><p>插入partition数据:（使用insert…select）</p>
-<pre><code class="nullsql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> log_partition <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">status</span>=<span class="hljs-string">'200'</span>,method=<span class="hljs-string">'GET'</span>)
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'200'</span> <span class="hljs-keyword">and</span> method=<span class="hljs-string">'GET'</span>;
+<pre><code class="lang-sql">insert into table log_partition partition(status=&#39;200&#39;,method=&#39;GET&#39;)
+select ip,datetime,url,size from log where status=&#39;200&#39; and method=&#39;GET&#39;;
 
-<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> log_partition <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">status</span>=<span class="hljs-string">'200'</span>,method=<span class="hljs-string">'POST'</span>)
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'200'</span> <span class="hljs-keyword">and</span> method=<span class="hljs-string">'POST'</span>
+insert into table log_partition partition(status=&#39;200&#39;,method=&#39;POST&#39;)
+select ip,datetime,url,size from log where status=&#39;200&#39; and method=&#39;POST&#39;
 
-<span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span>
-<span class="hljs-keyword">insert</span> overwrite <span class="hljs-keyword">table</span> log_partition <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span>,method=<span class="hljs-string">'GET'</span>)
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span> <span class="hljs-keyword">and</span> method=<span class="hljs-string">'GET'</span>
-<span class="hljs-keyword">insert</span> overwrite <span class="hljs-keyword">table</span> log_partition <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span>,method=<span class="hljs-string">'POST'</span>)
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span> <span class="hljs-keyword">and</span> method=<span class="hljs-string">'POST'</span>
-<span class="hljs-keyword">insert</span> overwrite <span class="hljs-keyword">table</span> log_partition <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span>,method=<span class="hljs-string">'GET'</span>)
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span><span class="hljs-keyword">and</span> method=<span class="hljs-string">'GET'</span>;
+from log
+insert overwrite table log_partition partition(status=&#39;301&#39;,method=&#39;GET&#39;)
+select ip,datetime,url,size where status=&#39;301&#39; and method=&#39;GET&#39;
+insert overwrite table log_partition partition(status=&#39;301&#39;,method=&#39;POST&#39;)
+select ip,datetime,url,size where status=&#39;301&#39; and method=&#39;POST&#39;
+insert overwrite table log_partition partition(status=&#39;400&#39;,method=&#39;GET&#39;)
+select ip,datetime,url,size where status=&#39;400&#39;and method=&#39;GET&#39;;
 </code></pre>
 </li>
 <li><p>插入partition数据:（使用alter…location）</p>
-<pre><code class="nullsql"><span class="hljs-keyword">insert</span> overwrite <span class="hljs-keyword">directory</span> <span class="hljs-string">'/user/hive/warehouse/log_partition/status=400/method=POST'</span>
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span>
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span> <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span> <span class="hljs-keyword">and</span> method=<span class="hljs-string">'POST'</span>;
+<pre><code class="lang-sql">insert overwrite directory &#39;/user/hive/warehouse/log_partition/status=400/method=POST&#39;
+row format delimited fields terminated by &#39;,&#39;
+select ip,datetime,url,size from log where status=&#39;400&#39; and method=&#39;POST&#39;;
 
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> log_partition <span class="hljs-keyword">add</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">partition</span> (<span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span>,method=<span class="hljs-string">'POST'</span>) 
-location <span class="hljs-string">'/user/hive/warehouse/log_partition/status=400/method=POST'</span>;
+alter table log_partition add if not exists partition (status=&#39;400&#39;,method=&#39;POST&#39;) 
+location &#39;/user/hive/warehouse/log_partition/status=400/method=POST&#39;;
 </code></pre>
 </li>
-<li>删除partition数据:（注意会删除partition对应的目录和文件）<pre><code class="nullsql"><span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> log_partition <span class="hljs-keyword">drop</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">exists</span> <span class="hljs-keyword">partition</span> (<span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span>,method=<span class="hljs-string">'GET'</span>);
+<li>删除partition数据:（注意会删除partition对应的目录和文件）<pre><code class="lang-sql">alter table log_partition drop if exists partition (status=&#39;301&#39;,method=&#39;GET&#39;);
 </code></pre>
 </li>
-<li>查看:<pre><code class="nullsql"><span class="hljs-keyword">describe</span> formatted log_partition;
-<span class="hljs-keyword">show</span> <span class="hljs-keyword">partitions</span> log_partition;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_partition <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span> <span class="hljs-keyword">and</span> method=<span class="hljs-string">'POST'</span>;
+<li>查看:<pre><code class="lang-sql">describe formatted log_partition;
+show partitions log_partition;
+select * from log_partition where status=&#39;400&#39; and method=&#39;POST&#39;;
 </code></pre>
 </li>
 <li>HDFS目录:<pre><code>/user/hive/warehouse/log_partition
@@ -975,26 +978,26 @@ location <span class="hljs-string">'/user/hive/warehouse/log_partition/status=40
 </ul>
 <h3 id="header-17">示例4：内部动态分区表</h3>
 <ul>
-<li>创建内部分区表log_dynamic_partition:<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> log_dynamic_partition <span class="hljs-keyword">like</span> log_partition;
+<li>创建内部分区表log_dynamic_partition:<pre><code class="lang-sql">create table log_dynamic_partition like log_partition;
 </code></pre>
 </li>
-<li>打开动态分区:<pre><code class="nullsql"><span class="hljs-keyword">set</span> hive.exec.dynamic.partition=<span class="hljs-literal">true</span>;
+<li>打开动态分区:<pre><code class="lang-sql">set hive.exec.dynamic.partition=true;
 </code></pre>
 </li>
-<li>插入数据:（注意：1. 字段和顺序；2. 第一个为静态partition）<pre><code class="nullsql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> log_dynamic_partition <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">status</span>=<span class="hljs-string">'200'</span>,method)
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span>,method <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'200'</span>;
+<li>插入数据:（注意：1. 字段和顺序；2. 第一个为静态partition）<pre><code class="lang-sql">insert into table log_dynamic_partition partition(status=&#39;200&#39;,method)
+select ip,datetime,url,size,method from log where status=&#39;200&#39;;
 </code></pre>
 </li>
-<li>插入数据:（注意：1. 字段和顺序；2. 所有都为动态partition）<pre><code class="nullsql"># 设置为nostrict模式
+<li>插入数据:（注意：1. 字段和顺序；2. 所有都为动态partition）<pre><code class="lang-sql"># 设置为nostrict模式
 set hive.exec.dynamic.partition.mode=nostrict;
 # 插入
 insert overwrite table log_dynamic_partition partition(status,method)
 select ip,datetime,url,size,status,method from log;
 </code></pre>
 </li>
-<li>查看:<pre><code class="nullsql"><span class="hljs-keyword">describe</span> formatted log_dynamic_partition;
-<span class="hljs-keyword">show</span> <span class="hljs-keyword">partitions</span> log_dynamic_partition;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_dynamic_partition <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span> <span class="hljs-keyword">and</span> method=<span class="hljs-string">'POST'</span>;
+<li>查看:<pre><code class="lang-sql">describe formatted log_dynamic_partition;
+show partitions log_dynamic_partition;
+select * from log_dynamic_partition where status=&#39;400&#39; and method=&#39;POST&#39;;
 </code></pre>
 </li>
 <li>HDFS目录:<pre><code>/user/hive/warehouse/log_dynamic_partition
@@ -1016,28 +1019,28 @@ select ip,datetime,url,size,status,method from log;
 </ul>
 <h3 id="header-18">示例5：内部表分桶</h3>
 <ul>
-<li>创建分桶表log_bucket: （注意：分桶字段为建表中的字段）<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> log_bucket(
-  ip <span class="hljs-keyword">string</span>,
-  datetime <span class="hljs-keyword">string</span>,
-  method <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">url</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">status</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">size</span> <span class="hljs-keyword">string</span>
+<li>创建分桶表log_bucket: （注意：分桶字段为建表中的字段）<pre><code class="lang-sql">create table log_bucket(
+  ip string,
+  datetime string,
+  method string,
+  url string,
+  status string,
+  size string
 )
-clustered <span class="hljs-keyword">by</span> (<span class="hljs-keyword">status</span>,method) <span class="hljs-keyword">into</span> <span class="hljs-number">5</span> buckets
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> ;
+clustered by (status,method) into 5 buckets
+row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
 </li>
-<li>打开分桶:<pre><code class="nullsql"><span class="hljs-keyword">set</span> hive.enforce.bucketing = <span class="hljs-literal">true</span>;
+<li>打开分桶:<pre><code class="lang-sql">set hive.enforce.bucketing = true;
 </code></pre>
 </li>
-<li>插入数据:<pre><code class="nullsql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> log_bucket
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span>;
+<li>插入数据:<pre><code class="lang-sql">insert into table log_bucket
+select * from log;
 </code></pre>
 </li>
-<li>查看:<pre><code class="nullsql"><span class="hljs-keyword">describe</span> formatted log_bucket;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_bucket tablesample(bucket <span class="hljs-number">1</span> <span class="hljs-keyword">out</span> <span class="hljs-keyword">of</span> <span class="hljs-number">5</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">status</span>);
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> tablesample(bucket <span class="hljs-number">1</span> <span class="hljs-keyword">out</span> <span class="hljs-keyword">of</span> <span class="hljs-number">5</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">status</span>);
+<li>查看:<pre><code class="lang-sql">describe formatted log_bucket;
+select * from log_bucket tablesample(bucket 1 out of 5 on status);
+select * from log tablesample(bucket 1 out of 5 on status);
 </code></pre>
 </li>
 <li>HDFS目录:<pre><code>/user/hive/warehouse/log_bucket
@@ -1050,28 +1053,28 @@ clustered <span class="hljs-keyword">by</span> (<span class="hljs-keyword">statu
 </ul>
 <h3 id="header-19">示例6：内部分区分桶表</h3>
 <ul>
-<li>创建分区分桶表log_partition_bucket:<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> log_partition_bucket(
-  ip <span class="hljs-keyword">string</span>,
-  datetime <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">url</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">size</span> <span class="hljs-keyword">string</span>
+<li>创建分区分桶表log_partition_bucket:<pre><code class="lang-sql">create table log_partition_bucket(
+  ip string,
+  datetime string,
+  url string,
+  size string
 )
-partitioned <span class="hljs-keyword">by</span> (<span class="hljs-keyword">status</span> <span class="hljs-keyword">string</span>,method <span class="hljs-keyword">string</span>) 
-clustered <span class="hljs-keyword">by</span> (ip) <span class="hljs-keyword">into</span> <span class="hljs-number">5</span> buckets
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> ;
+partitioned by (status string,method string) 
+clustered by (ip) into 5 buckets
+row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
 </li>
-<li>打开动态分区和分桶:<pre><code class="nullsql"><span class="hljs-keyword">set</span> hive.exec.dynamic.partition=<span class="hljs-literal">true</span>;
-<span class="hljs-keyword">set</span> hive.exec.dynamic.partition.mode=nostrict;
-<span class="hljs-keyword">set</span> hive.enforce.bucketing = <span class="hljs-literal">true</span>;
+<li>打开动态分区和分桶:<pre><code class="lang-sql">set hive.exec.dynamic.partition=true;
+set hive.exec.dynamic.partition.mode=nostrict;
+set hive.enforce.bucketing = true;
 </code></pre>
 </li>
-<li>插入数据:<pre><code class="nullsql"><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> <span class="hljs-keyword">table</span> log_partition_bucket <span class="hljs-keyword">partition</span>(<span class="hljs-keyword">status</span>,method)
-<span class="hljs-keyword">select</span> ip,datetime,<span class="hljs-keyword">url</span>,<span class="hljs-keyword">size</span>,<span class="hljs-keyword">status</span>,method <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span>;
+<li>插入数据:<pre><code class="lang-sql">insert into table log_partition_bucket partition(status,method)
+select ip,datetime,url,size,status,method from log;
 </code></pre>
 </li>
-<li>查看:<pre><code class="nullsql"><span class="hljs-keyword">describe</span> formatted log_partition_bucket;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_partition_bucket tablesample(bucket <span class="hljs-number">1</span> <span class="hljs-keyword">out</span> <span class="hljs-keyword">of</span> <span class="hljs-number">5</span> <span class="hljs-keyword">on</span> <span class="hljs-keyword">status</span>) <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
+<li>查看:<pre><code class="lang-sql">describe formatted log_partition_bucket;
+select * from log_partition_bucket tablesample(bucket 1 out of 5 on status) limit 5;
 </code></pre>
 </li>
 <li>HDFS目录:<pre><code>/user/hive/warehouse/log_partition_bucket
@@ -1100,20 +1103,20 @@ clustered <span class="hljs-keyword">by</span> (ip) <span class="hljs-keyword">i
 </ul>
 <h3 id="header-20">示例6：外部表</h3>
 <ul>
-<li>创建外部表log_external:<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">external</span> <span class="hljs-keyword">table</span> log_external(
-  ip <span class="hljs-keyword">string</span>,
-  datetime <span class="hljs-keyword">string</span>,
-  method <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">url</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">status</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">size</span> <span class="hljs-keyword">string</span>
+<li>创建外部表log_external:<pre><code class="lang-sql">create external table log_external(
+  ip string,
+  datetime string,
+  method string,
+  url string,
+  status string,
+  size string
 )
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> 
-location <span class="hljs-string">'/input/external'</span>;
+row format delimited fields terminated by &#39;,&#39; 
+location &#39;/input/external&#39;;
 </code></pre>
 </li>
 <li><p>插入数据:</p>
-<pre><code class="nullsql"># generate file: /input/external/000000_0
+<pre><code class="lang-sql"># generate file: /input/external/000000_0
 insert into table log_external
 select * from log where status=&#39;200&#39;;
 
@@ -1123,7 +1126,7 @@ select * from log where status=&#39;400&#39;;
 </code></pre>
 </li>
 <li><p>插入数据:</p>
-<pre><code class="nullsql"># generate file: /input/log_301/000000_0
+<pre><code class="lang-sql"># generate file: /input/log_301/000000_0
 insert overwrite directory &#39;/input/log_301&#39;
 row format delimited fields terminated by &#39;,&#39;
 select * from log where status=&#39;301&#39;; 
@@ -1133,54 +1136,54 @@ select * from log where status=&#39;301&#39;;
 load data inpath &#39;/input/log_301&#39; into table log_external;
 </code></pre>
 </li>
-<li>查看:<pre><code class="nullsql"><span class="hljs-keyword">describe</span> formatted log_external;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_external <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_external <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_external <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
+<li>查看:<pre><code class="lang-sql">describe formatted log_external;
+select * from log_external limit 5;
+select * from log_external where status=&#39;400&#39; limit 5;
+select * from log_external where status=&#39;301&#39; limit 5;
 </code></pre>
 </li>
 <li>HDFS目录:<pre><code>/input/external/000000_0
 /input/external/000000_0_copy_1
 /input/external/000000_0_copy_2
 </code></pre></li>
-<li>删除表:（注意：1. 无法使用truncate清空外部表；2. 数据文件不会被删除）<pre><code class="nullsql"><span class="hljs-keyword">drop</span> <span class="hljs-keyword">table</span> log_external;
+<li>删除表:（注意：1. 无法使用truncate清空外部表；2. 数据文件不会被删除）<pre><code class="lang-sql">drop table log_external;
 </code></pre>
 </li>
-<li>重新创建外部表:（不用重新插入数据就有数据可查出了）<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">external</span> <span class="hljs-keyword">table</span> log_external(
-  ip <span class="hljs-keyword">string</span>,
-  datetime <span class="hljs-keyword">string</span>,
-  method <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">url</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">status</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">size</span> <span class="hljs-keyword">string</span>
+<li>重新创建外部表:（不用重新插入数据就有数据可查出了）<pre><code class="lang-sql">create external table log_external(
+  ip string,
+  datetime string,
+  method string,
+  url string,
+  status string,
+  size string
 )
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> 
-location <span class="hljs-string">'/input/external'</span>;
+row format delimited fields terminated by &#39;,&#39; 
+location &#39;/input/external&#39;;
 </code></pre>
 </li>
-<li>查看表:<pre><code class="nullsql"><span class="hljs-keyword">describe</span> formatted log_external;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_external <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_external <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'400'</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> log_external <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
+<li>查看表:<pre><code class="lang-sql">describe formatted log_external;
+select * from log_external limit 5;
+select * from log_external where status=&#39;400&#39; limit 5;
+select * from log_external where status=&#39;301&#39; limit 5;
 </code></pre>
 </li>
 </ul>
 <h3 id="header-21">示例7：外部分区分桶表</h3>
 <ul>
-<li>创建外部分区分桶表log_external_partition:<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">external</span> <span class="hljs-keyword">table</span> log_external_partition(
-  ip <span class="hljs-keyword">string</span>,
-  datetime <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">url</span> <span class="hljs-keyword">string</span>,
-  <span class="hljs-keyword">size</span> <span class="hljs-keyword">string</span>
+<li>创建外部分区分桶表log_external_partition:<pre><code class="lang-sql">create external table log_external_partition(
+  ip string,
+  datetime string,
+  url string,
+  size string
 )
-partitioned <span class="hljs-keyword">by</span> (<span class="hljs-keyword">status</span> <span class="hljs-keyword">string</span>,method <span class="hljs-keyword">string</span>)
-clustered <span class="hljs-keyword">by</span> (ip) <span class="hljs-keyword">into</span> <span class="hljs-number">5</span> buckets 
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span>
-location <span class="hljs-string">'/input/external_partition'</span>;
+partitioned by (status string,method string)
+clustered by (ip) into 5 buckets 
+row format delimited fields terminated by &#39;,&#39;
+location &#39;/input/external_partition&#39;;
 </code></pre>
 </li>
 <li><p>插入partition数据: （alter location）</p>
-<pre><code class="nullsql">insert overwrite directory &#39;/input/log_301_GET&#39; 
+<pre><code class="lang-sql">insert overwrite directory &#39;/input/log_301_GET&#39; 
 row format delimited fields terminated by &#39;,&#39;
 select ip,datetime,url,size from log where status=&#39;301&#39; and method=&#39;GET&#39;; 
 
@@ -1190,7 +1193,7 @@ location &#39;/input/log_301_GET&#39;;
 </code></pre>
 </li>
 <li><p>插入partition数据:（动态分区）</p>
-<pre><code class="nullsql">set hive.exec.dynamic.partition=true;
+<pre><code class="lang-sql">set hive.exec.dynamic.partition=true;
 set hive.exec.dynamic.partition.mode=nostrict;
 set hive.enforce.bucketing = true;
 
@@ -1231,7 +1234,7 @@ select ip,datetime,url,size,status,method from log;
 <h3 id="header-22">示例8：全排序</h3>
 <ul>
 <li><p>使用order by （不管设置几个reducer，最终只使用一个reducer）</p>
-<pre><code class="nullsql">set mapred.reduce.tasks=5;
+<pre><code class="lang-sql">set mapred.reduce.tasks=5;
 
 # 全排序
 insert overwrite directory &#39;/input/log_order&#39; 
@@ -1255,17 +1258,17 @@ select * from (select ip,size from log distribute by ip sort by size) s order by
 <h3 id="header-23">示例9：Join</h3>
 <ul>
 <li><p>创建两张表并插入数据:（create table as select）</p>
-<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> a_log 
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> 
-<span class="hljs-keyword">as</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'200'</span>;
+<pre><code class="lang-sql">create table a_log 
+row format delimited fields terminated by &#39;,&#39; 
+as select * from log where status=&#39;200&#39;;
 
-<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> b_log
-<span class="hljs-keyword">row</span> <span class="hljs-keyword">format</span> <span class="hljs-keyword">delimited</span> <span class="hljs-keyword">fields</span> <span class="hljs-keyword">terminated</span> <span class="hljs-keyword">by</span> <span class="hljs-string">','</span> 
-<span class="hljs-keyword">as</span> <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">log</span> <span class="hljs-keyword">where</span> <span class="hljs-keyword">status</span>=<span class="hljs-string">'301'</span>;
+create table b_log
+row format delimited fields terminated by &#39;,&#39; 
+as select * from log where status=&#39;301&#39;;
 </code></pre>
 </li>
-<li>查询: （会自动判断使用mapjoin）<pre><code class="nullsql"><span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> a_log a <span class="hljs-keyword">join</span> b_log b <span class="hljs-keyword">on</span> a.ip=b.ip <span class="hljs-keyword">where</span> a.method=<span class="hljs-string">'POST'</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
-<span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> a_log a <span class="hljs-keyword">join</span> b_log b <span class="hljs-keyword">on</span> a.ip=b.ip <span class="hljs-keyword">and</span> a.method=<span class="hljs-string">'POST'</span> <span class="hljs-keyword">limit</span> <span class="hljs-number">5</span>;
+<li>查询: （会自动判断使用mapjoin）<pre><code class="lang-sql">select * from a_log a join b_log b on a.ip=b.ip where a.method=&#39;POST&#39; limit 5;
+select * from a_log a join b_log b on a.ip=b.ip and a.method=&#39;POST&#39; limit 5;
 </code></pre>
 </li>
 <li>HDFS目录:<pre><code>/user/hive/warehouse/a_log
@@ -1274,14 +1277,14 @@ select * from (select ip,size from log distribute by ip sort by size) s order by
 /user/hive/warehouse/b_log/000000_0
 </code></pre></li>
 <li><p>创建两张分区表并插入数据:</p>
-<pre><code class="nullsql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> a_log_smb <span class="hljs-keyword">like</span> a_log;
-<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> b_log_smb <span class="hljs-keyword">like</span> b_log;
+<pre><code class="lang-sql">create table a_log_smb like a_log;
+create table b_log_smb like b_log;
 
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> a_log_smb clustered <span class="hljs-keyword">by</span> (ip) <span class="hljs-keyword">into</span> <span class="hljs-number">3</span> buckets;
-<span class="hljs-keyword">alter</span> <span class="hljs-keyword">table</span> b_log_smb clustered <span class="hljs-keyword">by</span> (ip) <span class="hljs-keyword">into</span> <span class="hljs-number">5</span> buckets;
+alter table a_log_smb clustered by (ip) into 3 buckets;
+alter table b_log_smb clustered by (ip) into 5 buckets;
 
-<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> a_log_smb <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> a_log;
-<span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> b_log_smb <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> b_log;
+insert into a_log_smb select * from a_log;
+insert into b_log_smb select * from b_log;
 </code></pre>
 </li>
 <li>查询:(SMP)<pre><code>select * from a_log_smb a join b_log_smb b on a.ip=b.ip limit 5;
@@ -1308,14 +1311,14 @@ select * from (select ip,size from log distribute by ip sort by size) s order by
 <p>常用优化手段：</p>
 <ul>
 <li>减少Job数</li>
-<li>并行Job，例如设置：<pre><code class="nullsql"># 对于同一个SQL产生的JOB,如果不存在依赖的情况下，将会并行启动JOB
+<li>并行Job，例如设置：<pre><code class="lang-sql"># 对于同一个SQL产生的JOB,如果不存在依赖的情况下，将会并行启动JOB
 set hive.exec.parallel=true;
 set hive.exec.parallel.thread.number=16;
 </code></pre>
 </li>
 <li><p>合理设置Mapper和Reducer数</p>
 <ul>
-<li>减少mapper数：合并小文件<pre><code class="nullsql"># 100~128M的按照100M分割，&lt;100M合并
+<li>减少mapper数：合并小文件<pre><code class="lang-sql"># 100~128M的按照100M分割，&lt;100M合并
 set mapred.max.split.size=100000000;
 set mapred.min.split.size.per.node=100000000;
 set mapred.min.split.size.per.rack=100000000;
@@ -1324,7 +1327,7 @@ set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;
 </li>
 <li>增加mapper数：拆分文件（分区，分桶）</li>
 <li><p>reducer数</p>
-<pre><code class="nullsql"># 每个reduce任务处理的数据量，默认为1000^3=1G
+<pre><code class="lang-sql"># 每个reduce任务处理的数据量，默认为1000^3=1G
 hive.exec.reducers.bytes.per.reducer
 
 # 每个任务最大的reduce数，默认为999
@@ -1337,19 +1340,19 @@ mapred.reduce.tasks
 </ul>
 </li>
 <li><p>合理压缩，减少网络传输和I/O压力，例如设置：</p>
-<pre><code class="nullsql"><span class="hljs-keyword">set</span> mapred.output.compress = <span class="hljs-literal">true</span>;  
-<span class="hljs-keyword">set</span> mapred.output.compression.codec = org.apache.hadoop.io.compress.GzipCodec;  
-<span class="hljs-keyword">set</span> mapred.output.compression.type = <span class="hljs-keyword">BLOCK</span>;  
-<span class="hljs-keyword">set</span> mapred.compress.map.output = <span class="hljs-literal">true</span>;  
-<span class="hljs-keyword">set</span> mapred.map.output.compression.codec = org.apache.hadoop.io.compress.LzoCodec;  
+<pre><code class="lang-sql">set mapred.output.compress = true;  
+set mapred.output.compression.codec = org.apache.hadoop.io.compress.GzipCodec;  
+set mapred.output.compression.type = BLOCK;  
+set mapred.compress.map.output = true;  
+set mapred.map.output.compression.codec = org.apache.hadoop.io.compress.LzoCodec;  
 
-<span class="hljs-keyword">set</span> hive.exec.compress.output = <span class="hljs-literal">true</span>;  
-<span class="hljs-keyword">set</span> hive.exec.compress.intermediate = <span class="hljs-literal">true</span>;  
-<span class="hljs-keyword">set</span> hive.intermediate.compression.codec = org.apache.hadoop.io.compress.LzoCodec;
+set hive.exec.compress.output = true;  
+set hive.exec.compress.intermediate = true;  
+set hive.intermediate.compression.codec = org.apache.hadoop.io.compress.LzoCodec;
 </code></pre>
 </li>
 <li>以SequenceFile保存，节约序列化和反序列化时间</li>
-<li>少用count distinct，例如：<pre><code class="nullsql">select status,count(distinct ip) from log group by status;
+<li>少用count distinct，例如：<pre><code class="lang-sql">select status,count(distinct ip) from log group by status;
 =&gt;
 select status,count(ip) from (select status,ip from log group by status,ip) a
 group by status;
@@ -1362,16 +1365,16 @@ group by status;
 </ul>
 </li>
 <li>合理分区，分桶</li>
-<li>小数据量，尽量使用本地MapReduce，例如设置：<pre><code class="nullsql"><span class="hljs-keyword">set</span> hive.exec.mode.local.auto=<span class="hljs-literal">true</span>;  
-<span class="hljs-keyword">set</span> hive.exec.mode.local.auto.inputbytes.max=<span class="hljs-number">50000000</span>;
-<span class="hljs-keyword">set</span> hive.exec.mode.local.auto.tasks.max=<span class="hljs-number">10</span>;
+<li>小数据量，尽量使用本地MapReduce，例如设置：<pre><code class="lang-sql">set hive.exec.mode.local.auto=true;  
+set hive.exec.mode.local.auto.inputbytes.max=50000000;
+set hive.exec.mode.local.auto.tasks.max=10;
 </code></pre>
 </li>
 </ul>
 <h2 id="header-25">自定义函数</h2>
 <p>查看函数</p>
-<pre><code class="nullsql"><span class="hljs-keyword">SHOW</span> FUNCTIONS; 
-<span class="hljs-keyword">DESCRIBE</span> <span class="hljs-keyword">FUNCTION</span> &lt;function_name&gt;
+<pre><code class="lang-sql">SHOW FUNCTIONS; 
+DESCRIBE FUNCTION &lt;function_name&gt;
 </code></pre>
 <p>自定义函数包括三种UDF、UDAF、UDTF，可直接应用于Select语句</p>
 <ul>
@@ -1400,56 +1403,56 @@ group by status;
 </ul>
 <p>UDF示例：</p>
 <ol>
-<li>自定义函数<pre><code class="nulljava"><span class="hljs-keyword">import</span> org.apache.Hadoop.hive.ql.exec.UDF   
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Helloword</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">UDF</span></span>{   
-<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">evaluate</span><span class="hljs-params">()</span></span>{   
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"hello world!"</span>;   
+<li>自定义函数<pre><code class="lang-java">import org.apache.Hadoop.hive.ql.exec.UDF   
+public class Helloword extends UDF{   
+public String evaluate(){   
+    return &quot;hello world!&quot;;   
 }   
-<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">evaluate</span><span class="hljs-params">(String str)</span></span>{   
-    <span class="hljs-keyword">return</span> <span class="hljs-string">"hello world: "</span> + str;   
+public String evaluate(String str){   
+    return &quot;hello world: &quot; + str;   
 }   
 }
 </code></pre>
 </li>
 <li>上传jar包到目标机器</li>
-<li>添加到Hive中<pre><code class="nullvim"># 进入hive客户端，添加jar包
-hive&gt; <span class="hljs-built_in">add</span> jar udf_helloword.jar
+<li>添加到Hive中<pre><code class="lang-vim"># 进入hive客户端，添加jar包
+hive&gt; add jar udf_helloword.jar
 </code></pre>
 </li>
-<li>创建临时函数<pre><code class="nullvim">hive&gt; create temporary <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">helloword</span> <span class="hljs-title">as</span> '<span class="hljs-title">com</span>.<span class="hljs-title">cj</span>.<span class="hljs-title">hive</span>.<span class="hljs-title">udf</span>.<span class="hljs-title">Helloword</span>'</span>
+<li>创建临时函数<pre><code class="lang-vim">hive&gt; create temporary function helloword as &#39;com.cj.hive.udf.Helloword&#39;
 </code></pre>
 </li>
-<li>测试<pre><code class="nullsql"><span class="hljs-keyword">select</span> helloword(<span class="hljs-keyword">name</span>) <span class="hljs-keyword">from</span> <span class="hljs-keyword">users</span>;
+<li>测试<pre><code class="lang-sql">select helloword(name) from users;
 </code></pre>
 </li>
-<li>删除临时函数<pre><code class="nullvim">hive&gt; <span class="hljs-keyword">drop</span> temporaty <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">helloword</span>;</span>
+<li>删除临时函数<pre><code class="lang-vim">hive&gt; drop temporaty function helloword;
 </code></pre>
 </li>
 </ol>
 <p>注：helloworld为临时的函数，所以每次进入hive都需要add jar以及create temporary操作</p>
 <h2 id="header-26">Java API</h2>
 <ul>
-<li>启动Hive远程服务<pre><code class="nullvim">&gt; hive --service hiveserver2 &gt;/dev/null  2&gt;/dev/null &amp;
+<li>启动Hive远程服务<pre><code class="lang-vim">&gt; hive --service hiveserver2 &gt;/dev/null  2&gt;/dev/null &amp;
 </code></pre>
 </li>
-<li>Java客户端加入依赖包<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.hive<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hive-jdbc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${hive.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<li>Java客户端加入依赖包<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.hive&lt;/groupId&gt;
+    &lt;artifactId&gt;hive-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;${hive.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 </li>
 <li><p>JAVA客户端连接操作代码</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testConnection</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ClassNotFoundException, SQLException </span>{
-  Class.forName(<span class="hljs-string">"org.apache.hive.jdbc.HiveDriver"</span>);
-  Connection conn = DriverManager.getConnection(<span class="hljs-string">"jdbc:hive2://cj.storm:10000/default"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">""</span>);
+<pre><code class="lang-java">@Test
+public void testConnection() throws ClassNotFoundException, SQLException {
+  Class.forName(&quot;org.apache.hive.jdbc.HiveDriver&quot;);
+  Connection conn = DriverManager.getConnection(&quot;jdbc:hive2://cj.storm:10000/default&quot;, &quot;&quot;, &quot;&quot;);
 
   Statement stmt = conn.createStatement();
-  String querySQL = <span class="hljs-string">"select * from log_partition where status='200' and method='GET' limit 10"</span>;
+  String querySQL = &quot;select * from log_partition where status=&#39;200&#39; and method=&#39;GET&#39; limit 10&quot;;
   ResultSet res = stmt.executeQuery(querySQL);
-  <span class="hljs-keyword">while</span> (res.next()) {
-    System.out.println(res.getString(<span class="hljs-number">1</span>) + <span class="hljs-string">"\t"</span> + res.getString(<span class="hljs-number">2</span>));
+  while (res.next()) {
+    System.out.println(res.getString(1) + &quot;\t&quot; + res.getString(2));
   }
   res.close();
   conn.close();
@@ -1492,10 +1495,17 @@ hive&gt; <span class="hljs-built_in">add</span> jar udf_helloword.jar
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

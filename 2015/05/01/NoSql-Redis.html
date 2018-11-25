@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -420,53 +423,53 @@ db1:xxx
 </ul>
 <ol>
 <li><p><code>set</code></p>
-<pre><code>&gt; set name Tom      # return "OK"
-&gt; get name          # return "Tom"
+<pre><code>&gt; set name Tom      # return &quot;OK&quot;
+&gt; get name          # return &quot;Tom&quot;
 </code></pre></li>
 <li><p><code>setnx</code>：set not exist =&gt; return 0(fail) / 1(success)</p>
 <pre><code>&gt; setnx name Jack         # return 0
-&gt; get name                # return "Tom"
+&gt; get name                # return &quot;Tom&quot;
 </code></pre></li>
 <li><p><code>setex</code>：set expireTime</p>
-<pre><code>&gt; setex color 10 red         # return "OK"
-&gt; get color                  # return "red"
+<pre><code>&gt; setex color 10 red         # return &quot;OK&quot;
+&gt; get color                  # return &quot;red&quot;
 # 10s later...
 &gt; get color                  # return (nil)
 </code></pre></li>
 <li><p><code>setrange</code>：replace string by range =&gt; return new string length</p>
-<pre><code>&gt; get email                            # return "Tom@gmail.com"
+<pre><code>&gt; get email                            # return &quot;Tom@gmail.com&quot;
 &gt; setrange email 4 163.com             # return 13
-&gt; get email                            # return "Tom@163.comom"
+&gt; get email                            # return &quot;Tom@163.comom&quot;
 </code></pre></li>
 <li><p><code>mset</code>：muti-set =&gt; return “OK” / 0 (one fail =&gt; all fail)</p>
-<pre><code>msetnx: muti-set not exist          # return "OK" / 0 (one fail -&gt; all fail)
-&gt; mset key1 a1 key2 a2 key3 a3      # return "OK"
-&gt; get key2                          # return "a2"
+<pre><code>msetnx: muti-set not exist          # return &quot;OK&quot; / 0 (one fail -&gt; all fail)
+&gt; mset key1 a1 key2 a2 key3 a3      # return &quot;OK&quot;
+&gt; get key2                          # return &quot;a2&quot;
 </code></pre></li>
 <li><p><code>getset</code>：设置key的值，并返回key的旧值</p>
-<pre><code>&gt; get name                   # return "Tom"
-&gt; getset name  Jack          # return "Tom"
-&gt; get name                   # return "Jack"
+<pre><code>&gt; get name                   # return &quot;Tom&quot;
+&gt; getset name  Jack          # return &quot;Tom&quot;
+&gt; get name                   # return &quot;Jack&quot;
 </code></pre></li>
 <li><p><code>getrange</code>：get substring</p>
-<pre><code>&gt; get email                      # return "Tom@163.comom"
-&gt; getrange email 0 5             # return "Tom@16"
+<pre><code>&gt; get email                      # return &quot;Tom@163.comom&quot;
+&gt; getrange email 0 5             # return &quot;Tom@16&quot;
 </code></pre></li>
 <li><p><code>mget</code>: muti-get</p>
-<pre><code>&gt; mget key1 key2 key3 key4         # return "a1" "a2" "a3" (nil)
+<pre><code>&gt; mget key1 key2 key3 key4         # return &quot;a1&quot; &quot;a2&quot; &quot;a3&quot; (nil)
 </code></pre></li>
 <li><p><code>append</code>：追加value =&gt; return new string length</p>
-<pre><code>&gt; get name                    # return "Jack"
+<pre><code>&gt; get name                    # return &quot;Jack&quot;
 &gt; append name .net            # 8
-&gt; get name                    # return "Jack.net"
+&gt; get name                    # return &quot;Jack.net&quot;
 </code></pre></li>
 <li><p><code>strlen</code>: return value length</p>
 <pre><code>&gt; strlen name                # return 8
 </code></pre></li>
 <li><p><code>incr</code>: i++; <code>decr</code>: i–</p>
-<pre><code>&gt; set age 20    # return "20"
-&gt; incr age        # return "21"
-&gt; incr age        # return "22"
+<pre><code>&gt; set age 20    # return &quot;20&quot;
+&gt; incr age        # return &quot;21&quot;
+&gt; incr age        # return &quot;22&quot;
 </code></pre><pre><code>&gt; get cc      # return (nil)
 &gt; incr         # return 1
 &gt; incr         # return 2
@@ -481,21 +484,21 @@ db1:xxx
 <ol>
 <li><p><code>hset hash field fieldValue</code></p>
 <pre><code>&gt; hset user:001 name Tom     # return 1
-&gt; hget user:001 name            # return "Tom"
+&gt; hget user:001 name            # return &quot;Tom&quot;
 </code></pre></li>
 <li><p><code>hsetnx</code></p>
 <pre><code>&gt; hsetnx user:001 name Jack   # return 0
-&gt; hget user:001 name             # return "Tom"
+&gt; hget user:001 name             # return &quot;Tom&quot;
 </code></pre></li>
 <li><p><code>hmset</code></p>
-<pre><code>&gt; hmset user:001 name Lucy age 20     # return "OK"
-&gt; hget user:001 age                            # return "20"
+<pre><code>&gt; hmset user:001 name Lucy age 20     # return &quot;OK&quot;
+&gt; hget user:001 age                            # return &quot;20&quot;
 </code></pre></li>
 <li><p><code>hmget</code></p>
-<pre><code>&gt; hmget user:001 name age    # return "Lucy" "20"
+<pre><code>&gt; hmget user:001 name age    # return &quot;Lucy&quot; &quot;20&quot;
 </code></pre></li>
 <li><p><code>hincrby</code></p>
-<pre><code>&gt; hincrby user:001 age 5      # return "25"
+<pre><code>&gt; hincrby user:001 age 5      # return &quot;25&quot;
 </code></pre></li>
 <li><p><code>hexists</code>: test field exist or not =&gt; return 1(exist)/0 (not exist)</p>
 <pre><code>&gt; hexists user:001 age     # return 1
@@ -505,13 +508,13 @@ db1:xxx
 <pre><code>&gt; hlen user:001     # return 2
 </code></pre></li>
 <li><p><code>hkeys</code>: return all fields</p>
-<pre><code>&gt; hkeys user:001      # return "name" "age"
+<pre><code>&gt; hkeys user:001      # return &quot;name&quot; &quot;age&quot;
 </code></pre></li>
 <li><p><code>hvals</code>: return all values</p>
-<pre><code>&gt; hvals user:001     # return "Lucy" "20"
+<pre><code>&gt; hvals user:001     # return &quot;Lucy&quot; &quot;20&quot;
 </code></pre></li>
 <li><p><code>hgetall</code>: return all fields and values</p>
-<pre><code>&gt; hgetall user:001     # return "name" "Lucy" "age" "20"
+<pre><code>&gt; hgetall user:001     # return &quot;name&quot; &quot;Lucy&quot; &quot;age&quot; &quot;20&quot;
 </code></pre></li>
 <li><p><code>hdel</code>: del hash field</p>
 <pre><code>&gt; hdel user:001 age    # return 1
@@ -525,24 +528,24 @@ db1:xxx
 <ul>
 <li><code>lpush</code> 从头部压入一个元素 =&gt; return list size</li>
 <li><code>lpop</code> 从头部删除一个元素 =&gt; return 弹出的元素</li>
-<li><code>lrange</code> 从头开始取元素（ 0表示头部第一个元素，-1表示尾部第一个元素）<pre><code>&gt; lpush list1 "Hello"       # return 1
-&gt; lpush list1 "World"       # return 2
-&gt; lrange list1 0 -1         # return "World" "Hello" (从头取到尾)
+<li><code>lrange</code> 从头开始取元素（ 0表示头部第一个元素，-1表示尾部第一个元素）<pre><code>&gt; lpush list1 &quot;Hello&quot;       # return 1
+&gt; lpush list1 &quot;World&quot;       # return 2
+&gt; lrange list1 0 -1         # return &quot;World&quot; &quot;Hello&quot; (从头取到尾)
 # 类似栈（先进后出）
-&gt; lpop list1                  # return "World"
-&gt; lrange list1                # return "Hello"
+&gt; lpop list1                  # return &quot;World&quot;
+&gt; lrange list1                # return &quot;Hello&quot;
 </code></pre></li>
 </ul>
 </li>
 <li><p><code>rpush</code>,<code>rpop</code></p>
 <ul>
 <li><code>rpush</code> 从尾部压入一个元素</li>
-<li><code>rpop</code> 从尾部弹出一个元素<pre><code>&gt; rpush list2 "Hello"
-&gt; rpush list2 "World"
-&gt; lrange list2 0 -1           # return "Hello" "World"
+<li><code>rpop</code> 从尾部弹出一个元素<pre><code>&gt; rpush list2 &quot;Hello&quot;
+&gt; rpush list2 &quot;World&quot;
+&gt; lrange list2 0 -1           # return &quot;Hello&quot; &quot;World&quot;
 # 类似队列（先进先出）
-&gt; rpop list2                   # return "World"
-&gt; lrange list2                 # return "Hello"
+&gt; rpop list2                   # return &quot;World&quot;
+&gt; lrange list2                 # return &quot;Hello&quot;
 </code></pre></li>
 </ul>
 </li>
@@ -550,14 +553,14 @@ db1:xxx
 <ul>
 <li><code>linsert</code> 在特定位置添加元素</li>
 <li><p><code>lset</code> 替换指定下标的元素</p>
-<pre><code>&gt; lpush list3 "one"                              # return 1
-&gt; lpush list3 "two"                              # return 2
-&gt; lrange list3 0 -1                              # return "two" "one"      
-&gt; linsert list3 before "one" "three"       # return 3
-&gt; lrange list3 0 -1                        # return "two" "three" "one"
+<pre><code>&gt; lpush list3 &quot;one&quot;                              # return 1
+&gt; lpush list3 &quot;two&quot;                              # return 2
+&gt; lrange list3 0 -1                              # return &quot;two&quot; &quot;one&quot;      
+&gt; linsert list3 before &quot;one&quot; &quot;three&quot;       # return 3
+&gt; lrange list3 0 -1                        # return &quot;two&quot; &quot;three&quot; &quot;one&quot;
 
-&gt; lset list3 1 "four"      # return OK
-&gt; lrange list3 0 -1        # return "two" "four" "one"
+&gt; lset list3 1 &quot;four&quot;      # return OK
+&gt; lrange list3 0 -1        # return &quot;two&quot; &quot;four&quot; &quot;one&quot;
 </code></pre></li>
 </ul>
 </li>
@@ -566,26 +569,26 @@ db1:xxx
 <li><code>n=0</code> 表示全部删除</li>
 <li><code>n&gt;0</code> 从头部开始删除</li>
 <li><code>n&lt;0</code> 从尾部开始删除</li>
-<li>return 删除个数<pre><code>&gt; lpush list3 "one"
-&gt; lpush list3 "one"
-&gt; lpush list3 "one"
-&gt; lrange list3 0 -1         # return "one" "one" "one" "two" "four" "one"
-&gt; lrem list3 3 "one"        # return 3
-&gt; lrange list3 0 -1         # return "two" "four" "one"
-&gt; lrem list3 1 "one"        # return 1
-&gt; lrange list3 0 -1         # return "two" "four"
-&gt; lrem list3 1 "one"        # return 0
+<li>return 删除个数<pre><code>&gt; lpush list3 &quot;one&quot;
+&gt; lpush list3 &quot;one&quot;
+&gt; lpush list3 &quot;one&quot;
+&gt; lrange list3 0 -1         # return &quot;one&quot; &quot;one&quot; &quot;one&quot; &quot;two&quot; &quot;four&quot; &quot;one&quot;
+&gt; lrem list3 3 &quot;one&quot;        # return 3
+&gt; lrange list3 0 -1         # return &quot;two&quot; &quot;four&quot; &quot;one&quot;
+&gt; lrem list3 1 &quot;one&quot;        # return 1
+&gt; lrange list3 0 -1         # return &quot;two&quot; &quot;four&quot;
+&gt; lrem list3 1 &quot;one&quot;        # return 0
 </code></pre></li>
 </ul>
 </li>
 <li><p><code>ltrim</code> 保留指定范围的元素，其他全部删除 =&gt; return OK</p>
-<pre><code>&gt; rpush list4 "a1"
-&gt; rpush list4 "a2"
-&gt; rpush list4 "a3"
-&gt; rpush list4 "a4"
-&gt; lrange list4 0 -1          # return "a1" "a2" "a3" "a4"
+<pre><code>&gt; rpush list4 &quot;a1&quot;
+&gt; rpush list4 &quot;a2&quot;
+&gt; rpush list4 &quot;a3&quot;
+&gt; rpush list4 &quot;a4&quot;
+&gt; lrange list4 0 -1          # return &quot;a1&quot; &quot;a2&quot; &quot;a3&quot; &quot;a4&quot;
 &gt; ltrim list4 1 2            # return OK
-&gt; lrange list4 0 -1          # return "a2" "a3"
+&gt; lrange list4 0 -1          # return &quot;a2&quot; &quot;a3&quot;
 </code></pre></li>
 <li><p><code>rpoplpush list1 list2</code>  =&gt; list1从尾部弹出元素，从头压入list2，return 弹出元素</p>
 <pre><code># list5: a1 a2 a3
@@ -609,14 +612,14 @@ db1:xxx
 <li><code>sadd</code> 集合中添加元素 =&gt; return 1(success)/0(fail)</li>
 <li><code>srem</code> 集合中删除元素 =&gt; return 1(success)/0(fail)</li>
 <li><p><code>smembers</code> 列出集合所有元素</p>
-<pre><code>&gt; sadd myset "Hello"         # return 1
-&gt; sadd myset "World"         # return 1
-&gt; sadd myset "World"         # return 0
-&gt; smembers myset             # return "World" "Hello"
+<pre><code>&gt; sadd myset &quot;Hello&quot;         # return 1
+&gt; sadd myset &quot;World&quot;         # return 1
+&gt; sadd myset &quot;World&quot;         # return 0
+&gt; smembers myset             # return &quot;World&quot; &quot;Hello&quot;
 
-&gt; srem myset "Hello"         # return 1
-&gt; srem myset "Hello"         # return 0
-&gt; smembers myset             # return "World"
+&gt; srem myset &quot;Hello&quot;         # return 1
+&gt; srem myset &quot;Hello&quot;         # return 0
+&gt; smembers myset             # return &quot;World&quot;
 </code></pre></li>
 </ul>
 </li>
@@ -624,12 +627,12 @@ db1:xxx
 <ul>
 <li><code>spop</code> 从集合中随机弹出一个元素 =&gt; return 弹出的元素</li>
 <li><p><code>srandmember</code> 随机返回集合的一个元素，但不删除元素</p>
-<pre><code># 集合mytest1："a1","a2","a3","a4","a5"
-&gt; spop mytest1                # return "a3" （随机的一个元素）
-&gt; smembers mytest1            # return "a1" "a2" "a4" "a5"
+<pre><code># 集合mytest1：&quot;a1&quot;,&quot;a2&quot;,&quot;a3&quot;,&quot;a4&quot;,&quot;a5&quot;
+&gt; spop mytest1                # return &quot;a3&quot; （随机的一个元素）
+&gt; smembers mytest1            # return &quot;a1&quot; &quot;a2&quot; &quot;a4&quot; &quot;a5&quot;
 
-&gt; srandmember mytest1         # return "a2" （随机的一个元素）
-&gt; smembers mytest1            # return  "a1" "a2" "a4" "a5"
+&gt; srandmember mytest1         # return &quot;a2&quot; （随机的一个元素）
+&gt; smembers mytest1            # return  &quot;a1&quot; &quot;a2&quot; &quot;a4&quot; &quot;a5&quot;
 </code></pre></li>
 </ul>
 </li>
@@ -639,11 +642,11 @@ db1:xxx
 <li><p><code>sdiffstore</code> 将返回的差集存储到另一个集合 -&gt; return 1(success)/0(fail)</p>
 <pre><code># test1: a1,a2,a3
 # test2: b1,a2,b3
-&gt; sdiff test1 test2          # return "a1" "a3"
-&gt; sdiff test2 test1          # return "b1" "b3"
+&gt; sdiff test1 test2          # return &quot;a1&quot; &quot;a3&quot;
+&gt; sdiff test2 test1          # return &quot;b1&quot; &quot;b3&quot;
 
 &gt; sdiffstore mytest3 test1 test2    #  return 1
-&gt; smembers mytest3                  #  return "a1" "a3"
+&gt; smembers mytest3                  #  return &quot;a1&quot; &quot;a3&quot;
 </code></pre></li>
 </ul>
 </li>
@@ -653,9 +656,9 @@ db1:xxx
 <li><p><code>sunion</code> 返回两个集合的并集，并存储到另一个集合 =&gt; return 元素个数</p>
 <pre><code># test1: a1,a2,a3
 # test2: b1,a2,b3
-&gt; sinter test1 test2            # return "a2"
+&gt; sinter test1 test2            # return &quot;a2&quot;
 &gt; sinter mytset4 test1 test2    # return 1
-&gt; smembers mytest4              #  return "a2"
+&gt; smembers mytest4              #  return &quot;a2&quot;
 
 &gt; sunion test1 test2                  # return a1 a2 a3 b1 b3
 &gt; sunionstore mytest5 test1 test2     # return 5
@@ -708,9 +711,9 @@ db1:xxx
 <ol>
 <li><p><code>zadd</code> 向有序集合添加一个元素并指定顺序 =&gt; return 1(success)/0(添加失败，但会更新顺序号)</p>
 <pre><code># zadd key score1 member1 score2 member2 ...
-&gt; zadd myzset 1 "one"     # return 1
-&gt; zadd myzset 2 "two"     # return 1
-&gt; zadd myzset 3 "two"     # return 0
+&gt; zadd myzset 1 &quot;one&quot;     # return 1
+&gt; zadd myzset 2 &quot;two&quot;     # return 1
+&gt; zadd myzset 3 &quot;two&quot;     # return 0
 &gt; zrange myzset 0 -1                     # return one two
 &gt; zrange myzset 0 -1 withscores          # return one 1 two 3
 </code></pre></li>
@@ -933,10 +936,17 @@ db1:xxx
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

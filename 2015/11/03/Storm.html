@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -691,17 +694,17 @@
 <h2 id="header-12">应用示例</h2>
 <h3 id="header-13">Java API</h3>
 <p>依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.storm<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>storm<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${storm.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>pom<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.storm<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>storm-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${storm.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.storm&lt;/groupId&gt;
+  &lt;artifactId&gt;storm&lt;/artifactId&gt;
+  &lt;version&gt;${storm.version}&lt;/version&gt;
+  &lt;type&gt;pom&lt;/type&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.storm&lt;/groupId&gt;
+    &lt;artifactId&gt;storm-core&lt;/artifactId&gt;
+    &lt;version&gt;${storm.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p><img src="/2015/11/03/java-api.png" alt="Java API"></p>
 <ul>
@@ -745,37 +748,37 @@
 <li>执行Spout的<code>ack</code>或<code>fail</code>方法（使用ack机制发送tuple，在每一个tuple tree完成后触发）</li>
 </ul>
 </li>
-<li><code>IRichBolt</code>与<code>IBasicBolt</code>的区别在于：后者会自动ack<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SplitSentence</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseRichBolt</span></span>{
+<li><code>IRichBolt</code>与<code>IBasicBolt</code>的区别在于：后者会自动ack<pre><code class="lang-java">public class SplitSentence extends BaseRichBolt{
   OutputCollector _collector;
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">prepare</span><span class="hljs-params">(Map conf,Topology context,OutputCollector collector)</span></span>{
+  @Override
+  public void prepare(Map conf,Topology context,OutputCollector collector){
       _collector=collector;
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(Tuple tuple)</span></span>{
-      String sentence=tuple.getString(<span class="hljs-number">0</span>);
-      <span class="hljs-keyword">for</span>(String word:sentence.split(<span class="hljs-string">" "</span>)){
-          _collector.emit(tuple,<span class="hljs-keyword">new</span> Value(word));    <span class="hljs-comment">//发送tuple</span>
+  @Override
+  public void execute(Tuple tuple){
+      String sentence=tuple.getString(0);
+      for(String word:sentence.split(&quot; &quot;)){
+          _collector.emit(tuple,new Value(word));    //发送tuple
       }
-      _collector.ack(tuple);                         <span class="hljs-comment">//手动ack</span>
+      _collector.ack(tuple);                         //手动ack
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">declareOutputFields</span><span class="hljs-params">(OutputFieldDeclarer declarer)</span></span>{
-      declarer.declare(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>));
+  @Override
+  public void declareOutputFields(OutputFieldDeclarer declarer){
+      declarer.declare(new Fields(&quot;word&quot;));
   }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SplitSentence</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseBaseBolt</span></span>{
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(Tuple tuple,BasicOutputCollector collector)</span></span>{
-      String sentence=tuple.getString(<span class="hljs-number">0</span>);
-      <span class="hljs-keyword">for</span>(String word:sentence.split(<span class="hljs-string">" "</span>)){
-          _collector.emit(tuple,<span class="hljs-keyword">new</span> Value(word));        <span class="hljs-comment">//发送tuple</span>
+<pre><code class="lang-java">public class SplitSentence extends BaseBaseBolt{
+  @Override
+  public void execute(Tuple tuple,BasicOutputCollector collector){
+      String sentence=tuple.getString(0);
+      for(String word:sentence.split(&quot; &quot;)){
+          _collector.emit(tuple,new Value(word));        //发送tuple
       }
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">declareOutputFields</span><span class="hljs-params">(OutputFieldDeclarer declarer)</span></span>{
-      declarer.declare(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>));
+  @Override
+  public void declareOutputFields(OutputFieldDeclarer declarer){
+      declarer.declare(new Fields(&quot;word&quot;));
   }
 }
 </code></pre>
@@ -792,14 +795,14 @@
 </li>
 <li><p>构建topology，即<code>StormTopology</code>对象</p>
 <ul>
-<li>使用<code>TopologyBuilder</code> （Spout &amp; Bolt原语）<pre><code class="nulljava">TopologyBuilder builder=<span class="hljs-keyword">new</span> TopologyBuilder();
+<li>使用<code>TopologyBuilder</code> （Spout &amp; Bolt原语）<pre><code class="lang-java">TopologyBuilder builder=new TopologyBuilder();
 builder.setSpout(...);
 builder.setBolt(...);
 ...
 builder.createTopology();
 </code></pre>
 </li>
-<li>使用<code>TridentTopology</code> （Trident原语）<pre><code class="nulljava">TridentTopology topology=<span class="hljs-keyword">new</span> TridentTopology();
+<li>使用<code>TridentTopology</code> （Trident原语）<pre><code class="lang-java">TridentTopology topology=new TridentTopology();
 topology.newStream(...)
       ...
       .build();
@@ -824,98 +827,98 @@ topology.newStream(...)
 <p>示例：单词统计 （根据配置，从指定路径读取文件行作为输入源，这里未使用ack机制）</p>
 <pre><code>wordReader =&gt; wordSpliter =&gt; wordCounter
 （Spout，1）   (Bolt，2)       (Bolt，3)
-</code></pre><pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span>
-</span>{
-    <span class="hljs-keyword">if</span>(args.length!=<span class="hljs-number">2</span>){
-        System.err.println(<span class="hljs-string">"Set Args!"</span>);
-        <span class="hljs-keyword">return</span>;
+</code></pre><pre><code class="lang-java">public static void main(String[] args)
+{
+    if(args.length!=2){
+        System.err.println(&quot;Set Args!&quot;);
+        return;
     }
 
-    TopologyBuilder builder=<span class="hljs-keyword">new</span> TopologyBuilder();
-    builder.setSpout(<span class="hljs-string">"wordReader"</span>, <span class="hljs-keyword">new</span> WordReaderSpout());
-    builder.setBolt(<span class="hljs-string">"wordSpliter"</span>,<span class="hljs-keyword">new</span> WordSpliterBolt(),<span class="hljs-number">2</span>).shuffleGrouping(<span class="hljs-string">"wordReader"</span>);
-    builder.setBolt(<span class="hljs-string">"wordCounter"</span>,<span class="hljs-keyword">new</span> WordCounterBolt(),<span class="hljs-number">3</span>).fieldsGrouping(<span class="hljs-string">"wordSpliter"</span>,<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>));
+    TopologyBuilder builder=new TopologyBuilder();
+    builder.setSpout(&quot;wordReader&quot;, new WordReaderSpout());
+    builder.setBolt(&quot;wordSpliter&quot;,new WordSpliterBolt(),2).shuffleGrouping(&quot;wordReader&quot;);
+    builder.setBolt(&quot;wordCounter&quot;,new WordCounterBolt(),3).fieldsGrouping(&quot;wordSpliter&quot;,new Fields(&quot;word&quot;));
 
-    Config config=<span class="hljs-keyword">new</span> Config();
-    config.put(<span class="hljs-string">"INPUT_PATH"</span>,args[<span class="hljs-number">0</span>]);
-    config.put(<span class="hljs-string">"TIME_OFFSET"</span>,args[<span class="hljs-number">1</span>]);
-    config.setDebug(<span class="hljs-keyword">false</span>);
+    Config config=new Config();
+    config.put(&quot;INPUT_PATH&quot;,args[0]);
+    config.put(&quot;TIME_OFFSET&quot;,args[1]);
+    config.setDebug(false);
 
-    LocalCluster cluster=<span class="hljs-keyword">new</span> LocalCluster();
-    cluster.submitTopology(<span class="hljs-string">"WordCountTopology"</span>, config,builder.createTopology());
+    LocalCluster cluster=new LocalCluster();
+    cluster.submitTopology(&quot;WordCountTopology&quot;, config,builder.createTopology());
 }
 </code></pre>
 <p>WordReaderSpout：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordReaderSpout</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseRichSpout</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">4838334026285320050L</span>;
-    <span class="hljs-keyword">private</span> SpoutOutputCollector collector;
-    <span class="hljs-keyword">private</span> String inputPath;
+<pre><code class="lang-java">public class WordReaderSpout extends BaseRichSpout{
+    private static final long serialVersionUID = 4838334026285320050L;
+    private SpoutOutputCollector collector;
+    private String inputPath;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">open</span><span class="hljs-params">(@SuppressWarnings(<span class="hljs-string">"rawtypes"</span>)</span> Map conf, TopologyContext context,SpoutOutputCollector collector)</span>{
-        <span class="hljs-keyword">this</span>.inputPath=(String)conf.get(<span class="hljs-string">"INPUT_PATH"</span>);
-        <span class="hljs-keyword">this</span>.collector=collector;
+    @Override
+    public void open(@SuppressWarnings(&quot;rawtypes&quot;) Map conf, TopologyContext context,SpoutOutputCollector collector){
+        this.inputPath=(String)conf.get(&quot;INPUT_PATH&quot;);
+        this.collector=collector;
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">nextTuple</span><span class="hljs-params">()</span></span>{
-        Collection&lt;File&gt; files=FileUtils.listFiles(<span class="hljs-keyword">new</span> File(inputPath),
-                FileFilterUtils.notFileFilter(FileFilterUtils.suffixFileFilter(<span class="hljs-string">"bak"</span>)), <span class="hljs-keyword">null</span>);
-        <span class="hljs-keyword">try</span>{
-            <span class="hljs-keyword">for</span>(File file:files){
+    @Override
+    public void nextTuple(){
+        Collection&lt;File&gt; files=FileUtils.listFiles(new File(inputPath),
+                FileFilterUtils.notFileFilter(FileFilterUtils.suffixFileFilter(&quot;bak&quot;)), null);
+        try{
+            for(File file:files){
                 List&lt;String&gt; lines=FileUtils.readLines(file);
-                <span class="hljs-keyword">for</span>(String line:lines)
-                    collector.emit(<span class="hljs-keyword">new</span> Values(line));        <span class="hljs-comment">//发送一行句子</span>
-                FileUtils.moveFile(file,<span class="hljs-keyword">new</span> File(file.getPath()+System.currentTimeMillis()+<span class="hljs-string">".bak"</span>));
+                for(String line:lines)
+                    collector.emit(new Values(line));        //发送一行句子
+                FileUtils.moveFile(file,new File(file.getPath()+System.currentTimeMillis()+&quot;.bak&quot;));
             }
-        } <span class="hljs-keyword">catch</span> (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">declareOutputFields</span><span class="hljs-params">(OutputFieldsDeclarer declarer)</span></span>{
-        declarer.declare(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"line"</span>));
+    @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer){
+        declarer.declare(new Fields(&quot;line&quot;));
     }
 }
 </code></pre>
 <p>WordSpliterBolt：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordSpliterBolt</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseBasicBolt</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = -<span class="hljs-number">3841856624992471803L</span>;
+<pre><code class="lang-java">public class WordSpliterBolt extends BaseBasicBolt{
+    private static final long serialVersionUID = -3841856624992471803L;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(Tuple input, BasicOutputCollector collector)</span></span>{
-        String line=input.getString(<span class="hljs-number">0</span>);
-        String[] words=line.split(<span class="hljs-string">"\\s+"</span>);
-        <span class="hljs-keyword">for</span>(String word:words){
-            collector.emit(<span class="hljs-keyword">new</span> Values(word));    <span class="hljs-comment">//发送一个单词</span>
+    @Override
+    public void execute(Tuple input, BasicOutputCollector collector){
+        String line=input.getString(0);
+        String[] words=line.split(&quot;\\s+&quot;);
+        for(String word:words){
+            collector.emit(new Values(word));    //发送一个单词
         }
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">declareOutputFields</span><span class="hljs-params">(OutputFieldsDeclarer declarer)</span></span>{
-        declarer.declare(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>));
+    @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer){
+        declarer.declare(new Fields(&quot;word&quot;));
     }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCounterBolt</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseBasicBolt</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = -<span class="hljs-number">3841856624992471803L</span>;
-    <span class="hljs-keyword">private</span> Map&lt;String,Integer&gt; counts=<span class="hljs-keyword">new</span> HashMap&lt;String,Integer&gt;();
-    <span class="hljs-keyword">private</span> SimpleDateFormat sdf=<span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>);
+<pre><code class="lang-java">public class WordCounterBolt extends BaseBasicBolt{
+    private static final long serialVersionUID = -3841856624992471803L;
+    private Map&lt;String,Integer&gt; counts=new HashMap&lt;String,Integer&gt;();
+    private SimpleDateFormat sdf=new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;);
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">prepare</span><span class="hljs-params">(@SuppressWarnings(<span class="hljs-string">"rawtypes"</span>)</span> Map stormConf, TopologyContext context,OutputCollector collector)</span>{
-        <span class="hljs-keyword">final</span> Long timeOffset=Long.parseLong((String)stormConf.get(<span class="hljs-string">"TIME_OFFSET"</span>));
-        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> Runnable(){
-            <span class="hljs-meta">@Override</span>
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
-                <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>){
-                    System.out.println(sdf.format(<span class="hljs-keyword">new</span> Date())+<span class="hljs-string">"------------------"</span>);
-                    <span class="hljs-keyword">for</span>(String key:counts.keySet())
-                        System.out.println(key+<span class="hljs-string">" "</span>+counts.get(key));
-                    <span class="hljs-keyword">try</span>{
-                        Thread.sleep(timeOffset*<span class="hljs-number">1000</span>);
-                    } <span class="hljs-keyword">catch</span> (InterruptedException e){
+    @Override
+    public void prepare(@SuppressWarnings(&quot;rawtypes&quot;) Map stormConf, TopologyContext context,OutputCollector collector){
+        final Long timeOffset=Long.parseLong((String)stormConf.get(&quot;TIME_OFFSET&quot;));
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                while(true){
+                    System.out.println(sdf.format(new Date())+&quot;------------------&quot;);
+                    for(String key:counts.keySet())
+                        System.out.println(key+&quot; &quot;+counts.get(key));
+                    try{
+                        Thread.sleep(timeOffset*1000);
+                    } catch (InterruptedException e){
                         e.printStackTrace();
                     }
                 }
@@ -923,240 +926,240 @@ topology.newStream(...)
         }).start();
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(Tuple input, BasicOutputCollector collector)</span></span>{
-        String word=input.getString(<span class="hljs-number">0</span>).toLowerCase();
-        <span class="hljs-keyword">if</span>(counts.containsKey(word))
-            counts.put(word, (counts.get(word)+<span class="hljs-number">1</span>));
-        <span class="hljs-keyword">else</span>
-            counts.put(word,<span class="hljs-number">1</span>);
+    @Override
+    public void execute(Tuple input, BasicOutputCollector collector){
+        String word=input.getString(0).toLowerCase();
+        if(counts.containsKey(word))
+            counts.put(word, (counts.get(word)+1));
+        else
+            counts.put(word,1);
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">declareOutputFields</span><span class="hljs-params">(OutputFieldsDeclarer declarer)</span></span>{
-        declarer.declare(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>,<span class="hljs-string">"count"</span>));
+    @Override
+    public void declareOutputFields(OutputFieldsDeclarer declarer){
+        declarer.declare(new Fields(&quot;word&quot;,&quot;count&quot;));
     }
 }
 </code></pre>
 <h3 id="header-15">使用Trident</h3>
 <p>Main: submit topology</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span>  <span class="hljs-keyword">throws</span> Exception </span>{
-    Config config=<span class="hljs-keyword">new</span> Config();
-    config.setDebug(<span class="hljs-keyword">false</span>);
-    <span class="hljs-keyword">if</span> (args != <span class="hljs-keyword">null</span> &amp;&amp; args.length &gt; <span class="hljs-number">0</span>) {
-        config.setNumWorkers(<span class="hljs-number">2</span>);
-        StormSubmitter.submitTopology(args[<span class="hljs-number">0</span>], config, buildTopology(<span class="hljs-keyword">null</span>));
-    } <span class="hljs-keyword">else</span> {
-        config.setMaxTaskParallelism(<span class="hljs-number">3</span>);
-        LocalCluster cluster=<span class="hljs-keyword">new</span> LocalCluster();
-        cluster.submitTopology(<span class="hljs-string">"word2-topology"</span>,config, buildTopology());
+<pre><code class="lang-java">public static void main(String[] args)  throws Exception {
+    Config config=new Config();
+    config.setDebug(false);
+    if (args != null &amp;&amp; args.length &gt; 0) {
+        config.setNumWorkers(2);
+        StormSubmitter.submitTopology(args[0], config, buildTopology(null));
+    } else {
+        config.setMaxTaskParallelism(3);
+        LocalCluster cluster=new LocalCluster();
+        cluster.submitTopology(&quot;word2-topology&quot;,config, buildTopology());
     }
 }
 </code></pre>
 <p>buildTopology:</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> StormTopology <span class="hljs-title">buildTopology</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-comment">//使用FixedBatchSpout创建一个输入spout，spout的输出字段为sentence，每3个元组作为一个batch</span>
-    FixedBatchSpout spout=<span class="hljs-keyword">new</span> FixedBatchSpout(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"sentence"</span>), <span class="hljs-number">3</span>, 
-            <span class="hljs-keyword">new</span> Values(<span class="hljs-string">"China America Japan Italy America"</span>),
-            <span class="hljs-keyword">new</span> Values(<span class="hljs-string">"Korea Italy Netherlands China"</span>),
-            <span class="hljs-keyword">new</span> Values(<span class="hljs-string">"France America Italy"</span>),
-            <span class="hljs-keyword">new</span> Values(<span class="hljs-string">"Japan China Korea"</span>),
-            <span class="hljs-keyword">new</span> Values(<span class="hljs-string">"France Netherlands America"</span>),
-            <span class="hljs-keyword">new</span> Values(<span class="hljs-string">"America Korea Netherlands Japan"</span>));
-    <span class="hljs-comment">//数据是否不断的重复发送</span>
-    spout.setCycle(<span class="hljs-keyword">false</span>);
+<pre><code class="lang-java">public static StormTopology buildTopology(){
+    //使用FixedBatchSpout创建一个输入spout，spout的输出字段为sentence，每3个元组作为一个batch
+    FixedBatchSpout spout=new FixedBatchSpout(new Fields(&quot;sentence&quot;), 3, 
+            new Values(&quot;China America Japan Italy America&quot;),
+            new Values(&quot;Korea Italy Netherlands China&quot;),
+            new Values(&quot;France America Italy&quot;),
+            new Values(&quot;Japan China Korea&quot;),
+            new Values(&quot;France Netherlands America&quot;),
+            new Values(&quot;America Korea Netherlands Japan&quot;));
+    //数据是否不断的重复发送
+    spout.setCycle(false);
 
-    TridentTopology topology=<span class="hljs-keyword">new</span> TridentTopology();
+    TridentTopology topology=new TridentTopology();
 
-    <span class="hljs-comment">//方式一：aggregate for batch tuples on each batches.</span>
-    topology.newStream(<span class="hljs-string">"word-spout"</span>, spout)
-        .each(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"sentence"</span>), <span class="hljs-keyword">new</span> SplitFunction(),<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-        .groupBy(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-        .aggregate(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>), <span class="hljs-keyword">new</span> BatchCount(), <span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"count"</span>)).parallelismHint(<span class="hljs-number">3</span>)
-        .each(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"count"</span>),<span class="hljs-keyword">new</span> PrintFilter())
+    //方式一：aggregate for batch tuples on each batches.
+    topology.newStream(&quot;word-spout&quot;, spout)
+        .each(new Fields(&quot;sentence&quot;), new SplitFunction(),new Fields(&quot;word&quot;))
+        .groupBy(new Fields(&quot;word&quot;))
+        .aggregate(new Fields(&quot;word&quot;), new BatchCount(), new Fields(&quot;count&quot;)).parallelismHint(3)
+        .each(new Fields(&quot;count&quot;),new PrintFilter())
         ;
 
-    <span class="hljs-comment">//方式二：partitionAggregate for all batch tuples on each partitions.</span>
-    topology.newStream(<span class="hljs-string">"word-spout"</span>, spout)
-            .each(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"sentence"</span>), <span class="hljs-keyword">new</span> SplitFunction(),<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-            .partitionBy(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-            .partitionAggregate(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>),<span class="hljs-keyword">new</span> BatchCount(), <span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"count"</span>)).parallelismHint(<span class="hljs-number">3</span>)
-            .each(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"count"</span>),<span class="hljs-keyword">new</span> PrintFilter())
+    //方式二：partitionAggregate for all batch tuples on each partitions.
+    topology.newStream(&quot;word-spout&quot;, spout)
+            .each(new Fields(&quot;sentence&quot;), new SplitFunction(),new Fields(&quot;word&quot;))
+            .partitionBy(new Fields(&quot;word&quot;))
+            .partitionAggregate(new Fields(&quot;word&quot;),new BatchCount(), new Fields(&quot;count&quot;)).parallelismHint(3)
+            .each(new Fields(&quot;count&quot;),new PrintFilter())
             ;
 
-    <span class="hljs-keyword">return</span> topology.build();
+    return topology.build();
 }
 </code></pre>
 <p>Function：SplitFunction</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SplitFunction</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseFunction</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = -<span class="hljs-number">3520791925362776023L</span>;
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(TridentTuple tuple, TridentCollector collector)</span> </span>{
-        String sentence=tuple.getString(<span class="hljs-number">0</span>);
-        String[] words=sentence.toLowerCase().split(<span class="hljs-string">"\\s+"</span>);
-        <span class="hljs-keyword">for</span>(String word:words){
-            <span class="hljs-keyword">if</span>(word!=<span class="hljs-keyword">null</span> &amp;&amp; word.length()!=<span class="hljs-number">0</span>)
-                collector.emit(<span class="hljs-keyword">new</span> Values(word));
+<pre><code class="lang-java">public class SplitFunction extends BaseFunction{
+    private static final long serialVersionUID = -3520791925362776023L;
+    @Override
+    public void execute(TridentTuple tuple, TridentCollector collector) {
+        String sentence=tuple.getString(0);
+        String[] words=sentence.toLowerCase().split(&quot;\\s+&quot;);
+        for(String word:words){
+            if(word!=null &amp;&amp; word.length()!=0)
+                collector.emit(new Values(word));
         }
     }
 }
 </code></pre>
 <p>Aggregator：BatchCount</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BatchCount</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseAggregator</span>&lt;<span class="hljs-title">Map</span>&lt;<span class="hljs-title">String</span>,<span class="hljs-title">Long</span>&gt;&gt;</span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = -<span class="hljs-number">6887898093280014532L</span>;
+<pre><code class="lang-java">public class BatchCount extends BaseAggregator&lt;Map&lt;String,Long&gt;&gt;{
+    private static final long serialVersionUID = -6887898093280014532L;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Map&lt;String, Long&gt; <span class="hljs-title">init</span><span class="hljs-params">(Object batchId, TridentCollector collector)</span> </span>{
-        System.out.println(<span class="hljs-string">"batchId:"</span>+batchId);
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> HashMap&lt;String,Long&gt;();
+    @Override
+    public Map&lt;String, Long&gt; init(Object batchId, TridentCollector collector) {
+        System.out.println(&quot;batchId:&quot;+batchId);
+        return new HashMap&lt;String,Long&gt;();
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">aggregate</span><span class="hljs-params">(Map&lt;String, Long&gt; val, TridentTuple tuple,
-            TridentCollector collector)</span> </span>{
-        String key=tuple.getString(<span class="hljs-number">0</span>);
+    @Override
+    public void aggregate(Map&lt;String, Long&gt; val, TridentTuple tuple,
+            TridentCollector collector) {
+        String key=tuple.getString(0);
         Long value=val.get(key);
-        val.put(tuple.getString(<span class="hljs-number">0</span>), (value==<span class="hljs-keyword">null</span>?<span class="hljs-number">0L</span>:value)+<span class="hljs-number">1</span>);
+        val.put(tuple.getString(0), (value==null?0L:value)+1);
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">complete</span><span class="hljs-params">(Map&lt;String, Long&gt; val, TridentCollector collector)</span> </span>{
-        collector.emit(<span class="hljs-keyword">new</span> Values(val));
+    @Override
+    public void complete(Map&lt;String, Long&gt; val, TridentCollector collector) {
+        collector.emit(new Values(val));
     }
 }
 </code></pre>
 <p>Filter：PrintFilter</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PrintFilter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">BaseFilter</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">4222174314803471311L</span>;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> partitionIndex;
+<pre><code class="lang-java">public class PrintFilter extends BaseFilter{
+    private static final long serialVersionUID = 4222174314803471311L;
+    private int partitionIndex;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">prepare</span><span class="hljs-params">(Map conf, TridentOperationContext context)</span> </span>{
-        <span class="hljs-keyword">this</span>.partitionIndex = context.getPartitionIndex();
+    @Override
+    public void prepare(Map conf, TridentOperationContext context) {
+        this.partitionIndex = context.getPartitionIndex();
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isKeep</span><span class="hljs-params">(TridentTuple tuple)</span> </span>{
-        System.out.println(<span class="hljs-string">"partition ["</span> + partitionIndex + <span class="hljs-string">"]: "</span> + tuple.getValues());
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    @Override
+    public boolean isKeep(TridentTuple tuple) {
+        System.out.println(&quot;partition [&quot; + partitionIndex + &quot;]: &quot; + tuple.getValues());
+        return true;
     }
 }
 </code></pre>
 <h3 id="header-16">使用TridentState</h3>
 <p>buildTopology：使用<code>persistentAggregate</code>返回的是<code>TridentState</code>对象</p>
-<pre><code class="nulljava"><span class="hljs-comment">//此流程用于统计单词数据</span>
-TridentState countState= topology.newStream(<span class="hljs-string">"word-spout"</span>, spout)
-        .each(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"sentence"</span>), <span class="hljs-keyword">new</span> SplitFunction(),<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-        .groupBy(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-        .persistentAggregate(<span class="hljs-keyword">new</span> MemoryMapState.Factory(), <span class="hljs-keyword">new</span> Count(), <span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"count"</span>))
-        .parallelismHint(<span class="hljs-number">3</span>)
-        <span class="hljs-comment">//.newValuesStream()</span>
-        <span class="hljs-comment">//.each(new Fields("word","count"),new PrintFilter())</span>
+<pre><code class="lang-java">//此流程用于统计单词数据
+TridentState countState= topology.newStream(&quot;word-spout&quot;, spout)
+        .each(new Fields(&quot;sentence&quot;), new SplitFunction(),new Fields(&quot;word&quot;))
+        .groupBy(new Fields(&quot;word&quot;))
+        .persistentAggregate(new MemoryMapState.Factory(), new Count(), new Fields(&quot;count&quot;))
+        .parallelismHint(3)
+        //.newValuesStream()
+        //.each(new Fields(&quot;word&quot;,&quot;count&quot;),new PrintFilter())
         ;
 
-<span class="hljs-comment">//另一流程：查询上面的统计结果</span>
-topology.newDRPCStream(<span class="hljs-string">"words"</span>,drpc)
-        .each(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"args"</span>),<span class="hljs-keyword">new</span> SplitFunction(),<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-        .groupBy(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>))
-        .stateQuery(countState, <span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>),<span class="hljs-keyword">new</span> MapGet(), <span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"count"</span>))
-        <span class="hljs-comment">//.aggregate(new Fields("word"), new Count(), new Fields("count"))</span>
-        .each(<span class="hljs-keyword">new</span> Fields(<span class="hljs-string">"word"</span>,<span class="hljs-string">"count"</span>),<span class="hljs-keyword">new</span> PrintFilter())
+//另一流程：查询上面的统计结果
+topology.newDRPCStream(&quot;words&quot;,drpc)
+        .each(new Fields(&quot;args&quot;),new SplitFunction(),new Fields(&quot;word&quot;))
+        .groupBy(new Fields(&quot;word&quot;))
+        .stateQuery(countState, new Fields(&quot;word&quot;),new MapGet(), new Fields(&quot;count&quot;))
+        //.aggregate(new Fields(&quot;word&quot;), new Count(), new Fields(&quot;count&quot;))
+        .each(new Fields(&quot;word&quot;,&quot;count&quot;),new PrintFilter())
         ;
 
-<span class="hljs-keyword">return</span> topology.build();
+return topology.build();
 </code></pre>
 <p>CombinerAggregator：Count</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Count</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">CombinerAggregator</span>&lt;<span class="hljs-title">Long</span>&gt; </span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = -<span class="hljs-number">2368597420284085245L</span>;
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Long <span class="hljs-title">init</span><span class="hljs-params">(TridentTuple tuple)</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-number">1L</span>;
+<pre><code class="lang-java">public static class Count implements CombinerAggregator&lt;Long&gt; {
+    private static final long serialVersionUID = -2368597420284085245L;
+    @Override
+    public Long init(TridentTuple tuple) {
+        return 1L;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Long <span class="hljs-title">combine</span><span class="hljs-params">(Long val1, Long val2)</span> </span>{
-        <span class="hljs-keyword">return</span> val1 + val2;
+    @Override
+    public Long combine(Long val1, Long val2) {
+        return val1 + val2;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Long <span class="hljs-title">zero</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-number">0L</span>;
+    @Override
+    public Long zero() {
+        return 0L;
     }
 }
 </code></pre>
 <p>测试：</p>
-<pre><code class="nulljava">Config config=<span class="hljs-keyword">new</span> Config();
-config.setDebug(<span class="hljs-keyword">false</span>);
-config.setMaxTaskParallelism(<span class="hljs-number">3</span>);
-LocalCluster cluster=<span class="hljs-keyword">new</span> LocalCluster();
-LocalDRPC drpc=<span class="hljs-keyword">new</span> LocalDRPC();
-cluster.submitTopology(<span class="hljs-string">"word2-topology"</span>,config, buildTopology(drpc));
-<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i++) {
-    System.out.println(<span class="hljs-string">"DRPC RESULT: "</span> + drpc.execute(<span class="hljs-string">"words"</span>, <span class="hljs-string">"China Japan Italy"</span>));
-    Thread.sleep(<span class="hljs-number">100</span>);
+<pre><code class="lang-java">Config config=new Config();
+config.setDebug(false);
+config.setMaxTaskParallelism(3);
+LocalCluster cluster=new LocalCluster();
+LocalDRPC drpc=new LocalDRPC();
+cluster.submitTopology(&quot;word2-topology&quot;,config, buildTopology(drpc));
+for (int i = 0; i &lt; 6; i++) {
+    System.out.println(&quot;DRPC RESULT: &quot; + drpc.execute(&quot;words&quot;, &quot;China Japan Italy&quot;));
+    Thread.sleep(100);
 }
 </code></pre>
 <h3 id="header-17">使用Kafka做消息源</h3>
 <p>加入依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.storm<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>storm-kafka<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${storm.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.kafka<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>kafka_2.10<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${kafka.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.storm&lt;/groupId&gt;
+    &lt;artifactId&gt;storm-kafka&lt;/artifactId&gt;
+    &lt;version&gt;${storm.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.kafka&lt;/groupId&gt;
+    &lt;artifactId&gt;kafka_2.10&lt;/artifactId&gt;
+    &lt;version&gt;${kafka.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>示例：</p>
 <p>使用<code>KafkaSpout</code>：</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
-    BrokerHosts brokerHosts=<span class="hljs-keyword">new</span> ZkHosts(<span class="hljs-string">"cj.storm:2181,cj.storm:2182,cj.storm:2183"</span>);
-    SpoutConfig spoutConfig=<span class="hljs-keyword">new</span> SpoutConfig(brokerHosts, <span class="hljs-string">"sentence"</span>, <span class="hljs-string">"/sentence"</span>, <span class="hljs-string">"id"</span>);
-    <span class="hljs-comment">//kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());</span>
-    spoutConfig.scheme=<span class="hljs-keyword">new</span> SchemeAsMultiScheme(<span class="hljs-keyword">new</span> RecordScheme(<span class="hljs-string">"message"</span>));
+<pre><code class="lang-java">public static void main(String[] args) {
+    BrokerHosts brokerHosts=new ZkHosts(&quot;cj.storm:2181,cj.storm:2182,cj.storm:2183&quot;);
+    SpoutConfig spoutConfig=new SpoutConfig(brokerHosts, &quot;sentence&quot;, &quot;/sentence&quot;, &quot;id&quot;);
+    //kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
+    spoutConfig.scheme=new SchemeAsMultiScheme(new RecordScheme(&quot;message&quot;));
 
-    TopologyBuilder builder=<span class="hljs-keyword">new</span> TopologyBuilder();
-    builder.setSpout(<span class="hljs-string">"wordReader"</span>, <span class="hljs-keyword">new</span> KafkaSpout(spoutConfig)());
-    <span class="hljs-comment">//setBolt</span>
+    TopologyBuilder builder=new TopologyBuilder();
+    builder.setSpout(&quot;wordReader&quot;, new KafkaSpout(spoutConfig)());
+    //setBolt
     ...
-    <span class="hljs-comment">//submit topology</span>
+    //submit topology
     ...
 }
 </code></pre>
 <p>使用<code>TransactionalTridentKafkaSpout</code>：</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
-    BrokerHosts brokerHosts=<span class="hljs-keyword">new</span> ZkHosts(<span class="hljs-string">"cj.storm:2181,cj.storm:2182,cj.storm:2183"</span>);
-    TridentKafkaConfig spoutConfig=<span class="hljs-keyword">new</span> TridentKafkaConfig(brokerHosts, <span class="hljs-string">"sentence"</span>, <span class="hljs-string">"/sentence"</span>, <span class="hljs-string">"id"</span>);
-    <span class="hljs-comment">//kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());</span>
-    spoutConfig.scheme=<span class="hljs-keyword">new</span> SchemeAsMultiScheme(<span class="hljs-keyword">new</span> RecordScheme(<span class="hljs-string">"message"</span>));
+<pre><code class="lang-java">public static void main(String[] args) {
+    BrokerHosts brokerHosts=new ZkHosts(&quot;cj.storm:2181,cj.storm:2182,cj.storm:2183&quot;);
+    TridentKafkaConfig spoutConfig=new TridentKafkaConfig(brokerHosts, &quot;sentence&quot;, &quot;/sentence&quot;, &quot;id&quot;);
+    //kafkaConfig.scheme = new SchemeAsMultiScheme(new StringScheme());
+    spoutConfig.scheme=new SchemeAsMultiScheme(new RecordScheme(&quot;message&quot;));
 
-    TridentTopology topology = <span class="hljs-keyword">new</span> TridentTopology();  
-    StormTopology stormTopology=topology.newStream(<span class="hljs-string">"wordReader"</span>, <span class="hljs-keyword">new</span> TransactionalTridentKafkaSpout(spoutConfig)())
+    TridentTopology topology = new TridentTopology();  
+    StormTopology stormTopology=topology.newStream(&quot;wordReader&quot;, new TransactionalTridentKafkaSpout(spoutConfig)())
         ....
         .build();
-    <span class="hljs-comment">//submit topology</span>
+    //submit topology
     ...
 }
 </code></pre>
 <p>RecordScheme: 实现Scheme接口，它主要负责从消息流中解析出需要的数据</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RecordScheme</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Scheme</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = <span class="hljs-number">1246495372611050401L</span>;
-    <span class="hljs-keyword">private</span> String schemeKey=<span class="hljs-string">"msg"</span>;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">RecordScheme</span><span class="hljs-params">(String schemeKey)</span></span>{
-        <span class="hljs-keyword">this</span>.schemeKey=schemeKey;
+<pre><code class="lang-java">public class RecordScheme implements Scheme{
+    private static final long serialVersionUID = 1246495372611050401L;
+    private String schemeKey=&quot;msg&quot;;
+    public RecordScheme(String schemeKey){
+        this.schemeKey=schemeKey;
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Object&gt; <span class="hljs-title">deserialize</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] bytes)</span> </span>{
-        <span class="hljs-keyword">try</span> {
-            String str=<span class="hljs-keyword">new</span> String(bytes, <span class="hljs-string">"UTF-8"</span>);
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Values(str);
-        } <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e) {
+    public List&lt;Object&gt; deserialize(byte[] bytes) {
+        try {
+            String str=new String(bytes, &quot;UTF-8&quot;);
+            return new Values(str);
+        } catch (UnsupportedEncodingException e) {
             System.out.println(e.getMessage());
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+            return null;
         }
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> Fields <span class="hljs-title">getOutputFields</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Fields(schemeKey);
+    @Override
+    public Fields getOutputFields() {
+        return new Fields(schemeKey);
     }
 }
 </code></pre>
@@ -1195,10 +1198,17 @@ cluster.submitTopology(<span class="hljs-string">"word2-topology"</span>,config,
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

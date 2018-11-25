@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -338,64 +341,64 @@ export PATH=$PATH:$HADOOP_INSTALL/bin
 </li>
 <li><p>配置</p>
 <ul>
-<li><code>hadoop-env.sh</code> （配置JAVA_HOME）<pre><code class="nullshell">export JAVA_HOME=/usr/java
+<li><code>hadoop-env.sh</code> （配置JAVA_HOME）<pre><code class="lang-shell">export JAVA_HOME=/usr/java
 </code></pre>
 </li>
-<li><code>core-site.xml</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- 指定hadoop运行时产生文件的存放目录 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hadoop.tmp.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/home/hadoop/tmp<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- 指定HDFS的namenode的通信地址 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>fs.default.name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hdfs://cj.storm:9000<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- 指定HDFS的secondNamenode的存放目录 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>fs.checkpoint.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/home/hadoop/data1/namesecondary<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+<li><code>core-site.xml</code><pre><code class="lang-xml">&lt;configuration&gt;
+  &lt;!-- 指定hadoop运行时产生文件的存放目录 --&gt;
+  &lt;property&gt;
+          &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+          &lt;value&gt;/home/hadoop/tmp&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 指定HDFS的namenode的通信地址 --&gt;
+  &lt;property&gt;
+          &lt;name&gt;fs.default.name&lt;/name&gt;
+          &lt;value&gt;hdfs://cj.storm:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- 指定HDFS的secondNamenode的存放目录 --&gt;
+  &lt;property&gt;
+          &lt;name&gt;fs.checkpoint.dir&lt;/name&gt;
+          &lt;value&gt;/home/hadoop/data1/namesecondary&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
 </code></pre>
 </li>
-<li><code>hdfs-site.xml</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- HDFS 元数据存放目录--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.name.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/home/hadoop/data1/hdfs/name<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- HDFS Block存放目录--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.data.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/home/hadoop/data1/hdfs/data<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- HDFS Block Size 默认为64M--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.block.size<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>8388608<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- HDFS block 副本数，伪分布式下必须为1 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.replication<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- HDFS 文件系统权限控制--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.permissions<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+<li><code>hdfs-site.xml</code><pre><code class="lang-xml">&lt;configuration&gt;
+  &lt;!-- HDFS 元数据存放目录--&gt;
+  &lt;property&gt;
+          &lt;name&gt;dfs.name.dir&lt;/name&gt;
+          &lt;value&gt;/home/hadoop/data1/hdfs/name&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- HDFS Block存放目录--&gt;
+  &lt;property&gt;
+          &lt;name&gt;dfs.data.dir&lt;/name&gt;
+          &lt;value&gt;/home/hadoop/data1/hdfs/data&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- HDFS Block Size 默认为64M--&gt;
+  &lt;property&gt;
+          &lt;name&gt;dfs.block.size&lt;/name&gt;
+          &lt;value&gt;8388608&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- HDFS block 副本数，伪分布式下必须为1 --&gt;
+  &lt;property&gt;
+          &lt;name&gt;dfs.replication&lt;/name&gt;
+          &lt;value&gt;1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- HDFS 文件系统权限控制--&gt;
+  &lt;property&gt;
+          &lt;name&gt;dfs.permissions&lt;/name&gt;
+          &lt;value&gt;false&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
 </code></pre>
 </li>
-<li><code>mapred-site.xml</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- 指定jobtracker地址 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>mapred.job.tracker<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>cj.storm:9001<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+<li><code>mapred-site.xml</code><pre><code class="lang-xml">&lt;configuration&gt;
+  &lt;!-- 指定jobtracker地址 --&gt;
+  &lt;property&gt;
+          &lt;name&gt;mapred.job.tracker&lt;/name&gt;
+          &lt;value&gt;cj.storm:9001&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
 </code></pre>
 </li>
 </ul>
@@ -440,32 +443,32 @@ export PATH=$PATH:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin
 </li>
 <li><p>配置</p>
 <ul>
-<li><code>hadoop-env.sh</code> （配置JAVA_HOME）<pre><code class="nullshell">export JAVA_HOME=/usr/java
+<li><code>hadoop-env.sh</code> （配置JAVA_HOME）<pre><code class="lang-shell">export JAVA_HOME=/usr/java
 </code></pre>
 </li>
 <li><code>core-site.xml</code> (同Hadoop1.x)</li>
 <li><code>hdfs-site.xml</code>  (同Hadoop1.x)</li>
-<li><code>mapred-site.xml</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- 指定mr运行在yarn上 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>mapreduce.framework.name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>yarn<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+<li><code>mapred-site.xml</code><pre><code class="lang-xml">&lt;configuration&gt;
+  &lt;!-- 指定mr运行在yarn上 --&gt;
+  &lt;property&gt;
+      &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+      &lt;value&gt;yarn&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
 </code></pre>
 </li>
-<li><code>yarn-site.xml</code><pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- 指定YARN的老大（ResourceManager）的地址 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>cj.storm<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- reducer获取数据的方式 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>mapreduce_shuffle<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+<li><code>yarn-site.xml</code><pre><code class="lang-xml">&lt;configuration&gt;
+  &lt;!-- 指定YARN的老大（ResourceManager）的地址 --&gt;
+  &lt;property&gt;
+      &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+      &lt;value&gt;cj.storm&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- reducer获取数据的方式 --&gt;
+  &lt;property&gt;
+      &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+      &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
 </code></pre>
 </li>
 </ul>
@@ -796,64 +799,64 @@ user2.storm
 </table>
 <h3 id="header-18">Java API</h3>
 <h4 id="header-19">URL</h4>
-<pre><code class="nulljava">String HDFS_PATH=<span class="hljs-string">"hdfs://cj.storm:9000"</span>;
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testURL</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException</span>{
-    URL.setURLStreamHandlerFactory(<span class="hljs-keyword">new</span> FsUrlStreamHandlerFactory());
-    URL url=<span class="hljs-keyword">new</span> URL(HDFS_PATH+<span class="hljs-string">"/dl/localhost_access_log.2015-07-15.txt"</span>);
+<pre><code class="lang-java">String HDFS_PATH=&quot;hdfs://cj.storm:9000&quot;;
+@Test
+public void testURL() throws IOException{
+    URL.setURLStreamHandlerFactory(new FsUrlStreamHandlerFactory());
+    URL url=new URL(HDFS_PATH+&quot;/dl/localhost_access_log.2015-07-15.txt&quot;);
     InputStream in=url.openStream();
-    IOUtils.copyBytes(in, System.out, <span class="hljs-number">1024</span>, <span class="hljs-keyword">true</span>);
+    IOUtils.copyBytes(in, System.out, 1024, true);
 }
 </code></pre>
 <h4 id="header-20">FileSystem</h4>
-<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- hdfs-site.xml --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.block.size<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>8388608<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.replication<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+<pre><code class="lang-xml">&lt;!-- hdfs-site.xml --&gt;
+&lt;configuration&gt;
+    &lt;property&gt;
+            &lt;name&gt;dfs.block.size&lt;/name&gt;
+            &lt;value&gt;8388608&lt;/value&gt;
+    &lt;/property&gt;
+    &lt;property&gt;
+            &lt;name&gt;dfs.replication&lt;/name&gt;
+            &lt;value&gt;1&lt;/value&gt;
+    &lt;/property&gt;
+&lt;/configuration&gt;
 </code></pre>
-<pre><code class="nulljava">String HDFS_PATH=<span class="hljs-string">"hdfs://cj.storm:9000"</span>;
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFileSystem</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException, URISyntaxException</span>{
-    FileSystem fileSystem=FileSystem.get(<span class="hljs-keyword">new</span> URI(HDFS_PATH),<span class="hljs-keyword">new</span> Configuration());
+<pre><code class="lang-java">String HDFS_PATH=&quot;hdfs://cj.storm:9000&quot;;
+@Test
+public void testFileSystem() throws IOException, URISyntaxException{
+    FileSystem fileSystem=FileSystem.get(new URI(HDFS_PATH),new Configuration());
 
-    <span class="hljs-comment">// create dir</span>
-    fileSystem.mkdirs(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">"/t1"</span>));
+    // create dir
+    fileSystem.mkdirs(new Path(&quot;/t1&quot;));
 
-    <span class="hljs-comment">//upload file</span>
-    FileInputStream in1=<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">"D:/input/012.txt"</span>);
-    FSDataOutputStream out=fileSystem.create(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">"/t1/012.txt"</span>));
-    IOUtils.copyBytes(in1,out,<span class="hljs-number">1024</span>,<span class="hljs-keyword">true</span>);
+    //upload file
+    FileInputStream in1=new FileInputStream(&quot;D:/input/012.txt&quot;);
+    FSDataOutputStream out=fileSystem.create(new Path(&quot;/t1/012.txt&quot;));
+    IOUtils.copyBytes(in1,out,1024,true);
 
-    <span class="hljs-comment">//file status -- upload by eclipse client (depends on project classpath:hdfs-site.xml)</span>
-    FileStatus status=fileSystem.getFileStatus(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">"/t1/012.txt"</span>));
-    System.out.println(<span class="hljs-string">"012.txt"</span>);
-    System.out.println(<span class="hljs-string">"BlockSize:"</span>+status.getBlockSize());
-    System.out.println(<span class="hljs-string">"Length:"</span>+status.getLen());
-    System.out.println(<span class="hljs-string">"Replication:"</span>+status.getReplication());
-    System.out.println(<span class="hljs-string">"----------------------------"</span>);
+    //file status -- upload by eclipse client (depends on project classpath:hdfs-site.xml)
+    FileStatus status=fileSystem.getFileStatus(new Path(&quot;/t1/012.txt&quot;));
+    System.out.println(&quot;012.txt&quot;);
+    System.out.println(&quot;BlockSize:&quot;+status.getBlockSize());
+    System.out.println(&quot;Length:&quot;+status.getLen());
+    System.out.println(&quot;Replication:&quot;+status.getReplication());
+    System.out.println(&quot;----------------------------&quot;);
 
-    <span class="hljs-comment">//file status -- upload by hdfs cmd (depends on server conf/hdfs-site.xml)</span>
-    status=fileSystem.getFileStatus(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">"/dl/localhost_access_log.2015-07-15.txt"</span>));
-    System.out.println(<span class="hljs-string">"localhost_access_log.2015-07-15.txt:"</span>);
-    System.out.println(<span class="hljs-string">"BlockSize:"</span>+status.getBlockSize());
-    System.out.println(<span class="hljs-string">"Length:"</span>+status.getLen());
-    System.out.println(<span class="hljs-string">"Replication:"</span>+status.getReplication());
-    System.out.println(<span class="hljs-string">"----------------------------"</span>);
+    //file status -- upload by hdfs cmd (depends on server conf/hdfs-site.xml)
+    status=fileSystem.getFileStatus(new Path(&quot;/dl/localhost_access_log.2015-07-15.txt&quot;));
+    System.out.println(&quot;localhost_access_log.2015-07-15.txt:&quot;);
+    System.out.println(&quot;BlockSize:&quot;+status.getBlockSize());
+    System.out.println(&quot;Length:&quot;+status.getLen());
+    System.out.println(&quot;Replication:&quot;+status.getReplication());
+    System.out.println(&quot;----------------------------&quot;);
 
-    <span class="hljs-comment">//download file</span>
-    FSDataInputStream in2=fileSystem.open(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">"/t1/012.txt"</span>));
-    IOUtils.copyBytes(in2,System.out,<span class="hljs-number">1024</span>,<span class="hljs-keyword">true</span>);
+    //download file
+    FSDataInputStream in2=fileSystem.open(new Path(&quot;/t1/012.txt&quot;));
+    IOUtils.copyBytes(in2,System.out,1024,true);
 
-    <span class="hljs-comment">// delete file or dir</span>
-    <span class="hljs-comment">//boolean result=fileSystem.delete(new Path("/t1"),true);</span>
-    <span class="hljs-comment">//System.out.println("Delete:"+result);</span>
+    // delete file or dir
+    //boolean result=fileSystem.delete(new Path(&quot;/t1&quot;),true);
+    //System.out.println(&quot;Delete:&quot;+result);
 }
 </code></pre>
 <p>注意：上传文件时，报<code>AccessControlException</code>:</p>
@@ -873,41 +876,41 @@ user2.storm
 <h3 id="header-23">RPC示例</h3>
 <ul>
 <li>Server端：<ul>
-<li>Object：<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IStudent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">VersiondPrototocol</span></span>{
-   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> VERSION=<span class="hljs-number">2343L</span>;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">sayHi</span><span class="hljs-params">()</span></span>;
+<li>Object：<pre><code class="lang-java">public interface IStudent extends VersiondPrototocol{
+   public static final long VERSION=2343L;
+   public boolean sayHi();
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IStudent</span></span>{
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">sayHi</span><span class="hljs-params">()</span></span>{
-       System.out.printIn(<span class="hljs-string">"Hello"</span>); 
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+<pre><code class="lang-java">public class Student implements IStudent{
+   public boolean sayHi(){
+       System.out.printIn(&quot;Hello&quot;); 
+        return true;
    }
-   <span class="hljs-meta">@Override</span>
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">long</span> <span class="hljs-title">getProtocolVersion</span><span class="hljs-params">(String protocol,<span class="hljs-keyword">long</span> clientVersion)</span>
-        <span class="hljs-keyword">throws</span> IOException</span>{
-       <span class="hljs-keyword">return</span> IStudent.VERSION;
+   @Override
+   public long getProtocolVersion(String protocol,long clientVersion)
+        throws IOException{
+       return IStudent.VERSION;
    }
 }
 </code></pre>
 </li>
-<li>发布服务：<pre><code class="nulljava">String Server_Address=<span class="hljs-string">"localhost"</span>;
-<span class="hljs-keyword">int</span> Port=<span class="hljs-number">12345</span>;
-Server server=RPC.getServer(<span class="hljs-keyword">new</span> Student,Server_Address,Port,<span class="hljs-keyword">new</span> Configuration());
+<li>发布服务：<pre><code class="lang-java">String Server_Address=&quot;localhost&quot;;
+int Port=12345;
+Server server=RPC.getServer(new Student,Server_Address,Port,new Configuration());
 server.start();
 </code></pre>
 </li>
 </ul>
 </li>
 <li>Client端:<ul>
-<li>Object Interface：<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IStudent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">VersiondPrototocol</span></span>{
-   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> VERSION=<span class="hljs-number">2343L</span>;
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">sayHi</span><span class="hljs-params">()</span></span>;
+<li>Object Interface：<pre><code class="lang-java">public interface IStudent extends VersiondPrototocol{
+   public static final long VERSION=2343L;
+   public boolean sayHi();
 }
 </code></pre>
 </li>
-<li>调用服务：<pre><code class="nulljava">IStudent proxy=(IStudent)RPC.waitForProxy(IStudent.class,IStudent.VERSION,<span class="hljs-keyword">new</span> InetSocketAddress(Server_Address,Server_Port),<span class="hljs-keyword">new</span> Configuration());
-<span class="hljs-keyword">boolean</span> result=proxy.sayHi();
+<li>调用服务：<pre><code class="lang-java">IStudent proxy=(IStudent)RPC.waitForProxy(IStudent.class,IStudent.VERSION,new InetSocketAddress(Server_Address,Server_Port),new Configuration());
+boolean result=proxy.sayHi();
 System.out.print(result);
 RPC.stopProxy(proxy);
 </code></pre>
@@ -959,10 +962,10 @@ RPC.stopProxy(proxy);
 <ul>
 <li>调用<code>ClientProtocol</code>对象方法与NameNode通讯</li>
 <li>通过<code>DataStreamer</code>在对应Datanode上写入或删除block<br>  （<code>DataStreamer</code>内部会调用<code>DatanodeProtocol</code>对象方法向NameNode确定blockId和block所写位置）</li>
-<li>例如：上传文件到HDFS<pre><code class="nulljava"><span class="hljs-comment">//upload file</span>
-FileInputStream in1=<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">"D:/input/012.txt"</span>);
-FSDataOutputStream out=fileSystem.create(<span class="hljs-keyword">new</span> Path(<span class="hljs-string">"/t1/012.txt"</span>));
-IOUtils.copyBytes(in1,out,<span class="hljs-number">1024</span>,<span class="hljs-keyword">true</span>);
+<li>例如：上传文件到HDFS<pre><code class="lang-java">//upload file
+FileInputStream in1=new FileInputStream(&quot;D:/input/012.txt&quot;);
+FSDataOutputStream out=fileSystem.create(new Path(&quot;/t1/012.txt&quot;));
+IOUtils.copyBytes(in1,out,1024,true);
 </code></pre>
 <img src="/2016/05/01/hdfs-rpc.png" alt="Hadoop rpc "></li>
 </ul>
@@ -1038,9 +1041,9 @@ IOUtils.copyBytes(in1,out,<span class="hljs-number">1024</span>,<span class="hlj
 <p><img src="/2016/05/01/map-reduce.png" alt="Hadoop MapReduce "></p>
 <ol>
 <li><p>InputFormat</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">InputFormat</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; </span>{
- InputSplit[] getSplits(JobConf job, <span class="hljs-keyword">int</span> numSplits) <span class="hljs-keyword">throws</span> IOException;
- <span class="hljs-function">RecordReader&lt;K, V&gt; <span class="hljs-title">getRecordReader</span><span class="hljs-params">(InputSplit split,JobConf job, Reporter reporter)</span> <span class="hljs-keyword">throws</span> IOException</span>;
+<pre><code class="lang-java">public interface InputFormat&lt;K, V&gt; {
+ InputSplit[] getSplits(JobConf job, int numSplits) throws IOException;
+ RecordReader&lt;K, V&gt; getRecordReader(InputSplit split,JobConf job, Reporter reporter) throws IOException;
 }
 </code></pre>
 <ul>
@@ -1053,13 +1056,13 @@ IOUtils.copyBytes(in1,out,<span class="hljs-number">1024</span>,<span class="hlj
 </ul>
 </li>
 <li><p>Mapper (<code>byte-oriented=&gt;&lt;k1,v1&gt;=&gt;&lt;k2,v2&gt;</code>)</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+<pre><code class="lang-java">public void run(Context context) throws IOException, InterruptedException {
  setup(context);
- <span class="hljs-keyword">try</span> {
-   <span class="hljs-keyword">while</span> (context.nextKeyValue()) {
+ try {
+   while (context.nextKeyValue()) {
      map(context.getCurrentKey(), context.getCurrentValue(), context);
    }
- } <span class="hljs-keyword">finally</span> {
+ } finally {
    cleanup(context);
  }
 }
@@ -1090,13 +1093,13 @@ IOUtils.copyBytes(in1,out,<span class="hljs-number">1024</span>,<span class="hlj
 </ul>
 </li>
 <li><p>Reducer (<code>&lt;k,{v1,v2,...}&gt; =&gt; &lt;k,v&gt;</code>)</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+<pre><code class="lang-java">public void run(Context context) throws IOException, InterruptedException {
  setup(context);
- <span class="hljs-keyword">try</span> {
-   <span class="hljs-keyword">while</span> (context.nextKey()) {
+ try {
+   while (context.nextKey()) {
      reduce(context.getCurrentKey(), context.getValues(), context);
    }
- } <span class="hljs-keyword">finally</span> {
+ } finally {
    cleanup(context);
  }
 }
@@ -1112,10 +1115,10 @@ IOUtils.copyBytes(in1,out,<span class="hljs-number">1024</span>,<span class="hlj
 </ul>
 </li>
 <li><p>OutputFormat</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputFormat</span>&lt;<span class="hljs-title">K</span>, <span class="hljs-title">V</span>&gt; </span>{
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> RecordWriter&lt;K, V&gt; <span class="hljs-title">getRecordWriter</span><span class="hljs-params">(TaskAttemptContext context )</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException</span>;
- <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">checkOutputSpecs</span><span class="hljs-params">(JobContext context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException</span>;
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> OutputCommitter <span class="hljs-title">getOutputCommitter</span><span class="hljs-params">(TaskAttemptContext context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException</span>;
+<pre><code class="lang-java">public abstract class OutputFormat&lt;K, V&gt; {
+ public abstract RecordWriter&lt;K, V&gt; getRecordWriter(TaskAttemptContext context ) throws IOException, InterruptedException;
+ public abstract void checkOutputSpecs(JobContext context) throws IOException, InterruptedException;
+  public abstract OutputCommitter getOutputCommitter(TaskAttemptContext context) throws IOException, InterruptedException;
 }
 </code></pre>
 <ul>
@@ -1259,7 +1262,7 @@ class Mapper
 <p>MapReduce中的Key-Value：</p>
 <ul>
 <li><p>Key：必须实现<code>interface WritableComparable</code> （一般需要重写toString,hashCode,equals方法）</p>
-<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">WritableComparable</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Writable</span>, <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+<pre><code class="lang-java">  public interface WritableComparable&lt;T&gt; extends Writable, Comparable&lt;T&gt; {
   }
 </code></pre>
 <ul>
@@ -1267,9 +1270,9 @@ class Mapper
 </ul>
 </li>
 <li><p>Value：必须实现<code>interface Writable</code></p>
-<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Writable</span> </span>{
-      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(DataOutput out)</span> <span class="hljs-keyword">throws</span> IOException</span>;    <span class="hljs-comment">//Serialize</span>
-      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">readFields</span><span class="hljs-params">(DataInput in)</span> <span class="hljs-keyword">throws</span> IOException</span>; <span class="hljs-comment">//Deserialize</span>
+<pre><code class="lang-java">  public interface Writable {
+      void write(DataOutput out) throws IOException;    //Serialize
+      void readFields(DataInput in) throws IOException; //Deserialize
   }
 </code></pre>
 </li>
@@ -1343,21 +1346,21 @@ class Mapper
 </table>
 </li>
 <li><p>eg:</p>
-<pre><code class="nulljava">  Text text = <span class="hljs-keyword">new</span> Text(<span class="hljs-string">"test"</span>);
+<pre><code class="lang-java">  Text text = new Text(&quot;test&quot;);
   text.toString();
-  text.set(<span class="hljs-string">"Hello"</span>);
+  text.set(&quot;Hello&quot;);
 
-  IntWritable one = <span class="hljs-keyword">new</span> IntWritable(<span class="hljs-number">1</span>);
+  IntWritable one = new IntWritable(1);
   one.get();
-  one.set(<span class="hljs-number">2</span>);
+  one.set(2);
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p><code>RawComparator</code>:</p>
 <ul>
-<li>优化比较，允许直接比较流中的记录，省去反序列化对象的开销<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">RawComparator</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">Comparator</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] b1, <span class="hljs-keyword">int</span> s1, <span class="hljs-keyword">int</span> l1, <span class="hljs-keyword">byte</span>[] b2, <span class="hljs-keyword">int</span> s2, <span class="hljs-keyword">int</span> l2)</span></span>;
+<li>优化比较，允许直接比较流中的记录，省去反序列化对象的开销<pre><code class="lang-java">public interface RawComparator&lt;T&gt; extends Comparator&lt;T&gt; {
+    public int compare(byte[] b1, int s1, int l1, byte[] b2, int s2, int l2);
 }
 </code></pre>
 </li>
@@ -1365,19 +1368,19 @@ class Mapper
 <li>compare默认实现：从数据流中反序列化出对象，使用对象的compareTo方法比较</li>
 <li>充当了RawComparator实例的一个工厂方法</li>
 <li>可通过静态方法注册比较器：<code>WritableComparator.define(Class c,WritableComparator comparator)</code></li>
-<li>例如：IntWritable 中注册使用了RawComparator<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Comparator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WritableComparator</span> </span>{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Comparator</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">super</span>(IntWritable.class);
+<li>例如：IntWritable 中注册使用了RawComparator<pre><code class="lang-java">public static class Comparator extends WritableComparator {
+  public Comparator() {
+    super(IntWritable.class);
   }
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] b1, <span class="hljs-keyword">int</span> s1, <span class="hljs-keyword">int</span> l1,
-                     <span class="hljs-keyword">byte</span>[] b2, <span class="hljs-keyword">int</span> s2, <span class="hljs-keyword">int</span> l2)</span> </span>{
-    <span class="hljs-keyword">int</span> thisValue = readInt(b1, s1);
-    <span class="hljs-keyword">int</span> thatValue = readInt(b2, s2);
-    <span class="hljs-keyword">return</span> (thisValue&lt;thatValue ? -<span class="hljs-number">1</span> : (thisValue==thatValue ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>));
+  public int compare(byte[] b1, int s1, int l1,
+                     byte[] b2, int s2, int l2) {
+    int thisValue = readInt(b1, s1);
+    int thatValue = readInt(b2, s2);
+    return (thisValue&lt;thatValue ? -1 : (thisValue==thatValue ? 0 : 1));
   }
 }
-<span class="hljs-keyword">static</span> {     <span class="hljs-comment">// register this comparator</span>
-  WritableComparator.define(IntWritable.class, <span class="hljs-keyword">new</span> Comparator());
+static {     // register this comparator
+  WritableComparator.define(IntWritable.class, new Comparator());
 }
 </code></pre>
 </li>
@@ -1576,14 +1579,14 @@ JFIE 1
 <ol>
 <li><p>最简版：map+reduce</p>
 <ul>
-<li>Mapper<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt;</span>{
-      <span class="hljs-keyword">private</span> Text word=<span class="hljs-keyword">new</span> Text();
-      <span class="hljs-keyword">private</span> IntWritable one=<span class="hljs-keyword">new</span> IntWritable(<span class="hljs-number">1</span>);
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Context context)</span>
-              <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
-          StringTokenizer itr=<span class="hljs-keyword">new</span> StringTokenizer(value.toString());
-          <span class="hljs-keyword">while</span>(itr.hasMoreTokens()){
+<li>Mapper<pre><code class="lang-java">  public class WordCountMapper extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt;{
+      private Text word=new Text();
+      private IntWritable one=new IntWritable(1);
+      @Override
+      protected void map(LongWritable key, Text value, Context context)
+              throws IOException, InterruptedException {
+          StringTokenizer itr=new StringTokenizer(value.toString());
+          while(itr.hasMoreTokens()){
               word.set(itr.nextToken());
               context.write(word, one);
           }
@@ -1591,13 +1594,13 @@ JFIE 1
   }
 </code></pre>
 </li>
-<li>Reducer<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt;</span>{
-      <span class="hljs-keyword">private</span> IntWritable result=<span class="hljs-keyword">new</span> IntWritable();
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;IntWritable&gt; values,Context context)</span>
-              <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
-          <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>;
-          <span class="hljs-keyword">for</span>(IntWritable val:values){
+<li>Reducer<pre><code class="lang-java">  public class WordCountReducer extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt;{
+      private IntWritable result=new IntWritable();
+      @Override
+      protected void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)
+              throws IOException, InterruptedException {
+          int sum=0;
+          for(IntWritable val:values){
               sum+=val.get();
           }
           result.set(sum);
@@ -1611,44 +1614,44 @@ JFIE 1
 <li><p>优化版：map+local aggregation（in-mapper combiner）+reduce</p>
 <ul>
 <li><p>Mapper</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt;</span>{
-  <span class="hljs-keyword">private</span> Map&lt;String,Integer&gt; temp=<span class="hljs-keyword">new</span> HashMap&lt;String,Integer&gt;();
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> limit=<span class="hljs-number">500</span>;
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException,
-          InterruptedException </span>{
-      limit=context.getConfiguration().getInt(<span class="hljs-string">"flush.limit"</span>, limit);
-      i=<span class="hljs-number">0</span>;
+<pre><code class="lang-java">public static class WordCountMapper extends Mapper&lt;LongWritable, Text, Text, IntWritable&gt;{
+  private Map&lt;String,Integer&gt; temp=new HashMap&lt;String,Integer&gt;();
+  private int limit=500;
+  private int i=0;
+  @Override
+  protected void setup(Context context) throws IOException,
+          InterruptedException {
+      limit=context.getConfiguration().getInt(&quot;flush.limit&quot;, limit);
+      i=0;
   }
 
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Context context)</span>
-          <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
-      StringTokenizer itr=<span class="hljs-keyword">new</span> StringTokenizer(value.toString());
-      String word=<span class="hljs-keyword">null</span>;
-      Integer sum=<span class="hljs-number">0</span>;
-      <span class="hljs-keyword">while</span>(itr.hasMoreTokens()){
+  @Override
+  protected void map(LongWritable key, Text value, Context context)
+          throws IOException, InterruptedException {
+      StringTokenizer itr=new StringTokenizer(value.toString());
+      String word=null;
+      Integer sum=0;
+      while(itr.hasMoreTokens()){
           sum=temp.get(word);
-          <span class="hljs-keyword">if</span>(sum==<span class="hljs-keyword">null</span>)
-              temp.put(word, <span class="hljs-number">1</span>);
-          <span class="hljs-keyword">else</span>
-              temp.put(word,sum+<span class="hljs-number">1</span>);
+          if(sum==null)
+              temp.put(word, 1);
+          else
+              temp.put(word,sum+1);
           i++;
-          <span class="hljs-keyword">if</span>(i==limit){
+          if(i==limit){
               cleanup(context);
               temp.clear();
-              i=<span class="hljs-number">0</span>;
+              i=0;
           }
       }
   }
 
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">cleanup</span><span class="hljs-params">(Context context)</span>
-          <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
-      Text word=<span class="hljs-keyword">new</span> Text();
-      IntWritable count=<span class="hljs-keyword">new</span> IntWritable();
-      <span class="hljs-keyword">for</span>(String key:temp.keySet()){
+  @Override
+  protected void cleanup(Context context)
+          throws IOException, InterruptedException {
+      Text word=new Text();
+      IntWritable count=new IntWritable();
+      for(String key:temp.keySet()){
           word.set(key);
           count.set(temp.get(key));
           context.write(word,count);
@@ -1657,13 +1660,13 @@ JFIE 1
 }
 </code></pre>
 </li>
-<li>Reducer<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WordCountReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt;</span>{
-  <span class="hljs-keyword">private</span> IntWritable result=<span class="hljs-keyword">new</span> IntWritable();
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;IntWritable&gt; values,Context context)</span>
-          <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
-      <span class="hljs-keyword">int</span> sum=<span class="hljs-number">0</span>;
-      <span class="hljs-keyword">for</span>(IntWritable val:values){
+<li>Reducer<pre><code class="lang-java">public static class WordCountReducer extends Reducer&lt;Text, IntWritable, Text, IntWritable&gt;{
+  private IntWritable result=new IntWritable();
+  @Override
+  protected void reduce(Text key, Iterable&lt;IntWritable&gt; values,Context context)
+          throws IOException, InterruptedException {
+      int sum=0;
+      for(IntWritable val:values){
           sum+=val.get();
       }
       result.set(sum);
@@ -1675,42 +1678,42 @@ JFIE 1
 </ul>
 </li>
 <li><p>Job</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException, InterruptedException </span>{
- Configuration conf=<span class="hljs-keyword">new</span> Configuration();
- String[] otherArgs = <span class="hljs-keyword">new</span> GenericOptionsParser(conf, args).getRemainingArgs();
- <span class="hljs-keyword">if</span> (otherArgs.length != <span class="hljs-number">2</span>) {
-   System.err.println(<span class="hljs-string">"Usage: SimpleWordCount &lt;in&gt; &lt;out&gt;"</span>);
-   System.exit(<span class="hljs-number">2</span>);
+<pre><code class="lang-java">public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+ Configuration conf=new Configuration();
+ String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
+ if (otherArgs.length != 2) {
+   System.err.println(&quot;Usage: SimpleWordCount &lt;in&gt; &lt;out&gt;&quot;);
+   System.exit(2);
  }
 
- <span class="hljs-comment">// delete exist output path</span>
+ // delete exist output path
  FileSystem fs=FileSystem.get(conf);
- Path outputPath=<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">1</span>]);
- <span class="hljs-keyword">if</span>(fs.exists(outputPath)){
-     fs.delete(outputPath, <span class="hljs-keyword">true</span>);
+ Path outputPath=new Path(otherArgs[1]);
+ if(fs.exists(outputPath)){
+     fs.delete(outputPath, true);
  }
 
- Job job=<span class="hljs-keyword">new</span> Job(conf,<span class="hljs-string">"WordCount"</span>);
+ Job job=new Job(conf,&quot;WordCount&quot;);
  job.setJarByClass(WordCount.class);
- <span class="hljs-comment">//1.Input</span>
- FileInputFormat.addInputPath(job, <span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">0</span>]));
+ //1.Input
+ FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
  job.setInputFormatClass(TextInputFormat.class);
- <span class="hljs-comment">//2.Mapper</span>
+ //2.Mapper
  job.setMapperClass(WordCountMapper.class);
  job.setMapOutputKeyClass(Text.class);
  job.setMapOutputValueClass(IntWritable.class);
- <span class="hljs-comment">//job.setCombinerClass(WordCountReducer.class);    // Optional</span>
- <span class="hljs-comment">//3.Reducer</span>
- job.setNumReduceTasks(<span class="hljs-number">2</span>);
+ //job.setCombinerClass(WordCountReducer.class);    // Optional
+ //3.Reducer
+ job.setNumReduceTasks(2);
  job.setReducerClass(WordCountReducer.class);
  job.setOutputKeyClass(Text.class);
  job.setOutputValueClass(IntWritable.class);
- <span class="hljs-comment">//4.Output</span>
- FileOutputFormat.setOutputPath(job,<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">1</span>]));
+ //4.Output
+ FileOutputFormat.setOutputPath(job,new Path(otherArgs[1]));
  job.setOutputFormatClass(TextOutputFormat.class);
 
- <span class="hljs-keyword">boolean</span> result=job.waitForCompletion(<span class="hljs-keyword">true</span>);
- System.exit(result ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>);
+ boolean result=job.waitForCompletion(true);
+ System.exit(result ? 0 : 1);
 }
 </code></pre>
 </li>
@@ -1745,70 +1748,70 @@ A (1,r1994) (2,r1995) (3,r1994)
 <p>具体实现：</p>
 <ul>
 <li><p>Composite Key</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewK</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">WritableComparable</span>&lt;<span class="hljs-title">NewK</span>&gt;</span>{
-  <span class="hljs-keyword">private</span> Text first;
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> second;
+<pre><code class="lang-java">public class NewK implements WritableComparable&lt;NewK&gt;{
+  private Text first;
+  private int second;
 
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">NewK</span><span class="hljs-params">(Text first,<span class="hljs-keyword">int</span> second)</span></span>{
-      <span class="hljs-keyword">this</span>.first=first;
-      <span class="hljs-keyword">this</span>.second=second;
-  }
-
-  <span class="hljs-function"><span class="hljs-keyword">public</span> Text <span class="hljs-title">getFirst</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> first;
-  }
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setFirst</span><span class="hljs-params">(Text first)</span> </span>{
-      <span class="hljs-keyword">this</span>.first = first;
-  }
-  <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getSecond</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> second;
-  }
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSecond</span><span class="hljs-params">(<span class="hljs-keyword">int</span> second)</span> </span>{
-      <span class="hljs-keyword">this</span>.second = second;
+  public NewK(Text first,int second){
+      this.first=first;
+      this.second=second;
   }
 
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">write</span><span class="hljs-params">(DataOutput out)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+  public Text getFirst() {
+      return first;
+  }
+  public void setFirst(Text first) {
+      this.first = first;
+  }
+  public Integer getSecond() {
+      return second;
+  }
+  public void setSecond(int second) {
+      this.second = second;
+  }
+
+  @Override
+  public void write(DataOutput out) throws IOException {
       first.write(out);
       out.writeInt(second);
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readFields</span><span class="hljs-params">(DataInput in)</span> <span class="hljs-keyword">throws</span> IOException </span>{
+  @Override
+  public void readFields(DataInput in) throws IOException {
       first.readFields(in);
       second=in.readInt();
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(NewK o)</span> </span>{
-      <span class="hljs-keyword">int</span> cmp=first.compareTo(o.first);
-      <span class="hljs-keyword">return</span> cmp==<span class="hljs-number">0</span>?<span class="hljs-keyword">this</span>.second-o.second:cmp;
+  @Override
+  public int compareTo(NewK o) {
+      int cmp=first.compareTo(o.first);
+      return cmp==0?this.second-o.second:cmp;
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hashCode</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.first.hashCode()+<span class="hljs-keyword">this</span>.second;
+  @Override
+  public int hashCode() {
+      return this.first.hashCode()+this.second;
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">equals</span><span class="hljs-params">(Object obj)</span> </span>{
-      <span class="hljs-keyword">if</span>(obj <span class="hljs-keyword">instanceof</span> NewK){
+  @Override
+  public boolean equals(Object obj) {
+      if(obj instanceof NewK){
           NewK o=(NewK)obj;
-          <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.first.equals(o.getFirst()) &amp;&amp; <span class="hljs-keyword">this</span>.second==o.getSecond();
+          return this.first.equals(o.getFirst()) &amp;&amp; this.second==o.getSecond();
       }
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+      return false;
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-string">"["</span>+<span class="hljs-keyword">this</span>.first+<span class="hljs-string">","</span>+<span class="hljs-keyword">this</span>.second+<span class="hljs-string">"]"</span>;
+  @Override
+  public String toString() {
+      return &quot;[&quot;+this.first+&quot;,&quot;+this.second+&quot;]&quot;;
   }
 }
 </code></pre>
 </li>
-<li>Mapper<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecondarySortMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">NewK</span>, <span class="hljs-title">Text</span>&gt;</span>{
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(LongWritable key, Text value, Context context)</span>
-          <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
-      StringTokenizer itr=<span class="hljs-keyword">new</span> StringTokenizer(value.toString());
-      <span class="hljs-keyword">if</span>(itr.countTokens()&gt;=<span class="hljs-number">3</span>){
-          NewK newK=<span class="hljs-keyword">new</span> NewK(<span class="hljs-keyword">new</span> Text(itr.nextToken()),Integer.parseInt(itr.nextToken()));
-          context.write(newK, <span class="hljs-keyword">new</span> Text(itr.nextToken()));
+<li>Mapper<pre><code class="lang-java">public static class SecondarySortMapper extends Mapper&lt;LongWritable, Text, NewK, Text&gt;{
+  @Override
+  protected void map(LongWritable key, Text value, Context context)
+          throws IOException, InterruptedException {
+      StringTokenizer itr=new StringTokenizer(value.toString());
+      if(itr.countTokens()&gt;=3){
+          NewK newK=new NewK(new Text(itr.nextToken()),Integer.parseInt(itr.nextToken()));
+          context.write(newK, new Text(itr.nextToken()));
       }
   }
 }
@@ -1816,60 +1819,60 @@ A (1,r1994) (2,r1995) (3,r1994)
 </li>
 <li><p>Shuffler</p>
 <ul>
-<li>Partitioner<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewKPartitioner</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Partitioner</span>&lt;<span class="hljs-title">NewK</span>, <span class="hljs-title">Text</span>&gt;
-</span>{
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getPartition</span><span class="hljs-params">(NewK key, Text value, <span class="hljs-keyword">int</span> numPartitions)</span> </span>{
-      <span class="hljs-keyword">return</span> (key.getFirst().hashCode() &amp; Integer.MAX_VALUE) % numPartitions;
+<li>Partitioner<pre><code class="lang-java">public static class NewKPartitioner extends Partitioner&lt;NewK, Text&gt;
+{
+  @Override
+  public int getPartition(NewK key, Text value, int numPartitions) {
+      return (key.getFirst().hashCode() &amp; Integer.MAX_VALUE) % numPartitions;
   }
 }
 </code></pre>
 </li>
 <li><p>SortComparator</p>
-<pre><code class="nulljava"><span class="hljs-comment">// first desc ; second asc</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewKSortComparator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WritableComparator</span></span>{
-  <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Text.Comparator TEXT_COMPARATOR = <span class="hljs-keyword">new</span> Text.Comparator();
+<pre><code class="lang-java">// first desc ; second asc
+public static class NewKSortComparator extends WritableComparator{
+  private static final Text.Comparator TEXT_COMPARATOR = new Text.Comparator();
 
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">NewKSortComparator</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-keyword">super</span>(NewK.class);
+  public NewKSortComparator() {
+    super(NewK.class);
   }
 
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] b1, <span class="hljs-keyword">int</span> s1, <span class="hljs-keyword">int</span> l1, <span class="hljs-keyword">byte</span>[] b2, <span class="hljs-keyword">int</span> s2,<span class="hljs-keyword">int</span> l2)</span> </span>{
-      <span class="hljs-keyword">try</span> {
-          <span class="hljs-comment">// 字节流中的Text字段：Len+Content=VInt+byte[]</span>
-          <span class="hljs-comment">// VInt:第一个byte描述VInt的长度，例如为n，则后面n-1个byte的内容为Text Content的长度</span>
-          <span class="hljs-comment">// 获取VInt的长度：WritableUtils.decodeVIntSize(b1[s1])</span>
-          <span class="hljs-comment">// 获取Content的长度（即VInt的值）：readVInt(b1, s1)</span>
-           <span class="hljs-keyword">int</span> firstLen1=WritableUtils.decodeVIntSize(b1[s1])+readVInt(b1, s1);
-           <span class="hljs-keyword">int</span> firstLen2=WritableUtils.decodeVIntSize(b1[s1])+readVInt(b2,s2);
-           <span class="hljs-keyword">int</span> cmp=TEXT_COMPARATOR.compare(b1, s1, firstLen1, b2, s2, firstLen2);
-           <span class="hljs-keyword">if</span>(cmp!=<span class="hljs-number">0</span>)
-              <span class="hljs-keyword">return</span> -cmp;
-          <span class="hljs-keyword">int</span> secondValue1=readInt(b1,s1+firstLen1);
-          <span class="hljs-keyword">int</span> secondValue2=readInt(b2,s2+firstLen2);
-          <span class="hljs-keyword">return</span> secondValue1-secondValue2;
-      } <span class="hljs-keyword">catch</span> (IOException e) {
-          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(e);
+  @Override
+  public int compare(byte[] b1, int s1, int l1, byte[] b2, int s2,int l2) {
+      try {
+          // 字节流中的Text字段：Len+Content=VInt+byte[]
+          // VInt:第一个byte描述VInt的长度，例如为n，则后面n-1个byte的内容为Text Content的长度
+          // 获取VInt的长度：WritableUtils.decodeVIntSize(b1[s1])
+          // 获取Content的长度（即VInt的值）：readVInt(b1, s1)
+           int firstLen1=WritableUtils.decodeVIntSize(b1[s1])+readVInt(b1, s1);
+           int firstLen2=WritableUtils.decodeVIntSize(b1[s1])+readVInt(b2,s2);
+           int cmp=TEXT_COMPARATOR.compare(b1, s1, firstLen1, b2, s2, firstLen2);
+           if(cmp!=0)
+              return -cmp;
+          int secondValue1=readInt(b1,s1+firstLen1);
+          int secondValue2=readInt(b2,s2+firstLen2);
+          return secondValue1-secondValue2;
+      } catch (IOException e) {
+          throw new IllegalArgumentException(e);
       }
   }
 }
 </code></pre>
 </li>
-<li>GroupComparator<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NewKGroupingComparator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WritableComparator</span></span>{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">NewKGroupingComparator</span><span class="hljs-params">()</span></span>{
-      <span class="hljs-keyword">super</span>(NewK.class);
+<li>GroupComparator<pre><code class="lang-java">public static class NewKGroupingComparator extends WritableComparator{
+  public NewKGroupingComparator(){
+      super(NewK.class);
   }
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] b1, <span class="hljs-keyword">int</span> s1, <span class="hljs-keyword">int</span> l1, <span class="hljs-keyword">byte</span>[] b2, <span class="hljs-keyword">int</span> s2,<span class="hljs-keyword">int</span> l2)</span> </span>{
-      <span class="hljs-keyword">try</span> {
-          <span class="hljs-keyword">int</span> n1=WritableUtils.decodeVIntSize(b1[s1]);
-          <span class="hljs-keyword">int</span> n2=WritableUtils.decodeVIntSize(b2[s2]);
-          <span class="hljs-keyword">int</span> firstContentLen1=readVInt(b1, s1);
-          <span class="hljs-keyword">int</span> firstContentLen2=readVInt(b2,s2);
-          <span class="hljs-keyword">return</span> compareBytes(b1,s1+n1,firstContentLen1,b2,s2+n2,firstContentLen2);
-      } <span class="hljs-keyword">catch</span> (IOException e) {
-          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(e);
+  @Override
+  public int compare(byte[] b1, int s1, int l1, byte[] b2, int s2,int l2) {
+      try {
+          int n1=WritableUtils.decodeVIntSize(b1[s1]);
+          int n2=WritableUtils.decodeVIntSize(b2[s2]);
+          int firstContentLen1=readVInt(b1, s1);
+          int firstContentLen2=readVInt(b2,s2);
+          return compareBytes(b1,s1+n1,firstContentLen1,b2,s2+n2,firstContentLen2);
+      } catch (IOException e) {
+          throw new IllegalArgumentException(e);
       }
   }
 }
@@ -1877,56 +1880,56 @@ A (1,r1994) (2,r1995) (3,r1994)
 </li>
 </ul>
 </li>
-<li>Reducer<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecondarySortReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">NewK</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">Text</span>&gt;</span>{
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(NewK key, Iterable&lt;Text&gt; values,Context context)</span>
-          <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
-      <span class="hljs-keyword">for</span>(Text val:values){
-          context.write(key.getFirst(), <span class="hljs-keyword">new</span> Text(<span class="hljs-string">"("</span>+key.getSecond()+<span class="hljs-string">","</span>+val.toString()+<span class="hljs-string">")"</span>));
+<li>Reducer<pre><code class="lang-java">public static class SecondarySortReducer extends Reducer&lt;NewK, Text, Text, Text&gt;{
+  @Override
+  protected void reduce(NewK key, Iterable&lt;Text&gt; values,Context context)
+          throws IOException, InterruptedException {
+      for(Text val:values){
+          context.write(key.getFirst(), new Text(&quot;(&quot;+key.getSecond()+&quot;,&quot;+val.toString()+&quot;)&quot;));
       }
   }
 }
 </code></pre>
 </li>
 <li><p>Job</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException, ClassNotFoundException, InterruptedException </span>{
-  Configuration conf=<span class="hljs-keyword">new</span> Configuration();
-  String[] otherArgs = <span class="hljs-keyword">new</span> GenericOptionsParser(conf, args).getRemainingArgs();
-  <span class="hljs-keyword">if</span> (otherArgs.length != <span class="hljs-number">2</span>) {
-    System.err.println(<span class="hljs-string">"Usage: SecondarySort &lt;in&gt; &lt;out&gt;"</span>);
-    System.exit(<span class="hljs-number">2</span>);
+<pre><code class="lang-java">public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+  Configuration conf=new Configuration();
+  String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
+  if (otherArgs.length != 2) {
+    System.err.println(&quot;Usage: SecondarySort &lt;in&gt; &lt;out&gt;&quot;);
+    System.exit(2);
   }
 
-  <span class="hljs-comment">// delete exist output path</span>
+  // delete exist output path
   FileSystem fs=FileSystem.get(conf);
-  Path outputPath=<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">1</span>]);
-  <span class="hljs-keyword">if</span>(fs.exists(outputPath)){
-      fs.delete(outputPath, <span class="hljs-keyword">true</span>);
+  Path outputPath=new Path(otherArgs[1]);
+  if(fs.exists(outputPath)){
+      fs.delete(outputPath, true);
   }
 
-  Job job=<span class="hljs-keyword">new</span> Job(conf,<span class="hljs-string">"SecondarySort"</span>);
+  Job job=new Job(conf,&quot;SecondarySort&quot;);
   job.setJarByClass(SecondarySort.class);
-  <span class="hljs-comment">//1.Input</span>
-  FileInputFormat.addInputPath(job, <span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">0</span>]));
-  job.setInputFormatClass(TextInputFormat.class);                    <span class="hljs-comment">//key:column1,value:remaining columns</span>
-  <span class="hljs-comment">//2.Mapper</span>
+  //1.Input
+  FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
+  job.setInputFormatClass(TextInputFormat.class);                    //key:column1,value:remaining columns
+  //2.Mapper
   job.setMapperClass(SecondarySortMapper.class);
   job.setMapOutputKeyClass(NewK.class);
   job.setMapOutputValueClass(Text.class);
-  job.setPartitionerClass(NewKShuffle.NewKPartitioner.class);             <span class="hljs-comment">// partition by NewK.first</span>
-  job.setSortComparatorClass(NewKShuffle.NewKSortComparator.class);        <span class="hljs-comment">// 确定Key排序策略：NewK.first&amp;NewK.second（默认使用key的实现的compareTo方法）</span>
-  <span class="hljs-comment">//3.Reducer</span>
-  job.setNumReduceTasks(<span class="hljs-number">1</span>);                                                  <span class="hljs-comment">// only one reducer for all-key sorted</span>
-  job.setGroupingComparatorClass(NewKShuffle.NewKGroupingComparator.class); <span class="hljs-comment">//确定分组策略：NewK.first相同，则属于同一个组（默认同上面setSortComparatorClass）</span>
+  job.setPartitionerClass(NewKShuffle.NewKPartitioner.class);             // partition by NewK.first
+  job.setSortComparatorClass(NewKShuffle.NewKSortComparator.class);        // 确定Key排序策略：NewK.first&amp;NewK.second（默认使用key的实现的compareTo方法）
+  //3.Reducer
+  job.setNumReduceTasks(1);                                                  // only one reducer for all-key sorted
+  job.setGroupingComparatorClass(NewKShuffle.NewKGroupingComparator.class); //确定分组策略：NewK.first相同，则属于同一个组（默认同上面setSortComparatorClass）
   job.setReducerClass(SecondarySortReducer.class);
   job.setOutputKeyClass(Text.class);
   job.setOutputValueClass(Text.class);
-  <span class="hljs-comment">//4.Output</span>
-  FileOutputFormat.setOutputPath(job,<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">1</span>]));
+  //4.Output
+  FileOutputFormat.setOutputPath(job,new Path(otherArgs[1]));
   job.setOutputFormatClass(TextOutputFormat.class);
 
-  <span class="hljs-keyword">boolean</span> result=job.waitForCompletion(<span class="hljs-keyword">true</span>);
-  System.exit(result ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>);
+  boolean result=job.waitForCompletion(true);
+  System.exit(result ? 0 : 1);
 }
 </code></pre>
 </li>
@@ -1955,86 +1958,86 @@ D 3023
 <p>具体实现：</p>
 <ul>
 <li><p>Mapper</p>
-<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TopKMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Mapper</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>&gt;</span>{
-      <span class="hljs-keyword">private</span> TreeMap&lt;Integer,String&gt; temp=<span class="hljs-keyword">new</span> TreeMap&lt;Integer,String&gt;();
-      <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> limitK=<span class="hljs-number">10</span>;
-      <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;
+<pre><code class="lang-java">  public static class TopKMapper extends Mapper&lt;Text, IntWritable, IntWritable, Text&gt;{
+      private TreeMap&lt;Integer,String&gt; temp=new TreeMap&lt;Integer,String&gt;();
+      private int limitK=10;
+      private int i=0;
 
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException,InterruptedException </span>{
-          limitK=context.getConfiguration().getInt(<span class="hljs-string">"top.k"</span>, limitK);
-          i=<span class="hljs-number">0</span>;
+      @Override
+      protected void setup(Context context) throws IOException,InterruptedException {
+          limitK=context.getConfiguration().getInt(&quot;top.k&quot;, limitK);
+          i=0;
       }
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(Text key, IntWritable value, Context context)</span>
-              <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+      @Override
+      protected void map(Text key, IntWritable value, Context context)
+              throws IOException, InterruptedException {
           temp.put(value.get(), key.toString());
           i++;
-          <span class="hljs-keyword">if</span>(i==limitK){
-              temp.pollFirstEntry();    <span class="hljs-comment">//temp.remove(temp.firstKey());</span>
+          if(i==limitK){
+              temp.pollFirstEntry();    //temp.remove(temp.firstKey());
               i--;
           }
       }
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">cleanup</span><span class="hljs-params">(Context context)</span><span class="hljs-keyword">throws</span> IOException, InterruptedException</span>{
-          <span class="hljs-keyword">for</span>(Integer key:temp.keySet()){
-              context.write(<span class="hljs-keyword">new</span> IntWritable(key), <span class="hljs-keyword">new</span> Text(temp.get(key)));
+      @Override
+      protected void cleanup(Context context)throws IOException, InterruptedException{
+          for(Integer key:temp.keySet()){
+              context.write(new IntWritable(key), new Text(temp.get(key)));
           }
       }
   }
 </code></pre>
 </li>
 <li><p>Reducer</p>
-<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TopKReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Reducer</span>&lt;<span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">Text</span>&gt;</span>{
-      <span class="hljs-keyword">private</span> TreeMap&lt;Integer,String&gt; temp=<span class="hljs-keyword">new</span> TreeMap&lt;Integer,String&gt;();
-      <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> limitK=<span class="hljs-number">10</span>;
-      <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;
+<pre><code class="lang-java">  public static class TopKReducer extends Reducer&lt;IntWritable, Text, IntWritable, Text&gt;{
+      private TreeMap&lt;Integer,String&gt; temp=new TreeMap&lt;Integer,String&gt;();
+      private int limitK=10;
+      private int i=0;
 
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException,InterruptedException </span>{
-          limitK=context.getConfiguration().getInt(<span class="hljs-string">"top.k"</span>, limitK);
-          i=<span class="hljs-number">0</span>;
+      @Override
+      protected void setup(Context context) throws IOException,InterruptedException {
+          limitK=context.getConfiguration().getInt(&quot;top.k&quot;, limitK);
+          i=0;
       }
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(IntWritable key, Iterable&lt;Text&gt; values,Context context)</span>
-              <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{
+      @Override
+      protected void reduce(IntWritable key, Iterable&lt;Text&gt; values,Context context)
+              throws IOException, InterruptedException {
           temp.put(key.get(),values.toString());
           i++;
-          <span class="hljs-keyword">if</span>(i==limitK){
+          if(i==limitK){
               temp.pollFirstEntry();
               i--;
           }
       }
-      <span class="hljs-meta">@Override</span>
-      <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">cleanup</span><span class="hljs-params">(Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException</span>{
-          <span class="hljs-keyword">for</span>(Integer key:temp.keySet()){
-              context.write(<span class="hljs-keyword">new</span> IntWritable(key), <span class="hljs-keyword">new</span> Text(temp.get(key)));
+      @Override
+      protected void cleanup(Context context) throws IOException, InterruptedException{
+          for(Integer key:temp.keySet()){
+              context.write(new IntWritable(key), new Text(temp.get(key)));
           }
       }
   }
 </code></pre>
 </li>
 <li><p>Job</p>
-<pre><code class="nulljava">  Job job=<span class="hljs-keyword">new</span> Job(conf,<span class="hljs-string">"TopK"</span>);
+<pre><code class="lang-java">  Job job=new Job(conf,&quot;TopK&quot;);
   job.setJarByClass(TopK.class);
-  <span class="hljs-comment">//1.Input</span>
-  FileInputFormat.addInputPath(job, <span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">0</span>]));
-  job.setInputFormatClass(KeyValueTextInputFormat.class);                    <span class="hljs-comment">//key:Word,value:Count</span>
-  <span class="hljs-comment">//2.Mapper</span>
+  //1.Input
+  FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
+  job.setInputFormatClass(KeyValueTextInputFormat.class);                    //key:Word,value:Count
+  //2.Mapper
   job.setMapperClass(TopKMapper.class);
   job.setMapOutputKeyClass(IntWritable.class);
   job.setMapOutputValueClass(Text.class);
-  <span class="hljs-comment">//3.Reducer</span>
-  job.setNumReduceTasks(<span class="hljs-number">1</span>);                                                <span class="hljs-comment">// only one reducer</span>
+  //3.Reducer
+  job.setNumReduceTasks(1);                                                // only one reducer
   job.setReducerClass(TopKReducer.class);
   job.setOutputKeyClass(IntWritable.class);
   job.setOutputValueClass(Text.class);
-  <span class="hljs-comment">//4.Output</span>
-  FileOutputFormat.setOutputPath(job,<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">1</span>]));
+  //4.Output
+  FileOutputFormat.setOutputPath(job,new Path(otherArgs[1]));
   job.setOutputFormatClass(TextOutputFormat.class);
 
-  <span class="hljs-keyword">boolean</span> result=job.waitForCompletion(<span class="hljs-keyword">true</span>);
-  System.exit(result ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>);
+  boolean result=job.waitForCompletion(true);
+  System.exit(result ? 0 : 1);
 </code></pre>
 </li>
 </ul>
@@ -2066,44 +2069,44 @@ D 3023
 <p>优化版具体实现：</p>
 <ul>
 <li><p>Job1: Sampler</p>
-<pre><code class="nulljava">  <span class="hljs-comment">// Sampler Job</span>
-  Job samplerJob=<span class="hljs-keyword">new</span> Job(conf,<span class="hljs-string">"TotalOrderSampler"</span>);
+<pre><code class="lang-java">  // Sampler Job
+  Job samplerJob=new Job(conf,&quot;TotalOrderSampler&quot;);
   samplerJob.setJarByClass(TotalOrder.class);
-  FileInputFormat.addInputPath(samplerJob, <span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">0</span>]));
-  FileOutputFormat.setOutputPath(samplerJob,<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">1</span>]));
+  FileInputFormat.addInputPath(samplerJob, new Path(otherArgs[0]));
+  FileOutputFormat.setOutputPath(samplerJob,new Path(otherArgs[1]));
   samplerJob.setInputFormatClass(KeyValueTextInputFormat.class);
-  samplerJob.setNumReduceTasks(<span class="hljs-number">3</span>);
+  samplerJob.setNumReduceTasks(3);
   samplerJob.setOutputFormatClass(TextOutputFormat.class);
 
-  RandomSampler&lt;Text,Text&gt; sampler=<span class="hljs-keyword">new</span> RandomSampler&lt;Text,Text&gt;(<span class="hljs-number">0.1</span>,<span class="hljs-number">1000</span>,<span class="hljs-number">10</span>);
-  TotalOrderPartitioner.setPartitionFile(samplerJob.getConfiguration(),<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">0</span>],<span class="hljs-string">"sampler"</span>));
-  InputSampler.writePartitionFile(samplerJob, sampler);     <span class="hljs-comment">// 默认使用TextInputFormat的Key取样</span>
+  RandomSampler&lt;Text,Text&gt; sampler=new RandomSampler&lt;Text,Text&gt;(0.1,1000,10);
+  TotalOrderPartitioner.setPartitionFile(samplerJob.getConfiguration(),new Path(otherArgs[0],&quot;sampler&quot;));
+  InputSampler.writePartitionFile(samplerJob, sampler);     // 默认使用TextInputFormat的Key取样
 </code></pre>
 </li>
-<li>Job2: MapReduce<pre><code class="nulljava">  <span class="hljs-comment">// MapReduce Job</span>
-  Job job=<span class="hljs-keyword">new</span> Job(conf,<span class="hljs-string">"TotalOrder"</span>);
+<li>Job2: MapReduce<pre><code class="lang-java">  // MapReduce Job
+  Job job=new Job(conf,&quot;TotalOrder&quot;);
   job.setJarByClass(TotalOrder.class);
-  <span class="hljs-comment">//2.1 Input</span>
-  FileInputFormat.addInputPath(job, <span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">0</span>]));
-  job.setInputFormatClass(KeyValueTextInputFormat.class);    <span class="hljs-comment">// key:Word,value:Count</span>
-  <span class="hljs-comment">//2.2 Mapper</span>
-  job.setMapperClass(Mapper.class);                        <span class="hljs-comment">// default Mapper</span>
+  //2.1 Input
+  FileInputFormat.addInputPath(job, new Path(otherArgs[0]));
+  job.setInputFormatClass(KeyValueTextInputFormat.class);    // key:Word,value:Count
+  //2.2 Mapper
+  job.setMapperClass(Mapper.class);                        // default Mapper
   job.setMapOutputKeyClass(Text.class);
   job.setMapOutputValueClass(Text.class);
-  <span class="hljs-comment">// Partitioning Configuration(Use TotalOrderPartitioner,partitionOutputPath为samplerJob的OutputPath)</span>
+  // Partitioning Configuration(Use TotalOrderPartitioner,partitionOutputPath为samplerJob的OutputPath)
   job.setPartitionerClass(TotalOrderPartitioner.class);
   TotalOrderPartitioner.setPartitionFile(job.getConfiguration(), partitionOutputPath);
-  <span class="hljs-comment">//2.3 Reducer</span>
-  job.setNumReduceTasks(<span class="hljs-number">3</span>);                                <span class="hljs-comment">// 3 reducers</span>
-  job.setReducerClass(Reducer.class);                      <span class="hljs-comment">// default Reducer</span>
+  //2.3 Reducer
+  job.setNumReduceTasks(3);                                // 3 reducers
+  job.setReducerClass(Reducer.class);                      // default Reducer
   job.setOutputKeyClass(Text.class);
   job.setOutputValueClass(Text.class);
-  <span class="hljs-comment">//2.4 Output</span>
-  FileOutputFormat.setOutputPath(job,<span class="hljs-keyword">new</span> Path(otherArgs[<span class="hljs-number">1</span>]));
+  //2.4 Output
+  FileOutputFormat.setOutputPath(job,new Path(otherArgs[1]));
   job.setOutputFormatClass(TextOutputFormat.class);
-  <span class="hljs-comment">//2.5 exec job</span>
-  <span class="hljs-keyword">boolean</span> result=job.waitForCompletion(<span class="hljs-keyword">true</span>);
-  System.exit(result ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>);
+  //2.5 exec job
+  boolean result=job.waitForCompletion(true);
+  System.exit(result ? 0 : 1);
 </code></pre>
 </li>
 </ul>
@@ -2161,7 +2164,7 @@ D 3023
 <h3 id="header-44">链式任务</h3>
 <ul>
 <li><p>子任务顺序化执行（前面MapReduce任务的输出作为后面MapReduce的输入：mapreduce1-&gt;mapreduce2-&gt;…-&gt;mapreduceN）</p>
-<pre><code class="nulljava">  // job1
+<pre><code class="lang-java">  // job1
   Configuration jobconf1= new Configuration();
   job1 = new Job(jobconf1, “Job1&quot;);
   job1.setJarByClass(jobclass1);
@@ -2190,7 +2193,7 @@ D 3023
 </code></pre>
 </li>
 <li><p>子任务间具有数据依赖关系 （1,2并行，join后3：mapreduce1 || mapreduce 2 -&gt; mapreduce3）</p>
-<pre><code class="nulljava">  jobx = new Job(jobxconf, “Jobx&quot;);
+<pre><code class="lang-java">  jobx = new Job(jobxconf, “Jobx&quot;);
   ……
   joby = new Job(jobyconf, “Joby&quot;);
   ……
@@ -2244,10 +2247,17 @@ D 3023
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

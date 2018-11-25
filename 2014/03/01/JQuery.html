@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -116,7 +119,7 @@
         <li>
          <span class="glyphicon glyphicon-tags"></span>
           
-            <a href="/tags.html#tag-JQuery">JQuery</a>
+            <a href="/tags.html#tag-Javascript">Javascript</a>
           
         </li>
       
@@ -128,23 +131,23 @@
 <p>下载JQuery：</p>
 <pre><code>&gt; bower install jquery
 </code></pre><p>引入JQuery包：</p>
-<pre><code class="nulljs">&lt;script type=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"bower_components/jquery/dist/jquery.min.js"</span>/&gt;
+<pre><code class="lang-js">&lt;script type=&quot;text/javascript&quot; src=&quot;bower_components/jquery/dist/jquery.min.js&quot;/&gt;
 </code></pre>
 <p>使用：</p>
 <p>jQuery构造函数：<code>jQuery(...)</code>,可简写为<code>$(...)</code>，每次<code>$(xxx)</code>都是创建一个新的JQuery对象</p>
-<pre><code class="nulljs">&lt;script type=<span class="hljs-string">"text/javascript"</span>&gt;
-    <span class="hljs-comment">//$(xxx)</span>
-&lt;<span class="hljs-regexp">/script&gt;</span>
+<pre><code class="lang-js">&lt;script type=&quot;text/javascript&quot;&gt;
+    //$(xxx)
+&lt;/script&gt;
 </code></pre>
 <h3 id="header-3">文档加载</h3>
 <ul>
-<li>使用JS的<code>onload</code>加载文档（注意：若定义多个，执行时会使用后一个的定义）<pre><code class="nulljs"><span class="hljs-built_in">window</span>.onload=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-comment">//...</span>
+<li>使用JS的<code>onload</code>加载文档（注意：若定义多个，执行时会使用后一个的定义）<pre><code class="lang-js">window.onload=function(){
+  //...
 };
 </code></pre>
 </li>
-<li>使用JQuery的<code>$</code>加载文档（注意：是一个方法，多个时都会被执行）<pre><code class="nulljs">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  <span class="hljs-comment">//...</span>
+<li>使用JQuery的<code>$</code>加载文档（注意：是一个方法，多个时都会被执行）<pre><code class="lang-js">$(document).ready(function(){
+  //...
 });
 </code></pre>
 </li>
@@ -154,12 +157,12 @@
 <ul>
 <li><p>Javascript操作DOM元素：</p>
 <ul>
-<li>获取（一个或一组）<pre><code class="nulljs"><span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"xxx"</span>);
-<span class="hljs-built_in">document</span>.getElementByName(<span class="hljs-string">"xxx"</span>);
-<span class="hljs-built_in">document</span>.getElementByTagName(<span class="hljs-string">"xxx"</span>);
+<li>获取（一个或一组）<pre><code class="lang-js">document.getElementById(&quot;xxx&quot;);
+document.getElementByName(&quot;xxx&quot;);
+document.getElementByTagName(&quot;xxx&quot;);
 </code></pre>
 </li>
-<li>创建DOM元素<pre><code class="nulljs"><span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"xxx"</span>);
+<li>创建DOM元素<pre><code class="lang-js">document.createElement(&quot;xxx&quot;);
 </code></pre>
 </li>
 </ul>
@@ -179,31 +182,31 @@
 </li>
 </ul>
 <p>举例：</p>
-<pre><code class="nulljs"><span class="hljs-comment">//dom</span>
-<span class="hljs-keyword">var</span> div=<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"testDiv"</span>);
-div.innerHtml=<span class="hljs-string">"Hello"</span>;
+<pre><code class="lang-js">//dom
+var div=document.getElementById(&quot;testDiv&quot;);
+div.innerHtml=&quot;Hello&quot;;
 
-<span class="hljs-comment">//dom=&gt;jquery</span>
-<span class="hljs-keyword">var</span> divJquery1=$(div);
-divJquery1.html();            <span class="hljs-comment">// Hello</span>
-divJquery1.html(<span class="hljs-string">"Hello World"</span>);
+//dom=&gt;jquery
+var divJquery1=$(div);
+divJquery1.html();            // Hello
+divJquery1.html(&quot;Hello World&quot;);
 
-<span class="hljs-comment">//dom=&gt;jquery</span>
-divJquery=$(<span class="hljs-string">"#testDiv"</span>);
-divJquery.html();            <span class="hljs-comment">// Hello World</span>
+//dom=&gt;jquery
+divJquery=$(&quot;#testDiv&quot;);
+divJquery.html();            // Hello World
 
-<span class="hljs-comment">//jquery=&gt;dom</span>
-<span class="hljs-keyword">var</span> div=divJquery[<span class="hljs-number">0</span>];
-<span class="hljs-built_in">console</span>.log(div.innerHtml);        <span class="hljs-comment">// Hello World</span>
+//jquery=&gt;dom
+var div=divJquery[0];
+console.log(div.innerHtml);        // Hello World
 
-<span class="hljs-comment">//create element by javascript</span>
-<span class="hljs-keyword">var</span> input=<span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"input"</span>);
-input.type=<span class="hljs-string">"text"</span>;
-<span class="hljs-built_in">document</span>.body.appendChild(input);
+//create element by javascript
+var input=document.createElement(&quot;input&quot;);
+input.type=&quot;text&quot;;
+document.body.appendChild(input);
 
-<span class="hljs-comment">//create element by jquery</span>
-<span class="hljs-keyword">var</span> inputJquery=$(<span class="hljs-string">"&lt;input/&gt;"</span>);
-inputJquery.appendTo($(<span class="hljs-string">"body"</span>));
+//create element by jquery
+var inputJquery=$(&quot;&lt;input/&gt;&quot;);
+inputJquery.appendTo($(&quot;body&quot;));
 </code></pre>
 <h3 id="header-5">选择器</h3>
 <p>将一个选择表达式xxx，放进构造函数<code>$(&quot;xxx&quot;)</code>，得到匹配的元素集合（即为一个包装集）</p>
@@ -357,21 +360,21 @@ inputJquery.appendTo($(<span class="hljs-string">"body"</span>));
 <li>替换节点(是移动到目标位置来替换，而不是复制一份来替换)<ul>
 <li><code>replaceWith</code>：某集合被某集合替换掉</li>
 <li><code>replaceAll</code>：使用某集合替换掉某集合</li>
-<li>eg：<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"first"</span>&gt;</span>Hello1<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"second"</span>&gt;</span>Hello2<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"third"</span>&gt;</span>Hello3<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+<li>eg：<pre><code class="lang-html">&lt;b class=&quot;first&quot;&gt;Hello1&lt;/b&gt;
+&lt;b class=&quot;second&quot;&gt;Hello2&lt;/b&gt;
+&lt;b class=&quot;third&quot;&gt;Hello3&lt;/b&gt;
 =&gt;
-<span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"second"</span>&gt;</span>Hello2<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"first"</span>&gt;</span>Hello1<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+&lt;b class=&quot;second&quot;&gt;Hello2&lt;/b&gt;
+&lt;b class=&quot;first&quot;&gt;Hello1&lt;/b&gt;
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b.third"</span>).replaceWith($(<span class="hljs-string">"b.first"</span>));
+<pre><code class="lang-js">$(&quot;b.third&quot;).replaceWith($(&quot;b.first&quot;));
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b.first"</span>).replaceAll($(<span class="hljs-string">"b.third"</span>));
+<pre><code class="lang-js">$(&quot;b.first&quot;).replaceAll($(&quot;b.third&quot;));
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b"</span>).replaceWith(<span class="hljs-string">"&lt;p&gt;World&lt;/p&gt;"</span>);
+<pre><code class="lang-js">$(&quot;b&quot;).replaceWith(&quot;&lt;p&gt;World&lt;/p&gt;&quot;);
 =&gt;
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>World<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
-&lt;p&gt;World&lt;<span class="hljs-regexp">/p&gt;</span>
+&lt;p&gt;World&lt;/p&gt;
+&lt;p&gt;World&lt;/p&gt;
 </code></pre>
 </li>
 </ul>
@@ -400,16 +403,16 @@ inputJquery.appendTo($(<span class="hljs-string">"body"</span>));
 <li><code>append</code>,<code>prepend</code>：在节点内部的后面/前面添加某元素</li>
 <li><code>appendTo</code>,<code>prependTo</code>：将节点添加到某元素内部的后面/前面</li>
 <li><p>eg：</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Say<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Tom<span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>
+<pre><code class="lang-html">&lt;p&gt;Say&lt;/p&gt;
+&lt;b&gt;Hello&lt;/b&gt;
+&lt;i&gt;Tom&lt;i&gt;
 =&gt;
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Tom<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>Say<span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+&lt;p&gt;&lt;i&gt;Tom&lt;/i&gt;Say&lt;b&gt;Hello&lt;/b&gt;&lt;/p&gt;
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"p"</span>).append($(<span class="hljs-string">"b"</span>).prepend($(<span class="hljs-string">"i"</span>));
+<pre><code class="lang-js">$(&quot;p&quot;).append($(&quot;b&quot;).prepend($(&quot;i&quot;));
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b"</span>).appendTo(<span class="hljs-string">"p"</span>);
-$(<span class="hljs-string">"i"</span>).prependTo(<span class="hljs-string">"p"</span>);
+<pre><code class="lang-js">$(&quot;b&quot;).appendTo(&quot;p&quot;);
+$(&quot;i&quot;).prependTo(&quot;p&quot;);
 </code></pre>
 </li>
 </ul>
@@ -417,16 +420,16 @@ $(<span class="hljs-string">"i"</span>).prependTo(<span class="hljs-string">"p"<
 <li>外部插入<ul>
 <li><code>after</code>,<code>before</code>：在节点前面/后面添加元素</li>
 <li><code>insertAfter</code>，<code>insertBefore</code>：将节点添加到某元素后面/前面</li>
-<li>eg：<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>Say<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Tom<span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>
+<li>eg：<pre><code class="lang-html">&lt;a&gt;Say&lt;/a&gt;
+&lt;b&gt;Hello&lt;/b&gt;
+&lt;i&gt;Tom&lt;i&gt;
 =&gt;
-<span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Tom<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>Say<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+&lt;i&gt;Tom&lt;/i&gt;&lt;a&gt;Say&lt;/a&gt;&lt;b&gt;Hello&lt;/b&gt;
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"a"</span>).after(<span class="hljs-string">"b"</span>).before(<span class="hljs-string">"i"</span>)
+<pre><code class="lang-js">$(&quot;a&quot;).after(&quot;b&quot;).before(&quot;i&quot;)
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b"</span>).insertAfter(<span class="hljs-string">"a"</span>);
-$(<span class="hljs-string">"i"</span>).insertBefore(<span class="hljs-string">"a"</span>);
+<pre><code class="lang-js">$(&quot;b&quot;).insertAfter(&quot;a&quot;);
+$(&quot;i&quot;).insertBefore(&quot;a&quot;);
 </code></pre>
 </li>
 </ul>
@@ -437,29 +440,29 @@ $(<span class="hljs-string">"i"</span>).insertBefore(<span class="hljs-string">"
 <li><code>wrapAll</code>：整个包装集用某个元素包裹</li>
 <li><code>wrapInner</code>：匹配的每个节点的内容用某个元素包裹</li>
 <li><p>eg：</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello1<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello2<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+<pre><code class="lang-html">&lt;b&gt;Hello1&lt;/b&gt;
+&lt;b&gt;Hello2&lt;/b&gt;
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b"</span>).wrap(<span class="hljs-string">"&lt;div/&gt;"</span>);
+<pre><code class="lang-js">$(&quot;b&quot;).wrap(&quot;&lt;div/&gt;&quot;);
 
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello1<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-&lt;div&gt;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello2<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;div&gt;&lt;b&gt;Hello1&lt;/b&gt;&lt;/div&gt;
+&lt;div&gt;&lt;b&gt;Hello2&lt;/b&gt;&lt;/div&gt;
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b"</span>).wrapAll(<span class="hljs-string">"&lt;div/&gt;"</span>);
+<pre><code class="lang-js">$(&quot;b&quot;).wrapAll(&quot;&lt;div/&gt;&quot;);
 
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello1<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Hello2<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;div&gt;
+  &lt;b&gt;Hello1&lt;/b&gt;
+  &lt;b&gt;Hello2&lt;/b&gt;
+&lt;/div&gt;
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"b"</span>).wrapInner(<span class="hljs-string">"&lt;div/&gt;"</span>);
+<pre><code class="lang-js">$(&quot;b&quot;).wrapInner(&quot;&lt;div/&gt;&quot;);
 
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello1<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></span>
-&lt;b&gt;<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello2<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span></span>
+&lt;b&gt;&lt;div&gt;Hello1&lt;/div&gt;&lt;/b&gt;
+&lt;b&gt;&lt;div&gt;Hello2&lt;/div&gt;&lt;/b&gt;
 </code></pre>
 </li>
 <li><p><code>unwrap</code>：移除节点的父元素</p>
-<pre><code class="nulljs">&lt;div&gt;
+<pre><code class="lang-js">&lt;div&gt;
   &lt;b&gt;Hello1&lt;/b&gt;
   &lt;b&gt;Hello2&lt;/b&gt;
 &lt;/div&gt;
@@ -467,7 +470,7 @@ $(<span class="hljs-string">"i"</span>).insertBefore(<span class="hljs-string">"
 &lt;b&gt;Hello1&lt;/b&gt;
 &lt;b&gt;Hello2&lt;/b&gt;
 
-$("b").unwrap();
+$(&quot;b&quot;).unwrap();
 </code></pre>
 </li>
 </ul>
@@ -489,42 +492,42 @@ $("b").unwrap();
 <li><code>$.isFunction</code> 判断某个参数是否为函数</li>
 <li><code>$.isPlainObject</code> 判断某个参数是否为用”{}”或”new Object”建立的对象</li>
 <li><p><code>$.support</code> 判断浏览器是否支持某个特性</p>
-<pre><code class="nulljs">  $.type(<span class="hljs-literal">true</span>) === <span class="hljs-string">"boolean"</span>
-  $.type(<span class="hljs-number">3</span>) === <span class="hljs-string">"number"</span>
-  $.type(<span class="hljs-string">"test"</span>) === <span class="hljs-string">"string"</span>
-  $.type(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{}) === <span class="hljs-string">"function"</span>
-  $.type([]) === <span class="hljs-string">"array"</span>
-  $.type(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()) === <span class="hljs-string">"date"</span>
-  $.type(<span class="hljs-regexp">/test/</span>) === <span class="hljs-string">"regexp"</span>
+<pre><code class="lang-js">  $.type(true) === &quot;boolean&quot;
+  $.type(3) === &quot;number&quot;
+  $.type(&quot;test&quot;) === &quot;string&quot;
+  $.type(function(){}) === &quot;function&quot;
+  $.type([]) === &quot;array&quot;
+  $.type(new Date()) === &quot;date&quot;
+  $.type(/test/) === &quot;regexp&quot;
 
-  $.isNumeric(<span class="hljs-string">""</span>);     <span class="hljs-comment">// false</span>
-  $.isNumeric({});     <span class="hljs-comment">// false (empty object)</span>
-  $.isNumeric(<span class="hljs-literal">NaN</span>);    <span class="hljs-comment">// false</span>
-  $.isNumeric(<span class="hljs-literal">null</span>);   <span class="hljs-comment">// false</span>
-  $.isNumeric(<span class="hljs-literal">true</span>);   <span class="hljs-comment">// false</span>
+  $.isNumeric(&quot;&quot;);     // false
+  $.isNumeric({});     // false (empty object)
+  $.isNumeric(NaN);    // false
+  $.isNumeric(null);   // false
+  $.isNumeric(true);   // false
 
-  $.isNumeric(<span class="hljs-string">"-10"</span>);  <span class="hljs-comment">// true</span>
-  $.isNumeric(<span class="hljs-number">16</span>);     <span class="hljs-comment">// true</span>
-  $.isNumeric(<span class="hljs-number">0xFF</span>);   <span class="hljs-comment">// true</span>
-  $.isNumeric(<span class="hljs-number">3.1415</span>); <span class="hljs-comment">// true</span>
-  $.isNumeric(+<span class="hljs-number">10</span>);    <span class="hljs-comment">// true</span>
+  $.isNumeric(&quot;-10&quot;);  // true
+  $.isNumeric(16);     // true
+  $.isNumeric(0xFF);   // true
+  $.isNumeric(3.1415); // true
+  $.isNumeric(+10);    // true
 
-  $.isFunction($.noop)    <span class="hljs-comment">//true</span>
-  $.isFunction(<span class="hljs-string">"Hello"</span>)    <span class="hljs-comment">//false</span>
+  $.isFunction($.noop)    //true
+  $.isFunction(&quot;Hello&quot;)    //false
 
-  $.isEmptyObject(<span class="hljs-literal">undefined</span>)        <span class="hljs-comment">//true</span>
-  $.isEmptyObject(<span class="hljs-literal">null</span>)        <span class="hljs-comment">//true</span>
-  $.isEmptyObject({})        <span class="hljs-comment">//true</span>
-  $.isEmptyObject( <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>() )  <span class="hljs-comment">// true</span>
-  $.isEmptyObject([] )  <span class="hljs-comment">// true</span>
-  $.isEmptyObject({ <span class="hljs-attr">foo</span>: <span class="hljs-string">"bar"</span> }) <span class="hljs-comment">// false</span>
-  $.isEmptyObject([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]) <span class="hljs-comment">// false</span>
-  $.isEmptyObject(<span class="hljs-string">"sdfe"</span>) <span class="hljs-comment">// false</span>
-  $.isEmptyObject(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{...}) <span class="hljs-comment">// false</span>
+  $.isEmptyObject(undefined)        //true
+  $.isEmptyObject(null)        //true
+  $.isEmptyObject({})        //true
+  $.isEmptyObject( new Object() )  // true
+  $.isEmptyObject([] )  // true
+  $.isEmptyObject({ foo: &quot;bar&quot; }) // false
+  $.isEmptyObject([1,2]) // false
+  $.isEmptyObject(&quot;sdfe&quot;) // false
+  $.isEmptyObject(function(){...}) // false
 
-  $.isPlainObject({}) <span class="hljs-comment">// true</span>
-  $.isPlainObject(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>()) <span class="hljs-comment">// true</span>
-  $s.isPlainObject(<span class="hljs-string">"test"</span>) <span class="hljs-comment">// false</span>
+  $.isPlainObject({}) // true
+  $.isPlainObject(new Object()) // true
+  $s.isPlainObject(&quot;test&quot;) // false
 </code></pre>
 </li>
 </ul>
@@ -533,7 +536,7 @@ $("b").unwrap();
 <li><p><code>$.merge(first,second)</code>  合并数组</p>
 <ul>
 <li>合并第二个数组到第一个数组上</li>
-<li>eg: <pre><code class="nulljs">$.merge( [<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>], [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>] )   <span class="hljs-comment">//[0,1,2,2,3,4]</span>
+<li>eg: <pre><code class="lang-js">$.merge( [0,1,2], [2,3,4] )   //[0,1,2,2,3,4]
 </code></pre>
 </li>
 </ul>
@@ -552,7 +555,7 @@ $("b").unwrap();
 <li><p><code>$.toArray()</code></p>
 <ul>
 <li>把jQuery集合中所有DOM元素恢复成一个数组</li>
-<li>eg:<pre><code class="nulljs">$(<span class="hljs-string">'li'</span>).toArray();  <span class="hljs-comment">// [&lt;li id="foo"&gt;, &lt;li id="bar"&gt;]</span>
+<li>eg:<pre><code class="lang-js">$(&#39;li&#39;).toArray();  // [&lt;li id=&quot;foo&quot;&gt;, &lt;li id=&quot;bar&quot;&gt;]
 </code></pre>
 </li>
 </ul>
@@ -561,7 +564,7 @@ $("b").unwrap();
 <ul>
 <li>返回value在arrayObj中下标的位置(从0开始计数)</li>
 <li>如果value不在array中则返回-1 </li>
-<li>eg: <pre><code class="nulljs">$.inArray(<span class="hljs-string">"Pete"</span>,[<span class="hljs-number">4</span>, <span class="hljs-string">"Pete"</span>, <span class="hljs-number">8</span>, <span class="hljs-string">"John"</span>],<span class="hljs-number">2</span>) <span class="hljs-comment">// -1</span>
+<li>eg: <pre><code class="lang-js">$.inArray(&quot;Pete&quot;,[4, &quot;Pete&quot;, 8, &quot;John&quot;],2) // -1
 </code></pre>
 </li>
 </ul>
@@ -585,22 +588,22 @@ $("b").unwrap();
 <li>function中使用this时， this 指代的是 DOM 对象而非 jQuery 对象</li>
 </ul>
 </li>
-<li>eg:<pre><code class="nulljs"><span class="hljs-keyword">var</span> arrayObj= [<span class="hljs-string">'a'</span>,<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>];
-<span class="hljs-keyword">var</span> returnValue = $.each(arrayObj, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index,value</span>) </span>{
-  alert(index + <span class="hljs-string">" "</span> + value);
+<li>eg:<pre><code class="lang-js">var arrayObj= [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;];
+var returnValue = $.each(arrayObj, function(index,value) {
+  alert(index + &quot; &quot; + value);
 });
 </code></pre>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> jsonObj= {<span class="hljs-attr">one</span>:<span class="hljs-number">1</span>, <span class="hljs-attr">two</span>:<span class="hljs-number">2</span>, <span class="hljs-attr">three</span>:<span class="hljs-number">3</span>};
-<span class="hljs-keyword">var</span> returnValue=$.each(jsonObj,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">key,value</span>) </span>{
-  alert(key+<span class="hljs-string">":"</span>+value);
+<pre><code class="lang-js">var jsonObj= {one:1, two:2, three:3};
+var returnValue=$.each(jsonObj,function(key,value) {
+  alert(key+&quot;:&quot;+value);
 });
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"div"</span>).each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">index, domEle</span>) </span>{ 
-    <span class="hljs-comment">// domEle == this</span>
-    $(domEle).css(<span class="hljs-string">"backgroundColor"</span>, <span class="hljs-string">"yellow"</span>);
-    <span class="hljs-keyword">if</span> ($(<span class="hljs-keyword">this</span>).is(<span class="hljs-string">"#stop"</span>)) {
-         $(<span class="hljs-string">"span"</span>).text(<span class="hljs-string">"Stopped at div index #"</span> + index);
-         <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+<pre><code class="lang-js">$(&quot;div&quot;).each(function(index, domEle) { 
+    // domEle == this
+    $(domEle).css(&quot;backgroundColor&quot;, &quot;yellow&quot;);
+    if ($(this).is(&quot;#stop&quot;)) {
+         $(&quot;span&quot;).text(&quot;Stopped at div index #&quot; + index);
+         return false;
     }
 });
 </code></pre>
@@ -616,12 +619,12 @@ $("b").unwrap();
 </ul>
 </li>
 <li>注意：和 <code>$(dom).map(callback(){...})</code>不一样</li>
-<li>eg：<pre><code class="nulljs"><span class="hljs-keyword">var</span> arr = [ <span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"d"</span>, <span class="hljs-string">"e"</span> ];
-<span class="hljs-keyword">var</span> arr2 = jQuery.map(arr, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n, i</span>)</span>{
-  <span class="hljs-keyword">return</span> (n.toUpperCase() + i);
+<li>eg：<pre><code class="lang-js">var arr = [ &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot; ];
+var arr2 = jQuery.map(arr, function(n, i){
+  return (n.toUpperCase() + i);
 });
-alert(arr);        <span class="hljs-comment">//a,b,c,d,e</span>
-alert(arr2);    <span class="hljs-comment">//A0,B1,C2,D3,E4</span>
+alert(arr);        //a,b,c,d,e
+alert(arr2);    //A0,B1,C2,D3,E4
 </code></pre>
 </li>
 </ul>
@@ -639,12 +642,12 @@ alert(arr2);    <span class="hljs-comment">//A0,B1,C2,D3,E4</span>
 <li>true：回调函数的返回值的效果刚好相反，返回true的会被去掉</li>
 </ul>
 </li>
-<li>eg：<pre><code class="nulljs"><span class="hljs-keyword">var</span> arrayObj = [ <span class="hljs-number">1</span>, <span class="hljs-number">9</span>, <span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">4</span>, <span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">6</span>, <span class="hljs-number">9</span>, <span class="hljs-number">1</span> ];
-arr = jQuery.grep(arrayObj , <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">n, i</span>)</span>{
-<span class="hljs-keyword">return</span> (n != <span class="hljs-number">5</span> &amp;&amp; i &gt; <span class="hljs-number">4</span>);
+<li>eg：<pre><code class="lang-js">var arrayObj = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
+arr = jQuery.grep(arrayObj , function(n, i){
+return (n != 5 &amp;&amp; i &gt; 4);
 });
 </code></pre>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> bigNumbers = $.grep(arrayObj ,<span class="hljs-string">'a&gt;5'</span>);
+<pre><code class="lang-js">var bigNumbers = $.grep(arrayObj ,&#39;a&gt;5&#39;);
 </code></pre>
 </li>
 </ul>
@@ -662,40 +665,40 @@ arr = jQuery.grep(arrayObj , <span class="hljs-function"><span class="hljs-keywo
 <h4 id="header-18">特效</h4>
 <ul>
 <li><p><code>animate(css,time,callbackFunc)</code></p>
-<pre><code class="nulljs">  $(<span class="hljs-string">"#go"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-      $(<span class="hljs-string">"#block"</span>).animate({
-          <span class="hljs-attr">width</span>: <span class="hljs-string">"90%"</span>,
-          <span class="hljs-attr">height</span>: <span class="hljs-string">"100%"</span>,
-          <span class="hljs-attr">fontSize</span>: <span class="hljs-string">"10em"</span>,
-          <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">10</span>
-      }, <span class="hljs-number">1000</span> );
+<pre><code class="lang-js">  $(&quot;#go&quot;).click(function(){
+      $(&quot;#block&quot;).animate({
+          width: &quot;90%&quot;,
+          height: &quot;100%&quot;,
+          fontSize: &quot;10em&quot;,
+          borderWidth: 10
+      }, 1000 );
   })
-  $(<span class="hljs-string">"#right"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-      $(<span class="hljs-string">".block"</span>).animate({<span class="hljs-attr">left</span>: <span class="hljs-string">'+50px'</span>}, <span class="hljs-string">"slow"</span>);
+  $(&quot;#right&quot;).click(function(){
+      $(&quot;.block&quot;).animate({left: &#39;+50px&#39;}, &quot;slow&quot;);
   });
 
-  $(<span class="hljs-string">"p"</span>).animate({
-      <span class="hljs-attr">left</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">opacity</span>: <span class="hljs-string">'show'</span>
-  }, <span class="hljs-number">500</span>);
+  $(&quot;p&quot;).animate({
+      left: 50, opacity: &#39;show&#39;
+  }, 500);
 
-  $(<span class="hljs-string">"p"</span>).animate({
-      <span class="hljs-attr">opacity</span>: <span class="hljs-string">'show'</span>
-  }, <span class="hljs-string">"slow"</span>, <span class="hljs-string">"easein"</span>);
+  $(&quot;p&quot;).animate({
+      opacity: &#39;show&#39;
+  }, &quot;slow&quot;, &quot;easein&quot;);
 
-  $(<span class="hljs-string">'div'</span>).animate(
+  $(&#39;div&#39;).animate(
       {
-        <span class="hljs-attr">left</span> : <span class="hljs-string">"+=50"</span>, <span class="hljs-comment">//不断右移</span>
-        opacity : <span class="hljs-number">0.25</span> <span class="hljs-comment">//指定透明度</span>
+        left : &quot;+=50&quot;, //不断右移
+        opacity : 0.25 //指定透明度
       },
-      <span class="hljs-number">300</span>, <span class="hljs-comment">// 持续时间</span>
-      <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ alert(<span class="hljs-string">'done!'</span>); } <span class="hljs-comment">//回调函数</span>
+      300, // 持续时间
+      function() { alert(&#39;done!&#39;); } //回调函数
   );
 </code></pre>
 </li>
 <li><p>淡入淡出：<code>fadeIn/fadeOut([speed],[easing],[fn])</code>,<code>fadeToggle</code></p>
-<pre><code class="nulljs">  $(<span class="hljs-string">'h1'</span>).fadeIn(<span class="hljs-number">300</span>); <span class="hljs-comment">// 300毫秒内淡入</span>
-  $(<span class="hljs-string">'h1'</span>).fadeOut(<span class="hljs-string">'slow'</span>); <span class="hljs-comment">// 缓慢地淡出</span>
-  $(<span class="hljs-string">'p'</span>).fadeOut(<span class="hljs-number">300</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ $(<span class="hljs-keyword">this</span>).remove(); });
+<pre><code class="lang-js">  $(&#39;h1&#39;).fadeIn(300); // 300毫秒内淡入
+  $(&#39;h1&#39;).fadeOut(&#39;slow&#39;); // 缓慢地淡出
+  $(&#39;p&#39;).fadeOut(300, function() { $(this).remove(); });
 </code></pre>
 </li>
 <li>滑入滑出：<code>slideDown/slideUp([speed],[easing],[fn])</code>,<code>slideToggle</code></li>
@@ -774,65 +777,65 @@ arr = jQuery.grep(arrayObj , <span class="hljs-function"><span class="hljs-keywo
 <p>使用举例：</p>
 <ol>
 <li><p>事件直接绑定</p>
-<pre><code class="nulljs"> $(<span class="hljs-string">'p'</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-     alert(<span class="hljs-string">'Hello'</span>);
+<pre><code class="lang-js"> $(&#39;p&#39;).click(function(){
+     alert(&#39;Hello&#39;);
  });
 </code></pre>
 </li>
 <li><p>使用bind绑定（on方法使用类似）</p>
-<pre><code class="nulljs"> <span class="hljs-comment">//可同时绑定click和change事件</span>
- $(<span class="hljs-string">'input'</span>).bind(<span class="hljs-string">'click change'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-   alert(<span class="hljs-string">'Hello'</span>);
+<pre><code class="lang-js"> //可同时绑定click和change事件
+ $(&#39;input&#39;).bind(&#39;click change&#39;,function() {
+   alert(&#39;Hello&#39;);
  });
- <span class="hljs-comment">//可在事件名后面加命名空间</span>
- $(<span class="hljs-string">"#test"</span>).bind(<span class="hljs-string">"mouseover.test mouseout.test"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
-     $(<span class="hljs-keyword">this</span>).toggleClass(<span class="hljs-string">"bgClass"</span>);
+ //可在事件名后面加命名空间
+ $(&quot;#test&quot;).bind(&quot;mouseover.test mouseout.test&quot;,function(event){
+     $(this).toggleClass(&quot;bgClass&quot;);
  })
 </code></pre>
 </li>
 <li><p>使用unbind解绑（off方法使用类似）</p>
-<pre><code class="nulljs"> $(<span class="hljs-string">"input"</span>).unbind();        <span class="hljs-comment">//解绑所有事件</span>
- $(<span class="hljs-string">"#test"</span>).unbind(<span class="hljs-string">".test"</span>);    <span class="hljs-comment">//解绑使用“test”命名空间的事件</span>
+<pre><code class="lang-js"> $(&quot;input&quot;).unbind();        //解绑所有事件
+ $(&quot;#test&quot;).unbind(&quot;.test&quot;);    //解绑使用“test”命名空间的事件
 
- <span class="hljs-keyword">var</span> foo=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{...};
- $(<span class="hljs-string">"input"</span>).bind(<span class="hljs-string">"click"</span>,foo);
- $(<span class="hljs-string">"input"</span>).unbind(<span class="hljs-string">"click"</span>,foo);        <span class="hljs-comment">//解绑特定函数的绑定</span>
+ var foo=function(){...};
+ $(&quot;input&quot;).bind(&quot;click&quot;,foo);
+ $(&quot;input&quot;).unbind(&quot;click&quot;,foo);        //解绑特定函数的绑定
 </code></pre>
 </li>
 <li><p>使用on/off进行事件的委托处理<br>说明：<br>相较与上面使用<code>$(&quot;td&quot;).on(&quot;click&quot;,function(){...})</code><br>这个事件只需要在父元素绑定1次即可<br>而不需要在子元素上绑定n次<br>大大提高了性能</p>
-<pre><code class="nulljs"> <span class="hljs-comment">//方式一：</span>
- $(<span class="hljs-string">"table"</span>).on(<span class="hljs-string">"click"</span>, <span class="hljs-string">"td"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-     $(<span class="hljs-keyword">this</span>).toggleClass(<span class="hljs-string">"click"</span>);
+<pre><code class="lang-js"> //方式一：
+ $(&quot;table&quot;).on(&quot;click&quot;, &quot;td&quot;, function(){
+     $(this).toggleClass(&quot;click&quot;);
  });
- $(<span class="hljs-string">"table"</span>).off(<span class="hljs-string">"click"</span>, <span class="hljs-string">"td"</span>);
+ $(&quot;table&quot;).off(&quot;click&quot;, &quot;td&quot;);
 
- <span class="hljs-comment">//方式二（更好）：</span>
- $(<span class="hljs-built_in">document</span>).on(<span class="hljs-string">"click"</span>, <span class="hljs-string">"td"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-     $(<span class="hljs-keyword">this</span>).toggleClass(<span class="hljs-string">"click"</span>);
+ //方式二（更好）：
+ $(document).on(&quot;click&quot;, &quot;td&quot;, function(){
+     $(this).toggleClass(&quot;click&quot;);
  });
- $(<span class="hljs-built_in">document</span>).off(<span class="hljs-string">"click"</span>, <span class="hljs-string">"td"</span>);
+ $(document).off(&quot;click&quot;, &quot;td&quot;);
 </code></pre>
 </li>
 <li><p>使用hover绑定切换事件（鼠标移入移除时触发）</p>
-<pre><code class="nulljs"> $(<span class="hljs-string">"td"</span>).hover(
-   <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-     $(<span class="hljs-keyword">this</span>).addClass(<span class="hljs-string">"hover"</span>);
+<pre><code class="lang-js"> $(&quot;td&quot;).hover(
+   function () {
+     $(this).addClass(&quot;hover&quot;);
    },
-   <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-     $(<span class="hljs-keyword">this</span>).removeClass(<span class="hljs-string">"hover"</span>);
+   function () {
+     $(this).removeClass(&quot;hover&quot;);
    }
  );
 </code></pre>
 </li>
 <li><p>使用toggle绑定切换事件（点击时触发）</p>
-<pre><code class="nulljs"> $(<span class="hljs-string">'td'</span>).toggle();            <span class="hljs-comment">//隐藏/显示</span>
- $(<span class="hljs-string">"p"</span>).toggle(<span class="hljs-string">"slow"</span>);    <span class="hljs-comment">//缓慢显示</span>
- $(<span class="hljs-string">"p"</span>).toggle(<span class="hljs-string">"fast"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    alert(<span class="hljs-string">"Animation Done."</span>);
+<pre><code class="lang-js"> $(&#39;td&#39;).toggle();            //隐藏/显示
+ $(&quot;p&quot;).toggle(&quot;slow&quot;);    //缓慢显示
+ $(&quot;p&quot;).toggle(&quot;fast&quot;,function(){
+    alert(&quot;Animation Done.&quot;);
   });
- $(<span class="hljs-string">"td"</span>).toggle(
-     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ $(<span class="hljs-keyword">this</span>).addClass(<span class="hljs-string">"selected"</span>); },
-     <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{ $(<span class="hljs-keyword">this</span>).removeClass(<span class="hljs-string">"selected"</span>); }
+ $(&quot;td&quot;).toggle(
+     function () { $(this).addClass(&quot;selected&quot;); },
+     function () { $(this).removeClass(&quot;selected&quot;); }
  );
 </code></pre>
 </li>
@@ -843,16 +846,16 @@ arr = jQuery.grep(arrayObj , <span class="hljs-function"><span class="hljs-keywo
 <li><code>trigger(type,[data])</code>：存在冒泡</li>
 <li><code>triggerHandler(type,[data])</code>：不冒泡</li>
 </ul>
-<pre><code class="nulljs">$(<span class="hljs-string">"p"</span>).click();    
-$(<span class="hljs-string">"input"</span>).change();
+<pre><code class="lang-js">$(&quot;p&quot;).click();    
+$(&quot;input&quot;).change();
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"#test"</span>).on(<span class="hljs-string">"click"</span>,{<span class="hljs-attr">name</span>:<span class="hljs-string">"Tom"</span>},<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event,a,b</span>)</span>{
-    <span class="hljs-built_in">console</span>.log(event.target);
-    <span class="hljs-built_in">console</span>.log(event.currentTarget);
-    <span class="hljs-built_in">console</span>.log(a+<span class="hljs-string">","</span>+b);            <span class="hljs-comment">//1,2</span>
-    <span class="hljs-built_in">console</span>.log(event.data)        <span class="hljs-comment">//{name:"Tom"}</span>
+<pre><code class="lang-js">$(&quot;#test&quot;).on(&quot;click&quot;,{name:&quot;Tom&quot;},function(event,a,b){
+    console.log(event.target);
+    console.log(event.currentTarget);
+    console.log(a+&quot;,&quot;+b);            //1,2
+    console.log(event.data)        //{name:&quot;Tom&quot;}
 });
-$(<span class="hljs-string">"#test"</span>).trigger(<span class="hljs-string">"click"</span>,[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]);
+$(&quot;#test&quot;).trigger(&quot;click&quot;,[1,2]);
 </code></pre>
 <h2 id="header-24">延迟</h2>
 <p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html" target="_blank" rel="noopener">jQuery的deferred对象详解</a>）</p>
@@ -914,39 +917,39 @@ $(<span class="hljs-string">"#test"</span>).trigger(<span class="hljs-string">"c
 </ul>
 <p>使用示例1：<code>$.Deferred</code></p>
 <p>一个耗时的操作</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> wait = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">var</span> tasks = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-      alert(<span class="hljs-string">"执行完毕！"</span>);
+<pre><code class="lang-js">var wait = function(){
+    var tasks = function(){
+      alert(&quot;执行完毕！&quot;);
     };
-    setTimeout(tasks,<span class="hljs-number">5000</span>);
+    setTimeout(tasks,5000);
 };
 </code></pre>
 <p>为它指定回调函数</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> wait=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">var</span> dtd = $.Deferred();     <span class="hljs-comment">// 新建一个Deferred对象</span>
-    <span class="hljs-keyword">var</span> tasks = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-        alert(<span class="hljs-string">"执行完毕！"</span>);
-        <span class="hljs-comment">//dtd.reject();</span>
-        dtd.resolve();         <span class="hljs-comment">// 改变Deferred对象的执行状态</span>
+<pre><code class="lang-js">var wait=function(){
+    var dtd = $.Deferred();     // 新建一个Deferred对象
+    var tasks = function(){
+        alert(&quot;执行完毕！&quot;);
+        //dtd.reject();
+        dtd.resolve();         // 改变Deferred对象的执行状态
     };
-    setTimeout(tasks,<span class="hljs-number">5000</span>);
-    <span class="hljs-keyword">return</span> dtd.promise();     <span class="hljs-comment">// 返回promise对象</span>
+    setTimeout(tasks,5000);
+    return dtd.promise();     // 返回promise对象
 }
 
 wait()
-.done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ alert(<span class="hljs-string">"Success！"</span>); })
-.fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ alert(<span class="hljs-string">"Fail！"</span>); });
+.done(function(){ alert(&quot;Success！&quot;); })
+.fail(function(){ alert(&quot;Fail！&quot;); });
 </code></pre>
 <p>使用示例2：<code>$.ajax</code></p>
-<pre><code class="nulljs">$.ajax(<span class="hljs-string">"test.html"</span>)
-    .done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ alert(<span class="hljs-string">"Success"</span>); })
-    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ alert(<span class="hljs-string">"Fail"</span>); });
-    .done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ alert(<span class="hljs-string">"Success 2"</span>);} );
+<pre><code class="lang-js">$.ajax(&quot;test.html&quot;)
+    .done(function(){ alert(&quot;Success&quot;); })
+    .fail(function(){ alert(&quot;Fail&quot;); });
+    .done(function(){ alert(&quot;Success 2&quot;);} );
 </code></pre>
 <p>使用示例3：<code>$.when</code></p>
-<pre><code class="nulljs">$.when($.ajax(<span class="hljs-string">"test1.html"</span>), $.ajax(<span class="hljs-string">"test2.html"</span>))
-　　.done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ alert(<span class="hljs-string">"Success"</span>); })    <span class="hljs-comment">//都成功时执行</span>
-　　.fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ alert(<span class="hljs-string">"Fail！"</span>); });    <span class="hljs-comment">//其中一个失败就执行</span>
+<pre><code class="lang-js">$.when($.ajax(&quot;test1.html&quot;), $.ajax(&quot;test2.html&quot;))
+　　.done(function(){ alert(&quot;Success&quot;); })    //都成功时执行
+　　.fail(function(){ alert(&quot;Fail！&quot;); });    //其中一个失败就执行
 </code></pre>
 <h3 id="header-26">Ajax</h3>
 <p>以下操作返回一个Promise对象（屏蔽了修改执行状态方法的Deferred对象）</p>
@@ -954,23 +957,23 @@ wait()
 <li><code>$.get(url,{...},successCallback,type);</code>,<code>$.post(url,{...},successCallback,type);</code><ul>
 <li>简单HTTP GET/POST请求</li>
 <li>successCallback：请求成功调用回调函数</li>
-<li>type：返回内容格式，例如 xml, html, script, json, text<pre><code class="nulljs">$.get(url,{<span class="hljs-attr">name</span>:<span class="hljs-string">"tom"</span>},<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data,status</span>)</span>{
-  <span class="hljs-built_in">console</span>.log(data);
-},<span class="hljs-string">"json"</span>);
-$.post(url,{<span class="hljs-attr">name</span>:<span class="hljs-string">"tom"</span>},<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data,status</span>)</span>{
-  <span class="hljs-built_in">console</span>.log(data);
-},<span class="hljs-string">"json"</span>);
+<li>type：返回内容格式，例如 xml, html, script, json, text<pre><code class="lang-js">$.get(url,{name:&quot;tom&quot;},function(data,status){
+  console.log(data);
+},&quot;json&quot;);
+$.post(url,{name:&quot;tom&quot;},function(data,status){
+  console.log(data);
+},&quot;json&quot;);
 </code></pre>
 </li>
 </ul>
 </li>
-<li><code>$.getJSON(url, {...}, successCallback)</code><pre><code class="nulljs">$.getJSON(<span class="hljs-string">"test.json"</span>, { <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>, <span class="hljs-attr">time</span>: <span class="hljs-string">"2pm"</span> }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
-    alert(<span class="hljs-string">"JSON Data: "</span> + data.users[<span class="hljs-number">3</span>].name);
+<li><code>$.getJSON(url, {...}, successCallback)</code><pre><code class="lang-js">$.getJSON(&quot;test.json&quot;, { name: &quot;John&quot;, time: &quot;2pm&quot; }, function(data){
+    alert(&quot;JSON Data: &quot; + data.users[3].name);
 });
 </code></pre>
 </li>
-<li><code>$.getScript(url,successCallback)</code> 加载并执行脚本<pre><code class="nulljs">$.getScript(<span class="hljs-string">"test.js"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    alert(<span class="hljs-string">"Script loaded and executed."</span>);
+<li><code>$.getScript(url,successCallback)</code> 加载并执行脚本<pre><code class="lang-js">$.getScript(&quot;test.js&quot;, function(){
+    alert(&quot;Script loaded and executed.&quot;);
 });
 </code></pre>
 </li>
@@ -1008,48 +1011,48 @@ $.post(url,{<span class="hljs-attr">name</span>:<span class="hljs-string">"tom"<
 </ul>
 </li>
 <li><p>eg：</p>
-<pre><code class="nulljs">$.ajax({
-  <span class="hljs-attr">url</span>:<span class="hljs-string">"/test"</span>,
-  <span class="hljs-attr">type</span>:<span class="hljs-string">"get"</span>,
-  <span class="hljs-attr">data</span>:{<span class="hljs-attr">id</span>:<span class="hljs-number">1</span>},
-  <span class="hljs-attr">beforeSend</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">xhr,settings</span>)</span>{
-      $(<span class="hljs-string">"#preLoading"</span>).show();
+<pre><code class="lang-js">$.ajax({
+  url:&quot;/test&quot;,
+  type:&quot;get&quot;,
+  data:{id:1},
+  beforeSend:function(xhr,settings){
+      $(&quot;#preLoading&quot;).show();
   }
-}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, textStatus, jqXHR</span>)</span>{
-  <span class="hljs-comment">//success/done</span>
-},<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">jqXHR, textStatus, errorThrown</span>)</span>{
-  <span class="hljs-comment">//error/fail</span>
+}).then(function(data, textStatus, jqXHR){
+  //success/done
+},function(jqXHR, textStatus, errorThrown){
+  //error/fail
 });
 </code></pre>
-<pre><code class="nulljs">$.ajax({
-  <span class="hljs-attr">url</span>:<span class="hljs-string">"/test"</span>,
-  <span class="hljs-attr">type</span>:<span class="hljs-string">"post"</span>,
-  <span class="hljs-attr">data</span>:<span class="hljs-built_in">JSON</span>.stringify({<span class="hljs-attr">id</span>:<span class="hljs-number">1</span>}),
-  <span class="hljs-attr">processData</span>:<span class="hljs-literal">false</span>,
-  <span class="hljs-attr">contentType</span>:<span class="hljs-string">"application/json;charset=utf-8"</span>,
-  <span class="hljs-attr">dataType</span>:<span class="hljs-string">"json"</span>,
-  <span class="hljs-attr">beforeSend</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">xhr,settings</span>)</span>{...}
-}).done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, textStatus, jqXHR</span>)</span>{
-  <span class="hljs-comment">//success</span>
+<pre><code class="lang-js">$.ajax({
+  url:&quot;/test&quot;,
+  type:&quot;post&quot;,
+  data:JSON.stringify({id:1}),
+  processData:false,
+  contentType:&quot;application/json;charset=utf-8&quot;,
+  dataType:&quot;json&quot;,
+  beforeSend:function(xhr,settings){...}
+}).done(function(data, textStatus, jqXHR){
+  //success
   ...
-}).fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">jqXHR, textStatus, errorThrown</span>)</span>{
-  <span class="hljs-comment">//error</span>
+}).fail(function(jqXHR, textStatus, errorThrown){
+  //error
   ...
-}).always(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data|jqXHR, textStatus, jqXHR|errorThrown</span>) </span>{
-  <span class="hljs-comment">//complete</span>
+}).always(function(data|jqXHR, textStatus, jqXHR|errorThrown) {
+  //complete
   ...
 })
 </code></pre>
-<pre><code class="nulljs">$(<span class="hljs-string">"#loading"</span>).bind(<span class="hljs-string">"ajaxSend"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  $(<span class="hljs-keyword">this</span>).show();
-}).bind(<span class="hljs-string">"ajaxComplete"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  $(<span class="hljs-keyword">this</span>).hide();
+<pre><code class="lang-js">$(&quot;#loading&quot;).bind(&quot;ajaxSend&quot;, function(){
+  $(this).show();
+}).bind(&quot;ajaxComplete&quot;, function(){
+  $(this).hide();
 });
 </code></pre>
-<pre><code class="nulljs"><span class="hljs-comment">// 禁用全局Ajax事件</span>
+<pre><code class="lang-js">// 禁用全局Ajax事件
 $.ajax({
-  <span class="hljs-attr">url</span>: <span class="hljs-string">"test.html"</span>,
-  <span class="hljs-attr">global</span>: <span class="hljs-literal">false</span>
+  url: &quot;test.html&quot;,
+  global: false
   ...
 });
 </code></pre>
@@ -1059,98 +1062,98 @@ $.ajax({
 </ul>
 <p>注意：</p>
 <p>若返回完整html</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>UserBlocks<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>  <span class="hljs-attr">href</span>=<span class="hljs-string">"resources/css/base/reset.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"screen"</span>/&gt;</span> 
-    <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>World<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+<pre><code class="lang-html">&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;UserBlocks&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;  href=&quot;resources/css/base/reset.css&quot; media=&quot;screen&quot;/&gt; 
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div&gt;Hello&lt;/div&gt;
+        &lt;div&gt;World&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
 
 $(data)=&gt;包装集内容为：
 
-<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>UserBlocks<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>  <span class="hljs-attr">href</span>=<span class="hljs-string">"resources/css/base/reset.css"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"screen"</span>/&gt;</span> 
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>World<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+&lt;title&gt;UserBlocks&lt;/title&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;  href=&quot;resources/css/base/reset.css&quot; media=&quot;screen&quot;/&gt; 
+&lt;div&gt;Hello&lt;/div&gt;
+&lt;div&gt;World&lt;/div&gt;
 </code></pre>
 <p>若返回html片段</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>World<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="lang-html">&lt;div&gt;Hello&lt;/div&gt;
+&lt;div&gt;World&lt;/div&gt;
 
 $(data)=&gt;包装集内容为：
 
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>World<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+&lt;div&gt;Hello&lt;/div&gt;
+&lt;div&gt;World&lt;/div&gt;
 </code></pre>
 <h2 id="header-27">调用函数</h2>
 <p>不同作用域函数使用</p>
 <ul>
 <li><p><code>call(context,param1,param2,...)</code>，<code>apply(context,[...])</code></p>
-<pre><code class="nulljs">  <span class="hljs-keyword">var</span> sum=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arg1,arg2</span>)</span>{
-      <span class="hljs-built_in">console</span>.log(arg1+arg2);
+<pre><code class="lang-js">  var sum=function(arg1,arg2){
+      console.log(arg1+arg2);
   }
-  sum.call(<span class="hljs-keyword">this</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>);        <span class="hljs-comment">//3</span>
-  sum.apply(<span class="hljs-keyword">this</span>,[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]);    <span class="hljs-comment">//3</span>
-  <span class="hljs-built_in">console</span>.log(sum.length)    <span class="hljs-comment">//2 表示sum函数的参数个数</span>
+  sum.call(this,1,2);        //3
+  sum.apply(this,[1,2]);    //3
+  console.log(sum.length)    //2 表示sum函数的参数个数
 </code></pre>
-<pre><code class="nulljs">  <span class="hljs-keyword">var</span> showName=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name);
+<pre><code class="lang-js">  var showName=function(){
+      console.log(this.name);
   }
-  <span class="hljs-keyword">var</span> c={
-      <span class="hljs-attr">name</span>:<span class="hljs-string">"Tom"</span>
+  var c={
+      name:&quot;Tom&quot;
   }
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">People</span>(<span class="hljs-params">name</span>)</span>{
-      <span class="hljs-keyword">this</span>.name=name;
+  function People(name){
+      this.name=name;
   }
 
-  <span class="hljs-comment">//传入不同上下文作用域，结果不同</span>
-  sum.call(c);    <span class="hljs-comment">//Tom</span>
-  sum.call(<span class="hljs-keyword">new</span> People(<span class="hljs-string">"Jerry"</span>));    <span class="hljs-comment">//Jerry</span>
+  //传入不同上下文作用域，结果不同
+  sum.call(c);    //Tom
+  sum.call(new People(&quot;Jerry&quot;));    //Jerry
 </code></pre>
 </li>
 <li><p><code>$.proxy(func,context)(args)</code>,<code>$.proxy(context,funcName)(args)</code></p>
-<pre><code class="nulljs">  <span class="hljs-keyword">var</span> obj = {
-      <span class="hljs-attr">name</span>: <span class="hljs-string">"John"</span>,
-      <span class="hljs-attr">test</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-          alert( <span class="hljs-keyword">this</span>.name );
-          alert(<span class="hljs-built_in">arguments</span>);
+<pre><code class="lang-js">  var obj = {
+      name: &quot;John&quot;,
+      test: function() {
+          alert( this.name );
+          alert(arguments);
       }
   };
 
-  <span class="hljs-comment">//两种方式等效，返回代理函数</span>
-  <span class="hljs-keyword">var</span> func=$.proxy( obj, <span class="hljs-string">"test"</span> );
+  //两种方式等效，返回代理函数
+  var func=$.proxy( obj, &quot;test&quot; );
   func=$.proxy( obj.test, obj );
 
-  func();            <span class="hljs-comment">//执行：实则执行obj的test函数，能获取this.name</span>
-  obj.test();        <span class="hljs-comment">//执行：无法获取this.name</span>
+  func();            //执行：实则执行obj的test函数，能获取this.name
+  obj.test();        //执行：无法获取this.name
 </code></pre>
-<pre><code class="nulljs">  <span class="hljs-keyword">var</span> obj={
-      <span class="hljs-attr">name</span>:<span class="hljs-string">"John"</span>
+<pre><code class="lang-js">  var obj={
+      name:&quot;John&quot;
   };
-  <span class="hljs-keyword">var</span> fn=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">color</span>)</span>{
-      alert(<span class="hljs-keyword">this</span>.name);
+  var fn=function(color){
+      alert(this.name);
       alert(color);
   }
 
-  <span class="hljs-comment">//两种方式等效</span>
-  $.proxy(fn,obj)(<span class="hljs-string">"red"</span>);        <span class="hljs-comment">//John,red</span>
-  fn.call(obj,<span class="hljs-string">"red"</span>);            <span class="hljs-comment">//John,red</span>
+  //两种方式等效
+  $.proxy(fn,obj)(&quot;red&quot;);        //John,red
+  fn.call(obj,&quot;red&quot;);            //John,red
 </code></pre>
 </li>
 </ul>
 <h2 id="header-28">插件</h2>
 <h3 id="header-29"><code>$</code>符号冲突</h3>
 <ul>
-<li>使用<code>jQuery.noConflict()</code><pre><code class="nulljs"><span class="hljs-keyword">var</span> $j=jQuery.noConflict();
-$j(<span class="hljs-string">"td"</span>).css(<span class="hljs-string">"color"</span>,<span class="hljs-string">"#f00"</span>);
+<li>使用<code>jQuery.noConflict()</code><pre><code class="lang-js">var $j=jQuery.noConflict();
+$j(&quot;td&quot;).css(&quot;color&quot;,&quot;#f00&quot;);
 </code></pre>
 </li>
-<li>使用闭包<pre><code class="nulljs">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>)</span>{
-  $(<span class="hljs-string">"td"</span>).css(<span class="hljs-string">"color"</span>,<span class="hljs-string">"#f00"</span>);
+<li>使用闭包<pre><code class="lang-js">(function($){
+  $(&quot;td&quot;).css(&quot;color&quot;,&quot;#f00&quot;);
 })(jQuery)
 </code></pre>
 </li>
@@ -1159,66 +1162,66 @@ $j(<span class="hljs-string">"td"</span>).css(<span class="hljs-string">"color"<
 <p>使用<code>$.fn</code>创建包装集插件（jQuery专门定义了<code>jQuery.fn=jQuery.prototype</code>）</p>
 <p>使用举例：</p>
 <p>定义</p>
-<pre><code class="nulljs">$.fn.setColor=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">this</span>.css(<span class="hljs-string">"color"</span>,<span class="hljs-string">"#0f0"</span>);    <span class="hljs-comment">// this为包装集对象</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;                <span class="hljs-comment">//必须返回this （包装集的函数一定要能支持链式结构）</span>
+<pre><code class="lang-js">$.fn.setColor=function(){
+    this.css(&quot;color&quot;,&quot;#0f0&quot;);    // this为包装集对象
+    return this;                //必须返回this （包装集的函数一定要能支持链式结构）
 }
 </code></pre>
 <p>调用</p>
-<pre><code class="nulljs">$(<span class="hljs-string">"td"</span>).setColor();
+<pre><code class="lang-js">$(&quot;td&quot;).setColor();
 </code></pre>
 <h3 id="header-31">自定义插件</h3>
 <p>例如：</p>
 <p>自定义JFillContent插件</p>
-<pre><code class="nulljs">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">$</span>)</span>{
-    <span class="hljs-comment">//私有构造函数</span>
-    <span class="hljs-keyword">var</span> JFillContent=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">element,options</span>)</span>{
-        <span class="hljs-keyword">this</span>.element=element;
-        <span class="hljs-keyword">this</span>.options=options;
-        <span class="hljs-keyword">this</span>._init();
+<pre><code class="lang-js">(function($){
+    //私有构造函数
+    var JFillContent=function(element,options){
+        this.element=element;
+        this.options=options;
+        this._init();
     };
 
-    <span class="hljs-comment">//预设值设置</span>
+    //预设值设置
     JFillContent.Defaults={...};
 
-    <span class="hljs-comment">//原型中定义方法，例如：</span>
-    JFillContent.prototype._init=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    //原型中定义方法，例如：
+    JFillContent.prototype._init=function(){
         ...
     };
 
-    <span class="hljs-comment">//原型中定义方法，例如：</span>
-    JFillContent.prototype.fillContent=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">optUrl</span>)</span>{
+    //原型中定义方法，例如：
+    JFillContent.prototype.fillContent=function(optUrl){
         ...
     };
 
     ...
-    <span class="hljs-comment">//定义包装集插件</span>
-    $.fn.jFillContent=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">option</span>)</span>{
-        <span class="hljs-keyword">var</span> options = $.extend({}, JFillContent.Defaults, <span class="hljs-keyword">this</span>.data(), <span class="hljs-keyword">typeof</span> option == <span class="hljs-string">'object'</span> &amp;&amp; option);
-        <span class="hljs-keyword">var</span> instance=<span class="hljs-keyword">this</span>.data(<span class="hljs-string">'jFillContent'</span>);
-        <span class="hljs-keyword">if</span> (!instance) {
-            <span class="hljs-keyword">this</span>.data(<span class="hljs-string">'jFillContent'</span>,(instance=<span class="hljs-keyword">new</span> JFillContent(<span class="hljs-keyword">this</span>, options)));
+    //定义包装集插件
+    $.fn.jFillContent=function(option){
+        var options = $.extend({}, JFillContent.Defaults, this.data(), typeof option == &#39;object&#39; &amp;&amp; option);
+        var instance=this.data(&#39;jFillContent&#39;);
+        if (!instance) {
+            this.data(&#39;jFillContent&#39;,(instance=new JFillContent(this, options)));
         }
-        <span class="hljs-keyword">if</span> (option === <span class="hljs-literal">true</span>) 
-            <span class="hljs-keyword">return</span> instance;
-       <span class="hljs-keyword">if</span> ($.type(option) === <span class="hljs-string">'string'</span>) {
-               <span class="hljs-keyword">if</span> ( !$.isFunction( instance[option] ) || option.charAt( <span class="hljs-number">0</span> ) === <span class="hljs-string">"_"</span> ) {
-                    <span class="hljs-keyword">return</span> $.error( <span class="hljs-string">"no such method '"</span> + option+<span class="hljs-string">"'"</span> );
+        if (option === true) 
+            return instance;
+       if ($.type(option) === &#39;string&#39;) {
+               if ( !$.isFunction( instance[option] ) || option.charAt( 0 ) === &quot;_&quot; ) {
+                    return $.error( &quot;no such method &#39;&quot; + option+&quot;&#39;&quot; );
             }
            instance[option]();
         }
-       <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
+       return this;
     };
     $.fn.jFillContent.Constructor = JFillContent;
 
 })(jQuery);
 </code></pre>
 <p>使用插件：</p>
-<pre><code class="nulljs">$(<span class="hljs-string">"#nav-left"</span>).jFillContent({...});                    <span class="hljs-comment">//返回$("#nav-left");</span>
-$(<span class="hljs-string">"#nav-left"</span>).jFillContent({...}).trigger(<span class="hljs-string">"xxx"</span>);    <span class="hljs-comment">//触发方法，等同$("#nav-left").trigger("xxx")</span>
+<pre><code class="lang-js">$(&quot;#nav-left&quot;).jFillContent({...});                    //返回$(&quot;#nav-left&quot;);
+$(&quot;#nav-left&quot;).jFillContent({...}).trigger(&quot;xxx&quot;);    //触发方法，等同$(&quot;#nav-left&quot;).trigger(&quot;xxx&quot;)
 
-$(<span class="hljs-string">"#nav-left"</span>).jFillContent(<span class="hljs-literal">true</span>);    <span class="hljs-comment">//返回JFillContent对象（从包装集的data中获取，若无，则创建一个新的）</span>
-$(<span class="hljs-string">"#nav-left"</span>).jFillContent(<span class="hljs-literal">true</span>).fillContent(url);    <span class="hljs-comment">//调用jFillContent插件中定义的方法</span>
+$(&quot;#nav-left&quot;).jFillContent(true);    //返回JFillContent对象（从包装集的data中获取，若无，则创建一个新的）
+$(&quot;#nav-left&quot;).jFillContent(true).fillContent(url);    //调用jFillContent插件中定义的方法
 </code></pre>
 <h2 id="header-32">优化</h2>
 <p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html" target="_blank" rel="noopener">jQuery最佳实践</a>）</p>
@@ -1279,10 +1282,17 @@ $(<span class="hljs-string">"#nav-left"</span>).jFillContent(<span class="hljs-l
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

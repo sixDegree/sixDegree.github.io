@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -160,54 +163,54 @@
 <ol>
 <li>安装：直接下载解压即可</li>
 <li><p>配置：在<code>$FLUME_HOME/conf</code>下添加一个配置文件（例如：<code>flume-conf-test1.properties</code>）</p>
-<pre><code class="nullvim"> # agent1表示代理名称
+<pre><code class="lang-vim"> # agent1表示代理名称
  agent1.sources=source1
  agent1.sinks=sink1
  agent1.channels=channel1
 
  # 配置source1
- # <span class="hljs-number">1</span>. Spooling Directory是监控指定文件夹中新文件的变化
+ # 1. Spooling Directory是监控指定文件夹中新文件的变化
  # 一旦新文件出现，就解析该文件内容，然后写入到channle
  # 写入完成后，标记该文件已完成或者删除该文件
- # <span class="hljs-number">2</span>. 添加Timestamp Interceptor
+ # 2. 添加Timestamp Interceptor
  # 在event的header中添加一个key叫timestamp,value为当前的时间戳
- agent1.sources.source1.<span class="hljs-built_in">type</span>=spooldir
- agent1.sources.source1.spoolDir=/home/hadoop/<span class="hljs-built_in">input</span>/flume
+ agent1.sources.source1.type=spooldir
+ agent1.sources.source1.spoolDir=/home/hadoop/input/flume
  agent1.sources.source1.channels=channel1
  agent1.sources.source1.fileHeader = false
  agent1.sources.source1.interceptors = i1
- agent1.sources.source1.interceptors.i1.<span class="hljs-built_in">type</span> = timestamp
+ agent1.sources.source1.interceptors.i1.type = timestamp
 
  # 配置sink1
- agent1.sinks.sink1.<span class="hljs-built_in">type</span>=hdfs
- agent1.sinks.sink1.hdfs.path=hdf<span class="hljs-variable">s:</span>//cj.storm:<span class="hljs-number">9000</span>/output/flume
+ agent1.sinks.sink1.type=hdfs
+ agent1.sinks.sink1.hdfs.path=hdfs://cj.storm:9000/output/flume
  agent1.sinks.sink1.hdfs.fileType=DataStream
  agent1.sinks.sink1.hdfs.writeFormat=TEXT
- # agent1.sinks.sink1.hdfs.rollInterval=<span class="hljs-number">0</span>
- # agent1.sinks.sink1.hdfs.rollSize=<span class="hljs-number">10485760</span>
+ # agent1.sinks.sink1.hdfs.rollInterval=0
+ # agent1.sinks.sink1.hdfs.rollSize=10485760
  agent1.sinks.sink1.channel=channel1
- agent1.sinks.sink1.hdfs.filePrefix=%Y-%<span class="hljs-keyword">m</span>-%d
+ agent1.sinks.sink1.hdfs.filePrefix=%Y-%m-%d
 
  # 配置channel1
- agent1.channels.channel1.<span class="hljs-built_in">type</span>=<span class="hljs-keyword">file</span>
- agent1.channels.channel1.checkpointDir=/home/hadoop/<span class="hljs-built_in">input</span>/flume_tmp/checkpoint
- agent1.channels.channel1.dataDirs=/home/hadoop/<span class="hljs-built_in">input</span>/flume_tmp/data
+ agent1.channels.channel1.type=file
+ agent1.channels.channel1.checkpointDir=/home/hadoop/input/flume_tmp/checkpoint
+ agent1.channels.channel1.dataDirs=/home/hadoop/input/flume_tmp/data
 </code></pre>
 </li>
 <li><p>测试</p>
-<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> 1. 创建被监控目录</span>
-<span class="hljs-meta"> &gt;</span><span class="bash"> mkdir -p /home/hadoop/input/flume</span>
-<span class="hljs-meta">
- #</span><span class="bash"> 2. 启动flume agent1</span>
-<span class="hljs-meta"> #</span><span class="bash"> -n 指定agent名称</span>
-<span class="hljs-meta"> #</span><span class="bash"> -c 指定配置文件目录</span>
-<span class="hljs-meta"> #</span><span class="bash"> -f 指定配置文件</span>
-<span class="hljs-meta"> &gt;</span><span class="bash"> bin/flume-ng agent -n agent1 -c conf -f conf/flume-conf-test1.properties \</span>
+<pre><code class="lang-shell"> # 1. 创建被监控目录
+ &gt; mkdir -p /home/hadoop/input/flume
+
+ # 2. 启动flume agent1
+ # -n 指定agent名称
+ # -c 指定配置文件目录
+ # -f 指定配置文件
+ &gt; bin/flume-ng agent -n agent1 -c conf -f conf/flume-conf-test1.properties \
  -Dflume.root.logger=DEBUG,console
-<span class="hljs-meta">
- #</span><span class="bash"> 3. 放入测试文件</span>
-<span class="hljs-meta"> #</span><span class="bash"> 4. 查看运行结果</span>
-<span class="hljs-meta"> &gt;</span><span class="bash"> hadoop fs -lsr /output/flume</span>
+
+ # 3. 放入测试文件
+ # 4. 查看运行结果
+ &gt; hadoop fs -lsr /output/flume
 </code></pre>
 </li>
 </ol>
@@ -246,10 +249,17 @@
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

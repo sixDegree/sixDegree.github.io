@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -320,11 +323,11 @@
 &gt; echo ruok|nc localhost 2181
 </code></pre><h3 id="header-5">Java API</h3>
 <p>依赖包</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.zookeeper<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>zookeeper<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${zookeeper.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+    &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+    &lt;version&gt;${zookeeper.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <table class="table">
 <thead>
@@ -373,40 +376,40 @@
 </tbody>
 </table>
 <p>还有其他方法可以参考 <code>org.apache.zookeeper.ZooKeeper</code></p>
-<pre><code class="nulljava"><span class="hljs-comment">// 创建一个与服务器的连接</span>
-ZooKeeper zk=<span class="hljs-keyword">new</span> ZooKeeper(ZkServerConfig.ConnectString, ZkServerConfig.SessionTimeout, <span class="hljs-keyword">new</span> Watcher(){
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">process</span><span class="hljs-params">(WatchedEvent event)</span> </span>{
-        System.out.println(event.getPath()+<span class="hljs-string">" 触发了 "</span> + event.getType() + <span class="hljs-string">" event , status:"</span>+event.getState());
+<pre><code class="lang-java">// 创建一个与服务器的连接
+ZooKeeper zk=new ZooKeeper(ZkServerConfig.ConnectString, ZkServerConfig.SessionTimeout, new Watcher(){
+    @Override
+    public void process(WatchedEvent event) {
+        System.out.println(event.getPath()+&quot; 触发了 &quot; + event.getType() + &quot; event , status:&quot;+event.getState());
     }
 });
 
-<span class="hljs-comment">// 创建znode</span>
-String rootPath=zk.create(RootPath, <span class="hljs-string">"testRootData"</span>.getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
-         System.out.println(<span class="hljs-string">"创建了路径："</span>+rootPath);
+// 创建znode
+String rootPath=zk.create(RootPath, &quot;testRootData&quot;.getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+         System.out.println(&quot;创建了路径：&quot;+rootPath);
 
-String childOneAPath=zk.create(RootPath+<span class="hljs-string">"/testChildOne"</span>,<span class="hljs-string">"testChildOneData"</span>.getBytes(),Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
-         System.out.println(<span class="hljs-string">"创建了路径："</span>+childOnePath);
+String childOneAPath=zk.create(RootPath+&quot;/testChildOne&quot;,&quot;testChildOneData&quot;.getBytes(),Ids.OPEN_ACL_UNSAFE,CreateMode.PERSISTENT);
+         System.out.println(&quot;创建了路径：&quot;+childOnePath);
 
-<span class="hljs-comment">// 读取znode 数据</span>
-<span class="hljs-keyword">byte</span>[] data=zk.getData(RootPath, <span class="hljs-keyword">false</span>, <span class="hljs-keyword">null</span>);
-System.out.println(<span class="hljs-string">"目录节点数据："</span>+<span class="hljs-keyword">new</span> String(data));
+// 读取znode 数据
+byte[] data=zk.getData(RootPath, false, null);
+System.out.println(&quot;目录节点数据：&quot;+new String(data));
 
-<span class="hljs-comment">// 更改znode 数据</span>
- zk.setData(RootPath,<span class="hljs-string">"modifyRootData"</span>.getBytes(),-<span class="hljs-number">1</span>);
+// 更改znode 数据
+ zk.setData(RootPath,&quot;modifyRootData&quot;.getBytes(),-1);
 
-<span class="hljs-comment">// 查看znode状态</span>
-System.out.println(<span class="hljs-string">"目录节点状态：["</span>+zk.exists(RootPath,<span class="hljs-keyword">false</span>)+<span class="hljs-string">"]"</span>); 
+// 查看znode状态
+System.out.println(&quot;目录节点状态：[&quot;+zk.exists(RootPath,false)+&quot;]&quot;); 
 
 
-<span class="hljs-comment">// 获取所有子节点</span>
-List&lt;String&gt; children=zk.getChildren(RootPath,<span class="hljs-keyword">false</span>);
-System.out.println(<span class="hljs-string">"目录节点子节点："</span>+children);
+// 获取所有子节点
+List&lt;String&gt; children=zk.getChildren(RootPath,false);
+System.out.println(&quot;目录节点子节点：&quot;+children);
 
-<span class="hljs-comment">// 删除znode</span>
-zk.delete(childOneAPath,-<span class="hljs-number">1</span>);
+// 删除znode
+zk.delete(childOneAPath,-1);
 
-<span class="hljs-comment">// 关闭连接</span>
+// 关闭连接
 zk.close();
 </code></pre>
 <h3 id="header-6">Curator</h3>
@@ -417,16 +420,16 @@ zk.close();
 <li>提供ZooKeeper各种应用场景(recipe, 比如共享锁服务, 集群领导选举机制)的抽象封装</li>
 </ul>
 <p>依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.curator<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>curator-recipes<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${curator.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.curator<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>curator-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${curator.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+    &lt;version&gt;${curator.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-test&lt;/artifactId&gt;
+    &lt;version&gt;${curator.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>Curator几个组成部分 :</p>
 <ul>
@@ -438,39 +441,39 @@ zk.close();
 <li><code>Extensions</code> ( recipe扩展 )</li>
 </ul>
 <p>framework 基础示例：</p>
-<pre><code class="nulljava">ExponentialBackoffRetry retryPolicy = <span class="hljs-keyword">new</span> ExponentialBackoffRetry(<span class="hljs-number">1000</span>, <span class="hljs-number">3</span>);
+<pre><code class="lang-java">ExponentialBackoffRetry retryPolicy = new ExponentialBackoffRetry(1000, 3);
 
-<span class="hljs-comment">//client=CuratorFrameworkFactory.newClient(ZkServerConfig.ConnectString, retryPolicy);</span>
+//client=CuratorFrameworkFactory.newClient(ZkServerConfig.ConnectString, retryPolicy);
 client=CuratorFrameworkFactory.builder()
         .connectString(ZkServerConfig.ConnectString)
         .retryPolicy(retryPolicy)
-        .connectionTimeoutMs(<span class="hljs-number">1000</span>)
-        .sessionTimeoutMs(<span class="hljs-number">1000</span>)
+        .connectionTimeoutMs(1000)
+        .sessionTimeoutMs(1000)
         .build();
 client.start();
 ...
 CloseableUtils.closeQuietly(client);
 </code></pre>
-<pre><code class="nulljava">client.create().forPath(<span class="hljs-string">"/head"</span>, <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">0</span>]);  
-client.delete().inBackground().forPath(<span class="hljs-string">"/head"</span>);  
-client.create().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(<span class="hljs-string">"/head/child"</span>, <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">0</span>]);  
-client.getData().watched().inBackground().forPath(<span class="hljs-string">"/test"</span>);
+<pre><code class="lang-java">client.create().forPath(&quot;/head&quot;, new byte[0]);  
+client.delete().inBackground().forPath(&quot;/head&quot;);  
+client.create().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(&quot;/head/child&quot;, new byte[0]);  
+client.getData().watched().inBackground().forPath(&quot;/test&quot;);
 </code></pre>
-<pre><code class="nulljava">CuratorTransaction transaction = client.inTransaction();
+<pre><code class="lang-java">CuratorTransaction transaction = client.inTransaction();
 Collection&lt;CuratorTransactionResult&gt; results=transaction
-        .create().forPath(root+<span class="hljs-string">"/Three"</span>,<span class="hljs-string">"Three test data"</span>.getBytes())
+        .create().forPath(root+&quot;/Three&quot;,&quot;Three test data&quot;.getBytes())
         .and()
-        .create().forPath(root+<span class="hljs-string">"/Three/E"</span>,<span class="hljs-string">"E test data"</span>.getBytes())
+        .create().forPath(root+&quot;/Three/E&quot;,&quot;E test data&quot;.getBytes())
         .and()
-        .create().forPath(root+<span class="hljs-string">"/Three/F"</span>,<span class="hljs-string">"F test data"</span>.getBytes())
+        .create().forPath(root+&quot;/Three/F&quot;,&quot;F test data&quot;.getBytes())
         .and()
-        .setData().forPath(root+<span class="hljs-string">"/Three/E"</span>,<span class="hljs-string">"Modify E data"</span>.getBytes())
+        .setData().forPath(root+&quot;/Three/E&quot;,&quot;Modify E data&quot;.getBytes())
         .and()
-        .delete().forPath(root+<span class="hljs-string">"/Three/G"</span>)
+        .delete().forPath(root+&quot;/Three/G&quot;)
         .and().commit();
 
-<span class="hljs-keyword">for</span> (CuratorTransactionResult result : results) {  
-    System.out.println(result.getForPath() + <span class="hljs-string">" - "</span> + result.getType());  
+for (CuratorTransactionResult result : results) {  
+    System.out.println(result.getForPath() + &quot; - &quot; + result.getType());  
 }
 </code></pre>
 <p>说明：</p>
@@ -505,14 +508,14 @@ Collection&lt;CuratorTransactionResult&gt; results=transaction
 </li>
 </ul>
 <p>Receipt之互斥锁使用示例：</p>
-<pre><code class="nulljava">String path = <span class="hljs-string">"/lock"</span>;  
-InterProcessLock lock1 = <span class="hljs-keyword">new</span> InterProcessMutex(client, path);
-InterProcessLock lock2 = <span class="hljs-keyword">new</span> InterProcessMutex(client, path);
+<pre><code class="lang-java">String path = &quot;/lock&quot;;  
+InterProcessLock lock1 = new InterProcessMutex(client, path);
+InterProcessLock lock2 = new InterProcessMutex(client, path);
 lock1.acquire();
-<span class="hljs-keyword">boolean</span> result = lock2.acquire(<span class="hljs-number">10</span>, TimeUnit.SECONDS);
+boolean result = lock2.acquire(10, TimeUnit.SECONDS);
 assertFalse(result);
 lock1.release();
-result = lock2.acquire(<span class="hljs-number">10</span>, TimeUnit.SECONDS);
+result = lock2.acquire(10, TimeUnit.SECONDS);
 assertTrue(result);
 </code></pre>
 <p>说明：</p>
@@ -614,10 +617,17 @@ assertTrue(result);
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

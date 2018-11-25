@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Docker 基础</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="docker">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Linux内核特性</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Docker架构和组件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">镜像 vs 容器</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">安装配置</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Windows下安装配置</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Mac环境下安装配置</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">docker-machine</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">常见错误</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">镜像 Image</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">标识</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">常用命令</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">构建镜像</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Dockerfile</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">容器 Container</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">数据管理</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">数据卷 &amp; 数据卷容器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">常用命令</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">管理</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">网络管理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">搭建本地常用服务</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">MySQL</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">MongoDB</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">Redis</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">Zookeeper</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Docker 基础</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2017-06-30T16:00:00.000Z">2017-07-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-DevOpts">DevOpts</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<blockquote>
+<p>一种依赖于Linux内核，操作系统级别的虚拟化方案 （即容器技术），Go语言开发，基于Apache2.0开源授权协议发行 </p>
+</blockquote>
+<p>(官网](<a href="https://www.docker.com" target="_blank" rel="noopener">https://www.docker.com</a>)</p>
+<ol>
+<li><p>虚拟化技术：</p>
+<ul>
+<li>硬件级虚拟化，eg：VM（虚拟机）</li>
+<li>操作系统级虚拟化 eg：Docker</li>
+<li><img src="/2017/07/01/vm-vs-docker1.png" alt="vm-vs-docker1"> <img src="/2017/07/01/vm-vs-docker2.png" alt="vm-vs-docker2"></li>
+</ul>
+</li>
+<li><p>Docker思想:</p>
+<ul>
+<li>集装箱</li>
+<li>标准化－运输方式，存储方式，API接口</li>
+<li>隔离</li>
+</ul>
+</li>
+<li><p>Docker解决问题：</p>
+<ul>
+<li>我本地运行没问题啊！</li>
+<li>系统好卡，哪个哥们又写死循环了？！</li>
+<li>双十一来啦，服务器撑不住啦！</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-2">Linux内核特性</h3>
+<ol>
+<li><p><code>Namespaces</code> 命名空间 ：隔离资源</p>
+<ul>
+<li>PID 进程</li>
+<li>NET 网络</li>
+<li>IPC 跨进程通讯（InterProcess Communication）</li>
+<li>MNT 挂载点（Mount）</li>
+<li>UTS 内核和版本标识（Unix Timesharing System）</li>
+</ul>
+</li>
+<li><p><code>CGroups</code> 控制组 Control Group ： 分配并管理隔离资源</p>
+<ul>
+<li>文件系统隔离：在Docker中 ，每个Container有自己的root文件系统</li>
+<li>进程隔离：在Docker中 ，每个Container运行在自己的进程环境</li>
+<li>网络隔离：在Docker中 ，Container间的虚拟网络接口和IP地址都是分开的</li>
+<li>资源隔离和分组： 在Docker中 ，使用cgroups将CPU和内存之类的资源独立的分配给每个Container</li>
+</ul>
+</li>
+<li><p>Union FS： 联合文件系统 Union File System：文件系统层叠</p>
+<ul>
+<li>在Docker中，镜像即由多个文件系统（只读层）叠加而成，容器即为加载在只读镜像层上（镜像栈顶部）的一个读写层</li>
+<li>注：<ul>
+<li>当改变镜像或升级程序版本时，只是一个新的层被添加或升级了，不用重新发布整个镜像，只需要升级，层使得分发 Docker 镜像变得简单和快速</li>
+<li>在容器中修改现有已存在文件，会将该文件将会从只读层复制到读写层，该文件的只读版本仍然存在，只是被读写层中该文件的副本所隐藏  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2017/07/01/docker-core.png" alt="docker-core"></p>
+<h3 id="header-3">Docker架构和组件</h3>
+<p><img src="/2017/07/01/docker-component2.png" alt="docker-component"></p>
+<p><strong> Docker 架构（CS架构）：</strong></p>
+<ul>
+<li>Client：一个命令行工具，可发送Docker命令到Server – 通过HTTP协议与Docker Server交互</li>
+<li>Server：一直运行在后台的守护进程（Docker daemon），接收Client发送的命令并执行 – 其中内嵌了一个Web Server</li>
+</ul>
+<p><strong> Docker 组件：</strong></p>
+<ul>
+<li>容器（Container）<ul>
+<li>Docker运行的最小单位（image启动后产生的instance）</li>
+<li>类似一个轻量级的虚拟机：每个容器拥有独立的root文件系统，网络服务，进程服务等，容器间互补干扰</li>
+</ul>
+</li>
+<li>镜像（Image）<ul>
+<li>用于构建容器（打包好的环境，一堆文件而已，启动后产生的instance即为container）</li>
+<li>层叠的只读文件系统，容器的基石／模版</li>
+<li>可在本地创建，可推送（Push）到仓库（Registry），可从仓库（Registry）拉取（Pull）到本地</li>
+</ul>
+</li>
+<li>仓库（Registry）<ul>
+<li>用于存放镜像（方便传输image）</li>
+<li>公有仓库<ul>
+<li>eg：官方提供的Docker Hub，网易蜂巢c.163.com,…</li>
+<li>远程仓库，速度等受限，在国内可使用Docker加速器（eg：DaoCloud ，阿里云 ）方便下载镜像</li>
+</ul>
+</li>
+<li>私有仓库<ul>
+<li>eg：本地仓库（通过docker images查看的就是本地registry下的镜像），局域网自行搭建的仓库，…</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-4">镜像 vs 容器</h3>
+<p>关系好比：</p>
+<ul>
+<li>代码和启动运行这段代码的程序（code vs app）；</li>
+<li>模版和实例（ templete vs instance）</li>
+</ul>
+<ol>
+<li><p>镜像（Image）：</p>
+<ul>
+<li>容器的基石</li>
+<li>层叠的只读文件系统</li>
+<li>联合加载（Union Mount）<br><img src="/2017/07/01/image.png" alt="image"></li>
+</ul>
+</li>
+<li><p>容器（Container）：</p>
+<ul>
+<li>通过镜像启动</li>
+<li>启动和执行阶段</li>
+<li>写时复制（Copy on Write）<br><img src="/2017/07/01/container.png" alt="container"></li>
+</ul>
+</li>
+<li><p>注：</p>
+<ul>
+<li>已建立的image的层是只读的，image启动的container，是一个新层，且是可读写的</li>
+<li>若要对image中的文件进行修改，则会copy一份到最上层，即container层<br><img src="/2017/07/01/image-container.png" alt="image-container"></li>
+</ul>
+</li>
+<li><p>应用：</p>
+<ul>
+<li>在容器中开发，以容器的形式交付和分发 （Dockerize：将应用程序和环境打包成一个image），这样开发测试生产都使用相同的环境，避免额外的部署和调试上的开销，有效缩减产品上线周期。</li>
+<li>推荐单个容器使用一个应用或进程，形成一个分布式的应用程序模型，高内聚，低耦合，单一任务（避免不同服务间的影响）</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-5">安装配置</h2>
+<p>Docker 是一个开源的商业产品，有两个版本：社区版（Community Edition，缩写为 CE）和企业版（Enterprise Edition，缩写为 EE）</p>
+<p><strong> Docker CE 的安装官方文档：</strong>    </p>
+<ul>
+<li><a href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="noopener">Mac</a></li>
+<li><a href="https://docs.docker.com/docker-for-windows/install/" target="_blank" rel="noopener">Windows</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">Ubuntu</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/debian/" target="_blank" rel="noopener">Debian</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">CentOS</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/fedora/" target="_blank" rel="noopener">Fedora</a></li>
+<li><a href="https://docs.docker.com/install/linux/docker-ce/binaries/" target="_blank" rel="noopener">其他 Linux 发行版</a></li>
+</ul>
+<p><strong> 注：</strong> Docker有些操作需要sudo 权限，可使用<code>sudo -i</code> 切换</p>
+<h3 id="header-6">Windows下安装配置</h3>
+<p>Refer: <a href="https://www.jianshu.com/p/b18122eaddc3" target="_blank" rel="noopener">Docker Toolbox for Windows 之安装二三事</a></p>
+<ol>
+<li><p>下载安装：</p>
+<ul>
+<li>Windows10/WindowsServer2016 可使用 <code>Docker for Windows Installer.exe</code>，其他使用<code>DockerToolbox.exe</code>（会虚拟一个Linux的环境）</li>
+<li>这里使用 <code>DockerToolbox.exe</code>，安装到 <code>C:\Soft\Docker Toolbox</code></li>
+<li>默认docker-machine workspace 为<code>C:\Users\&lt;your-user&gt;\.docker</code> =&gt;即 <code>C:\Users\jinc\.docker</code></li>
+<li><p>可在cmd.exe中查看安装的各个版本信息：</p>
+<pre><code class="lang-bash">  C:\Users\jinc&gt;docker --version
+  Docker version 17.03.1-ce, build c6d412e
+
+  C:\Users\jinc&gt;docker-machine --version
+  docker-machine version 0.10.0, build 76ed2a6
+
+  C:\Users\jinc&gt;docker-compose --version 
+  docker-compose version 1.11.1, build 7afaa436
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>运行 <code>Docker QuickStart Terminal</code> 终端 ( will install docker machine ‘default’ at first time ) </p>
+<ul>
+<li><p>docker-machine (默认情况下，docker-machine 会自动建立一个名为 <code>default</code>的 machine/engine)</p>
+<pre><code class="lang-bash">                          ##         .
+                    ## ## ##        ==
+                 ## ## ## ## ##    ===
+             /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;\___/ ===
+        ~~~ {~~ ~~~~ ~~~ ~~~~ ~~~ ~ /  ===- ~~~
+             \______ o           __/
+               \    \         __/
+                \____\_______/
+
+  docker is configured to use the default machine with IP 192.168.99.100
+  For help getting started, check out the docs at https://docs.docker.com
+
+  Start interactive shell
+
+  jinc@JINC-CN MINGW64 ~
+  $ docker-machine version
+  docker-machine.exe version 0.10.0, build 76ed2a6
+
+  $ docker-machine ls
+  NAME       ACTIVE   DRIVER       STATE     URL                         SWARM   D OCKER        ERRORS
+  default    *        virtualbox   Running   tcp://192.168.99.100:2376           v 17.04.0-ce
+
+  $ docker-machine ip
+  192.168.99.100
+
+  $ docker-machine status
+  Running
+
+  $ docker-machine active
+  default
+
+  $ docker-machine env default
+  export DOCKER_TLS_VERIFY=&quot;1&quot;
+  export DOCKER_HOST=&quot;tcp://192.168.99.100:2376&quot;
+  export DOCKER_CERT_PATH=&quot;C:\Users\jinc\.docker\machine\machines\default&quot;
+  export DOCKER_MACHINE_NAME=&quot;default&quot;
+  export COMPOSE_CONVERT_WINDOWS_PATHS=&quot;true&quot;
+  # Run this command to configure your shell:
+  # eval $(&quot;C:\Soft\Docker Toolbox\docker-machine.exe&quot; env default)
+</code></pre>
+</li>
+<li><p>docker version</p>
+<pre><code class="lang-bash">  $ docker version
+  time=&quot;2018-02-24T11:42:38+08:00&quot; level=info msg=&quot;Unable to use system certificat
+  e pool: crypto/x509: system root pool is not available on Windows&quot;
+  Client:
+   Version:      17.03.1-ce
+   API version:  1.27
+   Go version:   go1.7.5
+   Git commit:   c6d412e
+   Built:        Tue Mar 28 00:40:02 2017
+   OS/Arch:      windows/amd64
+
+  Server:
+   Version:      17.04.0-ce
+   API version:  1.28 (minimum version 1.12)
+   Go version:   go1.7.5
+   Git commit:   4845c56
+   Built:        Wed Apr  5 18:45:47 2017
+   OS/Arch:      linux/amd64
+   Experimental: false
+</code></pre>
+</li>
+<li>docker info<pre><code class="lang-bash">  $ docker info
+  time=&quot;2018-02-24T11:42:42+08:00&quot; level=info msg=&quot;Unable to use system certificat
+  e pool: crypto/x509: system root pool is not available on Windows&quot;
+  Containers: 2
+   Running: 0
+   Paused: 0
+   Stopped: 2
+  Images: 1
+  Server Version: 17.04.0-ce
+  Storage Driver: aufs
+   Root Dir: /mnt/sda1/var/lib/docker/aufs                                # Note
+   Backing Filesystem: extfs
+   Dirs: 5
+   Dirperm1 Supported: true
+  Logging Driver: json-file
+  Cgroup Driver: cgroupfs
+  Plugins:
+   Volume: local
+   Network: bridge host macvlan null overlay
+  Swarm: inactive
+  Runtimes: runc
+  Default Runtime: runc
+  Init Binary:
+  containerd version: 422e31ce907fd9c3833a38d7b8fdd023e5a76e73
+  runc version: 9c2d8d184e5da67c95d601382adf14862e4f2228
+  init version: 949e6fa
+  Security Options:
+   seccomp
+    Profile: default
+  Kernel Version: 4.4.59-boot2docker
+  Operating System: Boot2Docker 17.04.0-ce (TCL 7.2); HEAD : c69677f - Thu Apr  6
+  16:26:16 UTC 2017
+  OSType: linux
+  Architecture: x86_64
+  CPUs: 1
+  Total Memory: 995.8 MiB
+  Name: default
+  ID: OH5Z:NNKL:4AGQ:EE7H:RRS2:7BHC:Z245:XPIT:QRE7:CZAW:SKFT:LH4W
+  Docker Root Dir: /mnt/sda1/var/lib/docker                                # Note
+  Debug Mode (client): false
+  Debug Mode (server): true
+   File Descriptors: 16
+   Goroutines: 25
+   System Time: 2018-02-24T03:42:42.456181611Z
+   EventsListeners: 0
+  Https Proxy:
+  Registry: https://index.docker.io/v1/
+  Labels:
+   provider=virtualbox
+  Experimental: false
+  Insecure Registries:
+   127.0.0.0/8
+  Live Restore Enabled: false
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Enter machine ( 进入虚拟主机，即可运行的docker环境 )</p>
+<ul>
+<li>方式一：在<code>Docker QuickStart Terminal</code> 终端 或 <code>cmd.exe</code>终端输入<code>docker-machine ssh default</code></li>
+<li>方式二(recommend)：使用SSH远程访问工具，eg：<code>Putty.exe</code>( Host:192.168.99.100 ; Port: 22 ; Connection type: SSH,Username/password: <code>docker</code>/<code>tcuser</code>) </li>
+<li>Note：可安装FTP工具<code>FileZilla</code>来上传下载文件到docker虚拟机（使用SFTP协议)</li>
+</ul>
+</li>
+<li><p>使用docker（eg: run to test pulling an image from Docker Hub and starting a container）</p>
+<pre><code class="lang-bash"> docker run hello-world
+ docker run -it ubuntu bash
+ docker run -d -p 80:80 --name webserver nginx
+ curl http://localhost
+</code></pre>
+</li>
+</ol>
+<p><strong> 安装总结：</strong></p>
+<ol>
+<li>下载安装DockerToolbox.exe</li>
+<li>启动’Docker QuickStart Terminal’ 终端 （第一次会自动安装<code>machine：default</code> ，可使用<code>docker-machine ls</code> 查看已安装的machine）</li>
+<li>在<code>cmd.exe</code>或<code>Docker QuickStart Terminal</code>终端输入<code>docker-machine ssh default</code>进入docker运行环境（或者使用Putty工具连接登录docker-machine IP,username/password: <code>docker</code>/<code>tcuser</code>)</li>
+<li>正式使用docker时，保证docker主机是running的，可通过<code>docker-machine status</code> 查看，若未启动，可使用<code>docker-machine start</code>启动</li>
+</ol>
+<h3 id="header-7">Mac环境下安装配置</h3>
+<p>下载Docker for Mac，安装提示操作安装即可<br>启动时不需要再使用dokcer-machine设定启动的默认的环境，省去了使用virtualbox的过程（享受和在linux下使用docker一样的体验）</p>
+<p>Refer <a href="http://www.cocoachina.com/ios/20170831/20429.html" target="_blank" rel="noopener">Mac环境下Docker的初识和运用</a></p>
+<p>安装后查看：</p>
+<ul>
+<li>检查版本<pre><code class="lang-bash">  $ docker -v
+  Docker version 1.12.1, build 6f9534c
+</code></pre>
+</li>
+<li>安装路径<pre><code class="lang-bash">  $ which docker
+  /usr/local/bin/docker
+</code></pre>
+</li>
+<li>详细信息（注意Root Dir和Docker Root Dir）<pre><code class="lang-bash">  $ docker info
+  Containers: 5
+  Running: 0
+  Paused: 0
+  Stopped: 5
+  Images: 5
+  Server Version: 1.12.1
+  Storage Driver: aufs
+  Root Dir: /var/lib/docker/aufs                                                # Note
+  Backing Filesystem: extfs
+  Dirs: 21
+  Dirperm1 Supported: true
+  Logging Driver: json-file
+  Cgroup Driver: cgroupfs
+  Plugins:
+  Volume: local
+  Network: null overlay host bridge
+  Swarm: inactive
+  Runtimes: runc
+  Default Runtime: runc
+  Security Options: seccomp
+  Kernel Version: 4.4.20-moby
+  Operating System: Alpine Linux v3.4
+  OSType: linux
+  Architecture: x86_64
+  CPUs: 2
+  Total Memory: 1.953 GiB
+  Name: moby
+  ID: WD5T:HQMU:CKW6:WIHN:HUDK:4RSL:FZ5Q:XU72:SZBY:3OOV:PZ6Z:SYXQ
+  Docker Root Dir: /var/lib/docker                                            # Note
+  Debug Mode (client): false
+  Debug Mode (server): true
+  File Descriptors: 16
+  Goroutines: 27
+  System Time: 2018-03-10T03:20:38.356925515Z
+  EventsListeners: 1
+  No Proxy: *.local, 169.254/16
+  Registry: https://index.docker.io/v1/
+  Insecure Registries:
+  127.0.0.0/8
+</code></pre>
+</li>
+<li>配置：可直接通过图形化界面配置    </li>
+</ul>
+<h3 id="header-8">docker-machine</h3>
+<blockquote>
+<p>一个在“本地”或者“云平台”上 管理 docker-engine 的工具</p>
+</blockquote>
+<p>是在docker-host（物理机器）上面管理 docker-engine的工具，所以它有属于它自己的一组CLI（command line interface）</p>
+<ol>
+<li><p>常用命令:</p>
+<ul>
+<li>show machine info:<pre><code class="lang-bash">  docker-machine ip
+  docker-machine ls
+  docker-machine active
+  docker-machine status &lt;machine_name&gt;   # 不加arg，则显示默认machine的信息
+  docker-machine inspect &lt;machine_name&gt;  # 不加arg，则显示默认machine的信息，只可以查看Running的machine
+  docker-machine env &lt;machine_name&gt;      # 不加arg，则显示默认machine的信息，只可以查看Running的machine
+</code></pre>
+</li>
+<li>create/start/stop/restart/rm docker-machine :<pre><code class="lang-bash">  docker-machine create -d virtualbox mydocker     # -d 即 --driver
+  docker-machine start mydocker
+  docker-machine stop mydocker
+  docker-machine rm mydocker
+</code></pre>
+</li>
+<li>enter machine:<pre><code class="lang-bash">  docker-machine ssh mydocker
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>配置:</p>
+<ul>
+<li><p>配置加速器</p>
+<ul>
+<li>为已存在的docker-machine配置<pre><code class="lang-bash">  &gt; docker-machine ssh mydocker
+  &gt; vi /var/lib/boot2docker/profile
+  EXTRA_ARGS=&#39;
+       --label provider=virtualbox
+       --registry-mirror &lt;url&gt;
+  &#39;
+  &gt; exit
+  &gt; docker-machine restart mydocker
+</code></pre>
+</li>
+<li>docker-machine create时配置<pre><code class="lang-bash">  &gt; docker-machine create -d virtualbox --engine-registry-mirror=&lt;url&gt; mydocker
+</code></pre>
+</li>
+<li>注：常用的加速器（下面XXX需要更换成自己的加速地址）<ul>
+<li>DaoCloud url：<code>http://XXX.m.daocloud.io</code></li>
+<li>阿里云 ur: <code>https://XXX.mirror.aliyuncs.com</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>配置代理</p>
+<ul>
+<li><p>为已存在的docker-machine配置</p>
+<pre><code class="lang-bash">  &gt; docker-machine ssh mydocker
+  &gt; vi /var/lib/boot2docker/profile
+  EXTRA_ARGS=&#39;
+  --label provider=virtualbox
+
+  &#39;
+  CACERT=/var/lib/boot2docker/ca.pem
+  DOCKER_HOST=&#39;-H tcp://0.0.0.0:2376&#39;
+  DOCKER_STORAGE=aufs
+  DOCKER_TLS=auto
+  SERVERKEY=/var/lib/boot2docker/server-key.pem
+  SERVERCERT=/var/lib/boot2docker/server.pem
+
+  export &quot;HTTPS_PROXY=http://example.com:8080&quot;
+
+  &gt; exit
+  &gt; docker-machine restart mydocker
+</code></pre>
+</li>
+<li>docker-machine create时配置<pre><code class="lang-bash">  &gt; docker-machine create -d virtualbox \
+  --engine-env HTTP_PROXY=http://example.com:8080 \
+  --engine-env HTTPS_PROXY=https://example.com:8080 \
+  --engine-env NO_PROXY=example2.com \
+  mydocker
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>修改docker client连接的默认主机</p>
+<pre><code class="lang-bash">  # 设置环境变量: 将mydocker主机作为docker deamon(服务端）
+  &gt; eval $(docker-machine env mydocker)
+
+  # 查看主机列表：mydocker主机Active状态为&#39;*&#39;
+  &gt; docker-machine ls
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-9">常见错误</h3>
+<ol>
+<li><p>Error checking TLS connection : 当出现如下错误时，可执行重新生成证书 （regenerate certs）</p>
+<pre><code class="lang-bash"> # Error checking TLS connection: Error checking and/or regenerating the certs: There was an error validating certificates for host &quot;192.168.99.100:2376&quot;: x509: certificate is valid for 192.168.99.101, not 192.168.99.100
+ # ...
+ &gt; docker-machine regenerate-certs mydocker
+ &gt; docker-machine restart mydocker
+</code></pre>
+</li>
+<li><p>For x509 IP SANs error : use ‘–no-proxy’ when set env in cmd console :</p>
+<pre><code> &gt; docker ps -a
+ time=&quot;2017-04-11T14:34:16+08:00&quot; level=info msg=&quot;Unable to use system certificate pool: crypto/x509: system root pool is not available on Windows&quot;
+ error during connect: Get https://192.168.99.101:2376/v1.27/containers/json: x509: cannot validate certificate for 192.168.99.101 because it doesn&#39;t contain any IP SANs
+
+ # 设置当前的环境是与哪个主机通信
+ &gt; docker-machine env mydocker --no-proxy
+ &gt; @FOR /f &quot;tokens=*&quot; %i IN (&#39;docker-machine env mydocker --no-proxy&#39;) DO @%i
+
+ &gt; docker ps -a
+ time=&quot;2017-04-11T16:14:34+08:00&quot; level=info msg=&quot;Unable to use system certificat e pool: crypto/x509: system root pool is not available on Windows&quot;
+ CONTAINER ID        IMAGE               COMMAND             CREATED      STATUS              PORTS               NAMES
+</code></pre></li>
+<li><p>docker-machine restart lost data issue</p>
+<ul>
+<li>方案一：将数据保存到宿主机上 （ 注意权限问题），Refer <a href="https://www.jianshu.com/p/b18122eaddc3" target="_blank" rel="noopener">https://www.jianshu.com/p/b18122eaddc3</a></li>
+<li>方案二：建一个单独的数据卷（<code>-v</code>）为其他容器提供数据，再使用<code>--volumes-from</code>挂载该数据卷，Refer <a href="https://serverfault.com/questions/722085/why-does-docker-machine-clear-data-on-restart" target="_blank" rel="noopener">https://serverfault.com/questions/722085/why-does-docker-machine-clear-data-on-restart</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="header-10">镜像 Image</h2>
+<p>把应用程序及其依赖打包入一个二进制文件，作为容器的模板（实际开发中，一个 image 文件往往通过继承另一个 image 文件，加上一些个性化设置而生成）</p>
+<h3 id="header-11">标识</h3>
+<ul>
+<li><code>Repository</code>：仓库下的镜像（显示镜像名imageName，注意：镜像名可能不能唯一确定一个镜像）</li>
+<li><code>Tag</code>：每个镜像可以打上一个或多个Tag，默认为latest，一般可以为version信息 （Repository:Tag 唯一标识一个镜像）</li>
+<li><code>Image Id</code>：唯一，64位字符，通常只用前12个字符就可以了</li>
+</ul>
+<h3 id="header-12">常用命令</h3>
+<pre><code class="lang-bash">docker images [options]                        # 列出镜像
+docker images [options] &lt;imageName&gt;[:tag]      # options:
+                                               #     -a,--all = false
+                                               #     -f,--filter = []
+                                               #     --no-trunc = false
+                                               #     -q,--quiet = false (Only show numeric IDs)
+
+docker inspect [options] &lt;imageName&gt;[:tag]     # 查看镜像
+docker inspect [options] &lt;imageId&gt;             # options:
+                                               #     -f,--format = &quot;&quot;
+
+docker run [options] &lt;image&gt;                   # 启动镜像（即生成运行容器，若本地没有此image，则会先从远程下载image）
+
+docker rmi [options] image[image...]           # 删除镜像
+                                               # options:
+                                               #    -f,--force = false ( Force removal of the image )
+                                               #    --no-prune = false ( Do not delete untagged parents )
+
+docker search &lt;image&gt;                          # 搜索远程仓库镜像
+docker pull &lt;imageName&gt;[:tag]                  # 从远程仓库拉取镜像
+docker push &lt;imageName&gt;[:tag]                  # 推送镜像到远程仓库
+                                               # 默认使用官网仓库https://hub.docker.com，
+                                               # 速度慢可使用daocloud提供的加速器
+</code></pre>
+<p><strong> 示例：</strong></p>
+<pre><code class="lang-bash">$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+cj/centos           latest              d9ae4dc53b8e        14 months ago       473.4 MB
+centos              latest              67591570dd29        14 months ago       191.8 MB
+ubuntu              latest              104bec311bcd        14 months ago       129 MB
+nginx               latest              e43d811ce2f4        16 months ago       181.5 MB
+hello-world         latest              c54a2cc56cbb        20 months ago       1.848 kB
+
+$ docker images centos
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+centos              latest              67591570dd29        14 months ago       191.8 MB
+
+$ docker images centos:latest
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+centos              latest              67591570dd29        14 months ago       191.8 MB
+
+$ docker images -q
+d9ae4dc53b8e
+67591570dd29
+104bec311bcd
+e43d811ce2f4
+c54a2cc56cbb
+</code></pre>
+<pre><code class="lang-bash">$ docker inspect ubuntu:14.04
+$ docker inspect d9ae4dc53b8e
+
+$ docker rmi ubuntu:12.04 ubuntu:precise
+$ docker rmi d9ae4dc53b8e
+$ docker rmi $(docker images -q ubuntu)
+
+$ docker pull ubuntu
+$ docker pull redis:2.8.19
+</code></pre>
+<h3 id="header-13">构建镜像</h3>
+<ol>
+<li><p>方式一：使用Container构建镜像</p>
+<pre><code class="lang-bash"> $ docker commit --help
+
+ Usage:    docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+ Create a new image from a container&#39;s changes
+
+ Options:
+   -a, --author string    Author (e.g., &quot;John Hannibal Smith &lt;hannibal@a-team.com&gt;&quot;)
+   -c, --change value     Apply Dockerfile instruction to the created image (default [])
+       --help             Print usage
+   -m, --message string   Commit message
+   -p, --pause            Pause container during commit (default true)
+
+ # 示例：
+ # docker commit [options] &lt;containerId&gt; &lt;newImageName&gt;:[tag]
+ $ docker commit -m &#39;fun&#39; 17add7bbc58c nginx-fun
+</code></pre>
+</li>
+<li><p>方式二：依赖image产生新的镜像（类似copy）</p>
+<pre><code class="lang-bash"> docker tag hello-world cj/hello-world        # 依赖hello-world镜像产生新的cj/hello-world镜像（类似复制）
+</code></pre>
+</li>
+<li><p>方式三：使用Dockerfile构建镜像 <a href="https://docs.docker.com/engine/reference/builder/#usage" target="_blank" rel="noopener">Dockerfile reference</a></p>
+<pre><code class="lang-bash"> $ docker build --help
+
+ Usage:    docker build [OPTIONS] PATH | URL | -
+ Build an image from a Dockerfile
+
+ Options:
+       --build-arg value         Set build-time variables (default [])
+       --cgroup-parent string    Optional parent cgroup for the container
+       --cpu-period int          Limit the CPU CFS (Completely Fair Scheduler) period
+       --cpu-quota int           Limit the CPU CFS (Completely Fair Scheduler) quota
+   -c, --cpu-shares int          CPU shares (relative weight)
+       --cpuset-cpus string      CPUs in which to allow execution (0-3, 0,1)
+       --cpuset-mems string      MEMs in which to allow execution (0-3, 0,1)
+       --disable-content-trust   Skip image verification (default true)
+   -f, --file string             Name of the Dockerfile (Default is &#39;PATH/Dockerfile&#39;)
+       --force-rm                Always remove intermediate containers
+       --help                    Print usage
+       --isolation string        Container isolation technology
+       --label value             Set metadata for an image (default [])
+   -m, --memory string           Memory limit
+       --memory-swap string      Swap limit equal to memory plus swap: &#39;-1&#39; to enable unlimited swap
+       --no-cache                Do not use cache when building the image
+       --pull                    Always attempt to pull a newer version of the image
+   -q, --quiet                   Suppress the build output and print image ID on success
+       --rm                      Remove intermediate containers after a successful build (default true)
+       --shm-size string         Size of /dev/shm, default value is 64MB
+   -t, --tag value               Name and optionally a tag in the &#39;name:tag&#39; format (default [])
+       --ulimit value            Ulimit options (default [])
+
+ # 示例：
+ # docker build -t &lt;newImageName&gt;[:tag] &lt;DockerfilePath&gt;
+ docker build -t myrepo/myapp /tmp/test1
+</code></pre>
+<ul>
+<li>执行过程：<ol>
+<li>读取指定路径下（包括子目录）的 Dockerfile<ul>
+<li>会将该路径下所有内容发送给 Docker Server来创建镜像</li>
+<li>建议放置 Dockerfile 的目录为空目录（也可通过 <code>.dockerignore</code> 文件指定忽略文件和路径）</li>
+</ul>
+</li>
+<li>按照Dockerfile中的指令顺序依次执行<ul>
+<li>缓存：每执行一次指令， Docker 会寻找是否有存在的镜像缓存可复用，如果没有则创建新的镜像（build时<code>--no-cache=true</code>则禁用）</li>
+<li>镜像的中间层（镜像分层）</li>
+</ul>
+</li>
+<li>可使用 <code>docker history &lt;image&gt;</code> 查看镜像的构建过程<br> <img src="/2017/07/01/dockerfile.png" alt="Dockerfile"></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-14">Dockerfile</h3>
+<p><strong> Structure（基本格式）：</strong></p>
+<pre><code class="lang-bash">#Comment
+INSTRUCTION argument
+</code></pre>
+<p><strong> Instructure （指令）：</strong></p>
+<pre><code class="lang-bash">FROM &lt;imageName&gt;[:tag]                 # 指定新镜像的baseImage（必须是第一条非注释指令）
+
+MAINTAINER &lt;author&gt; &lt;email&gt;          # 说明新镜像的维护者信息
+
+ENV &lt;key&gt; &lt;value&gt;                    # 指定环境变量（ 可在Dockerfile的后续代码中使用，并在容器运行时保持）
+ENV &lt;key&gt;=&lt;value&gt; ...
+
+USER &lt;username&gt;                      # 指定运行容器时的用户名或 UID，后续的 RUN 也会使用指定用户
+USER &lt;uid&gt;
+
+WORKDIR &lt;path&gt;                       # 设置工作目录（绝对路径或相对路径都可 ）
+                                     # 设置后，后续的RUN，CMD，ENTRYPOINT等操作都将在这个目录下完成
+
+ADD／COPY &lt;src&gt; &lt;dest&gt;                 # 拷贝当前构建环境下的文件或目录到容器
+                                     # 地址末尾/，则是文件夹，无/则是文件
+                                     #  ADD的src：Dockerfile所在目录的一个相对路径／URL／打包压缩文件（自动解压成文件目录）
+                                     #  COPY的src：Dockerfile所在目录的一个相对路径，不能是URL，也不会自动解压打包压缩的文件
+
+RUN/CMD/ENTRYPOINT &lt;cmd&gt; &lt;arg1&gt; &lt;arg2&gt; ...    # 执行命令 （Shell模式：自动调用Shell，即自动在命令前面追加/bin/sh -c）
+RUN/CMD/ENTRYPOINT [&quot;cmd&quot;,&quot;arg1&quot;,&quot;arg2&quot;,...]  # 执行命令 （Exec模式－推荐：不会调用任何Shell，即不会进行变量替换）
+                                              # 对比：
+                                              #   RUN
+                                              #      构建镜像时执行，即docker build命令时执行
+                                              #      可以有多条，依次执行
+                                              #   CMD／ENTRYPOINT
+                                              #      运行容器时执行，即docker run命令时执行
+                                              #      后面的覆盖前面
+                                              #      docker run [--entrypoint ...] &lt;image&gt; [cmd] 可覆盖Dockerfile中的
+                                              #   ENTRYPOINT － 往往用于设置容器启动后的第一个命令，往往是固定的
+                                              #   CMD － 往往用于设置容器启动的第一个命令的默认参数，往往是可以是变化的
+
+
+ONBUILD &lt;INSTRUCTION&gt;                # 镜像触发器，当此镜像被其他镜像作为baseImage，其他镜像build时执行的指令
+
+VOLUME [&quot;path1&quot;,&quot;path2&quot;,...]         # 添加一个数据卷（挂载点）
+                                     # 同docker run -v &lt;containerPath&gt; -v &lt;containerPath&gt; ...
+
+EXPOSE &lt;port1&gt; &lt;port2&gt; ...           # 暴露容器端口号（隐式暴露），供宿主机和其他容器使用
+                                     # 需要在 docker run 的时候使用 -P/p 选项（显式暴露）才生效
+</code></pre>
+<p><strong> 示例：</strong></p>
+<ol>
+<li><p>编写Dockerfile (Space/node01):</p>
+<pre><code class="lang-bash"> # 设置basic image
+ FROM node:latest
+ # 把容器编码设置为C.UTF-8 支持中文
+ ENV LANG C.UTF-8
+ # Config npm proxy
+ RUN npm config set proxy http://cn-proxy.jp.oracle.com:80/
+ # 将当前项目中的index.js,package.json 拷贝到image的/app目录下
+ COPY index.js package.json /app/
+ # 将当前项目中的public目录拷贝到image的/app目录下
+ COPY public/ /app/public/
+ # 切换到/app目录下
+ WORKDIR /app
+ # 执行命令并提交到image （RUN = docker run + docker commit）
+ RUN npm install &amp;&amp; npm cache clean --force
+ # 设定image启动时的预设指令
+ CMD node index.js
+</code></pre>
+</li>
+<li><p>构建运行：</p>
+<pre><code class="lang-bash"> cd space/node01
+ docker build -t node_test01 .
+ docker run -it node_test01 /bin/bash
+ docker run -d -p 1337:1337 node_test01
+</code></pre>
+</li>
+<li><p>测试结果</p>
+<pre><code> http://192.168.99.100:1337
+ http://192.168.99.100:1337/
+</code></pre></li>
+<li><p>再次进入容器</p>
+<pre><code class="lang-bash"> # docker attach &lt;containerId&gt;
+ # docker exec -it &lt;containerId&gt; /bin/bash
+ docker exec -it db1da18b6479 /bin/bash
+</code></pre>
+</li>
+</ol>
+<h2 id="header-15">容器 Container</h2>
+<ul>
+<li>Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例</li>
+<li>image 文件生成的容器实例，本身也是一个文件，称为容器文件。</li>
+<li>一旦容器生成，就会同时存在两个文件： image 文件和容器文件。且关闭容器并不会删除容器文件，只是容器停止运行而已</li>
+</ul>
+<p><strong> 常用命令: </strong></p>
+<pre><code class="lang-bash">docker run [options] &lt;image&gt; [cmd] [arg...]        # 启动一个容器
+                                                   # 容器运行成功后，会产生一个64位的容器ID，作为容器的唯一标示
+                                                   # options:
+                                                   #     -d  表示后台运行（执行完cmd，则自动退出并停止容器）
+                                                   #     -it 启动交互式容器
+                                                   #         exit 退出并停止容器
+                                                   #         Ctrl＋P／Q 退出交互模式，改后台运行（再次进入：docker attach &lt;container&gt;）
+                                                   #     -e  设置环境参数（env）
+                                                   #     -p  指定映射容器的某些端口（--public=[]）
+                                                   #            -p containerPort
+                                                   #            -p hostPort:containerPort
+                                                   #            -p ip:containerPort
+                                                   #            -p ip:hostPort:containerPort
+                                                   #            -p 7060-7080:8060-8080 （一个范围，个数需匹配）
+                                                   #     -P  映射容器暴露的所有端口（--public-all=true）
+                                                   #         将Dockerfile中EXPOSE所暴露的所有端口分别映射到宿主机的随机端口，
+                                                   #         每次启动或重启容器时端口都可能有所不同
+                                                   #     --name 为启动容器起个名字
+
+docker exec [option] &lt;container&gt; [cmd] [arg...] # 为已启动的容器启动新进程
+                                                # options（同docker run）：
+                                                #    -d 后台运行，cmd运行完即退出                   
+                                                #    -it 交互式
+
+docker ps [options]                             # 列出容器（默认列出active的容器）
+                                                # options：
+                                                #    -a：all 列出所有
+                                                #    -l：latest 列出最新创建的一个容器
+                                                #    -q: quite ( Only show numeric IDs)
+
+docker inspect [options] &lt;container&gt;            # 查看容器的详细信息
+                                                # options:                                
+                                                #     -f,--format = &quot;&quot;
+
+docker top &lt;container&gt;                          # 查看容器内进程
+docker logs [option] &lt;container&gt;                # 查看容器日志
+                                                # options:
+                                                #    -f : --follow=true 一直跟踪logs的变化并返回结果
+                                                #    -t : --timestamps=true  在返回的结果上加上时间戳
+                                                #    --tail &lt;n&gt;:  返回结尾处n条日志，0 表示最新的日志（默认返回所有）
+
+
+docker stop &lt;container&gt;                         # 停止容器（发送一个结束信号给容器，等待容器停止）
+docker kill &lt;container&gt;                         # 杀死容器（直接停止）
+docker start [-i] &lt;container&gt;                   # 重启停止的容器（-i : 交互式）
+docker rm [-f] &lt;container&gt;                      # 删除容器（-f : force 强制删除运行中的容器）
+</code></pre>
+<p><strong> 示例：</strong></p>
+<pre><code class="lang-bash">$ docker run -d nginx
+5385902c48cf05359617933cc75bfa5d4651d199f6fd2651134d6e7d4a57d67e
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+5385902c48cf        nginx               &quot;nginx -g &#39;daemon off&quot;   4 seconds ago       Up 3 seconds        80/tcp, 443/tcp     backstabbing_bhabha
+
+$ docker ps -a -f &quot;name=backstabbing_bhabha&quot;
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+5385902c48cf        nginx               &quot;nginx -g &#39;daemon off&quot;   4 seconds ago       Up 3 seconds        80/tcp, 443/tcp     backstabbing_bhabha
+
+$ docker ps -a --format &#39;{{.Names}}&#39;
+backstabbing_bhabha
+
+$ docker exec -it 5385902c48 bash
+root@5385902c48cf:/# ls
+bin  boot  dev    etc  home  lib    lib64  media  mnt  opt    proc  root  run  sbin  srv  sys  tmp  usr  var
+root@5385902c48cf:/# ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 05:05 ?        00:00:00 nginx: master process nginx -g daemon off;
+nginx        5     1  0 05:05 ?        00:00:00 nginx: worker process
+root         6     0  0 05:06 ?        00:00:00 bash
+root        13     6  0 05:06 ?        00:00:00 ps -ef
+root@5385902c48cf:/# exit
+exit
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS               NAMES
+5385902c48cf        nginx               &quot;nginx -g &#39;daemon off&quot;   About a minute ago   Up About a minute   80/tcp, 443/tcp     backstabbing_bhabha
+
+$ docker stop 5385902c48cf
+5385902c48cf
+
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+5385902c48cf        nginx               &quot;nginx -g &#39;daemon off&quot;   21 minutes ago      Exited (0) 18 seconds ago                       backstabbing_bhabha
+</code></pre>
+<h2 id="header-16">数据管理</h2>
+<h3 id="header-17">数据卷 &amp; 数据卷容器</h3>
+<p>数据的持久化/共享:</p>
+<ol>
+<li><p>数据卷 （Data Volume）：</p>
+<ul>
+<li>在容器启动时初始化，独立于容器的生存周期，为一个或多个容器提供数据访问</li>
+<li>一直存在，即使挂载该数据卷的容器已经被删除</li>
+<li>注：<code>Volume</code> 即目录或文件，它可绕过默认的联合文件系统(UFS：Union File System)，以正常的文件或目录形式存在于宿主机上，类似linux下的挂载(mount)<ul>
+<li>数据卷可以在容器之间共享和重用</li>
+<li>数据卷数据改变是直接修改的</li>
+<li>数据卷是持续性的，直到没有容器使用它们<br><img src="/2017/07/01/volume.png" alt="Volume"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据卷容器（Data Volume Container）：</p>
+<ul>
+<li>挂载数据卷的容器即为数据卷容器</li>
+<li>其他容器可通过挂载这个容器实现数据共享（这时这些容器都可称为数据卷容器）<br><img src="/2017/07/01/volume-container.png" alt="Volume Container"></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-18">常用命令</h3>
+<pre><code class="lang-bash">&gt; docker volume --help
+...
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  prune       Remove all unused volumes
+  rm          Remove one or more volumes
+</code></pre>
+<h3 id="header-19">管理</h3>
+<ol>
+<li><p>创建：</p>
+<ul>
+<li><p>方式一：启动容器时添加数据卷 <code>docker run -v [&lt;hostPath&gt;:]&lt;containerPath&gt;[:&lt;privilege&gt;] ...</code></p>
+<pre><code class="lang-bash">  # 使用默认主机目录
+  docker run -v /web -it ubuntu --name vbase /bin/bash
+
+  # 明确主机目录（bind-mounts）
+  docker run -v /host/web:/app/web:ro -it ubuntu --name vbase /bin/bash
+</code></pre>
+<ul>
+<li><code>-v</code> 即 <code>--volume</code>，可使用多个</li>
+<li>默认使用主机目录<code>/var/lib/docker</code></li>
+<li>主机目录/容器目录不存在时会被自动创建</li>
+<li>默认privilege是rw，可读写 </li>
+</ul>
+</li>
+<li><p>方式二：在Dockerfile中配置<code>VOLUME [&quot;&lt;containerPath1&gt;&quot;,&quot;&lt;containerPath2&gt;,...&quot;]</code> （效果同方式一的不指定hostPath）</p>
+<pre><code class="lang-bash">  &gt; vi Dockerfile
+  ...
+  # VOLUME /myvol 
+  VOLUME [&quot;/var/www&quot;, &quot;/var/log/apache2&quot;, &quot;/etc/apache2&quot;]
+
+  &gt; docker run xxx                                            # 启动容器时会初始化数据卷
+</code></pre>
+</li>
+<li><p>方式三：启动容器时挂载数据卷容器 <code>docker run --volumes-from &lt;volumeContainer&gt; ...</code></p>
+<pre><code class="lang-bash">  # 创建数据卷容器vbase
+  docker create -v /web --name vbase centos
+
+  # vbase为已创建的数据卷容器
+  docker run --volumes-from vbase -it ubuntu --name vtest01 /bin/bash
+  docker run --volumes-from vbase -it ubuntu --name vtest02 /bin/bash
+
+  # 可以继承其它挂载了数据卷的容器
+  docker run --volumes-from vtest02 -it ubuntu -name vtest03 /bin/bash
+</code></pre>
+<ul>
+<li><code>-volumes-from</code>可使用多个</li>
+<li>不论数据卷容器是否运行，都可挂载</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>查看：</p>
+<pre><code class="lang-bash"> # 列出所有数据卷
+ docker volume ls
+
+ # 通过docker inspect查看容器数据卷对应的宿主机路径
+ docker inspect &lt;container&gt;
+ docker inspect --format=&quot;{{ .Volumes }}&quot; &lt;container&gt;
+</code></pre>
+</li>
+<li><p>删除：</p>
+<pre><code class="lang-bash"> # Remove all unused volumes
+ docker volume prune
+
+ # Remove one or more volumes
+ docker volume rm [OPTIONS] VOLUME [VOLUME...]
+
+ # 容器启动时设置运行停止时就自动删除容器以及容器所挂载的volume
+ docker run --rm ...   
+
+ # Remove the volumes associated with the container
+ # 删除容器时，同时也删除挂载的volume
+ # 注：如果直接使用docker rm 删除容器，可能会有很多孤立的Volume仍占用着空间（eg：在/var/lib/docker/vfs/dir目录中遗留很多不明目录），所以使用docker rm -v 更安全            
+ docker rm -v &lt;container&gt;
+</code></pre>
+</li>
+<li><p>应用示例：数据备份和还原</p>
+<pre><code class="lang-bash"> # 启动一个容器挂载vbase：/web，备份：将/web下的内容打包到/backup
+ docker run --rm --volumes-from vbase -v /backup:/backup ubuntu tar cvf /backup/web.tar /web
+
+ # 启动一个容器挂载vtest：/test，还原：将/backup下备份的数据还原到容器/test下
+ docker run --rm --volumes-from vtest -v /backup:/backup ubuntu tar xvf /backup/web.tar -C /test
+</code></pre>
+</li>
+</ol>
+<h2 id="header-20">网络管理</h2>
+<p>管理与宿主机的通信，容器与容器间的通信</p>
+<ol>
+<li><p>命令：</p>
+<pre><code class="lang-bash"> &gt; docker network -- help
+ ...
+ Commands:
+ connect      Connect a container to a network
+ create       Create a network disconnect Disconnect a container from a network
+ inspect      Display detailed information on one or more networks
+ ls           List networks
+ rm           Remove one or more networks
+</code></pre>
+</li>
+<li><p>查看网络（默认有三个 ）：</p>
+<pre><code class="lang-bash"> &gt; docker network ls
+ NETWORK ID          NAME                DRIVER              SCOPE
+ bd3defcfcc1c        bridge              bridge              local     
+ b623769af9b8        host                host                local
+ 1d16147fa052        none                null                local
+</code></pre>
+<ul>
+<li><code>bridge</code>: 容器的默认网络，有独立的network namespace（IP，Port），配置后可与宿主机通信从而与互联网互联互通（配置端口映射，EXPOSE）</li>
+<li><code>host</code>: 不会获得独立的network namespace，而是会使用宿主机的IP和端口</li>
+<li><code>none</code>: 属于无网络, 不能与外界网络通信</li>
+<li><img src="/2017/07/01/network.png" alt="network"></li>
+</ul>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-bash"> # 端口映射到主机指定端口
+ $ docker run -d -p 8080:80 nginx
+ 19ab6bbe0145d179d35bec232e6aaf643613abbaec96ba58e8ff7e11546a7170
+
+ $ docker ps
+ CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                           NAMES
+ 19ab6bbe0145        nginx               &quot;nginx -g &#39;daemon off&quot;   15 seconds ago      Up 14 seconds       443/tcp, 0.0.0.0:8080-&gt;80/tcp   hopeful_minsky
+
+ $ netstat -na | grep 8080
+ tcp6       0      0  ::1.8080               *.*                    LISTEN
+ tcp4       0      0  *.8080                 *.*                    LISTEN
+
+ $ curl http://localhost:8080
+</code></pre>
+<pre><code class="lang-bash"> # 端口映射到主机任意一个端口
+ $ docker run -d -P nginx
+ 30e8063166177f4884f183a3d6a6c56cb271bfa60a71436cca3a00e295692579
+
+ $ docker ps
+ CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                           NAMES
+ 30e806316617        nginx               &quot;nginx -g &#39;daemon off&quot;   3 seconds ago       Up 2 seconds        0.0.0.0:32769-&gt;80/tcp, 0.0.0.0:32768-&gt;443/tcp   ecstatic_kalam
+
+ $ netstat -na | grep 32769
+ tcp6       0      0  ::1.32769              *.*                    LISTEN
+ tcp4       0      0  *.32769                *.*                    LISTEN
+
+ $ curl http://localhost:32769
+</code></pre>
+</li>
+<li><p>注：容器的IP地址可能会随着容器的重启而改变，使用<code>-link</code>以指定的代号访问容器，避免容器IP地址变化导致的问题</p>
+<pre><code class="lang-bash"> docker run --link=[container]:[alias] ...         # 以指定的代号访问容器，指定后容器启动时Docker会自动重新配置映射关系
+
+ # eg:
+ $ docker run -it --name cct2 --link cct1:webtest cj/centos
+ $ ping webtest
+ $ env
+ $ cat /etc/hosts
+</code></pre>
+</li>
+</ol>
+<h2 id="header-21">搭建本地常用服务</h2>
+<h3 id="header-22">MySQL</h3>
+<p>Refer <a href="https://hub.docker.com/_/mysql/" target="_blank" rel="noopener">官网</a> | <a href="https://github.com/GitHub30/docs/tree/change-default_authentication_plugin/mysql" target="_blank" rel="noopener">GitHub30/docs:mysql</a></p>
+<ol>
+<li><p>搜索拉取image</p>
+<pre><code class="lang-bash"> docker search mysql
+ docker pull mysql
+</code></pre>
+</li>
+<li><p>build-mysql.sh (将启动一个mySQL服务容器的操作写入一个脚本，方便下次调用）</p>
+<pre><code class="lang-bash"> #!/bin/sh
+
+ #set vroot = /c/Users/jinc/mydocker/
+ set vroot = ~/soft/mydocker
+ set mysqlRoot = $vroot/mysql
+
+ mkdir -p $mysqlRoot $mysqlRoot/conf $mysqlRoot/data
+
+ ＃ set config file：
+ echo &quot;[mysqld]
+ character-set-server=utf8
+ default_authentication_plugin=mysql_native_password
+
+ [mysql]
+ default-character-set=utf8
+
+ [client]
+ default-character-set=utf8
+ &quot; &gt; $mysqlRoot/conf/my.cnf
+
+ ＃ start a mysql server container(name: micro-mysql)
+ docker run -p 53306:3306 --name micro-mysql -v $mysqlRoot/conf:/etc/mysql/conf.d -v $mysqlRoot/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest
+
+ # check result:
+ docker ps
+ docker logs micro-mysql
+</code></pre>
+</li>
+<li><p>进入mysql server container</p>
+<pre><code class="lang-bash"> $ docker exec -it micro-mysql /bin/bash
+
+ # 1. check mysql version
+ root@2c654afcf4a3:/# mysql -V
+ mysql  Ver 8.0.11 for Linux on x86_64 (MySQL Community Server - GPL)
+
+ # 2. check mysql使用my.cnf的优先级顺序
+ root@2c654afcf4a3:/# mysql --verbose --help | grep my.cnf
+                       order of preference, my.cnf, $MYSQL_TCP_PORT,
+ /etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf
+
+ # 3. check configure file:
+ root@2c654afcf4a3:/# cat /etc/mysql/conf.d
+ [mysqld]
+ character-set-server=utf8
+ default_authentication_plugin=mysql_native_password
+
+ [mysql]
+ default-character-set=utf8
+
+ [client]
+ default-character-set=utf8
+
+ # 4. 连接mysql
+ root@2c654afcf4a3:/# mysql -u root -p                                               
+ Enter password:
+ Welcome to the MySQL monitor.  Commands end with ; or \g.
+ Your MySQL connection id is 8
+ Server version: 8.0.11 MySQL Community Server - GPL
+
+ Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+ Oracle is a registered trademark of Oracle Corporation and/or its
+ affiliates. Other names may be trademarks of their respective
+ owners.
+
+ Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+
+ mysql&gt; show databases;
+ +--------------------+
+ | Database           |
+ +--------------------+
+ | information_schema |
+ | mysql              |
+ | performance_schema |
+ | sys                |
+ +--------------------+
+ 4 rows in set (0.01 sec)
+
+ mysql&gt; 
+
+ # 5. 修改root密码
+ mysql&gt; ALTER USER &#39;root&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;123456&#39;;
+ mysql&gt; flush privileges;
+ mysql&gt; select * from mysql.tables_priv;
+</code></pre>
+</li>
+<li><p>检查mysql server绑定到宿主机上的进程:</p>
+<pre><code class="lang-bash"> # linux
+ netstat -nultp
+
+ # windows
+ netstat -ano | findstr 53306
+ tasklist | findstr 2636
+
+ # mac
+ lsof -i tcp:53306
+</code></pre>
+</li>
+<li><p>在外部连接mysql server，使用客户端工具</p>
+<pre><code class="lang-bash"> $ mysql -h 127.0.0.1 -P 53306 -u root -p
+
+ # 创建新用户
+ mysql&gt; SELECT User, Host FROM mysql.user;
+ mysql&gt; create user &#39;cj&#39;@&#39;%&#39; identified by &#39;123&#39;;  
+ mysql&gt; flush privileges;  
+
+ # 创建数据库，并设置权限
+ mysql&gt; create database golf;
+ mysql&gt; grant all on golf.* to cj@&#39;%&#39; Identified by &#39;123&#39;;
+ mysql&gt; flush privileges;  
+
+ # 检查权限
+ mysql&gt; select * from mysql.tables_priv;
+ mysql&gt; exit
+
+ # 使用新创建的用户连接
+ $ mysql -u cj -p
+</code></pre>
+</li>
+<li><p>管理mysql server container：</p>
+<pre><code class="lang-bash"> # check container
+ docker ps
+ docker ps -a -f &quot;name=micro-mysql&quot;
+
+ # start/stop container:
+ docker stop micro-mysql
+ docker start micro-mysql
+
+ # stop/remove container:
+ docker stop micro-mysql
+ docker rm micro-mysql
+
+ # re-enter container:
+ docker exec -it micro-mysql /bin/bash
+ # connect mysql on mysql container
+ mysql -u root -p
+</code></pre>
+</li>
+</ol>
+<p><strong> Issues: </strong></p>
+<ol>
+<li>mysqld: [Warning] World-writable config file <code>/etc/mysql/conf.d/my.cnf</code> is ignored.<ul>
+<li>权限全局可写，任何一个用户都可以写，mysql担心这种文件被其他用户恶意修改，所以忽略掉这个配置文件。导致无法进入，这也是mysql的安全机制之一</li>
+<li>修改该文件的权限（<code>chmod 644 /etc/mysql/conf.d/my.cnf</code>）也会失败</li>
+<li>This is a know boot2docker issues </li>
+</ul>
+</li>
+<li>Unable to load authentication plugin <code>caching_sha2_password</code>.<ul>
+<li>Refer: <a href="http://binary-space.iteye.com/blog/2412769" target="_blank" rel="noopener">安装 mysql 8.0后；root用户在客户端连接不上</a> | <a href="https://stackoverflow.com/questions/49194719/authentication-plugin-caching-sha2-password-cannot-be-loaded" target="_blank" rel="noopener">Authentication plugin ‘caching_sha2_password’ cannot be loaded</a></li>
+<li>修正方式一：第一次启动mysql容器时执行<code>mysqld --default-authentication-plugin=mysql_native_password</code><pre><code class="lang-bash">  cd /c/Users/jinc/mydocker/
+  docker run -p 53306:3306 --name micro-mysql -v `pwd`/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql:latest mysqld --default-authentication-plugin=mysql_native_password
+</code></pre>
+</li>
+<li>修正方式二：使用配置文件my.cnf <code>default_authentication_plugin=mysql_native_password</code></li>
+<li>检查修正是否成功：<pre><code class="lang-bash">  mysql&gt; select user, host, plugin, authentication_string from mysql.user;
+  +------------------+-----------+-----------------------+-------------------------------------------+
+  | user             | host      | plugin                | authentication_string                     |
+  +------------------+-----------+-----------------------+-------------------------------------------+
+  | root             | %         | mysql_native_password | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
+  | mysql.infoschema | localhost | mysql_native_password | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
+  | mysql.session    | localhost | mysql_native_password | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
+  | mysql.sys        | localhost | mysql_native_password | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE |
+  | root             | localhost | mysql_native_password | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |
+  +------------------+-----------+-----------------------+-------------------------------------------+
+  5 rows in set (0.00 sec)
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-23">MongoDB</h3>
+<p>Refer <a href="https://hub.docker.com/_/mongo/" target="_blank" rel="noopener">官网</a> | <a href="https://www.jianshu.com/p/88e0d33a6201" target="_blank" rel="noopener">Mongodb账户管理</a></p>
+<ol>
+<li><p>搜索拉取image</p>
+<pre><code class="lang-bash"> docker search mongo
+ docker pull mongo
+</code></pre>
+</li>
+<li><p>build-mongo.sh ( mongod container)</p>
+<pre><code class="lang-bash"> #!/bin/bash
+
+ cd ~/soft/mydocker
+ mkdir -p mongo/data mongo/data/db mongo/data/configdb mongo/backup
+ cd mongo
+
+ # MONGO_INITDB_ROOT_USERNAME &amp; MONGO_INITDB_ROOT_PASSWORD create a new user for authentication database: admin,give role: root
+ # then the mongodb will start with authentication enabled : mongod --auth
+ docker run --name micro-mongo -p 27017:27017 -v `pwd`/data/db:/data/db -v `pwd`/data/configdb:/data/configdb -v `pwd`/backup:/backup -e MONGO_INITDB_ROOT_USERNAME=cj -e MONGO_INITDB_ROOT_PASSWORD=123456 -d mongo:latest
+
+ docker ps
+ docker logs micro-mongo
+
+ # docker exec -it micro-mongo /bin/bash
+ # mongo --nodb
+ # quit()
+ # mongo -u cj -p 123456 --authenticationDatabase admin
+</code></pre>
+</li>
+<li><p>进入mongo server container</p>
+<pre><code class="lang-bash"> $ docker exec -it micro-mongo /bin/bash
+
+ root@6e5dc21a43a7:/# mongo --nodb
+ MongoDB shell version v4.0.1
+ Welcome to the MongoDB shell.
+ For interactive help, type &quot;help&quot;.
+ For more comprehensive documentation, see
+ http://docs.mongodb.org/
+ Questions? Try the support group
+ http://groups.google.com/group/mongodb-user
+ &gt; quit()
+
+ root@6e5dc21a43a7:/# mongo -u cj -p 123456 --authenticationDatabase admin
+ MongoDB shell version v4.0.1
+ connecting to: mongodb://127.0.0.1:27017
+ MongoDB server version: 4.0.1
+ ---
+ Enable MongoDB free cloud-based monitoring service, which will then receive and display
+ metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+ The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+ and anyone you share the URL with. MongoDB may use this information to make product
+ improvements and to suggest MongoDB products and deployment options to you.
+
+ To enable free monitoring, run the following command: db.enableFreeMonitoring()
+ To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+ ---
+ &gt; show dbs
+ admin   0.000GB
+ config  0.000GB
+ local   0.000GB
+ &gt; use admin
+ switched to db admin
+ &gt; use demo
+ switched to db demo
+ &gt; db
+ demo
+ &gt; show dbs
+ admin   0.000GB
+ config  0.000GB
+ local   0.000GB
+ &gt; db.articles.insert({title:&quot;MongoDB Aggregation&quot;},{w:1})
+ WriteResult({ &quot;nInserted&quot; : 1 })
+ &gt; db.articles.find().pretty()
+ {
+         &quot;_id&quot; : ObjectId(&quot;5b87af7d680f82a036444a66&quot;),
+         &quot;title&quot; : &quot;MongoDB Aggregation&quot;
+ }
+ &gt; show dbs
+ admin   0.000GB
+ config  0.000GB
+ demo    0.000GB
+ local   0.000GB
+ &gt; exit
+ bye
+ root@480e8bf33600:/#
+</code></pre>
+</li>
+<li><p>检查绑定到宿主机上的进程:</p>
+<pre><code class="lang-bash"> # linux
+ netstat -nultp
+
+ # windows
+ netstat -ano | findstr 27017
+ tasklist | findstr 2636
+
+ # mac
+ lsof -i tcp:27017
+</code></pre>
+</li>
+<li><p>在外部连接mongoDB</p>
+<ul>
+<li>使用客户端工具: MongoDB Compass</li>
+<li><p>创建启动一个mongo container作为客户端，mongoCli.sh:</p>
+<pre><code class="lang-bash">#!/bin/bash
+
+# admin: authentication database; some-db: the dabatase after login; if not set,use default db:test
+docker run -it --rm --link micro-mongo:mongod --name mongo-client mongo:latest mongo -host mongod -u cj -p 123456 --authenticationDatabase admin demo
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>管理 container：</p>
+<pre><code class="lang-bash"> # check container
+ docker ps
+ docker ps -a -f &quot;name=micro-mongo&quot;
+
+ # start/stop container (mongo server:mongod):
+ docker stop micro-mongo
+ docker start micro-mongo
+
+ # stop/remove container:
+ docker stop micro-mongo
+ docker rm micro-mongo
+
+ # re-enter container:
+ docker exec -it micro-mongo /bin/bash
+ ＃ connect mongo server on mongo container
+ mongo -u cj -p 123456 --authenticationDatabase admin
+ # close mongodb server:
+ ps
+ kill -2 pid     # 不要kill -9 pid 方式关闭mongodb的进程，这样会有很多服务资源没法回收，或使用db.shutdownServer()
+</code></pre>
+</li>
+</ol>
+<p><strong> Issues: </strong></p>
+<p>docker-machine restart lost data issue</p>
+<ul>
+<li><p>解决方案：建一个单独的数据卷（<code>-v</code>）为其他容器提供数据，再使用<code>--volumes-from</code>挂载该数据卷</p>
+<pre><code class="lang-bash">  # /home/docker/mongo is container path
+  # docker create -v /home/docker/mongo --name mongo-store mongo
+
+  # 创建数据卷容器,docker-machine重启,micro-mongo container删除不会导致数据丢失
+  docker create --name store-mongo mongo 
+  docker run --volumes-from store-mongo --name micro-mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=123456 -d mongo:latest
+</code></pre>
+</li>
+<li><p>完整演示和验证：</p>
+<ol>
+<li><p>建一个单独的数据卷</p>
+<pre><code class="lang-bash"> ＃ 这里会自动为container的/data/configdb，/data/db建立Mount
+ docker@default:~$ docker create --name store-mongo mongo
+ eb254174f17adb11216df5db4a5cb9041ce21ad0de232e16f9b7c7263ba4e136
+
+ docker@default:~$ docker volume ls
+ DRIVER              VOLUME NAME
+ local               9bbb8de44a1d9e56bfec77086b71c15eee6eea01c5080a7116cc6294650a9912
+ local               d2620205c1bf49621808e0d562615d3bf06776a96f05786398ccfd1c8686bf7b
+
+ docker@default:~$ docker inspect --format=&quot;{{.Mounts}}&quot; store-mongo
+ [{volume 9bbb8de44a1d9e56bfec77086b71c15eee6eea01c5080a7116cc6294650a9912 /mnt/sda1/var/lib/docker/volumes/9bbb8de44a1d9e56bfec77086b71c15eee6eea01c5080a7116cc6294650a9912/_data /data/configdb local  true } {volume d2620205c1bf49621808e0d562615d3bf06776a96f05786398ccfd1c8686bf7b /mnt/sda1/var/lib/docker/volumes/d2620205c1bf49621808e0d562615d3bf06776a96f05786398ccfd1c8686bf7b/_data /data/db local  true }]
+</code></pre>
+</li>
+<li><p>创建启动一个container as mongo server : micro-mongo，并挂载数据卷store-mongo</p>
+<pre><code class="lang-bash"> docker@default:~$ docker run --volumes-from store-mongo --name micro-mongo -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD=123456 -d mongo:latest
+ 480e8bf33600e156403293e44172a329dd9c2f023421446ab80b4e311e3bef11
+
+ docker@default:~$ docker ps
+ CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
+ 480e8bf33600        mongo:latest        &quot;docker-entrypoint...&quot;   3 seconds ago       Up 2 seconds        0.0.0.0:27017-&gt;27017/tcp   micro-mongo
+</code></pre>
+</li>
+<li><p>进入刚才创建的mongo server container:micro-mongo</p>
+<pre><code class="lang-bash"> docker@default:~$ docker exec -it micro-mongo /bin/bash
+ root@480e8bf33600:/# ps
+   PID TTY          TIME CMD
+    96 ?        00:00:00 bash
+   105 ?        00:00:00 ps
+ root@480e8bf33600:/# mongo -u mongoadmin -p 123456 --authenticationDatabase admin
+ &gt; show dbs
+ admin   0.000GB
+ config  0.000GB
+ demo    0.000GB
+ local   0.000GB
+ &gt; exit
+ bye
+ root@480e8bf33600:/# exit
+ exit
+ docker@default:~$
+</code></pre>
+</li>
+<li><p>创建启动一个container as mongo client : micro-client</p>
+<pre><code class="lang-bash"> docker@default:~$ docker run -it --rm --link micro-mongo:mongod --name mongo-client mongo:latest mongo -host mongod -u mongoadmin -p 123456 --authenticationDatabase admin demo
+ &gt; show dbs
+ admin   0.000GB
+ config  0.000GB
+ demo    0.000GB
+ local   0.000GB
+ &gt; exit
+</code></pre>
+</li>
+<li><p>删除mongo server container &amp; volume:</p>
+<pre><code class="lang-bash"> docker@default:~$ docker stop micro-mongo
+ micro-mongo
+ docker@default:~$ docker rm -v micro-mongo
+ micro-mongo
+
+ ＃ 删除容器后volume仍然存在
+ docker@default:~$ docker volume ls
+ DRIVER              VOLUME NAME
+ local               9bbb8de44a1d9e56bfec77086b71c15eee6eea01c5080a7116cc6294650a9912
+ local               d2620205c1bf49621808e0d562615d3bf06776a96f05786398ccfd1c8686bf7b
+
+ docker@default:~$ docker rm -v store-mongo
+ store-mongo
+ docker@default:~$ docker volume ls
+ DRIVER              VOLUME NAME
+ docker@default:~$
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="header-24">Redis</h3>
+<p>Refer <a href="https://hub.docker.com/_/redis/" target="_blank" rel="noopener">官网</a></p>
+<ol>
+<li>run redis conainer: micro-redis<pre><code class="lang-bash"> # docker run -idt -p 6379:6379 -v `pwd`/data:/data -v `pwd`/conf/redis.conf:/etc/redis/redis.conf --name micro-redis redis:latest
+ docker run -idt -p 6379:6379 -v `pwd`/data:/data -v `pwd`/conf:/etc/redis --name micro-redis redis:latest redis-server /etc/redis/redis.conf
+</code></pre>
+<ul>
+<li>Note: update redis.conf<pre><code class="lang-bash">  daemonize no
+  #bind 127.0.0.1
+  requirepass 123456
+</code></pre>
+</li>
+</ul>
+</li>
+<li>re-enter redis container<pre><code class="lang-bash"> docker exec -it micro-redis /bin/bash
+ root@5c82ac6a4f8a:/etc/redis# redis-server -v
+ Redis server v=4.0.10 sha=00000000:0 malloc=jemalloc-4.0.3 bits=64 build=3e68f04515f466a2
+ root@5c82ac6a4f8a:/etc/redis# redis-cli -v
+ redis-cli 4.0.10
+</code></pre>
+</li>
+<li>run redis-cli container:<pre><code class="lang-bash"> # -h host, -p port -a authPwd
+ # docker run -it --rm --link micro-redis:redis --name redis-client redis:latest redis-cli -h redis -p 6379 -a 123456
+ docker run -it --rm --link micro-redis:redis --name redis-client redis:latest redis-cli -h redis -p 6379
+ &gt; auth 123456
+ &gt; keys *
+ &gt; set name Tom
+ &gt; get name
+</code></pre>
+</li>
+<li>Redis GUI Tool: Redis Desktop Manager(RDM)<ul>
+<li><a href="https://github.com/uglide/RedisDesktopManager" target="_blank" rel="noopener">Github</a></li>
+<li><a href="http://docs.redisdesktop.com/en/latest/install/#build-from-source" target="_blank" rel="noopener">Document</a></li>
+<li>mac:<pre><code class="lang-bash">  brew cask install rdm
+  brew cask install Caskroom/cask/rdm
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-25">Zookeeper</h3>
+<p>Refer <a href="https://hub.docker.com/_/zookeeper/" target="_blank" rel="noopener">官网</a></p>
+<ol>
+<li><p>run zookeeper container: micro-zoo</p>
+<pre><code class="lang-bash"> cd ~/zookeeper
+ mkdir -p zk01/conf zk01/data zk01/datalog
+
+ docker run --name micro-zoo -p 2181:2181 -v `pwd`/zk01/conf:/conf -v `pwd`/zk01/data:/data -v `pwd`/zk01/datalog:/datalog -d zookeeper:latest
+
+ # Since the Zookeeper &quot;fails fast&quot; it&#39;s better to always restart it
+ # docker run --name micro-zoo -p 2181:2181 -v `pwd`/zk01/conf:/conf -v `pwd`/zk01/data:/data -v `pwd`/zk01/datalog:/datalog --restart always -d zookeeper:latest
+</code></pre>
+<ul>
+<li>Note: conf/zoo.cfg<pre><code class="lang-bash">  clientPort=2181
+  dataDir=/data
+  dataLogDir=/datalog
+  tickTime=2000
+  initLimit=5
+  syncLimit=2
+  maxClientCnxns=60
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>re-enter zookeeper container</p>
+<pre><code class="lang-bash"> $ docker exec -it micro-zoo /bin/bash
+
+ bash-4.4# ls bin
+ README.txt    zkCli.cmd     zkEnv.cmd     zkServer.cmd
+ zkCleanup.sh  zkCli.sh      zkEnv.sh      zkServer.sh
+
+ # ZK Server
+ bash-4.4# zkServer.sh start/stop/status/restart
+
+ #ZK Client
+ bash-4.4# zkCli.sh -server 127.0.0.1:2181
+</code></pre>
+</li>
+<li><p>run ZkClient Container:</p>
+<pre><code class="lang-bash"> # Connect to Zookeeper from the Zookeeper command line client:
+ $ docker run -it --rm --link micro-zoo:zk01 --name zoo-client zookeeper:latest zkCli.sh -server zk01:2181
+ [zk: zk01:2181(CONNECTED) 1] ls /
+ [zk: zk01:2181(CONNECTED) 1] create /zk testData
+ [zk: zk01:2181(CONNECTED) 1] get /zk
+ [zk: zk01:2181(CONNECTED) 1] set /zk testData2
+ [zk: zk01:2181(CONNECTED) 1] get /zk
+ [zk: zk01:2181(CONNECTED) 1] stat /zk
+ [zk: zk01:2181(CONNECTED) 1] quite
+</code></pre>
+</li>
+<li><p>GUI Tool: <a href="https://blog.csdn.net/HeatDeath/article/details/79045059" target="_blank" rel="noopener">zkui</a></p>
+</li>
+</ol>
+<h2 id="header-26">Reference</h2>
+<p><a href="http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html" target="_blank" rel="noopener">ruanyf/Docker 入门教程</a><br><a href="http://www.ruanyifeng.com/blog/2018/02/docker-wordpress-tutorial.html" target="_blank" rel="noopener">ruanyf/Docker 微服务教程</a><br><a href="https://www.imooc.com/article/20390" target="_blank" rel="noopener">Docker 入门</a><br><a href="https://www.imooc.com/u/6244170/articles" target="_blank" rel="noopener">每天5分钟玩转Docker容器技术</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

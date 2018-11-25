@@ -19,7 +19,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -114,7 +117,7 @@
         <li>
          <span class="glyphicon glyphicon-tags"></span>
           
-            <a href="/tags.html#tag-NodeJs">NodeJs</a>
+            <a href="/tags.html#tag-Node">Node</a>
           
         </li>
       
@@ -123,36 +126,36 @@
   <section class="post-content">
     <h2 id="header-1">1. Hexo Start</h2>
 <h3 id="header-2">1.1 安装</h3>
-<pre><code class="nullvim">&gt; npm install hexo-cli -g
-&gt; hexo <span class="hljs-keyword">version</span>
-&gt; hexo <span class="hljs-keyword">help</span>
+<pre><code class="lang-vim">&gt; npm install hexo-cli -g
+&gt; hexo version
+&gt; hexo help
 </code></pre>
 <h3 id="header-3">1.2 搭建测试环境</h3>
-<pre><code class="nullvim">&gt; hexo init [project]
-&gt; <span class="hljs-keyword">cd</span> [project]
+<pre><code class="lang-vim">&gt; hexo init [project]
+&gt; cd [project]
 &gt; npm install
-&gt; hexo <span class="hljs-keyword">new</span> [layout] <span class="hljs-symbol">&lt;title&gt;</span>
+&gt; hexo new [layout] &lt;title&gt;
 </code></pre>
 <h3 id="header-4">1.3 启用命令</h3>
-<pre><code class="nullvim">&gt; hexo server    # run        localhos<span class="hljs-variable">t:4000</span>/
+<pre><code class="lang-vim">&gt; hexo server    # run        localhost:4000/
 &gt; hexo clean    # clean        public/, db.json
 &gt; hexo g         # generate     public/xxx
 &gt; hexo d         # deploy    deploy/xxx
 </code></pre>
 <h3 id="header-5">1.4 常用命令扩展</h3>
-<pre><code class="nullvim">&gt; npm install <span class="hljs-symbol">&lt;plugin-name&gt;</span> --save            #安装插件
-&gt; git clone <span class="hljs-symbol">&lt;repository&gt;</span> themes/<span class="hljs-symbol">&lt;theme-name&gt;</span>    #下载主题
+<pre><code class="lang-vim">&gt; npm install &lt;plugin-name&gt; --save            #安装插件
+&gt; git clone &lt;repository&gt; themes/&lt;theme-name&gt;    #下载主题
 
-&gt; hexo server -<span class="hljs-keyword">p</span> xxx    # --port <span class="hljs-keyword">set</span> port at xxx
-&gt; hexo server --<span class="hljs-keyword">debug</span>    # console out (<span class="hljs-built_in">log</span> leve<span class="hljs-variable">l:</span> <span class="hljs-keyword">debug</span>,info,warn,error)
+&gt; hexo server -p xxx    # --port set port at xxx
+&gt; hexo server --debug    # console out (log level: debug,info,warn,error)
 
-&gt; hexo <span class="hljs-keyword">list</span> <span class="hljs-symbol">&lt;type&gt;</span>        # <span class="hljs-keyword">list</span> site information (<span class="hljs-built_in">type</span>: page, post, route, <span class="hljs-keyword">tag</span>)
+&gt; hexo list &lt;type&gt;        # list site information (type: page, post, route, tag)
 
-&gt; hexo render <span class="hljs-symbol">&lt;file&gt;</span>    # use renderer plugins render
-&gt; hexo publish <span class="hljs-symbol">&lt;filename&gt;</span>    # <span class="hljs-keyword">move</span> _drafts/xxx <span class="hljs-keyword">to</span> _post/xxx
+&gt; hexo render &lt;file&gt;    # use renderer plugins render
+&gt; hexo publish &lt;filename&gt;    # move _drafts/xxx to _post/xxx
 
-&gt; hexo <span class="hljs-symbol">&lt;cmd&gt;</span> --config <span class="hljs-symbol">&lt;configFile&gt;</span> # 指定全局配置文件
-(<span class="hljs-keyword">e</span><span class="hljs-variable">g:</span> hexo server --config _config-test.yml)
+&gt; hexo &lt;cmd&gt; --config &lt;configFile&gt; # 指定全局配置文件
+(eg: hexo server --config _config-test.yml)
 </code></pre>
 <p><strong>PS:</strong>命令行可参考代码：<code>node_modules\hexo\lib\plugins\console\index.js</code></p>
 <h2 id="header-6">2. 一些使用说明</h2>
@@ -189,10 +192,10 @@ hexo publish &lt;title&gt;
 </ul>
 <h3 id="header-10">Skip Render</h3>
 <p>可在<code>_config.yml</code>文件中配置<code>skip_render</code>参数</p>
-<pre><code class="nullyml"><span class="hljs-attr">skip_render:</span>
-<span class="hljs-bullet">    -</span> <span class="hljs-string">test1/*.html</span>
-<span class="hljs-bullet">    -</span> <span class="hljs-string">test2/*</span>
-<span class="hljs-bullet">    -</span> <span class="hljs-string">test3/**</span>
+<pre><code class="lang-yml">skip_render:
+    - test1/*.html
+    - test2/*
+    - test3/**
 </code></pre>
 <ul>
 <li><code>skip_render</code>使用<code>minimatch</code>，配置时可使用简易表达式</li>
@@ -205,10 +208,10 @@ hexo publish &lt;title&gt;
 </ul>
 <h3 id="header-11">front-matter</h3>
 <p>是文件最上方以 <code>---</code> 分隔的区域，用于指定文章的一些属性，内容格式遵循<code>yml</code>，例如：</p>
-<pre><code class="nullmarkdown">title: Hello World
+<pre><code class="lang-markdown">title: Hello World
 date: 2016-01-29 10:57:44
-<span class="hljs-section">tags: [test,hexo]
----</span>
+tags: [test,hexo]
+---
 </code></pre>
 <ul>
 <li>这块内容由node module <code>hexo-front-matter</code>处理</li>
@@ -221,43 +224,43 @@ date: 2016-01-29 10:57:44
 <h3 id="header-13">Data （数据文件）</h3>
 <p>此功能会载入 <code>source/_data</code> 内的 YAML 或 JSON 文件到全局变量<code>site.data</code>中<br>例如：</p>
 <p>在 <code>/source/_data</code> 文件夹中新建 <code>menu.yml</code> 文件：</p>
-<pre><code class="nullyml"><span class="hljs-attr">Home:</span> <span class="hljs-string">/</span>
-<span class="hljs-attr">Gallery:</span> <span class="hljs-string">/gallery/</span>
-<span class="hljs-attr">Archives:</span> <span class="hljs-string">/archives/</span>
+<pre><code class="lang-yml">Home: /
+Gallery: /gallery/
+Archives: /archives/
 </code></pre>
 <p>在模板中使用这些资料：</p>
-<pre><code class="nullhtml"><span class="hljs-comment">{% for link in site.data.menu %}  
+<pre><code class="lang-html">{% for link in site.data.menu %}  
   {{ loop.key }}  
-{% endfor %}</span>
+{% endfor %}
 </code></pre>
 <h3 id="header-14">EJS</h3>
 <p>布局文件可以使用普通多种模板文件，Hexo默认的使用的是<code>ejs</code></p>
 <p>页面中使用：</p>
-<pre><code class="nullhtml"><span class="hljs-comment">&lt;!-- js逻辑代码--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">xxx</span> %&gt;</span>
+<pre><code class="lang-html">&lt;!-- js逻辑代码--&gt;
+&lt;% xxx %&gt;
 
-<span class="hljs-comment">&lt;!-- 输出内容（转换成字符串）--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">%=xxx%</span>&gt;</span>
+&lt;!-- 输出内容（转换成字符串）--&gt;
+&lt;%=xxx%&gt;
 
-<span class="hljs-comment">&lt;!-- 页面中输出内容（原样输出）--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">xxx</span> %&gt;</span>
+&lt;!-- 页面中输出内容（原样输出）--&gt;
+&lt;%- xxx %&gt;
 </code></pre>
 <p>单独js中使用举例：</p>
-<pre><code class="nulljavascript"><span class="hljs-keyword">var</span> ejs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'ejs'</span>);
-<span class="hljs-keyword">var</span> target = fs.readFileSync(path, <span class="hljs-string">'utf8'</span>);
-<span class="hljs-keyword">var</span> locals={<span class="hljs-attr">title</span>:test};
-<span class="hljs-keyword">var</span> html = ejs.render(target, locals);    <span class="hljs-comment">// target为ejs模板文件，locals为传入参数</span>
+<pre><code class="lang-javascript">var ejs = require(&#39;ejs&#39;);
+var target = fs.readFileSync(path, &#39;utf8&#39;);
+var locals={title:test};
+var html = ejs.render(target, locals);    // target为ejs模板文件，locals为传入参数
 </code></pre>
 <p>gulp中使用举例：</p>
-<pre><code class="nulljavascript"><span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
-<span class="hljs-keyword">var</span> rename=<span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-rename'</span>);
-<span class="hljs-keyword">var</span> ejs=<span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-ejs'</span>);
+<pre><code class="lang-javascript">var gulp = require(&#39;gulp&#39;);
+var rename=require(&#39;gulp-rename&#39;);
+var ejs=require(&#39;gulp-ejs&#39;);
 
-gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    gulp.src(<span class="hljs-string">"./templates/about.ejs"</span>)
-        .pipe(ejs({<span class="hljs-attr">title</span>:<span class="hljs-string">"About"</span>,<span class="hljs-attr">menuLinks</span>:menuLinks}))
-        .pipe(rename(<span class="hljs-string">"about.html"</span>))
-        .pipe(gulp.dest(<span class="hljs-string">"../build"</span>));
+gulp.task(&quot;ejs&quot;,function(){
+    gulp.src(&quot;./templates/about.ejs&quot;)
+        .pipe(ejs({title:&quot;About&quot;,menuLinks:menuLinks}))
+        .pipe(rename(&quot;about.html&quot;))
+        .pipe(gulp.dest(&quot;../build&quot;));
 })
 </code></pre>
 <h3 id="header-15">Theme</h3>
@@ -272,7 +275,7 @@ gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><sp
               └──_config.yml
 </code></pre></li>
 <li><p>下载：</p>
-<pre><code class="nullvim">  &gt; <span class="hljs-keyword">cd</span> project/themes
+<pre><code class="lang-vim">  &gt; cd project/themes
   &gt; git clone xxxx
 </code></pre>
 </li>
@@ -281,10 +284,10 @@ gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><sp
 <li>一些资源文件比如<code>css</code>，<code>js</code>可以放置在theme的<code>source</code>目录下，hexo会使用匹配的<code>hexo-renderer-xxx</code>解析生成</li>
 <li>扩展举例：Hexo默认使用Styl编写CSS样式，这里扩展使用sass<ul>
 <li>下载node module <code>hexo-renderer-sass</code>，使用命令<code>npm install hexo-renderer-sass --save</code> (注意不要使用<code>--save-dev</code>)</li>
-<li>可配置项：<pre><code class="nullyml"><span class="hljs-attr">node_sass:</span>
-<span class="hljs-attr">  outputStyle:</span> <span class="hljs-string">nested</span>
-<span class="hljs-attr">  precision:</span> <span class="hljs-number">5</span>
-<span class="hljs-attr">  sourceComments:</span> <span class="hljs-literal">false</span>
+<li>可配置项：<pre><code class="lang-yml">node_sass:
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
 </code></pre>
 </li>
 <li>在theme的source目录下编写<code>.scss</code>文件</li>
@@ -293,97 +296,93 @@ gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><sp
 </ul>
 <h3 id="header-16">Highlight</h3>
 <p>hexo中的默认配置：</p>
-<pre><code class="nullyml"><span class="hljs-attr">highlight:</span> <span class="hljs-string">{</span>
-<span class="hljs-attr">    enable:</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
-<span class="hljs-attr">    auto_detect:</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span> <span class="hljs-string">//</span> <span class="hljs-string">Maintain</span> <span class="hljs-string">consistent</span> <span class="hljs-string">with</span> <span class="hljs-string">previous</span> <span class="hljs-string">version.</span>
-<span class="hljs-attr">    line_number:</span> <span class="hljs-literal">true</span><span class="hljs-string">,</span>
-<span class="hljs-attr">    tab_replace:</span> <span class="hljs-string">''</span>
-  <span class="hljs-string">}</span>
+<pre><code class="lang-yml">highlight: {
+    enable: true,
+    auto_detect: true, // Maintain consistent with previous version.
+    line_number: true,
+    tab_replace: &#39;&#39;
+  }
 </code></pre>
 <p><strong>注意：</strong><br>Hexo默认是开启highlight功能的，在<code>filter:before_post_render</code>时解析，若配置highlight的enable为false，则会设置<code>options.highlight=null</code>，覆盖其他的配置（<code>assign(...,options)</code>），所以即便在<code>hexo-renderer-marked</code>中设置highlight，实际上也是无用的。</p>
 <p>在前端使用highlight渲染：</p>
 <ul>
 <li>关闭hexo的highlight功能，设置<code>enable: false</code></li>
 <li>配置marked的<code>langPrefix: &quot;hljs &quot;</code></li>
-<li>在需使用highlight的模板页面中：<pre><code class="nulljavascript">  &lt;% <span class="hljs-keyword">if</span>(page.layout==<span class="hljs-string">'post'</span>)&lt;!--￼<span class="hljs-number">1</span>--&gt;%&gt;
-  ...
-  &lt;%- js(<span class="hljs-string">'highlight/highlight.pack'</span>) %&gt;
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="undefined">
-      hljs.initHighlightingOnLoad();
-  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
-</code></pre>
+<li>在需使用highlight的模板页面中：<pre><code class="lang-javascript">  &lt;% if(page.layout==&#39;post&#39;){%>
+		<%- css('highlight="" demo="" styles="" tomorrow-night')="" %="">
+	<%}%&gt; ...="" &lt;%-="" js(&#39;highlight="" highlight.pack&#39;)="" %&gt;="" &lt;script="" type="&quot;text/javascript&quot;&gt;" hljs.inithighlightingonload();="" &lt;="" script&gt;="" <="" code=""></%}%&gt;></%-></code></pre>
 </li>
 </ul>
 <h3 id="header-17">Marked</h3>
 <p>Hexo内置使用的是<code>hexo-renderer-marked</code>解析markdown文章（内部调用node module <code>marked</code>来解析）<br>可配置项举例：</p>
-<pre><code class="nullyaml"><span class="hljs-attr">marked:</span>
-<span class="hljs-attr">  gfm:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  pedantic:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">  sanitize:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">  tables:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  breaks:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  smartLists:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  smartypants:</span> <span class="hljs-literal">true</span>
-  <span class="hljs-string">...</span>
+<pre><code class="lang-yaml">marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
+  ...
 </code></pre>
 <h3 id="header-18">使用MathJax解析Latex</h3>
 <p>在模板页面中配置：</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/x-mathjax-config"</span>&gt;</span><span class="actionscript">
+<pre><code class="lang-html">&lt;script type=&quot;text/javascript&quot; src=&quot;/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
     MathJax.Hub.Config({
           tex2jax: {
-            inlineMath: [ [<span class="hljs-string">'$'</span>,<span class="hljs-string">'$'</span>], [<span class="hljs-string">"\\("</span>,<span class="hljs-string">"\\)"</span>]  ],
-            <span class="hljs-comment">/*
+            inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&quot;\\(&quot;,&quot;\\)&quot;]  ],
+            /*
             processEscapes: true,
-              //skipTags remove 'pre' entry
-              skipTags: ['script', 'noscript', 'style', 'textarea','code']
-            */</span>
+              //skipTags remove &#39;pre&#39; entry
+              skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;,&#39;code&#39;]
+            */
         }
     });
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+&lt;/script&gt;
 </code></pre>
 <p>如果想给公式添加css class（比如都加上<code>has-jax</code>），可以增加如下配置：</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/x-mathjax-config"</span>&gt;</span><span class="actionscript">
-    MathJax.Hub.Queue(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">var</span> all = MathJax.Hub.getAllJax(), i;
-      <span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i &lt; all.length; i += <span class="hljs-number">1</span>) {
-        all[i].SourceElement().parentNode.className += <span class="hljs-string">' has-jax'</span>;
+<pre><code class="lang-html">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;
       }
     });
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+&lt;/script&gt;
 </code></pre>
 <p>使用的Latex表达式可能会和<code>Nunjucks</code>有冲突，hexo解析时可能会报错<br>（例如：在Latex中使用了两个连续的<code>{</code>，且在其中使用了<code>\xxx\</code>）<br>报错在post render 中进行标签插件的渲染时（<code>node_modules/hexo/lib/hexo/post.js</code>的render函数中）：</p>
-<pre><code class="nulljavascript"><span class="hljs-comment">//在触发onRenderEnd的tagFilter函数时报错</span>
-<span class="hljs-keyword">return</span> ctx.render.render({
-      <span class="hljs-attr">text</span>: data.content,
-      <span class="hljs-attr">path</span>: source,
-      <span class="hljs-attr">engine</span>: data.engine,
-      <span class="hljs-attr">toString</span>: <span class="hljs-literal">true</span>,
-      <span class="hljs-attr">onRenderEnd</span>: tagFilter
+<pre><code class="lang-javascript">//在触发onRenderEnd的tagFilter函数时报错
+return ctx.render.render({
+      text: data.content,
+      path: source,
+      engine: data.engine,
+      toString: true,
+      onRenderEnd: tagFilter
     }, options);
 </code></pre>
 <h3 id="header-19">Scripts</h3>
 <p>若要自己扩展Hexo，可在<code>/scripts</code>或theme的<code>/scripts</code>目录下编写js</p>
 <p>比如，扩展一个命令，新建一个js文件在<code>/scripts</code>文件夹下：</p>
-<pre><code class="nulljavascript">hexo.extend.console.register(<span class="hljs-string">'test'</span>, <span class="hljs-string">'Test Cmd'</span>, {
-    <span class="hljs-attr">usage</span>: <span class="hljs-string">'[name] [value]'</span>,
-    <span class="hljs-attr">arguments</span>: [
-      {<span class="hljs-attr">name</span>: <span class="hljs-string">'name'</span>, <span class="hljs-attr">desc</span>: <span class="hljs-string">'Setting name.'</span>},
-      {<span class="hljs-attr">name</span>: <span class="hljs-string">'value'</span>, <span class="hljs-attr">desc</span>: <span class="hljs-string">'New value of a setting.'</span>}
+<pre><code class="lang-javascript">hexo.extend.console.register(&#39;test&#39;, &#39;Test Cmd&#39;, {
+    usage: &#39;[name] [value]&#39;,
+    arguments: [
+      {name: &#39;name&#39;, desc: &#39;Setting name.&#39;},
+      {name: &#39;value&#39;, desc: &#39;New value of a setting.&#39;}
     ]
-  }, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">args</span>)</span>{
-      <span class="hljs-built_in">console</span>.log(args);
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.config);
+  }, function(args){
+      console.log(args);
+      console.log(this.config);
 });
 </code></pre>
 <p>执行命令：<code>hexo test run 123</code>，可看到执行结果</p>
 <h3 id="header-20">Deploy</h3>
 <ul>
 <li>下载插件<code>npm install hexo-deployer-git --save</code></li>
-<li><code>_config.yml</code>配置部署到github上（也可配置部署到其他地方）：<pre><code class="nullyaml"><span class="hljs-attr">  deploy:</span>
-<span class="hljs-attr">    type:</span> <span class="hljs-string">git</span> 
-<span class="hljs-attr">    repository:</span> <span class="hljs-attr">https://github.com/xxx/xxx.github.io</span>
-<span class="hljs-attr">    branch:</span> <span class="hljs-string">master</span>
+<li><code>_config.yml</code>配置部署到github上（也可配置部署到其他地方）：<pre><code class="lang-yaml">  deploy:
+    type: git 
+    repository: https://github.com/xxx/xxx.github.io
+    branch: master
 </code></pre>
 </li>
 <li>执行 <code>hexo deploy</code></li>
@@ -483,57 +482,57 @@ gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><sp
 </ul>
 <p>一些generator配置举例：</p>
 <ul>
-<li>hexo-generator-archive<pre><code class="nullyaml"><span class="hljs-attr">archive_generator:</span>
-<span class="hljs-attr">  per_page:</span> <span class="hljs-number">10</span>
-<span class="hljs-attr">  yearly:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  monthly:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">  daily:</span> <span class="hljs-literal">false</span>
+<li>hexo-generator-archive<pre><code class="lang-yaml">archive_generator:
+  per_page: 10
+  yearly: true
+  monthly: false
+  daily: false
 </code></pre>
 </li>
-<li>hexo-generator-tag<pre><code class="nullyaml"><span class="hljs-attr">tag_generator:</span>
-<span class="hljs-attr">  per_page:</span> <span class="hljs-number">0</span>
+<li>hexo-generator-tag<pre><code class="lang-yaml">tag_generator:
+  per_page: 0
 </code></pre>
 </li>
 </ul>
 <h2 id="header-23">3. 应用扩展</h2>
 <h3 id="header-24">tagCloud</h3>
 <p>Hexo的Helper功能已有内置的生成tagcloud的方法<code>tagcloud([tags], [options])</code>可直接调用，比如：</p>
-<pre><code class="nulljavascript">&lt;%- tagcloud({<span class="hljs-attr">min_font</span>: <span class="hljs-number">12</span>, <span class="hljs-attr">max_font</span>: <span class="hljs-number">30</span>, <span class="hljs-attr">amount</span>: <span class="hljs-number">200</span>, <span class="hljs-attr">color</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">start_color</span>: <span class="hljs-string">'#ccc'</span>, <span class="hljs-attr">end_color</span>: <span class="hljs-string">'#111'</span>})%&gt;
+<pre><code class="lang-javascript">&lt;%- tagcloud({min_font: 12, max_font: 30, amount: 200, color: true, start_color: &#39;#ccc&#39;, end_color: &#39;#111&#39;})%&gt;
 </code></pre>
 <h3 id="header-25">toc</h3>
 <p>Hexo的Helper功能已有内置的toc的方法<code>toc(str, [options])</code>可直接调用，比如：</p>
-<pre><code class="nulljavascript">&lt;%-toc(page.content, { <span class="hljs-string">"class"</span>: <span class="hljs-string">"nav"</span>, <span class="hljs-attr">list_number</span>: theme.toc.number })%&gt;
+<pre><code class="lang-javascript">&lt;%-toc(page.content, { &quot;class&quot;: &quot;nav&quot;, list_number: theme.toc.number })%&gt;
 </code></pre>
 <h3 id="header-26">feed</h3>
 <ul>
-<li>下载插件：<pre><code class="nullvim">&gt; npm install hexo-generator-feed --save
+<li>下载插件：<pre><code class="lang-vim">&gt; npm install hexo-generator-feed --save
 </code></pre>
 </li>
 <li><p><code>_config.yml</code>中配置：</p>
-<pre><code class="nullyaml"><span class="hljs-attr">sitemap:</span>
-<span class="hljs-attr">  path:</span> <span class="hljs-string">sitemap.xml</span>
+<pre><code class="lang-yaml">sitemap:
+  path: sitemap.xml
 </code></pre>
 </li>
 <li><p>模板文件中添加Link：</p>
-<pre><code>&lt;a href="&lt;%- url_for(site.data.about.rss)%&gt;" target="_blank"&gt;
-  &lt;span class="icon-rss"&gt;&lt;/span&gt;
+<pre><code>&lt;a href=&quot;&lt;%- url_for(site.data.about.rss)%&gt;&quot; target=&quot;_blank&quot;&gt;
+  &lt;span class=&quot;icon-rss&quot;&gt;&lt;/span&gt;
 &lt;/a&gt;
 </code></pre></li>
 <li>可以修改<code>hexo-generator-feed</code>下的模板文件<code>atom.ejs</code>或<code>rss2.ejs</code></li>
 </ul>
 <h3 id="header-27">sitemap</h3>
 <ul>
-<li>下载插件：<pre><code class="nullvim">&gt; npm install hexo-generator-sitemap --save
+<li>下载插件：<pre><code class="lang-vim">&gt; npm install hexo-generator-sitemap --save
 </code></pre>
 </li>
-<li>配置：<pre><code class="nullyaml"><span class="hljs-attr">feed:</span>
-<span class="hljs-attr">type:</span> <span class="hljs-string">atom</span>
-<span class="hljs-attr">path:</span> <span class="hljs-string">atom.xml</span>
-<span class="hljs-comment">#limit: 20</span>
+<li>配置：<pre><code class="lang-yaml">feed:
+type: atom
+path: atom.xml
+#limit: 20
 </code></pre>
 </li>
-<li>模板文件中添加Link：<pre><code>&lt;a href="&lt;%- url_for(site.data.about.rss)%&gt;" target="_blank"&gt;
-  &lt;span class="icon-rss"&gt;&lt;/span&gt;
+<li>模板文件中添加Link：<pre><code>&lt;a href=&quot;&lt;%- url_for(site.data.about.rss)%&gt;&quot; target=&quot;_blank&quot;&gt;
+  &lt;span class=&quot;icon-rss&quot;&gt;&lt;/span&gt;
 &lt;/a&gt;
 </code></pre></li>
 <li>可以修改<code>hexo-generator-sitemap</code>下的模板文件<code>sitemap.ejs</code></li>
@@ -541,121 +540,121 @@ gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><sp
 <h3 id="header-28">Comments</h3>
 <h4 id="header-29">Disqus</h4>
 <p><a href="https://disqus.com/" target="_blank" rel="noopener">官网</a> | <a href="http://segmentfault.com/a/119000000280767" target="_blank" rel="noopener">Disqus进阶使用</a></p>
-<pre><code class="nullhtml">
-// disqus默认将数据加载到id为'disqus_thread'的容器中，可配置disqus_container_id改变
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"disqus_thread"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">noscript</span>&gt;</span>Please enable JavaScript to view the <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://disqus.com/?ref_noscript"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"nofollow"</span>&gt;</span>comments powered by Disqus.<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">noscript</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="lang-html">
+// disqus默认将数据加载到id为&#39;disqus_thread&#39;的容器中，可配置disqus_container_id改变
+&lt;div id=&quot;disqus_thread&quot;&gt;
+    &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;/div&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
-    <span class="hljs-comment">/* * *配置变量：可被添加在embed.js脚本之前的任何地方* * */</span>
-    <span class="hljs-comment">// Required - Replace example with your forum shortname （在Dsiqus上设置的论坛短名）</span>
-    <span class="hljs-keyword">var</span> disqus_shortname = <span class="hljs-string">'example'</span>; 
+&lt;script type=&quot;text/javascript&quot;&gt;
+    /* * *配置变量：可被添加在embed.js脚本之前的任何地方* * */
+    // Required - Replace example with your forum shortname （在Dsiqus上设置的论坛短名）
+    var disqus_shortname = &#39;example&#39;; 
 
-    <span class="hljs-comment">//Recomand - a unique URL for each page where Disqus is present（文章网址）</span>
-    <span class="hljs-keyword">var</span> disqus_url =<span class="hljs-string">'xxxx'</span> 
+    //Recomand - a unique URL for each page where Disqus is present（文章网址）
+    var disqus_url =&#39;xxxx&#39; 
 
-    <span class="hljs-comment">//Recomand - a unique identifier for each page where Disqus is present（可以配置为article.id）</span>
-    <span class="hljs-keyword">var</span> disqus_identifier =<span class="hljs-string">'xxxx'</span>;
+    //Recomand - a unique identifier for each page where Disqus is present（可以配置为article.id）
+    var disqus_identifier =&#39;xxxx&#39;;
 
-     <span class="hljs-comment">// a unique title for each page where Disqus is present（可配置为article.title ）</span>
-    <span class="hljs-keyword">var</span> disqus_title = <span class="hljs-string">'xxx'</span>;
+     // a unique title for each page where Disqus is present（可配置为article.title ）
+    var disqus_title = &#39;xxx&#39;;
 
-    <span class="hljs-comment">//可以在Settings &gt; advanced页面或者使用我们的（分类）API来创建新分类</span>
-    <span class="hljs-keyword">var</span> disqus_category_id = <span class="hljs-string">'123456'</span>; 
+    //可以在Settings &gt; advanced页面或者使用我们的（分类）API来创建新分类
+    var disqus_category_id = &#39;123456&#39;; 
 
-    <span class="hljs-comment">/* * * DON'T EDIT BELOW THIS LINE * * */</span>
-    (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> dsq = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>); dsq.type = <span class="hljs-string">'text/javascript'</span>; dsq.async = <span class="hljs-literal">true</span>;
-        dsq.src = <span class="hljs-string">'//'</span> + disqus_shortname + <span class="hljs-string">'.disqus.com/embed.js'</span>;
-        (<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>] || <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>]).appendChild(dsq);
+    /* * * DON&#39;T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement(&#39;script&#39;); dsq.type = &#39;text/javascript&#39;; dsq.async = true;
+        dsq.src = &#39;//&#39; + disqus_shortname + &#39;.disqus.com/embed.js&#39;;
+        (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(dsq);
     })();
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+&lt;/script&gt;
 </code></pre>
 <p><strong>评论计数</strong></p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"disqus-comment-count"</span> <span class="hljs-attr">data-disqus-url</span>=<span class="hljs-string">"http://example.com/path-to-thread/"</span>&gt;</span> <span class="hljs-comment">&lt;!-- Count will be inserted here --&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<pre><code class="lang-html">&lt;span class=&quot;disqus-comment-count&quot; data-disqus-url=&quot;http://example.com/path-to-thread/&quot;&gt; &lt;!-- Count will be inserted here --&gt; &lt;/span&gt;
 或
-<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"disqus-comment-count"</span> <span class="hljs-attr">data-disqus-identifier</span>=<span class="hljs-string">"your_disqus_identifier"</span>&gt;</span> <span class="hljs-comment">&lt;!-- Count will be inserted here --&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+&lt;span class=&quot;disqus-comment-count&quot; data-disqus-identifier=&quot;your_disqus_identifier&quot;&gt; &lt;!-- Count will be inserted here --&gt; &lt;/span&gt;
 </code></pre>
 <h4 id="header-30">多说</h4>
 <p><a href="http://duoshuo.com/" target="_blank" rel="noopener">官网</a> | <a href="http://dev.duoshuo.com/docs/512d6e2e418847315a000001" target="_blank" rel="noopener">API</a></p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> duoshuoQuery = {<span class="hljs-attr">short_name</span>:<span class="hljs-string">"xxx"</span>};
-    (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ 
-    <span class="hljs-keyword">var</span> ds = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>); 
-    ds.type = <span class="hljs-string">'text/javascript'</span>;ds.async = <span class="hljs-literal">true</span>; 
-    ds.src = (<span class="hljs-built_in">document</span>.location.protocol == <span class="hljs-string">'https:'</span> ? <span class="hljs-string">'https:'</span> : <span class="hljs-string">'http:'</span>) + <span class="hljs-string">'//static.duoshuo.com/embed.js'</span>; 
-    ds.charset = <span class="hljs-string">'UTF-8'</span>;
-    (<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>] || <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'body'</span>)[<span class="hljs-number">0</span>]).appendChild(ds); })(); 
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<pre><code class="lang-html">&lt;script type=&quot;text/javascript&quot;&gt;
+    var duoshuoQuery = {short_name:&quot;xxx&quot;};
+    (function() { 
+    var ds = document.createElement(&#39;script&#39;); 
+    ds.type = &#39;text/javascript&#39;;ds.async = true; 
+    ds.src = (document.location.protocol == &#39;https:&#39; ? &#39;https:&#39; : &#39;http:&#39;) + &#39;//static.duoshuo.com/embed.js&#39;; 
+    ds.charset = &#39;UTF-8&#39;;
+    (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(ds); })(); 
+&lt;/script&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-thread"</span> 
-    <span class="hljs-attr">data-thread-key</span>=<span class="hljs-string">"请将此处替换成文章在你的站点中的ID"</span> 
-    <span class="hljs-attr">data-title</span>=<span class="hljs-string">"请替换成文章的标题"</span> 
-    <span class="hljs-attr">data-url</span>=<span class="hljs-string">"请替换成文章的网址"</span>
-    <span class="hljs-attr">data-limit</span>=<span class="hljs-string">"单页显示评论数，取值范围:1～200"</span> 
-    <span class="hljs-attr">data-order</span>=<span class="hljs-string">"排序方式，取值：asc(从旧到新),desc(从新到旧)"</span>
-    <span class="hljs-attr">...</span>
-    &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+&lt;div class=&quot;ds-thread&quot; 
+    data-thread-key=&quot;请将此处替换成文章在你的站点中的ID&quot; 
+    data-title=&quot;请替换成文章的标题&quot; 
+    data-url=&quot;请替换成文章的网址&quot;
+    data-limit=&quot;单页显示评论数，取值范围:1～200&quot; 
+    data-order=&quot;排序方式，取值：asc(从旧到新),desc(从新到旧)&quot;
+    ...
+    &gt;&lt;/div&gt;
 </code></pre>
 <p>使用示例：</p>
-<pre><code class="nullhtml">var duoshuoQuery = {short_name:"xxx"};
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">async</span>=<span class="hljs-string">""</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"http://static.duoshuo.com/embed.js"</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<pre><code class="lang-html">var duoshuoQuery = {short_name:&quot;xxx&quot;};
+&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;http://static.duoshuo.com/embed.js&quot; charset=&quot;UTF-8&quot;&gt;&lt;/script&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"ds-thread"</span> 
-    <span class="hljs-attr">data-thread-key</span>=<span class="hljs-string">"&lt;%= page.path %&gt;"</span> 
-    <span class="hljs-attr">data-title</span>=<span class="hljs-string">"&lt;%= page.title %&gt;"</span> 
-    <span class="hljs-attr">data-url</span>=<span class="hljs-string">"&lt;%= page.permalink %&gt;"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+&lt;div className=&quot;ds-thread&quot; 
+    data-thread-key=&quot;&lt;%= page.path %&gt;&quot; 
+    data-title=&quot;&lt;%= page.title %&gt;&quot; 
+    data-url=&quot;&lt;%= page.permalink %&gt;&quot;&gt;
+&lt;/div&gt;
 </code></pre>
 <p><strong>文章评论数：</strong></p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-thread-count"</span> 
-    <span class="hljs-attr">data-thread-key</span>=<span class="hljs-string">"文章在原站点中的id或其他唯一标识"</span> 
-    <span class="hljs-attr">data-count-type</span>=<span class="hljs-string">"comments"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<pre><code class="lang-html">&lt;span class=&quot;ds-thread-count&quot; 
+    data-thread-key=&quot;文章在原站点中的id或其他唯一标识&quot; 
+    data-count-type=&quot;comments&quot;&gt;
+&lt;/span&gt;
 </code></pre>
 <p><strong>最新评论：</strong></p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-recent-comments"</span> 
-    <span class="hljs-attr">data-num-items</span>=<span class="hljs-string">"5"</span> 
-    <span class="hljs-attr">data-show-avatars</span>=<span class="hljs-string">"1"</span> 
-    <span class="hljs-attr">data-show-time</span>=<span class="hljs-string">"1"</span> 
-    <span class="hljs-attr">data-show-title</span>=<span class="hljs-string">"1"</span> 
-    <span class="hljs-attr">data-show-admin</span>=<span class="hljs-string">"1"</span>
-    <span class="hljs-attr">data-excerpt-length</span>=<span class="hljs-string">"70"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="lang-html">&lt;div class=&quot;ds-recent-comments&quot; 
+    data-num-items=&quot;5&quot; 
+    data-show-avatars=&quot;1&quot; 
+    data-show-time=&quot;1&quot; 
+    data-show-title=&quot;1&quot; 
+    data-show-admin=&quot;1&quot;
+    data-excerpt-length=&quot;70&quot;&gt;
+&lt;/div&gt;
 </code></pre>
 <p><strong>热评文章</strong></p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-top-threads"</span> <span class="hljs-attr">data-range</span>=<span class="hljs-string">"daily"</span> <span class="hljs-attr">data-num-items</span>=<span class="hljs-string">"5"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="lang-html">&lt;div class=&quot;ds-top-threads&quot; data-range=&quot;daily&quot; data-num-items=&quot;5&quot;&gt;&lt;/div&gt;
 </code></pre>
 <h3 id="header-31">Search</h3>
 <p>站内搜索功能 （注意：尽量完善网站的sitemap）</p>
 <h4 id="header-32">Swiftype</h4>
 <p><a href="https://swiftype.com/" target="_blank" rel="noopener">官网</a> | <a href="http://opiece.me/2015/04/16/site-search-by-swiftype/" target="_blank" rel="noopener">使用swiftype实现站内搜索</a> | <a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype.html" target="_blank" rel="noopener">利用swiftype为hexo添加站内搜索</a></p>
 <p>注意：配置搜索方式和搜索框等内容（在官网上配置）</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
-  (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">w,d,t,u,n,s,e</span>)</span>{w[<span class="hljs-string">'SwiftypeObject'</span>]=n;w[n]=w[n]||<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-  (w[n].q=w[n].q||[]).push(<span class="hljs-built_in">arguments</span>);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[<span class="hljs-number">0</span>];s.async=<span class="hljs-number">1</span>;s.src=u;e.parentNode.insertBefore(s,e);
-  })(<span class="hljs-built_in">window</span>,<span class="hljs-built_in">document</span>,<span class="hljs-string">'script'</span>,<span class="hljs-string">'//s.swiftypecdn.com/install/v2/st.js'</span>,<span class="hljs-string">'_st'</span>);
+<pre><code class="lang-html">&lt;script type=&quot;text/javascript&quot;&gt;
+  (function(w,d,t,u,n,s,e){w[&#39;SwiftypeObject&#39;]=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,&#39;script&#39;,&#39;//s.swiftypecdn.com/install/v2/st.js&#39;,&#39;_st&#39;);
 
-  _st(<span class="hljs-string">'install'</span>,<span class="hljs-string">'xxxx'</span>,<span class="hljs-string">'2.0.0'</span>);  <span class="hljs-comment">//xxxx为userID</span>
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  _st(&#39;install&#39;,&#39;xxxx&#39;,&#39;2.0.0&#39;);  //xxxx为userID
+&lt;/script&gt;
 </code></pre>
 <p>比如：<br>在官网上配置了使用searchfield的selector为<code>#hexoTest-search-field</code>，则在页面中可以这样写</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"hexoTest-search-field"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Search<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<pre><code class="lang-html">&lt;form&gt;
+    &lt;input type=&quot;text&quot; id=&quot;hexoTest-search-field&quot; /&gt;
+    &lt;button type=&quot;submit&quot;&gt;Search&lt;/button&gt;
+&lt;/form&gt;
 </code></pre>
 <h4 id="header-33">TinySou</h4>
 <p><a href="http://tinysou.com/" target="_blank" rel="noopener">微搜索</a> (与Swiftype设置类似)</p>
 <pre><code>&lt;script&gt;
     var customRenderActFunction = function(item) {
-      var out = '&lt;p class="title"&gt;' + item['document']['title'].split(" // ")[0] + '&lt;/p&gt;';
+      var out = &#39;&lt;p class=&quot;title&quot;&gt;&#39; + item[&#39;document&#39;][&#39;title&#39;].split(&quot; // &quot;)[0] + &#39;&lt;/p&gt;&#39;;
       return out;
     };
     var option = {
-      engineKey: 'xxxx',     // 设置自己的 tinysou_Key
+      engineKey: &#39;xxxx&#39;,     // 设置自己的 tinysou_Key
       renderActFunction: customRenderActFunction
     };
     (function(w,d,t,u,n,s,e){
@@ -667,11 +666,11 @@ gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><sp
       };
       e = d.getElementsByTagName(t)[0];
       e.parentNode.insertBefore(s, e);
-    })(window,document,'script','//tinysou-cdn.b0.upaiyun.com/ts.js','_ts');
+    })(window,document,&#39;script&#39;,&#39;//tinysou-cdn.b0.upaiyun.com/ts.js&#39;,&#39;_ts&#39;);
     _ts(option);
 &lt;/script&gt;
 </code></pre><pre><code>&lt;form&gt;
-  &lt;input type="text" id="ts-search-input"&gt;
+  &lt;input type=&quot;text&quot; id=&quot;ts-search-input&quot;&gt;
 &lt;/form&gt;
 </code></pre><h4 id="header-34">Google</h4>
 <p><a href="https://cse.google.com/cse/create/new?hl=zh-CN" target="_blank" rel="noopener">官网</a> | <a href="http://lulee007.gitcafe.io/2016/01/23/Hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E9%85%8D%E7%BD%AE%E4%B9%8B-%E4%B8%BA%E8%87%AA%E5%B7%B1%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/" target="_blank" rel="noopener">Google 站内搜索博文</a></p>
@@ -682,23 +681,23 @@ gulp.task(<span class="hljs-string">"ejs"</span>,<span class="hljs-function"><sp
 <ul>
 <li>添加JS代码<pre><code>&lt;script&gt;
 (function() {
-  var cx = 'xxx';     // 生成的唯一id
-  var gcse = document.createElement('script');
-  gcse.type = 'text/javascript';
+  var cx = &#39;xxx&#39;;     // 生成的唯一id
+  var gcse = document.createElement(&#39;script&#39;);
+  gcse.type = &#39;text/javascript&#39;;
   gcse.async = true;
-  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-      '//cse.google.com/cse.js?cx=' + cx;
-  var s = document.getElementsByTagName('script')[0];
+  gcse.src = (document.location.protocol == &#39;https:&#39; ? &#39;https:&#39; : &#39;http:&#39;) +
+      &#39;//cse.google.com/cse.js?cx=&#39; + cx;
+  var s = document.getElementsByTagName(&#39;script&#39;)[0];
   s.parentNode.insertBefore(gcse, s);
 })();
 &lt;/script&gt;
 </code></pre></li>
 <li><p>页面中添加：</p>
-<pre><code class="nullhtml"><span class="hljs-comment">&lt;!--搜索框-&gt;
+<pre><code class="lang-html">&lt;!--搜索框-&gt;
 &lt;gcse:searchbox-only&gt;&lt;/gcse:searchbox-only&gt;
 
-&lt;!--搜索结果--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">gcse:searchresults-only</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">gcse:searchresults-only</span>&gt;</span>
+&lt;!--搜索结果--&gt;
+&lt;gcse:searchresults-only&gt;&lt;/gcse:searchresults-only&gt;
 </code></pre>
 </li>
 <li><p>可自己添加Search样式，例如：</p>
@@ -719,16 +718,16 @@ margin: 0px 0 !important;
 </li>
 <li><p>不嵌入到网站中（link到搜索引擎页面进行搜索）</p>
 <ul>
-<li>Hexo的Helper已有此功能：<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"search-form-wrap"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">search_form</span>() %&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<li>Hexo的Helper已有此功能：<pre><code class="lang-html">&lt;div id=&quot;search-form-wrap&quot;&gt;
+      &lt;%- search_form() %&gt;
+&lt;/div&gt;
 </code></pre>
 </li>
-<li>或自己添加<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"//google.com/search"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"get"</span> <span class="hljs-attr">accept-charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"search"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"q"</span> <span class="hljs-attr">results</span>=<span class="hljs-string">"0"</span> &gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"hidden"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sitesearch"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"xxx"</span>&gt;</span> 
-  <span class="hljs-comment">&lt;!-- 这里value为自己site的url --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<li>或自己添加<pre><code class="lang-html">&lt;form action=&quot;//google.com/search&quot; method=&quot;get&quot; accept-charset=&quot;UTF-8&quot;&gt;
+  &lt;input type=&quot;search&quot; name=&quot;q&quot; results=&quot;0&quot; &gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;sitesearch&quot; value=&quot;xxx&quot;&gt; 
+  &lt;!-- 这里value为自己site的url --&gt;
+&lt;/form&gt;
 </code></pre>
 </li>
 </ul>
@@ -738,59 +737,59 @@ margin: 0px 0 !important;
 <h3 id="header-35">Share</h3>
 <p>可以自己拼接分享URL来实现分享功能，这里介绍两种现有的分享功能</p>
 <p><a href="http://share.baidu.com/code" target="_blank" rel="noopener">百度分享</a></p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bdsharebuttonbox"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_qzone"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"qzone"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"分享到QQ空间"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_tsina"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"tsina"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"分享到新浪微博"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_tqq"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"tqq"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"分享到腾讯微博"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_renren"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"renren"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"分享到人人网"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_weixin"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"weixin"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"分享到微信"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_fbook"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"fbook"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"分享到Facebook"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_twi"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"twi"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"分享到Twitter"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_more"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"more"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"bds_count"</span> <span class="hljs-attr">data-cmd</span>=<span class="hljs-string">"count"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="lang-html">&lt;div class=&quot;bdsharebuttonbox&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_qzone&quot; data-cmd=&quot;qzone&quot; title=&quot;分享到QQ空间&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_tsina&quot; data-cmd=&quot;tsina&quot; title=&quot;分享到新浪微博&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_tqq&quot; data-cmd=&quot;tqq&quot; title=&quot;分享到腾讯微博&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_renren&quot; data-cmd=&quot;renren&quot; title=&quot;分享到人人网&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_weixin&quot; data-cmd=&quot;weixin&quot; title=&quot;分享到微信&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_fbook&quot; data-cmd=&quot;fbook&quot; title=&quot;分享到Facebook&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_twi&quot; data-cmd=&quot;twi&quot; title=&quot;分享到Twitter&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_more&quot; data-cmd=&quot;more&quot;&gt;&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;bds_count&quot; data-cmd=&quot;count&quot;&gt;&lt;/a&gt;
+&lt;/div&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-<span class="hljs-built_in">window</span>._bd_share_config={
-    <span class="hljs-string">"common"</span>:{
-        <span class="hljs-string">"bdSnsKey"</span>:{},
-        <span class="hljs-string">"bdText"</span>:<span class="hljs-string">""</span>,
-        <span class="hljs-string">"bdMini"</span>:<span class="hljs-string">"1"</span>,
-        <span class="hljs-string">"bdMiniList"</span>:<span class="hljs-literal">false</span>,
-        <span class="hljs-string">"bdPic"</span>:<span class="hljs-string">""</span>,
-        <span class="hljs-string">"bdStyle"</span>:<span class="hljs-string">"0"</span>,
-        <span class="hljs-string">"bdSize"</span>:<span class="hljs-string">"16"</span>
+&lt;script&gt;
+window._bd_share_config={
+    &quot;common&quot;:{
+        &quot;bdSnsKey&quot;:{},
+        &quot;bdText&quot;:&quot;&quot;,
+        &quot;bdMini&quot;:&quot;1&quot;,
+        &quot;bdMiniList&quot;:false,
+        &quot;bdPic&quot;:&quot;&quot;,
+        &quot;bdStyle&quot;:&quot;0&quot;,
+        &quot;bdSize&quot;:&quot;16&quot;
         },
-<span class="hljs-string">"slide"</span>:{
-    <span class="hljs-string">"type"</span>:<span class="hljs-string">"slide"</span>,
-    <span class="hljs-string">"bdImg"</span>:<span class="hljs-string">"3"</span>,
-    <span class="hljs-string">"bdPos"</span>:<span class="hljs-string">"left"</span>,
-    <span class="hljs-string">"bdTop"</span>:<span class="hljs-string">"250"</span>
+&quot;slide&quot;:{
+    &quot;type&quot;:&quot;slide&quot;,
+    &quot;bdImg&quot;:&quot;3&quot;,
+    &quot;bdPos&quot;:&quot;left&quot;,
+    &quot;bdTop&quot;:&quot;250&quot;
     }
 };
-<span class="hljs-keyword">with</span>(<span class="hljs-built_in">document</span>)<span class="hljs-number">0</span>[
-(getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>]||body)
-.appendChild(createElement(<span class="hljs-string">'script'</span>))
-.src=<span class="hljs-string">'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='</span>+~(-<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()/<span class="hljs-number">36e5</span>)
+with(document)0[
+(getElementsByTagName(&#39;head&#39;)[0]||body)
+.appendChild(createElement(&#39;script&#39;))
+.src=&#39;http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=&#39;+~(-new Date()/36e5)
 ];
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+&lt;/script&gt;
 </code></pre>
 <p><a href="http://dev.duoshuo.com/docs/4ff28d6f552860f21f00000c" target="_blank" rel="noopener">多说分享</a></p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-share-inline"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>  <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-share-icons-16"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">data-toggle</span>=<span class="hljs-string">"ds-share-icons-more"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-more"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span>&gt;</span>分享到：<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-weibo"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span> <span class="hljs-attr">data-service</span>=<span class="hljs-string">"weibo"</span>&gt;</span>微博<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-qzone"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span> <span class="hljs-attr">data-service</span>=<span class="hljs-string">"qzone"</span>&gt;</span>QQ空间<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-qqt"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span> <span class="hljs-attr">data-service</span>=<span class="hljs-string">"qqt"</span>&gt;</span>腾讯微博<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-wechat"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"javascript:void(0);"</span> <span class="hljs-attr">data-service</span>=<span class="hljs-string">"wechat"</span>&gt;</span>微信<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ds-share-icons-more"</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<pre><code class="lang-html">&lt;div class=&quot;ds-share-inline&quot;&gt;
+    &lt;ul  class=&quot;ds-share-icons-16&quot;&gt;
+      &lt;li data-toggle=&quot;ds-share-icons-more&quot;&gt;&lt;a class=&quot;ds-more&quot; href=&quot;javascript:void(0);&quot;&gt;分享到：&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class=&quot;ds-weibo&quot; href=&quot;javascript:void(0);&quot; data-service=&quot;weibo&quot;&gt;微博&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class=&quot;ds-qzone&quot; href=&quot;javascript:void(0);&quot; data-service=&quot;qzone&quot;&gt;QQ空间&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class=&quot;ds-qqt&quot; href=&quot;javascript:void(0);&quot; data-service=&quot;qqt&quot;&gt;腾讯微博&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a class=&quot;ds-wechat&quot; href=&quot;javascript:void(0);&quot; data-service=&quot;wechat&quot;&gt;微信&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class=&quot;ds-share-icons-more&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
-<span class="hljs-comment">//JS代码（同多说评论）</span>
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+&lt;script&gt;
+//JS代码（同多说评论）
+&lt;/script&gt;
 </code></pre>
 <h3 id="header-36">Analytics</h3>
 <p>Google Analytics <a href="https://www.google.com/analytics/" target="_blank" rel="noopener">官网</a> | <a href="https://support.google.com/analytics/answer/1008080?hl=zh-Hans" target="_blank" rel="noopener">Doc</a> | <a href="https://maskray.me/blog/2013-08-19-popular-posts-with-google-analytics-api" target="_blank" rel="noopener">博文</a></p>
@@ -798,16 +797,16 @@ margin: 0px 0 !important;
 <li>在Google Analytics官网上注册，配置（网站域名），获取JS代码</li>
 <li>将JS代码Copy到Hexo的模板文件中</li>
 <li><p>一些Theme已集成了Google Analytics，比如 landscape （放置在<code>&lt;head&gt;</code>中）：</p>
-<pre><code class="nullhtml">  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="javascript">
-      (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i,s,o,g,r,a,m</span>)</span>{i[<span class="hljs-string">'GoogleAnalyticsObject'</span>]=r;i[r]=i[r]||<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-      (i[r].q=i[r].q||[]).push(<span class="hljs-built_in">arguments</span>)},i[r].l=<span class="hljs-number">1</span>*<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[<span class="hljs-number">0</span>];a.async=<span class="hljs-number">1</span>;a.src=g;m.parentNode.insertBefore(a,m)
-      })(<span class="hljs-built_in">window</span>,<span class="hljs-built_in">document</span>,<span class="hljs-string">'script'</span>,<span class="hljs-string">'//www.google-analytics.com/analytics.js'</span>,<span class="hljs-string">'ga'</span>);
+<pre><code class="lang-html">  &lt;script type=&quot;text/javascript&quot;&gt;
+      (function(i,s,o,g,r,a,m){i[&#39;GoogleAnalyticsObject&#39;]=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,&#39;script&#39;,&#39;//www.google-analytics.com/analytics.js&#39;,&#39;ga&#39;);
 
-      ga(<span class="hljs-string">'create'</span>, <span class="hljs-string">'xxxx'</span>, <span class="hljs-string">'auto'</span>);  <span class="hljs-comment">// xxx为注册配置后生成的唯一id</span>
-      ga(<span class="hljs-string">'send'</span>, <span class="hljs-string">'pageview'</span>);
+      ga(&#39;create&#39;, &#39;xxxx&#39;, &#39;auto&#39;);  // xxx为注册配置后生成的唯一id
+      ga(&#39;send&#39;, &#39;pageview&#39;);
 
-  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+  &lt;/script&gt;
 </code></pre>
 </li>
 </ul>
@@ -815,30 +814,30 @@ margin: 0px 0 !important;
 <h2 id="header-37">4. 源码概要</h2>
 <p>可参考Hexo官方<a href="https://hexo.io/zh-cn/api/" target="_blank" rel="noopener">API</a></p>
 <h3 id="header-38">4.1 基础目录</h3>
-<pre><code class="nullvim">├── _config.yml
+<pre><code class="lang-vim">├── _config.yml
 ├── package.json
 ├── scaffolds/
 ├── scripts/
-├── <span class="hljs-keyword">source</span>/
+├── source/
 |   ├── _drafts
 |   └── _posts
 └── themes/
     └── landscape/
                 └── layout
                 └── scripts
-                └── <span class="hljs-keyword">source</span>
+                └── source
                 └──_config.yml
 </code></pre>
 <h3 id="header-39">4.2 Hexo Core</h3>
 <p>主要在 <code>/node_modules/hexo/lib/hexo</code>下：<br>index.js 核心： (默认配置文件default_config.js)</p>
-<pre><code class="nulljavascript">  <span class="hljs-keyword">return</span> loadDatabase(<span class="hljs-keyword">this</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Promise</span>.all([
-      <span class="hljs-comment">//调用processor</span>
+<pre><code class="lang-javascript">  return loadDatabase(this).then(function(){
+    return Promise.all([
+      //调用processor
       self.source.process(),
       self.theme.process()
     ]);
-  }).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">return</span> self._generate({<span class="hljs-attr">cache</span>: <span class="hljs-literal">true</span>});
+  }).then(function(){
+    return self._generate({cache: true});
   }).nodeify(callback);
 </code></pre>
 <ul>
@@ -852,11 +851,11 @@ margin: 0px 0 !important;
 <ol>
 <li><p>Hexo中的 <code>database</code>,<code>model</code>类是由 node module <code>warehouse</code>  定义的（具体可参考warehouse的源码）</p>
 <ul>
-<li>在Hexo中创建database和注册models对象的代码如下 （index.js中）<pre><code class="nulljavascript"><span class="hljs-keyword">this</span>.database = <span class="hljs-keyword">new</span> Database({
-  <span class="hljs-attr">version</span>: dbVersion,
-  <span class="hljs-attr">path</span>: pathFn.join(base, <span class="hljs-string">'db.json'</span>)
+<li>在Hexo中创建database和注册models对象的代码如下 （index.js中）<pre><code class="lang-javascript">this.database = new Database({
+  version: dbVersion,
+  path: pathFn.join(base, &#39;db.json&#39;)
 });
-registerModels(<span class="hljs-keyword">this</span>);
+registerModels(this);
 </code></pre>
 </li>
 <li>在<code>filter:before_exit</code>时save database对象到<code>file:/db.json</code></li>
@@ -906,11 +905,11 @@ registerModels(<span class="hljs-keyword">this</span>);
 <li><p>在布局页面渲染时会将<code>Locals</code>传入，这样就可在布局页面中使用这些变量</p>
 <ul>
 <li><p>例如：后面介绍的Hexo Variables中的全局对象<code>site</code>，是通过如下代码设置的</p>
-<pre><code class="nulljavascript"><span class="hljs-comment">//after do filter:before_generate</span>
+<pre><code class="lang-javascript">//after do filter:before_generate
 self.locals.invalidate();
 siteLocals = self.locals.toObject();
 Locals.prototype.site = siteLocals;
-<span class="hljs-comment">//Run Generators （每个generator.call(self,siteLocals) ）</span>
+//Run Generators （每个generator.call(self,siteLocals) ）
 ...
 </code></pre>
 </li>
@@ -1118,26 +1117,26 @@ Locals.prototype.site = siteLocals;
 <li>只要<code>layout</code>未设置为false，theme layout下有layout模板都会和其他布局结合使用</li>
 </ol>
 <p><strong>4. 举例：某theme的layout目录下</strong></p>
-<pre><code class="nullhtml"><span class="hljs-comment">&lt;!-- layout.ejs --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">body</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+<pre><code class="lang-html">&lt;!-- layout.ejs --&gt;
+&lt;html&gt;
+  &lt;body&gt;&lt;%- body %&gt;&lt;/body&gt;
+&lt;/html&gt;
 
-<span class="hljs-comment">&lt;!-- index.ejs --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+&lt;!-- index.ejs --&gt;
+&lt;h1&gt;Welcome!&lt;/h1&gt;
 
-<span class="hljs-comment">&lt;!-- page.ejs --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=page.title%</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-page.content%</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+&lt;!-- page.ejs --&gt;
+&lt;h1&gt;&lt;%=page.title%&gt;&lt;h1&gt;
+&lt;p&gt;&lt;%-page.content%&gt;&lt;/p&gt;
 
-<span class="hljs-comment">&lt;!-- post.ejs --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=page.title%</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">list_tags</span>(<span class="hljs-attr">page.tags</span>)%&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-page.content%</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+&lt;!-- post.ejs --&gt;
+&lt;h1&gt;&lt;%=page.title%&gt;&lt;h1&gt;
+&lt;%- list_tags(page.tags)%&gt;
+&lt;p&gt;&lt;%-page.content%&gt;&lt;/p&gt;
 
-<span class="hljs-comment">&lt;!-- about.ejs --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%-page.content%</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+&lt;!-- about.ejs --&gt;
+&lt;h1&gt;About&lt;/h1&gt;
+&lt;p&gt;&lt;%-page.content%&gt;&lt;/p&gt;
 
 ...
 </code></pre>
@@ -1184,7 +1183,7 @@ Locals.prototype.site = siteLocals;
 </table>
 <h2 id="header-45">5. Hexo Variables</h2>
 <p>以下这些变量，来自｀Locals｀，在theme的布局文件render时传递进去（具体可参考<code>/node_modules/hexo/lib/theme/view.js</code>）</p>
-<pre><code class="nulljavascript">layoutView.render(layoutLocals, callback);
+<pre><code class="lang-javascript">layoutView.render(layoutLocals, callback);
 </code></pre>
 <h3 id="header-46">5.1. config 配置变量</h3>
 <ul>
@@ -1302,42 +1301,42 @@ Locals.prototype.site = siteLocals;
 <h3 id="header-52">6.2 HTML</h3>
 <ul>
 <li><p><code>partial(name, locals, options)</code> 引入局部模版文件,例如：</p>
-<pre><code class="nullhtml">  <span class="hljs-comment">&lt;!--partial/header.ejs--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"logo"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">config.title</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<pre><code class="lang-html">  &lt;!--partial/header.ejs--&gt;
+  &lt;h1 id=&quot;logo&quot;&gt;&lt;%= config.title %&gt;&lt;/h1&gt;
 
-  <span class="hljs-comment">&lt;!--index.ejs--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">partial</span>('<span class="hljs-attr">partial</span>/<span class="hljs-attr">header</span>') %&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span>Home page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  &lt;!--index.ejs--&gt;
+  &lt;%- partial(&#39;partial/header&#39;) %&gt;
+  &lt;div id=&quot;content&quot;&gt;Home page&lt;/div&gt;
 
-  <span class="hljs-comment">&lt;!-- 生成后: --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"logo"</span>&gt;</span>My Site<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span>Home page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  &lt;!-- 生成后: --&gt;
+  &lt;h1 id=&quot;logo&quot;&gt;My Site&lt;/h1&gt;
+  &lt;div id=&quot;content&quot;&gt;Home page&lt;/div&gt;
 </code></pre>
 </li>
 <li><p><code>css(path,...)</code>,<code>js(path,...)</code></p>
 <ul>
 <li><p>path开头不是/或任何协议，则会自动加上根路径；没有扩展名则会自动加上</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">css</span>('<span class="hljs-attr">style.css</span>') %&gt;</span>
-// <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/style.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
+<pre><code class="lang-html">&lt;%- css(&#39;style.css&#39;) %&gt;
+// &lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; type=&quot;text/css&quot;&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">css</span>(['<span class="hljs-attr">style.css</span>', '<span class="hljs-attr">screen.css</span>']) %&gt;</span>
-// <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/style.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
-// <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/screen.css"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/css"</span>&gt;</span>
+&lt;%- css([&#39;style.css&#39;, &#39;screen.css&#39;]) %&gt;
+// &lt;link rel=&quot;stylesheet&quot; href=&quot;/style.css&quot; type=&quot;text/css&quot;&gt;
+// &lt;link rel=&quot;stylesheet&quot; href=&quot;/screen.css&quot; type=&quot;text/css&quot;&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">js</span>('<span class="hljs-attr">script.js</span>') %&gt;</span> 
-// <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/script.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span> 
-<span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">js</span>(['<span class="hljs-attr">script.js</span>', '<span class="hljs-attr">gallery.js</span>']) %&gt;</span> 
-// <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/script.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span> 
-// <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"/gallery.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+&lt;%- js(&#39;script.js&#39;) %&gt; 
+// &lt;script type=&quot;text/javascript&quot; src=&quot;/script.js&quot;&gt;&lt;/script&gt; 
+&lt;%- js([&#39;script.js&#39;, &#39;gallery.js&#39;]) %&gt; 
+// &lt;script type=&quot;text/javascript&quot; src=&quot;/script.js&quot;&gt;&lt;/script&gt; 
+// &lt;script type=&quot;text/javascript&quot; src=&quot;/gallery.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p><code>link_to(path,[text],[options])</code>,<code>mail_to(path,[text],[options])</code></p>
-<pre><code class="nullhtml">  <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">link_to</span>(‘<span class="hljs-attr">http:</span>//<span class="hljs-attr">www.google.com</span>‘, ‘<span class="hljs-attr">Google</span>’, {<span class="hljs-attr">external:</span> <span class="hljs-attr">true</span>, <span class="hljs-attr">class:</span> “<span class="hljs-attr">link</span>”}) %&gt;</span>
+<pre><code class="lang-html">  &lt;%- link_to(‘http://www.google.com‘, ‘Google’, {external: true, class: “link”}) %&gt;
   // Google
 
-  <span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">mail_to</span>(‘<span class="hljs-attr">a</span>@<span class="hljs-attr">abc.com</span>’, ‘<span class="hljs-attr">Email</span>’) %&gt;</span>
+  &lt;%- mail_to(‘a@abc.com’, ‘Email’) %&gt;
   // Email
 </code></pre>
 </li>
@@ -1378,23 +1377,23 @@ Locals.prototype.site = siteLocals;
 </ul>
 </li>
 </ul>
-<pre><code class="nullhtml">&lt;!-- String --&gt;
-&lt;%- strip_html('It's not &lt;b&gt;important&lt;/b&gt; anymore!') %&gt; 
-// It's not important anymore!
+<pre><code class="lang-html">&lt;!-- String --&gt;
+&lt;%- strip_html(&#39;It&#39;s not &lt;b&gt;important&lt;/b&gt; anymore!&#39;) %&gt; 
+// It&#39;s not important anymore!
 
-&lt;%- titlecase('this is an apple') %&gt; 
+&lt;%- titlecase(&#39;this is an apple&#39;) %&gt; 
 // This is an Apple
 
-&lt;%- word_wrap('Once upon a time', 8) %&gt; 
+&lt;%- word_wrap(&#39;Once upon a time&#39;, 8) %&gt; 
 // Once upon\n a time
 
-&lt;%- truncate('Once upon a time in a world far far away', 16) %&gt; 
+&lt;%- truncate(&#39;Once upon a time in a world far far away&#39;, 16) %&gt; 
 // Once upon a time
 
 &lt;!-- Date --&gt;
 &lt;%- date(Date.now()) %&gt; 
 // Jan 1, 2015 
-&lt;%- date(Date.now(), 'YYYY/M/D') %&gt; 
+&lt;%- date(Date.now(), &#39;YYYY/M/D&#39;) %&gt; 
 // 2015/1/1
 
 &lt;%- date_xml(Date.now()) %&gt; 
@@ -1402,13 +1401,13 @@ Locals.prototype.site = siteLocals;
 
 &lt;%- time(Date.now()) %&gt; 
 // 13:05:12 
-&lt;%- time(Date.now(), 'h:mm:ss a') %&gt; 
+&lt;%- time(Date.now(), &#39;h:mm:ss a&#39;) %&gt; 
 // 1:05:12 pm
 
 &lt;%- full_date(new Date()) %&gt; 
 // Jan 1, 2013 0:00:00 
 
-&lt;%- full_date(new Date(), 'dddd, MMMM Do YYYY, h:mm:ss a') %&gt; 
+&lt;%- full_date(new Date(), &#39;dddd, MMMM Do YYYY, h:mm:ss a&#39;) %&gt; 
 // Tuesday, January 1st 2013, 12:00:00 am
 </code></pre>
 <h3 id="header-55">6.5 Parse</h3>
@@ -1416,8 +1415,8 @@ Locals.prototype.site = siteLocals;
 <li><p>markdown</p>
 <ul>
 <li><p>使用node module <code>markdown</code> 解析字符串</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">%-</span> <span class="hljs-attr">markdown</span>('<span class="hljs-attr">make</span> <span class="hljs-attr">me</span> **<span class="hljs-attr">strong</span>**') %&gt;</span> 
-// make me <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>strong<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+<pre><code class="lang-html">&lt;%- markdown(&#39;make me **strong**&#39;) %&gt; 
+// make me &lt;strong&gt;strong&lt;/strong&gt;
 </code></pre>
 </li>
 </ul>
@@ -1708,10 +1707,17 @@ Locals.prototype.site = siteLocals;
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

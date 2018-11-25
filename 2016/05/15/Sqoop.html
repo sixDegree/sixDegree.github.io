@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -171,71 +174,71 @@
 </ul>
 <ol>
 <li><p><code>mysql table =&gt; hdfs file</code>:</p>
-<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> use --warehouse-dir</span>
-<span class="hljs-meta"> #</span><span class="bash"> final file: /output/<span class="hljs-built_in">log</span>/part-m-00000</span>
+<pre><code class="lang-shell"> # use --warehouse-dir
+ # final file: /output/log/part-m-00000
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
- --table log --fields-terminated-by ',' \
- --warehouse-dir '/output' \
+ --table log --fields-terminated-by &#39;,&#39; \
+ --warehouse-dir &#39;/output&#39; \
  -m 1
-<span class="hljs-meta">
- #</span><span class="bash"> use --target-dir &amp; query</span>
-<span class="hljs-meta"> #</span><span class="bash"> final file: /output/log_2/part-m-00000</span>
+
+ # use --target-dir &amp; query
+ # final file: /output/log_2/part-m-00000
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop  --username root --P \
- --query "select * from log where \$CONDITIONS" \
+ --query &quot;select * from log where \$CONDITIONS&quot; \
  --target-dir /output/log_2 \
  -m 1  
-<span class="hljs-meta">
- #</span><span class="bash"> use --target-dir &amp; columns &amp; <span class="hljs-built_in">where</span></span>
+
+ # use --target-dir &amp; columns &amp; where
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
  --table log \
- --columns "ip,status,method" \
- --where "status='200' and method in ('GET','POST')"  \
+ --columns &quot;ip,status,method&quot; \
+ --where &quot;status=&#39;200&#39; and method in (&#39;GET&#39;,&#39;POST&#39;)&quot;  \
  -m 1  \
  --target-dir /output/log_3 \
- --fields-terminated-by ","
+ --fields-terminated-by &quot;,&quot;
 </code></pre>
 </li>
 <li><p><code>mysql table =&gt; hive table</code>:</p>
-<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> use hive-import</span>
+<pre><code class="lang-shell"> # use hive-import
  sqoop import 
  --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 
  --table TBLS 
- --fields-terminated-by '\t'  
- --null-string '**'  
+ --fields-terminated-by &#39;\t&#39;  
+ --null-string &#39;**&#39;  
  -m 1 
  --hive-import
-<span class="hljs-meta">
- #</span><span class="bash"> use hive-import &amp; hive-table</span>
+
+ # use hive-import &amp; hive-table
  sqoop import \
  --connect jdbc:mysql://cj.storm:3306/hive  --username root --password cj123 \
  --table TBLS \
- --fields-terminated-by '\t' \
- --null-string '**' \
+ --fields-terminated-by &#39;\t&#39; \
+ --null-string &#39;**&#39; \
  -m 1 \
  --hive-import \
- --hive-table 'tbls_2'
-<span class="hljs-meta">
- #</span><span class="bash"> check hive table</span>
- hive -e 'describe formatted tbls'
- hive -e 'describe formatted tbls_2'
+ --hive-table &#39;tbls_2&#39;
+
+ # check hive table
+ hive -e &#39;describe formatted tbls&#39;
+ hive -e &#39;describe formatted tbls_2&#39;
 </code></pre>
 </li>
 <li><p><code>mysql table schema =&gt; hive table schema</code>:</p>
-<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> just copy table schema (no data)</span>
+<pre><code class="lang-shell"> # just copy table schema (no data)
  sqoop create-hive-table \
  --connect jdbc:mysql://cj.storm:3306/sqoop --username root --password cj123 \
  --table log \
  --hive-table log_sqoop \
- --fields-terminated-by ','
+ --fields-terminated-by &#39;,&#39;
 </code></pre>
 </li>
 </ol>
 <h3 id="header-6">Job</h3>
 <ol>
-<li>create job:<pre><code class="nullshell"> sqoop job \
+<li>create job:<pre><code class="lang-shell"> sqoop job \
  --create myjob \
  -- import --connect jdbc:mysql://cj.storm:3306/hive  --username root -P \
  --table TBLS \
@@ -246,14 +249,14 @@
  --hive-table &#39;tbls_4&#39;
 </code></pre>
 </li>
-<li>exec job:<pre><code class="nullshell"> sqoop job --exec myjob
+<li>exec job:<pre><code class="lang-shell"> sqoop job --exec myjob
 </code></pre>
 </li>
-<li>查看 job:<pre><code class="nullshell"> sqoop job --list
+<li>查看 job:<pre><code class="lang-shell"> sqoop job --list
  sqoop job --show myjob
 </code></pre>
 </li>
-<li>删除 job:<pre><code class="nullshell"> sqoop job --delete myjob
+<li>删除 job:<pre><code class="lang-shell"> sqoop job --delete myjob
 </code></pre>
 </li>
 </ol>
@@ -292,10 +295,17 @@
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

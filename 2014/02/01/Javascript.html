@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -155,13 +158,13 @@
 </li>
 </ul>
 <p>定义类：</p>
-<pre><code class="nulljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>{}
+<pre><code class="lang-js">function Person(){}
 Person.prototype={
-    <span class="hljs-attr">constructor</span>:Person,
-    <span class="hljs-attr">name</span>:<span class="hljs-string">"leon"</span>,
-    <span class="hljs-attr">age</span>:<span class="hljs-number">22</span>,
-    <span class="hljs-attr">say</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-        alert(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">" "</span>+<span class="hljs-keyword">this</span>.age);
+    constructor:Person,
+    name:&quot;leon&quot;,
+    age:22,
+    say:function(){
+        alert(this.name+&quot; &quot;+this.age);
     }
 }
 </code></pre>
@@ -173,14 +176,14 @@ Person.prototype={
 <li>原型内存模型：<br>  <img src="/2014/02/01/prototype-1.png" alt="Prototype"></li>
 </ul>
 <p>创建对象，并测试：</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> p1=<span class="hljs-keyword">new</span> Person();
-p1.say();        <span class="hljs-comment">// leon 22</span>
+<pre><code class="lang-js">var p1=new Person();
+p1.say();        // leon 22
 
-<span class="hljs-keyword">var</span> p2=<span class="hljs-keyword">new</span> Person();
-p2.name=<span class="hljs-string">"Ada"</span>;
+var p2=new Person();
+p2.name=&quot;Ada&quot;;
 
-p1.say();    <span class="hljs-comment">// leon 22</span>
-p2.say();    <span class="hljs-comment">// Ada 22</span>
+p1.say();    // leon 22
+p2.say();    // Ada 22
 </code></pre>
 <ul>
 <li>通过<code>new Person()</code>创建的对象会有一个<code>_prop_</code>属性，指向<code>Person prototype对象</code></li>
@@ -200,16 +203,16 @@ p2.say();    <span class="hljs-comment">// Ada 22</span>
 <li>原型内存模型：<br>  <img src="/2014/02/01/prototype-2.png" alt="Prototype"></li>
 </ul>
 <p>检测对象：</p>
-<pre><code class="nulljs">Person.prototype.isPrototypeOf(p1);        <span class="hljs-comment">//true</span>
-p1.hasOwnProperty(<span class="hljs-string">"name"</span>);                <span class="hljs-comment">//false</span>
-<span class="hljs-comment">//检测某个属性是否在对象中（对象空间或原型空间）</span>
-alert(<span class="hljs-string">"name"</span> <span class="hljs-keyword">in</span> p1);                            <span class="hljs-comment">//true</span>
-alert(<span class="hljs-string">"address"</span> <span class="hljs-keyword">in</span> p2);                        <span class="hljs-comment">//false</span>
+<pre><code class="lang-js">Person.prototype.isPrototypeOf(p1);        //true
+p1.hasOwnProperty(&quot;name&quot;);                //false
+//检测某个属性是否在对象中（对象空间或原型空间）
+alert(&quot;name&quot; in p1);                            //true
+alert(&quot;address&quot; in p2);                        //false
 
-Person.prototype.isPrototypeOf(p2);        <span class="hljs-comment">//true</span>
-p2.hasOwnProperty(<span class="hljs-string">"name"</span>);                <span class="hljs-comment">//true</span>
+Person.prototype.isPrototypeOf(p2);        //true
+p2.hasOwnProperty(&quot;name&quot;);                //true
 
-<span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> prop <span class="hljs-keyword">in</span> p1) { alert(<span class="hljs-string">"p1["</span>+prop+<span class="hljs-string">"]="</span>+p1[prop]); }
+for(var prop in p1) { alert(&quot;p1[&quot;+prop+&quot;]=&quot;+p1[prop]); }
 </code></pre>
 <ul>
 <li><code>isPrototypeOf()</code>：判断某个proptotype对象和某个实例之间的关系</li>
@@ -222,70 +225,70 @@ p2.hasOwnProperty(<span class="hljs-string">"name"</span>);                <span
 </ul>
 <p><strong>注意：</strong></p>
 <p>若在<code>Person prototype对象</code>中定义的属性为引用类型，可能会影响到其他对象获取的值，例如：</p>
-<pre><code class="nulljs">Person.prototype.firends=[<span class="hljs-string">"Tom"</span>,<span class="hljs-string">"Jerry"</span>];
-p1.friends.push(<span class="hljs-string">"LiLi"</span>);
-<span class="hljs-built_in">console</span>.log(p1.friends);    <span class="hljs-comment">//["Tom","Jerry","LiLi"];</span>
-<span class="hljs-built_in">console</span>.log(p2.friends);    <span class="hljs-comment">//["Tom","Jerry","LiLi"];</span>
+<pre><code class="lang-js">Person.prototype.firends=[&quot;Tom&quot;,&quot;Jerry&quot;];
+p1.friends.push(&quot;LiLi&quot;);
+console.log(p1.friends);    //[&quot;Tom&quot;,&quot;Jerry&quot;,&quot;LiLi&quot;];
+console.log(p2.friends);    //[&quot;Tom&quot;,&quot;Jerry&quot;,&quot;LiLi&quot;];
 </code></pre>
 <p>建议在construct中定义属性，在prototype中定义方法：</p>
-<pre><code class="nulljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">this</span>.friends=[<span class="hljs-string">"Tom"</span>,<span class="hljs-string">"Jerry"</span>];
+<pre><code class="lang-js">function Person(){
+    this.friends=[&quot;Tom&quot;,&quot;Jerry&quot;];
 }
 Person.prototype={
-    <span class="hljs-attr">constructor</span>:Person,
+    constructor:Person,
     ...
 }
 </code></pre>
 <h3 id="header-2">继承</h3>
 <p>父类：</p>
-<pre><code class="nulljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params">name</span>)</span>{
-    <span class="hljs-keyword">this</span>.name=name;
-    <span class="hljs-keyword">this</span>.color=[<span class="hljs-string">"red"</span>,<span class="hljs-string">"blue"</span>];
+<pre><code class="lang-js">function Parent(name){
+    this.name=name;
+    this.color=[&quot;red&quot;,&quot;blue&quot;];
 }
 Parent.prototype={
-    <span class="hljs-attr">constructor</span>:Parent,
-    <span class="hljs-attr">ps</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-        alert(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">" "</span>+<span class="hljs-keyword">this</span>.color);
+    constructor:Parent,
+    ps:function(){
+        alert(this.name+&quot; &quot;+this.color);
     }
 }
 </code></pre>
 <p>子类：</p>
-<pre><code class="nulljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params">name,age</span>)</span>{
-    <span class="hljs-comment">//调用父类构造方法，构造子类属性</span>
-    Parent.call(<span class="hljs-keyword">this</span>);
-    <span class="hljs-keyword">this</span>.age=age;
+<pre><code class="lang-js">function Child(name,age){
+    //调用父类构造方法，构造子类属性
+    Parent.call(this);
+    this.age=age;
 }
 
-<span class="hljs-comment">//使用原型链继承，让Child prototype指向Parent对象</span>
-Child.prototype=<span class="hljs-keyword">new</span> Parent();
-Child.prototype.say=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    alert(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">" "</span>+<span class="hljs-keyword">this</span>.age+<span class="hljs-string">" "</span>+<span class="hljs-keyword">this</span>.color);
+//使用原型链继承，让Child prototype指向Parent对象
+Child.prototype=new Parent();
+Child.prototype.say=function(){
+    alert(this.name+&quot; &quot;+this.age+&quot; &quot;+this.color);
 }
 </code></pre>
 <p>创建对象，并测试：</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> c1=<span class="hljs-keyword">new</span> Child(<span class="hljs-string">"leon"</span>,<span class="hljs-number">22</span>);
-<span class="hljs-keyword">var</span> c2=<span class="hljs-keyword">new</span> Child(<span class="hljs-string">"Ada"</span>,<span class="hljs-number">23</span>);
+<pre><code class="lang-js">var c1=new Child(&quot;leon&quot;,22);
+var c2=new Child(&quot;Ada&quot;,23);
 
-c1.color.push(<span class="hljs-string">"green"</span>);
-c1.ps();        <span class="hljs-comment">// leon ["red","blue","green"]</span>
-c1.say();      <span class="hljs-comment">// leon 22 ["red","blue","green"]</span>
+c1.color.push(&quot;green&quot;);
+c1.ps();        // leon [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;]
+c1.say();      // leon 22 [&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;]
 
-c2.ps();        <span class="hljs-comment">// Ada ["red","blue"]</span>
-c2.say();      <span class="hljs-comment">// Ada 23 ["red","blue"]</span>
+c2.ps();        // Ada [&quot;red&quot;,&quot;blue&quot;]
+c2.say();      // Ada 23 [&quot;red&quot;,&quot;blue&quot;]
 </code></pre>
 <p>内存模型：</p>
 <p><img src="/2014/02/01/prototype-3.png" alt="Prototype"></p>
 <h3 id="header-3">闭包</h3>
 <p>定义的函数：</p>
 <ul>
-<li>使用<code>function xxx(){...}</code>（会先被初始化）：<pre><code class="nulljs">  fn();
-  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>)</span>{
+<li>使用<code>function xxx(){...}</code>（会先被初始化）：<pre><code class="lang-js">  fn();
+  function fn(){
       ...
   }
 </code></pre>
 </li>
-<li>使用<code>var xxx=function(){...}</code>：<pre><code class="nulljs">  fn2();        <span class="hljs-comment">// 会报错</span>
-  <span class="hljs-keyword">var</span> fn2=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+<li>使用<code>var xxx=function(){...}</code>：<pre><code class="lang-js">  fn2();        // 会报错
+  var fn2=function(){
       ...
   }
 </code></pre>
@@ -293,41 +296,41 @@ c2.say();      <span class="hljs-comment">// Ada 23 ["red","blue"]</span>
 </ul>
 <p>闭包：</p>
 <p>通过返回函数来扩大函数的作用域的方式</p>
-<pre><code class="nulljs"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func</span>(<span class="hljs-params"></span>)</span>{
+<pre><code class="lang-js">function func(){
     ...
-    return <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    return function(){
         ...
     }
 }
 </code></pre>
 <p>创建匿名函数并调用（建议这样放入全局变量，控制在一个作用域中）：</p>
-<pre><code class="nulljs">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-comment">//...</span>
+<pre><code class="lang-js">(function(){
+    //...
 })()
 </code></pre>
 <p>使用举例：</p>
 <p>类中设置私有变量（即没有<code>this.xxx</code>定义，无法通过<code>对象.xxx</code>获取和更改）</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> Person;
-<span class="hljs-comment">//调用匿名函数（在匿名函数中进行类和私有变量的定义）</span>
-(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">var</span> name=<span class="hljs-string">""</span>;    <span class="hljs-comment">//在此匿名函数外部无法获取，且在函数结束时销毁</span>
-    Person=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>{
+<pre><code class="lang-js">var Person;
+//调用匿名函数（在匿名函数中进行类和私有变量的定义）
+(function(){
+    var name=&quot;&quot;;    //在此匿名函数外部无法获取，且在函数结束时销毁
+    Person=function(name){
         name=name;
     };
-    Person.prototyep.setName=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>{
+    Person.prototyep.setName=function(name){
         name=name;
     };
-    Person.prototype.getName=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-        <span class="hljs-keyword">return</span> name;
+    Person.prototype.getName=function(){
+        return name;
     }
 })();
 </code></pre>
 <p>测试：</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> p1=<span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Tom"</span>);
-p1.getName();                <span class="hljs-comment">//Tom</span>
-p1.setName(<span class="hljs-string">"Lucy"</span>);
-p1.getName();                <span class="hljs-comment">//Lucy</span>
-<span class="hljs-comment">//p1.name为undefined，无法获取到</span>
+<pre><code class="lang-js">var p1=new Person(&quot;Tom&quot;);
+p1.getName();                //Tom
+p1.setName(&quot;Lucy&quot;);
+p1.getName();                //Lucy
+//p1.name为undefined，无法获取到
 </code></pre>
   </section>
 </article>
@@ -364,10 +367,17 @@ p1.getName();                <span class="hljs-comment">//Lucy</span>
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Webpack</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Webpack">
+  
+  
+    <meta name="description" content="A module bundler">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Hello World</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">webpack.config.js</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Plugin</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">html-webpack-plugin</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Loaders</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">babel-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">css-loader &amp; style-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">postcss-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">less-loader/sass-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">html-loader/ejs-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">file-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">url-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">image-webpack-loader</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">优化</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">webpack-dev-server</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Webpack</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2018-07-31T16:00:00.000Z">2018-08-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Node">Node</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<blockquote>
+<p>Webpack is a front-end build systems like Grunt and Gulp.It can be used as a module bundler similar to Browserify, and do much more.</p>
+</blockquote>
+<p>A module bundler 模块打包工具（打包成较小／少的文件）<br>Module：can be CommonJS,AMD,ES6 modules,images,json,coffeescript,less,…and custom stuff.<br>任何一个静态的资源都可以视为一个module，被引用；还可整合第三方的类库，也视为module，在项目中引用</p>
+<p>特性：</p>
+<ul>
+<li>code spliting ：代码分割，只加载需要的文件（切分依赖树，分到不同代码块，然后按需加载这些依赖，减少初始化时间，类似懒加载）</li>
+<li>loader ：各module通过对应的loader处理</li>
+<li>plugin system ：插件系统，eg：模块热更新</li>
+</ul>
+<p>安装：</p>
+<pre><code class="lang-bash">npm install webpack -g
+</code></pre>
+<h3 id="header-2">Hello World</h3>
+<ol>
+<li><p>hello.js</p>
+<pre><code class="lang-javascript"> require(&#39;./world.js&#39;);        // CommonJS模块化方式
+ /*
+     1. style-loader 对css-loader处理完的文件通过&lt;style&gt;标签插入html
+     2. css-loader 使得webpack可以处理.css文件
+     3. 或者直接 require(&#39;./style.css&#39;)，执行webpack命令时使用module-bind
+     eg: webpack hello.js hello.boundle.js --module-bind &#39;css=style-loader!css-loader&#39;
+ */
+ require(&#39;style-loader!css-loader!./style.css&#39;); 
+
+ function hello(str){
+     alert(str);
+ }
+ hello(&quot;Hello world&quot;);    // 执行
+</code></pre>
+</li>
+<li><p>world.js</p>
+<pre><code class="lang-javascript"> function world(){
+     return {};
+ }
+</code></pre>
+</li>
+<li><p>style.css</p>
+<pre><code class="lang-css"> html,body{
+     padding: 0;
+     margin: 0;
+ }
+ body{
+     background:#eee;
+ }
+</code></pre>
+</li>
+<li><p>执行</p>
+<pre><code class="lang-bash"> &gt; npm install css-loader style-loader --save-dev
+ &gt; webpack hello.js hello.boundle.js
+
+ # 若直接 require(&#39;./style.css&#39;)，执行webpack命令时使用module-bind
+ &gt; webpack hello.js hello.boundle.js --module-bind &#39;css=style-loader!css-loader&#39; --watch
+</code></pre>
+<ul>
+<li><code>--watch</code> 文件改变时自动更新打包</li>
+<li><code>--progress</code> 显示打包过程</li>
+<li><code>--display-modules</code> 列出打包的模块</li>
+<li><code>--display-reasons</code> 列出打包模块的原因</li>
+</ul>
+</li>
+<li><p>使用打包的js：index.html</p>
+<pre><code class="lang-html"> &lt;!DOCTYPE html&gt;
+ &lt;html&gt;
+     &lt;head&gt;
+         &lt;meta charset=&quot;utf-8&quot;&gt;
+         &lt;title&gt;webpack test&lt;/title&gt;
+     &lt;/head&gt;
+     &lt;body&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;hello.boundle.js&quot;/&gt;
+     &lt;/body&gt;
+ &lt;/html&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-3">webpack.config.js</h3>
+<p>webpack配置文件, Refer <a href="https://webpack.js.org/configuration/" target="_blank" rel="noopener">Configuration</a></p>
+<ol>
+<li><p>src/script/main.js</p>
+<pre><code class="lang-javascript"> function hello(){
+     alert(&quot;Hello world&quot;);
+ }
+</code></pre>
+</li>
+<li><p>index.html</p>
+<pre><code class="lang-html"> &lt;script type=&quot;text/javascript&quot; src=&quot;dist/js/boundle.js&quot;/&gt;
+</code></pre>
+</li>
+<li><p>webpack.config.js</p>
+<pre><code class="lang-javascript"> module.exports={
+     entry:&#39;./src/script/main.js&#39; // 打包入口
+     ,output:{                    // 打包结果文件
+         path:&#39;./dist/js&#39;
+         filename:&#39;boundle.js&#39;
+     }
+ }
+</code></pre>
+</li>
+<li><p>执行</p>
+<pre><code class="lang-bash"> # 默认会使用webpack.config.js
+ &gt; webpack
+
+ # 可使用--config指定webpack配置文件
+ &gt; mv webpack.config.js webpack.dev.config.js
+ &gt; webpack --config webpack.dev.config.js
+</code></pre>
+<ul>
+<li>注：可通过npm执行webpack，配置package.json (customize scripts field):<pre><code class="lang-json">  &quot;scripts&quot;:{
+      ...
+      &quot;webpack&quot;:&quot;webpack --config webpack.dev.config.js --progress --display-module --colors&quot;
+  }
+</code></pre>
+<pre><code>  # 执行
+  &gt; npm run webpack
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<p><strong> 输入和输出配置 ( entry &amp; output) : </strong></p>
+<ol>
+<li><p>entry: which Webpack reads to build,could for SPA-one entry point,MPA-multiple entry points</p>
+<ul>
+<li>SPA: string</li>
+<li>MPA: array，json (多个chunk)</li>
+</ul>
+</li>
+<li><p>output:</p>
+<ul>
+<li>filename: 可使用占位符 (eg: <code>[name]</code>,<code>[hash]</code>,<code>[chunkhash]</code>-可用于版本管理),防止multiple entry输出相互覆盖</li>
+</ul>
+</li>
+<li><p>Demo webpack.config.js:</p>
+<pre><code class="lang-javascript"> module.exports={
+     // entry:&#39;./src/script/main.js&#39;         // 打包入口
+     // entry:[&#39;./src/script/main.js&#39;,&#39;./src/script/a.js&#39;]
+     entry:{
+         main: &#39;./src/script/main.js&#39;
+         page1: [&#39;./src/script/a.js&#39;,&#39;./src/script/b.js&#39;]
+         page2: &#39;./src/script/c.js&#39;
+     },   
+     output:{                                // 打包结果文件
+         path:&#39;./dist/js&#39;
+         //filename:&#39;boundle.js&#39;
+         filename:&#39;[name]-[chunkhash].js&#39;     //chunkhash md5 文件改变后会变化
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-4">Plugin</h2>
+<h3 id="header-5">html-webpack-plugin</h3>
+<p>Demo：自动化生成html页面</p>
+<ol>
+<li><p>安装html-webpack-plugin插件</p>
+<pre><code class="lang-bash"> &gt; npm install html-webpack-plugin --save-dev
+</code></pre>
+</li>
+<li><p>配置插件使用（webpack.config.js）</p>
+<pre><code class="lang-javascript"> var htmlWebpackPlugin = require(&#39;html-webpack-plugin&#39;);
+ module.exports={
+     entry:{
+         main: &#39;./src/script/main.js&#39;
+         page1: [&#39;./src/script/a.js&#39;,&#39;./src/script/b.js&#39;]
+         page2: &#39;./src/script/c.js&#39;
+     }    
+     ,output:{
+         path:&#39;./dist&#39;,
+         filename:&#39;js/[name]-[chunkhash].js&#39;,
+         publicPath:&#39;http://cdn.com/&#39;
+     }
+     ,plugins:[
+          new htmlWebpackPlugin({
+             template: &#39;index.html&#39;,
+             filename: &#39;index.html&#39;,    // output html
+             inject: &#39;head&#39;,              // 指定脚本放入的位置，eg: head,body,..,false
+             minify:{                  // 最小化html
+                 removeComments:true,
+                 collapseWhitespace:true
+             },
+             chunks:[&#39;main&#39;,&#39;page1&#39;], // 可通过chunks/excludeChunks限定引用
+             date: new Date()
+         })   
+     ]
+ }
+</code></pre>
+</li>
+<li><p>template: index.html (支持EJS模版语言，可获取config中的配置)</p>
+<pre><code class="lang-html"> &lt;%= htmlWebpackPlugin.options.date %&gt;
+
+ //在html中添加引用生成的js
+ &lt;% for(var key in htmlWebpackPlugin.files){%&gt;
+     &lt;%=key%&gt;:&lt;%= JSON.stringfy(htmlWebpackPlugin.files[key])%&gt;
+ &lt;% } %&gt;
+
+ &lt;%=htmlWebpackPlugin.files.chunks.main.entry%&gt;
+ &lt;%=htmlWebpackPlugin.files.chunks.page1.entry%&gt;
+</code></pre>
+</li>
+<li><p>inline直接内嵌js code, 修改template: index.html </p>
+<pre><code class="lang-html"> &lt;script type=&quot;text/javascript&gt;
+     &lt;% compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source() %&gt;
+ &lt;/script&gt;
+</code></pre>
+</li>
+</ol>
+<h2 id="header-6">Loaders</h2>
+<p>编译资源文件的预加载器。在<code>webpack.config.js</code>中，<code>module.loaders</code>领域被用于设定加载器。 <strong> 注意：处理方式从右到左！</strong> Refer <a href="https://webpack.js.org/loaders/" target="_blank" rel="noopener">Loader</a></p>
+<h3 id="header-7">babel-loader</h3>
+<p>Demo: 使用babel-loader转换ES6语法的代码为浏览器直接可以接受的JS代码</p>
+<ol>
+<li><p>安装依赖</p>
+<pre><code class="lang-bash"> npm install babel-loader babel-core --save-dev
+ npm install babel-preset-latest --save-dev
+</code></pre>
+</li>
+<li><p>webpack.config.js</p>
+<pre><code class="lang-javascript"> var path=require(&#39;path&#39;);
+ module.exports={
+     ...
+     module:{
+         loaders:[
+             {
+                 test:/\.js$/,
+                 exclude:path.resolve(__dirname,&quot;node_module&quot;),
+                 include:path.resolve(__dirname,&#39;src&#39;),
+                 loader:&#39;babel&#39;,
+                 query:{presets:[&#39;latest&#39;]}
+             } 
+             // exclude/include condition  需使用绝对路径
+             // babel参数，例如presets，也可以在.babelrc或package.json中指定
+         ]
+     }
+
+ }
+</code></pre>
+</li>
+<li><p>注： 上面babel参数，例如presets，也可以在.babelrc或package.json中指定</p>
+<ul>
+<li><code>.babelrc</code><pre><code class="lang-javascript">  {
+      presets:[&#39;latests&#39;]
+  }
+</code></pre>
+</li>
+<li><code>package.json</code><pre><code class="lang-javascript">  {
+      ...
+      &quot;babel&quot;:{
+          &quot;presets&quot;:[&quot;latest&quot;]
+      }
+      ...
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-8">css-loader &amp; style-loader</h3>
+<ol>
+<li><p>安装</p>
+<pre><code class="lang-bash"> npm install style-loader css-loader --save-dev
+</code></pre>
+</li>
+<li><p>webpack.config.js</p>
+<pre><code class="lang-javascript"> module.export={
+     ...
+     module:{
+         loaders:[
+             {...},
+             {
+                 test:/\.css$/,
+                 loader:&#39;style-loader!css-loader&#39;
+             }
+         ]
+     }
+     ...
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-9">postcss-loader</h3>
+<ol>
+<li><p>安装</p>
+<pre><code class="lang-bash"> npm install postcss-loader --save-devnpm install autoprefixer --save-dev
+</code></pre>
+</li>
+<li><p>webpack.config.js</p>
+<pre><code class="lang-javascript"> module.exports={
+     ...
+     module:{
+         loaders:[
+             {...},
+             {
+                 test:/\.css$/,
+                 loader:&#39;style-loader!css-loader?importLoaders=1!postcss-loader&#39;
+             }
+             //发现生成的css中，@import的css部分未有postcss，需在css-loader加入importLoaders参数，表示css-loader引入它之后n个loader，这里即引入postcss-loader处理
+         ]
+     },
+     postcss:[
+         require(&#39;autoprefix&#39;)({
+             broswers:[&#39;last 5 versions&#39;]
+         })
+     ]
+     ...
+ }
+</code></pre>
+</li>
+<li><p>注：特殊css，有些浏览器可能不支持，或语法不同，需加入浏览器前缀，引入postcss-loader处理,eg:</p>
+<pre><code class="lang-css"> .flex-div{
+     display:flex;
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-10">less-loader/sass-loader</h3>
+<pre><code class="lang-bash">npm install less less-loader --save-dev
+# npm install sass-loader --save-dev
+</code></pre>
+<p>webpack.config.js:</p>
+<pre><code class="lang-javascript">module.exports={
+    ...
+    module:{
+        loaders:[
+            {...},
+            {
+                test:/\.less$/,
+                loader:&#39;style!css!postcss!less&#39;
+            },
+            // 使用less-loader，可以不给css-loader加入importLoaders，也可使@import的less被postcss处理
+
+           {
+                test:/\.sass$/,
+                loader:&#39;style!css!postcss!sass&#39;
+            }
+        ]
+    }
+    ...    
+}
+</code></pre>
+<h3 id="header-11">html-loader/ejs-loader</h3>
+<p>处理模版文件 templating loader,eg: html-loader,ejs-loader,jsx(already include in babel)</p>
+<ul>
+<li>方式一：当作一个字符串处理，eg: html-loader 将HMTL模板文件当做一个string输出</li>
+<li>方式二：当成一个已经编译好的模版函数,eg:将EJS模板文件当做一个函数输出</li>
+<li>注：jsx-loader已被集成到babel工具中，不需要单独安装引入</li>
+</ul>
+<ol>
+<li><p>安装loader</p>
+<pre><code class="lang-bash"> npm install html-loader --save-dev
+ npm install ejs-loader --save-dev
+</code></pre>
+</li>
+<li><p>webpack.config.js:</p>
+<pre><code class="lang-javascript"> module.exports={
+     ...
+     module:{
+         loaders:[
+             {...},
+             {
+                 test:/\.html$/,
+                 loader:&#39;html-loader&#39;
+             },
+             {
+                 test:/\.ejs$/,
+                 loader:&#39;ejs-loader&#39;
+             }        
+         ]
+     }
+     ...    
+ }
+</code></pre>
+</li>
+<li><p>template: layer.ejs:</p>
+<pre><code class="lang-html"> &lt;div&gt;
+     &lt;div&gt; This is &lt;%=name%&gt; layer&lt;/div&gt;
+ &lt;/div&gt;
+</code></pre>
+</li>
+<li><p>执行webpack，会生成layer.js</p>
+</li>
+<li><p>在app.js中使用: 实现index.html的app节点下下插入模板layer</p>
+<pre><code class="lang-javascript"> import &#39;./css/common.css&#39;;
+ import Layer from &#39;./components/layer/layer.js&#39;
+
+ const App=function(){
+     var dom=document.getElementById(&#39;app&#39;);
+     var layer=new Layer();
+     dom.innerHTML=layer.tpl({
+         name:&#39;Tom&#39;
+     });
+ }
+ new App();
+</code></pre>
+</li>
+</ol>
+<h3 id="header-12">file-loader</h3>
+<p>文件处理</p>
+<ol>
+<li><p>安装file-loader</p>
+<pre><code class="lang-bash"> npm install file-loader --save-dev
+</code></pre>
+</li>
+<li><p>webpack.config.js, loader:</p>
+<pre><code class="lang-javascript"> {
+     test:/\.(png|jpg|gif|svg)$/i,
+     loader:&#39;file-loader&#39;,
+     query:{
+         path:&#39;assets/[name]-[hash:5].[ext]&#39;
+     } 
+ }
+</code></pre>
+</li>
+<li><p>注：css/less/html 中引入相对路径的图片都没有问题，会自动替换，但在template文件中，需如下（使用require命令）</p>
+<pre><code class="lang-html"> &lt;img src=&quot;${require(&#39;../../assets/bg.png&#39;)}&quot; /&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-13">url-loader</h3>
+<p>可设置limit</p>
+<ul>
+<li>当文件或图片超过limit，会转换成一个正常的URL引用，eg： <code>&lt;img src=&quot;4853ca667a2b8b8844eb2693ac1b2578.png&quot;&gt;</code></li>
+<li>当小于limit，会生成base64编码的可直接嵌入的数据，eg：<code>&lt;img src=&quot;data:image/png;base64,iVBOR...uQmCC&quot;&gt;</code></li>
+</ul>
+<pre><code class="lang-bash">npm install url-loader --save-dev
+</code></pre>
+<p>webpack.config.js, loader:</p>
+<pre><code class="lang-javascript">{
+    test:/\.(png|jpg|gif|svg)$/i,
+    loader:&#39;url-loader&#39;,
+    query:{
+        limit:20000,    // 20k
+        path:&#39;assets/[name]-[hash:5].[ext]&#39;
+    } 
+}
+</code></pre>
+<h3 id="header-14">image-webpack-loader</h3>
+<p>可以压缩图片</p>
+<pre><code class="lang-bash">npm install image-webpack-loader --save-dev
+</code></pre>
+<pre><code class="lang-javascript">{
+    test:/\.(png|jpg|gif|svg)$/i,
+    loader:[
+        &#39;url-loader?limit＝20000&amp;name=assets/[name]-[hash:5].[ext]&#39;,
+        &#39;image-webpack&#39;
+    ]
+   // 处理顺序一样是从右到左，先image loader再url loader
+
+}
+</code></pre>
+<h3 id="header-15">优化</h3>
+<ul>
+<li>开启调试 SourceMap</li>
+<li>ESLint 检查代码格式</li>
+<li>区分开发环境 和 生产环境</li>
+<li>使用 middleware 来搭建开发环境</li>
+<li>Webpack Dev Server,本地 rewrite 规则</li>
+<li>代理远程接口</li>
+<li>模块热更新</li>
+<li>Webpack Watch Mode</li>
+</ul>
+<h2 id="header-16">webpack-dev-server</h2>
+<p>一个小型的Node Express服务器，为通过wepack打包生成的资源文件提供web服务<br>功能：</p>
+<ul>
+<li>搭建本地服务器</li>
+<li>自动刷新</li>
+</ul>
+<p>安装：</p>
+<pre><code class="lang-bash">npm install webpack-dev-server -g
+</code></pre>
+<p>使用：<br>使用：</p>
+<pre><code class="lang-bash">&gt; webpack-dev-server
+
+//或启动热加载
+&gt; webpack-dev-server --hot --inline
+</code></pre>
+<h2 id="header-17">Reference</h2>
+<p><a href="https://github.com/ruanyf/webpack-demos" target="_blank" rel="noopener">ruanyf/webpack-demos</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Oracle Procedure &amp; Cursor &amp; Array</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Block,Transaction,Exception,Procedure,Cursor,Bulk Collect,Forall,Dynamic SQL">
+  
+  
+    <meta name="description" content="Write Oracle Script">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">块 Block</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">块的结构</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">块的分类</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">存储过程 Procedure</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">创建</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">调用</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">事物 Transaction</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">异常 Exception</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">读取记录到变量</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">SELECT INTO STATEMENT</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">游标 Cursor</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Bulk Collect &amp; Forall</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">动态SQL</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">EXECUTE IMMEDIATE</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">数组 Array</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Oracle Procedure &amp; Cursor &amp; Array</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2018-08-14T16:00:00.000Z">2018-08-15</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-SQL">SQL</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">块 Block</h2>
+<h3 id="header-2">块的结构</h3>
+<pre><code class="lang-sql">declare
+  定义部分(可选)
+begin
+  可执行部分(必选)
+exception
+  异常处
+</code></pre>
+<h3 id="header-3">块的分类</h3>
+<ol>
+<li>无名块(也叫匿名块)：动态构造并只能执行一次，常用来测试或执行存储过程。</li>
+<li>命名块：加了用&lt;&lt;&gt;&gt;括起了带标号的无名块。</li>
+<li>子程序：包括存储过程、函数和包等。这些块一旦被定义便会存储在数据库中，可随时调用。</li>
+<li>触发器：根据触发的事件调用。</li>
+</ol>
+<h2 id="header-4">存储过程 Procedure</h2>
+<h3 id="header-5">创建</h3>
+<pre><code class="lang-sql">create or replace procedure test(var_name_1 in type,var_name_2 out type) as
+    --声明变量(变量名 变量类型)
+begin
+    --存储过程的执行体
+end test;
+</code></pre>
+<pre><code class="lang-sql">CREATE OR REPLACE PROCEDURE 存储过程名字
+(
+    参数1 IN NUMBER,
+    参数2 IN NUMBER
+) AS
+    变量1 INTEGER :=0;
+    变量2 DATE;
+BEGIN
+    ...
+END 存储过程名字
+</code></pre>
+<p>示例：</p>
+<pre><code class="lang-sql">CREATE OR REPLACE PROCEDURE proc_test AS
+  CURSOR c1 IS SELECT * FROM dat_trade;
+BEGIN
+  FOR x IN c1 LOOP
+    DBMS_OUTPUT.put_line(x.id);
+  END LOOP;
+END proc_test;
+</code></pre>
+<h3 id="header-6">调用</h3>
+<p>在PL/SQL块内运行存储过程，不需要使用<code>exec</code>，直接 <code>procedure_name[(parameter,…n)]</code></p>
+<pre><code class="lang-sql">BEGIN
+   proc_helloworld;
+END;
+</code></pre>
+<p>外部程序调用：</p>
+<pre><code class="lang-sql">exec proc_helloworld
+</code></pre>
+<h2 id="header-7">事物 Transaction</h2>
+<p>procedure中既有<code>commit</code>也有<code>rollback</code><br><code>commit</code>之前的就提交,<code>commit</code>和<code>rollback</code>之间的就回滚<br>程序出错,<code>commit</code>之前的就已经提交了,<code>commit</code>和出错之间的强制回滚.</p>
+<p>嵌套出错:<br>出错前<code>commit</code>的就提交了,未<code>commit</code>的强制退出程序并回滚<br>把一个procedure中所有的程序和语句看成顺序执行,不管是嵌套多少层,<code>commit</code>的就起效,未<code>commit</code>的,如果出错则从出错的地方强制退出程序,如果不出错,退出session时默认提交.</p>
+<pre><code class="lang-sql">CREATE OR REPLACE procedure SCOTT.t1
+as
+begin
+  for i in 1..10000 loop
+        insert into test1(id,name) values(i,&#39;leng&#39;||i);
+        commit;
+        if i=20 then
+             rollback;
+             exit;
+        end if;
+  end loop;
+end;
+</code></pre>
+<p>设置出错就<code>rollback</code> :</p>
+<pre><code class="lang-sql">WHENEVER SQLERROR EXIT FAILURE ROLLBACK;
+WHENEVER OSERROR EXIT FAILURE ROLLBACK;
+SET SERVEROUTPUT ON;
+
+DECLARE
+    ...
+BEGIN
+    ...
+END;
+/
+commit;
+exit;
+</code></pre>
+<h2 id="header-8">异常 Exception</h2>
+<pre><code class="lang-sql">DECLARE   
+    v_empno employees.employee_id%TYPE := &amp;empno;   
+    v_sal   employees.salary%TYPE;
+BEGIN   
+    SELECT salary INTO v_sal FROM employees WHERE employee_id = v_empno;   
+    IF v_sal&lt;=1500 THEN        
+        UPDATE employees SET salary = salary + 100 WHERE employee_id=v_empno;        
+        DBMS_OUTPUT.PUT_LINE(&#39;编码为&#39;||v_empno||&#39;员工工资已更新!&#39;);       
+    ELSE        
+        DBMS_OUTPUT.PUT_LINE(&#39;编码为&#39;||v_empno||&#39;员工工资已经超过规定值!&#39;);   
+    END IF;
+EXCEPTION   
+    WHEN NO_DATA_FOUND THEN      
+        DBMS_OUTPUT.PUT_LINE(&#39;数据库中没有编码为&#39;||v_empno||&#39;的员工&#39;);   
+    WHEN TOO_MANY_ROWS THEN      
+        DBMS_OUTPUT.PUT_LINE(&#39;程序运行错误!请使用游标&#39;);   
+    WHEN OTHERS THEN      
+        DBMS_OUTPUT.PUT_LINE(SQLCODE||&#39;---&#39;||SQLERRM);
+END;
+</code></pre>
+<pre><code class="lang-sql">declare
+    v_cnt:=800;
+    v_name emp.ename%type;
+begin
+    begin
+        select ename into v_name from emp where sal=v_cnt;
+    exception
+         when no_data_found then
+              v_name:=&#39;&#39;;
+         when too_many_rows then
+              v_name:=&#39;&#39;;
+              dbms_output.put_line(&#39;存在多个雇员具有该工资&#39;);
+    end;
+    dbms_output.put_line(&#39;姓名：&#39; || v_name);
+exception
+     when others then
+          rollback;
+          dbms_output.put_line(&#39;异常回滚退出&#39;);
+end;
+</code></pre>
+<p>自定义异常：</p>
+<pre><code class="lang-sql">SET VERIFY OFF
+WHENEVER SQLERROR EXIT FAILURE ROLLBACK;
+WHENEVER OSERROR EXIT FAILURE ROLLBACK;
+SET SERVEROUTPUT ON
+
+Declare
+  ex_test Exception;
+  PRAGMA EXCEPTION_INIT( ex_test, -20001 );
+  l_version number;
+Begin
+    dbms_output.put_line(&#39;Start!&#39;);
+    update table_a set object_version_number=object_version_number+1 where name = &#39;test&#39;;
+    select max(object_version_number) into l_version from table_a where name= &#39;test&#39;;    -- 使用聚合函数，则在没有数据时不会导致NO_DATA_FOUND异常
+    if l_version is null then
+        dbms_output.put_line(&#39;NO data!&#39;);
+    end if;
+    dbms_output.put_line(&#39;version:&#39;||l_version);
+    raise_application_error( -20001, &#39;This is a custom error&#39; );        -- 抛出自定义异常
+    dbms_output.put_line(&#39;Finish!&#39;);
+Exception        -- 这里定义了Exception捕获，则上面的WHENEVER ERROR ROLLBACK将无法捕获到异常Rollback
+    When others then
+        dbms_output.put_line(&#39;execute fail:&#39;||SQLCODE||&#39;---&#39;||SQLERRM);
+End;
+/
+commit;
+Exit;
+</code></pre>
+<p>测试：</p>
+<ol>
+<li><p>没有name=’test’的记录的情况下:</p>
+<pre><code class="lang-sql"> select * from table_A;
+ name  object_version_number
+ tom        1
+ lucy        2
+ -----------------------------------------
+
+ PL/SQL procedure successfully completed.
+ Start!
+ NO data!
+ version:
+ execute fail:-20001---ORA-20001: This is a custom error
+
+ Commit complete.
+ Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+</code></pre>
+</li>
+<li><p>有name=’test’的记录的情况下：</p>
+<pre><code class="lang-sql"> select * from table_A;
+ name  object_version_number
+ tom        1
+ lucy        2
+ test        2
+ -----------------------------------------
+
+ PL/SQL procedure successfully completed.
+ Start!
+ version:3
+ execute fail:-20001---ORA-20001: This is a custom error
+
+ Commit complete.
+ Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
+ ----------------------------------------
+ -- 执行后，name=&#39;test&#39;的object_version_number更新了
+ select * from table_A;
+ name  object_version_number
+ tom        1
+ lucy        2
+ test        3
+</code></pre>
+</li>
+</ol>
+<h2 id="header-9">读取记录到变量</h2>
+<h3 id="header-10">SELECT INTO STATEMENT</h3>
+<p>将<code>select</code>查询的结果存入到变量中，可以同时将多个列存储多个变量中，必须有一条记录，否则抛出异常(如果没有记录抛出<code>NO_DATA_FOUND</code>)</p>
+<pre><code class="lang-sql">BEGIN
+  SELECT col1,col2 into 变量1,变量2 FROM typestruct where xxx;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+      xxxx;
+END;
+</code></pre>
+<h3 id="header-11">游标 Cursor</h3>
+<ol>
+<li><p>隐性Cursor</p>
+<pre><code class="lang-sql"> for 变量名 in （SELECT 语句）loop 
+     .....
+ END LOOP;
+</code></pre>
+</li>
+<li><p>显性Cursor</p>
+<pre><code class="lang-sql"> -- 无参数的显性游标：
+ CURSOR 游标名 IS SELECT 语句;
+
+ -- 带参数的显性游标
+ -- parameter 参数形式：
+ -- 1.  参数名 数据类型
+ -- 2.  参数名 数据类型 DEFAULT 默认值
+ -- eg:  Cursor MyCursor(pSal  Number  Default   800)  Select   JOB  From  empa Where  SAL &gt;  pSal ;
+ CURSOR 游标名(parameter[,parameter],...) IS SELECT 语句;
+</code></pre>
+</li>
+<li><p>Cursor状态属性</p>
+<pre><code class="lang-sql"> %Found            -- Fetch语句（获取记录）执行情况 True or False。
+ %NotFound        -- 最后一条记录是否提取出 True or False。
+ %ISOpen            -- 游标是否打开True or False。
+ %RowCount        -- 游标当前提取的行数
+</code></pre>
+</li>
+<li><p>使用</p>
+<ul>
+<li>While 循环<pre><code class="lang-sql">  WHILE 游标名%found LOOP
+       ...
+  END LOOP;
+</code></pre>
+</li>
+<li><p>For 循环: 隐式打开游标，自动滚动获取一条记录，并自动创建临时记录类型变量存储记录。处理完后自动关闭游标</p>
+<pre><code class="lang-sql">  For  变量名  In  游标名  
+  Loop
+        数据处理语句；
+  End Loop；
+
+  -- 示例：
+  Declare
+       Cursor myCur is select * from emp;
+  Begin
+       for varA in myCur
+       loop
+           dbms_output.put_line(myCur%rowCount || &#39;    &#39; || varA.empno || &#39;    &#39; || varA.ename || &#39;  &#39; || varA.sal);
+       end loop;
+  End;
+</code></pre>
+</li>
+<li><p>Loop 循环: 需手动打开，关闭游标</p>
+<pre><code class="lang-sql">  open 游标名;
+  Loop
+       Fetch  游标名 InTo  临时记录或属性类型变量；
+       Exit  When  游标名%NotFound；
+        数据处理语句；
+  End   Loop；
+  Close 游标名;
+
+  -- 示例：
+  Declare
+       Cursor myCur is select ename,job,sal,empno from emp;
+       varE myCur%rowType;
+  Begin
+
+       if myCur%isopen = false then
+          open myCur;
+          dbms_output.put_line(&#39;Opening...&#39;);
+       end if;
+
+       loop
+          fetch myCur into varE;
+          exit when myCur%notfound;
+          dbms_output.put_line(myCur%rowCount || &#39;    &#39; || vare.empno || &#39;    &#39; || vare.ename || &#39;    &#39; || vare.sal);
+       end loop;
+
+       if myCur%isopen then
+          Close myCur;
+          dbms_output.put_line(&#39;Closing...&#39;);
+       end if;
+
+  End;
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>嵌套Cursor</p>
+<pre><code class="lang-sql"> declare  
+    v_id char(2);  
+    cursor c1 is select id,name from  a;  
+    cursor c2 is select * from  b where id0000=v_id;  
+ begin  
+    for i in c1 loop  
+         v_id:=i.id;  
+         for j in c2 loop  
+              ...  
+         end loop;  
+    end loop;  
+ end;
+</code></pre>
+<ul>
+<li>示例：<pre><code class="lang-sql">  declare
+      v_0 number; 
+      v_1 number; 
+      cursor c1 is select productordernumber from his_productorder@pro_crm where productid in (9000045516); 
+      cursor c2 is select cust_order_id from suf_cust_order_q_his where cust_order_num like v_0||&#39;%&#39;; 
+      cursor c3 is select * from suf_work_order_q_his where cust_order_id=v_1; 
+  begin 
+      for i in c1 loop 
+          v_0:=i.productordernumber; 
+          for j in c2 loop 
+              v_1:=j.cust_order_id; 
+              for k in c3 loop 
+                   dbms_output.put_line(k.work_order_id||&#39; &#39;||k.status); 
+              end loop; 
+          end loop; 
+      end loop;   
+  end;
+</code></pre>
+<pre><code class="lang-sql">  create or replace procedure proc_nest_cursor
+  as
+      cursor cur_acctinactprocess is select mediumid,acctnbr,vouchnbr from acctinactprocess;
+      v_mediumid ACCTINACTPROCESS.MEDIUMID%type;
+      v_acctnbr  ACCTINACTPROCESS.Acctnbr%type;
+      v_vouchnbr ACCTINACTPROCESS.Vouchnbr%type;
+      v_vouchname vouchinfo.vouchname%type;
+      cursor cur_vouchinfo(lvsvouchnbr vouchinfo.vouchnbr%type) is select vouchnbr,vouchname from vouchinfo where vouchnbr=lvsvouchnbr;
+  begin
+      open cur_acctinactprocess;
+      loop
+            fetch cur_acctinactprocess into v_mediumid,v_acctnbr,v_vouchnbr;
+            exit when cur_acctinactprocess%notfound;
+            dbms_output.put_line(&#39;外层循环开始: &#39;||&#39;介质号:&#39;||v_mediumid||&#39; 账号:&#39;||v_acctnbr||&#39; 凭证号:&#39;||v_vouchnbr);
+            -- 内层游标以外层游标的数据为基础，如果匹配外层游标，就进入内层游标进行处理
+            open cur_vouchinfo(v_vouchnbr);
+            loop
+                fetch cur_vouchinfo into v_vouchnbr,v_vouchname;
+                exit when cur_vouchinfo%notfound;
+                dbms_output.put_line(&#39;内层循环的值: &#39;||&#39; 凭证号:&#39;||v_vouchnbr||&#39; 凭证名称&#39;||v_vouchname);
+            end loop;
+            close cur_vouchinfo;
+        end loop;
+        close cur_acctinactprocess;
+  end;
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-12">Bulk Collect &amp; Forall</h3>
+<p><strong> BLUK COLLECT </strong> </p>
+<p>一次取出一个数据集合，比用游标条取数据效率高，尤其是在网络不大好的情况下 ，但需要大量内存 </p>
+<ul>
+<li>可将查询结果一次性地加载到<code>collections</code>中，而不是通过<code>cursor</code>一条一条地处理</li>
+<li>可以在<code>select into</code> ，<code>fetch into</code> ， <code>returning into</code>语句中使用</li>
+<li>使用<code>BULK COLLECT</code>时，所有的<code>INTO</code>变量都必须是<code>collections</code></li>
+<li>可以限制<code>BULK COLLECT</code> 提取的记录数，eg：<code>FETCH cursor BULK COLLECT INTO ...[LIMIT rows];</code></li>
+</ul>
+<p>示例：</p>
+<ol>
+<li><p>可变数组取表（<code>bulk collect into</code>），执行效率高于<code>cursor</code></p>
+<pre><code class="lang-sql"> declare
+      type type_array is table of t_user%rowtype index by binary_integer;   -- 类似二维数组
+      var_array type_array;
+ begin
+      select * bulk collect into var_array from t_user;
+      for i in 1..var_array.count loop
+          dbms_output.put_line(var_array(i).user_id);                          -- 二维数组的访问
+          dbms_output.put_line(var_array(i).username);
+      end loop;
+ end;
+</code></pre>
+</li>
+<li><p>在<code>returning into</code>中使用bulk collect :（有了<code>returning</code>子句后，我们可以轻松地确定刚刚完成的DML操作的结果，无须再做额外的查询工作）</p>
+<pre><code class="lang-sql"> CREATE TABLE test_forall2 AS SELECT * FROM test_forall;  
+ ----在returning into中使用bulk collect  
+ DECLARE  
+    TYPE IdList IS TABLE OF test_forall.User_Id%TYPE;  
+    enums IdList;  
+    TYPE NameList IS TABLE OF test_forall.user_name%TYPE;  
+    names NameList;  
+ BEGIN  
+    DELETE FROM test_forall2 WHERE user_id = 10100  
+         RETURNING user_id, user_name BULK COLLECT INTO enums, names;  
+    dbms_output.put_line(&#39;Deleted &#39; || SQL%ROWCOUNT || &#39; rows:&#39;);  
+    FOR i IN enums.FIRST .. enums.LAST  
+    LOOP  
+      dbms_output.put_line(&#39;User #&#39; || enums(i) || &#39;: &#39; || names(i));  
+    END LOOP;  
+    COMMIT;  
+
+ EXCEPTION  
+     WHEN OTHERS THEN  
+         ROLLBACK;  
+ END;
+</code></pre>
+</li>
+<li><p><code>bulk collection limit</code></p>
+<pre><code class="lang-sql"> declare
+   type v_t_oid is table of ljz_all_objects.object_id%type;
+   v_oid_lst      v_t_oid;
+   type v_t_cur_oid is ref cursor;
+   v_cur_oid      v_t_cur_oid;
+   v_cnt          simple_integer := 1000;
+ begin
+   open v_cur_oid for &#39;select object_id from ljz_all_objects where object_id&gt;:1&#39;
+     using 1;
+   fetch v_cur_oid bulk collect into v_oid_lst limit v_cnt;
+   while v_oid_lst.count &gt; 0 loop
+     for i in 1 .. v_oid_lst.count loop
+       --业务处理逻辑
+       v_oid_lst(i) := v_oid_lst(i) + 1;
+     end loop;
+     forall i in v_oid_lst.first .. v_oid_lst.last
+       insert into ljz_test (col) values (v_oid_lst(i));
+     fetch v_cur_oid bulk collect into v_oid_lst limit 1000;
+     commit;
+   end loop;
+   close v_cur_oid;
+ end;
+</code></pre>
+</li>
+</ol>
+<p><strong> Forall </strong> </p>
+<p>比FOR效率高，只切换一次上下文 ( FOR 在循环次数一样多个上下文间切换 ) </p>
+<ul>
+<li>只允许一条 sql 语句</li>
+<li>INDICES OF 当绑定数组为稀疏数组或者包含有间隙时，会有用</li>
+<li>VALUES OF 只想使用该数组中元素的一个子集时，会有用</li>
+</ul>
+<p>语法：</p>
+<pre><code class="lang-sql">FORALL index_name IN
+    { lower_bound .. upper_bound
+        | INDICES OF collection_name [ BETWEEN lower_bound AND upper_bound ]
+        | VALUES OF index_collection
+    }
+[ SAVE EXCEPTIONS ] dml_statement;
+</code></pre>
+<p>说明：</p>
+<ul>
+<li><code>index_name</code> : 一个无需声明的标识符，作为集合下标使用</li>
+<li><code>lower_bound .. upper_bound</code> : 数字表达式，来指定一组连续有效的索引数字下限和上限。该表达式只需解析一次</li>
+<li><code>INDICES OF collection_name</code> : 用于指向稀疏数组的实际下标。跳过没有赋值的元素，例如被 <code>DELETE</code> 的元素，<code>NULL</code> 也算值</li>
+<li><code>VALUES OF index_collection</code> : 把该集合中的值当作下标，且该集合值的类型只能是<code>PLS_INTEGER/BINARY_INTEGER</code></li>
+<li><code>SAVE EXCEPTIONS</code> : 可选关键字，表示即使一些DML语句失败，直到<code>FORALL LOOP</code>执行完毕才抛出异常。可以使用<code>SQL%BULK_EXCEPTIONS</code> 查看异常信息</li>
+<li><code>dml_statement</code> : 静态语句，例如：<code>UPDATE</code>或者<code>DELETE</code>；或者动态（<code>EXECUTE IMMEDIATE</code>）DML语句</li>
+</ul>
+<p>例如：</p>
+<pre><code class="lang-sql">FORALL i IN dr_table.first .. dr_table.last 
+FORALL i IN INDICES OF  demo_table
+FORALL i IN VALUES OF index_poniter
+</code></pre>
+<p>示例:</p>
+<ol>
+<li><p><code>lower_bound .. upper_bound</code></p>
+<pre><code class="lang-sql"> declare  
+   type dr_type is table of test1%ROWTYPE index by binary_integer;  
+   dr_table dr_type;  
+ begin  
+   select id, name BULK COLLECT into dr_table from test1;  
+   FORALL i IN dr_table.first .. dr_table.last  
+     insert into test2 values dr_table (i);  
+   --error statement  
+   --1.insert into test2 values(dr_table(i));报没有足够的值错误，此处外面不可以加括号，当有多个字段的时候，单个字段可以加括号  
+   --2.insert into test2 values(dr_table(i).id,dr_table(i).name);集合的field不可以在forall中使用，必须是整体使用  
+   --3.insert into test2 values dr_table(i+1);错误，不可以对索引变量进行运算  
+   --4.insert into test2 values dr_table(i);dbms_output.put_line(i);不正确，找不到i，因为forall中只能使用单条语句可以引用索引变量  
+ end;
+</code></pre>
+</li>
+<li><p><code>indices of</code></p>
+<pre><code class="lang-sql"> DECLARE
+   TYPE demo_table_type IS TABLE OF tmp_tab%rowtype INDEX BY BINARY_INTEGER;
+   demo_table demo_table_type;
+ BEGIN
+   FOR i IN 1..10 LOOP
+     demo_table(i).id:=i;
+     demo_table(i).name:=&#39;NAME&#39;||i;
+   END LOOP;
+   -- 使用集合的delete方法移除第3、6、9三个成员
+    demo_table.delete(3);
+    demo_table.delete(6);
+    demo_table.delete(9);
+    FORALL i IN INDICES OF  demo_table
+      INSERT INTO tmp_tab VALUES demo_table(i);
+  END ;
+</code></pre>
+</li>
+<li><p><code>values of</code></p>
+<pre><code class="lang-sql"> DECLARE
+   TYPE index_poniter_type IS TABLE OF pls_integer;
+   index_poniter index_poniter_type;
+   TYPE demo_table_type IS TABLE OF tmp_tab%rowtype INDEX BY BINARY_INTEGER;
+   demo_table demo_table_type;
+ BEGIN 
+   index_poniter := index_poniter_type(1,3,5,7);
+   FOR i IN 1..10 LOOP 
+     demo_table(i).id:=i;
+      demo_table(i).name:=&#39;NAME&#39;||i;
+    END LOOP;
+    FORALL i IN VALUES OF index_poniter
+      INSERT INTO  tmp_tab VALUES demo_table(i);
+  END;
+</code></pre>
+</li>
+</ol>
+<h2 id="header-13">动态SQL</h2>
+<pre><code class="lang-sql">declare
+  compDetail_cur number;
+  vQuery varchar2(500);
+  vStat NUMBER;
+  vId Number;
+  vColDesc dbms_sql.desc_tab;
+  vColCnt Number;
+begin
+  vQuery := &#39;select * from pay_dir_comp_details_f where dir_card_comp_id=:pCompId&#39;;
+  compDetail_cur := dbms_sql.open_cursor;
+  dbms_sql.parse(compDetail_cur,vQuery,dbms_sql.native);
+  dbms_sql.bind_variable(compDetail_cur,&#39;:pCompId&#39;,&#39;300100090712274&#39;);
+  dbms_sql.define_column(compDetail_cur,1,vId);
+
+  dbms_sql.describe_columns(compDetail_cur, vColCnt, vColDesc);
+  for i in 1..vColCnt
+  loop
+    dbms_output.put_line(vColDesc(i).col_type || &#39; &#39; || vColDesc(i).col_name || &#39; &#39; || vColDesc(i).col_max_len);
+  end loop;
+
+  vStat := dbms_sql.execute(compDetail_cur);
+  loop
+      exit when dbms_sql.fetch_rows(compDetail_cur)&lt;=0;
+      dbms_sql.column_value(compDetail_cur,1,vId);
+      dbms_output.put_line(vId);
+  end loop;
+  dbms_sql.close_cursor(compDetail_cur);
+end;
+</code></pre>
+<pre><code class="lang-sql">declare 
+    v_sql varchar2(2000);
+begin
+  v_sql:=&#39;insert into test values (sysdate)&#39;;        --给sql赋值
+  dbms_output.put_line(v_sql);                        --打印
+  execute immediate v_sql;                            --执行sql
+  commit;
+end;
+</code></pre>
+<h2 id="header-14">EXECUTE IMMEDIATE</h2>
+<ul>
+<li>不会提交一个DML(CRUD)事务执行，应该显式提交 </li>
+<li>处理DDL命令(Create/Drop/Alter),它提交所有以前改变的数据</li>
+</ul>
+<pre><code class="lang-sql">EXECUTE IMMEDIATE
+    &#39;CREATE TABLE &#39;|| l_ctx_b_backup ||&#39; AS 
+    ( SELECT a.* , &#39;&#39;Y&#39;&#39; AS process_flag, systimestamp as run_date from tableA a where a.protected_flag !=&#39;&#39;Y&#39;&#39; )&#39;;
+
+EXECUTE IMMEDIATE &#39;UPDATE &#39;|| l_ctx_b_backup || &#39; SET process_flag = &#39;&#39;N&#39;&#39; WHERE process_flag = &#39;&#39;Y&#39;&#39;&#39;;
+</code></pre>
+<h2 id="header-15">数组 Array</h2>
+<p>oracle 数组类型，没有现成的类型，但是可以自己随意定义</p>
+<p>示例： </p>
+<ol>
+<li><p>定长字符数组</p>
+<pre><code class="lang-sql"> /*定长字符数组，数组大小为10*/  
+ declare  
+     type v_arr is varray(10) of varchar2(30);  
+     my_arr v_arr;  
+     my_arr:=v_arr(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;);  
+ begin  
+     for i in 1..my_arr.count  
+     loop  
+         dbms_output_line(my_arr(i));  
+     end loop;  
+ end;
+</code></pre>
+</li>
+<li><p>可变长字符数组</p>
+<pre><code class="lang-sql"> /*可变长字符数组，元素大小30，索引标号integer类型自增长*/  
+ declare    
+ type v_table is table of varchar2(30) index by binary_integer;     
+ --类型可以是前面的类型定义，index by binary_integer子句代表以符号整数为索引，     
+ --这样访问表类型变量中的数据方法就是“表变量名(索引符号整数)”。     
+ my_table v_table;     
+ begin    
+      for i in 1..20     
+      loop     
+           my_table(i):=i;     
+           dbms_output.put_line(my_table(i));     
+       end loop;     
+ end;
+</code></pre>
+</li>
+<li><p>定义含有多个字段的数组类型变量</p>
+<pre><code class="lang-sql"> -- PLSQL 定义含有多个字段的数组类型变量
+ DECLARE
+   TYPE user_info_type IS RECORD(
+     user_name VARCHAR2(20),
+     user_age  NUMBER(3),
+     user_sex  VARCHAR2(5)
+   );     -- 自定义属性
+
+   TYPE user_info_arr_type IS TABLE OF user_info_type INDEX BY BINARY_INTEGER;     -- 使用这个属性来创建动态数组
+   user_info_arr user_info_arr_type;
+
+ BEGIN
+   user_info_arr(0).user_name := &#39;张三&#39;;
+   user_info_arr(0).user_age := 19;
+   user_info_arr(0).user_sex := &#39;男&#39;;
+   user_info_arr(1).user_name := &#39;李菁菁&#39;;
+   user_info_arr(1).user_age := 23;
+   user_info_arr(1).user_sex := &#39;女&#39;;
+
+   FOR i IN 0 .. 1
+   LOOP
+     dbms_output.put_line(&#39;User Name:&#39; || user_info_arr(i).user_name);
+     dbms_output.put_line(&#39;User Age:&#39; || user_info_arr(i).user_age);
+     dbms_output.put_line(&#39;User Sex:&#39; || user_info_arr(i).user_sex);
+   END LOOP;
+ END;
+</code></pre>
+<ul>
+<li>输出结果：<pre><code>  User Name:张三 
+  User Age:19 
+  User Sex:男 
+  User Name:李菁菁 
+  User Age:23 
+  User Sex:女
+</code></pre></li>
+</ul>
+</li>
+<li><p>可变数组取表（<code>bulk collect into</code>），执行效率高于<code>cursor</code></p>
+<pre><code class="lang-sql"> declare
+      type type_array is table of t_user%rowtype index by binary_integer;   -- 类似二维数组
+      var_array type_array;
+ begin
+      select * bulk collect into var_array from t_user;
+      for i in 1..var_array.count loop
+          dbms_output.put_line(var_array(i).user_id);          -- 二维数组的访问
+          dbms_output.put_line(var_array(i).username);
+      end loop;
+ end;
+</code></pre>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

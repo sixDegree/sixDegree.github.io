@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -118,8 +121,6 @@
           
             <a href="/tags.html#tag-Java">Java</a>
           
-            <a href="/tags.html#tag-Activiti">Activiti</a>
-          
         </li>
       
     </ul>
@@ -127,38 +128,38 @@
   <section class="post-content">
     <h2 id="header-1">Starter</h2>
 <h3 id="header-2">依赖包</h3>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.activiti<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>activiti-engine<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${activiti-version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.activiti<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>activiti-spring<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${activiti-version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.activiti&lt;/groupId&gt;
+    &lt;artifactId&gt;activiti-engine&lt;/artifactId&gt;
+    &lt;version&gt;${activiti-version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.activiti&lt;/groupId&gt;
+    &lt;artifactId&gt;activiti-spring&lt;/artifactId&gt;
+    &lt;version&gt;${activiti-version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>根据需要，加入DB，例如：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.1.21<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>oracle<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>oracle<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>11.2<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.h2database<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>h2<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.3.168<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.postgresql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>postgresql<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>9.4-1201-jdbc41<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;mysql&lt;/groupId&gt;
+    &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+    &lt;version&gt;5.1.21&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;oracle&lt;/groupId&gt;
+    &lt;artifactId&gt;oracle&lt;/artifactId&gt;
+    &lt;version&gt;11.2&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+    &lt;artifactId&gt;h2&lt;/artifactId&gt;
+    &lt;version&gt;1.3.168&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.postgresql&lt;/groupId&gt;
+    &lt;artifactId&gt;postgresql&lt;/artifactId&gt;
+    &lt;version&gt;9.4-1201-jdbc41&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <h3 id="header-3">流程设计工具</h3>
 <ol>
@@ -171,11 +172,11 @@
 <li>方式二：activiti包下的<code>activiti-explorer.war</code>（内置了Activiti Modeler组件）</li>
 </ul>
 </li>
-<li>还可将此组件加入到自己项目中，为项目提供在线流程设计功能：<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span> 
-  <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.activiti<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>activiti-modeler<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${activiti-version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<li>还可将此组件加入到自己项目中，为项目提供在线流程设计功能：<pre><code class="lang-xml">&lt;dependency&gt; 
+  &lt;groupId&gt;org.activiti&lt;/groupId&gt;
+  &lt;artifactId&gt;activiti-modeler&lt;/artifactId&gt;
+  &lt;version&gt;${activiti-version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 </li>
 </ul>
@@ -206,46 +207,46 @@
 </ul>
 <p>创建ProcessEngine:</p>
 <p>方式一：</p>
-<pre><code class="nulljava"><span class="hljs-comment">/*
+<pre><code class="lang-java">/*
  * 不使用配置文件，创建ProcessEngine对象
- */</span>
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">envTest1</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-comment">//1.创建流程引擎配置对象ProcessEngineConfiguration</span>
+ */
+@Test
+public void envTest1(){
+    //1.创建流程引擎配置对象ProcessEngineConfiguration
     ProcessEngineConfiguration configuration=ProcessEngineConfiguration.createStandaloneProcessEngineConfiguration();
-    <span class="hljs-comment">//2.配置</span>
-    <span class="hljs-comment">//2.1）完善数据库相关配置--这里使用MySQL（默认为H2）</span>
-    configuration.setJdbcDriver(<span class="hljs-string">"com.mysql.jdbc.Driver"</span>);
-    configuration.setJdbcUrl(<span class="hljs-string">"jdbc:mysql://localhost:3306/activitiTest?createDatabaseIfNotExist=true"</span>);
-    configuration.setJdbcUsername(<span class="hljs-string">"xxxx"</span>);
-    configuration.setJdbcPassword(<span class="hljs-string">"xxxxxx"</span>);
-    <span class="hljs-comment">//2.2）配置数据库建表策略，默认为false</span>
+    //2.配置
+    //2.1）完善数据库相关配置--这里使用MySQL（默认为H2）
+    configuration.setJdbcDriver(&quot;com.mysql.jdbc.Driver&quot;);
+    configuration.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/activitiTest?createDatabaseIfNotExist=true&quot;);
+    configuration.setJdbcUsername(&quot;xxxx&quot;);
+    configuration.setJdbcPassword(&quot;xxxxxx&quot;);
+    //2.2）配置数据库建表策略，默认为false
     configuration.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
-    <span class="hljs-comment">//3.创建ProcessEngine</span>
+    //3.创建ProcessEngine
     ProcessEngine processEngine=configuration.buildProcessEngine();
     System.out.println(processEngine.getName());
 }
 </code></pre>
 <p>方式二：</p>
-<pre><code class="nulljava"><span class="hljs-comment">/*
+<pre><code class="lang-java">/*
  * 使用配置文件，加载创建ProcessEngine对象
  * 默认加载classpath下的activiti.cfg.xml文件
- */</span>
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">envTest2</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-comment">//最简单获取ProcessEngine对象的方式</span>
+ */
+@Test
+public void envTest2(){
+    //最简单获取ProcessEngine对象的方式
     ProcessEngine processEngine=ProcessEngines.getDefaultProcessEngine();
     System.out.println(processEngine.getName());
 }
 </code></pre>
 <p>activiti.cfg.xml:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"processEngineConfiguration"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jdbcDriver"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"com.mysql.jdbc.Driver"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jdbcUrl"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"jdbc:mysql://localhost:3306/activitiTest?createDatabaseIfNotExist=true"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jdbcUsername"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"xxxx"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jdbcPassword"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"xxxxxx"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"databaseSchemaUpdate"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<pre><code class="lang-xml">&lt;bean id=&quot;processEngineConfiguration&quot; class=&quot;org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration&quot;&gt;
+    &lt;property name=&quot;jdbcDriver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+    &lt;property name=&quot;jdbcUrl&quot; value=&quot;jdbc:mysql://localhost:3306/activitiTest?createDatabaseIfNotExist=true&quot;/&gt;
+    &lt;property name=&quot;jdbcUsername&quot; value=&quot;xxxx&quot;/&gt;
+    &lt;property name=&quot;jdbcPassword&quot; value=&quot;xxxxxx&quot;/&gt;
+    &lt;property name=&quot;databaseSchemaUpdate&quot; value=&quot;true&quot;/&gt;
+&lt;/bean&gt;
 </code></pre>
 <h3 id="header-5">ProcessDefinition(流程定义)</h3>
 <p>使用设计工具生成流程定义文件：</p>
@@ -255,30 +256,30 @@
 <li>例如：HelloWorld.bpmn,HelloWorld.png</li>
 </ul>
 <p>通过<code>RepositoryService</code>对<code>ProcessDefinition</code>进行操作</p>
-<pre><code class="nulljava">ProcessEngine processEngine=ProcessEngines.getDefaultProcessEngine();
-RepositoryService repositoryService=<span class="hljs-keyword">this</span>.processEngine.getRepositoryService();
+<pre><code class="lang-java">ProcessEngine processEngine=ProcessEngines.getDefaultProcessEngine();
+RepositoryService repositoryService=this.processEngine.getRepositoryService();
 </code></pre>
 <h4 id="header-6">发布流程定义</h4>
 <ul>
 <li>方式一：逐个添加资源文件</li>
 <li>方式二：添加zip包 （Activiti框架会自动解压解析，依次添加到<code>act_ge_bytearray</code>表中）</li>
 </ul>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deployProcess</span><span class="hljs-params">()</span>
-</span>{
+<pre><code class="lang-java">@Test
+public void deployProcess()
+{
     DeploymentBuilder builder=repositoryService.createDeployment();
 
-    <span class="hljs-comment">//方式一：</span>
-    <span class="hljs-comment">/*InputStream bpmnInput=this.getClass().getClassLoader().getResourceAsStream("bpmn/HelloWorld.bpmn");
-    InputStream pngInput=this.getClass().getClassLoader().getResourceAsStream("bpmn/HelloWorld.png");
-    builder.name("Hello World!")
-            .addInputStream("HelloWorld.bpmn", bpmnInput)
-            .addInputStream("HelloWorld.png", pngInput)
-            .deploy();*/</span>
-    <span class="hljs-comment">//方式二：</span>
-    InputStream in=<span class="hljs-keyword">this</span>.getClass().getClassLoader().getResourceAsStream(<span class="hljs-string">"bpmn/HelloWorld.zip"</span>);
-    ZipInputStream zipInputStream =<span class="hljs-keyword">new</span> ZipInputStream(in);
-    builder.name(<span class="hljs-string">"Hello World!"</span>)
+    //方式一：
+    /*InputStream bpmnInput=this.getClass().getClassLoader().getResourceAsStream(&quot;bpmn/HelloWorld.bpmn&quot;);
+    InputStream pngInput=this.getClass().getClassLoader().getResourceAsStream(&quot;bpmn/HelloWorld.png&quot;);
+    builder.name(&quot;Hello World!&quot;)
+            .addInputStream(&quot;HelloWorld.bpmn&quot;, bpmnInput)
+            .addInputStream(&quot;HelloWorld.png&quot;, pngInput)
+            .deploy();*/
+    //方式二：
+    InputStream in=this.getClass().getClassLoader().getResourceAsStream(&quot;bpmn/HelloWorld.zip&quot;);
+    ZipInputStream zipInputStream =new ZipInputStream(in);
+    builder.name(&quot;Hello World!&quot;)
             .addZipInputStream(zipInputStream)
             .deploy();
 }
@@ -326,18 +327,18 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 </ul>
 </li>
 </ol>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">queryProcessDefinition</span><span class="hljs-params">()</span>
-</span>{
-    String key=<span class="hljs-string">"helloWorld"</span>;
+<pre><code class="lang-java">@Test
+public void queryProcessDefinition()
+{
+    String key=&quot;helloWorld&quot;;
     List&lt;ProcessDefinition&gt; pds=repositoryService.createProcessDefinitionQuery().processDefinitionKey(key).list();
-    <span class="hljs-keyword">for</span>(ProcessDefinition pd:pds)
+    for(ProcessDefinition pd:pds)
     {
-        System.out.println(<span class="hljs-string">"id:"</span>+pd.getId()+<span class="hljs-string">",name:"</span>+pd.getName()+<span class="hljs-string">",key:"</span>+pd.getKey()+<span class="hljs-string">",version:"</span>+pd.getVersion());
-        <span class="hljs-comment">//System.out.println(((ProcessDefinitionImpl)pd).getActivities());    //这样无法获得Activity信息 (这个ProcessDefinition是从DB中查询得到的)</span>
+        System.out.println(&quot;id:&quot;+pd.getId()+&quot;,name:&quot;+pd.getName()+&quot;,key:&quot;+pd.getKey()+&quot;,version:&quot;+pd.getVersion());
+        //System.out.println(((ProcessDefinitionImpl)pd).getActivities());    //这样无法获得Activity信息 (这个ProcessDefinition是从DB中查询得到的)
         ProcessDefinitionImpl pdImpl=(ProcessDefinitionImpl)repositoryService.getProcessDefinition(pd.getId()); 
-        <span class="hljs-comment">//这个ProcessDefinition是对应的bpmn文件解析构建的，即内存中（实际是ProcessDefinitionEntity对象）</span>
-        System.out.println(pdImpl.getActivities());        <span class="hljs-comment">//activity中包含Transitions等信息 （Actitity即节点）</span>
+        //这个ProcessDefinition是对应的bpmn文件解析构建的，即内存中（实际是ProcessDefinitionEntity对象）
+        System.out.println(pdImpl.getActivities());        //activity中包含Transitions等信息 （Actitity即节点）
     }
 }
 </code></pre>
@@ -347,31 +348,31 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 <li>存放在表act_ge_bytearray的Bytes字段中（type为BLOB）</li>
 <li>通过 deployment_id &amp; 文件名name 查找</li>
 </ul>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">queryProcessImage</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException
-</span>{
-    <span class="hljs-comment">//eg1.获取附件，例如png图片，也可获取其他resource文件：</span>
-    String deploymentId=<span class="hljs-string">"201"</span>;
-    List&lt;String&gt; resources=repositoryService.getDeploymentResourceNames(deploymentId);    <span class="hljs-comment">//通过发布ID，获取此发布的所有资源文件名</span>
-    String imgName=<span class="hljs-keyword">null</span>;
-    <span class="hljs-keyword">for</span>(String res:resources)    <span class="hljs-comment">//文件名过滤</span>
+<pre><code class="lang-java">@Test
+public void queryProcessImage() throws IOException
+{
+    //eg1.获取附件，例如png图片，也可获取其他resource文件：
+    String deploymentId=&quot;201&quot;;
+    List&lt;String&gt; resources=repositoryService.getDeploymentResourceNames(deploymentId);    //通过发布ID，获取此发布的所有资源文件名
+    String imgName=null;
+    for(String res:resources)    //文件名过滤
     {
         System.out.println(res);
-        <span class="hljs-keyword">if</span>(res.endsWith(<span class="hljs-string">".png"</span>)){
+        if(res.endsWith(&quot;.png&quot;)){
             imgName=res;
-            <span class="hljs-keyword">break</span>;
+            break;
         }
     }
-    <span class="hljs-keyword">if</span>(imgName!=<span class="hljs-keyword">null</span> &amp;&amp; imgName.length()!=<span class="hljs-number">0</span>){
-        <span class="hljs-comment">//查找指定资源，以流的形式读出</span>
+    if(imgName!=null &amp;&amp; imgName.length()!=0){
+        //查找指定资源，以流的形式读出
         InputStream in=repositoryService.getResourceAsStream(deploymentId, imgName);
-        FileUtils.copyInputStreamToFile(in, <span class="hljs-keyword">new</span> File(<span class="hljs-string">"D:/hello.png"</span>));
+        FileUtils.copyInputStreamToFile(in, new File(&quot;D:/hello.png&quot;));
     }
 
-    <span class="hljs-comment">//eg2.直接获取流程图：</span>
-    String processDefinitionId=<span class="hljs-string">"helloWorld:2:304"</span>;
+    //eg2.直接获取流程图：
+    String processDefinitionId=&quot;helloWorld:2:304&quot;;
     InputStream in=repositoryService.getProcessDiagram(processDefinitionId);
-    FileUtils.copyInputStreamToFile(in, <span class="hljs-keyword">new</span> File(<span class="hljs-string">"D:/hello2.png"</span>));
+    FileUtils.copyInputStreamToFile(in, new File(&quot;D:/hello2.png&quot;));
 }
 </code></pre>
 <h4 id="header-9">删除流程定义</h4>
@@ -405,17 +406,17 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 </ul>
 </li>
 </ul>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteDeployment</span><span class="hljs-params">()</span>
-</span>{
-    String key=<span class="hljs-string">"myProcess"</span>;
+<pre><code class="lang-java">@Test
+public void deleteDeployment()
+{
+    String key=&quot;myProcess&quot;;
     List&lt;Deployment&gt; deployments=repositoryService.createDeploymentQuery().processDefinitionKey(key).list();
-    <span class="hljs-keyword">for</span>(Deployment deployment:deployments)
+    for(Deployment deployment:deployments)
     {
-        <span class="hljs-comment">//方式一：</span>
+        //方式一：
         repositoryService.deleteDeployment(deployment.getId());    
-        <span class="hljs-comment">//方式二：</span>
-        <span class="hljs-comment">//repositoryService.deleteDeployment(deployment.getId(), true);</span>
+        //方式二：
+        //repositoryService.deleteDeployment(deployment.getId(), true);
     }
 }
 </code></pre>
@@ -440,21 +441,21 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 <li>方式一：通过processDefinition的Id启动流程</li>
 <li>方式二：通过ProcessDefinition的key启动流程（系统会使用此key下版本最高的ProcessDefinition）</li>
 </ul>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startProcess</span><span class="hljs-params">()</span></span>{
+<pre><code class="lang-java">@Test
+public void startProcess(){
 
-    <span class="hljs-comment">//RuntimeService 负责流程的启动，流转等操作</span>
-    RuntimeService runtimeService=<span class="hljs-keyword">this</span>.processEngine.getRuntimeService();
+    //RuntimeService 负责流程的启动，流转等操作
+    RuntimeService runtimeService=this.processEngine.getRuntimeService();
 
-    <span class="hljs-comment">//方式一：</span>
-    <span class="hljs-comment">/*String id="helloWorld:1:204";
-    ProcessInstance processInstance=runtimeService.startProcessInstanceById(id);*/</span>
+    //方式一：
+    /*String id=&quot;helloWorld:1:204&quot;;
+    ProcessInstance processInstance=runtimeService.startProcessInstanceById(id);*/
 
-    <span class="hljs-comment">//方式二：</span>
-    String key=<span class="hljs-string">"helloWorld"</span>;
+    //方式二：
+    String key=&quot;helloWorld&quot;;
     ProcessInstance processInstance=runtimeService.startProcessInstanceByKey(key);
 
-    System.out.println(<span class="hljs-string">"id:"</span>+processInstance.getId()+<span class="hljs-string">",activityId:"</span>+processInstance.getActivityId());
+    System.out.println(&quot;id:&quot;+processInstance.getId()+&quot;,activityId:&quot;+processInstance.getActivityId());
 }
 </code></pre>
 <p>启动成功后：</p>
@@ -464,74 +465,74 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 </ul>
 <h4 id="header-12">查看流程状态</h4>
 <p>查看流程状态，使用<code>ProcessInstanceQuery</code><br>（通过<code>runtimeService.createProcessInstanceQuery()</code>获取）</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">queryProcessState</span><span class="hljs-params">()</span>
-</span>{
-    String pid=<span class="hljs-string">"1001"</span>;
-    ProcessInstance processInstance=<span class="hljs-keyword">this</span>.runtimeService.createProcessInstanceQuery()
+<pre><code class="lang-java">@Test
+public void queryProcessState()
+{
+    String pid=&quot;1001&quot;;
+    ProcessInstance processInstance=this.runtimeService.createProcessInstanceQuery()
         .processInstanceId(pid)
         .singleResult();
-    <span class="hljs-keyword">if</span>(processInstance!=<span class="hljs-keyword">null</span>)
-        System.out.println(<span class="hljs-string">"id:"</span>+processInstance.getId()+<span class="hljs-string">",activityId:"</span>+processInstance.getActivityId());
+    if(processInstance!=null)
+        System.out.println(&quot;id:&quot;+processInstance.getId()+&quot;,activityId:&quot;+processInstance.getActivityId());
 }
 </code></pre>
 <h3 id="header-13">Task(任务)</h3>
 <h4 id="header-14">查看任务</h4>
 <p>查看任务，使用<code>TaskQuery</code>(通过<code>taskService.createTaskQuery()</code>获取)，主要查询表<code>act_ru_task</code></p>
-<pre><code class="nulljava"><span class="hljs-comment">/**
+<pre><code class="lang-java">/**
  * 查看任务——公有任务candidate （candicateUser,candicateGroup -- act_ru_identitylink）
  * taskService.createTaskQuery().taskCandidateXxx
- * */</span>
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">queryCandidateTask</span><span class="hljs-params">()</span>
-</span>{
-    String candidateGroup=<span class="hljs-string">"ROLE_User"</span>;
-    List&lt;Task&gt; tasks=<span class="hljs-keyword">this</span>.taskService.createTaskQuery().taskCandidateGroup(candidateGroup).list();
-    System.out.println(<span class="hljs-string">"-----------["</span>+candidateGroup+<span class="hljs-string">"]可认领任务列表"</span>);
+ * */
+@Test
+public void queryCandidateTask()
+{
+    String candidateGroup=&quot;ROLE_User&quot;;
+    List&lt;Task&gt; tasks=this.taskService.createTaskQuery().taskCandidateGroup(candidateGroup).list();
+    System.out.println(&quot;-----------[&quot;+candidateGroup+&quot;]可认领任务列表&quot;);
 
-    <span class="hljs-keyword">for</span>(Task task:tasks)
-        System.out.println(<span class="hljs-string">"id:"</span>+task.getId()+<span class="hljs-string">",name:"</span>+task.getName()+<span class="hljs-string">",assignee:"</span>+task.getAssignee()+<span class="hljs-string">",createTime:"</span>+task.getCreateTime());
+    for(Task task:tasks)
+        System.out.println(&quot;id:&quot;+task.getId()+&quot;,name:&quot;+task.getName()+&quot;,assignee:&quot;+task.getAssignee()+&quot;,createTime:&quot;+task.getCreateTime());
 
-    String candidateUser=<span class="hljs-string">"Lucy"</span>;
-    tasks=<span class="hljs-keyword">this</span>.taskService.createTaskQuery().taskCandidateUser(candidateUser).list();
-    System.out.println(<span class="hljs-string">"-----------["</span>+candidateUser+<span class="hljs-string">"]可认领任务列表"</span>);
+    String candidateUser=&quot;Lucy&quot;;
+    tasks=this.taskService.createTaskQuery().taskCandidateUser(candidateUser).list();
+    System.out.println(&quot;-----------[&quot;+candidateUser+&quot;]可认领任务列表&quot;);
 
-    <span class="hljs-keyword">for</span>(Task task:tasks)
-        System.out.println(<span class="hljs-string">"id:"</span>+task.getId()+<span class="hljs-string">",name:"</span>+task.getName()+<span class="hljs-string">",assignee:"</span>+task.getAssignee()+<span class="hljs-string">",createTime:"</span>+task.getCreateTime());
+    for(Task task:tasks)
+        System.out.println(&quot;id:&quot;+task.getId()+&quot;,name:&quot;+task.getName()+&quot;,assignee:&quot;+task.getAssignee()+&quot;,createTime:&quot;+task.getCreateTime());
 }
 
-<span class="hljs-comment">/**
+/**
  * 查看任务——私有任务assignee
  * taskService.createTaskQuery().taskAssignee
- * */</span>
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">queryAssigneeTask</span><span class="hljs-params">()</span>
-</span>{
-    String assignee=<span class="hljs-string">"CEO Tom"</span>;
-    List&lt;Task&gt; tasks=<span class="hljs-keyword">this</span>.taskService.createTaskQuery()
+ * */
+@Test
+public void queryAssigneeTask()
+{
+    String assignee=&quot;CEO Tom&quot;;
+    List&lt;Task&gt; tasks=this.taskService.createTaskQuery()
                                     .taskAssignee(assignee)
                                     .orderByTaskCreateTime().desc()
                                     .list();
-    System.out.println(<span class="hljs-string">"-----------["</span>+assignee+<span class="hljs-string">"]私有任务列表"</span>);
-    <span class="hljs-keyword">for</span>(Task task:tasks)
-        System.out.println(<span class="hljs-string">"id:"</span>+task.getId()+<span class="hljs-string">",name:"</span>+task.getName()+<span class="hljs-string">",assignee:"</span>+task.getAssignee()+<span class="hljs-string">",createTime:"</span>+task.getCreateTime());
+    System.out.println(&quot;-----------[&quot;+assignee+&quot;]私有任务列表&quot;);
+    for(Task task:tasks)
+        System.out.println(&quot;id:&quot;+task.getId()+&quot;,name:&quot;+task.getName()+&quot;,assignee:&quot;+task.getAssignee()+&quot;,createTime:&quot;+task.getCreateTime());
 }
 </code></pre>
 <h4 id="header-15">办理任务</h4>
 <p>公有任务需被认领（使用<code>taskService.claim</code>）后才可执行</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">claimTask</span><span class="hljs-params">()</span></span>{
-    String taskId=<span class="hljs-string">"1202"</span>;
-    String userId=<span class="hljs-string">"Lucy"</span>;
-    <span class="hljs-keyword">this</span>.taskService.claim(taskId, userId);
+<pre><code class="lang-java">@Test
+public void claimTask(){
+    String taskId=&quot;1202&quot;;
+    String userId=&quot;Lucy&quot;;
+    this.taskService.claim(taskId, userId);
 }
 </code></pre>
 <p>办理任务（使用<code>taskService.complete(taskId)</code>）</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doTask</span><span class="hljs-params">()</span>
-</span>{
-    String taskId=<span class="hljs-string">"1302"</span>;
-    <span class="hljs-keyword">this</span>.taskService.complete(taskId);
+<pre><code class="lang-java">@Test
+public void doTask()
+{
+    String taskId=&quot;1302&quot;;
+    this.taskService.complete(taskId);
 }
 </code></pre>
 <p>完成task后会：</p>
@@ -568,80 +569,80 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 </li>
 </ul>
 <p>使用举例1（TaskListener,delegateExpression）：<br>1) xxx.bpmn.xml:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">userTask</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"usertask1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"User Task1"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">extensionElements</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">activiti:taskListener</span> <span class="hljs-attr">event</span>=<span class="hljs-string">"create"</span> <span class="hljs-attr">delegateExpression</span>=<span class="hljs-string">"${springTaskListenerBean}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">activiti:taskListener</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">extensionElements</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">userTask</span>&gt;</span>
+<pre><code class="lang-xml">&lt;userTask id=&quot;usertask1&quot; name=&quot;User Task1&quot;&gt;
+  &lt;extensionElements&gt;
+    &lt;activiti:taskListener event=&quot;create&quot; delegateExpression=&quot;${springTaskListenerBean}&quot;&gt;&lt;/activiti:taskListener&gt;
+  &lt;/extensionElements&gt;
+&lt;/userTask&gt;
 </code></pre>
 <p>2) SpringTaskListenerBean.java:</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Component</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SpringTaskListenerBean</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">TaskListener</span> </span>{
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">notify</span><span class="hljs-params">(DelegateTask delegateTask)</span> </span>{
-        delegateTask.setVariable(<span class="hljs-string">"status"</span>, delegateTask.getEventName());
-        System.out.println(delegateTask.getEventName()+<span class="hljs-string">" : "</span>+delegateTask.getName()
-                +<span class="hljs-string">" ( status: "</span>+delegateTask.getVariable(<span class="hljs-string">"status"</span>)+<span class="hljs-string">")"</span>);
+<pre><code class="lang-java">@Component
+public class SpringTaskListenerBean implements TaskListener {
+    @Override
+    public void notify(DelegateTask delegateTask) {
+        delegateTask.setVariable(&quot;status&quot;, delegateTask.getEventName());
+        System.out.println(delegateTask.getEventName()+&quot; : &quot;+delegateTask.getName()
+                +&quot; ( status: &quot;+delegateTask.getVariable(&quot;status&quot;)+&quot;)&quot;);
     }
 }
 </code></pre>
 <p>使用举例2（TaskListener,expression）：<br>1) xxx.bpmn.xml</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">userTask</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"reqApprove"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"TPM Manager 审批"</span> <span class="hljs-attr">activiti:assignee</span>=<span class="hljs-string">"${approver}"</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">extensionElements</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">activiti:taskListener</span> <span class="hljs-attr">event</span>=<span class="hljs-string">"assignment"</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"${processService.doProcApproverAssignment(task)}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">activiti:taskListener</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">extensionElements</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">userTask</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;userTask id=&quot;reqApprove&quot; name=&quot;TPM Manager 审批&quot; activiti:assignee=&quot;${approver}&quot;&gt;
+      &lt;extensionElements&gt;
+        &lt;activiti:taskListener event=&quot;assignment&quot; expression=&quot;${processService.doProcApproverAssignment(task)}&quot;&gt;&lt;/activiti:taskListener&gt;
+      &lt;/extensionElements&gt;
+    &lt;/userTask&gt;
 </code></pre>
 <p>2) ProcessService.java</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Service</span>(<span class="hljs-string">"processService"</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProcessService</span></span>{
+<pre><code class="lang-java">@Service(&quot;processService&quot;)
+public class ProcessService{
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doProcApproverAssignment</span><span class="hljs-params">(DelegateTask delegateTask)</span></span>{
-        System.out.println(<span class="hljs-string">"Do Proc Approver Assignement..."</span>);
-        String reqId=(String)delegateTask.getVariable(<span class="hljs-string">"reqId"</span>);
+    public void doProcApproverAssignment(DelegateTask delegateTask){
+        System.out.println(&quot;Do Proc Approver Assignement...&quot;);
+        String reqId=(String)delegateTask.getVariable(&quot;reqId&quot;);
         System.out.println(delegateTask.getAssignee());
         ...
     }
 }
 </code></pre>
 <p>使用举例3（executionListener,delegateExpression）：</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">startEvent</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"basicSingleStart"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Start"</span> <span class="hljs-attr">activiti:initiator</span>=<span class="hljs-string">"requesterUser"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">extensionElements</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">activiti:executionListener</span> <span class="hljs-attr">event</span>=<span class="hljs-string">"end"</span> <span class="hljs-attr">delegateExpression</span>=<span class="hljs-string">"${procStartListener}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">activiti:executionListener</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">extensionElements</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">startEvent</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;startEvent id=&quot;basicSingleStart&quot; name=&quot;Start&quot; activiti:initiator=&quot;requesterUser&quot;&gt;
+  &lt;extensionElements&gt;
+    &lt;activiti:executionListener event=&quot;end&quot; delegateExpression=&quot;${procStartListener}&quot;&gt;&lt;/activiti:executionListener&gt;
+  &lt;/extensionElements&gt;
+&lt;/startEvent&gt;
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProcStartListener</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">TaskListener</span>
-</span>{
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">notify</span><span class="hljs-params">(DelegateTask delegateTask)</span>
-    </span>{
-        System.out.println(<span class="hljs-string">"Process Start:"</span>+delegateTask.getName());
+<pre><code class="lang-java">public class ProcStartListener implements TaskListener
+{
+    @Override
+    public void notify(DelegateTask delegateTask)
+    {
+        System.out.println(&quot;Process Start:&quot;+delegateTask.getName());
         String reqId=(String)delegateTask.getVariable(ProcessVariable.reqId);
-        <span class="hljs-keyword">if</span>(reqId!=<span class="hljs-keyword">null</span>)
+        if(reqId!=null)
         ...
     }
 }
 </code></pre>
 <p>使用举例3（executionListener,expression）：<br>1) xxx.bpmn.xml</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">startEvent</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"basicSingleStart"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Start"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">extensionElements</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">activiti:executionListener</span> <span class="hljs-attr">event</span>=<span class="hljs-string">"end"</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"${processService.setProcBusinessKey(execution)}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">activiti:executionListener</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">extensionElements</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">startEvent</span>&gt;</span>
+<pre><code class="lang-xml">&lt;startEvent id=&quot;basicSingleStart&quot; name=&quot;Start&quot;&gt;
+  &lt;extensionElements&gt;
+    &lt;activiti:executionListener event=&quot;end&quot; expression=&quot;${processService.setProcBusinessKey(execution)}&quot;&gt;&lt;/activiti:executionListener&gt;
+  &lt;/extensionElements&gt;
+&lt;/startEvent&gt;
 </code></pre>
 <p>2) ProcessService.java</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Service</span>(<span class="hljs-string">"processService"</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProcessService</span></span>{
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setProcBusinessKey</span><span class="hljs-params">(DelegateExecution execution)</span></span>{
-        System.out.println(<span class="hljs-string">"Set Proc BusinessKey..."</span>);
+<pre><code class="lang-java">@Service(&quot;processService&quot;)
+public class ProcessService{
+    public void setProcBusinessKey(DelegateExecution execution){
+        System.out.println(&quot;Set Proc BusinessKey...&quot;);
         String key=execution.getProcessBusinessKey();
-        <span class="hljs-keyword">if</span>(key==<span class="hljs-keyword">null</span>){
+        if(key==null){
             key=(String)execution.getVariable(ProcessVariable.reqId);
-            System.out.println(<span class="hljs-string">"Set Basic Process BusinessKey:"</span>+key);
-            <span class="hljs-keyword">if</span>(execution <span class="hljs-keyword">instanceof</span> ExecutionEntity)
+            System.out.println(&quot;Set Basic Process BusinessKey:&quot;+key);
+            if(execution instanceof ExecutionEntity)
                 ((ExecutionEntity)execution).setBusinessKey(key);
-            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(execution <span class="hljs-keyword">instanceof</span> ExecutionImpl)
+            else if(execution instanceof ExecutionImpl)
                 ((ExecutionImpl)execution).updateProcessBusinessKey(key);
         }
     }
@@ -655,16 +656,16 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 <h4 id="header-17">系统任务</h4>
 <p>ServcieTask 系统任务，自动执行</p>
 <p>1) xxx.bpmn.xml:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">serviceTask</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"servicetask"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"service Task"</span> <span class="hljs-attr">activiti:delegateExpression</span>=<span class="hljs-string">"myJavaDelegate"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">serviceTask</span>&gt;</span>
+<pre><code class="lang-xml">&lt;serviceTask id=&quot;servicetask&quot; name=&quot;service Task&quot; activiti:delegateExpression=&quot;myJavaDelegate&quot;&gt;&lt;/serviceTask&gt;
 </code></pre>
 <p>2) MyJavaDelegate.java</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyJavaDelegate</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">JavaDelegate</span>
-</span>{
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">execute</span><span class="hljs-params">(DelegateExecution execution)</span> <span class="hljs-keyword">throws</span> Exception
-    </span>{
-        System.out.println(<span class="hljs-string">"Execution Service Task..."</span>);
-        execution.setVariable(<span class="hljs-string">"serviceVar"</span>, <span class="hljs-string">"Hello"</span>);
+<pre><code class="lang-java">public class MyJavaDelegate implements JavaDelegate
+{
+    @Override
+    public void execute(DelegateExecution execution) throws Exception
+    {
+        System.out.println(&quot;Execution Service Task...&quot;);
+        execution.setVariable(&quot;serviceVar&quot;, &quot;Hello&quot;);
     }
 }
 </code></pre>
@@ -676,17 +677,17 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 <li>根据condition结果，执行其中一条分支</li>
 </ul>
 <p><img src="/2013/10/01/ExclusiveGateway.png" alt="ExclusiveGateway"></p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">sequenceFlow</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"flow2"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"input == 1"</span> <span class="hljs-attr">sourceRef</span>=<span class="hljs-string">"exclusivegateway"</span> <span class="hljs-attr">targetRef</span>=<span class="hljs-string">"usertask1"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">conditionExpression</span> <span class="hljs-attr">xsi:type</span>=<span class="hljs-string">"tFormalExpression"</span>&gt;</span>&lt;![CDATA[${input == 1}]]&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">conditionExpression</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">sequenceFlow</span>&gt;</span>
+<pre><code class="lang-xml">&lt;sequenceFlow id=&quot;flow2&quot; name=&quot;input == 1&quot; sourceRef=&quot;exclusivegateway&quot; targetRef=&quot;usertask1&quot;&gt;
+        &lt;conditionExpression xsi:type=&quot;tFormalExpression&quot;&gt;&lt;![CDATA[${input == 1}]]&gt;&lt;/conditionExpression&gt;
+&lt;/sequenceFlow&gt;
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testExclusiveGateway</span><span class="hljs-params">()</span></span>{
-    Map&lt;String,Object&gt; variables=<span class="hljs-keyword">new</span> HashMap&lt;String,Object&gt;();
-    variables.put(<span class="hljs-string">"input"</span>, <span class="hljs-number">2</span>);
-    runtimeService.startProcessInstanceByKey(<span class="hljs-string">"exclusiveGatewayTest"</span>,variables);
+<pre><code class="lang-java">public void testExclusiveGateway(){
+    Map&lt;String,Object&gt; variables=new HashMap&lt;String,Object&gt;();
+    variables.put(&quot;input&quot;, 2);
+    runtimeService.startProcessInstanceByKey(&quot;exclusiveGatewayTest&quot;,variables);
 
     Task task=taskService.createTaskQuery().singleResult();
-    assertTrue(<span class="hljs-string">"User Task2"</span>.equals(task.getName()));
+    assertTrue(&quot;User Task2&quot;.equals(task.getName()));
 }
 </code></pre>
 <h4 id="header-20">并行网关</h4>
@@ -704,77 +705,77 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 </ul>
 <p>例如：<br><img src="/2013/10/01/InclusiveGateway.png" alt="InclusiveGateway"><br>若<code>input=2</code>,则UserTask1不会被执行，且只有<code>UserTask2</code>和<code>UserTask3</code>都被执行完成后，流程才会再往下</p>
 <h3 id="header-22">与Spring整合</h3>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">aop:aspectj-autoproxy</span> <span class="hljs-attr">proxy-target-class</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"xxxx"</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">context:component-scan</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">context:property-placeholder</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"classpath:jdbc-mine.properties"</span>/&gt;</span>
+<pre><code class="lang-xml">&lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
+&lt;context:annotation-config/&gt;
+&lt;context:component-scan base-package=&quot;xxxx&quot; &gt;&lt;/context:component-scan&gt;
+&lt;context:property-placeholder location=&quot;classpath:jdbc-mine.properties&quot;/&gt;
 
-<span class="hljs-comment">&lt;!-- DataSource --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">"close"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driverClassName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.driverClassName}"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.url}"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.username}"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.password}"</span>/&gt;</span>
+&lt;!-- DataSource --&gt;
+&lt;bean id=&quot;dataSource&quot; destroy-method=&quot;close&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+    &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driverClassName}&quot;/&gt;
+    &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot;/&gt;
+    &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+    &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"initialSize"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"minIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxActive"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"200"</span>/&gt;</span>   
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"30"</span>/&gt;</span>       
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxWait"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"10000"</span>/&gt;</span>  
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"removeAbandoned"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>  
-    <span class="hljs-comment">&lt;!-- &lt;property name="logAbandoned" value="true"/&gt;   --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"validationQuery"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"select 1 from dual"</span>/&gt;</span> 
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"testOnBorrow"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    &lt;property name=&quot;initialSize&quot; value=&quot;1&quot;/&gt;
+    &lt;property name=&quot;minIdle&quot; value=&quot;2&quot;/&gt;
+    &lt;property name=&quot;maxActive&quot; value=&quot;200&quot;/&gt;   
+    &lt;property name=&quot;maxIdle&quot; value=&quot;30&quot;/&gt;       
+    &lt;property name=&quot;maxWait&quot; value=&quot;10000&quot;/&gt;  
+    &lt;property name=&quot;removeAbandoned&quot; value=&quot;true&quot;/&gt;  
+    &lt;!-- &lt;property name=&quot;logAbandoned&quot; value=&quot;true&quot;/&gt;   --&gt;
+    &lt;property name=&quot;validationQuery&quot; value=&quot;select 1 from dual&quot;/&gt; 
+    &lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot;/&gt;
+&lt;/bean&gt;
 
-<span class="hljs-comment">&lt;!-- 声明式事务 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txManager"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">"txManager"</span> &gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"list*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"get*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"detail*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"test*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>  /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"*"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(* com.cj..service.*.*(..))"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myShuttleService"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">aop:advisor</span> <span class="hljs-attr">advice-ref</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"myShuttleService"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"2"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span> 
+&lt;!-- 声明式事务 --&gt;
+&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+&lt;/bean&gt;
+&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot; &gt;
+    &lt;tx:attributes&gt;
+        &lt;tx:method name=&quot;list*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+        &lt;tx:method name=&quot;get*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+        &lt;tx:method name=&quot;detail*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; /&gt;
+        &lt;tx:method name=&quot;test*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;  /&gt;
+        &lt;tx:method name=&quot;*&quot;/&gt;
+    &lt;/tx:attributes&gt;
+&lt;/tx:advice&gt;
+ &lt;aop:config&gt;
+    &lt;aop:pointcut expression=&quot;execution(* com.cj..service.*.*(..))&quot; id=&quot;myShuttleService&quot;/&gt;
+    &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;myShuttleService&quot; order=&quot;2&quot;/&gt;
+&lt;/aop:config&gt; 
 
-<span class="hljs-comment">&lt;!-- Activiti: processEngineConfiguration --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"processEngineConfiguration"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.activiti.spring.SpringProcessEngineConfiguration"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"transactionManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"txManager"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"databaseSchemaUpdate"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jobExecutorActivate"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span> /&gt;</span>
+&lt;!-- Activiti: processEngineConfiguration --&gt;
+&lt;bean id=&quot;processEngineConfiguration&quot; class=&quot;org.activiti.spring.SpringProcessEngineConfiguration&quot;&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+    &lt;property name=&quot;transactionManager&quot; ref=&quot;txManager&quot; /&gt;
+    &lt;property name=&quot;databaseSchemaUpdate&quot; value=&quot;true&quot; /&gt;
+    &lt;property name=&quot;jobExecutorActivate&quot; value=&quot;true&quot; /&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"history"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"full"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"activityFontName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"宋体"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"labelFontName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"宋体"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    &lt;property name=&quot;history&quot; value=&quot;full&quot; /&gt;
+    &lt;property name=&quot;activityFontName&quot; value=&quot;宋体&quot; /&gt;
+    &lt;property name=&quot;labelFontName&quot; value=&quot;宋体&quot; /&gt;
+&lt;/bean&gt;
 
-<span class="hljs-comment">&lt;!-- Activiti: processEngine --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.activiti.spring.ProcessEngineFactoryBean"</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">"destroy"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"processEngineConfiguration"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"processEngineConfiguration"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+&lt;!-- Activiti: processEngine --&gt;
+&lt;bean id=&quot;processEngine&quot; class=&quot;org.activiti.spring.ProcessEngineFactoryBean&quot; destroy-method=&quot;destroy&quot;&gt;
+    &lt;property name=&quot;processEngineConfiguration&quot; ref=&quot;processEngineConfiguration&quot; /&gt;
+&lt;/bean&gt;
 
-<span class="hljs-comment">&lt;!-- Activiti: Service --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"repositoryService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getRepositoryService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"runtimeService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getRuntimeService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"taskService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getTaskService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"historyService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getHistoryService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"managementService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getManagementService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"identityService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getIdentityService"</span> /&gt;</span>
+&lt;!-- Activiti: Service --&gt;
+&lt;bean id=&quot;repositoryService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getRepositoryService&quot; /&gt;
+&lt;bean id=&quot;runtimeService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getRuntimeService&quot; /&gt;
+&lt;bean id=&quot;taskService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getTaskService&quot; /&gt;
+&lt;bean id=&quot;historyService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getHistoryService&quot; /&gt;
+&lt;bean id=&quot;managementService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getManagementService&quot; /&gt;
+&lt;bean id=&quot;identityService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getIdentityService&quot; /&gt;
 
-<span class="hljs-comment">&lt;!-- 根据需要注入：--&gt;</span>
-<span class="hljs-comment">&lt;!-- Activiti: javaDelegate --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myJavaDelegate"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.test.javaDelegate.MyJavaDelegate"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- Activiti: taskListener --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myTaskListener"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.test.taskListener.MyTaskListener"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+&lt;!-- 根据需要注入：--&gt;
+&lt;!-- Activiti: javaDelegate --&gt;
+&lt;bean id=&quot;myJavaDelegate&quot; class=&quot;com.cj.test.javaDelegate.MyJavaDelegate&quot;&gt;&lt;/bean&gt;
+&lt;!-- Activiti: taskListener --&gt;
+&lt;bean id=&quot;myTaskListener&quot; class=&quot;com.cj.test.taskListener.MyTaskListener&quot;&gt;&lt;/bean&gt;
 </code></pre>
 <h3 id="header-23">测试</h3>
 <p><code>PluggableActivitiTestCase</code>，<code>ResourceActivitiTestCase</code>，<code>SpringActivitiTestCase</code></p>
@@ -791,17 +792,17 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 </ul>
 </li>
 <li>方式二：<code>extends ResourceActivitiTestCase</code><ul>
-<li>可指定配置文件,在构造函数中配置调用：<code>super(&quot;xxx&quot;)</code>;<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GatewayTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ResourceActivitiTestCase</span></span>{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">GatewayTest</span><span class="hljs-params">()</span></span>{
-      <span class="hljs-keyword">super</span>(<span class="hljs-string">"activiti-test.cfg.xml"</span>);
+<li>可指定配置文件,在构造函数中配置调用：<code>super(&quot;xxx&quot;)</code>;<pre><code class="lang-java">public class GatewayTest extends ResourceActivitiTestCase{
+  public GatewayTest(){
+      super(&quot;activiti-test.cfg.xml&quot;);
   }
-  <span class="hljs-meta">@Deployment</span>(resources = <span class="hljs-string">"bpmn/gateway/ExclusiveGateway.bpmn"</span>)
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testExclusiveGateway</span><span class="hljs-params">()</span></span>{
-      Map&lt;String,Object&gt; variables=<span class="hljs-keyword">new</span> HashMap&lt;String,Object&gt;();
-      variables.put(<span class="hljs-string">"input"</span>, <span class="hljs-number">2</span>);
-      runtimeService.startProcessInstanceByKey(<span class="hljs-string">"exclusiveGatewayTest"</span>,variables);
+  @Deployment(resources = &quot;bpmn/gateway/ExclusiveGateway.bpmn&quot;)
+  public void testExclusiveGateway(){
+      Map&lt;String,Object&gt; variables=new HashMap&lt;String,Object&gt;();
+      variables.put(&quot;input&quot;, 2);
+      runtimeService.startProcessInstanceByKey(&quot;exclusiveGatewayTest&quot;,variables);
       Task task=taskService.createTaskQuery().singleResult();
-      assertTrue(<span class="hljs-string">"User Task2"</span>.equals(task.getName()));
+      assertTrue(&quot;User Task2&quot;.equals(task.getName()));
   }
 }
 </code></pre>
@@ -812,68 +813,68 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 <ul>
 <li>整合Spring测试（ProcessEngine,Service由Spring管理）</li>
 <li><p><code>beans-test.xml</code>:</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.jdbc.datasource.SimpleDriverDataSource"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driverClass"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.driverClassName}"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.url}"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.username}"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.password}"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<pre><code class="lang-xml">&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.SimpleDriverDataSource&quot;&gt;
+  &lt;property name=&quot;driverClass&quot; value=&quot;${jdbc.driverClassName}&quot;/&gt;
+  &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot;/&gt;
+  &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+  &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+&lt;/bean&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txManager"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">"txManager"</span> &gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"list*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"get*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"detail*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"test*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>  /&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"*"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span>
+&lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;
+  &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+&lt;/bean&gt;
+&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot; &gt;
+  &lt;tx:attributes&gt;
+      &lt;tx:method name=&quot;list*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+      &lt;tx:method name=&quot;get*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+      &lt;tx:method name=&quot;detail*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; /&gt;
+      &lt;tx:method name=&quot;test*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;  /&gt;
+      &lt;tx:method name=&quot;*&quot;/&gt;
+  &lt;/tx:attributes&gt;
+&lt;/tx:advice&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"processEngineConfiguration"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.activiti.spring.SpringProcessEngineConfiguration"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"transactionManager"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"txManager"</span> /&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"databaseSchemaUpdate"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"jobExecutorActivate"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-  <span class="hljs-comment">&lt;!-- &lt;property name="history" value="full" /&gt; --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"activityFontName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"微软雅黑"</span> /&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"labelFontName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"微软雅黑"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.activiti.spring.ProcessEngineFactoryBean"</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">"destroy"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"processEngineConfiguration"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"processEngineConfiguration"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+&lt;bean id=&quot;processEngineConfiguration&quot; class=&quot;org.activiti.spring.SpringProcessEngineConfiguration&quot;&gt;
+  &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+  &lt;property name=&quot;transactionManager&quot; ref=&quot;txManager&quot; /&gt;
+  &lt;property name=&quot;databaseSchemaUpdate&quot; value=&quot;true&quot; /&gt;
+  &lt;property name=&quot;jobExecutorActivate&quot; value=&quot;true&quot; /&gt;
+  &lt;!-- &lt;property name=&quot;history&quot; value=&quot;full&quot; /&gt; --&gt;
+  &lt;property name=&quot;activityFontName&quot; value=&quot;微软雅黑&quot; /&gt;
+  &lt;property name=&quot;labelFontName&quot; value=&quot;微软雅黑&quot; /&gt;
+&lt;/bean&gt;
+&lt;bean id=&quot;processEngine&quot; class=&quot;org.activiti.spring.ProcessEngineFactoryBean&quot; destroy-method=&quot;destroy&quot;&gt;
+  &lt;property name=&quot;processEngineConfiguration&quot; ref=&quot;processEngineConfiguration&quot; /&gt;
+&lt;/bean&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"repositoryService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getRepositoryService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"runtimeService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getRuntimeService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"taskService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getTaskService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"historyService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getHistoryService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"managementService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getManagementService"</span> /&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"identityService"</span> <span class="hljs-attr">factory-bean</span>=<span class="hljs-string">"processEngine"</span> <span class="hljs-attr">factory-method</span>=<span class="hljs-string">"getIdentityService"</span> /&gt;</span>
+&lt;bean id=&quot;repositoryService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getRepositoryService&quot; /&gt;
+&lt;bean id=&quot;runtimeService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getRuntimeService&quot; /&gt;
+&lt;bean id=&quot;taskService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getTaskService&quot; /&gt;
+&lt;bean id=&quot;historyService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getHistoryService&quot; /&gt;
+&lt;bean id=&quot;managementService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getManagementService&quot; /&gt;
+&lt;bean id=&quot;identityService&quot; factory-bean=&quot;processEngine&quot; factory-method=&quot;getIdentityService&quot; /&gt;
 </code></pre>
 </li>
 <li><p>Test Class: </p>
-<pre><code class="nulljava"><span class="hljs-meta">@ContextConfiguration</span>(<span class="hljs-string">"classpath:beans-test.xml"</span>)
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TaskSpringTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SpringActivitiTestCase</span>
-</span>{
-  <span class="hljs-meta">@Deployment</span>(resources=<span class="hljs-string">"bpmn/task/ServiceTask-spring.bpmn"</span>)
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testServiceTask</span><span class="hljs-params">()</span></span>{
-      ProcessInstance procInst=runtimeService.startProcessInstanceByKey(<span class="hljs-string">"serviceTaskSpringTest"</span>);
+<pre><code class="lang-java">@ContextConfiguration(&quot;classpath:beans-test.xml&quot;)
+public class TaskSpringTest extends SpringActivitiTestCase
+{
+  @Deployment(resources=&quot;bpmn/task/ServiceTask-spring.bpmn&quot;)
+  public void testServiceTask(){
+      ProcessInstance procInst=runtimeService.startProcessInstanceByKey(&quot;serviceTaskSpringTest&quot;);
 
-      <span class="hljs-comment">//User Task1</span>
+      //User Task1
       Task task=taskService.createTaskQuery().singleResult();
-      assertTrue(<span class="hljs-string">"User Task1"</span>.equals(task.getName()));
+      assertTrue(&quot;User Task1&quot;.equals(task.getName()));
       taskService.complete(task.getId());
 
-      <span class="hljs-comment">//Service Task -- auto execute!</span>
+      //Service Task -- auto execute!
 
-      <span class="hljs-comment">//User Task2</span>
+      //User Task2
       task=taskService.createTaskQuery().singleResult();
-      assertTrue(<span class="hljs-string">"User Task2"</span>.equals(task.getName()));
+      assertTrue(&quot;User Task2&quot;.equals(task.getName()));
 
-      String var=(String)taskService.getVariable(task.getId(), <span class="hljs-string">"serviceVar"</span>);
-      assertTrue(<span class="hljs-string">"Hello"</span>.equals(var));
+      String var=(String)taskService.getVariable(task.getId(), &quot;serviceVar&quot;);
+      assertTrue(&quot;Hello&quot;.equals(var));
 
       taskService.complete(task.getId());
       assertProcessEnded(procInst.getId());
@@ -945,8 +946,8 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 </ul>
 </li>
 <li><p>ManagementService：提供流程管理和控制操作的接口服务</p>
-<pre><code class="nulljava">  String jobId=managementService.createJobQuery()
-      .processInstanceId(<span class="hljs-string">"2401"</span>)
+<pre><code class="lang-java">  String jobId=managementService.createJobQuery()
+      .processInstanceId(&quot;2401&quot;)
       .singleResult()
       .getId();
   managementService.executeJob(jobId);
@@ -982,26 +983,26 @@ RepositoryService repositoryService=<span class="hljs-keyword">this</span>.proce
 <li>full： 最完整的历史记录，除了包含audit级别的信息之外还能保存详细，例如：流程变量</li>
 </ul>
 </li>
-<li>可配置：<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"processEngineConfiguration"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.activiti.spring.SpringProcessEngineConfiguration"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"history"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"full"</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<li>可配置：<pre><code class="lang-xml">&lt;bean id=&quot;processEngineConfiguration&quot; class=&quot;org.activiti.spring.SpringProcessEngineConfiguration&quot;&gt;
+  &lt;property name=&quot;history&quot; value=&quot;full&quot;&gt;
+&lt;/property&gt;&lt;/bean&gt;
 </code></pre>
 </li>
-<li>查询变量：<pre><code class="nulljava">List&lt;historicvariableinstance&gt; list = historyService.createHistoricVariableInstanceQuery()
+<li>查询变量：<pre><code class="lang-java">List&lt;historicvariableinstance&gt; list = historyService.createHistoricVariableInstanceQuery()
           .processInstanceId(processInstanceId)
           .list();
-<span class="hljs-keyword">for</span> (HistoricVariableInstance variable : list) {
-System.out.println(<span class="hljs-string">"variable: "</span> + variable.getVariableName() + <span class="hljs-string">" = "</span> + variable.getValue());
+for (HistoricVariableInstance variable : list) {
+System.out.println(&quot;variable: &quot; + variable.getVariableName() + &quot; = &quot; + variable.getValue());
 }
 </code></pre>
 </li>
-<li>只查询表单字段：<pre><code class="nulljava">List&lt;historicdetail&gt; formProperties = historyService.createHistoricDetailQuery()
+<li>只查询表单字段：<pre><code class="lang-java">List&lt;historicdetail&gt; formProperties = historyService.createHistoricDetailQuery()
           .processInstanceId(processInstance.getId())
           .formProperties()
           .list();
-<span class="hljs-keyword">for</span> (HistoricDetail historicDetail : formProperties) {
+for (HistoricDetail historicDetail : formProperties) {
   HistoricFormProperty field = (HistoricFormProperty) historicDetail;
-  System.out.println(<span class="hljs-string">"field id: "</span> + field.getPropertyId() + <span class="hljs-string">", value: "</span> + field.getPropertyValue());
+  System.out.println(&quot;field id: &quot; + field.getPropertyId() + &quot;, value: &quot; + field.getPropertyValue());
 }
 </code></pre>
 </li>
@@ -1041,17 +1042,17 @@ System.out.println(<span class="hljs-string">"variable: "</span> + variable.getV
 <li>表单内容以key-value形式保存在表<code>act_hi_detail</code>中</li>
 <li><p>使用方式一：在流程定义文件中用<code>activiti:formProperty</code>属性定义</p>
 <ul>
-<li>表单没有布局，所有的表单元素会顺序逐行输出在页面<pre><code class="nullxml">  <span class="hljs-tag">&lt;<span class="hljs-name">startevent</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"startevent1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Start"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">extensionelements</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">activiti:formproperty</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Name"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">activiti:formproperty</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">extensionelements</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">startevent</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">usertask</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"usertask1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"First Step"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">extensionelements</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">activiti:formproperty</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"setInFirstStep"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"SetInFirstStep"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">activiti:formproperty</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">activiti:formproperty</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"remark"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Remark"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"string"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">activiti:formproperty</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">extensionelements</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">usertask</span>&gt;</span>
+<li>表单没有布局，所有的表单元素会顺序逐行输出在页面<pre><code class="lang-xml">  &lt;startevent id=&quot;startevent1&quot; name=&quot;Start&quot;&gt;
+    &lt;extensionelements&gt;
+      &lt;activiti:formproperty id=&quot;name&quot; name=&quot;Name&quot; type=&quot;string&quot;&gt;&lt;/activiti:formproperty&gt;
+    &lt;/extensionelements&gt;
+  &lt;/startevent&gt;
+  &lt;usertask id=&quot;usertask1&quot; name=&quot;First Step&quot;&gt;
+    &lt;extensionelements&gt;
+      &lt;activiti:formproperty id=&quot;setInFirstStep&quot; name=&quot;SetInFirstStep&quot; type=&quot;date&quot;&gt;&lt;/activiti:formproperty&gt;
+          &lt;activiti:formproperty id=&quot;remark&quot; name=&quot;Remark&quot; type=&quot;string&quot;&gt;&lt;/activiti:formproperty&gt;
+    &lt;/extensionelements&gt;
+  &lt;/usertask&gt;
 </code></pre>
 </li>
 <li>通过<code>formService.getXxxForm</code>获取表单：<ul>
@@ -1065,10 +1066,10 @@ System.out.println(<span class="hljs-string">"variable: "</span> + variable.getV
 <li><p>使用方式二：在流程定义文件中用<code>activiti:formkey</code>属性引用</p>
 <ul>
 <li>流程运行时从部署的表单文件中读取，原样输出显示</li>
-<li>注意：表单内容写好保存到<code>.form</code>文件，需同流程定义文件一同部署<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">process</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"FormKey"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"FormKey"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">startevent</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"startevent1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Start"</span> <span class="hljs-attr">activiti:formkey</span>=<span class="hljs-string">"form/start.form"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">startevent</span>&gt;</span>
+<li>注意：表单内容写好保存到<code>.form</code>文件，需同流程定义文件一同部署<pre><code class="lang-xml">&lt;process id=&quot;FormKey&quot; name=&quot;FormKey&quot;&gt;
+  &lt;startevent id=&quot;startevent1&quot; name=&quot;Start&quot; activiti:formkey=&quot;form/start.form&quot;&gt;&lt;/startevent&gt;
   …
-<span class="hljs-tag">&lt;/<span class="hljs-name">process</span>&gt;</span>
+&lt;/process&gt;
 </code></pre>
 </li>
 <li>通过<code>formService.getRenderedXxxForm</code>获取表单：<ul>
@@ -1128,12 +1129,12 @@ System.out.println(<span class="hljs-string">"variable: "</span> + variable.getV
 </li>
 </ol>
 <h3 id="header-34">多实例</h3>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">userTask</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"miTasks"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"My Task"</span> <span class="hljs-attr">activiti:assignee</span>=<span class="hljs-string">"${user}"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">multiInstanceLoopCharacteristics</span> <span class="hljs-attr">isSequential</span>=<span class="hljs-string">"false"</span>
-    <span class="hljs-attr">activiti:collection</span>=<span class="hljs-string">"${myService.resolveUsersForTask()}"</span> <span class="hljs-attr">activiti:elementVariable</span>=<span class="hljs-string">"user"</span> &gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">completionCondition</span>&gt;</span>${nrOfCompletedInstances/nrOfInstances &gt;= 0.6 }<span class="hljs-tag">&lt;/<span class="hljs-name">completionCondition</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">multiInstanceLoopCharacteristics</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">userTask</span>&gt;</span>
+<pre><code class="lang-xml">&lt;userTask id=&quot;miTasks&quot; name=&quot;My Task&quot; activiti:assignee=&quot;${user}&quot;&gt;
+    &lt;multiInstanceLoopCharacteristics isSequential=&quot;false&quot;
+    activiti:collection=&quot;${myService.resolveUsersForTask()}&quot; activiti:elementVariable=&quot;user&quot; &gt;
+    &lt;completionCondition&gt;${nrOfCompletedInstances/nrOfInstances &gt;= 0.6 }&lt;/completionCondition&gt;
+    &lt;/multiInstanceLoopCharacteristics&gt;
+&lt;/userTask&gt;
 </code></pre>
 <ul>
 <li><code>isSequential=&quot;true&quot;</code> 顺序执行（多级串行）</li>
@@ -1167,12 +1168,12 @@ System.out.println(<span class="hljs-string">"variable: "</span> + variable.getV
 <h3 id="header-36">Transaction 事务</h3>
 <ul>
 <li><p>Case1: serviceTask[处理成功申请] 同步，即设置<code>activiti:async=&quot;false&quot;</code> （默认）</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">serviceTask</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"service1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"处理成功申请"</span> <span class="hljs-attr">activiti:class</span>=<span class="hljs-string">"my.custom.Delegate"</span> <span class="hljs-attr">activiti:async</span>=<span class="hljs-string">"false"</span></span>
+<pre><code class="lang-xml">&lt;serviceTask id=&quot;service1&quot; name=&quot;处理成功申请&quot; activiti:class=&quot;my.custom.Delegate&quot; activiti:async=&quot;false&quot;
 </code></pre>
 <p><img src="/2013/10/01/asyncFalse.png" alt="Async False"></p>
 </li>
 <li><p>Case2: serviceTask[处理成功申请] 异步，即设置<code>activiti:async=&quot;true&quot;</code>，打开<code>jobExecutorActivate</code>（processEngineConfiguration中）</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">serviceTask</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"service1"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"处理成功申请"</span> <span class="hljs-attr">activiti:class</span>=<span class="hljs-string">"my.custom.Delegate"</span> <span class="hljs-attr">activiti:async</span>=<span class="hljs-string">"true"</span></span>
+<pre><code class="lang-xml">&lt;serviceTask id=&quot;service1&quot; name=&quot;处理成功申请&quot; activiti:class=&quot;my.custom.Delegate&quot; activiti:async=&quot;true&quot;
 </code></pre>
 <p><img src="/2013/10/01/asyncTrue.png" alt="Async True"><br>（后续执行失败后回滚到此异步task）</p>
 </li>
@@ -1221,16 +1222,16 @@ System.out.println(<span class="hljs-string">"variable: "</span> + variable.getV
 </ul>
 <h4 id="header-38">使用流程定义文件(.xml)</h4>
 <ul>
-<li>生成流程图<pre><code class="nulljava">BpmnModel bpmnModel=repositoryService.getBpmnModel(procInst.getProcessDefinitionId());
+<li>生成流程图<pre><code class="lang-java">BpmnModel bpmnModel=repositoryService.getBpmnModel(procInst.getProcessDefinitionId());
 InputStream in=ProcessDiagramGenerator.generatePngDiagram(bpmnModel);
 </code></pre>
 </li>
-<li>生成活动节点标记的流程图(activeActivity)<pre><code class="nulljava">List&lt;String&gt; activityIds=runtimeService.getActiveActivityIds(procInst.getId());
-InputStream in=ProcessDiagramGenerator.generateDiagram(bpmnModel, <span class="hljs-string">"png"</span>, activityIds);
+<li>生成活动节点标记的流程图(activeActivity)<pre><code class="lang-java">List&lt;String&gt; activityIds=runtimeService.getActiveActivityIds(procInst.getId());
+InputStream in=ProcessDiagramGenerator.generateDiagram(bpmnModel, &quot;png&quot;, activityIds);
 </code></pre>
 </li>
-<li>生成带活动踪迹的流程图(activeActivity+historyFlow)<pre><code class="nulljava">List&lt;String&gt; highLightedFlows = getHighLightedFlows(processDefinition , processInstanceId);     <span class="hljs-comment">//具体实现参考ProcessInstanceHighlightsResource.java</span>
-InputStream in=ProcessDiagramGenerator.generateDiagram(bpmnModel, <span class="hljs-string">"png"</span>, activityIds,highLightedFlows);
+<li>生成带活动踪迹的流程图(activeActivity+historyFlow)<pre><code class="lang-java">List&lt;String&gt; highLightedFlows = getHighLightedFlows(processDefinition , processInstanceId);     //具体实现参考ProcessInstanceHighlightsResource.java
+InputStream in=ProcessDiagramGenerator.generateDiagram(bpmnModel, &quot;png&quot;, activityIds,highLightedFlows);
 </code></pre>
 </li>
 </ul>
@@ -1240,10 +1241,10 @@ InputStream in=ProcessDiagramGenerator.generateDiagram(bpmnModel, <span class="h
 <p>后端： </p>
 <ul>
 <li>获取流程图<ul>
-<li>方法一：<pre><code class="nulljava">InputStream in=repositoryService.getProcessDiagram(processDefinitionId);
+<li>方法一：<pre><code class="lang-java">InputStream in=repositoryService.getProcessDiagram(processDefinitionId);
 </code></pre>
 </li>
-<li>方法二：<pre><code class="nulljava">String resourceName = procDef.getDiagramResourceName();
+<li>方法二：<pre><code class="lang-java">String resourceName = procDef.getDiagramResourceName();
 InputStream in = repositoryService.getResourceAsStream(processDefinitionId, resourceName);
 </code></pre>
 </li>
@@ -1252,9 +1253,9 @@ InputStream in = repositoryService.getResourceAsStream(processDefinitionId, reso
 <li>获取流程定义的所有节点信息(All Activities Info)<ul>
 <li>Process内部节点(即活动)等详细信息：ActivityImpl</li>
 <li>记录在bmpn文件中（运行时加载解析bmpn文件到内存中）</li>
-<li>通过RepositoryService的<code>getProcessDefinition(id)</code>方法从内存中获取Activity定义信息<pre><code class="nulljava">ProcessDefinitionEntity processDefinition = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)
+<li>通过RepositoryService的<code>getProcessDefinition(id)</code>方法从内存中获取Activity定义信息<pre><code class="lang-java">ProcessDefinitionEntity processDefinition = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService)
                         .getDeployedProcessDefinition(procInst.getProcessDefinitionId());
-List&lt;ActivityImpl&gt; activitiList = processDefinition.getActivities();<span class="hljs-comment">//获得当前流程定义的所有节点</span>
+List&lt;ActivityImpl&gt; activitiList = processDefinition.getActivities();//获得当前流程定义的所有节点
 </code></pre>
 </li>
 </ul>
@@ -1262,19 +1263,19 @@ List&lt;ActivityImpl&gt; activitiList = processDefinition.getActivities();<span 
 <li><p>获取当前活动节点信息(Active Activity Info)</p>
 <ul>
 <li><p>注意：示例中是返回所有节点信息（包括标注是否为当前活动节点）</p>
-<pre><code class="nulljava">ProcessDefinitionEntity processDefinition = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService )
+<pre><code class="lang-java">ProcessDefinitionEntity processDefinition = (ProcessDefinitionEntity) ((RepositoryServiceImpl) repositoryService )
                     .getDeployedProcessDefinition(procInst.getProcessDefinitionId());
 
 List&lt;String&gt; activityIds=runtimeService.getActiveActivityIds(procInst.getId());
-List&lt;Map&lt;String, Object&gt;&gt; activityInfos= <span class="hljs-keyword">new</span> ArrayList&lt;Map&lt;String, Object&gt;&gt;();
+List&lt;Map&lt;String, Object&gt;&gt; activityInfos= new ArrayList&lt;Map&lt;String, Object&gt;&gt;();
 
-<span class="hljs-keyword">for</span>(String id:activityIds){
+for(String id:activityIds){
    ActivityImpl activity=processDefinition.findActivity(id);
-   Map&lt;String,Object&gt; activityImageInfo=<span class="hljs-keyword">new</span> HaspMap&lt;String,Object&gt;();
-   activityImageInfo.put( <span class="hljs-string">"x"</span>, activity.getX());
-   activityImageInfo.put( <span class="hljs-string">"y"</span>, activity.getY());
-   activityImageInfo.put( <span class="hljs-string">"width"</span>, activity.getWidth());
-   activityImageInfo.put( <span class="hljs-string">"height"</span>, activity.getHeight());
+   Map&lt;String,Object&gt; activityImageInfo=new HaspMap&lt;String,Object&gt;();
+   activityImageInfo.put( &quot;x&quot;, activity.getX());
+   activityImageInfo.put( &quot;y&quot;, activity.getY());
+   activityImageInfo.put( &quot;width&quot;, activity.getWidth());
+   activityImageInfo.put( &quot;height&quot;, activity.getHeight());
    activityInfos.add(activityImageInfo);
 }
 </code></pre>
@@ -1295,56 +1296,56 @@ List&lt;Map&lt;String, Object&gt;&gt; activityInfos= <span class="hljs-keyword">
 <p><img src="/2013/10/01/diagram2.png" alt="Diagram"></p>
 <p>后端：</p>
 <ol>
-<li>添加依赖包<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.activiti<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>activiti-diagram-rest<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${activiti.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<li>添加依赖包<pre><code class="lang-xml"> &lt;dependency&gt;
+    &lt;groupId&gt;org.activiti&lt;/groupId&gt;
+    &lt;artifactId&gt;activiti-diagram-rest&lt;/artifactId&gt;
+    &lt;version&gt;${activiti.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 </li>
 <li><p>配置一个REST拦截器</p>
 <ul>
 <li>可使用自定义也可使用activiti自带的DiagramRestApplication</li>
-<li><code>web.xml</code><pre><code class="nullxml"><span class="hljs-comment">&lt;!-- Activiti: Restlet adapter - used to expose modeler functionality through REST --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>MyActivitiRestletServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.restlet.ext.servlet.ServerServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- Application class name --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>org.restlet.application<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
-      <span class="hljs-comment">&lt;!-- &lt;param-value&gt;org.activiti.rest.diagram.application.DiagramRestApplication&lt;/param-value&gt; --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>com.cj.xxx.MyActivitiRestApplication<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- Catch all service requests --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>MyActivitiRestletServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/service/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<li><code>web.xml</code><pre><code class="lang-xml">&lt;!-- Activiti: Restlet adapter - used to expose modeler functionality through REST --&gt;
+&lt;servlet&gt;
+  &lt;servlet-name&gt;MyActivitiRestletServlet&lt;/servlet-name&gt;
+  &lt;servlet-class&gt;org.restlet.ext.servlet.ServerServlet&lt;/servlet-class&gt;
+  &lt;init-param&gt;
+      &lt;!-- Application class name --&gt;
+      &lt;param-name&gt;org.restlet.application&lt;/param-name&gt;
+      &lt;!-- &lt;param-value&gt;org.activiti.rest.diagram.application.DiagramRestApplication&lt;/param-value&gt; --&gt;
+      &lt;param-value&gt;com.cj.xxx.MyActivitiRestApplication&lt;/param-value&gt;
+  &lt;/init-param&gt;
+&lt;/servlet&gt;
+&lt;!-- Catch all service requests --&gt;
+&lt;servlet-mapping&gt;
+  &lt;servlet-name&gt;MyActivitiRestletServlet&lt;/servlet-name&gt;
+  &lt;url-pattern&gt;/service/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
 </code></pre>
 </li>
 <li><p><code>MyActivitiRestApplication.java</code></p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyActivitiRestApplication</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ActivitiRestApplication</span></span>{
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyActivitiRestApplication</span><span class="hljs-params">()</span></span>{
-      <span class="hljs-keyword">super</span>();
+<pre><code class="lang-java">public class MyActivitiRestApplication extends ActivitiRestApplication{
+  public MyActivitiRestApplication(){
+      super();
   }
 
-  <span class="hljs-comment">/**
+  /**
    * Creates a root Restlet that will receive all incoming calls.
-   */</span>
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> Restlet <span class="hljs-title">createInboundRoot</span><span class="hljs-params">()</span></span>{
-      Router router = <span class="hljs-keyword">new</span> Router(getContext());
+   */
+  @Override
+  public synchronized Restlet createInboundRoot(){
+      Router router = new Router(getContext());
       router.attachDefault(DefaultResource.class);
-      <span class="hljs-comment">//DiagramServicesInit.attachResources(router);</span>
+      //DiagramServicesInit.attachResources(router);
 
-      router.attach(<span class="hljs-string">"/process-instance/{processInstanceId}/highlights"</span>, ProcessInstanceHighlightsResource.class);
-      router.attach(<span class="hljs-string">"/process-instance/{processInstanceId}/diagram-layout"</span>, ProcessDefinitionDiagramLayoutResource.class);
-      router.attach(<span class="hljs-string">"/process-definition/{processDefinitionId}/diagram-layout"</span>, MyProcessDefinitionDiagramLayoutResource.class);
+      router.attach(&quot;/process-instance/{processInstanceId}/highlights&quot;, ProcessInstanceHighlightsResource.class);
+      router.attach(&quot;/process-instance/{processInstanceId}/diagram-layout&quot;, ProcessDefinitionDiagramLayoutResource.class);
+      router.attach(&quot;/process-definition/{processDefinitionId}/diagram-layout&quot;, MyProcessDefinitionDiagramLayoutResource.class);
 
-      JsonpFilter jsonpFilter = <span class="hljs-keyword">new</span> JsonpFilter(getContext());
+      JsonpFilter jsonpFilter = new JsonpFilter(getContext());
       jsonpFilter.setNext(router);
-      <span class="hljs-keyword">return</span> jsonpFilter;
+      return jsonpFilter;
   }
 }
 </code></pre>
@@ -1370,30 +1371,30 @@ List&lt;Map&lt;String, Object&gt;&gt; activityInfos= <span class="hljs-keyword">
 <ul>
 <li>trigger: <code>baseUrl + &quot;/service/process-definition/{processDefinitionId}/diagram-layout?callback=?&quot;</code></li>
 <li>or trigger: <code>baseUrl + &quot;/service/process-definition/{processDefinitionKey}/diagram-layout?callback=?&quot;</code></li>
-<li>result:<pre><code class="nulljson">{"processDefinition":{"id":"leave:1:20","name":"请假流程","key":"leave","version":1,"deploymentId":"1","isGraphicNotationDefined":true},
-"activities":[
-    {"activityId":"deptLeaderAudit","properties":{"name":"部门领导审批","type":"userTask"},"x":90,"y":80,"width":105,"height":55},
-    {"activityId":"exclusivegateway5","properties":{"name":"Exclusive Gateway","type":"exclusiveGateway"},"x":250,"y":87,"width":40,"height":40},
-    {"activityId":"modifyApply","properties":{"name":"调整申请","type":"userTask"},"x":218,"y":190,"width":105,"height":55},
-    {"activityId":"hrAudit","properties":{"name":"人事审批","type":"userTask"},"x":358,"y":80,"width":105,"height":55},
-    {"activityId":"exclusivegateway6","properties":{"name":"Exclusive Gateway","type":"exclusiveGateway"},"x":495,"y":87,"width":40,"height":40},
-    {"activityId":"reportBack","properties":{"name":"销假","type":"userTask"},"x":590,"y":80,"width":105,"height":55},
-    {"activityId":"exclusivegateway7","properties":{"name":"Exclusive Gateway","type":"exclusiveGateway"},"x":250,"y":280,"width":40,"height":40},
-    {"activityId":"startevent1","properties":{"name":"Start","type":"startEvent"},"x":10,"y":90,"width":35,"height":35},
-    {"activityId":"endevent1","properties":{"name":"End","type":"endEvent"},"x":625,"y":283,"width":35,"height":35}
+<li>result:<pre><code class="lang-json">{&quot;processDefinition&quot;:{&quot;id&quot;:&quot;leave:1:20&quot;,&quot;name&quot;:&quot;请假流程&quot;,&quot;key&quot;:&quot;leave&quot;,&quot;version&quot;:1,&quot;deploymentId&quot;:&quot;1&quot;,&quot;isGraphicNotationDefined&quot;:true},
+&quot;activities&quot;:[
+    {&quot;activityId&quot;:&quot;deptLeaderAudit&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;部门领导审批&quot;,&quot;type&quot;:&quot;userTask&quot;},&quot;x&quot;:90,&quot;y&quot;:80,&quot;width&quot;:105,&quot;height&quot;:55},
+    {&quot;activityId&quot;:&quot;exclusivegateway5&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;Exclusive Gateway&quot;,&quot;type&quot;:&quot;exclusiveGateway&quot;},&quot;x&quot;:250,&quot;y&quot;:87,&quot;width&quot;:40,&quot;height&quot;:40},
+    {&quot;activityId&quot;:&quot;modifyApply&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;调整申请&quot;,&quot;type&quot;:&quot;userTask&quot;},&quot;x&quot;:218,&quot;y&quot;:190,&quot;width&quot;:105,&quot;height&quot;:55},
+    {&quot;activityId&quot;:&quot;hrAudit&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;人事审批&quot;,&quot;type&quot;:&quot;userTask&quot;},&quot;x&quot;:358,&quot;y&quot;:80,&quot;width&quot;:105,&quot;height&quot;:55},
+    {&quot;activityId&quot;:&quot;exclusivegateway6&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;Exclusive Gateway&quot;,&quot;type&quot;:&quot;exclusiveGateway&quot;},&quot;x&quot;:495,&quot;y&quot;:87,&quot;width&quot;:40,&quot;height&quot;:40},
+    {&quot;activityId&quot;:&quot;reportBack&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;销假&quot;,&quot;type&quot;:&quot;userTask&quot;},&quot;x&quot;:590,&quot;y&quot;:80,&quot;width&quot;:105,&quot;height&quot;:55},
+    {&quot;activityId&quot;:&quot;exclusivegateway7&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;Exclusive Gateway&quot;,&quot;type&quot;:&quot;exclusiveGateway&quot;},&quot;x&quot;:250,&quot;y&quot;:280,&quot;width&quot;:40,&quot;height&quot;:40},
+    {&quot;activityId&quot;:&quot;startevent1&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;Start&quot;,&quot;type&quot;:&quot;startEvent&quot;},&quot;x&quot;:10,&quot;y&quot;:90,&quot;width&quot;:35,&quot;height&quot;:35},
+    {&quot;activityId&quot;:&quot;endevent1&quot;,&quot;properties&quot;:{&quot;name&quot;:&quot;End&quot;,&quot;type&quot;:&quot;endEvent&quot;},&quot;x&quot;:625,&quot;y&quot;:283,&quot;width&quot;:35,&quot;height&quot;:35}
     ],
-"sequenceFlows":[
-    {"id":"flow3","name":"","flow":"(deptLeaderAudit)--flow3--&gt;(exclusivegateway5)","xPointArray":[195,250],"yPointArray":[107,107]},
-    {"id":"flow4","name":"不同意","flow":"(exclusivegateway5)--flow4--&gt;(modifyApply)","xPointArray":[270,270],"yPointArray":[127,190]},
-    {"id":"flow5","name":"同意","flow":"(exclusivegateway5)--flow5--&gt;(hrAudit)","xPointArray":[290,358],"yPointArray":[107,107]},
-    {"id":"flow11","name":"","flow":"(modifyApply)--flow11--&gt;(exclusivegateway7)","xPointArray":[270,270],"yPointArray":[245,280]},
-    {"id":"flow6","name":"","flow":"(hrAudit)--flow6--&gt;(exclusivegateway6)","xPointArray":[463,495],"yPointArray":[107,107]},
-    {"id":"flow7","name":"同意","flow":"(exclusivegateway6)--flow7--&gt;(reportBack)","xPointArray":[535,590],"yPointArray":[107,107]},
-    {"id":"flow9","name":"不同意","flow":"(exclusivegateway6)--flow9--&gt;(modifyApply)","xPointArray":[515,514,323],"yPointArray":[127,217,217]},
-    {"id":"flow8","name":"","flow":"(reportBack)--flow8--&gt;(endevent1)","xPointArray":[642,642],"yPointArray":[135,283]},
-    {"id":"flow10","name":"重新申请","flow":"(exclusivegateway7)--flow10--&gt;(deptLeaderAudit)","xPointArray":[250,142,142],"yPointArray":[300,299,135]},
-    {"id":"flow12","name":"结束流程","flow":"(exclusivegateway7)--flow12--&gt;(endevent1)","xPointArray":[290,625],"yPointArray":[300,300]},
-    {"id":"flow2","name":"","flow":"(startevent1)--flow2--&gt;(deptLeaderAudit)","xPointArray":[45,90],"yPointArray":[107,107]}
+&quot;sequenceFlows&quot;:[
+    {&quot;id&quot;:&quot;flow3&quot;,&quot;name&quot;:&quot;&quot;,&quot;flow&quot;:&quot;(deptLeaderAudit)--flow3--&gt;(exclusivegateway5)&quot;,&quot;xPointArray&quot;:[195,250],&quot;yPointArray&quot;:[107,107]},
+    {&quot;id&quot;:&quot;flow4&quot;,&quot;name&quot;:&quot;不同意&quot;,&quot;flow&quot;:&quot;(exclusivegateway5)--flow4--&gt;(modifyApply)&quot;,&quot;xPointArray&quot;:[270,270],&quot;yPointArray&quot;:[127,190]},
+    {&quot;id&quot;:&quot;flow5&quot;,&quot;name&quot;:&quot;同意&quot;,&quot;flow&quot;:&quot;(exclusivegateway5)--flow5--&gt;(hrAudit)&quot;,&quot;xPointArray&quot;:[290,358],&quot;yPointArray&quot;:[107,107]},
+    {&quot;id&quot;:&quot;flow11&quot;,&quot;name&quot;:&quot;&quot;,&quot;flow&quot;:&quot;(modifyApply)--flow11--&gt;(exclusivegateway7)&quot;,&quot;xPointArray&quot;:[270,270],&quot;yPointArray&quot;:[245,280]},
+    {&quot;id&quot;:&quot;flow6&quot;,&quot;name&quot;:&quot;&quot;,&quot;flow&quot;:&quot;(hrAudit)--flow6--&gt;(exclusivegateway6)&quot;,&quot;xPointArray&quot;:[463,495],&quot;yPointArray&quot;:[107,107]},
+    {&quot;id&quot;:&quot;flow7&quot;,&quot;name&quot;:&quot;同意&quot;,&quot;flow&quot;:&quot;(exclusivegateway6)--flow7--&gt;(reportBack)&quot;,&quot;xPointArray&quot;:[535,590],&quot;yPointArray&quot;:[107,107]},
+    {&quot;id&quot;:&quot;flow9&quot;,&quot;name&quot;:&quot;不同意&quot;,&quot;flow&quot;:&quot;(exclusivegateway6)--flow9--&gt;(modifyApply)&quot;,&quot;xPointArray&quot;:[515,514,323],&quot;yPointArray&quot;:[127,217,217]},
+    {&quot;id&quot;:&quot;flow8&quot;,&quot;name&quot;:&quot;&quot;,&quot;flow&quot;:&quot;(reportBack)--flow8--&gt;(endevent1)&quot;,&quot;xPointArray&quot;:[642,642],&quot;yPointArray&quot;:[135,283]},
+    {&quot;id&quot;:&quot;flow10&quot;,&quot;name&quot;:&quot;重新申请&quot;,&quot;flow&quot;:&quot;(exclusivegateway7)--flow10--&gt;(deptLeaderAudit)&quot;,&quot;xPointArray&quot;:[250,142,142],&quot;yPointArray&quot;:[300,299,135]},
+    {&quot;id&quot;:&quot;flow12&quot;,&quot;name&quot;:&quot;结束流程&quot;,&quot;flow&quot;:&quot;(exclusivegateway7)--flow12--&gt;(endevent1)&quot;,&quot;xPointArray&quot;:[290,625],&quot;yPointArray&quot;:[300,300]},
+    {&quot;id&quot;:&quot;flow2&quot;,&quot;name&quot;:&quot;&quot;,&quot;flow&quot;:&quot;(startevent1)--flow2--&gt;(deptLeaderAudit)&quot;,&quot;xPointArray&quot;:[45,90],&quot;yPointArray&quot;:[107,107]}
     ]
 };
 </code></pre>
@@ -1403,7 +1404,7 @@ List&lt;Map&lt;String, Object&gt;&gt; activityInfos= <span class="hljs-keyword">
 <li><p>获取当前活动节点和线信息进行高亮处理，eg：</p>
 <ul>
 <li>trigger: <code>baseUrl + &quot;/service/process-instance/{processInstanceId}/highlights?callback=?&quot;</code></li>
-<li>result: <pre><code class="nulljson">{&quot;processInstanceId&quot;:&quot;108&quot;,&quot;processDefinitionId&quot;:&quot;leave:1:20&quot;,&quot;activities&quot;:[&quot;hrAudit&quot;],&quot;flows&quot;:[&quot;flow2&quot;,&quot;flow3&quot;,&quot;flow5&quot;]});
+<li>result: <pre><code class="lang-json">{&quot;processInstanceId&quot;:&quot;108&quot;,&quot;processDefinitionId&quot;:&quot;leave:1:20&quot;,&quot;activities&quot;:[&quot;hrAudit&quot;],&quot;flows&quot;:[&quot;flow2&quot;,&quot;flow3&quot;,&quot;flow5&quot;]});
 </code></pre>
 </li>
 </ul>
@@ -1452,10 +1453,17 @@ List&lt;Map&lt;String, Object&gt;&gt; activityInfos= <span class="hljs-keyword">
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

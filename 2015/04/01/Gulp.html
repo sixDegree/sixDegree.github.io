@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -116,7 +119,7 @@
         <li>
          <span class="glyphicon glyphicon-tags"></span>
           
-            <a href="/tags.html#tag-NodeJs">NodeJs</a>
+            <a href="/tags.html#tag-Node">Node</a>
           
         </li>
       
@@ -148,13 +151,13 @@
 <li><p><code>options.base</code>：everything before a glob starts（默认）</p>
 <ul>
 <li><p>eg: <code>&#39;client/js/**/*.js&#39;</code>，则base默认为<code>client/js</code>；<code>client/js/test.js</code>, base默认为<code>client/js</code></p>
-<pre><code class="nulljs">gulp.src(<span class="hljs-string">'client/js/**/*.js'</span>) <span class="hljs-comment">// Matches 'client/js/somedir/somefile.js' and resolves `base` to `client/js/`</span>
+<pre><code class="lang-js">gulp.src(&#39;client/js/**/*.js&#39;) // Matches &#39;client/js/somedir/somefile.js&#39; and resolves `base` to `client/js/`
 .pipe(minify())
-.pipe(gulp.dest(<span class="hljs-string">'build'</span>));  <span class="hljs-comment">// Writes 'build/somedir/somefile.js'</span>
+.pipe(gulp.dest(&#39;build&#39;));  // Writes &#39;build/somedir/somefile.js&#39;
 
-gulp.src(<span class="hljs-string">'client/js/**/*.js'</span>, { <span class="hljs-attr">base</span>: <span class="hljs-string">'client'</span> })
+gulp.src(&#39;client/js/**/*.js&#39;, { base: &#39;client&#39; })
 .pipe(minify())
-.pipe(gulp.dest(<span class="hljs-string">'build'</span>));  <span class="hljs-comment">// Writes 'build/js/somedir/somefile.js'</span>
+.pipe(gulp.dest(&#39;build&#39;));  // Writes &#39;build/js/somedir/somefile.js&#39;
 </code></pre>
 </li>
 </ul>
@@ -171,19 +174,19 @@ gulp.src(<span class="hljs-string">'client/js/**/*.js'</span>, { <span class="hl
 <ul>
 <li>name：任务名</li>
 <li>deps ：为一个数组，是当前定义的任务需要依赖的其他任务（可不设置），默认依赖任务会并行执行</li>
-<li>fn：任务函数（deps中的任务先执行）<pre><code class="nulljs">gulp.task(<span class="hljs-string">'mytask'</span>, [<span class="hljs-string">'array'</span>, <span class="hljs-string">'of'</span>, <span class="hljs-string">'task'</span>, <span class="hljs-string">'names'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-<span class="hljs-comment">// Do stuff</span>
+<li>fn：任务函数（deps中的任务先执行）<pre><code class="lang-js">gulp.task(&#39;mytask&#39;, [&#39;array&#39;, &#39;of&#39;, &#39;task&#39;, &#39;names&#39;], function() {
+// Do stuff
 });
 </code></pre>
 </li>
 </ul>
 </li>
-<li><code>gulp.watch(glob [, opts], tasks)</code><pre><code class="nulljs">  gulp.watch(<span class="hljs-string">'js/**/*.js'</span>, [<span class="hljs-string">'uglify'</span>,<span class="hljs-string">'reload'</span>]);
+<li><code>gulp.watch(glob [, opts], tasks)</code><pre><code class="lang-js">  gulp.watch(&#39;js/**/*.js&#39;, [&#39;uglify&#39;,&#39;reload&#39;]);
 </code></pre>
 </li>
-<li><code>gulp.watch(glob [, opts, cb])</code><pre><code class="nulljs">  gulp.watch(<span class="hljs-string">'js/**/*.js'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
-      <span class="hljs-built_in">console</span>.log(event.type); <span class="hljs-comment">//变化类型 added为新增,deleted为删除，changed为改变 </span>
-      <span class="hljs-built_in">console</span>.log(event.path); <span class="hljs-comment">//变化的文件的路径</span>
+<li><code>gulp.watch(glob [, opts, cb])</code><pre><code class="lang-js">  gulp.watch(&#39;js/**/*.js&#39;, function(event){
+      console.log(event.type); //变化类型 added为新增,deleted为删除，changed为改变 
+      console.log(event.path); //变化的文件的路径
   });
 </code></pre>
 </li>
@@ -199,69 +202,69 @@ gulp.src(<span class="hljs-string">'client/js/**/*.js'</span>, { <span class="hl
 <h3 id="header-4">SyncTask</h3>
 <p>想等待异步任务中的异步操作完成后再执行后续的任务，有三种方法可以实现：</p>
 <ol>
-<li>Passing in a callback<pre><code class="nulljs"> gulp.task(<span class="hljs-string">'sync'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">cb</span>) </span>{
-     <span class="hljs-comment">// setTimeout could be any async task</span>
-     setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+<li>Passing in a callback<pre><code class="lang-js"> gulp.task(&#39;sync&#39;, function (cb) {
+     // setTimeout could be any async task
+     setTimeout(function () {
          cb();
-     }, <span class="hljs-number">1000</span>);
+     }, 1000);
  });
 </code></pre>
 </li>
-<li>Returning a stream （适用于任务就是操作gulp.src获取到的流的情况）<pre><code class="nulljs"> gulp.task(<span class="hljs-string">'sync'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-     <span class="hljs-keyword">return</span> gulp.src(<span class="hljs-string">'js/*.js'</span>)
-         .pipe(concat(<span class="hljs-string">'script.min.js'</span>)
+<li>Returning a stream （适用于任务就是操作gulp.src获取到的流的情况）<pre><code class="lang-js"> gulp.task(&#39;sync&#39;, function () {
+     return gulp.src(&#39;js/*.js&#39;)
+         .pipe(concat(&#39;script.min.js&#39;)
          .pipe(uglify())
-         .pipe(gulp.dest(<span class="hljs-string">'../dist/js'</span>);
+         .pipe(gulp.dest(&#39;../dist/js&#39;);
  });
 </code></pre>
 </li>
-<li>Returning a Promise<pre><code class="nulljs"> <span class="hljs-keyword">var</span> Q = <span class="hljs-built_in">require</span>(<span class="hljs-string">'q'</span>);
- gulp.task(<span class="hljs-string">'one'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-   <span class="hljs-keyword">var</span> deferred = Q.defer();
-   setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<li>Returning a Promise<pre><code class="lang-js"> var Q = require(&#39;q&#39;);
+ gulp.task(&#39;one&#39;,function(){
+   var deferred = Q.defer();
+   setTimeout(function() {
       deferred.resolve();
-   }, <span class="hljs-number">5000</span>);
-   <span class="hljs-keyword">return</span> deferred.promise;
+   }, 5000);
+   return deferred.promise;
  });
 </code></pre>
 </li>
 </ol>
 <p>测试：</p>
-<pre><code class="nulljs">gulp.task(<span class="hljs-string">'secondTask'</span>, [<span class="hljs-string">'sync'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-comment">// this task will not start until the sync task is all done!</span>
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'secondTask is done'</span>);
+<pre><code class="lang-js">gulp.task(&#39;secondTask&#39;, [&#39;sync&#39;], function () {
+    // this task will not start until the sync task is all done!
+    console.log(&#39;secondTask is done&#39;);
 });
 </code></pre>
 <p>注意： 默认情况下，依赖任务们会并行执行<br>例如：</p>
-<pre><code class="nulljs">gulp.task(<span class="hljs-string">'otherTask'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-comment">//no dependent tasks</span>
+<pre><code class="lang-js">gulp.task(&#39;otherTask&#39;,function(){
+    //no dependent tasks
     ...
 });
 
-<span class="hljs-comment">//sync,otherTask会同时执行，然后执行default的fn</span>
-gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'sync'</span>,<span class="hljs-string">'otherTask'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-   <span class="hljs-comment">// do stuff</span>
+//sync,otherTask会同时执行，然后执行default的fn
+gulp.task(&#39;default&#39;, [&#39;sync&#39;,&#39;otherTask&#39;], function () {
+   // do stuff
 });
 </code></pre>
 <p>解决方案：</p>
-<pre><code class="nulljs">gulp.task(<span class="hljs-string">'otherTask'</span>,[<span class="hljs-string">"sync"</span>],<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-comment">//depends on sync</span>
+<pre><code class="lang-js">gulp.task(&#39;otherTask&#39;,[&quot;sync&quot;],function(){
+    //depends on sync
     ...
 });
-<span class="hljs-comment">//先执行sync，然后执行otherTask，最后执行default的fn</span>
-gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'sync'</span>,<span class="hljs-string">'otherTask'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-   <span class="hljs-comment">// do stuff</span>
+//先执行sync，然后执行otherTask，最后执行default的fn
+gulp.task(&#39;default&#39;, [&#39;sync&#39;,&#39;otherTask&#39;], function () {
+   // do stuff
 });
 </code></pre>
 <p>书写太麻烦，推荐插件<code>run-sequence</code></p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> runSequence = <span class="hljs-built_in">require</span>(<span class="hljs-string">'run-sequence'</span>);
-gulp.task(<span class="hljs-string">'some-task'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+<pre><code class="lang-js">var runSequence = require(&#39;run-sequence&#39;);
+gulp.task(&#39;some-task&#39;, function() {
     runSequence(
-            [<span class="hljs-string">'task-1'</span>, <span class="hljs-string">'task-2'</span>, <span class="hljs-string">'task-3'</span>], <span class="hljs-comment">// These 3 can be done in parallel</span>
-            <span class="hljs-string">'task-4'</span>, <span class="hljs-comment">// ...then just do this</span>
-            [<span class="hljs-string">'task-5'</span>, <span class="hljs-string">'task-5'</span>], <span class="hljs-comment">// ...then do these things in parallel</span>
-            <span class="hljs-string">'task-6'</span>, <span class="hljs-comment">// ...then do this</span>
-            <span class="hljs-comment">// ....</span>
+            [&#39;task-1&#39;, &#39;task-2&#39;, &#39;task-3&#39;], // These 3 can be done in parallel
+            &#39;task-4&#39;, // ...then just do this
+            [&#39;task-5&#39;, &#39;task-5&#39;], // ...then do these things in parallel
+            &#39;task-6&#39;, // ...then do this
+            // ....
     );
 });
 </code></pre>
@@ -294,36 +297,36 @@ gulp.task(<span class="hljs-string">'some-task'</span>, <span class="hljs-functi
 <ul>
 <li><code>fs.createReadStream(...)</code> 常规读取流，得到的是数据块（chunk）</li>
 <li><p><code>gulp.src(...)</code> 默认得到的是把内容转换成 buffer 的 vinyl 文件对象，而不是数据块（chunk），可以通过设置 <code>buffer: false</code> 选项，可以让 gulp 禁用 buffer</p>
-<pre><code class="nulljs">fs.createReadStream(<span class="hljs-string">'/usr/share/dict/words'</span>).on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>) </span>{  
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Read %d bytes of data'</span>, chunk.length);
+<pre><code class="lang-js">fs.createReadStream(&#39;/usr/share/dict/words&#39;).on(&#39;data&#39;, function(chunk) {  
+console.log(&#39;Read %d bytes of data&#39;, chunk.length);
 });
 
 输出结果：
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
+&gt; Read 65536 bytes of data
+&gt; Read 65536 bytes of data
+&gt; Read 65536 bytes of data
+&gt; Read 65536 bytes of data
 ...
 </code></pre>
-<pre><code class="nulljs">gulp.src(<span class="hljs-string">'/usr/share/dict/words'</span>).on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">file</span>) </span>{  
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Read %d bytes of data'</span>, file.contents.length);
+<pre><code class="lang-js">gulp.src(&#39;/usr/share/dict/words&#39;).on(&#39;data&#39;, function(file) {  
+console.log(&#39;Read %d bytes of data&#39;, file.contents.length);
 });
 
 输出结果：
-&gt; Read <span class="hljs-number">2493109</span> bytes <span class="hljs-keyword">of</span> data
+&gt; Read 2493109 bytes of data
 </code></pre>
-<pre><code class="nulljs">gulp.src(<span class="hljs-string">'/usr/share/dict/words'</span>, {<span class="hljs-attr">buffer</span>: <span class="hljs-literal">false</span>}).on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">file</span>) </span>{  
-<span class="hljs-keyword">var</span> stream = file.contents;
-stream.on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>) </span>{
-  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Read %d bytes of data'</span>, chunk.length);
+<pre><code class="lang-js">gulp.src(&#39;/usr/share/dict/words&#39;, {buffer: false}).on(&#39;data&#39;, function(file) {  
+var stream = file.contents;
+stream.on(&#39;data&#39;, function(chunk) {
+  console.log(&#39;Read %d bytes of data&#39;, chunk.length);
 });
 });
 
 输出结果：
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
-&gt; Read <span class="hljs-number">65536</span> bytes <span class="hljs-keyword">of</span> data
+&gt; Read 65536 bytes of data
+&gt; Read 65536 bytes of data
+&gt; Read 65536 bytes of data
+&gt; Read 65536 bytes of data
 &gt; ...
 </code></pre>
 </li>
@@ -336,25 +339,25 @@ stream.on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><
 <ul>
 <li>vinyl-source-stream：常规流 =&gt; vinyl文件对象(Stream)</li>
 <li><p>vinyl-buffer：vinyl文件对象(Stream)  =&gt; vinyl文件对象(Buffer)</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> fs=<span class="hljs-built_in">require</span>(<span class="hljs-string">"fs"</span>);
-<span class="hljs-keyword">var</span> source = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vinyl-source-stream'</span>);
-<span class="hljs-keyword">var</span> buffer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vinyl-buffer'</span>);
-<span class="hljs-keyword">var</span> uglify = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-uglify'</span>);
+<pre><code class="lang-js">var fs=require(&quot;fs&quot;);
+var source = require(&#39;vinyl-source-stream&#39;);
+var buffer = require(&#39;vinyl-buffer&#39;);
+var uglify = require(&#39;gulp-uglify&#39;);
 
-fs.createReadStream(<span class="hljs-string">'./src/app.js'</span>)
-    .pipe(source(<span class="hljs-string">'app.min.js'</span>)) <span class="hljs-comment">// 常规流 =&gt; vinyl 对象(stream)</span>
-    .pipe(buffer())             <span class="hljs-comment">// vinyl 对象(stream) =&gt; vinyl文件对象(Buffer)</span>
-    .pipe(uglify())             <span class="hljs-comment">// gulp-uglify 只支持处理vinyl文件对象(Buffer)</span>
-    .pipe(gulp.dest(<span class="hljs-string">'dist/'</span>));
+fs.createReadStream(&#39;./src/app.js&#39;)
+    .pipe(source(&#39;app.min.js&#39;)) // 常规流 =&gt; vinyl 对象(stream)
+    .pipe(buffer())             // vinyl 对象(stream) =&gt; vinyl文件对象(Buffer)
+    .pipe(uglify())             // gulp-uglify 只支持处理vinyl文件对象(Buffer)
+    .pipe(gulp.dest(&#39;dist/&#39;));
 
-gulp.src(<span class="hljs-string">'app.js'</span>, {<span class="hljs-attr">buffer</span>: <span class="hljs-literal">false</span>})
-    .pipe(buffer())         <span class="hljs-comment">// vinyl 对象(Stream) =&gt; vinyl文件对象(Buffer)</span>
+gulp.src(&#39;app.js&#39;, {buffer: false})
+    .pipe(buffer())         // vinyl 对象(Stream) =&gt; vinyl文件对象(Buffer)
     .pipe(uglify())
-    .pipe(gulp.dest(<span class="hljs-string">'dist/'</span>));
+    .pipe(gulp.dest(&#39;dist/&#39;));
 
-gulp.src(<span class="hljs-string">'app.js'</span>)
+gulp.src(&#39;app.js&#39;)
     .pipe(uglify())
-    .pipe(gulp.dest(<span class="hljs-string">'dist/'</span>));
+    .pipe(gulp.dest(&#39;dist/&#39;));
 </code></pre>
 </li>
 </ul>
@@ -366,66 +369,66 @@ gulp.src(<span class="hljs-string">'app.js'</span>)
 </ul>
 </li>
 <li><p>使用<code>through2</code>自定义处理</p>
-<pre><code class="nulljs">  <span class="hljs-keyword">var</span> modify=modify(opts){
-      <span class="hljs-keyword">return</span> through2.obj(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">file,encoding,next</span>)</span>{
-          <span class="hljs-comment">//file为上游读流产生的文件数据</span>
-          <span class="hljs-comment">//next用于向下游传递处理后的数据</span>
+<pre><code class="lang-js">  var modify=modify(opts){
+      return through2.obj(function(file,encoding,next){
+          //file为上游读流产生的文件数据
+          //next用于向下游传递处理后的数据
 
-          <span class="hljs-built_in">console</span>.log(file.path);
-          <span class="hljs-built_in">console</span>.log(file.isNull());
-          <span class="hljs-built_in">console</span>.log(file.isStream());
+          console.log(file.path);
+          console.log(file.isNull());
+          console.log(file.isStream());
 
-          <span class="hljs-keyword">var</span> contents=<span class="hljs-built_in">String</span>(file.contents);
-          file.contents=<span class="hljs-keyword">new</span> Buffer(contents);
-          next(<span class="hljs-literal">null</span>,file);     <span class="hljs-comment">// this.push(file); next();</span>
+          var contents=String(file.contents);
+          file.contents=new Buffer(contents);
+          next(null,file);     // this.push(file); next();
       });
   }
 
-  fs.createReadStream(<span class="hljs-string">'/tmp/important.dat'</span>)
+  fs.createReadStream(&#39;/tmp/important.dat&#39;)
       .pipe(modify())
-      .pipe(fs.createWriteStream(<span class="hljs-string">'/tmp/out.txt'</span>));
+      .pipe(fs.createWriteStream(&#39;/tmp/out.txt&#39;));
 
-  gulp.src(<span class="hljs-string">'/tmp/important.dat'</span>)
+  gulp.src(&#39;/tmp/important.dat&#39;)
           .pipe(modify())
-          .pipe(gulp.dest(<span class="hljs-string">'dist/'</span>));
+          .pipe(gulp.dest(&#39;dist/&#39;));
 </code></pre>
 </li>
 </ul>
 <p>综合测试：</p>
-<pre><code class="nulljs">fs.createReadStream(<span class="hljs-string">"./posts/articles/"</span>+filename)
-    .pipe(source(<span class="hljs-string">"2013-11-13-a1.md"</span>))
-    .pipe(gulp.dest(<span class="hljs-string">"./dist/articles"</span>))
-    .pipe(through2.obj(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">file,enc,next</span>)</span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Now is "</span>+(file.isStream()?<span class="hljs-string">"Stream"</span>:<span class="hljs-string">"Buffer"</span>));
-        next(<span class="hljs-literal">null</span>,file);
+<pre><code class="lang-js">fs.createReadStream(&quot;./posts/articles/&quot;+filename)
+    .pipe(source(&quot;2013-11-13-a1.md&quot;))
+    .pipe(gulp.dest(&quot;./dist/articles&quot;))
+    .pipe(through2.obj(function(file,enc,next){
+        console.log(&quot;Now is &quot;+(file.isStream()?&quot;Stream&quot;:&quot;Buffer&quot;));
+        next(null,file);
     }))
     .pipe(buffer())
-    .pipe(through2.obj(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">file,enc,next</span>)</span>{
-        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Now is "</span>+(file.isStream()?<span class="hljs-string">"Stream"</span>:<span class="hljs-string">"Buffer"</span>));
-        next(<span class="hljs-literal">null</span>,file);
+    .pipe(through2.obj(function(file,enc,next){
+        console.log(&quot;Now is &quot;+(file.isStream()?&quot;Stream&quot;:&quot;Buffer&quot;));
+        next(null,file);
     }))
     ;
 </code></pre>
-<pre><code class="nulljs">gulp.src(<span class="hljs-string">"./posts/articles/????-??-??-*.md"</span>)
-    .pipe(through2.obj(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">file,enc,next</span>)</span>{
-        <span class="hljs-built_in">console</span>.log(file.path);
-        <span class="hljs-built_in">console</span>.log(path.basename(file.path,<span class="hljs-string">".md"</span>));
-        <span class="hljs-comment">//console.log(path.basename(file.path));</span>
-        <span class="hljs-keyword">if</span>(file.isNull()) {
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This file is Empty!"</span>);
+<pre><code class="lang-js">gulp.src(&quot;./posts/articles/????-??-??-*.md&quot;)
+    .pipe(through2.obj(function(file,enc,next){
+        console.log(file.path);
+        console.log(path.basename(file.path,&quot;.md&quot;));
+        //console.log(path.basename(file.path));
+        if(file.isNull()) {
+            console.log(&quot;This file is Empty!&quot;);
         }
-        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(file.isStream()){
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"This function is not support Stream!"</span>);
+        else if(file.isStream()){
+            console.log(&quot;This function is not support Stream!&quot;);
         }
-        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (file.isBuffer()){
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Do Marked!"</span>);
-            <span class="hljs-keyword">var</span> result=marked(<span class="hljs-built_in">String</span>(file.contents));
-            <span class="hljs-built_in">console</span>.log(result.props);
+        else if (file.isBuffer()){
+            console.log(&quot;Do Marked!&quot;);
+            var result=marked(String(file.contents));
+            console.log(result.props);
             file.contents = Buffer(result.content);
         }
-        next(<span class="hljs-literal">null</span>, file);
+        next(null, file);
     }))
-    .pipe(gulp.dest(<span class="hljs-string">"./dist/articles"</span>));
+    .pipe(gulp.dest(&quot;./dist/articles&quot;));
 </code></pre>
 <p><strong>PS:</strong> <code>though2</code>还可以用于自定义gulp插件中</p>
 <h3 id="header-6">Doc</h3>
@@ -442,67 +445,67 @@ gulp.src(<span class="hljs-string">'app.js'</span>)
 </ul>
 <p>使用举例：</p>
 <p>重命名，压缩文件：</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> rename=<span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-rename"</span>);
-<span class="hljs-keyword">var</span> uglify=<span class="hljs-built_in">require</span>(<span class="hljs-string">"gulp-uglify"</span>);
-gulp.task(<span class="hljs-string">'mini'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    gulp.src(Config.react.dest+<span class="hljs-string">"/app.js"</span>)
-        .pipe(rename(<span class="hljs-string">"app.min.js"</span>))
+<pre><code class="lang-js">var rename=require(&quot;gulp-rename&quot;);
+var uglify=require(&quot;gulp-uglify&quot;);
+gulp.task(&#39;mini&#39;,function(){
+    gulp.src(Config.react.dest+&quot;/app.js&quot;)
+        .pipe(rename(&quot;app.min.js&quot;))
         .pipe(uglify())
         .pipe(gulp.dest(Config.react.prodDest));
 });
 </code></pre>
 <p>实时编译sass文件：</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> sass = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-sass'</span>);
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sassBuild</span>(<span class="hljs-params">opts,filename</span>)</span>{
-    <span class="hljs-keyword">if</span>(!filename)
+<pre><code class="lang-js">var sass = require(&#39;gulp-sass&#39;);
+function sassBuild(opts,filename){
+    if(!filename)
         filename=opts.default;
-    <span class="hljs-keyword">var</span> sassOptions = {
-      <span class="hljs-attr">errLogToConsole</span>: <span class="hljs-literal">true</span>,
-      <span class="hljs-attr">outputStyle</span>: <span class="hljs-string">'expanded'</span>,
-      <span class="hljs-attr">loadPath</span>:opts.loadPath
+    var sassOptions = {
+      errLogToConsole: true,
+      outputStyle: &#39;expanded&#39;,
+      loadPath:opts.loadPath
     };
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">build</span>(<span class="hljs-params">event</span>)</span>{
-        <span class="hljs-keyword">if</span>(event)
-            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'File '</span> + event.path + <span class="hljs-string">' was '</span> + event.type);
-        gulp.src(opts.src+filename+<span class="hljs-string">".scss"</span>)
-            .pipe(sass(sassOptions).on(<span class="hljs-string">'error'</span>, sass.logError))
-            <span class="hljs-comment">//.pipe(concat('style.css'))</span>
+    function build(event){
+        if(event)
+            console.log(&#39;File &#39; + event.path + &#39; was &#39; + event.type);
+        gulp.src(opts.src+filename+&quot;.scss&quot;)
+            .pipe(sass(sassOptions).on(&#39;error&#39;, sass.logError))
+            //.pipe(concat(&#39;style.css&#39;))
             .pipe(gulp.dest(opts.dest));
     }
     build();
-    gulp.watch(Config.sass.src+<span class="hljs-string">"**/*.scss"</span>,build)
-        <span class="hljs-comment">/*.on("change",function(event){
-            console.log('File ' + event.path + ' was ' + event.type);
-        })*/</span>
+    gulp.watch(Config.sass.src+&quot;**/*.scss&quot;,build)
+        /*.on(&quot;change&quot;,function(event){
+            console.log(&#39;File &#39; + event.path + &#39; was &#39; + event.type);
+        })*/
         ;
 }
-gulp.task(<span class="hljs-string">'sass'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+gulp.task(&#39;sass&#39;, function () {
  sassBuild(Config.sass,argv.n);
 });
 </code></pre>
 <p>架起静态服务器，实时预览：</p>
-<pre><code class="nulljs"><span class="hljs-keyword">var</span> server = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-server-livereload'</span>);
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">server</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">var</span> filterFun=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">filePath,cb</span>)</span>{
-       Config.server.filterReg.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">reg</span>)</span>{
-            <span class="hljs-keyword">if</span>((<span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(reg)).test(filePath))
-                cb(<span class="hljs-literal">true</span>);
+<pre><code class="lang-js">var server = require(&#39;gulp-server-livereload&#39;);
+function server(){
+    var filterFun=function(filePath,cb){
+       Config.server.filterReg.map(function(reg){
+            if((new RegExp(reg)).test(filePath))
+                cb(true);
         })
-      <span class="hljs-comment">/*if(/app.js/.test(filePath) || /style.css/.test(filePath)) {
+      /*if(/app.js/.test(filePath) || /style.css/.test(filePath)) {
         cb(true)
-      } */</span>
+      } */
     }
-    <span class="hljs-keyword">var</span> serverOpts={
-        <span class="hljs-attr">livereload</span>: {
-            <span class="hljs-attr">enable</span>: <span class="hljs-literal">true</span>,
-            <span class="hljs-attr">filter</span>:filterFun
+    var serverOpts={
+        livereload: {
+            enable: true,
+            filter:filterFun
           },
-          <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>
+          open: true
     };
     gulp.src(Config.dist)
         .pipe(server(serverOpts));
 }
-gulp.task(<span class="hljs-string">'server'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+gulp.task(&#39;server&#39;,function(){
     server();
 });
 </code></pre>
@@ -541,10 +544,17 @@ gulp.task(<span class="hljs-string">'server'</span>,<span class="hljs-function">
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

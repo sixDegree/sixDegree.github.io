@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -206,122 +209,122 @@
 </code></pre></li>
 <li><p>Cluster1 (on masterA.cls1,masterB.cls1)</p>
 <ul>
-<li>core-site.sh<pre><code class="nullxml">  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>fs.defaultFS<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hdfs://cluster1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hadoop.tmp.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/usr/local/hadoop/tmp<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>ha.zookeeper.quorum<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>slave1.cls:2181,slave2.cls:2181,slave3.cls:2181<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li>core-site.sh<pre><code class="lang-xml">  &lt;property&gt;
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;
+    &lt;value&gt;hdfs://cluster1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+    &lt;value&gt;/usr/local/hadoop/tmp&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;ha.zookeeper.quorum&lt;/name&gt;
+    &lt;value&gt;slave1.cls:2181,slave2.cls:2181,slave3.cls:2181&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
 <li><p>hdfs-site.xml</p>
-<pre><code class="nullxml">  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.replication<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.nameservices<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>cluster1,cluster2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- journal nodes --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.shared.edits.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-       <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.journalnode.edits.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/usr/local/hadoop/tmp/journal<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- Using ssh to switch namenode --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.fencing.methods<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>sshfence<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.fencing.ssh.private-key-files<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>/root/.ssh/id_rsa<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<pre><code class="lang-xml">  &lt;property&gt;
+      &lt;name&gt;dfs.replication&lt;/name&gt;
+      &lt;value&gt;3&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.nameservices&lt;/name&gt;
+      &lt;value&gt;cluster1,cluster2&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- journal nodes --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;
+       &lt;value&gt;qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.journalnode.edits.dir&lt;/name&gt;
+      &lt;value&gt;/usr/local/hadoop/tmp/journal&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- Using ssh to switch namenode --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.fencing.methods&lt;/name&gt;
+      &lt;value&gt;sshfence&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.fencing.ssh.private-key-files&lt;/name&gt;
+      &lt;value&gt;/root/.ssh/id_rsa&lt;/value&gt;
+  &lt;/property&gt;
 
-  <span class="hljs-comment">&lt;!-- Cluster1 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.namenodes.cluster1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterA.cls1,masterB.cls1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster1.masterA.cls1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterA.cls1:9000<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.http-address.cluster1.masterA.cls1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterA.cls1:50070<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster1.masterB.cls1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterB.cls1:9000<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.http-address.cluster1.masterB.cls1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterB.cls1:50070<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.automatic-failover.enabled.cluster1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.client.failover.proxy.provider.cluster1<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-       <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-comment">&lt;!-- Cluster2 --&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.namenodes.cluster2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterA.cls2,masterB.cls2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster2.masterA.cls2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterA.cls2:9000<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.http-address.cluster2.masterA.cls2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterA.cls2:50070<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.rpc-address.cluster2.masterB.cls2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterB.cls2:9000<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.http-address.cluster2.masterB.cls2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterB.cls2:50070<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.ha.automatic-failover.enabled.cluster2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.client.failover.proxy.provider.cluster2<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+  &lt;!-- Cluster1 --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.namenodes.cluster1&lt;/name&gt;
+      &lt;value&gt;masterA.cls1,masterB.cls1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster1.masterA.cls1&lt;/name&gt;
+      &lt;value&gt;masterA.cls1:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster1.masterA.cls1&lt;/name&gt;
+      &lt;value&gt;masterA.cls1:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster1.masterB.cls1&lt;/name&gt;
+      &lt;value&gt;masterB.cls1:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster1.masterB.cls1&lt;/name&gt;
+      &lt;value&gt;masterB.cls1:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.automatic-failover.enabled.cluster1&lt;/name&gt;
+      &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.client.failover.proxy.provider.cluster1&lt;/name&gt;
+       &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;!-- Cluster2 --&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.namenodes.cluster2&lt;/name&gt;
+      &lt;value&gt;masterA.cls2,masterB.cls2&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster2.masterA.cls2&lt;/name&gt;
+      &lt;value&gt;masterA.cls2:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster2.masterA.cls2&lt;/name&gt;
+      &lt;value&gt;masterA.cls2:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.rpc-address.cluster2.masterB.cls2&lt;/name&gt;
+      &lt;value&gt;masterB.cls2:9000&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.namenode.http-address.cluster2.masterB.cls2&lt;/name&gt;
+      &lt;value&gt;masterB.cls2:50070&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.ha.automatic-failover.enabled.cluster2&lt;/name&gt;
+      &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+      &lt;name&gt;dfs.client.failover.proxy.provider.cluster2&lt;/name&gt;
+      &lt;value&gt;org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>Cluster2 (on masterA.cls2,masterB.cls2)</p>
 <ul>
-<li>core-site.sh (copy from cluster1) update:<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>fs.defaultFS<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hdfs://cluster2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li>core-site.sh (copy from cluster1) update:<pre><code class="lang-xml"> &lt;property&gt;
+     &lt;name&gt;fs.defaultFS&lt;/name&gt;
+     &lt;value&gt;hdfs://cluster2&lt;/value&gt;
+ &lt;/property&gt;
 </code></pre>
 <ul>
-<li>hdfs-site.xml (copy from cluster1) update:<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.namenode.shared.edits.dir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li>hdfs-site.xml (copy from cluster1) update:<pre><code class="lang-xml">&lt;property&gt;
+   &lt;name&gt;dfs.namenode.shared.edits.dir&lt;/name&gt;
+    &lt;value&gt;qjournal://slave1.cls:8485;slave2.cls:8485;slave3.cls:8485/cluster2&lt;/value&gt;
+&lt;/property&gt;
 </code></pre>
 </li>
 </ul>
@@ -336,30 +339,30 @@
 </ol>
 <h4 id="header-7">Run</h4>
 <ol>
-<li>start zookeeper<pre><code class="nullshell"><span class="hljs-meta">  #</span><span class="bash"> slave1.cls,slave2.cls,slave3.cls</span>
+<li>start zookeeper<pre><code class="lang-shell">  # slave1.cls,slave2.cls,slave3.cls
   zkServer.sh start
 </code></pre>
 </li>
 <li><p>start namenode</p>
-<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> slave1.cls,slave2.cls,slave3.cls</span>
+<pre><code class="lang-shell"> # slave1.cls,slave2.cls,slave3.cls
  sbin/hadoop-daemon.sh start journalnode
-<span class="hljs-meta">
- #</span><span class="bash"> masterA.cls1,masterB.cls1</span>
+
+ # masterA.cls1,masterB.cls1
  bin/hdfs zkfc -formatZK
-<span class="hljs-meta">
- #</span><span class="bash"> masterA.cls1</span>
+
+ # masterA.cls1
  bin/hdfs namenode -format
  sbin/hadoop-daemon.sh start namenode
-<span class="hljs-meta">
- #</span><span class="bash"> masterB.cls1</span>
+
+ # masterB.cls1
  bin/hdfs namenode -bootstrapStandby
  sbin/hadoop-daemon.sh start namenode
-<span class="hljs-meta">
- #</span><span class="bash"> masterA.cls1,masterB.cls2</span>
+
+ # masterA.cls1,masterB.cls2
  sbin/hadoop-daemon.sh start zkfc
 </code></pre>
 </li>
-<li>start datanode<pre><code class="nullshell"><span class="hljs-meta"> #</span><span class="bash"> slave1.cls,slave2.cls,slave3.cls</span>
+<li>start datanode<pre><code class="lang-shell"> # slave1.cls,slave2.cls,slave3.cls
  sbin/hadoop-daemons.sh start datanode
 </code></pre>
 </li>
@@ -444,26 +447,26 @@
 <h3 id="header-12">Yarn配置示例</h3>
 <h4 id="header-13">Configuration</h4>
 <ul>
-<li>mapred-site.xml<pre><code class="nullxml">  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>mapreduce.framework.name<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>yarn<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li>mapred-site.xml<pre><code class="lang-xml">  &lt;property&gt;
+    &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+    &lt;value&gt;yarn&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
-<li>yarn-site.xml<pre><code class="nullxml">  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-       <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-       <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>masterA.cls1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-       <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-       <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>mapreduce_shuffle<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li>yarn-site.xml<pre><code class="lang-xml">  &lt;property&gt;
+       &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;
+       &lt;value&gt;masterA.cls1&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+       &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+       &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+  &lt;/property&gt;
   ...
 </code></pre>
 </li>
 </ul>
 <h4 id="header-14">Run</h4>
-<pre><code class="nullshell"><span class="hljs-meta">#</span><span class="bash"> masterA.cls1</span>
+<pre><code class="lang-shell"># masterA.cls1
 sbin/start-yarn.sh
 
 sbin/stop-yarn.sh
@@ -503,10 +506,17 @@ sbin/stop-yarn.sh
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -248,27 +251,27 @@
 </ul>
 </li>
 <li>配置（<code>$HBASE_HOME/conf</code>目录下）<ul>
-<li><code>hbase-env.sh</code><pre><code class="nullvim">  export JAVA_HOME=/usr/local/jdk
+<li><code>hbase-env.sh</code><pre><code class="lang-vim">  export JAVA_HOME=/usr/local/jdk
   # 使用HBase内置的Zookeeper
   export HBASE_MANAGES_ZK=true
 </code></pre>
 </li>
-<li><code>hbase-site.xml</code><pre><code class="nullxml">  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.rootdir<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hdfs://hadoop0:9000/hbase<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.cluster.distributed<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.zookeeper.quorum<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hadoop0<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>dfs.replication<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li><code>hbase-site.xml</code><pre><code class="lang-xml">  &lt;property&gt;
+    &lt;name&gt;hbase.rootdir&lt;/name&gt;
+    &lt;value&gt;hdfs://hadoop0:9000/hbase&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.cluster.distributed&lt;/name&gt;
+    &lt;value&gt;true&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;
+    &lt;value&gt;hadoop0&lt;/value&gt;
+  &lt;/property&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.replication&lt;/name&gt;
+    &lt;value&gt;1&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
 </ul>
@@ -293,26 +296,26 @@
 </ul>
 <ol>
 <li>配置（<code>$HBASE_HOME/conf</code>目录下）<ul>
-<li><code>hbase-env.sh</code><pre><code class="nullvim">  export JAVA_HOME=/usr/local/jdk
+<li><code>hbase-env.sh</code><pre><code class="lang-vim">  export JAVA_HOME=/usr/local/jdk
   # 不使用HBase内置的Zookeeper
   export HBASE_MANAGES_ZK=false
 </code></pre>
 </li>
-<li><code>hbase-site.xml</code><pre><code class="nullxml">  ...
-  <span class="hljs-comment">&lt;!-- 配置Zookeeper监控管理的节点（hostname）--&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>hbase.zookeeper.quorum<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>hadoop0,hadoop1,hadoop2<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+<li><code>hbase-site.xml</code><pre><code class="lang-xml">  ...
+  &lt;!-- 配置Zookeeper监控管理的节点（hostname）--&gt;
+  &lt;property&gt;
+    &lt;name&gt;hbase.zookeeper.quorum&lt;/name&gt;
+    &lt;value&gt;hadoop0,hadoop1,hadoop2&lt;/value&gt;
+  &lt;/property&gt;
 </code></pre>
 </li>
-<li><code>regionservers</code> （配置RegionServer的hostname）<pre><code class="nullvim">  hadoop1
+<li><code>regionservers</code> （配置RegionServer的hostname）<pre><code class="lang-vim">  hadoop1
   hadoop2
 </code></pre>
 </li>
 </ul>
 </li>
-<li>复制配置好的hbase到其他节点<pre><code class="nullvim"> scp -rp ./hbase `hadoop`@hadoop1:~
+<li>复制配置好的hbase到其他节点<pre><code class="lang-vim"> scp -rp ./hbase `hadoop`@hadoop1:~
  scp -rp ./hbase `hadoop`@hadoop2:~
 </code></pre>
 </li>
@@ -327,9 +330,9 @@
 <p>注意：HBase不能支持where条件、Order by 查询，只支持按照Row key来查询，但是可以通过HBase提供的API进行条件过滤</p>
 <h3 id="header-8">Shell Cmd</h3>
 <ul>
-<li>启用HBase Shell命令行<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> hbase shell</span>
+<li>启用HBase Shell命令行<pre><code class="lang-shell">  &gt; hbase shell
   ...
-<span class="hljs-meta">  &gt;</span><span class="bash"> quite</span>
+  &gt; quite
 </code></pre>
 </li>
 <li>常用命令<table class="table">
@@ -390,74 +393,74 @@
 <ul>
 <li><p>表操作：</p>
 <ul>
-<li>创建表<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> create <span class="hljs-string">'users'</span>,<span class="hljs-string">'user_id'</span>,<span class="hljs-string">'address'</span>,<span class="hljs-string">'info'</span></span>
+<li>创建表<pre><code class="lang-shell">  &gt; create &#39;users&#39;,&#39;user_id&#39;,&#39;address&#39;,&#39;info&#39;
 </code></pre>
 </li>
-<li>查看表<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> list</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> describe <span class="hljs-string">'users'</span></span>
+<li>查看表<pre><code class="lang-shell">  &gt; list
+  &gt; describe &#39;users&#39;
 </code></pre>
 </li>
-<li>验证表<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> exists <span class="hljs-string">'users'</span></span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> is_enabled <span class="hljs-string">'users'</span></span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> is_disabled <span class="hljs-string">'users'</span></span>
+<li>验证表<pre><code class="lang-shell">  &gt; exists &#39;users&#39;
+  &gt; is_enabled &#39;users&#39;
+  &gt; is_disabled &#39;users&#39;
 </code></pre>
 </li>
-<li>删除表<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> <span class="hljs-built_in">disable</span> <span class="hljs-string">'users'</span></span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> delete <span class="hljs-string">'users'</span></span>
+<li>删除表<pre><code class="lang-shell">  &gt; disable &#39;users&#39;
+  &gt; delete &#39;users&#39;
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>记录操作：</p>
 <ul>
-<li>插入<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info:age'</span>,<span class="hljs-string">'24'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info:birthday'</span>,<span class="hljs-string">'1987-06-17'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info:company'</span>,<span class="hljs-string">'alibaba'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'address:contry'</span>,<span class="hljs-string">'china'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'address:province'</span>,<span class="hljs-string">'zhejiang'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'address:city'</span>,<span class="hljs-string">'hangzhou'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'zhangyifei'</span>,<span class="hljs-string">'info:birthday'</span>,<span class="hljs-string">'1987-4-17'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'zhangyifei'</span>,<span class="hljs-string">'info:favorite'</span>,<span class="hljs-string">'movie'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'zhangyifei'</span>,<span class="hljs-string">'info:company'</span>,<span class="hljs-string">'alibaba'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'zhangyifei'</span>,<span class="hljs-string">'address:contry'</span>,<span class="hljs-string">'china'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'zhangyifei'</span>,<span class="hljs-string">'address:province'</span>,<span class="hljs-string">'guangdong'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'zhangyifei'</span>,<span class="hljs-string">'address:city'</span>,<span class="hljs-string">'jieyang'</span>;</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'zhangyifei'</span>,<span class="hljs-string">'address:town'</span>,<span class="hljs-string">'xianqiao'</span>;</span>
+<li>插入<pre><code class="lang-shell">  &gt; put &#39;users&#39;,&#39;xiaoming&#39;,&#39;info:age&#39;,&#39;24&#39;;
+  &gt; put &#39;users&#39;,&#39;xiaoming&#39;,&#39;info:birthday&#39;,&#39;1987-06-17&#39;;
+  &gt; put &#39;users&#39;,&#39;xiaoming&#39;,&#39;info:company&#39;,&#39;alibaba&#39;;
+  &gt; put &#39;users&#39;,&#39;xiaoming&#39;,&#39;address:contry&#39;,&#39;china&#39;;
+  &gt; put &#39;users&#39;,&#39;xiaoming&#39;,&#39;address:province&#39;,&#39;zhejiang&#39;;
+  &gt; put &#39;users&#39;,&#39;xiaoming&#39;,&#39;address:city&#39;,&#39;hangzhou&#39;;
+  &gt; put &#39;users&#39;,&#39;zhangyifei&#39;,&#39;info:birthday&#39;,&#39;1987-4-17&#39;;
+  &gt; put &#39;users&#39;,&#39;zhangyifei&#39;,&#39;info:favorite&#39;,&#39;movie&#39;;
+  &gt; put &#39;users&#39;,&#39;zhangyifei&#39;,&#39;info:company&#39;,&#39;alibaba&#39;;
+  &gt; put &#39;users&#39;,&#39;zhangyifei&#39;,&#39;address:contry&#39;,&#39;china&#39;;
+  &gt; put &#39;users&#39;,&#39;zhangyifei&#39;,&#39;address:province&#39;,&#39;guangdong&#39;;
+  &gt; put &#39;users&#39;,&#39;zhangyifei&#39;,&#39;address:city&#39;,&#39;jieyang&#39;;
+  &gt; put &#39;users&#39;,&#39;zhangyifei&#39;,&#39;address:town&#39;,&#39;xianqiao&#39;;
 </code></pre>
 </li>
 <li><p>查询</p>
-<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span></span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info'</span></span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info:age'</span></span>
-<span class="hljs-meta">
-  #</span><span class="bash"> 获取单元格数据的版本数据</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,{COLUMN=&gt;<span class="hljs-string">'info:age'</span>,VERSIONS=&gt;1}</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,{COLUMN=&gt;<span class="hljs-string">'info:age'</span>,VERSIONS=&gt;2}</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,{COLUMN=&gt;<span class="hljs-string">'info:age'</span>,VERSIONS=&gt;3}</span>
-<span class="hljs-meta">
-  #</span><span class="bash"> 获取单元格数据的某个版本数据</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,{COLUMN=&gt;<span class="hljs-string">'info:age'</span>,TIMESTAMP=&gt;1364874937056}</span>
-<span class="hljs-meta">
-  #</span><span class="bash"> 全表扫描</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> scan <span class="hljs-string">'users'</span></span>
-<span class="hljs-meta">
-  #</span><span class="bash"> 统计表的行数</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> count <span class="hljs-string">'users'</span></span>
+<pre><code class="lang-shell">  &gt; get &#39;users&#39;,&#39;xiaoming&#39;
+  &gt; get &#39;users&#39;,&#39;xiaoming&#39;,&#39;info&#39;
+  &gt; get &#39;users&#39;,&#39;xiaoming&#39;,&#39;info:age&#39;
+
+  # 获取单元格数据的版本数据
+  &gt; get &#39;users&#39;,&#39;xiaoming&#39;,{COLUMN=&gt;&#39;info:age&#39;,VERSIONS=&gt;1}
+  &gt; get &#39;users&#39;,&#39;xiaoming&#39;,{COLUMN=&gt;&#39;info:age&#39;,VERSIONS=&gt;2}
+  &gt; get &#39;users&#39;,&#39;xiaoming&#39;,{COLUMN=&gt;&#39;info:age&#39;,VERSIONS=&gt;3}
+
+  # 获取单元格数据的某个版本数据
+  &gt; get &#39;users&#39;,&#39;xiaoming&#39;,{COLUMN=&gt;&#39;info:age&#39;,TIMESTAMP=&gt;1364874937056}
+
+  # 全表扫描
+  &gt; scan &#39;users&#39;
+
+  # 统计表的行数
+  &gt; count &#39;users&#39;
 </code></pre>
 </li>
-<li>更新<pre><code class="nullshell"><span class="hljs-meta">  &gt;</span><span class="bash"> put <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info:age'</span> ,<span class="hljs-string">'29'</span></span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> get <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info:age'</span></span>
+<li>更新<pre><code class="lang-shell">  &gt; put &#39;users&#39;,&#39;xiaoming&#39;,&#39;info:age&#39; ,&#39;29&#39;
+  &gt; get &#39;users&#39;,&#39;xiaoming&#39;,&#39;info:age&#39;
 </code></pre>
 </li>
 <li><p>删除</p>
-<pre><code class="nullshell"><span class="hljs-meta">  #</span><span class="bash"> 删除某列值</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> delete <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span>,<span class="hljs-string">'info:age'</span></span>
-<span class="hljs-meta">
-  #</span><span class="bash"> 删除整行</span>
-<span class="hljs-meta">  &gt;</span><span class="bash">deleteall <span class="hljs-string">'users'</span>,<span class="hljs-string">'xiaoming'</span></span>
-<span class="hljs-meta">
-  #</span><span class="bash"> 清空</span>
-<span class="hljs-meta">  &gt;</span><span class="bash"> truncate <span class="hljs-string">'users'</span></span>
+<pre><code class="lang-shell">  # 删除某列值
+  &gt; delete &#39;users&#39;,&#39;xiaoming&#39;,&#39;info:age&#39;
+
+  # 删除整行
+  &gt;deleteall &#39;users&#39;,&#39;xiaoming&#39;
+
+  # 清空
+  &gt; truncate &#39;users&#39;
 </code></pre>
 </li>
 </ul>
@@ -465,72 +468,72 @@
 </ul>
 <h3 id="header-9">Java API</h3>
 <p>依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.hbase<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hbase-client<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${hbase.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+    &lt;artifactId&gt;hbase-client&lt;/artifactId&gt;
+    &lt;version&gt;${hbase.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>使用示例：</p>
-<pre><code class="nulljava">Configuration conf = HBaseConfiguration.create();
-conf.set(<span class="hljs-string">"hbase.rootdir"</span>, <span class="hljs-string">"hdfs://hadoop0:9000/hbase"</span>);
-<span class="hljs-comment">//使用eclipse时必须添加这个，否则无法定位</span>
-conf.set(<span class="hljs-string">"hbase.zookeeper.quorum"</span>, <span class="hljs-string">"hadoop0"</span>);
-HBaseAdmin admin = <span class="hljs-keyword">new</span> HBaseAdmin(conf);
+<pre><code class="lang-java">Configuration conf = HBaseConfiguration.create();
+conf.set(&quot;hbase.rootdir&quot;, &quot;hdfs://hadoop0:9000/hbase&quot;);
+//使用eclipse时必须添加这个，否则无法定位
+conf.set(&quot;hbase.zookeeper.quorum&quot;, &quot;hadoop0&quot;);
+HBaseAdmin admin = new HBaseAdmin(conf);
 
 
-String tableName=<span class="hljs-string">"users"</span>;
-String columnFamily=<span class="hljs-string">"info"</span>;
+String tableName=&quot;users&quot;;
+String columnFamily=&quot;info&quot;;
 
-<span class="hljs-comment">// 1. 创建一张表</span>
-<span class="hljs-keyword">if</span> (admin.tableExists(tableName)) {
-    System.out.println(<span class="hljs-string">"table exists!"</span>);
-}<span class="hljs-keyword">else</span>{
-    HTableDescriptor tableDesc = <span class="hljs-keyword">new</span> HTableDescriptor(tableName);
-    tableDesc.addFamily(<span class="hljs-keyword">new</span> HColumnDescriptor(columnFamily));
+// 1. 创建一张表
+if (admin.tableExists(tableName)) {
+    System.out.println(&quot;table exists!&quot;);
+}else{
+    HTableDescriptor tableDesc = new HTableDescriptor(tableName);
+    tableDesc.addFamily(new HColumnDescriptor(columnFamily));
     admin.createTable(tableDesc);
-    System.out.println(<span class="hljs-string">"create table success!"</span>);
+    System.out.println(&quot;create table success!&quot;);
 }
 
-<span class="hljs-comment">// 2. 添加一条记录</span>
-String rowKey=<span class="hljs-string">"xiaoming"</span>;
-String column=<span class="hljs-string">"age"</span>;
-String data=<span class="hljs-string">"24"</span>;
+// 2. 添加一条记录
+String rowKey=&quot;xiaoming&quot;;
+String column=&quot;age&quot;;
+String data=&quot;24&quot;;
 
-HTable table = <span class="hljs-keyword">new</span> HTable(conf, tableName);
-Put p1 = <span class="hljs-keyword">new</span> Put(Bytes.toBytes(rowKey));
+HTable table = new HTable(conf, tableName);
+Put p1 = new Put(Bytes.toBytes(rowKey));
 p1.add(Bytes.toBytes(columnFamily), Bytes.toBytes(column),     Bytes.toBytes(data));
 table.put(p1);
-System.out.println(<span class="hljs-string">"put'"</span>+rowKey+<span class="hljs-string">"',"</span>+columnFamily+<span class="hljs-string">":"</span>+column+<span class="hljs-string">"','"</span>+data+<span class="hljs-string">"'"</span>);
+System.out.println(&quot;put&#39;&quot;+rowKey+&quot;&#39;,&quot;+columnFamily+&quot;:&quot;+column+&quot;&#39;,&#39;&quot;+data+&quot;&#39;&quot;);
 
-<span class="hljs-comment">// 3. 读取一条记录</span>
-Get get = <span class="hljs-keyword">new</span> Get(Bytes.toBytes(rowKey));
+// 3. 读取一条记录
+Get get = new Get(Bytes.toBytes(rowKey));
 Result result = table.get(get);
-System.out.println(<span class="hljs-string">"Get: "</span>+result);
+System.out.println(&quot;Get: &quot;+result);
 
-<span class="hljs-comment">// 4. 显示所有数据</span>
-Scan scan = <span class="hljs-keyword">new</span> Scan();
+// 4. 显示所有数据
+Scan scan = new Scan();
 ResultScanner scanner = table.getScanner(scan);
-<span class="hljs-comment">/*scan.setStartRow(Bytes.toBytes("134/"));
-scan.setStopRow( Bytes.toBytes("134:"));
-scan.setMaxVersions(1);*/</span>
-<span class="hljs-keyword">for</span> (Result res : scanner) {
-    System.out.println(<span class="hljs-string">"Scan: "</span>+res    );
+/*scan.setStartRow(Bytes.toBytes(&quot;134/&quot;));
+scan.setStopRow( Bytes.toBytes(&quot;134:&quot;));
+scan.setMaxVersions(1);*/
+for (Result res : scanner) {
+    System.out.println(&quot;Scan: &quot;+res    );
 }
 table.close();
 
-<span class="hljs-comment">// 5. 删除表</span>
-<span class="hljs-keyword">if</span>(admin.tableExists(tableName)){
-    <span class="hljs-keyword">try</span> {
+// 5. 删除表
+if(admin.tableExists(tableName)){
+    try {
       admin.disableTable(tableName);
       admin.deleteTable(tableName);
-    } <span class="hljs-keyword">catch</span> (IOException e) {
+    } catch (IOException e) {
       e.printStackTrace();
-      System.out.println(<span class="hljs-string">"Delete "</span>+tableName+<span class="hljs-string">" 失败"</span>);
+      System.out.println(&quot;Delete &quot;+tableName+&quot; 失败&quot;);
     }
 }
 admin.close();
-System.out.println(<span class="hljs-string">"Delete "</span>+tableName+<span class="hljs-string">" 成功"</span>);
+System.out.println(&quot;Delete &quot;+tableName+&quot; 成功&quot;);
 </code></pre>
 <h3 id="header-10">结合MapReduce操作</h3>
 <p>Hbase对Mapreduce API进行了扩展，方便Mapreduce任务读写HTable数据</p>
@@ -561,85 +564,85 @@ System.out.println(<span class="hljs-string">"Delete "</span>+tableName+<span cl
 </tbody>
 </table>
 <p>依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.hbase<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>hbase-server<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${hbase.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.hbase&lt;/groupId&gt;
+    &lt;artifactId&gt;hbase-server&lt;/artifactId&gt;
+    &lt;version&gt;${hbase.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>使用示例1：统计</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{   
+<pre><code class="lang-java">public static void main(String[] args) throws Exception {   
     Configuration config = HBaseConfiguration.create(); 
-    configuration.set(<span class="hljs-string">"hbase.zookeeper.quorum"</span>, <span class="hljs-string">"hadoop0"</span>);
+    configuration.set(&quot;hbase.zookeeper.quorum&quot;, &quot;hadoop0&quot;);
 
-    Job job = <span class="hljs-keyword">new</span> Job(config,<span class="hljs-string">"HBaseTotal"</span>);  
+    Job job = new Job(config,&quot;HBaseTotal&quot;);  
     job.setJarByClass(TotalOnHBase.class); 
 
-    Scan scan = <span class="hljs-keyword">new</span> Scan();  
-    scan.setCaching(<span class="hljs-number">500</span>);
-    scan.setCacheBlocks(<span class="hljs-keyword">false</span>);
-    TableMapReduceUtil.initTableMapperJob(<span class="hljs-string">"access-log"</span>,scan,MyTableMapper.class,Text.class,IntWritable.class,job);  
-    TableMapReduceUtil.initTableReducerJob(<span class="hljs-string">"total-access"</span>,MyTableReducer.class,job);  
-    job.waitForCompletion(<span class="hljs-keyword">true</span>);
+    Scan scan = new Scan();  
+    scan.setCaching(500);
+    scan.setCacheBlocks(false);
+    TableMapReduceUtil.initTableMapperJob(&quot;access-log&quot;,scan,MyTableMapper.class,Text.class,IntWritable.class,job);  
+    TableMapReduceUtil.initTableReducerJob(&quot;total-access&quot;,MyTableReducer.class,job);  
+    job.waitForCompletion(true);
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyTableMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TableMapper</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>&gt;  </span>{  
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> IntWritable ONE = <span class="hljs-keyword">new</span> IntWritable(<span class="hljs-number">1</span>);  
-    <span class="hljs-keyword">private</span> Text text = <span class="hljs-keyword">new</span> Text();  
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">map</span><span class="hljs-params">(ImmutableBytesWritable row, Result value, Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{  
-        String ip = Bytes.toString(row.get()).split(<span class="hljs-string">"-"</span>)[<span class="hljs-number">0</span>];  
-        String url = <span class="hljs-keyword">new</span> String(value.getValue(Bytes.toBytes(<span class="hljs-string">"info"</span>), Bytes.toBytes(<span class="hljs-string">"url"</span>)));  
-        text.set(ip+<span class="hljs-string">"&amp;"</span>+url);  
+<pre><code class="lang-java">public class MyTableMapper extends TableMapper&lt;Text, IntWritable&gt;  {  
+    private final IntWritable ONE = new IntWritable(1);  
+    private Text text = new Text();  
+    public void map(ImmutableBytesWritable row, Result value, Context context) throws IOException, InterruptedException {  
+        String ip = Bytes.toString(row.get()).split(&quot;-&quot;)[0];  
+        String url = new String(value.getValue(Bytes.toBytes(&quot;info&quot;), Bytes.toBytes(&quot;url&quot;)));  
+        text.set(ip+&quot;&amp;&quot;+url);  
         context.write(text, ONE);  
     }  
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyTableReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TableReducer</span>&lt;<span class="hljs-title">Text</span>, <span class="hljs-title">IntWritable</span>, <span class="hljs-title">ImmutableBytesWritable</span>&gt;  </span>{  
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(Text key, Iterable&lt;IntWritable&gt; values, Context context)</span> <span class="hljs-keyword">throws</span> IOException, InterruptedException </span>{  
-        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;  
-        <span class="hljs-keyword">for</span> (IntWritable val : values) {  
+<pre><code class="lang-java">public static class MyTableReducer extends TableReducer&lt;Text, IntWritable, ImmutableBytesWritable&gt;  {  
+    public void reduce(Text key, Iterable&lt;IntWritable&gt; values, Context context) throws IOException, InterruptedException {  
+        int sum = 0;  
+        for (IntWritable val : values) {  
             sum += val.get();  
         }  
 
-        Put put = <span class="hljs-keyword">new</span> Put(key.getBytes());  
-        put.add(Bytes.toBytes(<span class="hljs-string">"info"</span>), Bytes.toBytes(<span class="hljs-string">"count"</span>), Bytes.toBytes(String.valueOf(sum)));  
+        Put put = new Put(key.getBytes());  
+        put.add(Bytes.toBytes(&quot;info&quot;), Bytes.toBytes(&quot;count&quot;), Bytes.toBytes(String.valueOf(sum)));  
 
-        context.write(<span class="hljs-keyword">null</span>, put);  
+        context.write(null, put);  
     }  
 }
 </code></pre>
 <p>使用示例2：批量导入（<code>TableOutputFormat</code>,<code>TableReducer</code>）</p>
-<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception </span>{
-    <span class="hljs-keyword">final</span> Configuration configuration = <span class="hljs-keyword">new</span> Configuration();
-    <span class="hljs-comment">//设置zookeeper</span>
-    configuration.set(<span class="hljs-string">"hbase.zookeeper.quorum"</span>, <span class="hljs-string">"hadoop0"</span>);
-    <span class="hljs-comment">//设置hbase表名称</span>
-    configuration.set(TableOutputFormat.OUTPUT_TABLE, <span class="hljs-string">"wlan_log"</span>);
-    <span class="hljs-comment">//将该值改大，防止hbase超时退出</span>
-    configuration.set(<span class="hljs-string">"dfs.socket.timeout"</span>, <span class="hljs-string">"180000"</span>);
+<pre><code class="lang-java">public static void main(String[] args) throws Exception {
+    final Configuration configuration = new Configuration();
+    //设置zookeeper
+    configuration.set(&quot;hbase.zookeeper.quorum&quot;, &quot;hadoop0&quot;);
+    //设置hbase表名称
+    configuration.set(TableOutputFormat.OUTPUT_TABLE, &quot;wlan_log&quot;);
+    //将该值改大，防止hbase超时退出
+    configuration.set(&quot;dfs.socket.timeout&quot;, &quot;180000&quot;);
 
-    <span class="hljs-keyword">final</span> Job job = <span class="hljs-keyword">new</span> Job(configuration, <span class="hljs-string">"HBaseBatchImport"</span>);
-    FileInputFormat.setInputPaths(job, <span class="hljs-string">"hdfs://hadoop0:9000/input"</span>);
+    final Job job = new Job(configuration, &quot;HBaseBatchImport&quot;);
+    FileInputFormat.setInputPaths(job, &quot;hdfs://hadoop0:9000/input&quot;);
     job.setInputFormatClass(TextInputFormat.class);
     job.setMapperClass(BatchImportMapper.class);
     job.setMapOutputKeyClass(LongWritable.class);
     job.setMapOutputValueClass(Text.class);
-    <span class="hljs-comment">//BatchImportReducer extends TableReducer</span>
+    //BatchImportReducer extends TableReducer
     job.setReducerClass(BatchImportReducer.class);
-    <span class="hljs-comment">//不再设置输出路径，而是设置输出格式类型</span>
+    //不再设置输出路径，而是设置输出格式类型
     job.setOutputFormatClass(TableOutputFormat.class);
-    job.waitForCompletion(<span class="hljs-keyword">true</span>);
+    job.waitForCompletion(true);
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-comment">// BatchImportMapper 数据清理，省略...</span>
-<span class="hljs-comment">// BatchImportReducer 将数据写入HBase</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BatchImportReducer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TableReducer</span>&lt;<span class="hljs-title">LongWritable</span>, <span class="hljs-title">Text</span>, <span class="hljs-title">NullWritable</span>&gt;</span>{
-    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(LongWritable key, Iterable&lt;Text&gt; values,Context context)</span> <span class="hljs-keyword">throws</span> IOException ,InterruptedException </span>{
-        <span class="hljs-keyword">for</span> (Text text : values) {
-            <span class="hljs-keyword">final</span> String[] splited = text.toString().split(<span class="hljs-string">"\t"</span>);
-            <span class="hljs-keyword">final</span> Put put = <span class="hljs-keyword">new</span> Put(Bytes.toBytes(splited[<span class="hljs-number">0</span>]));
-            put.add(Bytes.toBytes(<span class="hljs-string">"info"</span>), Bytes.toBytes(<span class="hljs-string">"age"</span>), Bytes.toBytes(splited[<span class="hljs-number">1</span>]));
-            <span class="hljs-comment">//省略其他字段，调用put.add(....)即可</span>
+<pre><code class="lang-java">// BatchImportMapper 数据清理，省略...
+// BatchImportReducer 将数据写入HBase
+public class BatchImportReducer extends TableReducer&lt;LongWritable, Text, NullWritable&gt;{
+    protected void reduce(LongWritable key, Iterable&lt;Text&gt; values,Context context) throws IOException ,InterruptedException {
+        for (Text text : values) {
+            final String[] splited = text.toString().split(&quot;\t&quot;);
+            final Put put = new Put(Bytes.toBytes(splited[0]));
+            put.add(Bytes.toBytes(&quot;info&quot;), Bytes.toBytes(&quot;age&quot;), Bytes.toBytes(splited[1]));
+            //省略其他字段，调用put.add(....)即可
             context.write(NullWritable.get(), put);
         }
     };
@@ -680,10 +683,17 @@ System.out.println(<span class="hljs-string">"Delete "</span>+tableName+<span cl
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

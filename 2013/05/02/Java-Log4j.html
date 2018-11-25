@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -130,11 +133,11 @@
 <h2 id="header-2">Log4j</h2>
 <h3 id="header-3">依赖包</h3>
 <p>使用slf4j + log4j，实现日志管理：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.slf4j<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>slf4j-log4j12<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.6.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+    &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+    &lt;version&gt;1.6.6&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>会自动关联依赖slf4j-api-xxx.jar和log4j-xxx.jar</p>
 <h3 id="header-4">配置appender</h3>
@@ -251,7 +254,7 @@
   log4j.appender.DailyFile.layout=org.apache.log4j.PatternLayout
   log4j.appender.DailyFile.layout.ConversionPattern=[R] %p %d | %C{1}.%M | %m%n
   log4j.appender.DailyFile.File=D:/logs/shuttle/shuttle
-  log4j.appender.DailyFile.DatePattern='.'yyyy-MM-dd'.log'
+  log4j.appender.DailyFile.DatePattern=&#39;.&#39;yyyy-MM-dd&#39;.log&#39;
 
   # 发送日志到指定邮件
   log4j.appender.Mail=org.apache.log4j.net.SMTPAppender
@@ -272,7 +275,7 @@
   log4j.appender.Database.driver=com.mysql.jdbc.Driver
   log4j.appender.Database.user=root
   log4j.appender.Database.password=xxx
-  log4j.appender.Database.sql=INSERT INTO LOG4J (Message) VALUES('=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n')
+  log4j.appender.Database.sql=INSERT INTO LOG4J (Message) VALUES(&#39;=[%-5p] %d(%r) --&gt; [%t] %l: %m %x %n&#39;)
 </code></pre></li>
 </ul>
 <h3 id="header-5">配置logger</h3>
@@ -315,10 +318,10 @@ log4j.appender.test1.layout.ConversionPattern=%d %p [%c] - %m%n
 # logger
 log4j.logger.myTest1= info, test1
 </code></pre><p>Test:</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testLogger</span><span class="hljs-params">()</span></span>{
-    Log logger = LogFactory.getLog(<span class="hljs-string">"myTest1"</span>);
-    logger.info(<span class="hljs-string">"xxxx"</span>);
+<pre><code class="lang-java">@Test
+public void testLogger(){
+    Log logger = LogFactory.getLog(&quot;myTest1&quot;);
+    logger.info(&quot;xxxx&quot;);
 }
 </code></pre>
 <h4 id="header-8">分离日志</h4>
@@ -361,20 +364,20 @@ log4j.logger.myTest1= info, test1
 log4j.logger.myTest2= info, test2
 log4j.additivity.myTest2 = false
 </code></pre><p>Test：</p>
-<pre><code class="nulljava">Logger logger=Logger.getLogger(<span class="hljs-keyword">this</span>.getClass());
-logger.debug(<span class="hljs-string">"Debug Message"</span>);
-logger.info(<span class="hljs-string">"Info Message"</span>);
+<pre><code class="lang-java">Logger logger=Logger.getLogger(this.getClass());
+logger.debug(&quot;Debug Message&quot;);
+logger.info(&quot;Info Message&quot;);
 
 
-Logger logger1=Logger.getLogger(<span class="hljs-string">"myTest1"</span>);
-logger1.debug(<span class="hljs-string">"Debug Message-1"</span>);
-logger1.info(<span class="hljs-string">"Info Message-1"</span>);
+Logger logger1=Logger.getLogger(&quot;myTest1&quot;);
+logger1.debug(&quot;Debug Message-1&quot;);
+logger1.info(&quot;Info Message-1&quot;);
 
 
-Logger logger2=Logger.getLogger(<span class="hljs-string">"myTest2"</span>);
-logger2.debug(<span class="hljs-string">"Debug Message-2"</span>);
-logger2.info(<span class="hljs-string">"Info Message-2"</span>);
-logger2.warn(<span class="hljs-string">"Warn Message-2"</span>);
+Logger logger2=Logger.getLogger(&quot;myTest2&quot;);
+logger2.debug(&quot;Debug Message-2&quot;);
+logger2.info(&quot;Info Message-2&quot;);
+logger2.warn(&quot;Warn Message-2&quot;);
 </code></pre>
 <p>Result：</p>
 <pre><code>test.log：
@@ -391,7 +394,7 @@ test2.log:
 test3.log 不生成 （因为没有被加入到logger中，且rootLogger中也没有加入）
 </code></pre><h3 id="header-9">后台使用</h3>
 <h4 id="header-10">读取配置文件</h4>
-<pre><code class="nulljava">#自动快速地使用缺省Log4j环境:log4j.properties
+<pre><code class="lang-java">#自动快速地使用缺省Log4j环境:log4j.properties
 BasicConfigurator.configure();
 
 #读取使用Java的特性文件编写的配置文件
@@ -401,14 +404,14 @@ PropertyConfigurator.configure(String configFilename) ;
 DOMConfigurator.configure(String filename);
 </code></pre>
 <h4 id="header-11">获取日志记录器</h4>
-<pre><code class="nulljava"><span class="hljs-comment">//使用Log4j获得logger对象</span>
+<pre><code class="lang-java">//使用Log4j获得logger对象
 Logger logger = Logger.getLogger(xxx);
 
-<span class="hljs-comment">//使用Slf4J获得logger对象</span>
+//使用Slf4J获得logger对象
  Logger logger = LoggerFactory.getLogger(xxx);
 </code></pre>
 <h4 id="header-12">插入记录信息</h4>
-<pre><code class="nulljava">Logger.debug ( Object message ) ;
+<pre><code class="lang-java">Logger.debug ( Object message ) ;
 Logger.info ( Object message ) ;
 Logger.warn ( Object message ) ;
 Logger.error ( Object message ) ;
@@ -416,38 +419,38 @@ Logger.error ( Object message ) ;
 <h3 id="header-13">在Spring中使用log4j</h3>
 <ol>
 <li><p>配置web.xml (在Spring配置基础上)，也可什么都不配，使用默认的即可</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">context-param</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>log4jConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath*:log4j.properties<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">context-param</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;context-param&gt;
+     &lt;param-name&gt;log4jConfigLocation&lt;/param-name&gt;
+     &lt;param-value&gt;classpath*:log4j.properties&lt;/param-value&gt;
+ &lt;/context-param&gt;
 
- <span class="hljs-comment">&lt;!-- 3000表示 开一条watchdog线程每60秒扫描一下配置文件的变化;这样便于日志存放位置的改变 --&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">context-param</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>log4jRefreshInterval<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>3000<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">context-param</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.web.util.Log4jConfigListener<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>  
- <span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
+ &lt;!-- 3000表示 开一条watchdog线程每60秒扫描一下配置文件的变化;这样便于日志存放位置的改变 --&gt;
+ &lt;context-param&gt;
+         &lt;param-name&gt;log4jRefreshInterval&lt;/param-name&gt;
+         &lt;param-value&gt;3000&lt;/param-value&gt;
+    &lt;/context-param&gt;
+ &lt;listener&gt;
+     &lt;listener-class&gt;org.springframework.web.util.Log4jConfigListener&lt;/listener-class&gt;  
+ &lt;/listener&gt;
 </code></pre>
 </li>
 <li><p>Bean中使用</p>
-<pre><code class="nulljava"> <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SystemAnnualTask</span>
- </span>{
-     <span class="hljs-comment">//log4j获取Logger</span>
-     <span class="hljs-comment">//static Logger logger = Logger.getLogger(SystemAnnualTask.class);</span>
-     <span class="hljs-comment">//通过slf4j获取Logger</span>
-     <span class="hljs-keyword">static</span> Logger logger = LoggerFactory.getLogger(SystemAnnualTask.class);
+<pre><code class="lang-java"> public class SystemAnnualTask
+ {
+     //log4j获取Logger
+     //static Logger logger = Logger.getLogger(SystemAnnualTask.class);
+     //通过slf4j获取Logger
+     static Logger logger = LoggerFactory.getLogger(SystemAnnualTask.class);
 
-     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">startAnnualProcess</span><span class="hljs-params">()</span></span>{
+     public void startAnnualProcess(){
          ...
          logger.info(xxx);
-         <span class="hljs-comment">//这里增加判断，提高效率（可不判断，直接调用）</span>
-         <span class="hljs-keyword">if</span> (logger.isDebugEnabled()){
+         //这里增加判断，提高效率（可不判断，直接调用）
+         if (logger.isDebugEnabled()){
              logger.debug(xxx);
          }
-         <span class="hljs-comment">//若使用Slf4j，则可如下使用：</span>
-         logger.info(<span class="hljs-string">"{} is {}"</span>, <span class="hljs-keyword">new</span> String[]{“x<span class="hljs-string">",“y"</span>});
+         //若使用Slf4j，则可如下使用：
+         logger.info(&quot;{} is {}&quot;, new String[]{“x&quot;,“y&quot;});
          ...
      }
  }
@@ -489,10 +492,17 @@ Logger.error ( Object message ) ;
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -127,81 +130,81 @@
 <p><strong>直接上示例：</strong></p>
 <p><img src="/2016/01/05/firebase.PNG" alt="my firebase"><br>（下面示例使用的firebase结构）</p>
 <h3 id="header-1">直接使用firebase库</h3>
-<pre><code class="nullvim">&gt; npm install firebase --save
+<pre><code class="lang-vim">&gt; npm install firebase --save
 
 //或前端使用，直接从CDN获取
-&lt;script src=<span class="hljs-string">"https://cdn.firebase.com/js/client/2.4.0/firebase.js"</span>&gt;&lt;/script&gt;
+&lt;script src=&quot;https://cdn.firebase.com/js/client/2.4.0/firebase.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<pre><code class="nulljavascript"><span class="hljs-keyword">var</span> Firebase=<span class="hljs-built_in">require</span>(<span class="hljs-string">"firebase"</span>);
-<span class="hljs-keyword">var</span> DB_URL=<span class="hljs-string">"https://&lt;YOUR-FIREBASE-APP&gt;.firebaseio.com/"</span>;
-<span class="hljs-keyword">var</span> Fb=<span class="hljs-keyword">new</span> Firebase(DB_URL);
+<pre><code class="lang-javascript">var Firebase=require(&quot;firebase&quot;);
+var DB_URL=&quot;https://&lt;YOUR-FIREBASE-APP&gt;.firebaseio.com/&quot;;
+var Fb=new Firebase(DB_URL);
 
-<span class="hljs-comment">/*
+/*
 设置数据，可参考：https://www.firebase.com/docs/web/guide/saving-data.html
 set(),update(),push(),transaction( )
 push() function that generates a unique ID, or key, for each new child
-*/</span>
-<span class="hljs-comment">//username is key</span>
-Fb.child(<span class="hljs-string">"users"</span>).child(username).set({<span class="hljs-attr">username</span>:xxx,<span class="hljs-attr">password</span>:xxx});
-Fb.child(<span class="hljs-string">"users"</span>).child(username).update({<span class="hljs-attr">password</span>:xxx});
+*/
+//username is key
+Fb.child(&quot;users&quot;).child(username).set({username:xxx,password:xxx});
+Fb.child(&quot;users&quot;).child(username).update({password:xxx});
 
-<span class="hljs-comment">//generate a uniqueID as key</span>
-<span class="hljs-keyword">var</span> usersRef=Fb.child(<span class="hljs-string">"users"</span>).push();
-<span class="hljs-keyword">var</span> id=usersRef.key();
+//generate a uniqueID as key
+var usersRef=Fb.child(&quot;users&quot;).push();
+var id=usersRef.key();
 
-<span class="hljs-comment">//uniqueID is key</span>
-usersRef.push({<span class="hljs-attr">username</span>:xxx,<span class="hljs-attr">password</span>:xxx});
-usersRef.push().set({<span class="hljs-attr">username</span>:xxxx,<span class="hljs-attr">password</span>:xxx});
+//uniqueID is key
+usersRef.push({username:xxx,password:xxx});
+usersRef.push().set({username:xxxx,password:xxx});
 
-<span class="hljs-comment">/*
+/*
 获取数据，可参考https://www.firebase.com/docs/web/guide/retrieving-data.html
 Get: (callback to read the data)
-    on('value',function(snapshot){xxxx})
-    once('value',function(snapshot){xxxx})
+    on(&#39;value&#39;,function(snapshot){xxxx})
+    once(&#39;value&#39;,function(snapshot){xxxx})
 Query:
-    orderByChild("xxx"),orderByKey(),orderByValue(),orderByPriority()
+    orderByChild(&quot;xxx&quot;),orderByKey(),orderByValue(),orderByPriority()
     limitToLast(count),limitToFirst(count)
     startAt(xxx),endAt(xxx),equalTo(xxx)
-*/</span>
-Fb.child(<span class="hljs-string">"users"</span>).child(username).once(<span class="hljs-string">'value'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">snapshot</span>)</span>{
-    <span class="hljs-built_in">console</span>.log(snapshot.key());
-    <span class="hljs-built_in">console</span>.log(snapshot.val());
-    <span class="hljs-keyword">if</span>(snapshot.exists())
-        <span class="hljs-built_in">console</span>.log(snapshot.child(<span class="hljs-string">"password"</span>).val());
+*/
+Fb.child(&quot;users&quot;).child(username).once(&#39;value&#39;,function(snapshot){
+    console.log(snapshot.key());
+    console.log(snapshot.val());
+    if(snapshot.exists())
+        console.log(snapshot.child(&quot;password&quot;).val());
 });
 </code></pre>
 <h3 id="header-2">通过reactFire使用firebase （在React中）</h3>
-<pre><code class="nulljavascript"><span class="hljs-keyword">var</span> ReactFire=<span class="hljs-built_in">require</span>(<span class="hljs-string">"reactfire"</span>);
-<span class="hljs-keyword">var</span> Firebase=<span class="hljs-built_in">require</span>(<span class="hljs-string">"firebase"</span>);
+<pre><code class="lang-javascript">var ReactFire=require(&quot;reactfire&quot;);
+var Firebase=require(&quot;firebase&quot;);
 </code></pre>
-<pre><code class="nulljavascript"><span class="hljs-comment">// Component中：</span>
+<pre><code class="lang-javascript">// Component中：
 mixins:[ReactFire],
-<span class="hljs-attr">getInitialState</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-keyword">return</span> {
-        <span class="hljs-attr">showForm</span>:<span class="hljs-literal">false</span>,
-        <span class="hljs-attr">newQuestion</span>:<span class="hljs-literal">null</span>,
-        <span class="hljs-attr">questions</span>:[]
+getInitialState:function(){
+    return {
+        showForm:false,
+        newQuestion:null,
+        questions:[]
     }
 },
-<span class="hljs-attr">componentWillMount</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Question Will Mount..."</span>);
-    <span class="hljs-keyword">this</span>.fb=<span class="hljs-keyword">new</span> Firebase(rootUrl+<span class="hljs-string">"questions/"</span>);
-    <span class="hljs-keyword">this</span>.bindAsArray(<span class="hljs-keyword">this</span>.fb,<span class="hljs-string">"questions"</span>);        <span class="hljs-comment">// =&gt; this.state.questions（当有变化时自动转换为数组，且调用this.setState({questions:xxx})； ）</span>
-    <span class="hljs-keyword">this</span>.fb.on(<span class="hljs-string">"value"</span>,<span class="hljs-keyword">this</span>.loadDataHandler);
+componentWillMount:function(){
+    console.log(&quot;Question Will Mount...&quot;);
+    this.fb=new Firebase(rootUrl+&quot;questions/&quot;);
+    this.bindAsArray(this.fb,&quot;questions&quot;);        // =&gt; this.state.questions（当有变化时自动转换为数组，且调用this.setState({questions:xxx})； ）
+    this.fb.on(&quot;value&quot;,this.loadDataHandler);
 },
-<span class="hljs-attr">loadDataHandler</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Data Loaded"</span>);
+loadDataHandler:function(){
+    console.log(&quot;Data Loaded&quot;);
 },
-<span class="hljs-attr">addNewQuestion</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newQuestion</span>)</span>{
-    <span class="hljs-comment">//this.firebaseRefs.questions.push(newQuestion);</span>
-    <span class="hljs-keyword">this</span>.fb.push(newQuestion);
-    <span class="hljs-keyword">this</span>.setState({<span class="hljs-attr">newQuestion</span>:newQuestion});
+addNewQuestion:function(newQuestion){
+    //this.firebaseRefs.questions.push(newQuestion);
+    this.fb.push(newQuestion);
+    this.setState({newQuestion:newQuestion});
 },
-<span class="hljs-attr">voteUpdate</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">questionId,voteCount</span>)</span>{
-    <span class="hljs-keyword">this</span>.fb.child(questionId).update({<span class="hljs-attr">voteCount</span>:voteCount});
+voteUpdate:function(questionId,voteCount){
+    this.fb.child(questionId).update({voteCount:voteCount});
 },
-<span class="hljs-attr">removeItem</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">question</span>)</span>{
-    <span class="hljs-keyword">this</span>.fb.child(question[<span class="hljs-string">".key"</span>]).remove();
+removeItem:function(question){
+    this.fb.child(question[&quot;.key&quot;]).remove();
 }
 </code></pre>
   </section>
@@ -239,10 +242,17 @@ mixins:[ReactFire],
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

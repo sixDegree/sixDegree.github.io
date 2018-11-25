@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Koa</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="Koa">
+  
+  
+    <meta name="description" content="a Web framework for node.js (simpler then express)">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Hello world</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">API</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Middleware</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Express VS Koa</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">异步中间件</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Context</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Exception</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">抛出错误</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">监听错误</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">处理错误</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">常用第三方插件</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">static</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">body</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">Router</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">Session</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Koa</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">async/await</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">Mongoose</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">koa-session2+mongo</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">Privilege Filter</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Koa</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2018-08-02T16:00:00.000Z">2018-08-03</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Node">Node</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<blockquote>
+<p>Koa: next generation web framework for node.js</p>
+</blockquote>
+<p><a href="https://koajs.com" target="_blank" rel="noopener">官网</a></p>
+<p>一个比expess更简洁轻量的nodeJS web框架 （requires node v7.6.0 or higher）<br>如今版本已更新到了koa2，性能更优异，还支持async/await（JS原生支持，本身是generator语法糖，实现了同步写异步，终结异步回调）</p>
+<h3 id="header-2">Hello world</h3>
+<ol>
+<li><p>init:</p>
+<pre><code class="lang-bash"> cd koa-demo
+ npm init
+ npm install koa -s
+</code></pre>
+</li>
+<li><p>app.js:</p>
+<pre><code class="lang-javascript"> const Koa=require(&quot;koa&quot;);
+ const app=new Koa();
+
+ const main=ctx=&gt;{
+    ctx.response.type=&quot;json&quot;;
+    ctx.response.body={
+     success:1,
+     msg:&quot;Hello world!&quot;
+    }
+ }
+ app.use(main);
+
+ // app.listen(...) return an HTTP Server
+ app.listen(3000,()=&gt;{
+   console.log(&#39;app started at port 3000...&#39;);
+ });
+</code></pre>
+</li>
+<li><p>start http server:</p>
+<pre><code class="lang-bash"> &gt; node app
+ app started at port 3000...
+</code></pre>
+</li>
+<li><p>visit to verify:</p>
+<pre><code class="lang-bash"> &gt; curl -i http://localhost:3000
+   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                  Dload  Upload   Total   Spent    Left  Speed
+ 100    34  100    34    0     0    435      0 --:--:-- --:--:-- --:--:--   548HTTP/1.1 200 OK
+ Content-Type: application/json; charset=utf-8
+ Content-Length: 34
+ Date: Thu, 25 Oct 2018 02:44:39 GMT
+ Connection: keep-alive
+
+ {&quot;success&quot;:1,&quot;msg&quot;:&quot;Hello world!&quot;}
+</code></pre>
+</li>
+</ol>
+<h3 id="header-3">API</h3>
+<pre><code class="lang-javascript">const Koa=require(&quot;koa&quot;);
+const app=new Koa();
+</code></pre>
+<ul>
+<li><p><code>app.listen(...)</code>: 创建并返回一个http服务器</p>
+<pre><code class="lang-javascript">  const http = require(&#39;http&#39;)
+  const Koa = require(&#39;koa&#39;)
+  const app = new Koa()
+  http.createServer(app.callback()).listen(3000)
+
+  // 等同于
+  const Koa = require(&#39;koa&#39;)
+  const app = new Koa()
+  app.listen(3000);
+</code></pre>
+</li>
+<li><code>app.callback()</code>：返回一个可被<code>http.createServer()</code> 接受的程序实例，可将此实例添加到Connect/Express应用中</li>
+<li><code>app.use(function)</code>： 加载中间件</li>
+<li><code>app.keys=</code>：设置cookie 密钥，eg：<code>app.keys = [&#39;im a newer secret&#39;, &#39;i like turtle&#39;];</code></li>
+<li><p><code>app.context</code>: 是ctx的来源，可使用app.context添加额外的属性到ctx</p>
+<pre><code class="lang-javascript">  // 从ctx添加一个数据库引用
+  add.context.db = db()
+
+  app.use(async (ctx)=&gt;{
+  console.log(ctx.db)
+  })
+</code></pre>
+</li>
+<li><code>app.on(eventName,function)</code>: 添加事件侦听器<pre><code class="lang-javascript">  // 默认情况下，所有错误输出到 stderr（ 若app.silent=true 或 err.status=404 或 err.expose=true，默认错误处理程序不会输出错误）
+  app.on(&#39;error&#39;, (err, ctx) =&gt;
+    log.error(&#39;server error&#39;, err, ctx)
+  );
+</code></pre>
+</li>
+<li><code>app.env</code>: 默认是 <code>NODE_ENV</code> 或 <code>development</code></li>
+<li><code>app.proxy</code>: 设置为true时，porxy头部将被信任</li>
+<li><code>app.subdomainOffset</code>: 设置<code>.subdomains</code>的偏移量</li>
+</ul>
+<h2 id="header-4">Middleware</h2>
+<p>Koa 应用程序是一个包含一组中间件函数的对象，按照类似堆栈的方式组织和执行。</p>
+<p>Middleware 实际就是一个函数，使用<code>use(function)</code>加载middleware，使用<code>next</code>进入下一个middleware。</p>
+<h3 id="header-5">Express VS Koa</h3>
+<p>Express Middleware： 顺序执行，从第一个中间件执行到最后一个中间件，发出响应<br><img src="/2018/08/03/express-middleware.jpg" alt="Express Middleware"></p>
+<p>Koa Middleware： 洋葱模型，一层层的打开，再一层层的闭合，直到第一个中间件执行结束才发出响应<br><img src="/2018/08/03/koa-middleware.jpg" alt="Koa Middleware"></p>
+<p>Express: <code>A-&gt;B-&gt;C-&gt;...-&gt;N</code></p>
+<pre><code class="lang-javascript">// middleware A
+app.use(function(request,response,next){
+    //...
+    next();        // move to next middleware in the stack
+});
+
+// middle B
+// middle C
+// ...
+
+// middle N
+app.use(function(request,response,next){
+    //...
+    response.send(&quot;done!&quot;);            // done!
+});
+</code></pre>
+<p>Koa：<code>A-&gt;B-&gt;C-&gt;...-&gt;N-&gt;...-&gt;C-&gt;B-&gt;A</code></p>
+<pre><code class="lang-javascript">// middleware A
+app.use((ctx,next)=&gt;{
+    console.log(&quot;A begin&quot;);
+    next();
+    console.log(&quot;A end&quot;);            // done!
+});
+
+// middle B
+// middle C
+// ...
+
+// middle N
+app.use((ctx,next)=&gt;{
+    console.log(&quot;N begin&quot;);
+    next();
+    console.log(&quot;N end&quot;);
+})
+</code></pre>
+<h3 id="header-6">异步中间件</h3>
+<p>异步操作（比如读取数据库，文件等）</p>
+<p>处理方式：</p>
+<ol>
+<li><p><code>callback</code>：回调函数（Express使用这种方式）；缺点：层层回调，若逻辑很复杂，可能会陷入回调地狱</p>
+<pre><code class="lang-javascript"> fs.readFile(&#39;a.txt&#39;,function(err,data){
+     // do something
+     fs.readFile(&#39;b.txt&#39;,function(err,data){
+         //...
+     });
+     // do something
+ });
+</code></pre>
+</li>
+<li><p><code>promise</code>: 用来传递异步操作流的对象；缺点：代码冗余，只是回调函数的改进</p>
+<pre><code class="lang-javascript"> // 创造一个Promise实例
+ const promise = new Promise(function(resolve, reject) {
+   // ... some code
+
+   if (/* 异步操作成功 */){
+     resolve(value);
+   } else {
+     reject(error);
+   }
+ });
+
+ // 后续处理
+ promise
+   .then(function(data) { //cb
+     // success
+   })
+   .then(function(data) { //cb
+     // success
+   })
+   .catch(function(err) {
+     // error
+   })
+   .finally(function(){
+     // no args,always exec
+   });
+</code></pre>
+</li>
+<li><p><code>generator/yield</code>: es6引入，以同步的方式来写异步编程；异步操作需要暂停的地方，都用yield语句注明；</p>
+<pre><code class="lang-javascript"> function* gen(x){
+   try {
+     var y = yield x + 2;
+   } catch (e){
+     console.log(e);
+   }
+   return y;
+ }
+
+ var g = gen(1);
+ //next:分阶段执行Generator函数
+ g.next()             // { value: 3, done: false }
+ g.next(2)             // { value: 2, done: true }
+ g.throw(&#39;出错了&#39;);    // 出错了
+</code></pre>
+<pre><code class="lang-javascript"> // 引入co模块，用于 Generator 函数的自动执行，返回一个Promise对象
+ var co = require(&#39;co&#39;);
+ var gen = function* () {
+   var f1 = yield readFile(&#39;/etc/fstab&#39;);
+   var f2 = yield readFile(&#39;/etc/shells&#39;);
+   console.log(f1.toString());
+   console.log(f2.toString());
+ };
+ co(gen).then(function (){
+   console.log(&#39;Generator 函数执行完成&#39;);
+ });
+</code></pre>
+</li>
+<li><p><code>async/await</code>: es7引入，generator/yield的语法糖，语义更清晰，且javascript原生支持；注：await命令只能用在async函数之中，如果用在普通函数，就会报错</p>
+<pre><code class="lang-javascript"> async function main() {
+   try {
+     const val1 = await firstStep();
+     const val2 = await secondStep(val1);
+     const val3 = await thirdStep(val1, val2);
+     console.log(&#39;Final: &#39;, val3);
+   }
+   catch (err) {
+     console.error(err);
+   }
+ }
+
+ main();
+
+ main()
+ .then(v =&gt; console.log(v))
+ .catch(e =&gt; console.log(e))
+ ;
+</code></pre>
+</li>
+<li><p><code>generator/yield</code> vs. <code>async/await</code></p>
+<table class="table">
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">generator/yield</th>
+<th style="text-align:left">async/await</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:left">执行必须靠执行器（eg：co模块–用于 Generator 函数的自动执行）</td>
+<td style="text-align:left">async函数自带执行器</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:left">co模块约定yield命令后面只能是 Thunk函数(自动执行 Generator 函数的一种方法)或 Promise 对象</td>
+<td style="text-align:left">await后面可以是 Promise 对象和原始类型的值（这时等同于同步操作）</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:left">Generator 函数的返回值是 Iterator 对象</td>
+<td style="text-align:left">async函数返回值是 Promise对象（可以用then方法指定下一步的操作）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>koa@1.x: 使用generator/yield语法<pre><code class="lang-javascript">  app.use(function *(next){
+      this.response.type=&#39;html&#39;;
+      this.response.body=yield fs.readFile(&#39;./demos/template.html&#39;, &#39;utf8&#39;);
+  });
+</code></pre>
+</li>
+<li>koa@2.x: 使用async/await语法<pre><code class="lang-javascript">  app.use((ctx,next)=&gt;{
+      ctx.response.type = &#39;html&#39;;
+      ctx.response.body = await fs.readFile(&#39;./demos/template.html&#39;, &#39;utf8&#39;);
+  });
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-7">Context</h2>
+<p>Koa Context对象： 表示一次对话的上下文，每个请求会创建属于此请求的context对象，并在koa中间件中传递</p>
+<ul>
+<li>封装了node的request和response对象，通过加工这个对象，就可以控制返回给用户的内容。</li>
+<li>对 Koa 内部一些常用的属性或者方法做了代理操作，使得我们可以直接通过这个context对象获取（eg：ctx.url与ctx.request.url等同）</li>
+<li>约定了一个中间件的存储空间state，可以通过context对象的state存储一些数据，比如用户数据，版本信息等</li>
+<li>注：<ul>
+<li>koa@1.x: 使用this引用Context对象</li>
+<li>koa@2.x: 使用ctx来访问Context对象</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<pre><code class="lang-javascript">const Koa = require(&#39;koa&#39;);
+const app = new Koa();
+
+app.use((ctx,next)=&gt;{
+    console.log(`${Date.now()} ${ctx.request.method} ${ctx.request.url}`);
+    next();
+})
+
+app.use((ctx,next)=&gt;{
+    ctx.response.body = { data: &#39;Hello World&#39; };
+})
+
+app.use(async (ctx,next)=&gt;{
+    next();
+    ctx.response.type=&quot;json&quot;;
+});
+
+app.listen(3000);
+</code></pre>
+<p><strong> API : </strong></p>
+<ul>
+<li>ctx.req: Node 的 request 对象</li>
+<li>ctx.res: Node 的 response 对象，注：Koa 不支持直接调用底层res进行响应处理，请避免使用以下 node 属性：res.statusCode(),res.writeHead(),res.write(),res.end()</li>
+<li>ctx.request: Koa 的 request 对象</li>
+<li>ctx.response: Koa 的 response 对象</li>
+<li>ctx.app: 应用实例引用</li>
+<li>ctx.cookies.get(name, [options]): 获得 cookie 中名为 name 的值，options：<ul>
+<li>signed: 所请求的cookie应该被签名</li>
+</ul>
+</li>
+<li>ctx.cookies.set(name, value, [options]): 设置 cookie 中名为 name 的值，options：<ul>
+<li>signed: 是否要做签名</li>
+<li>expires: cookie 有效期时间</li>
+<li>path: cookie 的路径，默认为 <code>/</code></li>
+<li>domain: cookie 的域</li>
+<li>secure: false 表示 cookie 通过 HTTP 协议发送，true 表示 cookie 通过 HTTPS 发送。</li>
+<li>httpOnly: true 表示 cookie 只能通过 HTTP 协议发送</li>
+</ul>
+</li>
+<li>ctx.throw(msg, [status]): 抛出包含 <code>.status</code> 属性的错误，默认为 500<pre><code class="lang-javascript">  ctx.throw(&#39;name required&#39;, 400) 
+  //等价于：
+  var err = new Error(&#39;name required&#39;);
+  err.status = 400;
+  throw err;
+</code></pre>
+</li>
+<li><p>ctx.respond: 设为false，则表示绕过 Koa 的内置 response 处理，直接操作原生 res 对象</p>
+</li>
+<li><p><strong> 与Request等价的API: </strong></p>
+<ul>
+<li>ctx.header</li>
+<li>ctx.method</li>
+<li>ctx.method=</li>
+<li>ctx.url</li>
+<li>ctx.url=</li>
+<li>ctx.originalUrl</li>
+<li>ctx.path</li>
+<li>ctx.path=</li>
+<li>ctx.query</li>
+<li>ctx.query=</li>
+<li>ctx.querystring</li>
+<li>ctx.querystring=</li>
+<li>ctx.host</li>
+<li>ctx.hostname</li>
+<li>ctx.fresh</li>
+<li>ctx.stale</li>
+<li>ctx.socket</li>
+<li>ctx.protocol</li>
+<li>ctx.secure</li>
+<li>ctx.ip</li>
+<li>ctx.ips</li>
+<li>ctx.subdomains</li>
+<li>ctx.is()</li>
+<li>ctx.accepts()</li>
+<li>ctx.acceptsEncodings()</li>
+<li>ctx.acceptsCharsets()</li>
+<li>ctx.acceptsLanguages()</li>
+<li>ctx.get()</li>
+</ul>
+</li>
+<li><p><strong> Response等价的API: </strong></p>
+<ul>
+<li>ctx.body</li>
+<li>ctx.body=</li>
+<li>ctx.status</li>
+<li>ctx.status=</li>
+<li>ctx.length=</li>
+<li>ctx.length</li>
+<li>ctx.type=</li>
+<li>ctx.type</li>
+<li>ctx.headerSent</li>
+<li>ctx.redirect()</li>
+<li>ctx.attachment()</li>
+<li>ctx.set()</li>
+<li>ctx.remove()</li>
+<li>ctx.lastModified=</li>
+<li>ctx.etag=</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-8">Exception</h2>
+<h3 id="header-9">抛出错误</h3>
+<pre><code class="lang-javascript">const main = ctx =&gt; {
+  ctx.response.status = 404;
+  ctx.response.body = &#39;Page Not Found&#39;;
+};
+</code></pre>
+<pre><code class="lang-javascript">const main = ctx =&gt; {
+  ctx.throw(&#39;Page Not Found&#39;,404); // ctx.throw(404)
+};
+</code></pre>
+<h3 id="header-10">监听错误</h3>
+<pre><code class="lang-javascript">app.on(&#39;error&#39;,function(err){
+    console.log(&#39;logging error &#39;, err.message);
+    console.log(err);
+});
+</code></pre>
+<h3 id="header-11">处理错误</h3>
+<p>在最外层添加一个中间件，使用<code>try...catch</code>捕获错误</p>
+<pre><code class="lang-javascript">app.use(async (ctx, next) =&gt; {
+  try {
+    await next();
+  } catch (err) {
+    ctx.response.status = err.statusCode || err.status || 500;
+    ctx.response.body = {
+      message: err.message
+    };
+    ctx.app.emit(&#39;error&#39;, err, ctx);    // 调用ctx.app.emit()，手动释放error事件，才能让监听函数生效
+  }
+});
+
+app.use(ctx =&gt; {
+  ctx.throw(500);
+});
+</code></pre>
+<h2 id="header-12">常用第三方插件</h2>
+<h3 id="header-13">static</h3>
+<pre><code class="lang-javascript">const path=require(&#39;path&#39;);
+const static = require(&#39;koa-static&#39;);
+app.use(static(path.resolve(__dirname, &quot;./public&quot;)));
+</code></pre>
+<h3 id="header-14">body</h3>
+<p>koa-body模块可以用来从请求的数据体里面提取键值对（方便处理表单，上传文件：ctx.request.files）</p>
+<pre><code class="lang-javascript">const KoaBody = require(&#39;koa-body&#39;);
+app.use(KoaBody());    
+app.use(async(ctx,next)=&gt;{
+    console.log(&quot;request body:&quot;);
+    console.log(ctx.request.body);
+    if (!body.name) 
+        ctx.throw(400, &#39;.name required&#39;);
+    await next();
+});
+</code></pre>
+<h3 id="header-15">Router</h3>
+<p>app.js:</p>
+<pre><code class="lang-javascript">const Router=require(&quot;koa-router&quot;);
+const router=new Router();
+
+var catalogueController=require(&quot;./controller/catalogueController&quot;);
+router.get(&#39;/catalogues&#39;,catalogueController.list);
+router.get(&#39;/catalogues/:id&#39;,catalogueController.get);
+router.put(&#39;/catalogues/:id&#39;,catalogueController.update);
+router.post(&#39;/catalogues&#39;,catalogueController.create);
+router.delete(&#39;/catalogues/:id&#39;,catalogueController.delete);
+
+app.use(router.routes());
+app.use(router.allowedMethods());
+</code></pre>
+<p>./controller/catalogueController.js:</p>
+<pre><code class="lang-javascript">module.exports={
+  list:async (ctx,next)=&gt;{
+      ...
+  },
+  get:async (ctx,next)=&gt;{
+    let id=ctx.params.id;
+      ...
+  },
+  update:async (ctx,next)=&gt;{
+    let id=ctx.params.id;
+    let catalogue=ctx.request.body;
+    ...
+  }
+  ...
+}
+</code></pre>
+<h3 id="header-16">Session</h3>
+<pre><code class="lang-javascript">const session=require(&#39;koa-session2&#39;);
+app.keys=[&#39;a secret key&#39;];    // if set signed:true,need setting the .keys.
+app.use(session({
+    key:&quot;SESSIONID&quot;,
+    signed:true,        // SESSIONID.sig,need to set app.keys,作用：给cookie加上一个sha256的签名,防止cookie被篡改
+    maxAge:86400000,    // cookie expire after maxAge ms: 1 day = 24h*60m*60s*1000=86400,000ms
+}));
+
+
+const logger=async (ctx,next)=&gt;{
+  let path=ctx.request.path;
+  console.log(&quot;log:&quot;+ctx.request.method+&quot; &quot;+path+&quot;,&quot;+ctx.request.url);
+  if(ctx.session){
+        console.log(&quot;loginUser&quot;,ctx.session.loginUser);
+      console.log(&quot;cookie&quot;,ctx.request.header.cookie);    //ctx.cookies
+    }
+  await next();
+}
+app.use(logger);
+
+app.use(async(ctx,next)=&gt;{
+    // get: ctx.session.xxx
+    // set: ctx.session.Xxx=xxx
+    // remove: delete ctx.session.Xxx
+    ...
+})
+</code></pre>
+<p>扩展：使用MongoDB/Redis等存储Session (具体参看下节)</p>
+<h2 id="header-17">示例</h2>
+<h3 id="header-18">Koa</h3>
+<pre><code class="lang-javascript">const Koa=require(&quot;koa&quot;);
+const app=new Koa();
+
+const errorHandler=async(ctx,next)=&gt;{
+    try{
+        await next();
+    }catch(e){
+        console.log(&quot;catch exception&quot;);
+        ctx.response.type=&quot;json&quot;;
+        ctx.response.body={
+            success:0,
+            status: e.statusCode || e.status || 500,
+            message: e.message
+        }
+    }
+}
+
+const prefixHandler=async(ctx,next)=&gt;{
+    console.log(&quot;prefix Handler...&quot;+ctx.request.path);
+    if(ctx.request.path==&#39;/error&#39;)
+        ctx.throw(&quot;go to error!&quot;);
+    await next();
+}
+
+const postHandler=async(ctx,next)=&gt;{
+    await next();
+    console.log(&quot;post Handler...&quot;+ctx.request.path);
+    ctx.response.type=&quot;json&quot;;
+    ctx.set(&quot;micro-test&quot;,true);        // set header
+}
+
+const fs = require(&#39;fs&#39;);
+const main=async(ctx,next)=&gt;{
+    console.log(&quot;main&quot;)
+    let data = await fs.readFileSync(&#39;./public/1.txt&#39;,&#39;utf8&#39;);
+    console.log(&quot;readed:&quot;+data);
+    ctx.response.body={
+        success:1,
+        data:data
+    }
+}
+
+app.use(errorHandler);
+app.use(prefixHandler);
+app.use(postHandler);
+app.use(main);
+
+app.listen(3000,()=&gt;{
+  console.log(&#39;app started at port 3000...&#39;);
+});
+</code></pre>
+<ol>
+<li><p>测试成功情况：</p>
+<pre><code class="lang-bash"> &gt; curl -i http://localhost:3000/1
+ HTTP/1.1 200 OK
+ Content-Type: application/json; charset=utf-8
+ micro-test: true
+ Content-Length: 35
+ Date: Sun, 09 Sep 2018 16:07:48 GMT
+ Connection: keep-alive
+ {&quot;success&quot;:1,&quot;data&quot;:&quot;Static File!&quot;}
+
+ # server console:
+ prefix Handler.../1
+ main
+ readed:Static File!
+ post Handler.../1
+</code></pre>
+</li>
+<li><p>测试异常情况：</p>
+<pre><code class="lang-bash"> &gt; curl -i http://localhost:3000/error
+ HTTP/1.1 200 OK
+ Content-Type: application/json; charset=utf-8
+ Content-Length: 51
+ Date: Sun, 09 Sep 2018 16:09:19 GMT
+ Connection: keep-alive
+ {&quot;success&quot;:0,&quot;status&quot;:500,&quot;message&quot;:&quot;go to error!&quot;}
+
+ # server console:
+ prefix Handler.../error
+ catch exception
+ */
+</code></pre>
+</li>
+</ol>
+<h3 id="header-19">async/await</h3>
+<ol>
+<li><p>计时器函数执行顺序：</p>
+<pre><code class="lang-javascript"> function sleep(time){
+     console.log(&quot;sleep func start&quot;)                        // 1
+     setTimeout(()=&gt;{
+         console.log(&quot;sleep wakeup after &quot;+time+&quot; !&quot;)    // 3 [ execute after sleep `${time} ms` ]
+     },time);
+     console.log(&quot;sleep func end&quot;)                        // 2
+ }
+</code></pre>
+</li>
+<li><p>Promise函数（+timeout函数）执行顺序：</p>
+<pre><code class="lang-javascript"> function promiseFunc(timeout){
+     console.log(&quot;a1. build promise instance&quot;);            // 1
+     let inst=new Promise((resolve,reject)=&gt;{                    
+         console.log(&quot;b1. start promise instance func&quot;)    // 2
+         setTimeout(()=&gt;{                        
+             console.log(&quot;promise wakeup&quot;)            
+             resolve(&quot;promise resolved after &quot;+timeout);    // 5 &lt;pending&gt; -&gt; &lt;resolved&gt;        
+         },timeout);    
+         console.log(&quot;b2. end promise instance func&quot;)    // 3
+     });
+
+     console.log(&quot;a2. return promise instance&quot;);                
+     return inst;                                        // 4
+ }
+</code></pre>
+</li>
+<li><p>async函数使用await和不使用await：</p>
+<pre><code class="lang-javascript"> async function asyncFunc(timeout){
+     console.log(&quot;async 1-&gt;2&quot;)
+     let msg=await promiseFunc(timeout);    // 1 
+     console.log(&quot;await result:&quot;+msg);    // 2 [ 1-&gt;2 `blocked ${timeout} ms`, get resolved data ]
+
+     console.log(&quot;async 3-&gt;4&quot;)
+     sleep(timeout-2000);                // 3 
+     return msg;                            // 4  [ 3-&gt;4 no block,return a promise instance ] 
+ }
+</code></pre>
+</li>
+<li><p>async函数调用async函数：</p>
+<pre><code class="lang-javascript"> async function test1(timeout){
+     console.log(&quot;test timeout:&quot;+timeout);
+
+     console.log(&quot;1-&gt;2&quot;)
+     let result=asyncFunc(timeout);        // 1
+     console.log(result);                // 2 [ 1 -&gt; 2 no block,get a promise instance]
+
+     console.log(&quot;3-&gt;4&quot;)
+     let msg=await result;                // 3 
+     console.log(msg);                    // 4 [ 3 -&gt; 4 blocked `${timeout} ms`, get resolved data ]
+ };
+</code></pre>
+</li>
+<li><p>async/await+Promise 多条异步：顺序trigger，reject同throw error）</p>
+<pre><code class="lang-javascript"> function promiseFunc2(code){
+     console.log(&quot;a1. build promise instance&quot;);            // 1
+     let inst=new Promise((resolve,reject)=&gt;{                    
+         console.log(&quot;b1. start promise instance func&quot;)    
+         if(code==1)                            
+             resolve(code+&quot; resolve!&quot;);            // 2 &lt;pending&gt; -&gt; &lt;fulfilled&gt;    
+         else if(code==0)
+             reject(code+&quot; reject!&quot;);            // 2 &lt;peinding&gt; -&gt; &lt;rejected&gt; 
+         else if(code==-1)
+             throw new Error(code+&quot; error!&quot;);    // 2 exception
+         else{                                    // 2 reject(e) == throw new Error(xxx);
+             try {
+                 throw new Error(`${code} error! [same with code -1 error!]`);
+             } catch(e) {
+                 reject(e);
+             }
+         }
+         console.log(&quot;b2. end promise instance func&quot;)
+     });
+     console.log(&quot;a2. return promise instance&quot;);            // 3                
+     return inst;        
+ }
+
+ async function test2(code){
+     console.log(&quot;test code:&quot;+code);
+     try{
+         let msg=await promiseFunc2(code);
+         console.log(&quot;get return: &quot;+msg);
+     }catch(e){
+         console.log(&quot;get error: &quot;+(e.message||e));
+     }
+ }
+
+ //exec test:
+
+ test2(1);
+ test2(0);
+ test2(-1);
+ test2(-2);
+ /*
+ test code:1
+ a1. build promise instance
+ b1. start promise instance func
+ b2. end promise instance func
+ a2. return promise instance
+ test code:0
+ a1. build promise instance
+ b1. start promise instance func
+ b2. end promise instance func
+ a2. return promise instance
+ test code:-1
+ a1. build promise instance
+ b1. start promise instance func
+ a2. return promise instance
+ test code:-2
+ a1. build promise instance
+ b1. start promise instance func
+ b2. end promise instance func
+ a2. return promise instance
+ get return: 1 resolve!
+ get error: 0 reject!
+ get error: -1 error!
+ get error: -2 error! [same with code -1 error!]
+ */
+</code></pre>
+</li>
+</ol>
+<h3 id="header-20">Mongoose</h3>
+<ol>
+<li><p>MongoDB Data Model: catalogues(name,description,meta:createTime,updateTime,updator)</p>
+<pre><code class="lang-bash"> &gt; db.catalogues.insert([
+ {name:&quot;Spring&quot;,description:&quot;spring framework&quot;,meta:{createTime:new Date(),updateTime:new Date(),updator:&quot;Tom&quot;}},
+ {name:&quot;ReactJS&quot;,description:&quot;reactJS front framework&quot;,meta:{createTime:new Date(),updateTime:new Date(),updator:&quot;Tom&quot;}},
+ {name:&quot;NoSql&quot;,description:&quot;not only sql databases&quot;,meta:{createTime:new Date(),updateTime:new Date(),updator:&quot;Tom&quot;}}
+ ]);
+</code></pre>
+</li>
+<li><p>mongoTest.js</p>
+<pre><code class="lang-javascript"> const mongoose =require(&quot;mongoose&quot;);
+ mongoose.connect(&#39;mongodb://cj:123456@localhost:27017/demo?authSource=admin&#39;,{ useNewUrlParser: true});
+ mongoose.set(&#39;useCreateIndex&#39;,true);
+
+ let catalogueSchema=mongoose.Schema({
+     name:{type:String,required:true,unique:true},
+     description:{type:String},
+     meta:{
+       createTime:{type:Date,default:Date.now},
+       updateTime:{type:Date,default:Date.now},
+       updator:{type:String}
+     }
+ },{versionKey: false});
+
+ // Pre and post save() hooks are not executed on update(), findOneAndUpdate()
+ catalogueSchema.pre(&#39;save&#39;,function(next){
+   console.log(&#39;pre save:&#39;+this.isNew);
+   if(this.isNew)
+     this.meta.createTime=this.meta.updateTime=Date.now();
+   else
+     this.meta.updateTime=Date.now();
+   next();
+ });
+
+ let catalogueDao=mongoose.model(&#39;catalogues&#39;,catalogueSchema);
+
+ /* Operation */
+
+ async function list(){
+     let catalogueList= await catalogueDao.find({},{meta:0});
+     return catalogueList;
+ };
+
+ async function get(id){
+     let catalogue=await catalogueDao.findOne({_id:id});
+     return catalogue;
+ }
+
+ async function create(catalogue){
+     let result=await catalogueDao.create(catalogue);
+     console.log(&quot;create:&quot;);
+     console.log(result);
+     return result;
+ }
+
+ async function udpateCatalogue(id,catalogue){
+   let result=await catalogueDao.updateOne({_id:id}
+     ,{$set:{name:catalogue.name,description:catalogue.description
+       ,&quot;meta.updateTime&quot;:new Date(),&quot;meta.updator&quot;:catalogue.updator}},{new:true});
+     return result;
+ }
+
+ async function deleteCatalogue(id){
+     let result=await catalogueDao.deleteOne({_id:id});
+     return result;
+ }
+
+ // test
+ async function test(){
+   console.log(&quot;start test&quot;);
+
+   let catalogue={name:&quot;Docker&quot;,description:&quot;Build, Ship, and Run Any App, Anywhere&quot;};
+   let newCatalogue= await create(catalogue);
+   let id=newCatalogue._id;
+
+   console.log(&quot;list:&quot;)
+   let catalogueList=await list();
+   console.log(catalogueList);
+
+   console.log(`update ${id}:`);
+   let catalogueChange={name:&quot;Docker Feature&quot;,
+     description:&quot;Container:Build, Ship, and Run Any App, Anywhere&quot;,
+     updator:&quot;anomy&quot;
+   };
+   let result=await udpateCatalogue(id,catalogueChange);
+   console.log(result);
+
+   console.log(`get ${id}:`)
+   result=await get(id);
+   console.log(result);
+
+   console.log(`delete ${id}:`)
+   result=await deleteCatalogue(newCatalogue._id);
+   console.log(result);
+
+   console.log(&quot;end test&quot;);
+   mongoose.disconnect();
+   console.log(&quot;finish!&quot;);
+ }
+
+ // clear same records in mongodb first
+ // db.catalogues.remove({name:{$regex:&quot;Docker*&quot;}})
+ test();
+</code></pre>
+</li>
+</ol>
+<h3 id="header-21">koa-session2+mongo</h3>
+<p>store session on mongodb</p>
+<ol>
+<li><p>app.js</p>
+<pre><code class="lang-javascript"> const session=require(&#39;koa-session2&#39;);
+ const MongoStore=require(&#39;./util/mongoStore&#39;);
+
+ const mongoose =require(&quot;mongoose&quot;);
+ mongoose.connect(&#39;mongodb://cj:123456@localhost:27017/demo?authSource=admin&#39;
+   ,{ useNewUrlParser: true});
+ mongoose.set(&#39;useCreateIndex&#39;,true);
+
+ app.keys=[&#39;a secret key&#39;];    // if set signed:true,need setting the .keys.
+ app.use(session({
+     key:&quot;SESSIONID&quot;,
+     //signed:true,        // SESSIONID.sig,need to set .keys,作用：给cookie加上一个sha256的签名,防止cookie被篡改
+     maxAge:86400000,    // cookie expire after maxAge ms: 1 day = 24h*60m*60s*1000=86400,000ms
+     store: new MongoStore({
+         collection:&quot;sessions&quot;,
+         connection:mongoose,
+         expireAfterSeconds:30    // mongo TTL expireAfterSeconds ( unit:s )
+     })
+ }));
+
+ ...
+
+ app.use(async(ctx,next)=&gt;{
+     /*
+         login: do get/set session
+             get session: ctx.session.Xxx , eg: ctx.session.loginUser
+             set session: ctx.session.Xxx=xxx , eg: ctx.session.loginUser={username:result.username,roles:result.roles};
+
+         logout: do remove session
+             delete ctx.session.Xxx , eg: delete ctx.session.loginUser;
+     */ 
+     ...
+ })
+</code></pre>
+</li>
+<li><p>mongoStore.js</p>
+<pre><code class="lang-javascript"> const mongoose = require(&#39;mongoose&#39;);
+ const { Store } = require(&quot;koa-session2&quot;);
+
+ class MongoStore extends Store {
+   constructor({connection=mongoose,collection=&#39;sessions&#39;,expireAfterSeconds=86400000}={}){
+     super();
+     let storeSchema=new connection.Schema({
+       _id:String,
+       data:Object,
+       updatedAt: {
+         default: new Date(),
+         expires: expireAfterSeconds, // 1 day: 86400 s = 60s*60m*24h =&gt; expireAfterSeconds
+         type: Date
+       }
+     })
+     this.modelDao=connection.model(collection,storeSchema);
+   }
+
+   async get(sid,ctx){
+     console.log(&quot;get mongo session:&quot;+sid);
+     let result= await this.modelDao.findOne({_id:sid});
+     console.log(result);
+     return result?result.data:null;
+   }
+
+   async set(session, { sid =  this.getID(24), maxAge = 86400000 } = {}, ctx) {
+     console.log(&quot;set mongo session:&quot;+sid+&quot;,cookie maxAge:&quot;+maxAge);
+       try {
+           let record={_id:sid,data:session,updatedAt:new Date()};
+           console.log(record);
+           await this.modelDao.updateOne({_id:sid}, record, { upsert: true, safe: true });
+       } catch (e) {
+         console.log(&quot;set mongo session fail:&quot;);
+         console.log(e);
+       }
+       return sid;
+   }
+
+   async destroy(sid){
+     console.log(&quot;destroy mongo session:&quot;+sid);
+     return await this.modelDao.deleteOne({_id:sid});
+   }
+
+ }
+
+ module.exports = MongoStore;
+ session stored in mongodb:
+</code></pre>
+</li>
+<li><p>Session Stored on MongoDB:</p>
+<pre><code class="lang-bash"> &gt; db.sessions.find().pretty()
+ {
+     &quot;_id&quot; : &quot;53094f8db3e399e17616a4d910676c58b6cde92f3b9435be&quot;,
+     &quot;__v&quot; : 0,
+     &quot;data&quot; : {
+         &quot;loginUser&quot; : {
+             &quot;username&quot; : &quot;admin&quot;,
+             &quot;roles&quot; : [
+                 &quot;admin&quot;
+             ]
+         }
+     },
+     &quot;updatedAt&quot; : ISODate(&quot;2018-09-09T09:40:40.277Z&quot;)
+ }
+</code></pre>
+<pre><code class="lang-bash"> &gt; db.sessions.getIndexes()
+ [
+   {
+     &quot;v&quot; : 2,
+     &quot;key&quot; : {
+       &quot;_id&quot; : 1
+     },
+     &quot;name&quot; : &quot;_id_&quot;,
+     &quot;ns&quot; : &quot;demo.sessions&quot;
+   },
+   {
+     &quot;v&quot; : 2,
+     &quot;key&quot; : {
+       &quot;updatedAt&quot; : 1
+     },
+     &quot;name&quot; : &quot;updatedAt_1&quot;,
+     &quot;ns&quot; : &quot;demo.sessions&quot;,
+     &quot;expireAfterSeconds&quot; : 30,
+     &quot;background&quot; : true
+   }
+ ]
+</code></pre>
+</li>
+</ol>
+<p>Verify:</p>
+<ol>
+<li><p>login</p>
+<pre><code class="lang-bash"> &gt; curl -i -c cookie.txt -d &quot;username=admin&amp;password=123&quot; http://localhost:3000/login
+
+ HTTP/1.1 200 OK
+ Content-Type: application/json; charset=utf-8
+ Set-Cookie: SESSIONID=8cbe57db55bb6c944df99ec9a10481a431c41e5ba1400a4a; path=/; expires=Wed, 12 Sep 2018 16:29:57 GMT; httponly
+ Set-Cookie: SESSIONID.sig=TsESPv34Ny1rOA9jimTrlybpHDE; path=/; expires=Wed, 12 Sep 2018 16:29:57 GMT; httponly
+ Content-Length: 59
+ Date: Tue, 11 Sep 2018 16:29:57 GMT
+ Connection: keep-alive
+
+ {&quot;success&quot;:1,&quot;data&quot;:{&quot;username&quot;:&quot;admin&quot;,&quot;roles&quot;:[&quot;admin&quot;]}}
+</code></pre>
+</li>
+<li><p>logout</p>
+<pre><code class="lang-bash"> &gt; curl -i -b cookie.txt -X POST http://localhost:3000/logout
+
+ HTTP/1.1 200 OK
+ Content-Type: application/json; charset=utf-8
+ Set-Cookie: SESSIONID=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; httponly
+ Content-Length: 13
+ Date: Tue, 11 Sep 2018 16:00:55 GMT
+ Connection: keep-alive
+
+ {&quot;success&quot;:1}
+</code></pre>
+</li>
+</ol>
+<h3 id="header-22">Privilege Filter</h3>
+<ol>
+<li><p>MongoDB data Model: privileges(path,method,roles)</p>
+<pre><code class="lang-bash"> &gt; db.privileges.insert([
+ {path:&quot;/catalogues&quot;,method:&quot;GET&quot;,roles:[]},
+ {path:&quot;/catalogues/:id&quot;,method:&quot;GET&quot;},
+ {path:&quot;/catalogues/:id&quot;,method:&quot;PUT&quot;,roles:[&quot;admin&quot;]},
+ {path:&quot;/catalogues/:id&quot;,method:&quot;DELETE&quot;,roles:[&quot;admin&quot;]},
+ {path:&quot;/catalogues&quot;,method:&quot;POST&quot;,roles:[&quot;admin&quot;]},
+ {path:&quot;/articles&quot;,method:&quot;GET&quot;},
+ {path:&quot;/articles/:id&quot;,method:&quot;GET&quot;},
+ {path:&quot;/articles/:id&quot;,method:&quot;PUT&quot;,roles:[&quot;user&quot;]},
+ {path:&quot;/articles/:id&quot;,method:&quot;DELETE&quot;,roles:[&quot;user&quot;,&quot;admin&quot;]},
+ {path:&quot;/articles&quot;,method:&quot;POST&quot;,roles:[&quot;user&quot;]},
+ {path:&quot;/login&quot;,method:&quot;POST&quot;},
+ {path:&quot;/register&quot;,method:&quot;POST&quot;},
+ {path:&quot;/logout&quot;,method:&quot;POST&quot;},
+ ]);
+</code></pre>
+</li>
+<li><p>app.js:</p>
+<pre><code class="lang-javascript"> const PrivilegeStore=require(&#39;./util/PrivilegeStore&#39;);
+ let privilegeStore=new PrivilegeStore();
+ const privilegeFilter=async (ctx,next)=&gt;{
+     /*
+     Note:
+         1. ctx.request.path: /catalogues/1 ; ctx.request.url: /catalogues/1?x=1
+         2. roles: get from ctx.session.loginUser,eg: {username:&quot;Tom&quot;,roles:[&quot;user&quot;]}
+         3. url-pattern:
+             let pattern=new UrlPattern(&#39;/catalogues/:id&#39;);
+             console.log(pattern.match(&#39;/catalogues&#39;));            //null
+             console.log(pattern.match(&#39;/catalogues/1&#39;));        //{id:&#39;1&#39;}
+             console.log(pattern.match(&#39;/catalogues/1/2&#39;));        //null
+             console.log(pattern.match(&#39;/catalogues/1?x=3&#39;));    //null
+             console.log(pattern.match(&#39;catalogues&#39;));            //null
+     */
+     let reqItem={path:ctx.request.path,method:ctx.request.method
+         ,roles:(ctx.session &amp;&amp; ctx.session.loginUser)?ctx.session.loginUser.roles||[]:[]};
+     let privileges = await privilegeStore.privileges;
+     let matched = privileges.find((item)=&gt;{
+         return privilegeStore.verify(item,reqItem);
+     });
+     console.log(&quot;pass priv:&quot;+matched);
+     if(matched)
+       await next();
+     else
+       ctx.throw(401);
+ }
+ app.use(privilegeFilter);
+</code></pre>
+</li>
+<li><p>PrivilegeStore.js:</p>
+<pre><code class="lang-javascript"> const mongoose = require(&#39;mongoose&#39;);
+ const UrlPattern=require(&#39;url-pattern&#39;);
+
+ class PrivilegeStore{
+
+   constructor({connection=mongoose,collection=&#39;privileges&#39;}={}){
+     let storeSchema=this.initSchema();
+     this.privilegeDao=connection.model(collection,storeSchema);
+     this.privileges=this.loadPrivileges();
+   }
+
+   initSchema(){
+     let privilegeSchema=mongoose.Schema({
+         path:{type:String,required:true},
+         method:{type:String,required:true},
+         roles:{type:Array},
+         meta:{
+           createTime:{type:Date,default:Date.now},
+           updateTime:{type:Date,default:Date.now},
+           updator:{type:String}
+         }
+     });
+     privilegeSchema.pre(&#39;save&#39;,function(next){
+       if(this.isNew)
+         this.meta.createTime=this.meta.updateTime=Date.now();
+       else
+         this.meta.updateTime=Date.now();
+       next();
+     });
+     return privilegeSchema;
+   }
+
+   async loadPrivileges(){
+     let result=await this.privilegeDao.find({},{_id:0,meta:0});
+     result.map((item,index,arr)=&gt;{
+        item.pattern=new UrlPattern(item.path);
+        return item;
+     });
+     console.log(result);
+     return result;
+   }
+
+   async refresh(){
+     this.privileges=this.loadPrivileges();
+   }
+
+   verify(item,reqItem){
+     // console.log(item);
+     if(item.method!=reqItem.method)
+       return false;
+     let pattern = item.pattern;
+     if(!pattern){
+       console.log(&quot;init pattern&quot;);
+       pattern=new UrlPattern(item.path);
+     }
+     let match=pattern.match(reqItem.path);
+     if(match==null){
+       // console.log(&quot;path not match&quot;);
+       return false;
+     }
+     if(!item.roles || item.roles.length==0){
+       console.log(&quot;guest pass&quot;);
+       return true;
+     }
+     if(item.roles.find((n)=&gt;reqItem.roles.includes(n))){
+       console.log(&quot;auth pass&quot;);
+       return true;
+     }
+     return false; 
+   }
+
+ }
+ module.exports = PrivilegeStore;
+</code></pre>
+</li>
+</ol>
+<h2 id="header-23">Reference</h2>
+<p><a href="https://github.com/sixDegree/node-mongo" target="_blank" rel="noopener">my demo</a></p>
+<p>Blog:</p>
+<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2017/08/koa.html" target="_blank" rel="noopener">ruanyf/koa</a> | <a href="https://github.com/ruanyf/koa-demos.git" target="_blank" rel="noopener">ruanyf/koa demo</a></li>
+<li><a href="https://www.jianshu.com/p/f59594b90500" target="_blank" rel="noopener">如何使用koa2+es6/7打造高质量Restful API</a></li>
+<li><a href="https://www.jianshu.com/p/d3afa36aa17a" target="_blank" rel="noopener">koa2入门笔记</a></li>
+<li><a href="https://www.jianshu.com/p/6b816c609669" target="_blank" rel="noopener">koa2从起步到填坑</a></li>
+<li><a href="https://www.jianshu.com/p/f8cfb82b4dad" target="_blank" rel="noopener">koa2 async和await 实战详解</a></li>
+<li><a href="https://segmentfault.com/a/1190000013039187" target="_blank" rel="noopener">koa-session学习笔记</a></li>
+<li><a href="https://segmentfault.com/a/1190000012412299" target="_blank" rel="noopener">从koa-session中间件源码学习cookie与session</a></li>
+<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose</a></li>
+<li><a href="https://www.jianshu.com/p/554a5bf67b31" target="_blank" rel="noopener">mongoose使用之查询篇</a></li>
+<li><a href="https://www.jianshu.com/p/265ff15bca7a" target="_blank" rel="noopener">Mongoose初使用总结</a></li>
+<li><a href="https://www.jianshu.com/p/dcdd116600fe" target="_blank" rel="noopener">koa2+mongodb搭建简易nodejs后台接口服务</a></li>
+</ul>
+<p>Useful npm:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/koa-session2" target="_blank" rel="noopener">koa session2</a></li>
+<li><a href="https://www.npmjs.com/package/route-parser" target="_blank" rel="noopener">route-parser</a></li>
+<li><a href="https://www.npmjs.com/package/path-parser" target="_blank" rel="noopener">path-parser</a></li>
+<li><a href="https://www.npmjs.com/package/url-pattern" target="_blank" rel="noopener">url-pattern</a></li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

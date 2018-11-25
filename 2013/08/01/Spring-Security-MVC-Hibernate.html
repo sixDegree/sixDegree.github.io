@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -151,97 +154,97 @@
 <li>那些类那些方法使用事务</li>
 </ol>
 <p>注意加入连接池依赖包：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-dbcp<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-dbcp<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;commons-dbcp&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-dbcp&lt;/artifactId&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>配置示例：</p>
-<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-        <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-        <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
-        <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-        <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xsi:schemaLocation=&quot;
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"</span>&gt;</span>
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd&quot;&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspectj-autoproxy</span> <span class="hljs-attr">proxy-target-class</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.golf"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">context:property-placeholder</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"classpath:jdbc-prod.properties"</span>/&gt;</span>
+    &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
+    &lt;context:annotation-config/&gt;
+    &lt;context:component-scan base-package=&quot;com.golf&quot; /&gt;
+    &lt;context:property-placeholder location=&quot;classpath:jdbc-prod.properties&quot;/&gt;
 
-    <span class="hljs-comment">&lt;!-- dataSource --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">"close"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driverClassName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.driverClassName}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.url}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.username}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.password}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"initialSize"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"minIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxActive"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"200"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"30"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxWait"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1000"</span>/&gt;</span>  
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"removeAbandoned"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-        <span class="hljs-comment">&lt;!-- &lt;property name="logAbandoned" value="true"/&gt;   --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"validationQuery"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"select 1 from dual"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"testOnBorrow"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    &lt;!-- dataSource --&gt;
+    &lt;bean id=&quot;dataSource&quot; destroy-method=&quot;close&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driverClassName}&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+        &lt;property name=&quot;initialSize&quot; value=&quot;1&quot;/&gt;
+        &lt;property name=&quot;minIdle&quot; value=&quot;2&quot;/&gt;
+        &lt;property name=&quot;maxActive&quot; value=&quot;200&quot;/&gt;
+        &lt;property name=&quot;maxIdle&quot; value=&quot;30&quot;/&gt;
+        &lt;property name=&quot;maxWait&quot; value=&quot;1000&quot;/&gt;  
+        &lt;property name=&quot;removeAbandoned&quot; value=&quot;true&quot;/&gt;
+        &lt;!-- &lt;property name=&quot;logAbandoned&quot; value=&quot;true&quot;/&gt;   --&gt;
+        &lt;property name=&quot;validationQuery&quot; value=&quot;select 1 from dual&quot;/&gt;
+        &lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot;/&gt;
+    &lt;/bean&gt;
 
-    <span class="hljs-comment">&lt;!-- 配置sessionFactory  --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sessionFactory"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.orm.hibernate4.LocalSessionFactoryBean"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hibernateProperties"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">props</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.dialect"</span>&gt;</span>${hibernate.dialect}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.id.new_generator_mappings"</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.show_sql"</span>&gt;</span>${hibernate.show.sql}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.format_sql"</span>&gt;</span>${hibernate.format.sql}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- &lt;prop key="javax.persistence.validation.mode"&gt;none&lt;/prop&gt; --&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">props</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"packagesToScan"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>com.golf.entity<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    &lt;!-- 配置sessionFactory  --&gt;
+    &lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.LocalSessionFactoryBean&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+        &lt;property name=&quot;hibernateProperties&quot;&gt;
+            &lt;props&gt;
+                &lt;prop key=&quot;hibernate.dialect&quot;&gt;${hibernate.dialect}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.id.new_generator_mappings&quot;&gt;true&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.show_sql&quot;&gt;${hibernate.show.sql}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.format_sql&quot;&gt;${hibernate.format.sql}&lt;/prop&gt;
+                &lt;!-- &lt;prop key=&quot;javax.persistence.validation.mode&quot;&gt;none&lt;/prop&gt; --&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;packagesToScan&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;com.golf.entity&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="hljs-comment">&lt;!-- 声明式事务 --&gt;</span>
-    <span class="hljs-comment">&lt;!-- 事务管理器 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txManager"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.orm.hibernate4.HibernateTransactionManager"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sessionFactory"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"sessionFactory"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- 事务的传播特性 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">"txManager"</span> &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"list*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"get*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"detail*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"test*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>  /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sendMail"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">no-rollback-for</span>=<span class="hljs-string">"Exception"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"getGrantedAuthorities"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"false"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"*"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- 参与事务的方法 --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(* com.golf.service.*.*(..))"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mySearchService"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">aop:advisor</span> <span class="hljs-attr">advice-ref</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"mySearchService"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"2"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span> 
+    &lt;!-- 声明式事务 --&gt;
+    &lt;!-- 事务管理器 --&gt;
+    &lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;&gt;
+        &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;!-- 事务的传播特性 --&gt;
+    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot; &gt;
+        &lt;tx:attributes&gt;
+            &lt;tx:method name=&quot;list*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;get*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;detail*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; /&gt;
+            &lt;tx:method name=&quot;test*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;  /&gt;
+            &lt;tx:method name=&quot;sendMail&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; no-rollback-for=&quot;Exception&quot;/&gt;
+            &lt;tx:method name=&quot;getGrantedAuthorities&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;false&quot;/&gt;
+            &lt;tx:method name=&quot;*&quot;/&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
+    &lt;!-- 参与事务的方法 --&gt;
+      &lt;aop:config&gt;
+        &lt;aop:pointcut expression=&quot;execution(* com.golf.service.*.*(..))&quot; id=&quot;mySearchService&quot;/&gt;
+        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;mySearchService&quot; order=&quot;2&quot;/&gt;
+    &lt;/aop:config&gt; 
 
-    <span class="hljs-comment">&lt;!-- 声明式日志 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"loggerHandler"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.aop.LoggerHandler"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspect</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"loggerHandler"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"1"</span>&gt;</span> 
-            <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(public * com.golf.service.*.*(..))"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"method"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">aop:around</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"logAround"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"method"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">aop:aspect</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+    &lt;!-- 声明式日志 --&gt;
+    &lt;bean id=&quot;loggerHandler&quot; class=&quot;com.cj.support.aop.LoggerHandler&quot;/&gt;
+    &lt;aop:config&gt;
+        &lt;aop:aspect ref=&quot;loggerHandler&quot; order=&quot;1&quot;&gt; 
+            &lt;aop:pointcut expression=&quot;execution(public * com.golf.service.*.*(..))&quot; id=&quot;method&quot;/&gt;
+            &lt;aop:around method=&quot;logAround&quot; pointcut-ref=&quot;method&quot; /&gt;
+        &lt;/aop:aspect&gt;
+    &lt;/aop:config&gt;
+&lt;/beans&gt;
 </code></pre>
 <h2 id="header-5">综合示例(Security,MVC，Hibernate)</h2>
 <p>这里项目名为<code>golf</code></p>
@@ -254,346 +257,346 @@
 </ul>
 <h3 id="header-6">web.xml</h3>
 <p>加载Spring&amp;SpringSecurity&amp;SpringMVC</p>
-<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">web-app</span> <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://java.sun.com/xml/ns/javaee"</span> <span class="hljs-attr">xmlns:web</span>=<span class="hljs-string">"http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span> <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"WebApp_ID"</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"2.5"</span>&gt;</span>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot; xmlns:web=&quot;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot; id=&quot;WebApp_ID&quot; version=&quot;2.5&quot;&gt;
 
-   <span class="hljs-tag">&lt;<span class="hljs-name">context-param</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>contextConfigLocation<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>classpath*:beans.xml,classpath*:golf-security.xml<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">context-param</span>&gt;</span>
+   &lt;context-param&gt;
+        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+        &lt;param-value&gt;classpath*:beans.xml,classpath*:golf-security.xml&lt;/param-value&gt;
+    &lt;/context-param&gt;
 
-    <span class="hljs-comment">&lt;!-- Spring --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- Spring刷新Interceptor防止内存泄漏  --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.web.util.IntrospectorCleanupListener<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- 设置session 超时时间为20分钟  --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">session-config</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">session-timeout</span>&gt;</span>60<span class="hljs-tag">&lt;/<span class="hljs-name">session-timeout</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">session-config</span>&gt;</span>
-    <span class="hljs-comment">&lt;!--通过HttpSessionEventPublisher,让servelt容器通知Spring Security session生命周期的事--&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">listener</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">listener-class</span>&gt;</span>org.springframework.security.web.session.HttpSessionEventPublisher<span class="hljs-tag">&lt;/<span class="hljs-name">listener-class</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">listener</span>&gt;</span>
+    &lt;!-- Spring --&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;
+    &lt;/listener&gt;
+    &lt;!-- Spring刷新Interceptor防止内存泄漏  --&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.web.util.IntrospectorCleanupListener&lt;/listener-class&gt;
+    &lt;/listener&gt;
+    &lt;!-- 设置session 超时时间为20分钟  --&gt;
+    &lt;session-config&gt;
+        &lt;session-timeout&gt;60&lt;/session-timeout&gt;
+    &lt;/session-config&gt;
+    &lt;!--通过HttpSessionEventPublisher,让servelt容器通知Spring Security session生命周期的事--&gt;
+    &lt;listener&gt;
+        &lt;listener-class&gt;org.springframework.security.web.session.HttpSessionEventPublisher&lt;/listener-class&gt;
+    &lt;/listener&gt;
 
-  <span class="hljs-comment">&lt;!-- 使用Spring中的过滤器解决在请求和应答中的中文乱码问题 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">init-param</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">param-name</span>&gt;</span>encoding<span class="hljs-tag">&lt;/<span class="hljs-name">param-name</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">param-value</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">param-value</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">init-param</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>CharacterEncodingFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span>
+  &lt;!-- 使用Spring中的过滤器解决在请求和应答中的中文乱码问题 --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;UTF-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;CharacterEncodingFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
 
-   <span class="hljs-comment">&lt;!-- Spring Secutiry 过滤器链配置  --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>springSecurityFilterChain<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span>
+   &lt;!-- Spring Secutiry 过滤器链配置  --&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.DelegatingFilterProxy&lt;/filter-class&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;springSecurityFilterChain&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
 
-  <span class="hljs-comment">&lt;!-- Spring MVC --&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>golf<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">load-on-startup</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">load-on-startup</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>golf<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">web-app</span>&gt;</span>
+  &lt;!-- Spring MVC --&gt;
+   &lt;servlet&gt;
+        &lt;servlet-name&gt;golf&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;golf&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
 </code></pre>
 <h3 id="header-7">beans.xml</h3>
 <p>配置Spring（加入Hibernate配置）</p>
-<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-        <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-        <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
-        <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-        <span class="hljs-attr">xmlns:jaxws</span>=<span class="hljs-string">"http://cxf.apache.org/jaxws"</span>
-        <span class="hljs-attr">xmlns:cxf</span>=<span class="hljs-string">"http://cxf.apache.org/core"</span>
-        <span class="hljs-attr">xmlns:task</span>=<span class="hljs-string">"http://www.springframework.org/schema/task"</span>
-        <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xmlns:jaxws=&quot;http://cxf.apache.org/jaxws&quot;
+        xmlns:cxf=&quot;http://cxf.apache.org/core&quot;
+        xmlns:task=&quot;http://www.springframework.org/schema/task&quot;
+        xsi:schemaLocation=&quot;
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
             http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
-            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd"</span>&gt;</span>
+            http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd&quot;&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">task:annotation-driven</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspectj-autoproxy</span> <span class="hljs-attr">proxy-target-class</span>=<span class="hljs-string">"true"</span>/&gt;</span>
+    &lt;task:annotation-driven/&gt;
+    &lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">context:annotation-config</span>/&gt;</span>
-    <span class="hljs-comment">&lt;!-- scan排除Controller--&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.golf"</span> &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">context:exclude-filter</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"regex"</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"com.golf.controller.*"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">context:component-scan</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">context:property-placeholder</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"classpath:jdbc-prod.properties"</span>/&gt;</span>
+    &lt;context:annotation-config/&gt;
+    &lt;!-- scan排除Controller--&gt;
+    &lt;context:component-scan base-package=&quot;com.golf&quot; &gt;
+        &lt;context:exclude-filter type=&quot;regex&quot; expression=&quot;com.golf.controller.*&quot;/&gt;
+    &lt;/context:component-scan&gt;
+    &lt;context:property-placeholder location=&quot;classpath:jdbc-prod.properties&quot;/&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">destroy-method</span>=<span class="hljs-string">"close"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driverClassName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.driverClassName}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.url}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.username}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"${jdbc.password}"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"initialSize"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"minIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"2"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxActive"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"200"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxIdle"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"30"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxWait"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1000"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"removeAbandoned"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-        <span class="hljs-comment">&lt;!-- &lt;property name="logAbandoned" value="true"/&gt;   --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"validationQuery"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"select 1 from dual"</span>/&gt;</span> 
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"testOnBorrow"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    &lt;bean id=&quot;dataSource&quot; destroy-method=&quot;close&quot; class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;&gt;
+        &lt;property name=&quot;driverClassName&quot; value=&quot;${jdbc.driverClassName}&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+        &lt;property name=&quot;initialSize&quot; value=&quot;1&quot;/&gt;
+        &lt;property name=&quot;minIdle&quot; value=&quot;2&quot;/&gt;
+        &lt;property name=&quot;maxActive&quot; value=&quot;200&quot;/&gt;
+        &lt;property name=&quot;maxIdle&quot; value=&quot;30&quot;/&gt;
+        &lt;property name=&quot;maxWait&quot; value=&quot;1000&quot;/&gt;
+        &lt;property name=&quot;removeAbandoned&quot; value=&quot;true&quot;/&gt;
+        &lt;!-- &lt;property name=&quot;logAbandoned&quot; value=&quot;true&quot;/&gt;   --&gt;
+        &lt;property name=&quot;validationQuery&quot; value=&quot;select 1 from dual&quot;/&gt; 
+        &lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot;/&gt;
+    &lt;/bean&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"sessionFactory"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.orm.hibernate4.LocalSessionFactoryBean"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"dataSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"dataSource"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"hibernateProperties"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">props</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.dialect"</span>&gt;</span>${hibernate.dialect}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.id.new_generator_mappings"</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.show_sql"</span>&gt;</span>${hibernate.show.sql}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">prop</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"hibernate.format_sql"</span>&gt;</span>${hibernate.format.sql}<span class="hljs-tag">&lt;/<span class="hljs-name">prop</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- &lt;prop key="javax.persistence.validation.mode"&gt;none&lt;/prop&gt; --&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">props</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"packagesToScan"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>com.golf.entity<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    &lt;bean id=&quot;sessionFactory&quot; class=&quot;org.springframework.orm.hibernate4.LocalSessionFactoryBean&quot;&gt;
+        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+        &lt;property name=&quot;hibernateProperties&quot;&gt;
+            &lt;props&gt;
+                &lt;prop key=&quot;hibernate.dialect&quot;&gt;${hibernate.dialect}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.id.new_generator_mappings&quot;&gt;true&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.show_sql&quot;&gt;${hibernate.show.sql}&lt;/prop&gt;
+                &lt;prop key=&quot;hibernate.format_sql&quot;&gt;${hibernate.format.sql}&lt;/prop&gt;
+                &lt;!-- &lt;prop key=&quot;javax.persistence.validation.mode&quot;&gt;none&lt;/prop&gt; --&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;packagesToScan&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;com.golf.entity&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="hljs-comment">&lt;!-- 声明式事务 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txManager"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.orm.hibernate4.HibernateTransactionManager"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sessionFactory"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"sessionFactory"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">tx:advice</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">transaction-manager</span>=<span class="hljs-string">"txManager"</span> &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">tx:attributes</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"list*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"get*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"detail*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"test*"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span>  /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"sendMail"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">no-rollback-for</span>=<span class="hljs-string">"Exception"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"getGrantedAuthorities"</span> <span class="hljs-attr">propagation</span>=<span class="hljs-string">"REQUIRED"</span> <span class="hljs-attr">read-only</span>=<span class="hljs-string">"false"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">tx:method</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"*"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">tx:attributes</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">tx:advice</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(* com.golf.service.*.*(..))"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mySearchService"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">aop:advisor</span> <span class="hljs-attr">advice-ref</span>=<span class="hljs-string">"txAdvice"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"mySearchService"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"2"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span>
+    &lt;!-- 声明式事务 --&gt;
+    &lt;bean id=&quot;txManager&quot; class=&quot;org.springframework.orm.hibernate4.HibernateTransactionManager&quot;&gt;
+        &lt;property name=&quot;sessionFactory&quot; ref=&quot;sessionFactory&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;txManager&quot; &gt;
+        &lt;tx:attributes&gt;
+            &lt;tx:method name=&quot;list*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;get*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;/&gt;
+            &lt;tx:method name=&quot;detail*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; /&gt;
+            &lt;tx:method name=&quot;test*&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot;  /&gt;
+            &lt;tx:method name=&quot;sendMail&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;true&quot; no-rollback-for=&quot;Exception&quot;/&gt;
+            &lt;tx:method name=&quot;getGrantedAuthorities&quot; propagation=&quot;REQUIRED&quot; read-only=&quot;false&quot;/&gt;
+            &lt;tx:method name=&quot;*&quot;/&gt;
+        &lt;/tx:attributes&gt;
+    &lt;/tx:advice&gt;
+     &lt;aop:config&gt;
+        &lt;aop:pointcut expression=&quot;execution(* com.golf.service.*.*(..))&quot; id=&quot;mySearchService&quot;/&gt;
+        &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;mySearchService&quot; order=&quot;2&quot;/&gt;
+    &lt;/aop:config&gt;
 
-    <span class="hljs-comment">&lt;!-- 声明式日志 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"loggerHandler"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.aop.LoggerHandler"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">aop:config</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">aop:aspect</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"loggerHandler"</span> <span class="hljs-attr">order</span>=<span class="hljs-string">"1"</span>&gt;</span> 
-            <span class="hljs-tag">&lt;<span class="hljs-name">aop:pointcut</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"execution(public * com.golf.service.*.*(..))"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"method"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">aop:around</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"logAround"</span> <span class="hljs-attr">pointcut-ref</span>=<span class="hljs-string">"method"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">aop:aspect</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">aop:config</span>&gt;</span>
+    &lt;!-- 声明式日志 --&gt;
+    &lt;bean id=&quot;loggerHandler&quot; class=&quot;com.cj.support.aop.LoggerHandler&quot;/&gt;
+    &lt;aop:config&gt;
+        &lt;aop:aspect ref=&quot;loggerHandler&quot; order=&quot;1&quot;&gt; 
+            &lt;aop:pointcut expression=&quot;execution(public * com.golf.service.*.*(..))&quot; id=&quot;method&quot;/&gt;
+            &lt;aop:around method=&quot;logAround&quot; pointcut-ref=&quot;method&quot; /&gt;
+        &lt;/aop:aspect&gt;
+    &lt;/aop:config&gt;
 
-    <span class="hljs-comment">&lt;!-- Jackson ObjectMapper --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myObjectMapper"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.fasterxml.jackson.databind.ObjectMapper"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"serializationInclusion"</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">value</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"com.fasterxml.jackson.annotation.JsonInclude.Include"</span>&gt;</span>NON_NULL<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+    &lt;!-- Jackson ObjectMapper --&gt;
+    &lt;bean id=&quot;myObjectMapper&quot; class=&quot;com.fasterxml.jackson.databind.ObjectMapper&quot;&gt;
+        &lt;property name=&quot;serializationInclusion&quot;&gt;
+             &lt;value type=&quot;com.fasterxml.jackson.annotation.JsonInclude.Include&quot;&gt;NON_NULL&lt;/value&gt;
+         &lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
 </code></pre>
 <h3 id="header-8">xxx-servlet.xml</h3>
 <p>配置SpringMVC</p>
-<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-    <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-    <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-    <span class="hljs-attr">xmlns:mvc</span>=<span class="hljs-string">"http://www.springframework.org/schema/mvc"</span>
-    <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-    <span class="hljs-attr">xmlns:sec</span>=<span class="hljs-string">"http://www.springframework.org/schema/security"</span> 
-    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+    xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xmlns:sec=&quot;http://www.springframework.org/schema/security&quot; 
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span>
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd&quot;&gt;
 
-    <span class="hljs-comment">&lt;!-- 在Controlller中使用SpringSecurity SpEL注解，需配置：--&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">sec:global-method-security</span> <span class="hljs-attr">pre-post-annotations</span>=<span class="hljs-string">"enabled"</span>/&gt;</span>
+    &lt;!-- 在Controlller中使用SpringSecurity SpEL注解，需配置：--&gt;
+    &lt;sec:global-method-security pre-post-annotations=&quot;enabled&quot;/&gt;
 
-    <span class="hljs-comment">&lt;!-- 使用Spring MVC所提供的注解驱动特性 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">mvc:message-converters</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"</span>&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"objectMapper"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myObjectMapper"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:message-converters</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:annotation-driven</span>&gt;</span>
+    &lt;!-- 使用Spring MVC所提供的注解驱动特性 --&gt;
+    &lt;mvc:annotation-driven&gt;
+      &lt;mvc:message-converters&gt;
+            &lt;bean class=&quot;org.springframework.http.converter.json.MappingJackson2HttpMessageConverter&quot;&gt;
+                 &lt;property name=&quot;objectMapper&quot; ref=&quot;myObjectMapper&quot;/&gt;
+            &lt;/bean&gt;
+        &lt;/mvc:message-converters&gt;
+    &lt;/mvc:annotation-driven&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.golf.controller"</span> <span class="hljs-attr">use-default-filters</span>=<span class="hljs-string">"false"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">context:include-filter</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"annotation"</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"org.springframework.stereotype.Controller"</span>  /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">context:include-filter</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"annotation"</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"org.springframework.web.bind.annotation.ControllerAdvice"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">context:component-scan</span>&gt;</span>
+    &lt;context:component-scan base-package=&quot;com.golf.controller&quot; use-default-filters=&quot;false&quot;&gt;
+        &lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot;  /&gt;
+        &lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.web.bind.annotation.ControllerAdvice&quot;/&gt;
+    &lt;/context:component-scan&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:interceptors</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">mvc:interceptor</span>&gt;</span>
-            <span class="hljs-comment">&lt;!-- &lt;mvc:mapping path="/**" /&gt;
-            &lt;mvc:exclude-mapping path="/resources/**"/&gt; --&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">mvc:mapping</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/api/**"</span> /&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.interceptor.MyHandlerPaginationInterceptor"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:interceptor</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">mvc:interceptors</span>&gt;</span>
+    &lt;mvc:interceptors&gt;
+        &lt;mvc:interceptor&gt;
+            &lt;!-- &lt;mvc:mapping path=&quot;/**&quot; /&gt;
+            &lt;mvc:exclude-mapping path=&quot;/resources/**&quot;/&gt; --&gt;
+            &lt;mvc:mapping path=&quot;/api/**&quot; /&gt;
+            &lt;bean class=&quot;com.cj.support.interceptor.MyHandlerPaginationInterceptor&quot;/&gt;
+        &lt;/mvc:interceptor&gt;
+    &lt;/mvc:interceptors&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:resources</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"/resources/"</span> <span class="hljs-attr">mapping</span>=<span class="hljs-string">"/resources/**"</span>/&gt;</span> <span class="hljs-comment">&lt;!-- 会建立一个服务于静态资源的处理器 --&gt;</span>
-    <span class="hljs-comment">&lt;!-- Handler Static Resources: Order Last --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">mvc:default-servlet-handler</span>/&gt;</span>
+    &lt;mvc:resources location=&quot;/resources/&quot; mapping=&quot;/resources/**&quot;/&gt; &lt;!-- 会建立一个服务于静态资源的处理器 --&gt;
+    &lt;!-- Handler Static Resources: Order Last --&gt;
+    &lt;mvc:default-servlet-handler/&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mediaTypes"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">map</span>&gt;</span>
-                <span class="hljs-comment">&lt;!-- &lt;entry key="html" value="text/html"/&gt; --&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">entry</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"json"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"application/json"</span>/&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">map</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-        <span class="hljs-comment">&lt;!-- &lt;property name="defaultContentType" value="text/html"/&gt; --&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewResolvers"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewClass"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"prefix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/WEB-INF/"</span>/&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"suffix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">".jsp"</span>/&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span> 
-            <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"defaultViews"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.json.MappingJackson2JsonView"</span> &gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"objectMapper"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"myObjectMapper"</span> /&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+    &lt;bean class=&quot;org.springframework.web.servlet.view.ContentNegotiatingViewResolver&quot;&gt;
+        &lt;property name=&quot;mediaTypes&quot;&gt;
+            &lt;map&gt;
+                &lt;!-- &lt;entry key=&quot;html&quot; value=&quot;text/html&quot;/&gt; --&gt;
+                &lt;entry key=&quot;json&quot; value=&quot;application/json&quot;/&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+        &lt;!-- &lt;property name=&quot;defaultContentType&quot; value=&quot;text/html&quot;/&gt; --&gt;
+        &lt;property name=&quot;viewResolvers&quot;&gt;
+            &lt;list&gt;
+                &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+                    &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;
+                    &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/&quot;/&gt;
+                    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+                &lt;/bean&gt; 
+            &lt;/list&gt;
+        &lt;/property&gt;
+        &lt;property name=&quot;defaultViews&quot;&gt;
+            &lt;list&gt;
+                &lt;bean class=&quot;org.springframework.web.servlet.view.json.MappingJackson2JsonView&quot; &gt;
+                    &lt;property name=&quot;objectMapper&quot; ref=&quot;myObjectMapper&quot; /&gt;
+                &lt;/bean&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
 
-    <span class="hljs-comment">&lt;!-- Upload --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"multipartResolver"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxUploadSize"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1000000"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+    &lt;!-- Upload --&gt;
+    &lt;bean id=&quot;multipartResolver&quot; class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;
+        &lt;property name=&quot;maxUploadSize&quot; value=&quot;1000000&quot;/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
 </code></pre>
 <h3 id="header-9">xxx-security.xml</h3>
 <p>配置SpringSecurity: 这里使用UsernamePassword认证和ldap认证</p>
-<pre><code class="nullxml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-        <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-        <span class="hljs-attr">xmlns:aop</span>=<span class="hljs-string">"http://www.springframework.org/schema/aop"</span>
-        <span class="hljs-attr">xmlns:tx</span>=<span class="hljs-string">"http://www.springframework.org/schema/tx"</span>
-        <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-        <span class="hljs-attr">xmlns:sec</span>=<span class="hljs-string">"http://www.springframework.org/schema/security"</span>
-        <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+        xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xmlns:sec=&quot;http://www.springframework.org/schema/security&quot;
+        xsi:schemaLocation=&quot;
             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"</span>&gt;</span>
+            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd&quot;&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/resources/**"</span>  <span class="hljs-attr">security</span>=<span class="hljs-string">"none"</span>/&gt;</span>
+    &lt;sec:http pattern=&quot;/resources/**&quot;  security=&quot;none&quot;/&gt;
 
-    <span class="hljs-comment">&lt;!-- Golf Web Security --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">sec:http</span>  <span class="hljs-attr">auto-config</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">use-expressions</span>=<span class="hljs-string">"true"</span> <span class="hljs-attr">entry-point-authentication-manager-ref</span>=<span class="hljs-string">"myAuthenticationManager"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:anonymous</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"test"</span> <span class="hljs-attr">granted-authority</span>=<span class="hljs-string">"Guest"</span> <span class="hljs-attr">username</span>=<span class="hljs-string">"guest"</span>/&gt;</span>
+    &lt;!-- Golf Web Security --&gt;
+    &lt;sec:http  auto-config=&quot;false&quot; use-expressions=&quot;true&quot; entry-point-authentication-manager-ref=&quot;myAuthenticationManager&quot;&gt;
+        &lt;sec:anonymous key=&quot;test&quot; granted-authority=&quot;Guest&quot; username=&quot;guest&quot;/&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/page-**/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"authenticated"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/admin-**/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('Admin')"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/page-**/**&quot; access=&quot;authenticated&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/admin-**/**&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/payments"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('RequestUser')"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/payments/*/payed"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('Payment')"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/receivers"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"GET"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasAnyRole('RequestUser','Admin')"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/receipts"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"authenticated and authentication.extra.orgType=='LingShan'"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/api/payments&quot; method=&quot;POST&quot; access=&quot;hasRole(&#39;RequestUser&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/payments/*/payed&quot; method=&quot;POST&quot; access=&quot;hasRole(&#39;Payment&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receivers&quot; method=&quot;GET&quot; access=&quot;hasAnyRole(&#39;RequestUser&#39;,&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receipts&quot; method=&quot;POST&quot; access=&quot;authenticated and authentication.extra.orgType==&#39;LingShan&#39;&quot;/&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/users/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('Admin')"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/roles"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('Admin')"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/receivers"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"POST"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('Admin')"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/receivers/*/*"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"GET"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('Admin')"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/api/users/**&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/roles&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receivers&quot; method=&quot;POST&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/api/receivers/*/*&quot; method=&quot;GET&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/api/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"authenticated"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"permitAll"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/login"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"permitAll"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/auth"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"permitAll"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:intercept-url</span> <span class="hljs-attr">pattern</span>=<span class="hljs-string">"/**"</span> <span class="hljs-attr">access</span>=<span class="hljs-string">"hasRole('Admin')"</span>/&gt;</span>
+        &lt;sec:intercept-url pattern=&quot;/api/**&quot; access=&quot;authenticated&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/&quot; access=&quot;permitAll&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/login&quot; access=&quot;permitAll&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/auth&quot; access=&quot;permitAll&quot;/&gt;
+        &lt;sec:intercept-url pattern=&quot;/**&quot; access=&quot;hasRole(&#39;Admin&#39;)&quot;/&gt;
 
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:form-login</span> <span class="hljs-attr">login-processing-url</span>=<span class="hljs-string">"/api/j_spring_security_check"</span> <span class="hljs-attr">username-parameter</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">password-parameter</span>=<span class="hljs-string">"password"</span>
-            <span class="hljs-attr">login-page</span>=<span class="hljs-string">"/login"</span> <span class="hljs-attr">authentication-failure-url</span>=<span class="hljs-string">"/auth?error=UnAuthenticated"</span> <span class="hljs-attr">default-target-url</span>=<span class="hljs-string">"/auth"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:logout</span> <span class="hljs-attr">logout-success-url</span>=<span class="hljs-string">"/auth"</span> <span class="hljs-attr">logout-url</span>=<span class="hljs-string">"/api/j_spring_security_logout"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:session-management</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">sec:concurrency-control</span> <span class="hljs-attr">max-sessions</span>=<span class="hljs-string">"1"</span> <span class="hljs-attr">expired-url</span>= <span class="hljs-string">"/login?error=This session has been expired"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">sec:session-management</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:request-cache</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"nullRequestCache"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:http</span>&gt;</span>
+        &lt;sec:form-login login-processing-url=&quot;/api/j_spring_security_check&quot; username-parameter=&quot;username&quot; password-parameter=&quot;password&quot;
+            login-page=&quot;/login&quot; authentication-failure-url=&quot;/auth?error=UnAuthenticated&quot; default-target-url=&quot;/auth&quot; /&gt;
+        &lt;sec:logout logout-success-url=&quot;/auth&quot; logout-url=&quot;/api/j_spring_security_logout&quot;/&gt;
+        &lt;sec:session-management&gt;
+            &lt;sec:concurrency-control max-sessions=&quot;1&quot; expired-url= &quot;/login?error=This session has been expired&quot;/&gt;
+        &lt;/sec:session-management&gt;
+        &lt;sec:request-cache ref=&quot;nullRequestCache&quot;/&gt;
+    &lt;/sec:http&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"nullRequestCache"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.web.savedrequest.NullRequestCache"</span>/&gt;</span>
+    &lt;bean id=&quot;nullRequestCache&quot; class=&quot;org.springframework.security.web.savedrequest.NullRequestCache&quot;/&gt;
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-manager</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myAuthenticationManager"</span> &gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">user-service-ref</span>=<span class="hljs-string">"myUserDetailsService"</span> /&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">sec:authentication-provider</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapAuthenticationProvider"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">sec:authentication-manager</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myUserDetailsService"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.golf.service.MyUserDetailsService"</span>/&gt;</span>
+    &lt;sec:authentication-manager id=&quot;myAuthenticationManager&quot; &gt;
+        &lt;sec:authentication-provider user-service-ref=&quot;myUserDetailsService&quot; /&gt;
+        &lt;sec:authentication-provider ref=&quot;ldapAuthenticationProvider&quot;/&gt;
+    &lt;/sec:authentication-manager&gt;
+    &lt;bean id=&quot;myUserDetailsService&quot; class=&quot;com.golf.service.MyUserDetailsService&quot;/&gt;
 
-     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapAuthenticationProvider"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.ldap.authentication.LdapAuthenticationProvider"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authenticator"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"bindAuthenticator"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"authoritiesPopulator"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapAuthoritiesPopulator"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"bindAuthenticator"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.ldap.authentication.BindAuthenticator"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"contextSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapServer"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"userSearch"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapSearch"</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapAuthoritiesPopulator"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.cj.support.security.ldap.MyLdapAuthoritiesPopulator"</span>/&gt;</span>
+     &lt;bean id=&quot;ldapAuthenticationProvider&quot; class=&quot;org.springframework.security.ldap.authentication.LdapAuthenticationProvider&quot;&gt;
+        &lt;constructor-arg name=&quot;authenticator&quot; ref=&quot;bindAuthenticator&quot;/&gt;
+        &lt;constructor-arg name=&quot;authoritiesPopulator&quot; ref=&quot;ldapAuthoritiesPopulator&quot;/&gt;
+    &lt;/bean&gt;
+     &lt;bean id=&quot;bindAuthenticator&quot; class=&quot;org.springframework.security.ldap.authentication.BindAuthenticator&quot;&gt;
+        &lt;constructor-arg name=&quot;contextSource&quot; ref=&quot;ldapServer&quot;/&gt;
+        &lt;property name=&quot;userSearch&quot; ref=&quot;ldapSearch&quot;&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;bean id=&quot;ldapAuthoritiesPopulator&quot; class=&quot;com.cj.support.security.ldap.MyLdapAuthoritiesPopulator&quot;/&gt;
 
-    <span class="hljs-comment">&lt;!-- Ldap Server &amp; Search Config --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapSearch"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.security.ldap.search.FilterBasedLdapUserSearch"</span> &gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"searchBase"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"ou=people"</span>/&gt;</span>   <span class="hljs-comment">&lt;!-- user-search-base --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"searchFilter"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"(uid={0})"</span>/&gt;</span> <span class="hljs-comment">&lt;!-- user-search-filter --&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">constructor-arg</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"contextSource"</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">"ldapServer"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">sec:ldap-server</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ldapServer"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"ldap://xxxx/o=xxxx"</span>  /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+    &lt;!-- Ldap Server &amp; Search Config --&gt;
+     &lt;bean id=&quot;ldapSearch&quot; class=&quot;org.springframework.security.ldap.search.FilterBasedLdapUserSearch&quot; &gt;
+      &lt;constructor-arg name=&quot;searchBase&quot; value=&quot;ou=people&quot;/&gt;   &lt;!-- user-search-base --&gt;
+      &lt;constructor-arg name=&quot;searchFilter&quot; value=&quot;(uid={0})&quot;/&gt; &lt;!-- user-search-filter --&gt;
+      &lt;constructor-arg name=&quot;contextSource&quot; ref=&quot;ldapServer&quot;/&gt;
+    &lt;/bean&gt;
+    &lt;sec:ldap-server id=&quot;ldapServer&quot; url=&quot;ldap://xxxx/o=xxxx&quot;  /&gt;
+&lt;/beans&gt;
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyUserDetailsService</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserDetailsService</span>
-</span>{
-    <span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(GolfUserDetailsService.class);  
-    <span class="hljs-keyword">private</span> ISecurityService securityService;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> ISecurityService <span class="hljs-title">getSecurityService</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">return</span> securityService;
+<pre><code class="lang-java">public class MyUserDetailsService implements UserDetailsService
+{
+    static Logger logger = Logger.getLogger(GolfUserDetailsService.class);  
+    private ISecurityService securityService;
+    public ISecurityService getSecurityService(){
+        return securityService;
     }
-    <span class="hljs-meta">@Inject</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setSecurityService</span><span class="hljs-params">(ISecurityService securityService)</span></span>{
-        <span class="hljs-keyword">this</span>.securityService = securityService;
+    @Inject
+    public void setSecurityService(ISecurityService securityService){
+        this.securityService = securityService;
     }
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> UserDetails <span class="hljs-title">loadUserByUsername</span><span class="hljs-params">(String account)</span>
-            <span class="hljs-keyword">throws</span> UsernameNotFoundException
-    </span>{
+    @Override
+    public UserDetails loadUserByUsername(String account)
+            throws UsernameNotFoundException
+    {
         List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
-        <span class="hljs-keyword">if</span>(glist==<span class="hljs-keyword">null</span> || glist.size()==<span class="hljs-number">0</span>)
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UsernameNotFoundException(<span class="hljs-string">"No GrantedAuthority"</span>);
+        if(glist==null || glist.size()==0)
+            throw new UsernameNotFoundException(&quot;No GrantedAuthority&quot;);
         SysUser user=(SysUser)securityService.getUser(account);
-        <span class="hljs-keyword">if</span>(user!=<span class="hljs-keyword">null</span> )
-            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> MyUser(account,user.getPwd(),glist); <span class="hljs-comment">//MyUser implements UserDetails</span>
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UsernameNotFoundException(<span class="hljs-string">"Not Found"</span>);
+        if(user!=null )
+            return new MyUser(account,user.getPwd(),glist); //MyUser implements UserDetails
+        throw new UsernameNotFoundException(&quot;Not Found&quot;);
     }
 }
 </code></pre>
@@ -632,10 +635,17 @@
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

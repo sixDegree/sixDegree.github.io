@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -116,7 +119,7 @@
         <li>
          <span class="glyphicon glyphicon-tags"></span>
           
-            <a href="/tags.html#tag-CSS3">CSS3</a>
+            <a href="/tags.html#tag-CSS">CSS</a>
           
         </li>
       
@@ -125,41 +128,41 @@
   <section class="post-content">
     <h3 id="header-1">@media</h3>
 <p>媒体查询</p>
-<pre><code class="nullscss"><span class="hljs-variable">$width-small</span>: <span class="hljs-number">500px</span>;
-<span class="hljs-variable">$width-medium</span>: <span class="hljs-number">800px</span>;
-<span class="hljs-variable">$width-large</span>: <span class="hljs-number">1200px</span>;
-<span class="hljs-selector-tag">section</span><span class="hljs-selector-class">.main</span> { 
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>; <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4</span>;
-    @<span class="hljs-keyword">media</span> screen and (max-width: <span class="hljs-variable">$width-large</span>) { <span class="hljs-attribute">float</span>: left; <span class="hljs-attribute">width</span>: <span class="hljs-number">65%</span>; }
-    @<span class="hljs-keyword">media</span> screen and (max-width: <span class="hljs-variable">$width-medium</span>) { <span class="hljs-attribute">float</span>: none; <span class="hljs-attribute">width</span>: auto; }
-    @<span class="hljs-keyword">media</span> screen and (max-width: <span class="hljs-variable">$width-small</span>) { <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>; <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.4</span>; }
+<pre><code class="lang-scss">$width-small: 500px;
+$width-medium: 800px;
+$width-large: 1200px;
+section.main { 
+    font-size: 16px; line-height: 1.4;
+    @media screen and (max-width: $width-large) { float: left; width: 65%; }
+    @media screen and (max-width: $width-medium) { float: none; width: auto; }
+    @media screen and (max-width: $width-small) { font-size: 12px; line-height: 1.4; }
 }
 </code></pre>
 <h3 id="header-2">@keyframes</h3>
 <p>定义动画</p>
-<pre><code class="nullscss">@keyframes fontbulger {
+<pre><code class="lang-scss">@keyframes fontbulger {
   0% {
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">10px</span>;
+    font-size: 10px;
   }
   30% {
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">15px</span>;
+    font-size: 15px;
   }
   100% {
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
+    font-size: 12px;
   }
 }
 
-<span class="hljs-selector-id">#box</span> {
-   <span class="hljs-attribute">animation</span>: fontbulger <span class="hljs-number">2s</span> infinite;
+#box {
+   animation: fontbulger 2s infinite;
 }
 </code></pre>
 <h3 id="header-3">@font-face</h3>
 <p>引入字体</p>
-<pre><code class="nullscss">@font-face {
-      <span class="hljs-attribute">font-family</span>: &lt;YourWebFontName&gt;;
+<pre><code class="lang-scss">@font-face {
+      font-family: &lt;YourWebFontName&gt;;
       src: &lt;source&gt; [&lt;format&gt;][,&lt;source&gt; [&lt;format&gt;]]*;
-      <span class="hljs-selector-attr">[font-weight: &lt;weight&gt;]</span>;
-      <span class="hljs-selector-attr">[font-style: &lt;style&gt;]</span>;
+      [font-weight: &lt;weight&gt;];
+      [font-style: &lt;style&gt;];
     }
 </code></pre>
   </section>
@@ -197,10 +200,17 @@
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

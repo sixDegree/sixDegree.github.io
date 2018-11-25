@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -143,52 +146,52 @@
 <pre><code>&gt; npm install reflux --save
 </code></pre><ol>
 <li><p>Action：定义方法</p>
-<pre><code class="nulljavascript"><span class="hljs-keyword">var</span> Reflux=<span class="hljs-built_in">require</span>(<span class="hljs-string">"reflux"</span>);
-<span class="hljs-built_in">module</span>.exports=Reflux.createActions([
- <span class="hljs-string">"listXxx"</span>,
- <span class="hljs-string">"getXxx"</span>,
- <span class="hljs-string">"updateXxx"</span>,
- <span class="hljs-string">"createXxx"</span>,
+<pre><code class="lang-javascript">var Reflux=require(&quot;reflux&quot;);
+module.exports=Reflux.createActions([
+ &quot;listXxx&quot;,
+ &quot;getXxx&quot;,
+ &quot;updateXxx&quot;,
+ &quot;createXxx&quot;,
  ...
 ])
 </code></pre>
 </li>
 <li><p>Store：监听actions</p>
-<pre><code class="nulljavascript"> <span class="hljs-comment">//xxx-store.jsx</span>
- <span class="hljs-keyword">var</span> Reflux=<span class="hljs-built_in">require</span>(<span class="hljs-string">"reflux"</span>);
- <span class="hljs-keyword">var</span> Api=<span class="hljs-built_in">require</span>(<span class="hljs-string">"../utils/api"</span>);
- <span class="hljs-keyword">var</span> xxxActions=<span class="hljs-built_in">require</span>(<span class="hljs-string">"../actions/xxx-action"</span>);
+<pre><code class="lang-javascript"> //xxx-store.jsx
+ var Reflux=require(&quot;reflux&quot;);
+ var Api=require(&quot;../utils/api&quot;);
+ var xxxActions=require(&quot;../actions/xxx-action&quot;);
 
- <span class="hljs-built_in">module</span>.exports=Reflux.createStore({
-     <span class="hljs-attr">listenables</span>:[XxxActions],        <span class="hljs-comment">// 监听actions</span>
+ module.exports=Reflux.createStore({
+     listenables:[XxxActions],        // 监听actions
      data:{},
 
-     <span class="hljs-comment">//添加Action中定义的同名函数</span>
-     listXxx:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-         <span class="hljs-keyword">return</span> Api.get(<span class="hljs-string">"..."</span>)
-                 .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">json</span>)</span>{
-                     <span class="hljs-keyword">if</span>(json &amp;&amp; json.success)
-                         <span class="hljs-keyword">this</span>.data=json.data;
-                     <span class="hljs-keyword">this</span>.trigger(<span class="hljs-keyword">this</span>.data,json);    <span class="hljs-comment">//触发（监听此Store的Components会接收到）</span>
-                 }.bind(<span class="hljs-keyword">this</span>));
+     //添加Action中定义的同名函数
+     listXxx:function(){
+         return Api.get(&quot;...&quot;)
+                 .then(function(json){
+                     if(json &amp;&amp; json.success)
+                         this.data=json.data;
+                     this.trigger(this.data,json);    //触发（监听此Store的Components会接收到）
+                 }.bind(this));
      },
      ...
-     <span class="hljs-comment">//也可添加Store自己的函数</span>
+     //也可添加Store自己的函数
  });
 </code></pre>
 </li>
 <li><p>Component: 调用Action（会触发调用相应的Store方法）或Store方法，监听Store变化</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> Reflux=<span class="hljs-built_in">require</span>(<span class="hljs-string">"reflux"</span>);
- <span class="hljs-keyword">var</span> XxxActions=<span class="hljs-built_in">require</span>(<span class="hljs-string">"../action/xxx-action"</span>);
- <span class="hljs-keyword">var</span> XxxStore=<span class="hljs-built_in">require</span>(<span class="hljs-string">"../stores/xxx-store"</span>);
+<pre><code class="lang-javascript"> var Reflux=require(&quot;reflux&quot;);
+ var XxxActions=require(&quot;../action/xxx-action&quot;);
+ var XxxStore=require(&quot;../stores/xxx-store&quot;);
 
- <span class="hljs-built_in">module</span>.exports=React.createClass({
-     <span class="hljs-comment">//监听Store，捕获到则调用onChange方法（相当于callback）</span>
-     mixins:[Reflux.listenTo(XxxStore,<span class="hljs-string">"onChange"</span>)],
-     <span class="hljs-attr">onChange</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data,result</span>)</span>{
-         <span class="hljs-keyword">this</span>.setState({...});
+ module.exports=React.createClass({
+     //监听Store，捕获到则调用onChange方法（相当于callback）
+     mixins:[Reflux.listenTo(XxxStore,&quot;onChange&quot;)],
+     onChange:function(data,result){
+         this.setState({...});
      },
-     <span class="hljs-attr">componentWillMount</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+     componentWillMount:function(){
          XxxActions.listXxx();
      },
      ...
@@ -212,67 +215,67 @@
 </code></pre><h3 id="header-4">基本使用示例</h3>
 <ol>
 <li><p>Component</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> React=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react"</span>);
- <span class="hljs-keyword">var</span> ReactDOM=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react-dom"</span>);
+<pre><code class="lang-javascript"> var React=require(&quot;react&quot;);
+ var ReactDOM=require(&quot;react-dom&quot;);
 
- <span class="hljs-keyword">var</span> Counter=React.createClass({
-     <span class="hljs-attr">render</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-         <span class="hljs-keyword">return</span> (
-           <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>{this.props.value}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn btn-default"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.props.onIncreaseClick}</span>&gt;</span>Increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-           <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+ var Counter=React.createClass({
+     render:function(){
+         return (
+           &lt;div&gt;
+             &lt;span&gt;{this.props.value}&lt;/span&gt;
+             &lt;button className=&quot;btn btn-default&quot; onClick={this.props.onIncreaseClick}&gt;Increase&lt;/button&gt;
+           &lt;/div&gt;
          )
      }
  });
 </code></pre>
 </li>
 <li><p>Store</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> redux=<span class="hljs-built_in">require</span>(<span class="hljs-string">"redux"</span>);
+<pre><code class="lang-javascript"> var redux=require(&quot;redux&quot;);
 
- <span class="hljs-keyword">var</span> countRedux=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state,action</span>)</span>{
-     <span class="hljs-keyword">switch</span>(action.type){
-         <span class="hljs-keyword">case</span> <span class="hljs-string">'INCREASE'</span>:
-             <span class="hljs-keyword">return</span> state+action.step;
+ var countRedux=function(state,action){
+     switch(action.type){
+         case &#39;INCREASE&#39;:
+             return state+action.step;
      }
-     <span class="hljs-keyword">return</span> state;
+     return state;
  }
 
- <span class="hljs-keyword">var</span> store=redux.createStore(countRedux,<span class="hljs-number">0</span>);
- store.subscribe(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-     <span class="hljs-built_in">console</span>.log(store.getState());
+ var store=redux.createStore(countRedux,0);
+ store.subscribe(function(){
+     console.log(store.getState());
  });
 </code></pre>
 </li>
 <li><p>Action</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> increaseAction={<span class="hljs-attr">type</span>:<span class="hljs-string">'INCREASE'</span>,<span class="hljs-attr">step</span>:<span class="hljs-number">1</span>};
- <span class="hljs-comment">//test</span>
+<pre><code class="lang-javascript"> var increaseAction={type:&#39;INCREASE&#39;,step:1};
+ //test
  store.dispatch(increaseAction);
 </code></pre>
 </li>
 <li><p>Container</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> Provider=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react-redux"</span>).Provider;
- <span class="hljs-keyword">var</span> connect=<span class="hljs-built_in">require</span>(<span class="hljs-string">"react-redux"</span>).connect;
+<pre><code class="lang-javascript"> var Provider=require(&quot;react-redux&quot;).Provider;
+ var connect=require(&quot;react-redux&quot;).connect;
 
- <span class="hljs-comment">//Map Redux state to component props</span>
- <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapStateToProps</span>(<span class="hljs-params">state</span>)</span>{
-     <span class="hljs-keyword">return</span> {<span class="hljs-attr">count</span>:state}
+ //Map Redux state to component props
+ function mapStateToProps(state){
+     return {count:state}
  }
- <span class="hljs-comment">//Map Redux dispatch to component props</span>
- <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapDispatchToProps</span>(<span class="hljs-params">dispatch</span>)</span>{
-     <span class="hljs-keyword">return</span> {
-         <span class="hljs-attr">onIncreaseClick</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{dispatch(increaseAction);}
+ //Map Redux dispatch to component props
+ function mapDispatchToProps(dispatch){
+     return {
+         onIncreaseClick:function(){dispatch(increaseAction);}
      }
  }
 
- <span class="hljs-keyword">var</span> App=connect(mapStateToProps,mapDispatchToProps)(Counter)
+ var App=connect(mapStateToProps,mapDispatchToProps)(Counter)
 
- <span class="hljs-comment">// render</span>
+ // render
  ReactDOM.render(
-   <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>
-   <span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
-   <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'app'</span>)
+   &lt;Provider store={store}&gt;
+     &lt;App /&gt;
+   &lt;/Provider&gt;,
+   document.getElementById(&#39;app&#39;)
  );
 </code></pre>
 </li>
@@ -281,32 +284,32 @@
 <p><img src="/2016/01/06/redux-book.png" alt="redux"><br>（图片来自：<a href="https://www.udemy.com/react-redux/" target="_blank" rel="noopener">https://www.udemy.com/react-redux/</a> 教程）</p>
 <p><strong>要点：</strong></p>
 <ol>
-<li>Reducer:<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> bookReducer=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state,action</span>)</span>{...};
- <span class="hljs-keyword">var</span> activeBookReducer=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state,action</span>)</span>{...};
- <span class="hljs-built_in">module</span>.exports=combineReducers({
-     <span class="hljs-attr">books</span>:booksReducer,
-     <span class="hljs-attr">activeBook</span>:activeBookReducer
+<li>Reducer:<pre><code class="lang-javascript"> var bookReducer=function(state,action){...};
+ var activeBookReducer=function(state,action){...};
+ module.exports=combineReducers({
+     books:booksReducer,
+     activeBook:activeBookReducer
  })
 </code></pre>
 </li>
 <li><p>Action Creator:</p>
-<pre><code class="nulljavascript">     <span class="hljs-keyword">var</span> selectBook=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">book</span>)</span>{
-         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Selectd:"</span>+book.title);
-         <span class="hljs-keyword">return</span> {<span class="hljs-attr">type</span>:<span class="hljs-string">"BOOK_SELECTED"</span>,<span class="hljs-attr">payload</span>:book};
+<pre><code class="lang-javascript">     var selectBook=function(book){
+         console.log(&quot;Selectd:&quot;+book.title);
+         return {type:&quot;BOOK_SELECTED&quot;,payload:book};
      }
-     <span class="hljs-built_in">module</span>.exports={
-         <span class="hljs-attr">selectBook</span>:selectBook
+     module.exports={
+         selectBook:selectBook
      }
 </code></pre>
 </li>
 <li><p>Container:</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> bindActionCreators=<span class="hljs-built_in">require</span>(<span class="hljs-string">"redux"</span>).bindActionCreators;
+<pre><code class="lang-javascript"> var bindActionCreators=require(&quot;redux&quot;).bindActionCreators;
 
- <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapDispatchToProps</span>(<span class="hljs-params">dispatch</span>)</span>{
-     <span class="hljs-comment">/*return {
-         selectBook:function(book){dispatch({type:'BOOK_SELECTED',payload:book})}
-     }*/</span>
-     <span class="hljs-keyword">return</span> bindActionCreators(BookActions,dispatch);
+ function mapDispatchToProps(dispatch){
+     /*return {
+         selectBook:function(book){dispatch({type:&#39;BOOK_SELECTED&#39;,payload:book})}
+     }*/
+     return bindActionCreators(BookActions,dispatch);
  }
 </code></pre>
 </li>
@@ -320,29 +323,29 @@
 &gt; npm install axios --save
 </code></pre></li>
 <li><p>Action：</p>
-<pre><code class="nulljavascript"> {<span class="hljs-attr">type</span>:<span class="hljs-string">'BOOK_LIST'</span>,<span class="hljs-attr">payload</span>:axios.get(url);}
+<pre><code class="lang-javascript"> {type:&#39;BOOK_LIST&#39;,payload:axios.get(url);}
 </code></pre>
 </li>
 <li><p>Reducer:</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> booksReducer=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state,action</span>)</span>{
-     <span class="hljs-keyword">switch</span>(action.type){
-         <span class="hljs-keyword">case</span> <span class="hljs-string">'BOOK_LIST'</span>:
-             <span class="hljs-keyword">if</span>(action.payload.status==<span class="hljs-number">200</span>){
-                 <span class="hljs-keyword">return</span> [action.payload.data];
+<pre><code class="lang-javascript"> var booksReducer=function(state,action){
+     switch(action.type){
+         case &#39;BOOK_LIST&#39;:
+             if(action.payload.status==200){
+                 return [action.payload.data];
              }
      }
-     <span class="hljs-keyword">return</span> state;
+     return state;
  }
 </code></pre>
 </li>
 <li><p>Store</p>
-<pre><code class="nulljavascript"> <span class="hljs-keyword">var</span> createStore=<span class="hljs-built_in">require</span>(<span class="hljs-string">"redux"</span>).createStore;
+<pre><code class="lang-javascript"> var createStore=require(&quot;redux&quot;).createStore;
 
- <span class="hljs-keyword">var</span> applyMiddleware=<span class="hljs-built_in">require</span>(<span class="hljs-string">"redux"</span>).applyMiddleware;
- <span class="hljs-keyword">var</span> ReduxPromise=<span class="hljs-built_in">require</span>(<span class="hljs-string">"redux-promise"</span>);
- <span class="hljs-keyword">var</span> createStoreWithMiddleware=applyMiddleware(ReduxPromise)(createStore);
+ var applyMiddleware=require(&quot;redux&quot;).applyMiddleware;
+ var ReduxPromise=require(&quot;redux-promise&quot;);
+ var createStoreWithMiddleware=applyMiddleware(ReduxPromise)(createStore);
 
- <span class="hljs-keyword">var</span> store=createStoreWithMiddleware(booksReducers);
+ var store=createStoreWithMiddleware(booksReducers);
 </code></pre>
 </li>
 </ol>
@@ -387,10 +390,17 @@
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

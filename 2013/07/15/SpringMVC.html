@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -128,187 +131,187 @@
     <h2 id="header-1">Starter</h2>
 <h3 id="header-2">依赖包</h3>
 <p>在加入Spring依赖包的基础上，加入：</p>
-<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-webmvc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>${spring.version}<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+    &lt;version&gt;${spring.version}&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 <p>额外包：</p>
-<pre><code class="nullxml"><span class="hljs-comment">&lt;!-- FileUpload --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-fileupload<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-fileupload<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>commons-io<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>commons-io<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<pre><code class="lang-xml">&lt;!-- FileUpload --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-io&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+&lt;/dependency&gt;
 
-<span class="hljs-comment">&lt;!-- JSTL,Taglib --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>jstl<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>jstl<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>taglibs<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>standard<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span> 
+&lt;!-- JSTL,Taglib --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;jstl&lt;/groupId&gt;
+    &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;taglibs&lt;/groupId&gt;
+    &lt;artifactId&gt;standard&lt;/artifactId&gt;
+&lt;/dependency&gt; 
 
-<span class="hljs-comment">&lt;!-- Test--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>xmlunit<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>xmlunit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+&lt;!-- Test--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;/groupId&gt;
+    &lt;artifactId&gt;junit&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;xmlunit&lt;/groupId&gt;
+    &lt;artifactId&gt;xmlunit&lt;/artifactId&gt;
+&lt;/dependency&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-test<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+&lt;/dependency&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mockito<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mockito-all<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mockito<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mockito-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mockito&lt;/groupId&gt;
+    &lt;artifactId&gt;mockito-all&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.mockito&lt;/groupId&gt;
+    &lt;artifactId&gt;mockito-core&lt;/artifactId&gt;
+&lt;/dependency&gt;
 </code></pre>
 <h3 id="header-3">使用</h3>
 <ol>
-<li>配置web.xml (在配置了Spring的基础上)<pre><code class="nullxml"> <span class="hljs-comment">&lt;!-- 配置加载DispatchServlet 拦截请求--&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>xxx<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">load-on-startup</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">load-on-startup</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>xxx<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<li>配置web.xml (在配置了Spring的基础上)<pre><code class="lang-xml"> &lt;!-- 配置加载DispatchServlet 拦截请求--&gt;
+ &lt;servlet&gt;
+     &lt;servlet-name&gt;xxx&lt;/servlet-name&gt;
+     &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+     &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+ &lt;/servlet&gt;
+ &lt;servlet-mapping&gt;
+     &lt;servlet-name&gt;xxx&lt;/servlet-name&gt;
+     &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+ &lt;/servlet-mapping&gt;
 </code></pre>
 </li>
 <li><p>配置xxx-servlet.xml</p>
-<pre><code class="nullxml"> <span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span><span class="hljs-meta">?&gt;</span></span>
- <span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.springframework.org/schema/beans"</span>
-     <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
-     <span class="hljs-attr">xmlns:mvc</span>=<span class="hljs-string">"http://www.springframework.org/schema/mvc"</span>
-     <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">"http://www.springframework.org/schema/context"</span>
-     <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+     xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+     xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+     xsi:schemaLocation=&quot;http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"</span>&gt;</span>
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd&quot;&gt;
 
-     <span class="hljs-tag">&lt;<span class="hljs-name">mvc:annotation-driven</span>/&gt;</span>
-     <span class="hljs-comment">&lt;!-- find controller and registered as beans--&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.mytest.controller"</span>/&gt;</span>
+     &lt;mvc:annotation-driven/&gt;
+     &lt;!-- find controller and registered as beans--&gt;
+     &lt;context:component-scan base-package=&quot;com.mytest.controller&quot;/&gt;
 
-     <span class="hljs-comment">&lt;!-- PS: 若使用@ControllerAdvice，需如下配置
-     &lt;context:component-scan base-package="com.mytest.controller" use-default-filters="false"&gt;
-         &lt;context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"  /&gt;
-         &lt;context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/&gt;
+     &lt;!-- PS: 若使用@ControllerAdvice，需如下配置
+     &lt;context:component-scan base-package=&quot;com.mytest.controller&quot; use-default-filters=&quot;false&quot;&gt;
+         &lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Controller&quot;  /&gt;
+         &lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.web.bind.annotation.ControllerAdvice&quot;/&gt;
      &lt;/context:component-scan&gt;
-     --&gt;</span>
+     --&gt;
 
-     <span class="hljs-comment">&lt;!-- Handle requests for static resources --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">mvc:resources</span> <span class="hljs-attr">location</span>=<span class="hljs-string">"/resources/"</span> <span class="hljs-attr">mapping</span>=<span class="hljs-string">"/resources/**"</span>/&gt;</span>
+     &lt;!-- Handle requests for static resources --&gt;
+     &lt;mvc:resources location=&quot;/resources/&quot; mapping=&quot;/resources/**&quot;/&gt;
 
-     <span class="hljs-comment">&lt;!-- use InternalResourceViewResolver to resolve internal view:
+     &lt;!-- use InternalResourceViewResolver to resolve internal view:
          prefix + logical view name + suffix
-     --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"prefix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/WEB-INF/user/"</span>/&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"suffix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">".jsp"</span>/&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+     --&gt;
+     &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+         &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/user/&quot;/&gt;
+         &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+     &lt;/bean&gt;
 
-     <span class="hljs-comment">&lt;!-- for file uploads --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"multipartResolver"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"maxUploadSize"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1000000"</span>/&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+     &lt;!-- for file uploads --&gt;
+     &lt;bean id=&quot;multipartResolver&quot; class=&quot;org.springframework.web.multipart.commons.CommonsMultipartResolver&quot;&gt;
+         &lt;property name=&quot;maxUploadSize&quot; value=&quot;1000000&quot;/&gt;
+     &lt;/bean&gt;
 
- <span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span>
+ &lt;/beans&gt;
 </code></pre>
 </li>
 <li><p>在Spring配置文件（<code>beans.xml</code>）中去除加载Controller（避免重复）</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">context:component-scan</span> <span class="hljs-attr">base-package</span>=<span class="hljs-string">"com.mytest"</span> &gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">context:exclude-filter</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"regex"</span> <span class="hljs-attr">expression</span>=<span class="hljs-string">"com.mytest.controller.*"</span>/&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">context:component-scan</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;context:component-scan base-package=&quot;com.mytest&quot; &gt;
+     &lt;context:exclude-filter type=&quot;regex&quot; expression=&quot;com.mytest.controller.*&quot;/&gt;
+ &lt;/context:component-scan&gt;
 </code></pre>
 </li>
 <li><p>Controller</p>
-<pre><code class="nulljava"> <span class="hljs-meta">@Controller</span>
- <span class="hljs-meta">@RequestMapping</span>(value={<span class="hljs-string">"/users"</span>})
- <span class="hljs-meta">@SessionAttributes</span>(<span class="hljs-string">"loginUser"</span>)
- <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span>
- </span>{
-     <span class="hljs-keyword">private</span> UserService userService;
-     <span class="hljs-function"><span class="hljs-keyword">public</span> UserService <span class="hljs-title">getUserService</span><span class="hljs-params">()</span></span>{<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.userService;}
-     <span class="hljs-meta">@Inject</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUserService</span><span class="hljs-params">(UserService userService)</span></span>{<span class="hljs-keyword">this</span>.userService=userService;}
+<pre><code class="lang-java"> @Controller
+ @RequestMapping(value={&quot;/users&quot;})
+ @SessionAttributes(&quot;loginUser&quot;)
+ public class UserController
+ {
+     private UserService userService;
+     public UserService getUserService(){return this.userService;}
+     @Inject
+     public void setUserService(UserService userService){this.userService=userService;}
 
-     <span class="hljs-comment">// List Users</span>
-     <span class="hljs-meta">@RequestMapping</span>(value={<span class="hljs-string">"/"</span>})
-     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">list</span><span class="hljs-params">(Model model)</span>
-     </span>{
-         model.addAttribute(<span class="hljs-string">"users"</span>,userService.list());
-         <span class="hljs-keyword">return</span> <span class="hljs-string">"list"</span>;
+     // List Users
+     @RequestMapping(value={&quot;/&quot;})
+     public String list(Model model)
+     {
+         model.addAttribute(&quot;users&quot;,userService.list());
+         return &quot;list&quot;;
      }
 
-     <span class="hljs-comment">// get user details by id</span>
-     <span class="hljs-meta">@RequestMapping</span>(value={<span class="hljs-string">"/{id}"</span>},method=RequestMethod.GET)
-     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">details</span><span class="hljs-params">(@PathVariable <span class="hljs-keyword">int</span> id,Model model)</span>
-     </span>{
+     // get user details by id
+     @RequestMapping(value={&quot;/{id}&quot;},method=RequestMethod.GET)
+     public String details(@PathVariable int id,Model model)
+     {
          User user=userService.get(id);
-         <span class="hljs-keyword">if</span>(user!=<span class="hljs-keyword">null</span>)
+         if(user!=null)
              model.addAttribute(user);
-         <span class="hljs-keyword">return</span> <span class="hljs-string">"create"</span>;
+         return &quot;create&quot;;
      }
 
-     <span class="hljs-comment">//create user &amp; file upload</span>
-     <span class="hljs-meta">@RequestMapping</span>(value={<span class="hljs-string">"/"</span>},method=RequestMethod.POST)
-     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">create</span><span class="hljs-params">(@Valid User user,BindingResult binding, @RequestParam(value=<span class="hljs-string">"photos"</span>,required=<span class="hljs-keyword">false</span>)</span> MultipartFile[] photos,HttpServletRequest req)
-             <span class="hljs-keyword">throws</span> IOException
-     </span>{
-         <span class="hljs-keyword">if</span>(binding.hasErrors())
-             <span class="hljs-keyword">return</span> <span class="hljs-string">"create"</span>;
+     //create user &amp; file upload
+     @RequestMapping(value={&quot;/&quot;},method=RequestMethod.POST)
+     public String create(@Valid User user,BindingResult binding, @RequestParam(value=&quot;photos&quot;,required=false) MultipartFile[] photos,HttpServletRequest req)
+             throws IOException
+     {
+         if(binding.hasErrors())
+             return &quot;create&quot;;
 
-         <span class="hljs-comment">//file upload</span>
-         String realpath = req.getSession().getServletContext().getRealPath(<span class="hljs-string">"/resources/upload/"</span>);
-         <span class="hljs-keyword">for</span>(MultipartFile photo : photos)
+         //file upload
+         String realpath = req.getSession().getServletContext().getRealPath(&quot;/resources/upload/&quot;);
+         for(MultipartFile photo : photos)
          {
-             <span class="hljs-keyword">if</span>(photo.isEmpty())
-                 <span class="hljs-keyword">continue</span>;
-             FileUtils.copyInputStreamToFile(photo.getInputStream(), <span class="hljs-keyword">new</span> File(realpath+<span class="hljs-string">"/"</span>+photo.getOriginalFilename()));
+             if(photo.isEmpty())
+                 continue;
+             FileUtils.copyInputStreamToFile(photo.getInputStream(), new File(realpath+&quot;/&quot;+photo.getOriginalFilename()));
          }
 
-         <span class="hljs-comment">//save user</span>
+         //save user
          userService.save(user)
-         <span class="hljs-keyword">return</span> <span class="hljs-string">"redirect:list"</span>;
+         return &quot;redirect:list&quot;;
      }
 
-     <span class="hljs-comment">// login</span>
-     <span class="hljs-meta">@RequestMapping</span>(value={<span class="hljs-string">"/login"</span>},method=RequestMethod.POST)
-     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">login</span><span class="hljs-params">(String username,String password,Model model)</span>
-     </span>{
+     // login
+     @RequestMapping(value={&quot;/login&quot;},method=RequestMethod.POST)
+     public String login(String username,String password,Model model)
+     {
          User user=userService.check(username,password);
-         <span class="hljs-keyword">if</span>(user!=<span class="hljs-keyword">null</span>){
-             model.addAttribute(<span class="hljs-string">"loginUser"</span>,user);
-             <span class="hljs-comment">//return InternalResourceViewResolver.REDIRECT_URL_PREFIX+"/users"</span>
-             <span class="hljs-keyword">return</span> <span class="hljs-string">"redirect:list"</span>;
+         if(user!=null){
+             model.addAttribute(&quot;loginUser&quot;,user);
+             //return InternalResourceViewResolver.REDIRECT_URL_PREFIX+&quot;/users&quot;
+             return &quot;redirect:list&quot;;
          }
-         <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UserException(<span class="hljs-string">"Login Fail"</span>);
-         <span class="hljs-comment">//return "login";</span>
+         throw new UserException(&quot;Login Fail&quot;);
+         //return &quot;login&quot;;
      }
 
-     <span class="hljs-meta">@ExceptionHandler</span>(value={UserException.class})
-     <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">handlerUserException</span><span class="hljs-params">(Exception ex,HttpServletRequest req)</span>
-     </span>{
-         req.setAttribute(<span class="hljs-string">"ex"</span>,ex.getMessage());
-         <span class="hljs-keyword">return</span> <span class="hljs-string">"error"</span>;
+     @ExceptionHandler(value={UserException.class})
+     public String handlerUserException(Exception ex,HttpServletRequest req)
+     {
+         req.setAttribute(&quot;ex&quot;,ex.getMessage());
+         return &quot;error&quot;;
      }
  }
 </code></pre>
@@ -316,117 +319,117 @@
 <li><p>JSP</p>
 <ul>
 <li><p><code>WEB_INF/user/list.jsp</code> 部分代码：</p>
-<pre><code class="nullhtml"><span class="hljs-comment">&lt;!-- 在页面中引入：--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">%@</span> <span class="hljs-attr">taglib</span> <span class="hljs-attr">prefix</span>=<span class="hljs-string">"c"</span> <span class="hljs-attr">uri</span>=<span class="hljs-string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span>
+<pre><code class="lang-html">&lt;!-- 在页面中引入：--&gt;
+&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot; %&gt;
 
-<span class="hljs-comment">&lt;!-- 显示登录用户--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Welcome : ${loginUser.username}<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>
+&lt;!-- 显示登录用户--&gt;
+&lt;h2&gt;Welcome : ${loginUser.username}&lt;h2&gt;
 
-<span class="hljs-comment">&lt;!-- Menu Link --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"create"</span>&gt;</span>Create User<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> | <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"login"</span>&gt;</span>Login User<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+&lt;!-- Menu Link --&gt;
+&lt;a href=&quot;create&quot;&gt;Create User&lt;/a&gt; | &lt;a href=&quot;login&quot;&gt;Login User&lt;/a&gt;
 
-<span class="hljs-comment">&lt;!-- 循环遍历 model：users--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>User List<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Id<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>userName<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>nickName<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>password<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>email<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Opera<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">c:forEach</span> <span class="hljs-attr">items</span>=<span class="hljs-string">"${users}"</span>  <span class="hljs-attr">var</span>=<span class="hljs-string">"u"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>${u.value.id}<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>${u.value.username }<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>${u.value.nickname }<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>${u.value.password }<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>${u.value.email }<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"${u.key}"</span>&gt;</span>Details<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">c:forEach</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+&lt;!-- 循环遍历 model：users--&gt;
+&lt;h2&gt;User List&lt;/h2&gt;
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;Id&lt;/td&gt;
+&lt;td&gt;userName&lt;/td&gt;
+&lt;td&gt;nickName&lt;/td&gt;
+&lt;td&gt;password&lt;/td&gt;
+&lt;td&gt;email&lt;/td&gt;
+&lt;td&gt;Opera&lt;/td&gt;
+&lt;/tr&gt;
+&lt;c:forEach items=&quot;${users}&quot;  var=&quot;u&quot;&gt;
+&lt;tr&gt;
+  &lt;td&gt;${u.value.id}&lt;/td&gt;
+  &lt;td&gt;${u.value.username }&lt;/td&gt;
+  &lt;td&gt;${u.value.nickname }&lt;/td&gt;
+  &lt;td&gt;${u.value.password }&lt;/td&gt;
+  &lt;td&gt;${u.value.email }&lt;/td&gt;
+  &lt;td&gt;&lt;a href=&quot;${u.key}&quot;&gt;Details&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/c:forEach&gt;
+&lt;/table&gt;
 </code></pre>
 </li>
 <li><p><code>WEB-INF/user/create.jsp</code> 部分代码：</p>
-<pre><code class="nullhtml"><span class="hljs-comment">&lt;!-- 页面中引入spring form：--&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">%@</span> <span class="hljs-attr">taglib</span> <span class="hljs-attr">prefix</span>=<span class="hljs-string">"sf"</span> <span class="hljs-attr">uri</span>=<span class="hljs-string">"http://www.springframework.org/tags/form"</span> %&gt;</span>
+<pre><code class="lang-html">&lt;!-- 页面中引入spring form：--&gt;
+&lt;%@ taglib prefix=&quot;sf&quot; uri=&quot;http://www.springframework.org/tags/form&quot; %&gt;
 
-<span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Create User<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">sf:form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> <span class="hljs-attr">modelAttribute</span>=<span class="hljs-string">"user"</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">"multipart/form-data"</span>&gt;</span>
-  UserName:<span class="hljs-tag">&lt;<span class="hljs-name">sf:input</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"username"</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">sf:errors</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"username"</span>/&gt;</span>
-  NickName:<span class="hljs-tag">&lt;<span class="hljs-name">sf:input</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"nickname"</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">sf:errors</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"nickname"</span>/&gt;</span>
-  Password:<span class="hljs-tag">&lt;<span class="hljs-name">sf:password</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"password"</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">sf:errors</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"password"</span>/&gt;</span>
-  Email:<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">sf:input</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"email"</span>/&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">sf:errors</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"email"</span>/&gt;</span>
-  photo1:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"photos"</span>/&gt;</span>
-  photo2:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"photos"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">sf:button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"reset"</span>&gt;</span>Reset<span class="hljs-tag">&lt;/<span class="hljs-name">sf:button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">sf:button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> &gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">sf:button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">sf:form</span>&gt;</span>
+&lt;h2&gt;Create User&lt;/h2&gt;
+&lt;sf:form method=&quot;post&quot; modelAttribute=&quot;user&quot; enctype=&quot;multipart/form-data&quot;&gt;
+  UserName:&lt;sf:input path=&quot;username&quot;/&gt;&lt;sf:errors path=&quot;username&quot;/&gt;
+  NickName:&lt;sf:input path=&quot;nickname&quot;/&gt;&lt;sf:errors path=&quot;nickname&quot;/&gt;
+  Password:&lt;sf:password path=&quot;password&quot;/&gt;&lt;sf:errors path=&quot;password&quot;/&gt;
+  Email:&lt;/td&gt;&lt;td&gt;&lt;sf:input path=&quot;email&quot;/&gt;&lt;sf:errors path=&quot;email&quot;/&gt;
+  photo1:&lt;input type=&quot;file&quot; name=&quot;photos&quot;/&gt;
+  photo2:&lt;input type=&quot;file&quot; name=&quot;photos&quot;/&gt;
+  &lt;sf:button type=&quot;reset&quot;&gt;Reset&lt;/sf:button&gt;
+  &lt;sf:button type=&quot;submit&quot; &gt;Submit&lt;/sf:button&gt;
+&lt;/sf:form&gt;
 </code></pre>
 </li>
 <li><p><code>WEB-INF/user/login.jsp</code>部分代码：</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>User Login<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span> &gt;</span>
-  UserName:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>/&gt;</span>
-  Password:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"reset"</span>&gt;</span>Reset<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<pre><code class="lang-html">&lt;h2&gt;User Login&lt;/h2&gt;
+&lt;form method=&quot;post&quot; &gt;
+  UserName:&lt;input name=&quot;username&quot; type=&quot;text&quot;/&gt;
+  Password:&lt;input type=&quot;password&quot; name=&quot;password&quot;/&gt;
+  &lt;button type=&quot;reset&quot;&gt;Reset&lt;/button&gt;
+  &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
 </code></pre>
 </li>
 <li><p><code>WEB-INF/user/error.jsp</code>部分代码：</p>
-<pre><code class="nullhtml"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>${ex}<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<pre><code class="lang-html">&lt;body&gt;${ex}&lt;/body&gt;
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>测试</p>
-<pre><code class="nulljava"> <span class="hljs-meta">@RunWith</span>(SpringJUnit4ClassRunner.class)
- <span class="hljs-meta">@WebAppConfiguration</span>
- <span class="hljs-meta">@ContextConfiguration</span>({<span class="hljs-string">"classpath:beans.xml"</span>,<span class="hljs-string">"file:src/main/webapp/WEB-INF/mytest-servlet.xml"</span>})
- <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyControllerTest</span>
- </span>{
-     <span class="hljs-keyword">private</span> MockMvc mockMvc;
-     <span class="hljs-keyword">protected</span> MockHttpSession mockSession;
-     <span class="hljs-meta">@Inject</span>
-     <span class="hljs-keyword">private</span> WebApplicationContext wac;
+<pre><code class="lang-java"> @RunWith(SpringJUnit4ClassRunner.class)
+ @WebAppConfiguration
+ @ContextConfiguration({&quot;classpath:beans.xml&quot;,&quot;file:src/main/webapp/WEB-INF/mytest-servlet.xml&quot;})
+ public class MyControllerTest
+ {
+     private MockMvc mockMvc;
+     protected MockHttpSession mockSession;
+     @Inject
+     private WebApplicationContext wac;
 
-     <span class="hljs-meta">@Before</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span>
-     </span>{
-         MockitoAnnotations.initMocks(<span class="hljs-keyword">this</span>);
+     @Before
+     public void setup()
+     {
+         MockitoAnnotations.initMocks(this);
          mockMvc =MockMvcBuilders.webAppContextSetup(wac).build();
-         mockSession=<span class="hljs-keyword">new</span> MockHttpSession();
+         mockSession=new MockHttpSession();
      }
 
-     <span class="hljs-meta">@Test</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testList</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception</span>{
-         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(<span class="hljs-string">"/users"</span>))
-             .andExpect(MockMvcResultMatchers.view().name(<span class="hljs-string">"list"</span>))
-             .andExpect(MockMvcResultMatchers.model().attributeExists(<span class="hljs-string">"users"</span>))
+     @Test
+     public void testList() throws Exception{
+         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get(&quot;/users&quot;))
+             .andExpect(MockMvcResultMatchers.view().name(&quot;list&quot;))
+             .andExpect(MockMvcResultMatchers.model().attributeExists(&quot;users&quot;))
              .andDo(MockMvcResultHandlers.print())
              .andReturn();
          printMvcResult(result);
-         Assert.assertNotNull(result.getModelAndView().getModel().get(<span class="hljs-string">"users"</span>));
+         Assert.assertNotNull(result.getModelAndView().getModel().get(&quot;users&quot;));
      }
 
-     <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printMvcResult</span><span class="hljs-params">(MvcResult result)</span> <span class="hljs-keyword">throws</span> IOException
-     </span>{
+     private void printMvcResult(MvcResult result) throws IOException
+     {
          MockHttpServletRequest request= result.getRequest();
          MockHttpServletResponse response= result.getResponse();
-         <span class="hljs-comment">//ModelAndView  mv=getModelAndView() //得到执行后的ModelAndView</span>
+         //ModelAndView  mv=getModelAndView() //得到执行后的ModelAndView
 
-         System.out.println(<span class="hljs-string">"Request:"</span>);
-         System.out.println(<span class="hljs-string">"URI:"</span>+request.getRequestURI());
-         System.out.println(<span class="hljs-string">"URL:"</span>+request.getRequestURL());
-         System.out.println(<span class="hljs-string">"Method:"</span>+request.getMethod()+<span class="hljs-string">",ContentType:"</span>+request.getContentType());
- <span class="hljs-comment">//System.out.println("InputStream:"+IOUtils.toString(request.getInputStream()));</span>
-         System.out.println(<span class="hljs-string">"Response:"</span>);
-         System.out.println(<span class="hljs-string">"Status:"</span>+response.getStatus()+<span class="hljs-string">" ErrorMessage:"</span>+response.getErrorMessage());
-         System.out.println(<span class="hljs-string">"content:"</span>+response.getContentAsString());
-         System.out.println(<span class="hljs-string">"contentType:"</span>+response.getContentType());
+         System.out.println(&quot;Request:&quot;);
+         System.out.println(&quot;URI:&quot;+request.getRequestURI());
+         System.out.println(&quot;URL:&quot;+request.getRequestURL());
+         System.out.println(&quot;Method:&quot;+request.getMethod()+&quot;,ContentType:&quot;+request.getContentType());
+ //System.out.println(&quot;InputStream:&quot;+IOUtils.toString(request.getInputStream()));
+         System.out.println(&quot;Response:&quot;);
+         System.out.println(&quot;Status:&quot;+response.getStatus()+&quot; ErrorMessage:&quot;+response.getErrorMessage());
+         System.out.println(&quot;content:&quot;+response.getContentAsString());
+         System.out.println(&quot;contentType:&quot;+response.getContentType());
      }
  }
 </code></pre>
@@ -610,123 +613,123 @@
 <h3 id="header-6">使用示例</h3>
 <ol>
 <li><p>SpringMVC配置加入Restful (<code>xxx-servlet.xml</code>)</p>
-<pre><code class="nullxml"> <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"mediaTypes"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">map</span>&gt;</span>
-             <span class="hljs-comment">&lt;!-- &lt;entry key="html" value="text/html"/&gt; --&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">entry</span> <span class="hljs-attr">key</span>=<span class="hljs-string">"json"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"application/json"</span>/&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-name">map</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-     <span class="hljs-comment">&lt;!-- &lt;property name="defaultContentType" value="text/html"/&gt; --&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewResolvers"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewClass"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"org.springframework.web.servlet.view.JstlView"</span>/&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"prefix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"/WEB-INF/"</span>/&gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"suffix"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">".jsp"</span>/&gt;</span>
-             <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span> 
-         <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"defaultViews"</span>&gt;</span>
-         <span class="hljs-tag">&lt;<span class="hljs-name">list</span>&gt;</span>
-             <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.springframework.web.servlet.view.json.MappingJacksonJsonView"</span> &gt;</span>
-                 <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"objectMapper"</span>&gt;</span>
-                     <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"org.codehaus.jackson.map.ObjectMapper"</span>&gt;</span>
-                         <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"serializationConfig.serializationInclusion"</span>&gt;</span>
-                             <span class="hljs-tag">&lt;<span class="hljs-name">value</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion"</span>&gt;</span>NON_NULL<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
-                         <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span> 
-                     <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-                 <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span> 
-             <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
-         <span class="hljs-tag">&lt;/<span class="hljs-name">list</span>&gt;</span>
-     <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
- <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span>
+<pre><code class="lang-xml"> &lt;bean class=&quot;org.springframework.web.servlet.view.ContentNegotiatingViewResolver&quot;&gt;
+     &lt;property name=&quot;mediaTypes&quot;&gt;
+         &lt;map&gt;
+             &lt;!-- &lt;entry key=&quot;html&quot; value=&quot;text/html&quot;/&gt; --&gt;
+             &lt;entry key=&quot;json&quot; value=&quot;application/json&quot;/&gt;
+         &lt;/map&gt;
+     &lt;/property&gt;
+     &lt;!-- &lt;property name=&quot;defaultContentType&quot; value=&quot;text/html&quot;/&gt; --&gt;
+     &lt;property name=&quot;viewResolvers&quot;&gt;
+         &lt;list&gt;
+             &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+                 &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;
+                 &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/&quot;/&gt;
+                 &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+             &lt;/bean&gt; 
+         &lt;/list&gt;
+     &lt;/property&gt;
+     &lt;property name=&quot;defaultViews&quot;&gt;
+         &lt;list&gt;
+             &lt;bean class=&quot;org.springframework.web.servlet.view.json.MappingJacksonJsonView&quot; &gt;
+                 &lt;property name=&quot;objectMapper&quot;&gt;
+                     &lt;bean class=&quot;org.codehaus.jackson.map.ObjectMapper&quot;&gt;
+                         &lt;property name=&quot;serializationConfig.serializationInclusion&quot;&gt;
+                             &lt;value type=&quot;org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion&quot;&gt;NON_NULL&lt;/value&gt;
+                         &lt;/property&gt; 
+                     &lt;/bean&gt;
+                 &lt;/property&gt; 
+             &lt;/bean&gt;
+         &lt;/list&gt;
+     &lt;/property&gt;
+ &lt;/bean&gt;
 </code></pre>
 </li>
 <li><p>Controller</p>
-<pre><code class="nulljava"> <span class="hljs-meta">@Controller</span>
- <span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/users"</span>)
- <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserController</span></span>{
-     <span class="hljs-keyword">private</span> SysUserService userService;
-     <span class="hljs-function"><span class="hljs-keyword">public</span> SysUserService <span class="hljs-title">getUserService</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> userService;}
-     <span class="hljs-meta">@Inject</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUserService</span><span class="hljs-params">(SysUserService userService)</span> </span>{<span class="hljs-keyword">this</span>.userService = userService;}
+<pre><code class="lang-java"> @Controller
+ @RequestMapping(&quot;/users&quot;)
+ public class UserController{
+     private SysUserService userService;
+     public SysUserService getUserService() {return userService;}
+     @Inject
+     public void setUserService(SysUserService userService) {this.userService = userService;}
 
-     <span class="hljs-meta">@RequestMapping</span>(method=RequestMethod.GET)
-     <span class="hljs-meta">@ResponseBody</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">list</span><span class="hljs-params">()</span></span>{
-         List&lt;User&gt; users=<span class="hljs-keyword">this</span>.userService.list();
-         <span class="hljs-keyword">return</span> users;
+     @RequestMapping(method=RequestMethod.GET)
+     @ResponseBody
+     public Object list(){
+         List&lt;User&gt; users=this.userService.list();
+         return users;
      }
 
-     <span class="hljs-meta">@RequestMapping</span>(value={<span class="hljs-string">"/{id}"</span>},method=RequestMethod.GET)
-     <span class="hljs-meta">@ResponseBody</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">getUser</span><span class="hljs-params">(@PathVariable(<span class="hljs-string">"id"</span>)</span> String id)</span>{
-             <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.userService.get(id);
+     @RequestMapping(value={&quot;/{id}&quot;},method=RequestMethod.GET)
+     @ResponseBody
+     public Object getUser(@PathVariable(&quot;id&quot;) String id){
+             return this.userService.get(id);
      }
 
-     <span class="hljs-meta">@RequestMapping</span>(method=RequestMethod.POST)
-     <span class="hljs-meta">@ResponseBody</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">create</span><span class="hljs-params">(@RequestBody User user,HttpServletRequest request)</span></span>{
-         <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.userService.save(user);
+     @RequestMapping(method=RequestMethod.POST)
+     @ResponseBody
+     public Object create(@RequestBody User user,HttpServletRequest request){
+         return this.userService.save(user);
      }
 
-     <span class="hljs-meta">@RequestMapping</span>(method=RequestMethod.POST)
-     <span class="hljs-meta">@ResponseBody</span>
-     <span class="hljs-function"><span class="hljs-keyword">public</span> Object <span class="hljs-title">upload</span><span class="hljs-params">(@RequestParam(value=<span class="hljs-string">"file"</span>,required=<span class="hljs-keyword">true</span>)</span> MultipartFile file,
-             @<span class="hljs-title">RequestParam</span><span class="hljs-params">(value=<span class="hljs-string">"remark"</span>,required=<span class="hljs-keyword">false</span>)</span> String remark) 
-                     <span class="hljs-keyword">throws</span> IOException, InvalidFormatException
-     </span>{
-         System.out.println(<span class="hljs-string">"ContentType:"</span>+file.getContentType());
-         System.out.println(<span class="hljs-string">"Name:"</span>+file.getName());
-         System.out.println(<span class="hljs-string">"OriginalFilename:"</span>+file.getOriginalFilename());
-         System.out.println(<span class="hljs-string">"Size:"</span>+file.getSize());
-         System.out.println(<span class="hljs-string">"remark:"</span>+remark);
+     @RequestMapping(method=RequestMethod.POST)
+     @ResponseBody
+     public Object upload(@RequestParam(value=&quot;file&quot;,required=true) MultipartFile file,
+             @RequestParam(value=&quot;remark&quot;,required=false) String remark) 
+                     throws IOException, InvalidFormatException
+     {
+         System.out.println(&quot;ContentType:&quot;+file.getContentType());
+         System.out.println(&quot;Name:&quot;+file.getName());
+         System.out.println(&quot;OriginalFilename:&quot;+file.getOriginalFilename());
+         System.out.println(&quot;Size:&quot;+file.getSize());
+         System.out.println(&quot;remark:&quot;+remark);
 
          String filename=file.getOriginalFilename();
-         <span class="hljs-keyword">int</span> pos=filename.lastIndexOf(<span class="hljs-string">"."</span>);
-         String fileExtesion=(pos!=-<span class="hljs-number">1</span>?filename.substring(pos+<span class="hljs-number">1</span>):<span class="hljs-string">"UnKnow"</span>);
+         int pos=filename.lastIndexOf(&quot;.&quot;);
+         String fileExtesion=(pos!=-1?filename.substring(pos+1):&quot;UnKnow&quot;);
 
-         String realpath = req.getSession().getServletContext().getRealPath(<span class="hljs-string">"/resources/uploads/"</span>);
-         FileUtils.copyInputStreamToFile(file.getInputStream(), <span class="hljs-keyword">new</span> File(realpath+File.separatorChar+fileName));
-         <span class="hljs-keyword">return</span> ResponseUtils.sendSuccess(fileName);
+         String realpath = req.getSession().getServletContext().getRealPath(&quot;/resources/uploads/&quot;);
+         FileUtils.copyInputStreamToFile(file.getInputStream(), new File(realpath+File.separatorChar+fileName));
+         return ResponseUtils.sendSuccess(fileName);
      }
  }
 </code></pre>
 </li>
 <li><p>测试</p>
-<pre><code class="nulljava"> <span class="hljs-comment">//GET</span>
- MvcResult result=<span class="hljs-keyword">this</span>.mockMvc.perform(MockMvcRequestBuilders.get(url)
-             .session(<span class="hljs-keyword">this</span>.mockSession)
+<pre><code class="lang-java"> //GET
+ MvcResult result=this.mockMvc.perform(MockMvcRequestBuilders.get(url)
+             .session(this.mockSession)
              .contentType(MediaType.APPLICATION_JSON))
              .andDo(MockMvcResultHandlers.print())
              .andExpect(status().isOk())
-             .andExpect(jsonPath(<span class="hljs-string">"$.success"</span>,Matchers.equalTo(<span class="hljs-keyword">true</span>)))
+             .andExpect(jsonPath(&quot;$.success&quot;,Matchers.equalTo(true)))
              .andReturn();
 
- <span class="hljs-comment">//POST</span>
- User user=<span class="hljs-keyword">new</span> User();
- user.setName(<span class="hljs-string">"xxx"</span>);
+ //POST
+ User user=new User();
+ user.setName(&quot;xxx&quot;);
  user.setAge(xxx);
 
- ObjectMapper mapper = <span class="hljs-keyword">new</span> ObjectMapper();
+ ObjectMapper mapper = new ObjectMapper();
  mapper.setSerializationInclusion(Include.NON_NULL);
- <span class="hljs-keyword">byte</span>[] reqBytes=mapper.writeValueAsString(user);
+ byte[] reqBytes=mapper.writeValueAsString(user);
 
- MvcResult result=<span class="hljs-keyword">this</span>.mockMvc.perform(post(url)
+ MvcResult result=this.mockMvc.perform(post(url)
              .contentType(MediaType.APPLICATION_JSON)
              .content(reqBytes))
              .andDo(MockMvcResultHandlers.print())
              .andExpect(status().isOk())
-             <span class="hljs-comment">//.andExpect(jsonPath("$.success",Matchers.equalTo(true)))</span>
-             .andExpect(jsonPath(<span class="hljs-string">"$.name"</span>,Matchers.equalTo(<span class="hljs-string">"xxx"</span>)))
+             //.andExpect(jsonPath(&quot;$.success&quot;,Matchers.equalTo(true)))
+             .andExpect(jsonPath(&quot;$.name&quot;,Matchers.equalTo(&quot;xxx&quot;)))
              .andReturn();
 </code></pre>
 <p> 或使用<code>RestTemplate</code></p>
-<pre><code class="nulljava"> RestTemplate restTemplate = <span class="hljs-keyword">new</span> RestTemplate();
- User[] users = restTemplate.getForObject(SERVER_URI+<span class="hljs-string">"/users"</span>, User[].class);
- User user = restTemplate.getForObject(SERVER_URI+<span class="hljs-string">"/users/{id}"</span>, User.class,id);
- User response = restTemplate.postForObject(SERVER_URI+<span class="hljs-string">"/users"</span>, user, User.class);
+<pre><code class="lang-java"> RestTemplate restTemplate = new RestTemplate();
+ User[] users = restTemplate.getForObject(SERVER_URI+&quot;/users&quot;, User[].class);
+ User user = restTemplate.getForObject(SERVER_URI+&quot;/users/{id}&quot;, User.class,id);
+ User response = restTemplate.postForObject(SERVER_URI+&quot;/users&quot;, user, User.class);
 </code></pre>
 </li>
 </ol>
@@ -765,10 +768,17 @@
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");

@@ -21,7 +21,10 @@
   <!-- CSS -->
   <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
   
-    <link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
   
   <link rel="stylesheet" href="/css/fontello.css">
   <link rel="stylesheet" href="/css/style.css">
@@ -213,7 +216,7 @@ ClassPath=%Java_Home%\jre\lib\rt.jar;.    （D:\Soft\Java\jre\lib\rt.jar）
 <li><p>配置环境变量</p>
 <blockquote>
 <p>vi /etc/profile</p>
-<pre><code class="nullvim"> export JAVA_HOME=/usr/java/jdk1.8.0_45
+<pre><code class="lang-vim"> export JAVA_HOME=/usr/java/jdk1.8.0_45
  export PATH=$PATH:$JAVA_HOME/bin
  export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 </code></pre>
@@ -357,21 +360,21 @@ Class-Path: lib/slf4j-log4j12-1.6.6.jar lib/slf4j-api-1.6.6.jar lib/log4j-1.2.17
 <h3 id="header-14">String</h3>
 <p>String是类（引用数据类型）</p>
 <ul>
-<li>使用<code>new</code>关键字创建<pre><code class="nulljava">  String a=<span class="hljs-keyword">new</span> String(<span class="hljs-string">"Hello"</span>);
-  String b=<span class="hljs-keyword">new</span> String(<span class="hljs-string">"Hello"</span>);
-  System.out.println(a==b);            <span class="hljs-comment">//false</span>
-  System.out.println(a.equals(b));    <span class="hljs-comment">//true</span>
+<li>使用<code>new</code>关键字创建<pre><code class="lang-java">  String a=new String(&quot;Hello&quot;);
+  String b=new String(&quot;Hello&quot;);
+  System.out.println(a==b);            //false
+  System.out.println(a.equals(b));    //true
 </code></pre>
 </li>
-<li>直接创建（会自动使用字符串池）<pre><code class="nulljava">  String a=<span class="hljs-string">"Hello"</span>;
-  String b=<span class="hljs-string">"Hello"</span>;
-  System.out.println(a==b);            <span class="hljs-comment">//true</span>
-  System.out.println(a.equals(b));    <span class="hljs-comment">//true</span>
+<li>直接创建（会自动使用字符串池）<pre><code class="lang-java">  String a=&quot;Hello&quot;;
+  String b=&quot;Hello&quot;;
+  System.out.println(a==b);            //true
+  System.out.println(a.equals(b));    //true
 </code></pre>
-<pre><code class="nulljava">  String a=<span class="hljs-keyword">new</span> String(<span class="hljs-string">"Hello"</span>);
-  String b=<span class="hljs-string">"Hello"</span>;
-  System.out.println(a==b);             <span class="hljs-comment">//false</span>
-  System.out.println(a.equals(b));    <span class="hljs-comment">//true</span>
+<pre><code class="lang-java">  String a=new String(&quot;Hello&quot;);
+  String b=&quot;Hello&quot;;
+  System.out.println(a==b);             //false
+  System.out.println(a.equals(b));    //true
 </code></pre>
 </li>
 </ul>
@@ -404,135 +407,135 @@ Class-Path: lib/slf4j-log4j12-1.6.6.jar lib/slf4j-api-1.6.6.jar lib/log4j-1.2.17
 </ul>
 <h3 id="header-16">String.format</h3>
 <p>格式化数字：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDigit</span><span class="hljs-params">()</span>
-</span>{
-    System.out.println(String.format(<span class="hljs-string">"%1$,09d"</span>, -<span class="hljs-number">3123</span>)); <span class="hljs-comment">// -0003,123</span>
-    System.out.println(String.format(<span class="hljs-string">"%1$9d"</span>, -<span class="hljs-number">31</span>));     <span class="hljs-comment">//      -31</span>
-    System.out.println(String.format(<span class="hljs-string">"%1$-9d"</span>, -<span class="hljs-number">31</span>));     <span class="hljs-comment">//-31      </span>
-    System.out.println(String.format(<span class="hljs-string">"%1$(9d"</span>, -<span class="hljs-number">31</span>));     <span class="hljs-comment">//     (31)</span>
-    System.out.println(String.format(<span class="hljs-string">"%1$#9x"</span>, <span class="hljs-number">5689</span>));     <span class="hljs-comment">//   0x1639</span>
+<pre><code class="lang-java">@Test
+public void testDigit()
+{
+    System.out.println(String.format(&quot;%1$,09d&quot;, -3123)); // -0003,123
+    System.out.println(String.format(&quot;%1$9d&quot;, -31));     //      -31
+    System.out.println(String.format(&quot;%1$-9d&quot;, -31));     //-31      
+    System.out.println(String.format(&quot;%1$(9d&quot;, -31));     //     (31)
+    System.out.println(String.format(&quot;%1$#9x&quot;, 5689));     //   0x1639
 
-    <span class="hljs-comment">// 数字9表示九位</span>
-    System.out.println(String.format(<span class="hljs-string">"%9d"</span>, <span class="hljs-number">12345678</span>));        <span class="hljs-comment">// 不足9时，也要空出空间: 12345678</span>
-    System.out.println(String.format(<span class="hljs-string">"%-9d"</span>, <span class="hljs-number">12345678</span>));    <span class="hljs-comment">//12345678 </span>
-    System.out.println(String.format(<span class="hljs-string">"%,09d"</span>, <span class="hljs-number">123456</span>));        <span class="hljs-comment">//00123,456</span>
+    // 数字9表示九位
+    System.out.println(String.format(&quot;%9d&quot;, 12345678));        // 不足9时，也要空出空间: 12345678
+    System.out.println(String.format(&quot;%-9d&quot;, 12345678));    //12345678 
+    System.out.println(String.format(&quot;%,09d&quot;, 123456));        //00123,456
 
-    <span class="hljs-comment">// 如为负数，则用括号括起来，如不是则不处理</span>
-    System.out.println(String.format(<span class="hljs-string">"%(9d"</span>, -<span class="hljs-number">123456</span>));        <span class="hljs-comment">// (123456)</span>
-    System.out.println(String.format(<span class="hljs-string">"% 9d"</span>, -<span class="hljs-number">123456</span>));        <span class="hljs-comment">//  -123456</span>
+    // 如为负数，则用括号括起来，如不是则不处理
+    System.out.println(String.format(&quot;%(9d&quot;, -123456));        // (123456)
+    System.out.println(String.format(&quot;% 9d&quot;, -123456));        //  -123456
 
-    <span class="hljs-comment">// 选择第二个args，即选择”1234“，而非”12345678“</span>
-    System.out.println(String.format(<span class="hljs-string">"%2$9d"</span>, <span class="hljs-number">12345678</span>, <span class="hljs-number">1234</span>));    <span class="hljs-comment">//     1234</span>
-    System.out.println(String.format(<span class="hljs-string">"%#9x"</span>, <span class="hljs-number">255</span>));                <span class="hljs-comment">//     0xff</span>
-    System.out.println(String.format(<span class="hljs-string">"%#9o"</span>, <span class="hljs-number">255</span>));                <span class="hljs-comment">//     0377</span>
-    System.out.println(String.format(<span class="hljs-string">"%9x"</span>, <span class="hljs-number">255</span>));                <span class="hljs-comment">//       ff</span>
-    System.out.println(String.format(<span class="hljs-string">"%9o"</span>, <span class="hljs-number">255</span>));                <span class="hljs-comment">//      377</span>
-    System.out.println(String.format(<span class="hljs-string">"%d%%"</span>, <span class="hljs-number">12</span>));                <span class="hljs-comment">//12%</span>
+    // 选择第二个args，即选择”1234“，而非”12345678“
+    System.out.println(String.format(&quot;%2$9d&quot;, 12345678, 1234));    //     1234
+    System.out.println(String.format(&quot;%#9x&quot;, 255));                //     0xff
+    System.out.println(String.format(&quot;%#9o&quot;, 255));                //     0377
+    System.out.println(String.format(&quot;%9x&quot;, 255));                //       ff
+    System.out.println(String.format(&quot;%9o&quot;, 255));                //      377
+    System.out.println(String.format(&quot;%d%%&quot;, 12));                //12%
 }
 </code></pre>
 <p>格式化日期：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDate</span><span class="hljs-params">()</span>
-</span>{
-    Date date = <span class="hljs-keyword">new</span> Date();
+<pre><code class="lang-java">@Test
+public void testDate()
+{
+    Date date = new Date();
 
-    System.out.println(String.format(<span class="hljs-string">"%td"</span>, date));    <span class="hljs-comment">// 输出两位数字的日期，不够位补零:06</span>
-    System.out.println(String.format(<span class="hljs-string">"%te"</span>, date));    <span class="hljs-comment">// 输出两位数字的日期，不补零:6</span>
-    System.out.println(String.format(<span class="hljs-string">"%tm"</span>, date));    <span class="hljs-comment">// 输出两位数字的月份，不够位自动补零:06</span>
+    System.out.println(String.format(&quot;%td&quot;, date));    // 输出两位数字的日期，不够位补零:06
+    System.out.println(String.format(&quot;%te&quot;, date));    // 输出两位数字的日期，不补零:6
+    System.out.println(String.format(&quot;%tm&quot;, date));    // 输出两位数字的月份，不够位自动补零:06
 
-    System.out.println(String.format(<span class="hljs-string">"%ty"</span>, date));    <span class="hljs-comment">// 输出两位数字的年份:14</span>
-    System.out.println(String.format(<span class="hljs-string">"%tY"</span>, date));    <span class="hljs-comment">// 输出四位数字的年份:2014</span>
-    System.out.println(String.format(<span class="hljs-string">"%tj"</span>, date));    <span class="hljs-comment">// 输出一年中的第几天（001-366）:157</span>
+    System.out.println(String.format(&quot;%ty&quot;, date));    // 输出两位数字的年份:14
+    System.out.println(String.format(&quot;%tY&quot;, date));    // 输出四位数字的年份:2014
+    System.out.println(String.format(&quot;%tj&quot;, date));    // 输出一年中的第几天（001-366）:157
 
-    System.out.println(String.format(<span class="hljs-string">"%ta"</span>, date));    <span class="hljs-comment">// 输出指定语言环境的星期简称:Fri</span>
-    System.out.println(String.format(<span class="hljs-string">"%tA"</span>, date));    <span class="hljs-comment">// 输出指定语言环境的星期全称:Firday</span>
+    System.out.println(String.format(&quot;%ta&quot;, date));    // 输出指定语言环境的星期简称:Fri
+    System.out.println(String.format(&quot;%tA&quot;, date));    // 输出指定语言环境的星期全称:Firday
 
-    System.out.println(String.format(<span class="hljs-string">"%tb"</span>, date));    <span class="hljs-comment">// 输出指定语言环境的月份简称:Jun</span>
-    System.out.println(String.format(<span class="hljs-string">"%tB"</span>, date));    <span class="hljs-comment">// 输出指定语言环境的月份全称:June</span>
+    System.out.println(String.format(&quot;%tb&quot;, date));    // 输出指定语言环境的月份简称:Jun
+    System.out.println(String.format(&quot;%tB&quot;, date));    // 输出指定语言环境的月份全称:June
 
-    System.out.println(String.format(<span class="hljs-string">"%tc"</span>, date));    <span class="hljs-comment">// 输出指定语言环境的全部日期和时间信息:Fri Jun 06 09:07:56 CST 2014</span>
+    System.out.println(String.format(&quot;%tc&quot;, date));    // 输出指定语言环境的全部日期和时间信息:Fri Jun 06 09:07:56 CST 2014
 }
 </code></pre>
 <p>格式化时间：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testTime</span><span class="hljs-params">()</span>
-</span>{
-    Date date = <span class="hljs-keyword">new</span> Date();
-    System.out.println(date); <span class="hljs-comment">//Fri Jun 06 09:08:11 CST 2014</span>
+<pre><code class="lang-java">@Test
+public void testTime()
+{
+    Date date = new Date();
+    System.out.println(date); //Fri Jun 06 09:08:11 CST 2014
 
-    System.out.println(String.format(<span class="hljs-string">"%tH"</span>, date));    <span class="hljs-comment">// 输出两位24小时制的小时:09</span>
-    System.out.println(String.format(<span class="hljs-string">"%tk"</span>, date));    <span class="hljs-comment">// 输出不补零24小时制的小时:9</span>
+    System.out.println(String.format(&quot;%tH&quot;, date));    // 输出两位24小时制的小时:09
+    System.out.println(String.format(&quot;%tk&quot;, date));    // 输出不补零24小时制的小时:9
 
-    System.out.println(String.format(<span class="hljs-string">"%tI"</span>, date));    <span class="hljs-comment">// 输出两位12小时制的小时:09</span>
-    System.out.println(String.format(<span class="hljs-string">"%tl"</span>, date));    <span class="hljs-comment">// 输出不补零12小时制的小时:9</span>
+    System.out.println(String.format(&quot;%tI&quot;, date));    // 输出两位12小时制的小时:09
+    System.out.println(String.format(&quot;%tl&quot;, date));    // 输出不补零12小时制的小时:9
 
-    System.out.println(String.format(<span class="hljs-string">"%tM"</span>, date));    <span class="hljs-comment">// 输出两位的分钟:08</span>
-    System.out.println(String.format(<span class="hljs-string">"%tS"</span>, date));    <span class="hljs-comment">// 输出两位的秒钟:11</span>
-    System.out.println(String.format(<span class="hljs-string">"%tZ"</span>, date));    <span class="hljs-comment">// 输出时区缩写形式的字符串:CST</span>
-    System.out.println(String.format(<span class="hljs-string">"%tp"</span>, date));    <span class="hljs-comment">// 输出特定语言环境的上午或下午标记:am</span>
+    System.out.println(String.format(&quot;%tM&quot;, date));    // 输出两位的分钟:08
+    System.out.println(String.format(&quot;%tS&quot;, date));    // 输出两位的秒钟:11
+    System.out.println(String.format(&quot;%tZ&quot;, date));    // 输出时区缩写形式的字符串:CST
+    System.out.println(String.format(&quot;%tp&quot;, date));    // 输出特定语言环境的上午或下午标记:am
 }
 </code></pre>
 <p>格式化时间日期：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testDateTime</span><span class="hljs-params">()</span>
-</span>{
-    Date date = <span class="hljs-keyword">new</span> Date();
+<pre><code class="lang-java">@Test
+public void testDateTime()
+{
+    Date date = new Date();
 
-    System.out.println(String.format(<span class="hljs-string">"%tR"</span>, date));    <span class="hljs-comment">// 输出24小时制，被格式化为”%tH:%tM:%tS“:09:10</span>
-    System.out.println(String.format(<span class="hljs-string">"%tT"</span>, date));    <span class="hljs-comment">// 输出24小时制，被格式化为”%tH:%tM“:09:10:23</span>
-    System.out.println(String.format(<span class="hljs-string">"%tr"</span>, date));    <span class="hljs-comment">// 输出24小时制，被格式化为”%tH:%tM:%tS:%tp“:09:10:23 AM</span>
+    System.out.println(String.format(&quot;%tR&quot;, date));    // 输出24小时制，被格式化为”%tH:%tM:%tS“:09:10
+    System.out.println(String.format(&quot;%tT&quot;, date));    // 输出24小时制，被格式化为”%tH:%tM“:09:10:23
+    System.out.println(String.format(&quot;%tr&quot;, date));    // 输出24小时制，被格式化为”%tH:%tM:%tS:%tp“:09:10:23 AM
 
-    System.out.println(String.format(<span class="hljs-string">"%tD"</span>, date));    <span class="hljs-comment">// 输出日期，被格式化为”%tm/%td/%ty“:06/06/14</span>
-    System.out.println(String.format(<span class="hljs-string">"%tF"</span>, date));    <span class="hljs-comment">// 输出日期，ISO 8061格式的完整日期，被格式化”%tY-%tm-%td“:2014-06-06</span>
-    System.out.println(String.format(<span class="hljs-string">"%tc"</span>, date));    <span class="hljs-comment">// 输出日期和时间，被格式化”%ta%tb%td%tT%Z%tY“:Fri Jun 06 09:10:23 CST 2014</span>
+    System.out.println(String.format(&quot;%tD&quot;, date));    // 输出日期，被格式化为”%tm/%td/%ty“:06/06/14
+    System.out.println(String.format(&quot;%tF&quot;, date));    // 输出日期，ISO 8061格式的完整日期，被格式化”%tY-%tm-%td“:2014-06-06
+    System.out.println(String.format(&quot;%tc&quot;, date));    // 输出日期和时间，被格式化”%ta%tb%td%tT%Z%tY“:Fri Jun 06 09:10:23 CST 2014
 }
 </code></pre>
 <h3 id="header-17">时间处理</h3>
 <p><img src="/2013/05/01/dateformat.png" alt="Date Format"></p>
 <h4 id="header-18">SimpleDateFormat</h4>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFormatDateTime</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ParseException</span>{
-    SimpleDateFormat sdf = <span class="hljs-keyword">new</span> SimpleDateFormat (<span class="hljs-string">"yyyy-MM-dd HH:mm:ss a"</span>,Locale.ENGLISH);
-    Date now=<span class="hljs-keyword">new</span> Date();
+<pre><code class="lang-java">@Test
+public void testFormatDateTime() throws ParseException{
+    SimpleDateFormat sdf = new SimpleDateFormat (&quot;yyyy-MM-dd HH:mm:ss a&quot;,Locale.ENGLISH);
+    Date now=new Date();
     System.out.println(sdf.format(now));
 }
 
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testParseTime</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ParseException</span>{
-    SimpleDateFormat sdf = <span class="hljs-keyword">new</span> SimpleDateFormat (<span class="hljs-string">"h:mma"</span>,Locale.ENGLISH); 
-    Date d=sdf.parse(<span class="hljs-string">"6:20pm"</span>);
+@Test
+public void testParseTime() throws ParseException{
+    SimpleDateFormat sdf = new SimpleDateFormat (&quot;h:mma&quot;,Locale.ENGLISH); 
+    Date d=sdf.parse(&quot;6:20pm&quot;);
     System.out.println(d);
 }
 </code></pre>
 <h4 id="header-19">ISO8601Utils</h4>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testISOTime</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ParseException</span>{
-    System.out.println(<span class="hljs-string">"-----------1------------------"</span>);
-    String isoStr=<span class="hljs-string">"2014-12-17T00:00:00Z"</span>;
+<pre><code class="lang-java">@Test
+public void testISOTime() throws ParseException{
+    System.out.println(&quot;-----------1------------------&quot;);
+    String isoStr=&quot;2014-12-17T00:00:00Z&quot;;
     Date date=ISO8601Utils.parse(isoStr);
     System.out.println(date);
 
-    System.out.println(<span class="hljs-string">"-----------2------------------"</span>);
-    String dateStr=<span class="hljs-string">"2014-12-17"</span>;
-    SimpleDateFormat sdf=<span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">"yyyy-MM-dd"</span>);
+    System.out.println(&quot;-----------2------------------&quot;);
+    String dateStr=&quot;2014-12-17&quot;;
+    SimpleDateFormat sdf=new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
     date=sdf.parse(dateStr);
     System.out.println(date);
     System.out.println(ISO8601Utils.format(date));
 
-    System.out.println(<span class="hljs-string">"-----------3------------------"</span>);
+    System.out.println(&quot;-----------3------------------&quot;);
     Calendar c=Calendar.getInstance();
-    c.set(Calendar.YEAR, <span class="hljs-number">2014</span>);
-    c.set(Calendar.MONTH,<span class="hljs-number">11</span>);
-    c.set(Calendar.DAY_OF_MONTH,<span class="hljs-number">17</span>);
+    c.set(Calendar.YEAR, 2014);
+    c.set(Calendar.MONTH,11);
+    c.set(Calendar.DAY_OF_MONTH,17);
     date=c.getTime();
     System.out.println(date);
     System.out.println(ISO8601Utils.format(date));
 
-    System.out.println(<span class="hljs-string">"-----------4------------------"</span>);
-    c.set(Calendar.HOUR_OF_DAY,<span class="hljs-number">0</span>);
-    c.set(Calendar.MINUTE,<span class="hljs-number">0</span>);
-    c.set(Calendar.SECOND,<span class="hljs-number">0</span>);
+    System.out.println(&quot;-----------4------------------&quot;);
+    c.set(Calendar.HOUR_OF_DAY,0);
+    c.set(Calendar.MINUTE,0);
+    c.set(Calendar.SECOND,0);
     date=c.getTime();
     System.out.println(date);
     System.out.println(ISO8601Utils.format(date));
@@ -573,33 +576,33 @@ Class-Path: lib/slf4j-log4j12-1.6.6.jar lib/slf4j-api-1.6.6.jar lib/log4j-1.2.17
 </li>
 </ul>
 <p>示例：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Father</span></span>{
-    <span class="hljs-keyword">private</span> String name=<span class="hljs-string">"Father"</span>;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">t1</span><span class="hljs-params">()</span></span>{
-        System.out.println(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">" t1"</span>);
+<pre><code class="lang-java">public class Father{
+    private String name=&quot;Father&quot;;
+    public void t1(){
+        System.out.println(this.name+&quot; t1&quot;);
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">t2</span><span class="hljs-params">()</span></span>{
-        System.out.println(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">" t2"</span>);
-    }
-}
-
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Son</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Father</span></span>{
-    <span class="hljs-keyword">private</span> String name=<span class="hljs-string">"Son"</span>;
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">t2</span><span class="hljs-params">()</span></span>{
-        System.out.println(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">" t2-extends "</span>+<span class="hljs-keyword">super</span>.name);
-    }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">t3</span><span class="hljs-params">()</span></span>{
-        System.out.println(<span class="hljs-keyword">this</span>.name+<span class="hljs-string">"t3"</span>+);
+    public void t2(){
+        System.out.println(this.name+&quot; t2&quot;);
     }
 }
 
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testExtend</span><span class="hljs-params">()</span></span>{
-    Father father= <span class="hljs-keyword">new</span> Son();    <span class="hljs-comment">//声明父类，创建子类</span>
-    father.t1();    <span class="hljs-comment">//Father t1</span>
-    father.t2();    <span class="hljs-comment">//Son t2-extends Father</span>
-    ((Son)father).t3()    <span class="hljs-comment">//Son t3</span>
+public class Son extends Father{
+    private String name=&quot;Son&quot;;
+    @Override
+    public void t2(){
+        System.out.println(this.name+&quot; t2-extends &quot;+super.name);
+    }
+    public void t3(){
+        System.out.println(this.name+&quot;t3&quot;+);
+    }
+}
+
+@Test
+public void testExtend(){
+    Father father= new Son();    //声明父类，创建子类
+    father.t1();    //Father t1
+    father.t2();    //Son t2-extends Father
+    ((Son)father).t3()    //Son t3
 }
 </code></pre>
 <p>Object类</p>
@@ -652,43 +655,43 @@ Class-Path: lib/slf4j-log4j12-1.6.6.jar lib/slf4j-api-1.6.6.jar lib/log4j-1.2.17
 </li>
 </ul>
 <p>示例：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Color{
+<pre><code class="lang-java">public enum Color{
     RED,BLUE,BLACK,YELLOW,GREEN
 }
 </code></pre>
 <p>扩展：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Color{
-    RED(<span class="hljs-number">255</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>),BLUE(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>),BLACK(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>),YELLOW(<span class="hljs-number">255</span>,<span class="hljs-number">255</span>,<span class="hljs-number">0</span>),GREEN(<span class="hljs-number">0</span>,<span class="hljs-number">255</span>,<span class="hljs-number">0</span>);  
+<pre><code class="lang-java">public enum Color{
+    RED(255,0,0),BLUE(0,0,255),BLACK(0,0,0),YELLOW(255,255,0),GREEN(0,255,0);  
 
-    <span class="hljs-comment">//自定义数据域</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> redValue;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> greenValue;
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> blueValue;
+    //自定义数据域
+    private int redValue;
+    private int greenValue;
+    private int blueValue;
 
-    <span class="hljs-comment">//构造枚举值，比如RED(255,0,0)</span>
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Color</span><span class="hljs-params">(<span class="hljs-keyword">int</span> rv,<span class="hljs-keyword">int</span> gv,<span class="hljs-keyword">int</span> bv)</span></span>{
-     <span class="hljs-keyword">this</span>.redValue=rv;
-     <span class="hljs-keyword">this</span>.greenValue=gv;
-     <span class="hljs-keyword">this</span>.blueValue=bv;
+    //构造枚举值，比如RED(255,0,0)
+    private Color(int rv,int gv,int bv){
+     this.redValue=rv;
+     this.greenValue=gv;
+     this.blueValue=bv;
     }
 }
 </code></pre>
 <p>使用：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testEnum</span><span class="hljs-params">()</span></span>{
-    Color.RED.ordinal();     <span class="hljs-comment">// return: 0</span>
-    Color.BLUE.ordinal();  <span class="hljs-comment">//return: 1</span>
-    Color.RED.compareTo(Color.BLUE);  <span class="hljs-comment">//return: -1</span>
+<pre><code class="lang-java">@Test
+public void testEnum(){
+    Color.RED.ordinal();     // return: 0
+    Color.BLUE.ordinal();  //return: 1
+    Color.RED.compareTo(Color.BLUE);  //return: -1
 
     Color[] colors=Color.values();
-     <span class="hljs-keyword">for</span>(Color c:colors){
-            System.out.print(c+<span class="hljs-string">","</span>);
-     }<span class="hljs-comment">//print: RED,BLUE,BLACK YELLOW,GREEN</span>
+     for(Color c:colors){
+            System.out.print(c+&quot;,&quot;);
+     }//print: RED,BLUE,BLACK YELLOW,GREEN
 
     Color c=Color.RED;
-    System.out.println(c);    <span class="hljs-comment">//print: RED</span>
+    System.out.println(c);    //print: RED
 
-    Color.valueOf(<span class="hljs-string">"BLUE"</span>);   <span class="hljs-comment">//return: Color.BLUE</span>
+    Color.valueOf(&quot;BLUE&quot;);   //return: Color.BLUE
 }
 </code></pre>
 <h3 id="header-27">final</h3>
@@ -724,34 +727,34 @@ Class-Path: lib/slf4j-log4j12-1.6.6.jar lib/slf4j-api-1.6.6.jar lib/log4j-1.2.17
 <li>可以置于类中的任何地方</li>
 </ul>
 <p>示例：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> </span>{
-    Person person = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"Test"</span>);
-    <span class="hljs-keyword">static</span>{
-        System.out.println(<span class="hljs-string">"test static"</span>);
+<pre><code class="lang-java">public class Test {
+    Person person = new Person(&quot;Test&quot;);
+    static{
+        System.out.println(&quot;test static&quot;);
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Test</span><span class="hljs-params">()</span> </span>{
-        System.out.println(<span class="hljs-string">"test constructor"</span>);
+    public Test() {
+        System.out.println(&quot;test constructor&quot;);
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
-        <span class="hljs-keyword">new</span> MyClass();
+    public static void main(String[] args) {
+        new MyClass();
     }
 }
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span></span>{
-    <span class="hljs-keyword">static</span>{
-        System.out.println(<span class="hljs-string">"person static"</span>);
+public class Person{
+    static{
+        System.out.println(&quot;person static&quot;);
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(String str)</span> </span>{
-        System.out.println(<span class="hljs-string">"person "</span>+str);
+    public Person(String str) {
+        System.out.println(&quot;person &quot;+str);
     }
 }
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyClass</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Test</span> </span>{
-    Person person = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"MyClass"</span>);
-    <span class="hljs-keyword">static</span>{
-        System.out.println(<span class="hljs-string">"myclass static"</span>);
+public class MyClass extends Test {
+    Person person = new Person(&quot;MyClass&quot;);
+    static{
+        System.out.println(&quot;myclass static&quot;);
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyClass</span><span class="hljs-params">()</span> </span>{
-        System.out.println(<span class="hljs-string">"myclass constructor"</span>);
+    public MyClass() {
+        System.out.println(&quot;myclass constructor&quot;);
     }
 }
 </code></pre>
@@ -766,47 +769,47 @@ myclass constructor
 </code></pre><h3 id="header-29">自定义注解</h3>
 <p>示例：</p>
 <p>定义注解</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Retention</span>(RetentionPolicy.RUNTIME)
-<span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> ExcelResources {
-    <span class="hljs-function">String <span class="hljs-title">title</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> ""</span>;
-    <span class="hljs-keyword">int</span>[] order() <span class="hljs-keyword">default</span> {};
-    <span class="hljs-keyword">public</span> Class&lt;? extends ExcelFormat&gt; format() <span class="hljs-keyword">default</span> ExcelFormat.None.class;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isRefClass</span><span class="hljs-params">()</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">false</span></span>;
+<pre><code class="lang-java">@Retention(RetentionPolicy.RUNTIME)
+public @interface ExcelResources {
+    String title() default &quot;&quot;;
+    int[] order() default {};
+    public Class&lt;? extends ExcelFormat&gt; format() default ExcelFormat.None.class;
+    public boolean isRefClass() default false;
 }
 </code></pre>
 <p>使用注解</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Schedule</span></span>{
-    <span class="hljs-meta">@ExcelResources</span>(title=<span class="hljs-string">"标识"</span>,order=<span class="hljs-number">1</span>)
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">return</span> id;
+<pre><code class="lang-java">public class Schedule{
+    @ExcelResources(title=&quot;标识&quot;,order=1)
+    public int getId() {
+        return id;
     }
-    <span class="hljs-meta">@ExcelResources</span>(title=<span class="hljs-string">"Boarding Time"</span>,order=<span class="hljs-number">3</span>,format=ScheduleFormat.class)
-    <span class="hljs-function"><span class="hljs-keyword">public</span> CrossSchedule <span class="hljs-title">getSchedule</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">return</span> schedule;
+    @ExcelResources(title=&quot;Boarding Time&quot;,order=3,format=ScheduleFormat.class)
+    public CrossSchedule getSchedule(){
+        return schedule;
     }
     ...
 }
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScheduleFormat</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ExcelFormat</span></span>{
-    <span class="hljs-keyword">private</span> SimpleDateFormat sdf = <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">"yyyy-MM-dd"</span>);
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">format</span><span class="hljs-params">(Object obj)</span></span>{
-        <span class="hljs-keyword">if</span>(obj!=<span class="hljs-keyword">null</span> &amp;&amp; obj <span class="hljs-keyword">instanceof</span> CrossSchedule){
+public class ScheduleFormat extends ExcelFormat{
+    private SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+    @Override
+    public String format(Object obj){
+        if(obj!=null &amp;&amp; obj instanceof CrossSchedule){
             CrossSchedule schedule=(CrossSchedule)obj;
-            <span class="hljs-keyword">return</span> sdf.format(schedule.getServiceDate())+<span class="hljs-string">" ("</span>+schedule.getDayOfWeekCn()+<span class="hljs-string">")"</span>;
+            return sdf.format(schedule.getServiceDate())+&quot; (&quot;+schedule.getDayOfWeekCn()+&quot;)&quot;;
         }
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+        return null;
     }
 }
 </code></pre>
 <p>解析处理注解</p>
-<pre><code class="nulljava">Method[] methods = Schedule.class.getDeclaredMethods();
-<span class="hljs-keyword">for</span>(Method method:methods) {
-    <span class="hljs-keyword">if</span>(method.isAnnotationPresent(ExcelResources.class)) {
+<pre><code class="lang-java">Method[] methods = Schedule.class.getDeclaredMethods();
+for(Method method:methods) {
+    if(method.isAnnotationPresent(ExcelResources.class)) {
         ExcelResources er = method.getAnnotation(ExcelResources.class);
         String title=er.title();
-        <span class="hljs-keyword">int</span>[] orders=er.order();
+        int[] orders=er.order();
         ExcelFormat format=er.format();
-        <span class="hljs-keyword">boolean</span> isRef=er.isRefClass();
+        boolean isRef=er.isRefClass();
         ...
     }
 }
@@ -821,21 +824,21 @@ myclass constructor
  数据类型[] 数组名 = {初始值，初始值};
 </code></pre><p>eg:</p>
 <p>一维数组：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">int</span>[] a=<span class="hljs-keyword">new</span> a[<span class="hljs-number">3</span>];
-a[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;
-a[<span class="hljs-number">1</span>]=<span class="hljs-number">2</span>;
-a[<span class="hljs-number">2</span>]=<span class="hljs-number">3</span>;
+<pre><code class="lang-java">int[] a=new a[3];
+a[0]=1;
+a[1]=2;
+a[2]=3;
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">int</span>[] a={<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>};
+<pre><code class="lang-java">int[] a={1,2,3};
 </code></pre>
 <p>二维数组：</p>
-<pre><code class="nulljava"><span class="hljs-keyword">int</span>[][] a=<span class="hljs-keyword">new</span> a[<span class="hljs-number">2</span>][<span class="hljs-number">3</span>];
-a[<span class="hljs-number">0</span>]={<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>};
-a[<span class="hljs-number">1</span>]={<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>};
+<pre><code class="lang-java">int[][] a=new a[2][3];
+a[0]={1,2,3};
+a[1]={4,5,6};
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">int</span>[][] a={
-    {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>},
-    {<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>}
+<pre><code class="lang-java">int[][] a={
+    {1,2,3},
+    {4,5,6}
 }
 </code></pre>
 <h3 id="header-32">集合框架</h3>
@@ -877,79 +880,79 @@ a[<span class="hljs-number">1</span>]={<span class="hljs-number">4</span>,<span 
 </li>
 </ul>
 <p>Collection使用示例：</p>
-<pre><code class="nulljava">Student stu1=<span class="hljs-keyword">new</span> Student(<span class="hljs-number">1</span>,<span class="hljs-string">"Tom"</span>);
-Student stu2=<span class="hljs-keyword">new</span> Student(<span class="hljs-number">2</span>,<span class="hljs-string">"Jerry"</span>);
-Student stu3=<span class="hljs-keyword">new</span> Student(<span class="hljs-number">3</span>,<span class="hljs-string">"Lucy"</span>);
+<pre><code class="lang-java">Student stu1=new Student(1,&quot;Tom&quot;);
+Student stu2=new Student(2,&quot;Jerry&quot;);
+Student stu3=new Student(3,&quot;Lucy&quot;);
 
-List&lt;Student&gt; students=<span class="hljs-keyword">new</span> ArrayList&lt;Student&gt;();
+List&lt;Student&gt; students=new ArrayList&lt;Student&gt;();
 students.add(stu1);
 students.add(stu2);
-students.add(<span class="hljs-number">0</span>,stu3);    <span class="hljs-comment">//students：(3,Lucy),(1,Tom),(2,Jerry)</span>
-students.add(stu1);        <span class="hljs-comment">//students：(3,Lucy),(1,Tom),(2,Jerry),(1,Tom)</span>
-stu1.setName(<span class="hljs-string">"Susan"</span>);    <span class="hljs-comment">//students：(3,Lucy),(1,Susan),(2,Jerry),(1,Susan)</span>
+students.add(0,stu3);    //students：(3,Lucy),(1,Tom),(2,Jerry)
+students.add(stu1);        //students：(3,Lucy),(1,Tom),(2,Jerry),(1,Tom)
+stu1.setName(&quot;Susan&quot;);    //students：(3,Lucy),(1,Susan),(2,Jerry),(1,Susan)
 
-students.remove(<span class="hljs-number">1</span>);            <span class="hljs-comment">//students：(3,Lucy),(2,Jerry),(1,Susan)</span>
-students.remove(stu1);    <span class="hljs-comment">//students：(3,Lucy),(2,Jerry)</span>
+students.remove(1);            //students：(3,Lucy),(2,Jerry),(1,Susan)
+students.remove(stu1);    //students：(3,Lucy),(2,Jerry)
 
-students.contains(stu1);    <span class="hljs-comment">//return false;</span>
-students.contains(stu2);    <span class="hljs-comment">//return true;</span>
-students.contains(<span class="hljs-keyword">new</span> Students(<span class="hljs-number">2</span>,<span class="hljs-string">"Jerry"</span>));        <span class="hljs-comment">//false，若重写Student的equals方法可为true</span>
+students.contains(stu1);    //return false;
+students.contains(stu2);    //return true;
+students.contains(new Students(2,&quot;Jerry&quot;));        //false，若重写Student的equals方法可为true
 
-<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;students.size();i++){
+for(int i=0;i&lt;students.size();i++){
     System.out.println(students.get(i));
 }
 
-<span class="hljs-keyword">for</span>(Student stu:students){
+for(Student stu:students){
     System.out.println(stu);
 }
 
 Interator&lt;Student&gt; it=students.iterator();
-<span class="hljs-keyword">while</span>(it.hasNext()){
+while(it.hasNext()){
     System.out.println(it.next());
 }
 </code></pre>
 <p>Map使用示例：</p>
-<pre><code class="nulljava">Map&lt;Integer,Student&gt; studentMap=<span class="hljs-keyword">new</span> HashMap&lt;Integer,Student&gt;();
-studentMap.put(<span class="hljs-number">1</span>,stu1);
-studentMap.put(<span class="hljs-number">2</span>,stu2);
-studentMap.put(<span class="hljs-number">3</span>,stu3);
-studentMap.put(<span class="hljs-keyword">null</span>,<span class="hljs-keyword">null</span>);
+<pre><code class="lang-java">Map&lt;Integer,Student&gt; studentMap=new HashMap&lt;Integer,Student&gt;();
+studentMap.put(1,stu1);
+studentMap.put(2,stu2);
+studentMap.put(3,stu3);
+studentMap.put(null,null);
 
-studentMap.containsKey(<span class="hljs-number">2</span>);
-Student stu=studentMap.get(<span class="hljs-number">3</span>);
+studentMap.containsKey(2);
+Student stu=studentMap.get(3);
 
 Set&lt;String&gt; keys=studentMap.keySet();
 Collection&lt;Student&gt; values=studentMap.values();
 
-<span class="hljs-keyword">for</span>(String key:keys){
+for(String key:keys){
     System.out.println(studentMap.get(key));
 }
 
-<span class="hljs-keyword">for</span> (Map.Entry&lt;Integer, Student&gt; entry : map.entrySet()) {  
+for (Map.Entry&lt;Integer, Student&gt; entry : map.entrySet()) {  
     System.out.println(entry.getKey());
     System.out.println(entry.getValue());
 }
 </code></pre>
 <p>Collections使用：排序</p>
 <p>方式一：</p>
-<pre><code class="nulljava">Collections.sort(students);
+<pre><code class="lang-java">Collections.sort(students);
 Collections.reverse(students);
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparable</span>&lt;<span class="hljs-title">Student</span>&gt;</span>{
+public class Student implements Comparable&lt;Student&gt;{
     ...
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compareTo</span><span class="hljs-params">(Student o)</span></span>{
-        <span class="hljs-keyword">return</span>  id - o.getId();        <span class="hljs-comment">//正数：一个比一个大</span>
+    @Override
+    public int compareTo(Student o){
+        return  id - o.getId();        //正数：一个比一个大
     }
 }
 </code></pre>
 <p>方式二：</p>
-<pre><code class="nulljava">Collections.sort(students,<span class="hljs-keyword">new</span> StudentComparator());
+<pre><code class="lang-java">Collections.sort(students,new StudentComparator());
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StudentComparator</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Comparator</span>&lt;<span class="hljs-title">Student</span>&gt;</span>{
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">compare</span><span class="hljs-params">(Student o1, Student o2)</span> </span>{
-        <span class="hljs-keyword">return</span> o2.id-o1.id;
+public class StudentComparator implements Comparator&lt;Student&gt;{
+    @Override
+    public int compare(Student o1, Student o2) {
+        return o2.id-o1.id;
     }
 }
 </code></pre>
@@ -957,42 +960,42 @@ Collections.reverse(students);
 <h3 id="header-34">IO</h3>
 <ul>
 <li><p>File类：处理文件、文件夹（不能编辑文件）</p>
-<pre><code class="nulljava">  File file=<span class="hljs-keyword">new</span> File(fileUrl);
-  <span class="hljs-keyword">if</span>(file.exists())
+<pre><code class="lang-java">  File file=new File(fileUrl);
+  if(file.exists())
       file.delete();
   file.createNewFile();
   file.mkdir();
 
-  File dir=<span class="hljs-keyword">new</span> File(dirUrl);
+  File dir=new File(dirUrl);
   dir.isDirectory();
   String[] list=dir.list();
   File[] str=dir.listFiles();
 </code></pre>
 </li>
 <li>流<ul>
-<li>字节流（节点流）：直接创建的流 <code>InputStream/OutputStream</code><pre><code class="nulljava">InputStream in=FileInputStream(fileUrl);
+<li>字节流（节点流）：直接创建的流 <code>InputStream/OutputStream</code><pre><code class="lang-java">InputStream in=FileInputStream(fileUrl);
 OutputStream out=FileOutputStream(fileUrl2);
-<span class="hljs-keyword">int</span> len=<span class="hljs-number">0</span>;
-<span class="hljs-keyword">byte</span>[] buffer=<span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">512</span>];
-<span class="hljs-keyword">while</span>((len=in.read(buffer))!=-<span class="hljs-number">1</span>){
+int len=0;
+byte[] buffer=new byte[512];
+while((len=in.read(buffer))!=-1){
   System.out.println(buffer);
-  out.write(buffer,<span class="hljs-number">0</span>,len);
+  out.write(buffer,0,len);
 }
 in.close();
 out.close();
 </code></pre>
 </li>
-<li>字符流（过滤流）：需依赖已创建的节点流 <code>Reader/Writer</code><pre><code class="nulljava">BufferedReader reader=<span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> FileReader(fileUrl));
-String str=<span class="hljs-keyword">null</span>;
-<span class="hljs-keyword">while</span> ((str=reader.readLine())!=<span class="hljs-keyword">null</span>) {
+<li>字符流（过滤流）：需依赖已创建的节点流 <code>Reader/Writer</code><pre><code class="lang-java">BufferedReader reader=new BufferedReader(new FileReader(fileUrl));
+String str=null;
+while ((str=reader.readLine())!=null) {
   System.out.print(str);
 }
 </code></pre>
 </li>
-<li>转换流：字节流=&gt;字符流 <code>InputStreamReader/OutputStreamWriter</code><pre><code class="nulljava">File file=<span class="hljs-keyword">new</span> File(fileUrl);
-Reader reader=InputStreamReader(<span class="hljs-keyword">new</span> FileInputStream(file));
-String str=<span class="hljs-keyword">null</span>;
-<span class="hljs-keyword">while</span> ((str=reader.readLine())!=<span class="hljs-keyword">null</span>) {
+<li>转换流：字节流=&gt;字符流 <code>InputStreamReader/OutputStreamWriter</code><pre><code class="lang-java">File file=new File(fileUrl);
+Reader reader=InputStreamReader(new FileInputStream(file));
+String str=null;
+while ((str=reader.readLine())!=null) {
   System.out.print(str);
 }
 reader.close();
@@ -1003,7 +1006,7 @@ reader.close();
 </ul>
 <h3 id="header-35">反射</h3>
 <p>程序运行中，动态获取对象的信息，或构造某个对象<br>（可加载运行时才得知名称的class，并创建）</p>
-<pre><code class="nulljava">Class cls=class.forName(&quot;com.cj.my.MyTest&quot;);
+<pre><code class="lang-java">Class cls=class.forName(&quot;com.cj.my.MyTest&quot;);
 MyTest myTest=(MyTest)cls.newInstance();
 </code></pre>
 <h3 id="header-36">序列化</h3>
@@ -1021,46 +1024,46 @@ MyTest myTest=(MyTest)cls.newInstance();
 </ul>
 <p>反序列化：序列化的反过程，将对象读取到内存的机制（把对象从流中读出来）</p>
 <p>使用示例：<br>将Java 对象序列化为二进制文件，使用<code>ObjectInputStream</code> 和 <code>ObjectOutputStream</code> 进行对象的读写</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Serializable</span>
-</span>{
-    <span class="hljs-keyword">int</span> age;
+<pre><code class="lang-java">public class Person implements Serializable
+{
+    int age;
     String name;
-    <span class="hljs-keyword">double</span> height;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span><span class="hljs-params">(<span class="hljs-keyword">int</span> age, String name, <span class="hljs-keyword">double</span> height)</span></span>{
-        <span class="hljs-keyword">this</span>.age = age;
-        <span class="hljs-keyword">this</span>.name = name;
-        <span class="hljs-keyword">this</span>.height = height;
+    double height;
+    public Person(int age, String name, double height){
+        this.age = age;
+        this.name = name;
+        this.height = height;
     }
 
-    <span class="hljs-comment">//序列化控制</span>
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">writeObject</span><span class="hljs-params">(ObjectOutputStream out)</span> <span class="hljs-keyword">throws</span> IOException
-        out.<span class="hljs-title">writeInt</span><span class="hljs-params">(age)</span></span>;
+    //序列化控制
+    private void writeObject(ObjectOutputStream out) throws IOException
+        out.writeInt(age);
         out.writeUTF(name);
-        System.out.println(<span class="hljs-string">"write object"</span>);
+        System.out.println(&quot;write object&quot;);
     }
 
-    <span class="hljs-comment">//反序列化控制</span>
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readObject</span><span class="hljs-params">(ObjectInputStream in)</span> <span class="hljs-keyword">throws</span> IOException,
-            ClassNotFoundException</span>{
+    //反序列化控制
+    private void readObject(ObjectInputStream in) throws IOException,
+            ClassNotFoundException{
         age = in.readInt();
         name = in.readUTF();
-        System.out.println(<span class="hljs-string">"read object"</span>);
+        System.out.println(&quot;read object&quot;);
     }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">serializeTest</span><span class="hljs-params">()</span></span>{
+<pre><code class="lang-java">@Test
+public void serializeTest(){
 
-    <span class="hljs-comment">//序列化</span>
-    ObjectOutputStream oos = <span class="hljs-keyword">new</span> ObjectOutputStream(<span class="hljs-keyword">new</span> FileOutputStream(<span class="hljs-string">"Person.txt"</span>));
-    Person p = <span class="hljs-keyword">new</span> Person2(<span class="hljs-number">20</span>, <span class="hljs-string">"zhangsan"</span>, <span class="hljs-number">4.55</span>);
+    //序列化
+    ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;Person.txt&quot;));
+    Person p = new Person2(20, &quot;zhangsan&quot;, 4.55);
     oos.writeObject(p);
     oos.close();
 
-    <span class="hljs-comment">//反序列化</span>
-    ObjectInputStream ois = <span class="hljs-keyword">new</span> ObjectInputStream(<span class="hljs-keyword">new</span> FileInputStream(<span class="hljs-string">"Person.txt"</span>));
+    //反序列化
+    ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;Person.txt&quot;));
     p = (Person) ois.readObject();
-    System.out.println(p.age + <span class="hljs-string">","</span> + p.name + <span class="hljs-string">","</span> + p.height);
+    System.out.println(p.age + &quot;,&quot; + p.name + &quot;,&quot; + p.height);
     ois.close();
 }
 </code></pre>
@@ -1080,36 +1083,36 @@ MyTest myTest=(MyTest)cls.newInstance();
 </ul>
 <p>使用：</p>
 <ol>
-<li>加载JDBC驱动<pre><code class="nulljava"> Class.forName(“JDBC 驱动类的名称”);  <span class="hljs-comment">// JDBC 驱动字符串：“包名.类名”</span>
+<li>加载JDBC驱动<pre><code class="lang-java"> Class.forName(“JDBC 驱动类的名称”);  // JDBC 驱动字符串：“包名.类名”
 </code></pre>
 </li>
-<li>建立连接<pre><code class="nulljava"> Connection  conn= DriverManager.getConnection(URL，user，password);
+<li>建立连接<pre><code class="lang-java"> Connection  conn= DriverManager.getConnection(URL，user，password);
 </code></pre>
 </li>
 <li><p>发送SQL语句，获取执行结果</p>
-<pre><code class="nulljava"> <span class="hljs-comment">//使用Statement</span>
+<pre><code class="lang-java"> //使用Statement
  Statement  stmt = conn.createStatement();
- ResultSet  rs = stmt.executeQuery(“查询的SQL语句”);      <span class="hljs-comment">//返回结果集对象</span>
- <span class="hljs-keyword">int</span>  rows = stmt.executeUpdate(“增删改的SQL语句”);     <span class="hljs-comment">//返回受影响的行数</span>
- <span class="hljs-comment">//循环结果集</span>
- <span class="hljs-keyword">while</span>(rs.next()){
-     <span class="hljs-keyword">int</span> x= rs.getInt(<span class="hljs-string">"id"</span>); <span class="hljs-comment">// 或rs.getInt(1);</span>
+ ResultSet  rs = stmt.executeQuery(“查询的SQL语句”);      //返回结果集对象
+ int  rows = stmt.executeUpdate(“增删改的SQL语句”);     //返回受影响的行数
+ //循环结果集
+ while(rs.next()){
+     int x= rs.getInt(&quot;id&quot;); // 或rs.getInt(1);
      String  strName =rs.getString(“name”);
      …
  }
 </code></pre>
-<pre><code class="nulljava"> <span class="hljs-comment">//使用预处理器PreparedStatement（继承自Statement接口，快，灵活）</span>
+<pre><code class="lang-java"> //使用预处理器PreparedStatement（继承自Statement接口，快，灵活）
  String  strSql=“UPDATE  TABLE1  SET  a=?  WHERE  b=?”;
  PreparedStatement  pstmt = conn.prepareStatement(strSql);
- pstmt.setString(<span class="hljs-number">1</span>,”Hello”);
- pstmt.setInt(<span class="hljs-number">2</span>,<span class="hljs-number">10</span>);
- <span class="hljs-keyword">int</span> rows = pstmt.executeUpdate();    <span class="hljs-comment">//ResultSet  rs = pstmt.executeQuery();</span>
+ pstmt.setString(1,”Hello”);
+ pstmt.setInt(2,10);
+ int rows = pstmt.executeUpdate();    //ResultSet  rs = pstmt.executeQuery();
 </code></pre>
 </li>
 <li><p>关闭资源（一般放于finally 块中）</p>
-<pre><code class="nulljava"> rs.close();        <span class="hljs-comment">//关闭记录集</span>
- stmt.close();    <span class="hljs-comment">//关闭处理器对象</span>
- conn.close();    <span class="hljs-comment">//关闭连接</span>
+<pre><code class="lang-java"> rs.close();        //关闭记录集
+ stmt.close();    //关闭处理器对象
+ conn.close();    //关闭连接
 </code></pre>
 </li>
 </ol>
@@ -1165,14 +1168,14 @@ MyTest myTest=(MyTest)cls.newInstance();
 <li>方式一：<ul>
 <li><code>implements Runnable</code></li>
 <li><code>@Override run()</code></li>
-<li>示例：<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunnable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>{
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
+<li>示例：<pre><code class="lang-java">public class MyRunnable implements Runnable{
+  @Override
+  public void run(){
       ...
   }
 }
-<span class="hljs-comment">//创建使用</span>
-Thread myThread=<span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> MyRunnable());
+//创建使用
+Thread myThread=new Thread(new MyRunnable());
 myThread.start();
 </code></pre>
 </li>
@@ -1181,14 +1184,14 @@ myThread.start();
 <li>方式二：<ul>
 <li><code>extends Thread</code>（实际上<code>public class Thread implements Runnable</code>）</li>
 <li><code>@Override run()</code></li>
-<li>示例：<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>{
-  <span class="hljs-meta">@Override</span>
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
+<li>示例：<pre><code class="lang-java">public class MyThread extends Thread{
+  @Override
+  public void run(){
       ...
   }
 }
-<span class="hljs-comment">//创建使用</span>
-MyThead myThread=<span class="hljs-keyword">new</span> MyThread();
+//创建使用
+MyThead myThread=new MyThread();
 myThread.start();
 </code></pre>
 </li>
@@ -1211,80 +1214,80 @@ myThread.start();
 </ul>
 <p>示例1：创建10个线程，每个线程都打印从0到99这100个数字，希望线程之间不会出现交叉乱序打印，而是顺序地打印</p>
 <p>实现方式1：每个线程的传入唯一的共享的对象锁</p>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyThread</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> threadId;
-    <span class="hljs-keyword">private</span> Object lock;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyThread</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id,Object lock)</span></span>{
-        <span class="hljs-keyword">this</span>.threadId = id;
-        <span class="hljs-keyword">this</span>.lock=lock;
+<pre><code class="lang-java">public class MyThread implements Runnable{
+    private int threadId;
+    private Object lock;
+    public MyThread(int id,Object lock){
+        this.threadId = id;
+        this.lock=lock;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-keyword">synchronized</span>(lock){
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; ++i){
-                System.out.println(<span class="hljs-string">"Thread ID: "</span> + <span class="hljs-keyword">this</span>.threadId + <span class="hljs-string">" : "</span> + i);
+    @Override
+    public  void run() {
+        synchronized(lock){
+            for (int i = 0; i &lt; 100; ++i){
+                System.out.println(&quot;Thread ID: &quot; + this.threadId + &quot; : &quot; + i);
             }
         }
     }
 }
 
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException</span>{
-    Object obj=<span class="hljs-keyword">new</span> Object();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++i){
-        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> MyThread(i,obj)).start();
-        Thread.sleep(<span class="hljs-number">1</span>);
+@Test
+public static void main(String[] args) throws InterruptedException{
+    Object obj=new Object();
+    for (int i = 0; i &lt; 10; ++i){
+        new Thread(new MyThread(i,obj)).start();
+        Thread.sleep(1);
     }
 }
 </code></pre>
 <p>使用方式二：使用静态变量或静态方法</p>
-<pre><code class="nulljava"><span class="hljs-comment">//静态方法或变量是所有类实例对象所共享的，因此线程对象在访问此静态方法时是互斥访问的，从而可以实现线程的同步</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyThread</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Runnable</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> threadId;
-    <span class="hljs-comment">//定义静态变量作为锁</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Object lock = <span class="hljs-keyword">new</span> Object();
+<pre><code class="lang-java">//静态方法或变量是所有类实例对象所共享的，因此线程对象在访问此静态方法时是互斥访问的，从而可以实现线程的同步
+public class MyThread implements Runnable{
+    private int threadId;
+    //定义静态变量作为锁
+    private static Object lock = new Object();
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyThread</span><span class="hljs-params">(<span class="hljs-keyword">int</span> id)</span></span>{
-        <span class="hljs-keyword">this</span>.threadId = id;
+    public MyThread(int id){
+        this.threadId = id;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
-        <span class="hljs-comment">//方式一：使用静态方法</span>
-        <span class="hljs-comment">//taskHandler(this.threadId);</span>
+    @Override
+    public  void run() {
+        //方式一：使用静态方法
+        //taskHandler(this.threadId);
 
-        <span class="hljs-comment">//方式二：使用静态变量</span>
-        <span class="hljs-keyword">synchronized</span>(lock){
-            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; ++i){
-                System.out.println(<span class="hljs-string">"Thread ID: "</span> + <span class="hljs-keyword">this</span>.threadId + <span class="hljs-string">" : "</span> + i);
+        //方式二：使用静态变量
+        synchronized(lock){
+            for (int i = 0; i &lt; 100; ++i){
+                System.out.println(&quot;Thread ID: &quot; + this.threadId + &quot; : &quot; + i);
             }
         }
 
     }
-    <span class="hljs-comment">//在静态方法中加入sychronized关键字封锁的就是类本身</span>
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">taskHandler</span><span class="hljs-params">(<span class="hljs-keyword">int</span> threadId)</span> </span>{
-        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; ++i) {
-            System.out.println(<span class="hljs-string">"Thread ID: "</span> + threadId + <span class="hljs-string">" : "</span> + i);
+    //在静态方法中加入sychronized关键字封锁的就是类本身
+    private static synchronized void taskHandler(int threadId) {
+        for (int i = 0; i &lt; 100; ++i) {
+            System.out.println(&quot;Thread ID: &quot; + threadId + &quot; : &quot; + i);
         }
     }
 }
 
-<span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException</span>{
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++i){
-        <span class="hljs-keyword">new</span> Thread(<span class="hljs-keyword">new</span> MyThread(i)).start();
-        Thread.sleep(<span class="hljs-number">1</span>);
+@Test
+public static void main(String[] args) throws InterruptedException{
+    for (int i = 0; i &lt; 10; ++i){
+        new Thread(new MyThread(i)).start();
+        Thread.sleep(1);
     }
 }
 </code></pre>
 <p>示例2：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testThread</span><span class="hljs-params">()</span></span>{
-    Operation operation = <span class="hljs-keyword">new</span> Operation();
+<pre><code class="lang-java">@Test
+public void testThread(){
+    Operation operation = new Operation();
 
-    Thread t1 = <span class="hljs-keyword">new</span> IncreaseThread(operation);
-    Thread t2 = <span class="hljs-keyword">new</span> DecreaseThread(operation);
-    Thread t3 = <span class="hljs-keyword">new</span> IncreaseThread(operation);
-    Thread t4 = <span class="hljs-keyword">new</span> DecreaseThread(operation);
+    Thread t1 = new IncreaseThread(operation);
+    Thread t2 = new DecreaseThread(operation);
+    Thread t3 = new IncreaseThread(operation);
+    Thread t4 = new DecreaseThread(operation);
 
     t1.start();
     t2.start();
@@ -1292,13 +1295,13 @@ myThread.start();
     t4.start();
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Operation</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> number;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">increase</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">while</span> (<span class="hljs-number">0</span> != number){
-            <span class="hljs-keyword">try</span>{
+<pre><code class="lang-java">public class Operation{
+    private int number;
+    public synchronized void increase(){
+        while (0 != number){
+            try{
                 wait();
-            }<span class="hljs-keyword">catch</span> (InterruptedException e){
+            }catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
@@ -1307,11 +1310,11 @@ myThread.start();
         notify();
     }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title">decrease</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">while</span> (<span class="hljs-number">0</span> == number){
-            <span class="hljs-keyword">try</span>{
+    public synchronized void decrease(){
+        while (0 == number){
+            try{
                 wait();
-            }<span class="hljs-keyword">catch</span> (InterruptedException e){
+            }catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
@@ -1321,17 +1324,17 @@ myThread.start();
     }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IncreaseThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>{
-    <span class="hljs-keyword">private</span> Operation operation;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">IncreaseThread</span><span class="hljs-params">(Operation operation)</span></span>{
-        <span class="hljs-keyword">this</span>.operation = operation;
+<pre><code class="lang-java">public class IncreaseThread extends Thread{
+    private Operation operation;
+    public IncreaseThread(Operation operation){
+        this.operation = operation;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++){
-            <span class="hljs-keyword">try</span>{
-                Thread.sleep((<span class="hljs-keyword">long</span>)(Math.random() * <span class="hljs-number">1000</span>));
-            }<span class="hljs-keyword">catch</span> (InterruptedException e){
+    @Override
+    public void run(){
+        for(int i = 0; i &lt; 20; i++){
+            try{
+                Thread.sleep((long)(Math.random() * 1000));
+            }catch (InterruptedException e){
                 e.printStackTrace();
             }
             operation.increase();
@@ -1339,17 +1342,17 @@ myThread.start();
     }
 }
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DecreaseThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>{
-    <span class="hljs-keyword">private</span> Operation operation;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DecreaseThread</span><span class="hljs-params">(Operation operation)</span></span>{
-        <span class="hljs-keyword">this</span>.operation = operation;
+public class DecreaseThread extends Thread{
+    private Operation operation;
+    public DecreaseThread(Operation operation){
+        this.operation = operation;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++){
-            <span class="hljs-keyword">try</span>{
-                Thread.sleep((<span class="hljs-keyword">long</span>)(Math.random() * <span class="hljs-number">1000</span>));
-            }<span class="hljs-keyword">catch</span> (InterruptedException e){
+    @Override
+    public void run(){
+        for(int i = 0; i &lt; 20; i++){
+            try{
+                Thread.sleep((long)(Math.random() * 1000));
+            }catch (InterruptedException e){
                 e.printStackTrace();
             }
             operation.decrease();
@@ -1383,19 +1386,19 @@ myThread.start();
 </ul>
 </li>
 <li>使用：<ul>
-<li>直接使用<code>execute(Runnable command)</code>方法<pre><code class="nulljava">ExecutorService pool = Executors.newXxxThreadExecutor();
-pool.execute(<span class="hljs-keyword">new</span> Runnable(){
-  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
-     <span class="hljs-comment">//执行任务</span>
+<li>直接使用<code>execute(Runnable command)</code>方法<pre><code class="lang-java">ExecutorService pool = Executors.newXxxThreadExecutor();
+pool.execute(new Runnable(){
+  public void run(){
+     //执行任务
     }
 }
 </code></pre>
 </li>
-<li>使用<code>submit(Runnable task)</code>,<code>submit(Callable&lt;T&gt; task)</code>提交任务并等待获取执行结果<pre><code class="nulljava">ExecutorService pool = Executors.newXxxThreadExecutor();
-Future&lt;?&gt; future=pool.submit(<span class="hljs-keyword">new</span> Runnable(){
-  <span class="hljs-comment">//执行任务</span>
+<li>使用<code>submit(Runnable task)</code>,<code>submit(Callable&lt;T&gt; task)</code>提交任务并等待获取执行结果<pre><code class="lang-java">ExecutorService pool = Executors.newXxxThreadExecutor();
+Future&lt;?&gt; future=pool.submit(new Runnable(){
+  //执行任务
 })
-<span class="hljs-comment">//获取执行结果</span>
+//获取执行结果
 future.get();
 </code></pre>
 </li>
@@ -1420,18 +1423,18 @@ future.get();
 </ul>
 <p><img src="/2013/05/01/executors.png" alt="Executors"></p>
 <p>使用示例：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testSingleThreadPool</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-comment">//结果依次输出，相当于顺序执行各个任务</span>
+<pre><code class="lang-java">@Test
+public void testSingleThreadPool(){
+    //结果依次输出，相当于顺序执行各个任务
     ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
-        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> index = i;
-        singleThreadExecutor.execute(<span class="hljs-keyword">new</span> Runnable() {  
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
-                 <span class="hljs-keyword">try</span> {
+    for (int i = 0; i &lt; 10; i++) {
+        final int index = i;
+        singleThreadExecutor.execute(new Runnable() {  
+            public void run() {
+                 try {
                       System.out.println(index);
-                      Thread.sleep(<span class="hljs-number">2000</span>);
-                 } <span class="hljs-keyword">catch</span> (InterruptedException e) {
+                      Thread.sleep(2000);
+                 } catch (InterruptedException e) {
                         e.printStackTrace();
                  }
             }
@@ -1439,19 +1442,19 @@ future.get();
     }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testFixedThreadPool</span><span class="hljs-params">()</span> </span>{
-    <span class="hljs-comment">//线程池大小为3，每个任务输出index后sleep 2秒，所以每两秒打印3个数字</span>
-    <span class="hljs-comment">//若任务数量大于 poolSize ，任务会被放在一个 queue 里顺序执行</span>
-    ExecutorService fixedThreadPool = Executors.newFixedThreadPool(<span class="hljs-number">3</span>);
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
-        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> index = i;
-        fixedThreadPool.execute(<span class="hljs-keyword">new</span> Runnable() {
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
-                 <span class="hljs-keyword">try</span> {
+<pre><code class="lang-java">@Test
+public void testFixedThreadPool() {
+    //线程池大小为3，每个任务输出index后sleep 2秒，所以每两秒打印3个数字
+    //若任务数量大于 poolSize ，任务会被放在一个 queue 里顺序执行
+    ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
+    for (int i = 0; i &lt; 10; i++) {
+        final int index = i;
+        fixedThreadPool.execute(new Runnable() {
+            public void run() {
+                 try {
                       System.out.println(index);
-                      Thread.sleep(<span class="hljs-number">2000</span>);
-                 } <span class="hljs-keyword">catch</span> (InterruptedException e) {
+                      Thread.sleep(2000);
+                 } catch (InterruptedException e) {
                       e.printStackTrace();
                  }
             }
@@ -1459,34 +1462,34 @@ future.get();
     }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCachedThreadPool</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-comment">//线程池为无限大，当执行第二个任务时第一个任务已经完成，会复用执行第一个任务的线程，而不用每次新建线程</span>
+<pre><code class="lang-java">@Test
+public void testCachedThreadPool(){
+    //线程池为无限大，当执行第二个任务时第一个任务已经完成，会复用执行第一个任务的线程，而不用每次新建线程
     ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
-        <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> index = i;
-        <span class="hljs-keyword">try</span> {  
-            Thread.sleep(index * <span class="hljs-number">1000</span>);
-        } <span class="hljs-keyword">catch</span> (InterruptedException e) {
+    for (int i = 0; i &lt; 10; i++) {
+        final int index = i;
+        try {  
+            Thread.sleep(index * 1000);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        cachedThreadPool.execute(<span class="hljs-keyword">new</span> Runnable() {  
-            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        cachedThreadPool.execute(new Runnable() {  
+            public void run() {
                  System.out.println(index);
             }
         });
     }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testScheduleThreadPool</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-comment">//延迟1秒后每3秒执行一次</span>
-    ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(<span class="hljs-number">5</span>);  
-    scheduledThreadPool.scheduleAtFixedRate(<span class="hljs-keyword">new</span> Runnable() {  
-        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{  
-            System.out.println(<span class="hljs-string">"delay 1 seconds, and excute every 3 seconds"</span>);  
+<pre><code class="lang-java">@Test
+public void testScheduleThreadPool(){
+    //延迟1秒后每3秒执行一次
+    ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);  
+    scheduledThreadPool.scheduleAtFixedRate(new Runnable() {  
+        public void run() {  
+            System.out.println(&quot;delay 1 seconds, and excute every 3 seconds&quot;);  
         }
-    }, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, TimeUnit.SECONDS);
+    }, 1, 3, TimeUnit.SECONDS);
 }
 </code></pre>
 <p><strong>PS：</strong>可以使用JDK自带的监控工具（<code>JDK安装目录/bin/jconsole.exe</code>）来监控创建的线程</p>
@@ -1503,39 +1506,39 @@ future.get();
 <li><code>void set(T value)</code>：将此ThreadLocal的当前线程副本中的值设置为指定值</li>
 <li><code>void remove()</code>：移除此ThreadLocal的当前线程的值</li>
 <li><code>protected T initialValue()</code>：返回此ThreadLocal的当前线程的“初始值”</li>
-<li><code>T get()</code>：返回此ThreadLocal的当前线程副本中的值（若无，则初始化，内部会调用initialValue方法返回的值进行设置）<pre><code class="nulljava"><span class="hljs-comment">//ThreadLocal中get方法的定义：</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">get</span><span class="hljs-params">()</span> </span>{
+<li><code>T get()</code>：返回此ThreadLocal的当前线程副本中的值（若无，则初始化，内部会调用initialValue方法返回的值进行设置）<pre><code class="lang-java">//ThreadLocal中get方法的定义：
+public T get() {
   Thread t = Thread.currentThread();
   ThreadLocalMap map = getMap(t);
-  <span class="hljs-keyword">if</span> (map != <span class="hljs-keyword">null</span>) {
-      ThreadLocalMap.Entry e = map.getEntry(<span class="hljs-keyword">this</span>);
-      <span class="hljs-keyword">if</span> (e != <span class="hljs-keyword">null</span>)
-          <span class="hljs-keyword">return</span> (T)e.value;
+  if (map != null) {
+      ThreadLocalMap.Entry e = map.getEntry(this);
+      if (e != null)
+          return (T)e.value;
   }
-  <span class="hljs-keyword">return</span> setInitialValue();
+  return setInitialValue();
 }
 </code></pre>
 </li>
 </ul>
 </li>
-<li>应用场景： 数据库连接、Session管理<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConnectionManager</span></span>{
-      <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ThreadLocal&lt;Connection&gt; theadLocal= <span class="hljs-keyword">new</span> ThreadLocal&lt;Connection&gt;() {
-          <span class="hljs-function"><span class="hljs-keyword">public</span> Connection <span class="hljs-title">initialValue</span><span class="hljs-params">()</span> </span>{
-              <span class="hljs-keyword">return</span> DriverManager.getConnection(DB_URL);
+<li>应用场景： 数据库连接、Session管理<pre><code class="lang-java">  public class ConnectionManager{
+      private static ThreadLocal&lt;Connection&gt; theadLocal= new ThreadLocal&lt;Connection&gt;() {
+          public Connection initialValue() {
+              return DriverManager.getConnection(DB_URL);
           }
       }
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Connection <span class="hljs-title">getConnection</span><span class="hljs-params">()</span> </span>{
-          <span class="hljs-keyword">return</span> theadLocal.get();
+      public static Connection getConnection() {
+          return theadLocal.get();
       }
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">closeConnection</span><span class="hljs-params">()</span></span>{
+      public static void closeConnection(){
           Connection conn = threadLocal.get();
-          <span class="hljs-keyword">try</span> {
-              <span class="hljs-keyword">if</span>(conn != <span class="hljs-keyword">null</span> &amp;&amp; !conn.isClosed()) {
+          try {
+              if(conn != null &amp;&amp; !conn.isClosed()) {
                   conn.close();
                   threadLocal.remove();
-                  conn = <span class="hljs-keyword">null</span>;
+                  conn = null;
               }
-          } <span class="hljs-keyword">catch</span> (SQLException e) {
+          } catch (SQLException e) {
           }
       }
   }
@@ -1543,34 +1546,34 @@ future.get();
 </li>
 </ul>
 <p>使用示例：</p>
-<pre><code class="nulljava"><span class="hljs-meta">@Test</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testThreadLocal</span><span class="hljs-params">()</span></span>{
-    <span class="hljs-comment">//3个线程共享sn,各自产生序列号</span>
-    MyThread t1 = <span class="hljs-keyword">new</span> MyThread();
-    MyThread t2 = <span class="hljs-keyword">new</span> MyThread();
-    MyThread t3 = <span class="hljs-keyword">new</span> MyThread();
+<pre><code class="lang-java">@Test
+public void testThreadLocal(){
+    //3个线程共享sn,各自产生序列号
+    MyThread t1 = new MyThread();
+    MyThread t2 = new MyThread();
+    MyThread t3 = new MyThread();
     t1.start();
     t2.start();
     t3.start();
 }
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SequenceUtils</span></span>{
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ThreadLocal&lt;Integer&gt; threadLocal=<span class="hljs-keyword">new</span> ThreadLocal&lt;Integer&gt;(){
-        <span class="hljs-function"><span class="hljs-keyword">protected</span> Integer <span class="hljs-title">initialValue</span><span class="hljs-params">()</span></span>{
-           <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+public class SequenceUtils{
+    private static ThreadLocal&lt;Integer&gt; threadLocal=new ThreadLocal&lt;Integer&gt;(){
+        protected Integer initialValue(){
+           return 0;
         }
     }
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Integer <span class="hljs-title">genNextNum</span><span class="hljs-params">()</span></span>{
-       threadLocal.set(threadLocal.get()+<span class="hljs-number">1</span>);
-       <span class="hljs-keyword">return</span> threadLocal.get();
+    public static Integer genNextNum(){
+       threadLocal.set(threadLocal.get()+1);
+       return threadLocal.get();
     }
 }
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>{
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
-          <span class="hljs-comment">//每个线程打印5个序列号</span>
-          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++){
-              System.out.println(Thread.currentThread().getName()+<span class="hljs-string">":"</span>+SequenceUtils.genNextNum());
+public class MyThread extends Thread{
+      public void run(){
+          //每个线程打印5个序列号
+          for(int i=0;i&lt;5;i++){
+              System.out.println(Thread.currentThread().getName()+&quot;:&quot;+SequenceUtils.genNextNum());
           }
       }
     }
@@ -1581,19 +1584,19 @@ future.get();
 <li>Synchronized用于线程间的数据共享：仅提供一份变量，让不同的线程排队访问（“以时间换空间”）</li>
 <li>ThreadLocal用于线程间的数据隔离：为每一个线程都提供一个独立的变量副本，从而可以同时访问而互不影响（“以空间换时间”）</li>
 <li>两者处理不同的问题域！！</li>
-<li>使用示例：使用ThreadLocal以空间换时间解决SimpleDateFormat线程安全问题（为每个线程创建一个SimpleDateFormat变量的副本）<pre><code class="nulljava">  <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DateUtil</span> </span>{
-      <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String DATE_FORMAT = <span class="hljs-string">"yyyy-MM-dd HH:mm:ss"</span>;
-      <span class="hljs-meta">@SuppressWarnings</span>(<span class="hljs-string">"rawtypes"</span>)
-      <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> ThreadLocal threadLocal = <span class="hljs-keyword">new</span> ThreadLocal() {
-          <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">synchronized</span> Object <span class="hljs-title">initialValue</span><span class="hljs-params">()</span> </span>{
-              <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> SimpleDateFormat(DATE_FORMAT);
+<li>使用示例：使用ThreadLocal以空间换时间解决SimpleDateFormat线程安全问题（为每个线程创建一个SimpleDateFormat变量的副本）<pre><code class="lang-java">  public class DateUtil {
+      private static final String DATE_FORMAT = &quot;yyyy-MM-dd HH:mm:ss&quot;;
+      @SuppressWarnings(&quot;rawtypes&quot;)
+      private static ThreadLocal threadLocal = new ThreadLocal() {
+          protected synchronized Object initialValue() {
+              return new SimpleDateFormat(DATE_FORMAT);
           }
       };
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> DateFormat <span class="hljs-title">getDateFormat</span><span class="hljs-params">()</span> </span>{
-          <span class="hljs-keyword">return</span> (DateFormat) threadLocal.get();
+      public static DateFormat getDateFormat() {
+          return (DateFormat) threadLocal.get();
       }
-      <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Date <span class="hljs-title">parse</span><span class="hljs-params">(String textDate)</span> <span class="hljs-keyword">throws</span> ParseException </span>{
-          <span class="hljs-keyword">return</span> getDateFormat().parse(textDate);
+      public static Date parse(String textDate) throws ParseException {
+          return getDateFormat().parse(textDate);
       }
   }
 </code></pre>
@@ -1648,25 +1651,25 @@ future.get();
 <li>客户程序根据服务器程序所在的主机名和端口号发出连接请求（client：send connect request depends server host &amp; ip）</li>
 <li>服务器接受连接请求，并获得一个新的绑定到不同端口地址的套接字（server app：accept connection and return a new socket which binded on a new port）</li>
 <li><p>客户和服务器通过读、写套接字进行通讯（client and server communication via the new socket）<br><img src="/2013/05/01/socket-tcp.png" alt="Port"><br><img src="/2013/05/01/tcp.png" alt="Port"></p>
-<pre><code class="nulljava"><span class="hljs-comment">//Server</span>
-ServerSocket ss = <span class="hljs-keyword">new</span> ServerSocket(<span class="hljs-number">5000</span>);
-<span class="hljs-comment">//accept connection</span>
+<pre><code class="lang-java">//Server
+ServerSocket ss = new ServerSocket(5000);
+//accept connection
 Socket socket = ss.accept();
 
-<span class="hljs-comment">//send &amp; receive msg</span>
+//send &amp; receive msg
 InputStream is = socket.getInputStream();
 OutputStream os = socket.getOutputStream();
-<span class="hljs-comment">//...</span>
+//...
 
 socket.close();
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-comment">//Client</span>
-Socket socket = <span class="hljs-keyword">new</span> Socket(<span class="hljs-string">"127.0.0.1"</span>, <span class="hljs-number">5000</span>);
+<pre><code class="lang-java">//Client
+Socket socket = new Socket(&quot;127.0.0.1&quot;, 5000);
 
-<span class="hljs-comment">//send and receive msg</span>
+//send and receive msg
 InputStream is = socket.getInputStream();
 OutputStream os = socket.getOutputStream();
-<span class="hljs-comment">//...</span>
+//...
 
 socket.close();
 </code></pre>
@@ -1674,34 +1677,34 @@ socket.close();
 </ul>
 </li>
 <li><p>基于UDP协议：<br>  <img src="/2013/05/01/socket-udp.png" alt="Port"></p>
-<pre><code class="nulljava">  <span class="hljs-comment">//Server：必须指定端口号</span>
-  DatagramSocket socket = <span class="hljs-keyword">new</span> DatagramSocket(<span class="hljs-number">7000</span>);
+<pre><code class="lang-java">  //Server：必须指定端口号
+  DatagramSocket socket = new DatagramSocket(7000);
 
-  <span class="hljs-comment">//receive msg：接受消息（作用类似于TCP方式中accept方法，接受连接）</span>
-  <span class="hljs-keyword">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1000</span>];
-  DatagramPacket receivePacket = <span class="hljs-keyword">new</span> DatagramPacket(buffer, <span class="hljs-number">1000</span>);
+  //receive msg：接受消息（作用类似于TCP方式中accept方法，接受连接）
+  byte[] buffer = new byte[1000];
+  DatagramPacket receivePacket = new DatagramPacket(buffer, 1000);
   socket.receive(receivePacket);
 
-  <span class="hljs-comment">//send msg: 从接收到的数据包中可以获得客户端ip，port</span>
-  String str=<span class="hljs-string">"send Message"</span>;
-  DatagramPacket sendPacket = <span class="hljs-keyword">new</span> DatagramPacket(str.getBytes(),
+  //send msg: 从接收到的数据包中可以获得客户端ip，port
+  String str=&quot;send Message&quot;;
+  DatagramPacket sendPacket = new DatagramPacket(str.getBytes(),
           str.length(), receivePacket.getAddress(), receivePacket.getPort());
   socket.send(sendPacket);
 
   socket.close();
 </code></pre>
-<pre><code class="nulljava">  <span class="hljs-comment">//Client: 使用系统随机分配的一个本地计算机的未用端口号，当然也可以指定端口号</span>
-  DatagramSocket socket = <span class="hljs-keyword">new</span> DatagramSocket();
+<pre><code class="lang-java">  //Client: 使用系统随机分配的一个本地计算机的未用端口号，当然也可以指定端口号
+  DatagramSocket socket = new DatagramSocket();
 
-  <span class="hljs-comment">//send msg</span>
-  String str=<span class="hljs-string">"hello"</span>;
-  DatagramPacket sendPacket = <span class="hljs-keyword">new</span> DatagramPacket(str.getBytes(),
-          str.length(), InetAddress.getByName(<span class="hljs-string">"localhost"</span>), <span class="hljs-number">7000</span>);
+  //send msg
+  String str=&quot;hello&quot;;
+  DatagramPacket sendPacket = new DatagramPacket(str.getBytes(),
+          str.length(), InetAddress.getByName(&quot;localhost&quot;), 7000);
   socket.send(packet);
 
-  <span class="hljs-comment">//receive msg</span>
-  <span class="hljs-keyword">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1000</span>];
-  DatagramPacket receivePacket = <span class="hljs-keyword">new</span> DatagramPacket(buffer,<span class="hljs-number">1000</span>);
+  //receive msg
+  byte[] buffer = new byte[1000];
+  DatagramPacket receivePacket = new DatagramPacket(buffer,1000);
   socket.receive(packet2);
 
   socket.close();
@@ -1742,75 +1745,75 @@ socket.close();
 </tbody>
 </table>
 <p>TCP综合示例：</p>
-<pre><code class="nulljava"><span class="hljs-comment">//Server端</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception</span>{
-    ServerSocket serverSocket = <span class="hljs-keyword">new</span> ServerSocket(<span class="hljs-number">4000</span>);
+<pre><code class="lang-java">//Server端
+public static void main(String[] args) throws Exception{
+    ServerSocket serverSocket = new ServerSocket(4000);
 
-    <span class="hljs-comment">//可以不断接受新的Client端连接</span>
-    <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>){
+    //可以不断接受新的Client端连接
+    while(true){
         Socket socket = serverSocket.accept();
-        <span class="hljs-keyword">new</span> InputThread(socket).start();
-        <span class="hljs-keyword">new</span> OutputThread(socket).start();
+        new InputThread(socket).start();
+        new OutputThread(socket).start();
     }
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-comment">//Client端</span>
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception, IOException</span>{
-    Socket socket = <span class="hljs-keyword">new</span> Socket(<span class="hljs-string">"127.0.0.1"</span>, <span class="hljs-number">4000</span>);
-    <span class="hljs-keyword">new</span> InputThread(socket).start();
-    <span class="hljs-keyword">new</span> OutputThread(socket).start();
+<pre><code class="lang-java">//Client端
+public static void main(String[] args) throws Exception, IOException{
+    Socket socket = new Socket(&quot;127.0.0.1&quot;, 4000);
+    new InputThread(socket).start();
+    new OutputThread(socket).start();
 }
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InputThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span>
-</span>{
-    <span class="hljs-keyword">private</span> Socket socket;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">InputThread</span><span class="hljs-params">(Socket socket)</span></span>{
-        <span class="hljs-keyword">this</span>.socket = socket;
+<pre><code class="lang-java">public class InputThread extends Thread
+{
+    private Socket socket;
+    public InputThread(Socket socket){
+        this.socket = socket;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">try</span>{
+    @Override
+    public void run(){
+        try{
             InputStream is = socket.getInputStream();
-            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>){
-                <span class="hljs-keyword">byte</span>[] buffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[<span class="hljs-number">1024</span>];
-                <span class="hljs-keyword">int</span> length = is.read(buffer);
-                String str = <span class="hljs-keyword">new</span> String(buffer, <span class="hljs-number">0</span>, length);
+            while(true){
+                byte[] buffer = new byte[1024];
+                int length = is.read(buffer);
+                String str = new String(buffer, 0, length);
                 System.out.println(str);
             }
-        }<span class="hljs-keyword">catch</span> (IOException e){
+        }catch (IOException e){
             e.printStackTrace();
         }
     }
 }
 
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OutputThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Thread</span></span>{
-    <span class="hljs-keyword">private</span> Socket socket;
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">OutputThread</span><span class="hljs-params">(Socket socket)</span></span>{
-        <span class="hljs-keyword">this</span>.socket = socket;
+public class OutputThread extends Thread{
+    private Socket socket;
+    public OutputThread(Socket socket){
+        this.socket = socket;
     }
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>{
-        <span class="hljs-keyword">try</span>{
+    @Override
+    public void run(){
+        try{
             OutputStream os = socket.getOutputStream();
-            <span class="hljs-keyword">while</span>(<span class="hljs-keyword">true</span>){
-                BufferedReader reader = <span class="hljs-keyword">new</span> BufferedReader(<span class="hljs-keyword">new</span> InputStreamReader(System.in));
+            while(true){
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                 String line = reader.readLine();
                 os.write(line.getBytes());
             }
-        }<span class="hljs-keyword">catch</span> (IOException e){
+        }catch (IOException e){
             e.printStackTrace();
         }
     }
 }
 </code></pre>
 <p>使用URL访问网上资源：</p>
-<pre><code class="nulljava">URL url=<span class="hljs-keyword">new</span> URL(location);
+<pre><code class="lang-java">URL url=new URL(location);
 
-<span class="hljs-comment">//方式一：</span>
+//方式一：
 URLConnection conn = url.openConnection();
 InputStream is = conn.getInputStream();
 
-<span class="hljs-comment">//方式二：</span>
+//方式二：
 InputStream is = url.openStream();
 </code></pre>
 <h2 id="header-44">Servlet</h2>
@@ -1863,15 +1866,15 @@ InputStream is = url.openStream();
 <li>自定义Servlet，步骤：<ol>
 <li>extends HttpServlet</li>
 <li>@Override doGet &amp; doPost</li>
-<li>web.xml中配置Servlet<pre><code class="nullxml"><span class="hljs-tag">&lt;<span class="hljs-name">servlet</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>myServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet-class</span>&gt;</span>com.cj.MyServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-class</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">servlet</span>&gt;</span> 
-<span class="hljs-tag">&lt;<span class="hljs-name">servlet-mapping</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">servlet-name</span>&gt;</span>myServlet<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-name</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/service/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
- <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/myservice/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">servlet-mapping</span>&gt;</span>
+<li>web.xml中配置Servlet<pre><code class="lang-xml">&lt;servlet&gt;
+ &lt;servlet-name&gt;myServlet&lt;/servlet-name&gt;
+ &lt;servlet-class&gt;com.cj.MyServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt; 
+&lt;servlet-mapping&gt;
+ &lt;servlet-name&gt;myServlet&lt;/servlet-name&gt;
+ &lt;url-pattern&gt;/service/*&lt;/url-pattern&gt;
+ &lt;url-pattern&gt;/myservice/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
 </code></pre>
 </li>
 </ol>
@@ -1915,13 +1918,13 @@ InputStream is = url.openStream();
 <h3 id="header-47">JSP页面构成</h3>
 <p>Jsp页面=java+DHTML(html+css+js)</p>
 <p><img src="/2013/05/01/jsp-page.png" alt="JSP Page"></p>
-<pre><code class="nulljava"><span class="hljs-comment">//jsp转换为的Servlet：</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> 名<span class="hljs-title">_jsp</span> <span class="hljs-keyword">extends</span> ...</span>{
-    ...     <span class="hljs-comment">// 使用&lt;%! xxx %&gt; 声明的方法或变量</span>
+<pre><code class="lang-java">//jsp转换为的Servlet：
+public final class 名_jsp extends ...{
+    ...     // 使用&lt;%! xxx %&gt; 声明的方法或变量
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">_jspService</span><span class="hljs-params">(request,response)</span></span>{
-        ...     <span class="hljs-comment">// 使用&lt;% xxx %&gt; 编写的Java Scriptlet</span>
-        out.print(...)    <span class="hljs-comment">// 使用&lt;%=xxx&gt; 编写的Expression</span>
+    public void _jspService(request,response){
+        ...     // 使用&lt;% xxx %&gt; 编写的Java Scriptlet
+        out.print(...)    // 使用&lt;%=xxx&gt; 编写的Expression
         ...
     }
 }
@@ -1934,21 +1937,21 @@ InputStream is = url.openStream();
 <ul>
 <li><code>out</code>：向客户端输出数据（eg: <code>out.print(&quot;&lt;br/&gt;&quot;)</code>）</li>
 <li><code>request</code>：封装客户端请求<ul>
-<li>获取页面提交数据：<pre><code class="nulljava">String value=request.getParameter(param);    <span class="hljs-comment">//单值</span>
-String[] values=request.getParameterValues(param);  <span class="hljs-comment">//多值</span>
+<li>获取页面提交数据：<pre><code class="lang-java">String value=request.getParameter(param);    //单值
+String[] values=request.getParameterValues(param);  //多值
 </code></pre>
 </li>
-<li>请求转发 （客户端为建立新的连接，地址栏URL不变，属于一次请求范围）<pre><code class="nulljava">request.getRequestDispather(url).forward(request, response);
+<li>请求转发 （客户端为建立新的连接，地址栏URL不变，属于一次请求范围）<pre><code class="lang-java">request.getRequestDispather(url).forward(request, response);
 </code></pre>
 </li>
 </ul>
 </li>
 <li><code>response</code>：响应客户端请求（向客户端输出信息）<ul>
-<li>向客户端打印数据<pre><code class="nulljava">PrintWriter out = response.getWriter();
-out.println(<span class="hljs-string">"&lt;br/&gt;"</span>);
+<li>向客户端打印数据<pre><code class="lang-java">PrintWriter out = response.getWriter();
+out.println(&quot;&lt;br/&gt;&quot;);
 </code></pre>
 </li>
-<li>重定向（客户端URL地址改变，属于二次请求范围）<pre><code class="nulljava">reponse.sendRedirect(url);
+<li>重定向（客户端URL地址改变，属于二次请求范围）<pre><code class="lang-java">reponse.sendRedirect(url);
 </code></pre>
 </li>
 </ul>
@@ -1988,16 +1991,16 @@ out.println(<span class="hljs-string">"&lt;br/&gt;"</span>);
 <li>请求级 <code>request</code>：除转发外新页面</li>
 <li>会话级 <code>session</code> ：浏览器关闭新会话（HttpSession，跟踪同一浏览器发出的连续请求，一种会话跟踪）</li>
 <li>应用级 <code>application</code></li>
-<li>操作：<pre><code class="nulljava"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setAttribute</span><span class="hljs-params">(String key,Object value)</span></span>;
-<span class="hljs-function">Object <span class="hljs-title">getAttribute</span><span class="hljs-params">(String key)</span></span>;
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">removeAttribute</span><span class="hljs-params">(String key)</span></span>;
-<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">invalidate</span><span class="hljs-params">()</span></span>;     <span class="hljs-comment">//销毁</span>
+<li>操作：<pre><code class="lang-java">void setAttribute(String key,Object value);
+Object getAttribute(String key);
+void removeAttribute(String key);
+void invalidate();     //销毁
 </code></pre>
-<pre><code class="nulljava"><span class="hljs-comment">//使用示例：</span>
-session.setAttribute(<span class="hljs-string">"Login_User"</span>,loginUser);    <span class="hljs-comment">//以键值方式，在session中存放用户登录信息</span>
-User user=(User)session.getAttribute(<span class="hljs-string">"Login_User"</span>);    <span class="hljs-comment">//获取session中存放的对象</span>
-session.removeAttribute(<span class="hljs-string">"Login_User"</span>);    <span class="hljs-comment">//移除已登录用户</span>
-session.invalidate();    <span class="hljs-comment">//销毁会话</span>
+<pre><code class="lang-java">//使用示例：
+session.setAttribute(&quot;Login_User&quot;,loginUser);    //以键值方式，在session中存放用户登录信息
+User user=(User)session.getAttribute(&quot;Login_User&quot;);    //获取session中存放的对象
+session.removeAttribute(&quot;Login_User&quot;);    //移除已登录用户
+session.invalidate();    //销毁会话
 </code></pre>
 </li>
 </ul>
@@ -2008,8 +2011,8 @@ session.invalidate();    <span class="hljs-comment">//销毁会话</span>
 </ul>
 </li>
 <li>错误对象<ul>
-<li><code>exception</code><pre><code class="nullhtml"><span class="hljs-comment">&lt;!-- 指定页面为错误页面 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">%@</span> <span class="hljs-attr">page</span> <span class="hljs-attr">...</span> <span class="hljs-attr">isErrorPage</span>=<span class="hljs-string">"true"</span> %&gt;</span>
+<li><code>exception</code><pre><code class="lang-html">&lt;!-- 指定页面为错误页面 --&gt;
+&lt;%@ page ... isErrorPage=&quot;true&quot; %&gt;
 </code></pre>
 </li>
 </ul>
@@ -2325,10 +2328,17 @@ session.invalidate();    <span class="hljs-comment">//销毁会话</span>
 
 <script src="/jquery/dist/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/highlight/highlight.pack.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
 <script type="text/javascript">
-  hljs.initHighlightingOnLoad();
-  
+
   $(document).ready(function(){
     var sidebarCtrl=$("#sidebar-ctrl");
     var sidebar=$("#sidebar");
