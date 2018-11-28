@@ -223,7 +223,8 @@ article.detail > .post-content pre {
   background: none;
   border: none;
   font-size: 1em;
-  margin-bottom: 3px; }
+  margin-bottom: 3px;
+  padding-top: 5px; }
   article.detail > .post-content pre code {
     border-radius: 5px; }
 
@@ -231,11 +232,15 @@ article.detail > .post-content p {
   margin-left: 10px; }
 
 article.detail > .post-content h2 {
-  color: #000; }
+  color: #000;
+  border-top: 2px solid;
+  padding: 20px 0; }
 
 article.detail > .post-content h3 {
   margin-bottom: 20px;
-  color: #000; }
+  color: #000;
+  border-top: 1px solid #ccc;
+  padding: 20px 0 10px; }
 
 article.detail > .post-content h4 {
   margin-top: 20px;
@@ -243,6 +248,9 @@ article.detail > .post-content h4 {
 
 article.detail > .post-content blockquote {
   font-size: 1em; }
+
+article.detail > .post-content li > p {
+  margin-top: 7px; }
 
 /* archive-listing */
 #archive-listing {

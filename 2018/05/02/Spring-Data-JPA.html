@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Spring Data JPA</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="JPA,Spring Data">
+  
+  
+    <meta name="description" content="Provide repository support for the Java Persistence API">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">使用</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">更新／删除</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Repository 子接口</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">JpaSpecificationExecutor 接口</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Demo</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Entity</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Test Structure</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Query</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">T Save(T e)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Create/Update/Delete</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Custom Repository</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Spring Data JPA</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2018-05-01T16:00:00.000Z">2018-05-02</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Spring">Spring</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<blockquote>
+<p>Spring Data JPA provides repository support for the Java Persistence API (JPA). It eases development of applications that need to access JPA data sources.</p>
+</blockquote>
+<ol>
+<li><p><strong> JPA </strong> : 一套规范（标准接口），而Hibernate,TopLink,JDO等是JPA的一种实现产品。</p>
+</li>
+<li><p><strong> Spring Data JPA </strong> : 是 Spring 基于 ORM 框架、JPA 规范的基础上封装的一套JPA应用框架（底层默认实现使用的是Hibernate）。</p>
+</li>
+<li><p><strong> Repository </strong> : Spring Data 的核心接口，是一个空接口，也叫标记接口（不包含任何方法声明）</p>
+<pre><code class="lang-java">public interface Repository&lt;T,ID extends Serializable&gt; {}
+</code></pre>
+<ul>
+<li>使用：<ul>
+<li>方式一：自定义一个接口<code>extends Repository</code>，则这个接口会被Spring容器所管理</li>
+<li>方式二： 使用注解方式：<code>@RespositoryDefinition(domainClass=T.class,idClass=ID.class)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-2">使用</h2>
+<h3 id="header-3">查询</h3>
+<ol>
+<li><p>规范方法名实现查询<code>findBy...</code>，不需要写实现（弊端：方法名较长，无法实现复杂查询）</p>
+<pre><code class="lang-java"> //select * from Employee where name =?
+ Employee findByName(String name);
+
+ // where name like ?% and age &lt;?
+ public List&lt;Employee&gt; findByNameStartingWithAndAgeLessThan(String name, Integer age);
+
+ // where name like %? and age &lt;? 
+ public List&lt;Employee&gt; findByNameEndingWithAndAgeLessThan(String name, Integer age);
+
+ // where name in (?,?....) or age &lt;?
+ public List&lt;Employee&gt; findByNameInOrAgeLessThan(List&lt;String&gt; names, Integer age);
+
+ // where name in (?,?....) and age &lt;?
+ public List&lt;Employee&gt; findByNameInAndAgeLessThan(List&lt;String&gt; names, Integer age);
+</code></pre>
+</li>
+<li><p>使用<code>@Query(HQL/JPQL/NativeSQL)</code>注解 （加在方法上，方法名称随意，支持命名参数和索引参数的使用）</p>
+<pre><code class="lang-java"> @Query(&quot;select o from Employee o where id=(select max(id) from Employee t1)&quot;)
+ public Employee getEmployeeByMaxId();
+
+ @Query(&quot;select o from Employee o where o.name=?1 and o.age=?2&quot;)
+ public List&lt;Employee&gt; queryParams1(String name, Integer age);
+
+ @Query(&quot;select o from Employee o where o.name=:name and o.age=:age&quot;)
+ public List&lt;Employee&gt; queryParams2(@Param(&quot;name&quot;)String name, @Param(&quot;age&quot;)Integer age);
+
+ @Query(&quot;select o from Employee o where o.name like %?1%&quot;)
+ public List&lt;Employee&gt; queryLike1(String name);
+
+ @Query(&quot;select o from Employee o where o.name like %:name%&quot;)
+ public List&lt;Employee&gt; queryLike2(@Param(&quot;name&quot;)String name);
+
+ @Query(nativeQuery = true, value = &quot;select count(1) from employee&quot;)
+ public long getCount();
+</code></pre>
+</li>
+</ol>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">Keyword</th>
+<th style="text-align:left">Sample</th>
+<th style="text-align:left">JPQL Snippet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">And</td>
+<td style="text-align:left">findByLastnameAndFirstname</td>
+<td style="text-align:left">… where x.lastname=?1 and x.firstname=?2</td>
+</tr>
+<tr>
+<td style="text-align:left">Or</td>
+<td style="text-align:left">findByLastnameOrFirstname</td>
+<td style="text-align:left">… where x.lastname=?1 or x.firstname=?2</td>
+</tr>
+<tr>
+<td style="text-align:left">Between</td>
+<td style="text-align:left">findByStartDateBetween</td>
+<td style="text-align:left">… where x.startDate between ?1 and ?2</td>
+</tr>
+<tr>
+<td style="text-align:left">LessThan</td>
+<td style="text-align:left">findByAgeGreaterThan</td>
+<td style="text-align:left">… where x.age&lt;?1</td>
+</tr>
+<tr>
+<td style="text-align:left">GreaterThan</td>
+<td style="text-align:left">findByAgeGreaterThan</td>
+<td style="text-align:left">… where x.age&gt;?1</td>
+</tr>
+<tr>
+<td style="text-align:left">After</td>
+<td style="text-align:left">findByStartDateAfter</td>
+<td style="text-align:left">… where x.startDate&gt;?1</td>
+</tr>
+<tr>
+<td style="text-align:left">Before</td>
+<td style="text-align:left">findByStartDateBefore</td>
+<td style="text-align:left">… where x.startDate&lt;?1</td>
+</tr>
+<tr>
+<td style="text-align:left">IsNull</td>
+<td style="text-align:left">findByAgeIsNull</td>
+<td style="text-align:left">… where x.age is null</td>
+</tr>
+<tr>
+<td style="text-align:left">IsNotNull,NotNull</td>
+<td style="text-align:left">findByAgeIsNotNull</td>
+<td style="text-align:left">… where x.age is not null</td>
+</tr>
+<tr>
+<td style="text-align:left">Like</td>
+<td style="text-align:left">findByFirstnameLike</td>
+<td style="text-align:left">… where x.firstname like ?1</td>
+</tr>
+<tr>
+<td style="text-align:left">NotLike</td>
+<td style="text-align:left">findByFirstnameNotLike</td>
+<td style="text-align:left">… where x.firstname not like ?1</td>
+</tr>
+<tr>
+<td style="text-align:left">StartingWith</td>
+<td style="text-align:left">findByFirstnameStartingWith</td>
+<td style="text-align:left">… where x.firstname like ?1 (parameter bound with appended %)</td>
+</tr>
+<tr>
+<td style="text-align:left">EndingWith</td>
+<td style="text-align:left">findByFirstnameEndingWith</td>
+<td style="text-align:left">… where x.firstname like ?1 (parameter bound with prepended %)</td>
+</tr>
+<tr>
+<td style="text-align:left">Containing</td>
+<td style="text-align:left">findByFirstnameContaining</td>
+<td style="text-align:left">… where x.firstname like ?1 (parameter bound wrapped in %)</td>
+</tr>
+<tr>
+<td style="text-align:left">OrderBy</td>
+<td style="text-align:left">findByAgeOrderByLastnameDesc</td>
+<td style="text-align:left">… where x.age=? order by x.lastname desc</td>
+</tr>
+<tr>
+<td style="text-align:left">Not</td>
+<td style="text-align:left">findByLastnameNot</td>
+<td style="text-align:left">… where x.lastname &lt;&gt; ?1</td>
+</tr>
+<tr>
+<td style="text-align:left">In</td>
+<td style="text-align:left">findByAgeIn(Collection<age> ages)</age></td>
+<td style="text-align:left">… where x.age in ?1</td>
+</tr>
+<tr>
+<td style="text-align:left">NotIn</td>
+<td style="text-align:left">findByAgeNotIn(Collection<age> ages)</age></td>
+<td style="text-align:left">… where x.age not in ?1</td>
+</tr>
+<tr>
+<td style="text-align:left">TRUE</td>
+<td style="text-align:left">findByActiveTrue()</td>
+<td style="text-align:left">… where x.active=true</td>
+</tr>
+<tr>
+<td style="text-align:left">FALSE</td>
+<td style="text-align:left">findByActiveFalse()</td>
+<td style="text-align:left">… where x.active=false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="header-4">更新／删除</h3>
+<ol>
+<li>Repository层: 方法上添加注解<code>@Modifying</code></li>
+<li>Service层: 方法上添加事务注解<code>@Transactional</code></li>
+</ol>
+<p><strong> Sample: </strong></p>
+<ol>
+<li><p>EmployeeRepository</p>
+<pre><code class="lang-java"> @Modifying
+ @Query(&quot;update Employee o set o.age = :age where o.id = :id&quot;)
+ public void updateById(@Param(&quot;id&quot;)Integer id, @Param(&quot;age&quot;)Integer age);
+
+ @Query(&quot;delete from Employee where id=?1&quot;)
+ @Modifying
+ public int deleteOneById(Integer id);
+</code></pre>
+</li>
+<li><p>EmployeeService</p>
+<pre><code class="lang-java"> @Transactional
+ public boolean update(Integer id,Integer age) {
+     return this.employeeRepository.updateById(id,age);
+ }
+
+ @Transactional
+ public boolean delete(Integer id) {
+     return this.employeeRepository.deleteOneById(id);
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-5">Repository 子接口</h3>
+<ol>
+<li><p><code>CrudRepository extends Repository</code>: 包含CRUD方法</p>
+<pre><code class="lang-java"> // save
+ &lt;S extends T&gt; S save(S entity);
+ &lt;S extends T&gt; Iterable&lt;S&gt; save(Iterable&lt;S&gt; entities);
+
+ // find
+ Optional&lt;T&gt; findById(ID id);
+ boolean existsById(ID id);
+ Iterable&lt;T&gt; findAll();
+ Iterable&lt;T&gt; findAllById(Iterable&lt;ID&gt; ids);
+
+ // delete
+ void deleteById(ID id);
+ void delete(T entity);
+ void deleteAll(Iterable&lt;? extends T&gt; entities);
+ void deleteAll();
+
+ long count();
+</code></pre>
+</li>
+<li><p><code>PagingAndSortingRepository extends CrudRepository</code> : 包含分页排序方法</p>
+<pre><code class="lang-java"> Iterable&lt;T&gt;  findAll(Sort sort)            // 带排序的查询
+ Page&lt;T&gt;  findAll(Pageable pageable)     // 带排序的分页查询
+</code></pre>
+</li>
+<li><p><code>JpaRepository extends PagingAndSortingRepository</code>: 包含Jpa规范的方法</p>
+<pre><code class="lang-java"> // save
+ &lt;S extends T&gt; S saveAndFlush(S entity);
+ &lt;S extends T&gt; List&lt;S&gt; saveAll(Iterable&lt;S&gt; entities);
+
+ // flush
+ void flush();
+
+ // find
+ T getOne(ID id);
+ List&lt;T&gt; findAll();
+ List&lt;T&gt; findAll(Sort sort);
+ List&lt;T&gt; findAllById(Iterable&lt;ID&gt; ids);
+ &lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example);
+ &lt;S extends T&gt; List&lt;S&gt; findAll(Example&lt;S&gt; example, Sort sort);
+
+ // delete
+ void deleteInBatch(Iterable&lt;T&gt; entities);
+ void deleteAllInBatch();
+</code></pre>
+</li>
+</ol>
+<p><strong> sample: </strong></p>
+<ol>
+<li>Repository<pre><code class="lang-java"> public interface EmployeeRepository extends JpaRepository&lt;Employee, Integer&gt; {
+ }
+</code></pre>
+</li>
+<li><p>Test</p>
+<pre><code class="lang-java"> public void listByPageAndSortTest(){
+     Sort sort=Sort.by(Order.desc(&quot;name&quot;),Order.asc(&quot;id&quot;));
+     Pageable pageable=PageRequest.of(0, 10,sort);
+
+     Page&lt;Employee&gt; page=employeeRepository.findAll(pageable);
+
+     System.out.println(&quot;Total Records:&quot;+page.getTotalElements());
+     System.out.println(&quot;Total Pages:&quot;+page.getTotalPages());
+     System.out.println(&quot;Current Page:&quot;+(page.getNumber()+1));
+     System.out.println(&quot;Current Records:&quot;+page.getNumberOfElements());
+     System.out.println(&quot;Limit:&quot;+page.getSize());
+     System.out.println(&quot;Sort:&quot;+page.getSort());
+
+     List&lt;Employee&gt; list=page.getContent();
+     for(Employee e:list) {
+         System.out.println(e.getId()+&quot;:&quot;+e.getName()+&quot; DepartmentId:&quot;+e.getDepartment().getId());
+     }
+     System.out.println(&quot;Record Size:&quot;+list.size());
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-6">JpaSpecificationExecutor 接口</h3>
+<p>封装<code>JPA Criteria</code>查询</p>
+<pre><code class="lang-java">public interface JpaSpecificationExecutor&lt;T&gt; {
+
+    Optional&lt;T&gt; findOne(@Nullable Specification&lt;T&gt; spec);
+    List&lt;T&gt; findAll(@Nullable Specification&lt;T&gt; spec);
+    Page&lt;T&gt; findAll(@Nullable Specification&lt;T&gt; spec, Pageable pageable);
+    List&lt;T&gt; findAll(@Nullable Specification&lt;T&gt; spec, Sort sort);
+    long count(@Nullable Specification&lt;T&gt; spec);
+}
+</code></pre>
+<pre><code class="lang-java">Specification&lt;T&gt; spec=new Specification&lt;T&gt;() {
+    @Override
+    public Predicate toPredicate(Root&lt;T&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder criteriaBuilder) {
+        return null;
+    }
+};
+</code></pre>
+<ul>
+<li><code>root</code>: 可从<code>query.from</code>获取，常用方法：<code>root.join</code>,<code>root.fetch</code>,<code>root.get</code></li>
+<li><code>query</code>: 可从<code>criteriaBuilder.createQuery</code>, <code>criteriaBuilder.createTupleQuery</code>获取<ul>
+<li><code>query.select</code> (return <code>query</code>)</li>
+<li><code>query.from</code> (return <code>root</code>)</li>
+<li><code>query.where</code> (return <code>query</code>)</li>
+</ul>
+</li>
+<li><code>criteriaBuilder</code>: <ul>
+<li>可从<code>EntityManager</code> 或 <code>EntityManagerFactory</code>类(<code>em.getCriteriaBuilder()</code>)中获得criteriaBuilder对象</li>
+<li>通过调用它的条件方法（equal，notEqual， gt， ge，lt， le，between，like等）和逻辑方法（and,or,not）创建<code>Predicate</code>对象    </li>
+</ul>
+</li>
+</ul>
+<p><strong> Sample: </strong></p>
+<ol>
+<li>Repository<pre><code class="lang-java"> public interface EmployeeRepository 
+     extends JpaRepository&lt;Employee, Integer&gt;,JpaSpecificationExecutor&lt;Employee&gt; {
+ }
+</code></pre>
+</li>
+<li><p>Test</p>
+<pre><code class="lang-java"> public void listBySpecificationTest(){
+     Specification&lt;Employee&gt; spec=new Specification&lt;Employee&gt;() {
+         @Override
+         public Predicate toPredicate(Root&lt;Employee&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder criteriaBuilder) {
+
+             Predicate p1=criteriaBuilder.like(root.get(&quot;name&quot;), &quot;Test%&quot;);
+             Predicate p2=criteriaBuilder.gt(root.get(&quot;age&quot;), 18);
+
+             //return criteriaBuilder.and(p1,p2);
+             query.where(criteriaBuilder.and(p1,p2))
+                 .orderBy(criteriaBuilder.desc(root.get(&quot;id&quot;)));
+             return query.getRestriction();
+         }
+     };
+
+     List&lt;Employee&gt; list=employeeRepository.findAll(specification);
+     for(Employee e:list) {
+         System.out.println(e);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-7">Demo</h2>
+<ol>
+<li>Table (<code>@Table</code>): <ul>
+<li>pe_employee : id,name,remark,department_id</li>
+<li>pe_department : id,name,remark</li>
+</ul>
+</li>
+<li>Entity (<code>@Entity</code>):<ul>
+<li>Employee : id,name,remark,Department department</li>
+<li>Department : id,name,remark,List<employee> employees</employee></li>
+</ul>
+</li>
+<li>Relationship (<code>@ManyToOne</code>,<code>@OneToMany</code>): <ul>
+<li>Employee -&gt; Department : ManyToOne</li>
+<li>Employee &lt;- Department : OneToMany</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-8">Entity</h3>
+<ol>
+<li><p>Employee:</p>
+<pre><code class="lang-java"> package com.cj.demo.entity;
+
+ import static javax.persistence.GenerationType.IDENTITY;
+
+ import javax.persistence.Column;
+ import javax.persistence.Entity;
+ import javax.persistence.FetchType;
+ import javax.persistence.GeneratedValue;
+ import javax.persistence.Id;
+ import javax.persistence.JoinColumn;
+ import javax.persistence.ManyToOne;
+ import javax.persistence.Table;
+
+ @Entity
+ @Table(name = &quot;pe_employee&quot;, catalog = &quot;demo1&quot;)
+ //@DynamicUpdate
+ public class Employee {
+
+     private Integer id;
+     private String name;
+     private Department department;
+     private String remark;
+
+     @Id
+     @GeneratedValue(strategy = IDENTITY)
+     @Column(name = &quot;id&quot;, unique = true, nullable = false)
+     public Integer getId() {
+         return id;
+     }
+     public void setId(Integer id) {
+         this.id = id;
+     }
+
+     public String getName() {
+         return name;
+     }
+     public void setName(String name) {
+         this.name = name;
+     }
+
+     @ManyToOne(fetch=FetchType.LAZY)
+     @JoinColumn(name = &quot;department_id&quot;, nullable = false)
+     public Department getDepartment() {
+         return department;
+     }
+     public void setDepartment(Department department) {
+         this.department = department;
+     }
+
+     public String getRemark() {
+         return remark;
+     }
+     public void setRemark(String remark) {
+         this.remark = remark;
+     }
+
+     @Override
+     public String toString() {
+         return &quot;Employee [id=&quot; + id + &quot;, name=&quot; + name + &quot;, department=&quot; + department + &quot;, remark=&quot; + remark + &quot;]&quot;;
+     }
+ }
+</code></pre>
+</li>
+<li><p>Department:</p>
+<pre><code class="lang-java"> package com.cj.demo.entity;
+
+ import static javax.persistence.GenerationType.IDENTITY;
+
+ import java.util.ArrayList;
+ import java.util.List;
+
+ import javax.persistence.Column;
+ import javax.persistence.Entity;
+ import javax.persistence.FetchType;
+ import javax.persistence.GeneratedValue;
+ import javax.persistence.Id;
+ import javax.persistence.OneToMany;
+ import javax.persistence.Table;
+
+ @Entity
+ @Table(name = &quot;pe_department&quot;, catalog = &quot;demo1&quot;)
+ public class Department {
+
+     private Integer id;
+     private String name;
+     private String remark;
+     private List&lt;Employee&gt; employees=new ArrayList&lt;Employee&gt;();
+
+     public Department() {
+
+     }
+
+     public Department(Integer id) {
+         this.id=id;
+     }
+
+     @Id
+     @GeneratedValue(strategy = IDENTITY)
+     @Column(name = &quot;id&quot;, unique = true, nullable = false)
+     public Integer getId() {
+         return id;
+     }
+     public void setId(Integer id) {
+         this.id = id;
+     }
+
+     public String getName() {
+         return name;
+     }
+     public void setName(String name) {
+         this.name = name;
+     }
+
+     public String getRemark() {
+         return remark;
+     }
+     public void setRemark(String remark) {
+         this.remark = remark;
+     }
+
+     @OneToMany(fetch=FetchType.LAZY,mappedBy=&quot;department&quot;)
+     public List&lt;Employee&gt; getEmployees() {
+         return employees;
+     }
+     public void setEmployees(List&lt;Employee&gt; employees) {
+         this.employees = employees;
+     }
+
+     @Override
+     public String toString() {
+         return &quot;Department [id=&quot; + id + &quot;, name=&quot; + name + &quot;, remark=&quot; + remark + &quot;, employees=&quot; + employees + &quot;]&quot;;
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-9">Test Structure</h3>
+<ol>
+<li><p>Repository:</p>
+<pre><code class="lang-java"> public interface EmployeeRepository 
+     extends JpaRepository&lt;Employee, Integer&gt;,JpaSpecificationExecutor&lt;Employee&gt; {
+     // ...
+ }
+</code></pre>
+</li>
+<li><p>Service:</p>
+<pre><code class="lang-java"> @Service
+ public class EmployeeService {
+
+     @Autowired
+     private EmployeeRepository employeeRepository;
+
+     // call repository function
+ }
+</code></pre>
+</li>
+<li><p>Test:</p>
+<pre><code class="lang-java"> @RunWith(SpringRunner.class)
+ @SpringBootTest
+ public class EmployeeServiceTest {
+
+     @Autowired
+     private EmployeeService employeeService;
+
+     @Test
+     public void queryTest() {
+         //...
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-10">Query</h3>
+<ol>
+<li><p>interface exist function:</p>
+<ul>
+<li><code>T getOne(ID id)</code><ul>
+<li>懒加载（lazyLoad）, 返回一个代理对象 <code>E_$$_jvstxxx</code> (获取对象属性值时再触发执行query)</li>
+<li>当没有找到匹配记录时，抛出<code>EntityNotFoundException</code></li>
+</ul>
+</li>
+<li><code>Optional&lt;T&gt; findById(ID id)</code>/ <code>List&lt;T&gt; findAll()</code><ul>
+<li>马上触发执行query</li>
+<li>当没有找到匹配记录时，不会抛出EntityNotFoundException</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>named query function:</p>
+<pre><code class="lang-java"> public List&lt;Employee&gt; findByDepartmentId(Integer id);
+ public List&lt;Employee&gt; findByDepartment(Department department);
+ // query:
+ //    select p from Employee p left join p.department c where c.id=?
+ // return:
+ //    List&lt;Employee&gt;
+ //    [ Employee: id,name,remark,department - proxy: `department_$$_xxxx (id)`]
+ // Note:
+ //    `findByDepartment`只会根据department的key(id)来查询，department对象的其它属性（eg：name）不会用到
+</code></pre>
+</li>
+<li><p>JPQL(<code>@Query</code>)</p>
+<pre><code class="lang-java"> /* 1 */
+ @Query(&quot;from Employee e where e.department.id=?1&quot;)
+ public List&lt;Employee&gt; list(Integer departmentId);    
+
+ @Query(&quot;from Employee e where e.department.id=?1&quot;)
+ public Page&lt;Employee&gt; listByPage(Integer departmentId,Pageable pageable);
+ // query: 
+ //    select e from Employee e where e.department.id=?1
+ // countQuery: 
+ //    select count(id) from Employee e where e.department.id=?1
+ // Note: The JPQL should use alias for tables.
+ //     + `from Employee where department.id=?1`: wrong!
+ //     + `from Employee e where e.department.id=?1`: success!
+ //     + `from Employee where name like ?1`: ok!
+
+ /* 2. Employee-Department(ManyToOne) */
+ @Query(&quot;from Employee e left join e.department where e.department.id=?1&quot;)    
+ public List&lt;Employee listWithDepartment(Integer departmentId);
+ // use `left join`
+ // return : `e` &amp; `e.department` 
+ //    =&gt; store in Employee: id,name,remark,department(id,name,remark,employees:empty)
+ // Note:
+ //    + if use `select e from ...`,won&#39;t get department
+ //    + can&#39;t use `select * from ...`
+ //    + for ManyToOne and no Pageable, `left join` is enough,`fetch` is not necessary.
+
+ @Query(&quot;from Employee e left join e.department where e.department.id=?1&quot;)    
+ public Page&lt;Object[]&gt; listWithDepartmentByPage(Integer departmentId,Pageable pageable);
+ // query: 
+ //    select e,e.department from Employee e left join e.department where e.department.id=?1
+ // countQuery: 
+ //    select count(e) from Employee e left join e.department where e.department.id=?1
+ // return : `e` &amp; `e.department`
+ //    + Pageable: content won&#39;t store in Employee, get two objects List: `List&lt;Object[]&gt;`
+ //    + no Pageable: content will store in Employee,get one object List: `List&lt;Employee&gt;`
+ // Note:
+ //    if use `select e from ...`,won&#39;t get department
+ //    can&#39;t use `select * from ...`
+
+ @Query( value=&quot;from Employee e left join fetch e.department where e.department.id=?1&quot;,
+         countQuery=&quot;select count(e) from Employee e left join e.department where e.department.id=?1&quot;
+         //countQuery=&quot;from Employee e where e.department.id=?1&quot;
+         ) // countQuery can&#39;t use fetch !!
+ public Page&lt;Employee&gt; listFetchWithDepartmentByPage(Integer departmentId,Pageable pageable);
+ // use `left join fetch`
+ // query: 
+ //    select e,e.department from Employee e left join fetch e.department where e.department.id=?1
+ // countQuery: 
+ //    select count(e) from Employee e left join e.department where e.department.id=?1
+ //     也可使用`select count(e) from Employee e where e.department.id=?1`
+ // return : `e` &amp; `e.department` 
+ //    =&gt; store in Employee,get one object List:`List&lt;Employee&gt;`
+ // Note: 
+ //    can&#39;t use `fetch` for countQuery 
+ //    or will throw org.hibernate.QueryException (query specified join fetching, but the owner of the fetched association was not present in the select list )
+
+ /* 3. Department-Employee (OneToMany) */
+ @Query(&quot;select distinct p from Department p left join fetch p.employees&quot;)
+ public List&lt;Department&gt; list()
+ // query: 
+ //    select * from department left outer join employee;
+ // return: p &amp; p.employee
+ //    =&gt; store in Department(包含Employee对象): id,name,remark,employees
+ // Note: 
+ //    for OneToMany, use `select distinct p` for root
+</code></pre>
+</li>
+<li><p>Specification (extends <code>JpaSpecificationExecutor&lt;T&gt;</code>)</p>
+<ul>
+<li><p>Employee(Department): ManyToOne</p>
+<pre><code class="lang-java">  criteriaBuilder.equal(root.get(&quot;department&quot;).get(&quot;id&quot;), 1);
+  // Note: can&#39;t use `root.get(&quot;department.id&quot;)`
+  // select * from Employee where department.id=? and name like ?; 
+
+  criteriaBuilder.equal(root.get(&quot;department&quot;).get(&quot;name&quot;), &quot;QA&quot;);
+  // will auto `inner join` Department
+  // select * from Employee e join e.department where department.name=? and name like ?
+
+  criteriaBuilder.equal(root.join(&quot;department&quot;,JoinType.LEFT).get(&quot;name&quot;),&quot;QA&quot;);
+  // will `left join` Department
+  // select * from Employee e left join e.department where department.name=? and name like ?;
+
+  root.fetch(&quot;department&quot;,JoinType.LEFT); 
+  criteriaBuilder.like(root.get(&quot;name&quot;), &quot;Test%&quot;)
+  ...
+  // will `fetch` Department into Employee
+  // select * from Employee e left join fetch e.department where e.name like ?
+  // Note: 
+  // if use Pageable, countQuery can&#39;t use fetch, need to use the `CriteriaQuery.getResultType()` to check whether the query is projection or not
+
+  /* Sample: */
+   Specification&lt;Employee&gt; spec=new Specification&lt;Employee&gt;() {
+      @Override
+      public Predicate toPredicate(Root&lt;Employee&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder criteriaBuilder) {
+
+          // to check whether it&#39;s a count query
+          if(!Long.class.equals(query.getResultType())){
+              root.fetch(&quot;department&quot;,JoinType.LEFT);
+          }
+          Predicate p1=criteriaBuilder.equal(root.get(&quot;department&quot;).get(&quot;id&quot;), 1);
+          Predicate p2=criteriaBuilder.like(root.get(&quot;name&quot;), &quot;Test%&quot;);
+          query.where(criteriaBuilder.and(p1,p2))
+              .orderBy(criteriaBuilder.desc(root.get(&quot;id&quot;)));
+          return query.getRestriction();
+      }
+  };
+</code></pre>
+</li>
+<li><p>Department(Employee): OneToMany</p>
+<pre><code class="lang-java">  /*
+   1. need to use &#39;join&#39; to set Many&#39;s conditions.
+       criteriaBuilder.like(root.get(&quot;employees&quot;).get(&quot;name&quot;), &quot;Test%&quot;);    //error
+   2. If want to fetch Many:
+           - Method1: root.fetch,then cast to join
+          - Method2: use @EntityGraph + root.join
+   3. Note: won&#39;t limit records,and the total records are not correct for `Pageable`.
+  */
+  Specification&lt;Department&gt; spec=new Specification&lt;Department&gt;() {
+      @Override
+      public Predicate toPredicate(Root&lt;Department&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder criteriaBuilder) {
+
+          Predicate p1=null;
+          // to check whether it&#39;s a count query -- no need if used @EntityGraph
+          if(!Long.class.equals(query.getResultType()) &amp;&amp; !long.class.equals(query.getResultType())){
+              // fetch many: use root.fetch,then cast to join
+              Fetch&lt;Department,Employee&gt; ep=root.fetch(&quot;employees&quot;,JoinType.LEFT);
+              Join&lt;Department,Employee&gt; join=(Join&lt;Department,Employee&gt;)ep;
+              p1=criteriaBuilder.like(join.get(&quot;name&quot;), &quot;Emp%&quot;);
+          }else{
+              p1=criteriaBuilder.like(root.join(&quot;employees&quot;,JoinType.LEFT).get(&quot;name&quot;), &quot;Test%&quot;);
+          }
+          Predicate p2=criteriaBuilder.like(root.get(&quot;name&quot;), &quot;Dep%&quot;);
+          query.where(criteriaBuilder.and(p1,p2))
+              .orderBy(criteriaBuilder.desc(root.get(&quot;id&quot;)));
+          return query.getRestriction();
+      }
+  };
+
+  /* Use @EntityGraph Sample: */
+
+  // In DepartmentRepository:
+  @EntityGraph(attributePaths=&quot;employees&quot;)
+  public Page&lt;Department&gt; findAll(Specification&lt;Department&gt; spec,Pageable pageable);
+
+  // Specification: 
+  Specification&lt;Department&gt; spec=new Specification&lt;Department&gt;() {
+      @Override
+      public Predicate toPredicate(Root&lt;Department&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder criteriaBuilder) {
+          Join&lt;Department,Employee&gt; join=root.join(&quot;employees&quot;,JoinType.LEFT);
+          Predicate p = criteriaBuilder.isNull(join);
+          Predicate p1=criteriaBuilder.like(join.get(&quot;name&quot;), &quot;Test%&quot;);
+          Predicate p2=criteriaBuilder.like(root.get(&quot;name&quot;), &quot;QA%&quot;);
+
+          query.where(criteriaBuilder.and(criteriaBuilder.or(p,p1),p2))
+              .orderBy(criteriaBuilder.desc(root.get(&quot;id&quot;)));
+
+          return query.getRestriction();
+      }
+  };
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>@EntityGraph</code></p>
+<ul>
+<li><p>Employee-Department(ManyToOne)</p>
+<pre><code class="lang-java">  /* 1. use @Query */
+  @EntityGraph(attributePaths=&quot;department&quot;/*,type = EntityGraph.EntityGraphType.FETCH*/)
+  @Query(&quot;from Employee e&quot;)
+  public Page&lt;Employee&gt; listByGraphAndPage(Pageable pageable);
+  // query: 
+  //    select * from Employee left join e.department
+  // countQuery: 
+  //    select count(e.id) from Employee
+  // return: 
+  //    e &amp; e.department stored in Employee
+  //  (will get correct Pagable records)
+
+  /* 2. use Specification */
+  @EntityGraph(attributePaths=&quot;department&quot;)
+  public Page&lt;Employee&gt; findAll(Specification&lt;Employee&gt; spec,Pageable pageable);
+  // Test
+  // Note：
+  //    + no need to set fetch manually
+  //    + Specification中不需要再使用`CriteriaQuery.getResultType()`来检查区分是否是countQuery了
+  Specification&lt;Employee&gt; spec=new Specification&lt;Employee&gt;() {
+      @Override
+      public Predicate toPredicate(Root&lt;Employee&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder criteriaBuilder) {
+          // to check whether it&#39;s a count query
+          // if(!Long.class.equals(query.getResultType())){
+          //        root.fetch(&quot;department&quot;,JoinType.LEFT);
+          //    }
+          Predicate p1=criteriaBuilder.equal(root.get(&quot;department&quot;).get(&quot;id&quot;), 1);
+          Predicate p2=criteriaBuilder.like(root.get(&quot;name&quot;), &quot;Test%&quot;);
+          query.where(criteriaBuilder.and(p1,p2))
+              .orderBy(criteriaBuilder.desc(root.get(&quot;id&quot;)));
+          return query.getRestriction();
+      }
+  };
+  Sort sort=Sort.by(Order.desc(&quot;name&quot;),Order.asc(&quot;id&quot;));
+  Pageable pageable=PageRequest.of(0, 3,sort);
+  Page&lt;Employee&gt; page=this.employeeService.listAll(spec,pageable);
+</code></pre>
+</li>
+<li>Department-Employee(OneToMany)<pre><code class="lang-java">  @EntityGraph(attributePaths=&quot;employees&quot;)
+  @Query(&quot;from Department p left join p.employees e where e.name like ?1&quot;)
+  public Page&lt;Department&gt; listByGraphAndPage(String empName,Pageable pageable);
+  // query: 
+  //    select * from Department p left join p.employees e where e.name like ?1
+  // countQuery: 
+  //    select count(e.id) from Department p left join p.employees e where e.name like ?1
+  // return: 
+  //    p &amp; p.employees stored in Department
+  // (will get correct Pagable records)
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-11">T Save(T e)</h3>
+<ul>
+<li>e: a transient object:<ul>
+<li>no primaryKey: do <code>insert</code><ul>
+<li>if associate obj(eg: Department) is not exist,will throw Exception when do insert.</li>
+<li>return saved obj(同save时传入的对象),eg: Employee: id,name,remark,department(id,name:null,remark:null,employees:empty)</li>
+</ul>
+</li>
+<li>has PrimaryKey: do <code>select</code> -&gt; do <code>insert</code>/<code>update</code>/<code>nothing</code>: <ul>
+<li>not exist =&gt; do <code>insert</code></li>
+<li>exist &amp; different =&gt; do <code>update</code> (update all columnes)</li>
+<li>exist &amp; no different =&gt; do <code>nothing</code></li>
+<li>return : selected persist object(不同save时传入的对象). eg:  Employee: id,name,remark,department - proxy : department_$$_xxxx (id)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>e: a persist object: do <code>update</code>/<code>nothing</code> (wont’t execute <code>select</code> at first)<ul>
+<li>has change =&gt; do <code>update</code>, return the updated persist obj</li>
+<li>no change =&gt; do <code>nothing</code>, return : the persist obj</li>
+</ul>
+</li>
+<li>Note: For Hibernate implentation, if add <code>@DynamicUpdate</code> on the entity,the <code>update</code> would be dynamic,just update the changed column value</li>
+</ul>
+<p><strong> Summary: </strong></p>
+<ol>
+<li>Create: <ul>
+<li>a transient object &amp; no primaryKey</li>
+<li>a transient object &amp; a unused primaryKey (will do select first)</li>
+</ul>
+</li>
+<li>Update:<ul>
+<li>a transient object &amp; a exist obj’s primaryKey &amp; different (will do select first)</li>
+<li>a persist object &amp; has change</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-12">Create/Update/Delete</h3>
+<ol>
+<li><p>Create: </p>
+<ul>
+<li><code>T save(T e)</code>:<ul>
+<li>a transient object &amp; no primaryKey</li>
+<li>a transient object &amp; a unused primaryKey (will do select first)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Update:</p>
+<ul>
+<li><code>T save(T e)</code>:<ul>
+<li>a transient object &amp; a exist obj’s primaryKey &amp; different (will do select first)</li>
+<li>a persist object &amp; has change</li>
+</ul>
+</li>
+<li><p><code>@Modifying</code>+<code>@Query(&quot;update ...&quot;)</code></p>
+<ul>
+<li><p>Note: only use <code>void</code> or <code>int</code>/<code>Integer</code> as return type</p>
+<pre><code class="lang-java">/* interface Repository : */
+@Query(&quot;update Employee set name=?2 where id=?1&quot;)
+@Modifying
+public int updateName(Integer id,String newName);
+
+/* class Service : */
+@Transactional
+public int updateName(Integer id,String newName){
+  this.employeeRepository.updateName(id,newName);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Delete:</p>
+<ul>
+<li>Exist function: <ul>
+<li><code>void delete(T entity)</code>: do <code>select</code> by Id -&gt; do <code>delete</code>/<code>insert</code></li>
+<li><code>void delete(ID id)</code>: do <code>select</code> by Id -&gt; do <code>delete</code>/ throw EmptyResultDataAccessException</li>
+<li>Note: no return</li>
+</ul>
+</li>
+<li>Named function: <ul>
+<li>deleteByXxx,removeByXxxx</li>
+<li>Process: <code>select</code> all ids, then do <code>delete</code> one by one</li>
+<li>Note: could return int/Integer/removed entities <pre><code class="lang-sql">public List&lt;Employee&gt; deleteByDepartmentId(Integer departmentId);
+public List&lt;Employee&gt; removeByDepartmentId(Integer departmentId);
+// Step1. `select` all ids:
+//    select e from Employee e left join e.department d where d.id=?
+//     =&gt; employee ids
+// Step2. do `delete` one by one:
+//     delete from Employee where id=?
+//     delete from Employee where id=?
+//    ...
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>JPQL function: <code>@Modifiing</code> + <code>@Query(&quot;delete from ...&quot;)</code> </p>
+<ul>
+<li><p>Note: could return void/int/Integer(changed row count)</p>
+<pre><code class="lang-java">/* interface Repository : */
+@Query(&quot;delete from Employee where department.id=?1&quot;)
+@Modifying
+public int deleteDirectlyByDepartmentId(Integer departmentId);
+
+/* class Service : */
+@Transactional
+public int delete(Integer departmentId){
+  this.employeeRepository.deleteDirectlyByDepartmentId(departmentId);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-13">Custom Repository</h3>
+<ol>
+<li><p>interface EmployeeRepositoryCustom:</p>
+<pre><code class="lang-java"> public interface EmployeeRepositoryCustom&lt;T,ID&gt; {
+      public boolean update(T entity,String...properties); 
+      public int delete(T entity,String...properties);     
+ }
+</code></pre>
+</li>
+<li><p>interface EmployeeRepository (extends EmployeeRepositoryCustom ) :</p>
+<pre><code class="lang-java"> public interface EmployeeRepository 
+     extends JpaRepository&lt;Employee, Integer&gt;,EmployeeRepositoryCustom&lt;Employee, Integer&gt; {
+ }
+</code></pre>
+</li>
+<li><p>class EmployeeRepositoryImpl (implements EmployeeRepositoryCustom):</p>
+<pre><code class="lang-java"> public class EmployeeRepositoryImpl implements EmployeeRepositoryCustom&lt;Employee,Integer&gt;{
+
+     @PersistenceContext
+     private EntityManager em;
+
+     @Override
+     public boolean update(Employee entity, String... properties) {
+         System.out.println(&quot;Update dynamic....&quot;);
+         if(properties==null || properties.length==0)
+             return false;
+
+         try {
+             EntityManagerFactory factory=em.getEntityManagerFactory();
+
+             Object idValue=factory.getPersistenceUnitUtil().getIdentifier(entity);
+             if(idValue==null)
+                 return false;
+
+             Metamodel metamodel=factory.getMetamodel();
+             EntityType&lt;? extends Object&gt; entityType=metamodel.entity(entity.getClass());
+
+             String entityName = entityType.getJavaType().getSimpleName();
+             String idProperty=entityType.getId(Integer.class).getName();
+
+             String hql=&quot;Update &quot;+entityName+&quot; t set &quot;;
+             for(String property:properties) {
+                 if(property!=null &amp;&amp; properties.length!=0)
+                     hql+=&quot;t.&quot;+property+&quot;=?,&quot;;
+             }
+             hql=hql.substring(0,hql.length()-1)+&quot; where t.&quot;+idProperty+&quot;=?&quot;;
+
+             Query query=em.createQuery(hql);
+             for(int i=0;i&lt;properties.length;i++) {
+                 String property=properties[i];
+                 query.setParameter(i, PropertyUtils.getProperty(entity, property));
+             }
+             query.setParameter(properties.length, idValue);
+             return query.executeUpdate()&gt;0;
+
+         }catch(Exception ex) {
+             System.out.println(ex.getMessage());
+             return false;
+         }
+     }
+
+     @Override
+     public int delete(Employee entity, String... properties) {
+         System.out.println(&quot;Delete dynamic....&quot;);
+
+         if(properties==null || properties.length==0)
+             return 0;
+
+         try {
+             EntityManagerFactory factory=em.getEntityManagerFactory();
+
+             Metamodel metamodel=factory.getMetamodel();
+             EntityType&lt;? extends Object&gt; entityType=metamodel.entity(entity.getClass());
+
+             String entityName = entityType.getJavaType().getSimpleName();
+
+             String hql=&quot;delete from &quot;+entityName+&quot; t where &quot;;
+             for(String property:properties) {
+                 if(property!=null &amp;&amp; properties.length!=0)
+                     hql+=&quot;t.&quot;+property+&quot;=? and &quot;;
+             }
+             hql=hql+&quot; 1=1&quot;;
+
+             Query query=em.createQuery(hql);
+             for(int i=0;i&lt;properties.length;i++) {
+                 String property=properties[i];
+                 query.setParameter(i, PropertyUtils.getProperty(entity, property));
+             }
+             return query.executeUpdate();
+
+         }catch(Exception ex) {
+             System.out.println(ex.getMessage());
+             return 0;
+         }
+     }
+ }
+</code></pre>
+</li>
+<li><p>Service:</p>
+<pre><code class="lang-java"> @Service
+ public class EmployeeService {
+
+     @Autowired
+     private EmployeeRepository employeeRepository;
+
+     // Update: Dynamic: em + HQL 
+     @Transactional
+     public boolean updateDynamic(Employee e,String...properties) {
+         return this.employeeRepository.update(e, properties);
+     }
+
+     // Delete: Dynamic: em + HQL
+     @Transactional
+     public int deleteDynamic(Employee e,String...properties) {
+         return this.employeeRepository.delete(e, properties);
+     }
+ }
+</code></pre>
+</li>
+<li><p>Test:</p>
+<pre><code class="lang-java"> /*
+  * Update by Custom Implementation
+  * 
+  * Use em and build dynamic &quot;update&quot; hql by properties
+  * ( No need add @Modify  on Repository)
+  * 
+  * */
+ @Test
+ public void updateDynamicByHQLTest() {
+     Employee e = new Employee();
+     e.setId(3);
+     e.setName(&quot;Hello-Dynamic4&quot;);
+     e.setDepartment(new Department(1));
+
+     boolean result=this.employeeService.updateDynamic(e, &quot;name&quot;);
+     System.out.println(result);
+ }
+
+ /*
+  * Delete by Custom Implementation
+  * 
+  * Use em and build dynamic &quot;delete&quot; hql by properties
+  * ( No need add @Modify on Repository)
+  * 
+  * */
+ @Test
+ public void deleteDynamicTest() {
+     Employee e = new Employee();
+     e.setId(6);
+     e.setName(&quot;Test&quot;);
+     int result=this.employeeService.deleteDynamic(e,&quot;id&quot;,&quot;name&quot;);
+     System.out.println(result);
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-14">Reference</h2>
+<p><a href="https://github.com/sixDegree/springboot-demo" target="_blank" rel="noopener">my demo</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>
