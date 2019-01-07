@@ -293,7 +293,7 @@
 </li>
 <li>编程模型：<ul>
 <li>注解式驱动 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-controller" target="_blank" rel="noopener">Annotated Controllers</a>: 同WebMvc使用的注解</li>
-<li>函数式端点 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-fn" target="_blank" rel="noopener">Functional Endpoints</a> : 使用<code>RouterFunction</code></li>
+<li>函数式端点 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-fn" target="_blank" rel="noopener">Functional Endpoints</a> : 使用<code>RouterFunction</code>(功能上代替Contoller+HandleMethod)</li>
 </ul>
 </li>
 <li>核心组件(功能大同WebMvc, jar: <code>spring-webflux</code>， package：<code>o.s.w.reactive...</code>):<ul>
@@ -5213,7 +5213,7 @@ public class SpringApplication {
 </li>
 </ol>
 <h3 id="header-45">ContentNegotiatingViewResolver</h3>
-<p><img src="/2018/09/15/contentNegotiatingViewResolver.png" alt="contentNegotiatingViewResolver"></p>
+<!-- ![contentNegotiatingViewResolver](2018-09-15-Spring-Boot/contentNegotiatingViewResolver.png) -->
 <p><code>ContentNegotiatingViewResolver</code>:</p>
 <ul>
 <li>成员：<ul>
@@ -5577,7 +5577,11 @@ public interface ContentNegotiationStrategy {
 </ol>
 <h3 id="header-46">DispatcherServlet</h3>
 <p><img src="/2018/09/15/webmvc-handler.png" alt="webmvc"></p>
-<p><img src="/2018/09/15/webmvc-view.png" alt="webmvc-view"></p>
+<!-- 
+![webmvc](2018-09-15-Spring-Boot/webmvc-view.png)
+
+![webmvc-view](2018-09-15-Spring-Boot/webmvc-rest.png) 
+-->
 <p>package org.springframework.web.servlet;</p>
 <ol>
 <li><p><code>DispatcherServlet#doDispatch(request,response)</code></p>
@@ -6996,16 +7000,16 @@ public class DispatcherServlet extends FrameworkServlet {
 </code></pre>
 </li>
 </ol>
-<ol>
-<li><p>初始化流程<br> <img src="/2018/09/15/webflux-init.png" alt="WebFlux 初始化流程"></p>
-</li>
-<li><p>执行流程</p>
-<ul>
-<li>注解驱动执行流程<br>  <img src="/2018/09/15/webflux-annotation.png" alt="WebFlux 注解驱动执行流程"></li>
-<li>函数式端点驱动执行流程<br>  <img src="/2018/09/15/webflux-functional.png" alt="WebFlux 函数式端点驱动执行流程"></li>
-</ul>
-</li>
-</ol>
+<!-- 
+1. 初始化流程
+    ![WebFlux 初始化流程](2018-09-15-Spring-Boot/webflux-init.png)
+
+2. 执行流程
+    - 注解驱动执行流程
+        ![WebFlux 注解驱动执行流程](2018-09-15-Spring-Boot/webflux-annotation.png)
+    - 函数式端点驱动执行流程
+        ![WebFlux 函数式端点驱动执行流程](2018-09-15-Spring-Boot/webflux-functional.png)
+-->
 <h2 id="header-52">Reference</h2>
 <ul>
 <li><a href="https://github.com/sixDegree/springboot-demo" target="_blank" rel="noopener">Demo</a></li>
