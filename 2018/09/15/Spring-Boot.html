@@ -3148,7 +3148,7 @@ public class SpringApplication {
 </code></pre>
 </li>
 <li><p>/src/main/webapp/WEB-INF/app-context.xml (配置Web MVC组件)</p>
-<pre><code class="lang-xml">     &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
  &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
      xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
      xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
@@ -3646,9 +3646,11 @@ public class SpringApplication {
 </ul>
 </li>
 <li><p>verify: run <code>main</code></p>
-<pre><code> - `curl -i http://localhost:8080/`        -&gt; OK
- - `curl -i http://localhost:8080/myServlet` -&gt; OK
-</code></pre></li>
+<ul>
+<li><code>curl -i http://localhost:8080/</code>        -&gt; OK</li>
+<li><code>curl -i http://localhost:8080/myServlet</code> -&gt; OK</li>
+</ul>
+</li>
 </ol>
 <h3 id="header-35">组件Servlet源码分析</h3>
 <ul>
