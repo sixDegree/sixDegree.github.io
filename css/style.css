@@ -253,7 +253,7 @@ article.detail > .post-content li > p {
   margin-top: 7px; }
 
 article.detail img {
-  width: 100%; }
+  max-width: 100%; }
 
 /* archive-listing */
 #archive-listing {
