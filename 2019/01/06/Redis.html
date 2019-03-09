@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SpringBoot Redis</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="micro service,redis,session,spring boot">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">SpringBoot Redis</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Demo</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">应用：Session 持久化</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">方案：NoSession</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">方案：SpringSession</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">方案：NoSession 示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Dependency</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Config</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">RedisService</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">AuthController</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Service &amp; Repository &amp; Entity</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Utils: MD5Utils &amp; MicroResponse</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Run and Visit</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Verify</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">Client: call AuthService</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">Client：简化测试版</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">方案：SpringSession 示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Dependency</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">Config</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">Controller</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">Service &amp; Repository &amp; Entity</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">Run</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">Verify</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">扩展：使用json方式序列化对象到Redis</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">Verify again</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">Client：简化测试版</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">SpringBoot Redis</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-01-05T16:00:00.000Z">2019-01-06</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-MicroService">MicroService</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">SpringBoot Redis</h2>
+<ol>
+<li><p>Redis 特性：高性能的key-value数据库</p>
+<ul>
+<li>支持数据的持久化，可将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用</li>
+<li>支持String，Hash,list,Set,ZSet等数据结构的存储</li>
+<li>支持数据的备份（master-slave）</li>
+<li>支持分布式集群，横向扩展</li>
+</ul>
+</li>
+<li><p>Spring: 封装了RedisTemplate对象来支持对redis的各种操作</p>
+<ul>
+<li><code>RedisTemplate&lt;K,V&gt;</code>: 默认采用JDK的序列化策略</li>
+<li><code>StringRedisTemplate extends RedisTemplate&lt;String, String&gt;</code> : 默认采用String的序列化策略</li>
+<li>RedisTemplate中定义了对5种数据结构操作:<ul>
+<li>redisTemplate.opsForValue() 操作字符串</li>
+<li>redisTemplate.opsForHash() 操作hash</li>
+<li>redisTemplate.opsForList() 操作list</li>
+<li>redisTemplate.opsForSet() 操作set</li>
+<li>redisTemplate.opsForZSet() 操作有序set</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>SpringBoot:自动化装配</p>
+<ul>
+<li><p><code>org.springframework.boot.autoconfigure.data.redis.RedisProperties</code></p>
+<pre><code class="lang-java">  @ConfigurationProperties(prefix = &quot;spring.redis&quot;)
+  public class RedisProperties {
+      private int database = 0;
+      private String url;
+      private String host = &quot;localhost&quot;;
+      private String password;
+      private int port = 6379;
+      private boolean ssl;
+      private Duration timeout;
+      private Sentinel sentinel;
+      private Cluster cluster;
+      private final Jedis jedis = new Jedis();
+      private final Lettuce lettuce = new Lettuce();
+      // getter &amp; setter ...
+
+      public static class Pool {
+          private int maxIdle = 8;
+          private int minIdle = 0;
+          private int maxActive = 8;
+          private Duration maxWait = Duration.ofMillis(-1);
+          //getter &amp; setter ...
+      }
+      public static class Cluster {
+          private List&lt;String&gt; nodes;            //Comma-separated list of &quot;host:port&quot; pairs
+          private Integer maxRedirects;
+          //getter &amp; setter ...
+      }
+      public static class Sentinel {
+          private String master;
+          private List&lt;String&gt; nodes;
+          //getter &amp; setter ...
+      }
+      public static class Jedis {
+          private Pool pool;
+          //getter &amp; setter ...
+      }
+      public static class Lettuce {
+          private Duration shutdownTimeout = Duration.ofMillis(100);
+          private Pool pool;
+          //getter &amp; setter ...
+      }
+  }
+</code></pre>
+</li>
+<li><code>org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration</code><pre><code class="lang-java">  @Configuration
+  @ConditionalOnClass(RedisOperations.class)
+  @EnableConfigurationProperties(RedisProperties.class)
+  @Import({ LettuceConnectionConfiguration.class, JedisConnectionConfiguration.class })
+  public class RedisAutoConfiguration {
+      @Bean
+      @ConditionalOnMissingBean(name = &quot;redisTemplate&quot;)
+      public RedisTemplate&lt;Object, Object&gt; redisTemplate(
+              RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
+          RedisTemplate&lt;Object, Object&gt; template = new RedisTemplate&lt;&gt;();
+          template.setConnectionFactory(redisConnectionFactory);
+          return template;
+      }
+      @Bean
+      @ConditionalOnMissingBean
+      public StringRedisTemplate stringRedisTemplate(
+              RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
+          StringRedisTemplate template = new StringRedisTemplate();
+          template.setConnectionFactory(redisConnectionFactory);
+          return template;
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>数据同步,eg: redis和mysql间的数据的同步</p>
+<ul>
+<li>Read: <ul>
+<li>Read from redis -&gt; Exist -&gt; get Data</li>
+<li>Read from redis -&gt; None -&gt; Read mysql -&gt; write to redis</li>
+</ul>
+</li>
+<li>Write: <ul>
+<li>Write to mysql -&gt; Success -&gt; Write to Redis</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-2">Demo</h3>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;!-- SpringBoot --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+ &lt;!-- Springboot redis --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>resources/application.yml</p>
+<pre><code> spring:
+   redis:
+     host: localhost
+     port: 6379
+     password: 123456
+     timeout: 30000
+     jedis:
+       pool:
+         max-active: 8
+         max-wait: 1
+         max-idle: 8
+         min-idle: 0
+</code></pre></li>
+<li><p>RedisConfig</p>
+<pre><code class="lang-java"> @Configuration
+ public class RedisConfig {
+
+     @Bean
+     @ConditionalOnMissingBean(name = &quot;redisTemplate&quot;)        // create and inject when no bean which named `redisTemplate`
+     public RedisTemplate&lt;Object, Object&gt; redisTemplate(RedisConnectionFactory redisConnectionFactory){
+         RedisTemplate&lt;Object, Object&gt; template = new RedisTemplate&lt;&gt;();
+         template.setConnectionFactory(redisConnectionFactory);
+
+         // set serializer for key: use `RedisSerializer&lt;String&gt;`
+         RedisSerializer&lt;String&gt; stringSerializer = new StringRedisSerializer();
+         template.setKeySerializer(stringSerializer);
+         template.setHashKeySerializer(stringSerializer);
+
+         // set serializer for value: use `Jackson2JsonRedisSerializer&lt;Object&gt;`
+         Jackson2JsonRedisSerializer&lt;Object&gt;    jsonSerializer = new Jackson2JsonRedisSerializer&lt;Object&gt;(Object.class);
+         ObjectMapper objectMapper = initObjectMapper();
+         jsonSerializer.setObjectMapper(objectMapper);
+         template.setValueSerializer(jsonSerializer);
+         template.setHashValueSerializer(jsonSerializer);
+
+         return template;
+     }
+
+     private ObjectMapper initObjectMapper(){
+         ObjectMapper objectMapper = new ObjectMapper();
+
+         //去除掉对getter和setter的依赖,ObjectMapper将通过反射机制直接操作Java对象上的字段
+         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+
+         // DefaultTyping: 
+         // 指定什么样的类型输入会被使用 ( eg: `NON_FINAL`表示对所有非final类型或者非final类型元素对象持久化)
+         // 这样Json序列化/反序列化不需要知道具体子类的类型，只需要根据父类以及类别标识就能准确判断子类类型
+         // 注：会存储类型信息（为了能准确的反序列多态类型的数据）
+         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+
+         // disable Feature:
+         // `DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES` (Json -&gt; Object): 忽略json字符串中不识别的属性
+         // `SerializationFeature.FAIL_ON_EMPTY_BEANS` (Object -&gt; Json) 忽略无法转换的对象 “No serializer found for class com.xxx.xxx”
+         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES); 
+         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+
+         // Serialization (Object -&gt; Json): 
+         // `NON_EMPTY`只序列化非空属性
+         //objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+
+         return objectMapper;
+     }
+ }
+</code></pre>
+</li>
+<li><p>RedisService</p>
+<pre><code class="lang-java"> @Service
+ public class RedisService {
+
+     // @Autowired
+     // private StringRedisTemplate redisTemplate;
+
+     //  inject base on bean name
+     // @Resource        
+     // private RedisTemplate&lt;String, Object&gt; redisTemplate;
+
+     // inject base on the bean type
+     @Autowired
+     private RedisTemplate&lt;String, Object&gt; redisTemplate;
+
+     public Object get(String key) {
+         return redisTemplate.opsForValue().get(key);
+     }
+     public void set(String key, Object value) {
+         redisTemplate.opsForValue().set(key, value);
+     }
+     public void set(String key,Object value,int timeout){
+         redisTemplate.opsForValue().set(key, value,timeout,TimeUnit.SECONDS);
+     }
+     public Boolean delete(String key){
+         return redisTemplate.delete(key);
+     }
+     public void expire(String key,int timeout){
+         redisTemplate.expire(key, timeout, TimeUnit.SECONDS);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-3">应用：Session 持久化</h2>
+<ul>
+<li>Session在服务端保存用户会话状态（如：用户登录信息等） </li>
+<li>在程序重启、多进程运行、负载均衡、跨域等情况时，会出现Session丢失或多进程、多个负载站点间状态不能共享的情况</li>
+<li>解决方案：将Session持久化存储以共享 （ Redis 是一个高性能的<code>key-value</code>数据库，可用来存储<code>Session</code>），eg:<ul>
+<li><code>NoSession</code>(服务端自己生成一个序列码代替Session作为标识)</li>
+<li><code>SpringSession</code>(对每一个请求request进行封装，后续取到的不是HttpSession而是可持久化的SpringSession)</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-4">方案：NoSession</h3>
+<p>Scenarios:</p>
+<ol>
+<li><p>One App, Multiple Clients Login,only latest login valid:</p>
+<ul>
+<li>Login Process:<ul>
+<li>Client1: login -&gt; success</li>
+<li>Client2: login -&gt; success &amp; expire Client1 login</li>
+</ul>
+</li>
+<li>Visit controlled resources:<ul>
+<li>Client1: 401 Unauthorized -&gt; please login</li>
+<li>Client2: success</li>
+</ul>
+</li>
+<li>Logout Process:<ul>
+<li>Client1: logout -&gt; invalid token-&gt; success</li>
+<li>Client2: logout -&gt; valid token -&gt; success</li>
+</ul>
+</li>
+<li>Implement:<ul>
+<li>使用Redis维护保存用户登陆信息:<ul>
+<li><code>&lt;prefix&gt;:&lt;token&gt;</code>:<code>&lt;user&gt;</code> &amp; expireTime</li>
+<li><code>&lt;prefix&gt;:&lt;user.id&gt;</code>:<code>&lt;token&gt;</code> &amp; expireTime</li>
+</ul>
+</li>
+<li>HttpHeader中带有token:<ul>
+<li><code>&lt;token&gt;</code></li>
+</ul>
+</li>
+<li>login:<ul>
+<li>delete the two redis key-values (for invaliding other clients login)</li>
+<li>generate new <code>&lt;token&gt;</code></li>
+<li>set the two redis key-values</li>
+<li>set <code>&lt;token&gt;</code> to Http Response</li>
+</ul>
+</li>
+<li>logout:<ul>
+<li>get <code>token1</code> from http header</li>
+<li>get <code>user.id</code> from redis key-value <code>&lt;prefix&gt;:&lt;token1&gt;</code>:<code>&lt;user&gt;</code></li>
+<li>get <code>token2</code> from redis key-value <code>&lt;prefix&gt;:&lt;user.id&gt;</code>:<code>&lt;token2&gt;</code></li>
+<li>can’t get <code>user.id</code> || can’t get <code>token2</code> -&gt; valid -&gt; success</li>
+<li>compare <code>token1</code> &amp; <code>token2</code><ul>
+<li>match -&gt; valid -&gt; delete the two redis key-values -&gt; success</li>
+<li>unmatch -&gt; invalid -&gt; fail</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>getAuthentication<ul>
+<li>get <code>user</code> from redis key-value <code>&lt;prefix&gt;:&lt;token&gt;</code>:<code>&lt;user&gt;</code> (get <code>token</code> from http header) </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>One AuthService,Multiple other Services call AuthService(seperate auth process)</p>
+<ul>
+<li>AuthService API:<ul>
+<li>login</li>
+<li>logout</li>
+<li>getAuthentication</li>
+</ul>
+</li>
+<li>Service1 -&gt; AuthService</li>
+<li>Service2 -&gt; AuthService</li>
+<li>Implement:<ul>
+<li>使用Redis维护保存用户登陆信息: (note: different services use different <code>&lt;prefix&gt;</code>)<ul>
+<li><code>&lt;prefix&gt;:&lt;token&gt;</code>:<code>&lt;user&gt;</code> &amp; expireTime </li>
+</ul>
+</li>
+<li>HttpHeader中带有token:<ul>
+<li><code>&lt;token&gt;</code></li>
+</ul>
+</li>
+<li>login: <ul>
+<li>generate new <code>token</code></li>
+<li>set redis key-value <code>&lt;prefix&gt;:&lt;token&gt;</code>:<code>&lt;user&gt;</code></li>
+<li>set <code>&lt;token&gt;</code> to HttpResponse</li>
+</ul>
+</li>
+<li>logout: <ul>
+<li>delete redis key-value <code>&lt;prefix&gt;:&lt;token&gt;</code>:<code>&lt;user&gt;</code> (get <code>token</code> from http header)</li>
+</ul>
+</li>
+<li>getAuthentication: <ul>
+<li>get <code>user</code> from redis key-value <code>&lt;prefix&gt;:&lt;token&gt;</code>:<code>&lt;user&gt;</code> (get <code>token</code> from http header)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-5">方案：SpringSession</h3>
+<p>Refer to <a href="https://docs.spring.io/spring-session/docs/current/reference/html5/guides/boot-redis.html" target="_blank" rel="noopener">Spring Session - Spring Boot</a></p>
+<p>spring-session</p>
+<ul>
+<li>spring旗下的一个项目, 把servlet容器实现的HttpSession替换为spring-session的HttpSession</li>
+<li>核心组件：<code>SessionRepositoryFilter</code> 拦截Web请求,确保随后调用<code>javax.servlet.http.HttpServletRequest</code>的<code>getSession()</code>，会返回Spring Session的HttpSession实例，而不是应用服务器默认的<code>HttpSession</code><ul>
+<li>HttpSessionIdResolver: resolveSessionIds，expireSession</li>
+<li>SessionRepository: createSession,save,findById,deleteById</li>
+<li>@Override doFilterInternal(HttpServletRequest request,HttpServletResponse response, FilterChain filterChain)<ul>
+<li>SessionRepositoryRequestWrapper (getSession -&gt; return HttpSessionWrapper)</li>
+<li>SessionRepositoryResponseWrapper    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用Redis存储的SpringSession(默认使用前缀：<code>spring:session</code>),对于每一个session都会创建3组数据,eg:<ul>
+<li><code>spring:session:sessions:[sessionId]</code>: hash结构,存储springsession的主要内容:<ul>
+<li>sessionAttr:[sessionId]  存储session信息（eg：实体类的序列化数据）</li>
+<li>creationTime</li>
+<li>maxInactiveInterval</li>
+<li>lastAccessedTime</li>
+</ul>
+</li>
+<li><code>spring:session:sessions:expires:[sessionId]</code>：string结构，value为空,ttl倒计时过期</li>
+<li><code>spring:session:expirations:[expireTime]</code>：set结构<ul>
+<li>expires:[sessionId] 一个会话一条</li>
+<li>redis的ttl删除key是一个异步行为且是一个低优先级的行为，可能会导致session不被清除，于是引入了expirations这个key，来主动进行session的过期行为判断</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Process：<ul>
+<li>通过request的<code>getSession(boolean create)</code> 方法获取<code>session</code></li>
+<li>根据sessionId 读取 <code>spring:session:sessions:[sessionId]</code> 的值</li>
+</ul>
+</li>
+<li>Scenarios:<ul>
+<li>One App,Multiple Clients Login =&gt; seperated,all success</li>
+<li>One AuthService,Multiple other Services call AuthService =&gt; seperated,all successs</li>
+<li>One App,Multiple ports (Nginx/Apache+Tomcat) =&gt; depends on session async strategy</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-6">方案：NoSession 示例</h2>
+<h3 id="header-7">Dependency</h3>
+<p>pom.xml</p>
+<pre><code class="lang-xml">&lt;!-- SpringBoot --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Redis --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- for StringUtils --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- for MD5 --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-codec&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-codec&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="header-8">Config</h3>
+<ol>
+<li><p>resources/application.yml</p>
+<pre><code class="lang-yml"> server:
+       port: 8080
+       servlet:
+         context-path: /micro-auth
+
+ spring:
+   redis:
+     host: localhost
+     port: 6379
+     password: 123456
+     timeout: 30000
+     jedis:
+       pool:
+         max-active: 8
+         max-wait: 1
+         max-idle: 8
+         min-idle: 0
+
+ # for authController        
+ auth:
+   usersessionHeader: usersession
+   principalHeader: micro-auth
+   expireTime: 180
+</code></pre>
+</li>
+<li><p>RedisConfig</p>
+<pre><code class="lang-java"> @Configuration
+ public class RedisConfig {
+     @Bean
+     public RedisTemplate&lt;Object,Object&gt; jsonRedisTemplate(RedisConnectionFactory redisConnectionFactory){
+         RedisTemplate&lt;Object, Object&gt; template = new RedisTemplate&lt;Object,Object&gt;();
+         template.setConnectionFactory(redisConnectionFactory);
+
+         RedisSerializer&lt;String&gt; stringSerializer = new StringRedisSerializer();
+         template.setKeySerializer(stringSerializer);
+         template.setHashKeySerializer(stringSerializer);
+
+         Jackson2JsonRedisSerializer&lt;Object&gt;    jsonSerializer = initJsonSerializer();
+         template.setValueSerializer(jsonSerializer);
+         template.setHashValueSerializer(jsonSerializer);
+
+         template.afterPropertiesSet();
+
+         System.out.println(&quot;Create Customer JsonRedisTemplate-----&quot;);
+         return template;
+     }
+     private Jackson2JsonRedisSerializer&lt;Object&gt; initJsonSerializer(){
+         Jackson2JsonRedisSerializer&lt;Object&gt;    jsonSerializer = new Jackson2JsonRedisSerializer&lt;Object&gt;(Object.class);
+         ObjectMapper objectMapper = initObjectMapper();
+         jsonSerializer.setObjectMapper(objectMapper);
+         return jsonSerializer;
+     }
+     private ObjectMapper initObjectMapper(){
+         ObjectMapper objectMapper = new ObjectMapper();
+         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+         objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+         objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES); 
+         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+         //objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+         return objectMapper;
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-9">RedisService</h3>
+<pre><code class="lang-java">@Service
+public class RedisService {        
+
+    @Autowired
+    private RedisTemplate&lt;Object, Object&gt; jsonRedisTemplate;
+
+    public Object get(String key) {
+        return jsonRedisTemplate.opsForValue().get(key);
+    }    
+    public void set(String key, Object value) {
+        jsonRedisTemplate.opsForValue().set(key, value);
+    }
+    public void set(String key,Object value,int timeout){
+        jsonRedisTemplate.opsForValue().set(key, value,timeout,TimeUnit.SECONDS);
+    }
+    public Boolean delete(String key){
+        return jsonRedisTemplate.delete(key);
+    }
+    public void expire(String key,int timeout){
+        jsonRedisTemplate.expire(key, timeout, TimeUnit.SECONDS);
+    }
+}
+</code></pre>
+<h3 id="header-10">AuthController</h3>
+<pre><code class="lang-java">@RestController
+public class AuthController {
+
+    @Value(&quot;${auth.principalHeader}&quot;)
+    private String principalHeader;
+
+    @Value(&quot;${auth.expireTime}&quot;)
+    private int expireTime;
+
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping(&quot;/&quot;)
+    public Object index(){
+        return ResponseEntity.ok(&quot;This is micro-authService!&quot;);
+    }
+
+    @PostMapping(&quot;/login&quot;)
+    public Object login(@RequestBody User loginUser,
+            @RequestHeader(name=&quot;${auth.usersessionHeader}&quot;) String sessionKey, 
+            @RequestHeader(name=&quot;${auth.principalHeader}&quot;,required=false) String principle,
+            HttpServletResponse response){
+        // db: verify 
+        if(loginUser==null || StringUtils.isAnyBlank(loginUser.getName(),loginUser.getPassword()))
+            return MicroResponse.InvalidRequest;
+
+        // check principle
+        if(principle!=null){
+            User user=(User)this.redisService.get(sessionKey+&quot;:&quot;+principle);
+            if(user!=null 
+                    &amp;&amp; loginUser.getName().equals(user.getName()) 
+                    &amp;&amp; MD5Utils.getMD5Str(loginUser.getPassword()).equals(user.getPassword())){
+                this.redisService.expire(sessionKey+&quot;:&quot;+principle, expireTime);
+                this.redisService.expire(sessionKey+&quot;:&quot;+user.getId(), expireTime);
+                response.setHeader(principalHeader, principle);
+                return MicroResponse.success(&quot;login success&quot;);
+            }
+        }
+
+        // check name &amp; password
+        User user=userService.findByNameAndPassword(loginUser);
+        if(user==null)
+            return MicroResponse.AuthenticationFail;
+
+        // delete other clients login
+        String oldToken = (String)this.redisService.get(sessionKey+&quot;:&quot;+user.getId());
+        if(user!=null)
+            this.redisService.delete(sessionKey+&quot;:&quot;+oldToken);
+        this.redisService.delete(sessionKey+&quot;:&quot;+user.getId());
+
+        // set new
+        String token = UUID.randomUUID().toString();
+        this.redisService.set(sessionKey+&quot;:&quot;+token,user,expireTime);
+        this.redisService.set(sessionKey+&quot;:&quot;+user.getId(),token,expireTime);
+        response.setHeader(principalHeader, token);
+        return MicroResponse.success(&quot;login success&quot;);
+    }
+
+    @GetMapping(&quot;/logout&quot;)
+    public Object logout(@RequestHeader(name=&quot;${auth.principalHeader}&quot;) String principle,@RequestHeader(name=&quot;${auth.usersessionHeader}&quot;) String sessionKey){
+        User user=(User)this.redisService.get(sessionKey+&quot;:&quot;+principle);
+        if(user==null)
+            return MicroResponse.success(&quot;logout success&quot;);
+
+        String token=(String)this.redisService.get(sessionKey+&quot;:&quot;+user.getId());
+        if(token==null)
+            return MicroResponse.success(&quot;logout success&quot;);
+
+        if(principle.equals(token)){
+            this.redisService.delete(sessionKey+&quot;:&quot;+user.getId());
+            this.redisService.delete(sessionKey+&quot;:&quot;+token);
+            return MicroResponse.success(&quot;logout success&quot;);
+        }
+        return MicroResponse.fail(&quot;logout fail&quot;);
+    }
+
+    @GetMapping(&quot;/authentication&quot;)
+    public Object getAuthentication(@RequestHeader(name=&quot;${auth.principalHeader}&quot;) String principle,@RequestHeader(name=&quot;${auth.usersessionHeader}&quot;) String sessionKey){
+        return MicroResponse.success(redisService.get(sessionKey+&quot;:&quot;+principle));
+    }
+
+    @PostMapping(&quot;/regist&quot;)
+    public Object regist(@RequestBody User user){
+        if(user==null || StringUtils.isAnyBlank(user.getName(),user.getPassword()))
+            return MicroResponse.InvalidRequest;
+        boolean result=userService.save(user);
+        return new MicroResponse(result,result?1:0,user);
+    }
+}
+
+// catch error!
+@RestController
+public class AuthErrorController implements ErrorController{
+
+    @Override
+    public String getErrorPath() {
+        return &quot;/error&quot;;
+    }
+
+    @RequestMapping(value=&quot;/error&quot;)
+    public Object onError(HttpServletResponse rs,Exception ex){
+       HttpStatus status=HttpStatus.resolve(rs.getStatus());
+       if(status!=null)
+           return new MicroResponse(false,rs.getStatus(),status.getReasonPhrase());
+       else
+           return MicroResponse.fail(ex.getMessage());
+    }
+}
+</code></pre>
+<h3 id="header-11">Service &amp; Repository &amp; Entity</h3>
+<p>Service: UserService</p>
+<pre><code class="lang-java">@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    public User findByNameAndPassword (User user){
+        Optional&lt;User&gt; result= this.userRepository.findByNameAndPassword(user.getName(),user.getPassword());
+        if(result.isPresent())
+            return result.get();
+        return null;
+    }
+
+    public boolean save(User user){
+        return this.userRepository.save(user);
+    }
+}
+</code></pre>
+<p>Repository: UserRepository</p>
+<pre><code class="lang-java">@Repository
+public class UserRepository {
+
+    //private final ConcurrentMap&lt;Integer,User&gt; users = new ConcurrentHashMap&lt;Integer,User&gt;();
+    private final ConcurrentMap&lt;String,User&gt; users=new ConcurrentHashMap&lt;String,User&gt;();
+    private final static AtomicInteger idGenerator = new AtomicInteger();
+
+    @PostConstruct
+    public void init(){
+        users.put(&quot;admin&quot;, new User(idGenerator.incrementAndGet(),&quot;admin&quot;,MD5Utils.getMD5Str(&quot;admin123&quot;)));
+    }
+    public boolean save(User user){
+        Integer id = idGenerator.incrementAndGet();
+        user.setId(id);
+        user.setPassword(MD5Utils.getMD5Str(user.getPassword()));
+        return users.put(user.getName(),user)==null;
+    }
+    public Collection&lt;User&gt; list(){
+        return users.values();
+    }
+    public Optional&lt;User&gt; findByNameAndPassword(String name,String password){
+        User user=users.get(name);
+        if(user!=null &amp;&amp; user.getPassword().equals(MD5Utils.getMD5Str(password)))
+            return Optional.of(user);
+        return Optional.empty();
+    }
+    public boolean existsByName(String name){
+        return users.containsKey(name);
+    }
+}
+</code></pre>
+<p>Entity: User</p>
+<pre><code class="lang-java">public class User implements Serializable{
+    private static final long serialVersionUID = -4198480470411674996L;
+    private Integer id;
+    private String name;
+    private String password;
+
+    public User(){}
+
+    public User(Integer id,String name,String password){
+        this.id=id;
+        this.name=name;
+        this.password=password;
+    }
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+    @JsonProperty
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    /* other getter &amp; setter ... */
+}
+</code></pre>
+<h3 id="header-12">Utils: MD5Utils &amp; MicroResponse</h3>
+<pre><code class="lang-java">public class MD5Utils {
+     public static String getMD5Str(String strValue) {
+        try {
+            MessageDigest md5 = MessageDigest.getInstance(&quot;MD5&quot;);
+            String newstr = Base64.encodeBase64String(md5.digest(strValue.getBytes()));
+            return newstr;
+        } catch (NoSuchAlgorithmException e) {
+            //e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return strValue;
+    }
+}
+</code></pre>
+<pre><code class="lang-java">public class MicroResponse {
+    public static final MicroResponse OK=new MicroResponse(true,1,null);
+    public static final MicroResponse AuthenticationFail=new MicroResponse(false,2, &quot;Authentication Fail&quot;);
+    public static final MicroResponse UnAuthorized=new MicroResponse(false,3, &quot;Not Authorized&quot;);
+    public static final MicroResponse InvalidRequest=new MicroResponse(false,4,&quot;Invalid Request&quot;);
+    public static final MicroResponse Existed=new MicroResponse(false,5,&quot;Already Existed&quot;);
+    public static final MicroResponse NotExist=new MicroResponse(false,6,&quot;Not Exist&quot;);
+
+    public static MicroResponse success(Object data){
+        return new MicroResponse(true,1,data);
+    }
+    public static MicroResponse fail(Object data){
+        return new MicroResponse(false,0,data);
+    }
+
+    private boolean success;
+    private Integer code;
+    private Object data;
+
+    public MicroResponse(boolean success, Integer code, Object data) {
+        super();
+        this.success = success;
+        this.code = code;
+        this.data = data;
+    }
+    /* getter &amp; setter ...  */
+}
+</code></pre>
+<h3 id="header-13">Run and Visit</h3>
+<ol>
+<li><p>main</p>
+<pre><code class="lang-java"> @SpringBootApplication
+ public class AuthServiceApplication {
+     public static void main(String[] args) {
+         SpringApplication.run(AuthServiceApplication.class, args);
+     }
+ }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:8080/micro-auth</code></p>
+<ul>
+<li>POST <code>/regist</code><ul>
+<li>body: <code>{&quot;name&quot;:&quot;Tom&quot;,&quot;password&quot;:&quot;123123&quot;}</code></li>
+</ul>
+</li>
+<li>POST <code>/login</code><ul>
+<li>header: <code>usersession:xx</code></li>
+<li>body: <code>{&quot;name&quot;:&quot;Tom&quot;,&quot;password&quot;:&quot;123123&quot;}</code></li>
+</ul>
+</li>
+<li>GET     <code>/logout</code><ul>
+<li>header: <code>usersession:xx</code>,<code>micro-auth:xxxxxxxxxxxxxx</code></li>
+</ul>
+</li>
+<li>GET <code>/authentication</code><ul>
+<li>header: <code>usersession:xx</code>,<code>micro-auth:xxxxxxxxxxxxxx</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-14">Verify</h3>
+<ol>
+<li><p>POST <code>/regist</code></p>
+<pre><code class="lang-bash"> &gt; curl -i -H &quot;Content-Type: application/json&quot; -H &quot;usersession:s1&quot; -X POST -d &#39;{&quot;name&quot;:&quot;Tom&quot;,&quot;password&quot;:&quot;123123&quot;}&#39; http://localhost:8080/micro-auth/regist
+
+ HTTP/1.1 200
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 05:38:22 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:{&quot;id&quot;:2,&quot;name&quot;:&quot;Tom&quot;}}
+</code></pre>
+</li>
+<li><p>POST <code>/login</code></p>
+<pre><code class="lang-bash"> &gt; curl -i -H &quot;Content-Type: application/json&quot; -H &quot;usersession:s1&quot; -X POST -d &#39;{&quot;name&quot;:&quot;Tom&quot;,&quot;password&quot;:&quot;123123&quot;}&#39; http://localhost:8080/micro-auth/login
+ HTTP/1.1 200
+ micro-auth: 1d0fa647-9dbe-410a-8d9c-0e1c973a98e2
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 05:39:33 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:&quot;login success&quot;}
+
+ # check redis:
+ redis:6379&gt; keys *
+ 1) &quot;s1:2&quot;
+ 2) &quot;s1:1d0fa647-9dbe-410a-8d9c-0e1c973a98e2&quot;
+
+ redis:6379&gt; get s1:2
+ &quot;\&quot;1d0fa647-9dbe-410a-8d9c-0e1c973a98e2\&quot;&quot;
+
+ redis:6379&gt; get s1:1d0fa647-9dbe-410a-8d9c-0e1c973a98e2
+ &quot;[\&quot;com.cj.auth.entity.User\&quot;,{\&quot;id\&quot;:2,\&quot;name\&quot;:\&quot;Tom\&quot;,\&quot;password\&quot;:\&quot;Qpf0SxOVUjUkWySXOZ16kw==\&quot;}]&quot;
+
+ redis:6379&gt; ttl s1:2
+ (integer) 100
+
+ redis:6379&gt; ttl s1:1d0fa647-9dbe-410a-8d9c-0e1c973a98e2
+ (integer) 99
+</code></pre>
+</li>
+<li><p>GET <code>/authentication</code></p>
+<pre><code class="lang-bash"> &gt; curl -i -H &quot;micro-auth:1d0fa647-9dbe-410a-8d9c-0e1c973a98e2&quot; -H &quot;usersession:s1&quot; -X GET http://localhost:8080/micro-auth/authentication
+
+ HTTP/1.1 200
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 05:40:49 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:{&quot;id&quot;:2,&quot;name&quot;:&quot;Tom&quot;}}
+</code></pre>
+</li>
+<li><p>GET <code>/logout</code></p>
+<pre><code class="lang-bash"> &gt; curl -i -H &quot;micro-auth: 1d0fa647-9dbe-410a-8d9c-0e1c973a98e2&quot; -H &quot;usersession:s1&quot; -X GET http://localhost:8080/micro-auth/logout
+
+ HTTP/1.1 200
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 05:04:30 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:&quot;logout success&quot;}
+
+ # check redis:
+ redis:6379&gt; keys *
+ (empty list or set)
+</code></pre>
+</li>
+</ol>
+<h3 id="header-15">Client: call AuthService</h3>
+<p>使用RestTemplate方式call发布的AuthService ( 注：也可考虑使用Dobbo等其他RPC方式，AuthService发布方式也需要改变)：</p>
+<ul>
+<li><p>resources/application.yml</p>
+<pre><code>  server:
+    port: 9080
+    servlet:
+      context-path: /micro-service1
+  auth:
+      url: http://localhost:8080/micro-auth
+      principalHeader: micro-auth
+      usersessionHeader: usersession
+      usersessionKey: s1
+</code></pre></li>
+<li><p>Controller</p>
+<pre><code class="lang-java">  @RestController
+  @RequestMapping(&quot;/auth&quot;)
+  public class Service1Controller {
+      @Autowired
+      private AuthCallService authCallService;
+
+      @PostMapping(&quot;/login&quot;)
+      public Object login(@RequestBody User loginUser){
+          // ...
+      }
+
+      @PostMapping(&quot;/logout&quot;)
+      public Object logout(){
+          // ...
+      }
+
+      @GetMapping(&quot;/authentication&quot;)
+      public Object getAuthentication(@RequestHeader(name=&quot;${auth.principalHeader}&quot;,required=false) String principle){
+          return AuthCallService.getAuthentication(principle);
+      }
+  }
+</code></pre>
+</li>
+<li><p>AuthCallService</p>
+<pre><code class="lang-java">  @Service
+  public class AuthCallService {
+
+      @Value(&quot;${auth.url}&quot;)
+      private String authURL;
+
+      @Value(&quot;${auth.principalHeader}&quot;)
+      private String principalHeader;
+
+      @Value(&quot;${auth.usersessionHeader}&quot;)
+      private String usersessionHeader;
+
+      @Value(&quot;${auth.usersessionKey}&quot;)
+      private String usersessionKey;
+
+      @Autowired
+      private RestTemplate restTemplate;
+
+      public Object login(){
+          //...
+      }
+
+      public Object logout(){
+          //...
+      }
+
+      public Object getAuthentication(String principle){
+          HttpHeaders headers = new HttpHeaders(); 
+          headers.set(principalHeader,principle); 
+          headers.set(usersessionHeader,usersessionKey); 
+          headers.setContentType(MediaType.APPLICATION_JSON);
+          HttpEntity&lt;String&gt; entity=new HttpEntity&lt;String&gt;(null,headers);
+          HttpEntity&lt;Map&gt; response=restTemplate.exchange(authURL+&quot;/authentication&quot;,HttpMethod.GET,entity,Map.class);
+          return response.getBody();
+      }
+  }
+</code></pre>
+</li>
+<li><p>main </p>
+<pre><code class="lang-java">  @SpringBootApplication
+  public class ServiceApplication {
+      public static void main(String[] args) {
+          SpringApplication.run(ServiceApplication.class, args);
+      }
+  }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:9080/micro-service1</code></p>
+<ul>
+<li><code>/login</code></li>
+<li><code>/logout</code></li>
+<li><code>/getAuthentication</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-16">Client：简化测试版</h3>
+<pre><code class="lang-java">@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class ServiceCallAuthNoSessionTest {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
+    private String authURL=&quot;http://localhost:8080/micro-auth&quot;;
+    private String principalHeader=&quot;micro-auth&quot;;
+    private String usersessionHeader=&quot;usersession&quot;;
+    private String usersessionKey=&quot;s1&quot;;
+
+    String principle=&quot;a37377ec-dc92-41f8-95af-4d0a494f3eb8&quot;;
+
+    @Test
+    public void callTest(){
+
+        //getAuthentication
+        callGetAuthentication();
+
+        // login
+        callLoginTest();
+
+        // callGetAuthentication
+        callGetAuthentication();
+
+        // logout
+        callLogoutTest();
+
+        // getAuthentication
+        callGetAuthentication();
+    }
+
+    @Test
+    public void callLoginTest(){
+        System.out.println(&quot;call login...&quot;);
+
+        HttpHeaders headers = new HttpHeaders(); 
+        headers.set(usersessionHeader,usersessionKey); 
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map&lt;String,String&gt; userMap=new HashMap&lt;String,String&gt;();
+        userMap.put(&quot;name&quot;, &quot;Tom&quot;);
+        userMap.put(&quot;password&quot;, &quot;123123&quot;);
+
+        HttpEntity&lt;Map&gt; entity=new HttpEntity&lt;Map&gt;(userMap,headers);
+        HttpEntity&lt;Map&gt; response=restTemplate.exchange(authURL+&quot;/login&quot;,HttpMethod.POST,entity,Map.class);
+        System.out.println(response);
+
+        principle=(String)response.getHeaders().getFirst(principalHeader);
+        System.out.println(&quot;token:&quot;+principle);
+    }
+
+    @Test
+    public void callLogoutTest(){
+        System.out.println(&quot;call logout...&quot;);
+        HttpHeaders headers = new HttpHeaders(); 
+        headers.set(principalHeader,principle); 
+        headers.set(usersessionHeader,usersessionKey); 
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity&lt;String&gt; entity=new HttpEntity&lt;String&gt;(null,headers);
+        HttpEntity&lt;String&gt; response=restTemplate.exchange(authURL+&quot;/logout&quot;,HttpMethod.GET,entity,String.class);
+        System.out.println(response);
+    }
+
+    @Test
+    public void callGetAuthentication(){
+        System.out.println(&quot;call getAuthentication...&quot;);
+        HttpHeaders headers = new HttpHeaders(); 
+        headers.set(principalHeader,principle); 
+        headers.set(usersessionHeader,usersessionKey); 
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity&lt;String&gt; entity=new HttpEntity&lt;String&gt;(null,headers);
+        HttpEntity&lt;Map&gt; response=restTemplate.exchange(authURL+&quot;/authentication&quot;,HttpMethod.GET,entity,Map.class);
+        System.out.println(response);
+    }
+}
+</code></pre>
+<p>Run Junit Test: callTest</p>
+<pre><code>call getAuthentication...
+&lt;200,{success=true, code=1, data=null},{Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 07 Feb 2019 06:37:22 GMT]}&gt;
+
+call login...
+&lt;200,{success=true, code=1, data=login success},{micro-auth=[80d89cb8-f8e3-4b6c-8344-06d9e3a88d41], Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 07 Feb 2019 06:37:22 GMT]}&gt;
+token:80d89cb8-f8e3-4b6c-8344-06d9e3a88d41
+
+call getAuthentication...
+&lt;200,{success=true, code=1, data={id=2, name=Tom}},{Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 07 Feb 2019 06:37:22 GMT]}&gt;
+
+call logout...
+&lt;200,{&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:&quot;logout success&quot;},{Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 07 Feb 2019 06:37:22 GMT]}&gt;
+
+call getAuthentication...
+&lt;200,{success=true, code=1, data=null},{Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Thu, 07 Feb 2019 06:37:22 GMT]}&gt;
+</code></pre><h2 id="header-17">方案：SpringSession 示例</h2>
+<h3 id="header-18">Dependency</h3>
+<p>pom.xml</p>
+<pre><code class="lang-xml">&lt;!-- SpringBoot --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;!-- Springboot redis --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Spring Session --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.session&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-session-data-redis&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="header-19">Config</h3>
+<ol>
+<li><p>resources/application.yml</p>
+<pre><code> server:
+   port: 8080
+   servlet:
+     context-path: /micro-auth      
+ spring:
+   redis:
+     host: localhost
+     port: 6379
+     password: 123456
+     timeout: 30000
+     jedis:
+       pool:
+         max-active: 8
+         max-wait: 1
+         max-idle: 8
+         min-idle: 0      
+ #  session:
+ #    store-type: redis  
+ #     timeout: 180  
+ #    redis:
+ #      namespace: sps        # default prefix is `spring:session`
+ #      flush-mode: on-save
+</code></pre></li>
+<li><p>RedisConfig (使用<code>@EnableRedisHttpSession</code>或在application.yml中配置<code>spring.session</code>)</p>
+<pre><code class="lang-java"> @Configuration
+ @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 180,
+     redisFlushMode=RedisFlushMode.ON_SAVE,
+     redisNamespace=&quot;sps&quot;)
+ public class RedisConfig {
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-20">Controller</h3>
+<p>AuthSessionController</p>
+<pre><code class="lang-java">@RestController
+@RequestMapping(&quot;/session&quot;)
+public class AuthSessionController {
+
+    @Autowired
+    private UserService userService;
+
+    @GetMapping(&quot;/&quot;)
+    public Object index(){
+        return ResponseEntity.ok(&quot;This is micro-authService using springsession!&quot;);
+    }
+
+    @PostMapping(&quot;/login&quot;)
+    public Object login(@RequestBody User loginUser,HttpServletRequest request){
+        if(loginUser==null || StringUtils.isAnyBlank(loginUser.getName(),loginUser.getPassword()))
+            return MicroResponse.InvalidRequest;
+
+        // check name &amp; password
+        User user=userService.findByNameAndPassword(loginUser);
+        if(user==null)
+            return MicroResponse.AuthenticationFail;
+
+        HttpSession session=request.getSession();
+        session.setAttribute(session.getId(), user);
+        System.out.println(session.getId());
+        return MicroResponse.success(user);
+    }
+
+    @GetMapping(&quot;/logout&quot;)
+    public Object logout(HttpServletRequest request){
+        HttpSession session=request.getSession(false);
+        if(session!=null){
+            session.removeAttribute(session.getId());
+            System.out.println(session.getId());
+        }else
+            System.out.println(&quot;logout: session is null&quot;);
+        return MicroResponse.OK;
+    }
+
+    @GetMapping(&quot;/authentication&quot;)
+    public Object getAuthentication(HttpServletRequest request /*HttpSession session*/){
+        HttpSession session=request.getSession(false);
+        if(session!=null){
+            System.out.println(session.getId());
+            return MicroResponse.success(session.getAttribute(session.getId()));
+        }
+        System.out.println(&quot;getAuthentication: session is null&quot;);
+        return MicroResponse.success(null);
+    }
+}
+</code></pre>
+<h3 id="header-21">Service &amp; Repository &amp; Entity</h3>
+<p>UserService &amp; UserRepository &amp; User &amp; MicroResponse 均同上</p>
+<h3 id="header-22">Run</h3>
+<ol>
+<li><p>main</p>
+<pre><code class="lang-java"> @SpringBootApplication
+ public class AuthServiceApplication {
+     public static void main(String[] args) {
+         SpringApplication.run(AuthServiceApplication.class, args);
+     }
+ }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:8080/micro-auth/session</code></p>
+<ul>
+<li>POST <code>/login</code><ul>
+<li>body: <code>{&quot;name&quot;:&quot;Tom&quot;,&quot;password&quot;:&quot;123123&quot;}</code></li>
+</ul>
+</li>
+<li>GET <code>/logout</code></li>
+<li>GET <code>/authentication</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-23">Verify</h3>
+<ol>
+<li><p>clear redis records</p>
+<pre><code class="lang-bash"> redis:6379&gt; FLUSHALL
+ OK
+ redis:6379&gt; keys *
+ (empty list or set)
+</code></pre>
+</li>
+<li><p>POST <code>/login</code></p>
+<pre><code class="lang-bash"> &gt; curl -c cookie.txt -i -H &quot;Content-Type:application/json&quot; -X POST -d &#39;{&quot;name&quot;: &quot;admin&quot;, &quot;password&quot;:&quot;admin123&quot;}&#39; http://localhost:8080/micro-auth/session/login
+
+ HTTP/1.1 200
+ Set-Cookie: SESSION=ODY1NDBhZDUtYzNmNy00NTg4LTg4ZjYtMDMxZWVlYzE2YTBm; Path=/micro-auth/; HttpOnly
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 15:17:57 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;admin&quot;}}
+
+ # check redis:
+ redis:6379&gt; keys *
+ 1) &quot;sps:sessions:86540ad5-c3f7-4588-88f6-031eeec16a0f&quot;
+ 2) &quot;sps:sessions:expires:86540ad5-c3f7-4588-88f6-031eeec16a0f&quot;
+ 3) &quot;sps:expirations:1549552860000&quot;
+
+ redis:6379&gt; hgetall sps:sessions:36a41b20-a02e-4685-b359-a2b9b0aec2b1
+ 1) &quot;creationTime&quot;
+ 2) &quot;\xac\xed\x00\x05sr\x00\x0ejava.lang.Long;\x8b\xe4\x90\xcc\x8f#\xdf\x02\x00\x01J\x00\x05valuexr\x00\x10java.lang.Number\x86\xac\x95\x1d\x0b\x94\xe0\x8b\x02\x00\x00xp\x00\x00\x01h\xc8ef &quot;
+ 3) &quot;maxInactiveInterval&quot;
+ 4) &quot;\xac\xed\x00\x05sr\x00\x11java.lang.Integer\x12\xe2\xa0\xa4\xf7\x81\x878\x02\x00\x01I\x00\x05valuexr\x00\x10java.lang.Number\x86\xac\x95\x1d\x0b\x94\xe0\x8b\x02\x00\x00xp\x00\x00\x00\xb4&quot;
+ 5) &quot;sessionAttr:36a41b20-a02e-4685-b359-a2b9b0aec2b1&quot;
+ 6) &quot;\xac\xed\x00\x05sr\x00\x17com.cj.auth.entity.User\xc5\xbc\x00A\xb4\xb2z\x8c\x02\x00\x03L\x00\x02idt\x00\x13Ljava/lang/Integer;L\x00\x04namet\x00\x12Ljava/lang/String;L\x00\bpasswordq\x00~\x00\x02xpsr\x00\x11java.lang.Integer\x12\xe2\xa0\xa4\xf7\x81\x878\x02\x00\x01I\x00\x05valuexr\x00\x10java.lang.Number\x86\xac\x95\x1d\x0b\x94\xe0\x8b\x02\x00\x00xp\x00\x00\x00\x01t\x00\x05admint\x00\x18AZICOnu9cyUFFvBp3xi1AA==&quot;
+ 7) &quot;lastAccessedTime&quot;
+ 8) &quot;\xac\xed\x00\x05sr\x00\x0ejava.lang.Long;\x8b\xe4\x90\xcc\x8f#\xdf\x02\x00\x01J\x00\x05valuexr\x00\x10java.lang.Number\x86\xac\x95\x1d\x0b\x94\xe0\x8b\x02\x00\x00xp\x00\x00\x01h\xc8ef &quot;
+</code></pre>
+</li>
+<li><p>GET <code>/authentication</code></p>
+<pre><code class="lang-bash"> &gt; curl -b cookie.txt -i -H &quot;Content-Type:application/json&quot; -X GET http://localhost:8080/micro-auth/session/authentication
+</code></pre>
+</li>
+<li><p>GET <code>/logout</code></p>
+<pre><code class="lang-bash"> &gt; curl -b cookie.txt -i -H &quot;Content-Type:application/json&quot; -X GET http://localhost:8080/micro-auth/session/logout
+</code></pre>
+</li>
+</ol>
+<h3 id="header-24">扩展：使用json方式序列化对象到Redis</h3>
+<p>使用Jackson2JsonRedisSerializer解析Redis Value值</p>
+<pre><code class="lang-java">@Configuration
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 180,
+    redisFlushMode=RedisFlushMode.ON_SAVE,
+    redisNamespace=&quot;sps&quot;)
+public class RedisConfig {
+    /* @Bean RedisTemplate&lt;Object,Object&gt; jsonRedisTemplate : 同上面NoSession示例 */
+
+    /* SessionRepository: 
+     * 定义了创建、保存、删除以及检索session的方法
+     * (将Session实例真正保存到数据存储的逻辑是在这个接口的实现中编码完成的)
+     * 
+     * RedisOperationsSessionRepository implements SessionRepository:
+     * 会在Redis中创建、存储和删除session
+     * 
+     * {@link RedisHttpSessionConfiguration} 
+    */
+
+    /* Method1: */
+    //    @SuppressWarnings(&quot;unchecked&quot;)
+    //    @Bean
+    //    public SessionRepository&lt;?&gt; sessionRepository( @Qualifier(&quot;jsonRedisTemplate&quot;) RedisOperations&lt;Object, Object&gt; redisTemplate){
+    //        RedisOperationsSessionRepository sessionRepository =  new RedisOperationsSessionRepository(redisTemplate);
+    //        // sessionRepository.setDefaultSerializer(initJsonSerializer());
+    //        sessionRepository.setDefaultSerializer((RedisSerializer&lt;Object&gt;) redisTemplate.getValueSerializer());
+    //        sessionRepository.setDefaultMaxInactiveInterval(180);
+    //        sessionRepository.setRedisKeyNamespace(&quot;sps&quot;);
+    //        sessionRepository.setRedisFlushMode(RedisFlushMode.ON_SAVE);
+    //        System.out.println(&quot;Create Customer RedisOperationsSessionRepository --- &quot;);
+    //        return sessionRepository;
+    //    }
+
+    /* Method2 - Recomend */
+    @Bean
+    public RedisSerializer&lt;Object&gt; springSessionDefaultRedisSerializer(@Qualifier(&quot;jsonRedisTemplate&quot;) RedisOperations&lt;Object, Object&gt; redisTemplate){
+        return (RedisSerializer&lt;Object&gt;)redisTemplate.getValueSerializer();
+    }
+}
+</code></pre>
+<h3 id="header-25">Verify again</h3>
+<ol>
+<li><p>POST <code>/login</code></p>
+<pre><code class="lang-bash"> &gt; curl -c cookie.txt -i -H &quot;Content-Type:application/json&quot; -X POST -d &#39;{&quot;name&quot;: &quot;admin&quot;, &quot;password&quot;:&quot;admin123&quot;}&#39; http://localhost:8080/micro-auth/session/login
+ HTTP/1.1 200
+ Set-Cookie: SESSION=MzAxZWJkNjMtOWYzMy00NWJiLWFhZjMtMGM0ZjJlMzIyYWM1; Path=/micro-auth/; HttpOnly
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 16:27:43 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;admin&quot;}}
+
+ # check redis:
+ redis:6379&gt; keys *
+ 1) &quot;sps:sessions:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+ 2) &quot;sps:sessions:expires:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+ 3) &quot;sps:expirations:1549558500000&quot;
+
+ redis:6379&gt; hgetall sps:sessions:293d00d7-359f-4b82-87be-bbbe1fc64c8d
+ 1) &quot;creationTime&quot;
+ 2) &quot;1549558319123&quot;
+ 3) &quot;maxInactiveInterval&quot;
+ 4) &quot;180&quot;
+ 5) &quot;sessionAttr:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+ 6) &quot;[\&quot;com.cj.auth.entity.User\&quot;,{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;admin\&quot;,\&quot;password\&quot;:\&quot;AZICOnu9cyUFFvBp3xi1AA==\&quot;}]&quot;
+ 7) &quot;lastAccessedTime&quot;
+ 8) &quot;1549558319123&quot;
+
+ redis:6379&gt; ttl sps:sessions:expires:293d00d7-359f-4b82-87be-bbbe1fc64c8d
+ (integer) 158
+
+ redis:6379&gt; smembers sps:expirations:1549558500000
+ 1) &quot;\&quot;expires:293d00d7-359f-4b82-87be-bbbe1fc64c8d\&quot;&quot;
+
+ # check cookie
+ &gt; cat cookie.txt
+ # Netscape HTTP Cookie File
+ # http://curl.haxx.se/docs/http-cookies.html
+ # This file was generated by libcurl! Edit at your own risk.
+
+ HttpOnly_localhost    FALSE    /micro-auth/    FALSE    0    SESSION    MzAxZWJkNjMtOWYzMy00NWJiLWFhZjMtMGM0ZjJlMzIyYWM1
+</code></pre>
+</li>
+<li><p>GET <code>/authentication</code></p>
+<pre><code class="lang-bash"> &gt; curl -b cookie.txt -i -H &quot;Content-Type:application/json&quot; -X GET http://localhost:8080/micro-auth/session/authentication
+
+ HTTP/1.1 200
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 16:27:48 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:{&quot;id&quot;:1,&quot;name&quot;:&quot;admin&quot;}}
+
+ # check redis:
+ redis:6379&gt; keys *
+ 1) &quot;sps:expirations:1549558560000&quot;        # new
+ 2) &quot;sps:sessions:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+ 3) &quot;sps:sessions:expires:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+
+ redis:6379&gt; hgetall sps:sessions:293d00d7-359f-4b82-87be-bbbe1fc64c8d
+ 1) &quot;creationTime&quot;
+ 2) &quot;1549558319123&quot;
+ 3) &quot;maxInactiveInterval&quot;
+ 4) &quot;180&quot;
+ 5) &quot;sessionAttr:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+ 6) &quot;[\&quot;com.cj.auth.entity.User\&quot;,{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;admin\&quot;,\&quot;password\&quot;:\&quot;AZICOnu9cyUFFvBp3xi1AA==\&quot;}]&quot;
+ 7) &quot;lastAccessedTime&quot;
+ 8) &quot;1549558358599&quot;                        # changed
+
+ redis:6379&gt; ttl sps:sessions:expires:293d00d7-359f-4b82-87be-bbbe1fc64c8d
+ (integer) 166                            # changed
+</code></pre>
+</li>
+<li><p>GET <code>/logout</code></p>
+<pre><code class="lang-bash"> &gt; curl -b cookie.txt -i -H &quot;Content-Type:application/json&quot; -X GET http://localhost:8080/micro-auth/session/logout
+
+ HTTP/1.1 200
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 16:28:38 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:null}
+
+ # check redis:
+ redis:6379&gt; keys *
+ 1) &quot;sps:sessions:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+ 2) &quot;sps:expirations:1549558680000&quot;                                # new
+ 3) &quot;sps:sessions:expires:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+
+ redis:6379&gt; hgetall sps:sessions:293d00d7-359f-4b82-87be-bbbe1fc64c8d
+ 1) &quot;creationTime&quot;
+ 2) &quot;1549558319123&quot;
+ 3) &quot;maxInactiveInterval&quot;
+ 4) &quot;180&quot;
+ 5) &quot;sessionAttr:293d00d7-359f-4b82-87be-bbbe1fc64c8d&quot;
+ 6) &quot;&quot;                                    # removed
+ 7) &quot;lastAccessedTime&quot;
+ 8) &quot;1549558447429&quot;                        # changed
+
+ redis:6379&gt; ttl sps:sessions:expires:293d00d7-359f-4b82-87be-bbbe1fc64c8d
+ (integer) 151
+</code></pre>
+</li>
+<li><p>GET <code>/authentication</code></p>
+<pre><code class="lang-bash"> &gt; curl -b cookie.txt -i -H &quot;Content-Type:application/json&quot; -X GET http://localhost:8080/micro-auth/session/authentication
+
+ HTTP/1.1 200
+ Content-Type: application/json;charset=UTF-8
+ Transfer-Encoding: chunked
+ Date: Thu, 07 Feb 2019 16:29:58 GMT
+
+ {&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:null}
+
+ # check redis:
+ redis:6379&gt; keys *
+ 1) &quot;sps:sessions:301ebd63-9f33-45bb-aaf3-0c4f2e322ac5&quot;
+
+ redis:6379&gt; keys *
+ (empty list or set)
+</code></pre>
+</li>
+</ol>
+<h3 id="header-26">Client：简化测试版</h3>
+<pre><code class="lang-java">@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class ServiceCallAuthNoSessionTest {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+    private String authURL=&quot;http://localhost:8080/micro-auth/session&quot;;
+    private String cookie=&quot;&quot;;
+
+    private String name=&quot;admin&quot;;
+    private String password=&quot;admin123&quot;;
+
+    @Test
+    public void callTest(){
+
+        //getAuthentication
+        callGetAuthentication();
+
+        // login
+        callLoginTest();
+
+        // callGetAuthentication
+        callGetAuthentication();
+
+        // logout
+        callLogoutTest();
+
+        // getAuthentication
+        callGetAuthentication();
+    }
+
+    @Test
+    public void callLoginTest(){
+        System.out.println(&quot;call login...&quot;);
+
+        HttpHeaders headers = new HttpHeaders(); 
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map&lt;String,String&gt; userMap=new HashMap&lt;String,String&gt;();
+        userMap.put(&quot;name&quot;, name);
+        userMap.put(&quot;password&quot;, password);
+
+        HttpEntity&lt;Map&gt; entity=new HttpEntity&lt;Map&gt;(userMap,headers);
+        HttpEntity&lt;Map&gt; response=restTemplate.exchange(authURL+&quot;/login&quot;,HttpMethod.POST,entity,Map.class);
+        System.out.println(response);
+
+        cookie=(String)response.getHeaders().getFirst(HttpHeaders.SET_COOKIE);
+        System.out.println(&quot;cookie:&quot;+cookie);
+    }
+
+    @Test
+    public void callLogoutTest(){
+        System.out.println(&quot;call logout...&quot;);
+        HttpHeaders headers = new HttpHeaders(); 
+        headers.set(HttpHeaders.COOKIE,cookie); 
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity&lt;String&gt; entity=new HttpEntity&lt;String&gt;(null,headers);
+        HttpEntity&lt;String&gt; response=restTemplate.exchange(authURL+&quot;/logout&quot;,HttpMethod.GET,entity,String.class);
+        System.out.println(response);
+    }
+
+    @Test
+    public void callGetAuthentication(){
+        System.out.println(&quot;call getAuthentication...&quot;);
+        HttpHeaders headers = new HttpHeaders(); 
+        headers.set(HttpHeaders.COOKIE,cookie); 
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity&lt;String&gt; entity=new HttpEntity&lt;String&gt;(null,headers);
+        HttpEntity&lt;Map&gt; response=restTemplate.exchange(authURL+&quot;/authentication&quot;,HttpMethod.GET,entity,Map.class);
+        System.out.println(response);
+    }
+}
+</code></pre>
+<p>Run Junit Test: callTest</p>
+<pre><code>call getAuthentication...
+&lt;200,{success=true, code=1, data=null},{Set-Cookie=[SESSION=ZmM1NDQ1M2EtZTU4ZC00NTNmLWI5ODEtNWQ0YmUyODI3MmE0; Path=/micro-auth/; HttpOnly], Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Sat, 09 Feb 2019 07:02:26 GMT]}&gt;
+call login...
+&lt;200,{success=true, code=1, data={id=1, name=admin}},{Set-Cookie=[SESSION=ZmYxNDJiNTctNGU5Ny00MzFjLWFkMWYtNzkwMTJlMmUzZjIy; Path=/micro-auth/; HttpOnly], Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Sat, 09 Feb 2019 07:02:26 GMT]}&gt;
+cookie:SESSION=ZmYxNDJiNTctNGU5Ny00MzFjLWFkMWYtNzkwMTJlMmUzZjIy; Path=/micro-auth/; HttpOnly
+call getAuthentication...
+&lt;200,{success=true, code=1, data={id=1, name=admin}},{Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Sat, 09 Feb 2019 07:02:26 GMT]}&gt;
+call logout...
+&lt;200,{&quot;success&quot;:true,&quot;code&quot;:1,&quot;data&quot;:null},{Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Sat, 09 Feb 2019 07:02:26 GMT]}&gt;
+call getAuthentication...
+&lt;200,{success=true, code=1, data=null},{Content-Type=[application/json;charset=UTF-8], Transfer-Encoding=[chunked], Date=[Sat, 09 Feb 2019 07:02:26 GMT]}&gt;
+</code></pre><h2 id="header-27">Reference</h2>
+<p><a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">My demo: auth-demo</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

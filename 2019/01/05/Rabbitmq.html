@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>消息中间件 RabbitMQ</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="micro service,message queue,spring boot">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Start</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">AMQP</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">RabbitMQ</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">搭建环境（安装RabbitMQ）</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Demo</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">dependency &amp; config</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Direct Exchange</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Topic Exchange</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Headers Exchange</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Fanout Exchange</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">扩展：传输对象</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">配置(Optional)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Producer</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">Consumer</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">扩展：可靠性投递</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">Summary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Dependency</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Config</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">Code</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">消息中间件 RabbitMQ</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-01-04T16:00:00.000Z">2019-01-05</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-MicroService">MicroService</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Start</h2>
+<p><a href="http://www.rabbitmq.com" target="_blank" rel="noopener">官网</a><br><a href="http://www.rabbitmq.com/getstarted.html" target="_blank" rel="noopener">Quick Start</a></p>
+<h3 id="header-2">AMQP</h3>
+<ul>
+<li>Advanced Message Queuing Protocol 高级消息队列协议</li>
+<li>是一个进程间传递异步消息的网络协议</li>
+<li>是应用层协议的一个开放标准，为面向消息的中间件设计(主要用于组件之间的解耦)</li>
+<li>AMQP协议模型: pic</li>
+</ul>
+<h3 id="header-3">RabbitMQ</h3>
+<ul>
+<li>实现系统之间的双向解耦（eg: 当生产者大量产生数据时，消费者无法快速消费，那么需要一个中间层,存储转发这些消息)</li>
+<li>基于AMQP协议实现的的消息中间件（一个开源的消息代理和队列服务器，用来通过普通协议在完全不同的应用之间共享数据）</li>
+<li>底层使用Erlang语言编写，支持多种客户端</li>
+<li>开源，高性能，稳定（集群模式丰富，表达式配置，HA模式，镜像队列模型）</li>
+<li>能与SpringAMQP完美整合，API丰富</li>
+</ul>
+<p><strong> 注: </strong></p>
+<ul>
+<li>队列服务, 会有三个概念： 发消息者、队列、收消息者</li>
+<li>RabbitMQ 在这个基本概念之上, 多了层抽象：在发消息者和队列之间, 加入了交换器 (Exchange)</li>
+<li>这样发消息者和队列就没有直接联系, 转而变成发消息者把消息给交换器, 交换器根据调度策略再把消息再给队列</li>
+</ul>
+<p><strong> 核心概念: </strong></p>
+<ul>
+<li><p>Message: </p>
+<ul>
+<li>消息(Properties+Body)，Server和应用程序之间传送的数据</li>
+<li>Properties: 可对消息进行修饰，比如消息的优先级，延迟等高级特性</li>
+<li>Body: 消息体内容</li>
+</ul>
+</li>
+<li><p>队列 Queue: </p>
+<ul>
+<li>Message Queue 消息队列，保存消息并将它们转发给消费者</li>
+</ul>
+</li>
+<li><p>交换机 Exchange: </p>
+<ul>
+<li>接收消息并且转发到绑定的队列</li>
+<li>根据路由键 Routing key(一个路由规则,用<code>.</code>分隔)将消息转发到绑定的队列</li>
+<li>注: <ul>
+<li>交换机不存储消息(如果没有 Queue Binding to Exchange, 它会直接丢弃掉 Producer 发送过来的消息) </li>
+<li>在启用ack模式后，交换机找不到队列会返回错误</li>
+</ul>
+</li>
+<li>交换机有四种类型:<ul>
+<li>Direct(默认)：根据routingKey全文匹配寻找匹配的队列</li>
+<li>Topic：与direct类似, 只是routingKey匹配上支持通配符：<code>*</code> 只能向后多匹配一层路径 ; <code>#</code> 可以向后匹配多层路径</li>
+<li>Headers：根据请求消息中设置的header attribute参数类型（一组键值对）匹配队列（和routingKey没有关系）</li>
+<li>Fanout：广播模式，转发消息到所有绑定队列（和routingKey没有关系）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>绑定 Binding: </p>
+<ul>
+<li>Exchange和Queue之间的虚拟连接（多对多）</li>
+<li>binding中可以包含Routing key</li>
+</ul>
+</li>
+<li><p>虚拟主机 Virtual host: </p>
+<ul>
+<li>用于进行逻辑隔离，最上层的消息路由</li>
+<li>一个Virtual host里面可以有若干个Exchange和Queue，但名称需不同</li>
+<li>每一个RabbitMQ服务器都有一个默认的虚拟主机<code>/</code></li>
+<li>用户只能在虚拟主机的粒度进行权限控制（eg: 要禁止A组访问B组的交换机/队列/绑定，须为A和B分别创建一个虚拟主机）</li>
+</ul>
+</li>
+<li><p>服务端 Server: </p>
+<ul>
+<li>又称Broker，接受Client的连接，实现AMQP实体服务</li>
+</ul>
+</li>
+<li><p>连接 Connection: </p>
+<ul>
+<li>应用程序与Broker的网络连接</li>
+</ul>
+</li>
+<li><p>Channel: </p>
+<ul>
+<li>网络信道，消息读写的通道</li>
+<li>Client可建立多个Channel，每个Channel代表一个会话任务</li>
+<li>几乎所有的操作都在Channel中进行</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/01/05/rabbitmq.jpg" alt="rabitmq">    </p>
+<h3 id="header-4">搭建环境（安装RabbitMQ）</h3>
+<p>使用Docker安装RabbitMQ</p>
+<p><a href="https://docs.docker.com/samples/library/rabbitmq/" target="_blank" rel="noopener">docker rabbitmq</a><br><a href="https://hub.docker.com/_/rabbitmq" target="_blank" rel="noopener">docker hub</a></p>
+<ol>
+<li><p>pull rabbitmq image</p>
+<pre><code class="lang-bash"> $ docker pull rabbitmq:3.7.8-management
+</code></pre>
+</li>
+<li><p>rabbitmq server container</p>
+<pre><code class="lang-bash"> # simplest:
+ # http://container-ip:15672
+ # guest/guest
+ # docker run -d --hostname my-rabbit --name micro-rabbit rabbitmq:3.7.8-management
+
+ # $ docker run -d --name micro-rabbit -p 5672:5672 -p 15672:15672 -v `pwd`/rabbitmq:/var/lib/rabbitmq --hostname myRabbit -e RABBITMQ_DEFAULT_VHOST=my_vhost -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin RABBITMQ_ERLANG_COOKIE=&#39;cj&#39; rabbitmq:3.7.8-management
+
+ $ docker run -d --name micro-rabbit -p 5672:5672 -p 15672:15672 --hostname myRabbit -e RABBITMQ_DEFAULT_VHOST=my_vhost -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -e RABBITMQ_ERLANG_COOKIE=&#39;cj&#39; rabbitmq:3.7.8-management
+
+ $ docker logs micro-rabbit
+
+ # visit:
+ # http://localhost:15672/
+ # admin/admin
+
+ $ docker exec -it micro-rabbit bash
+ root@myRabbit:/# rabbitmq-plugins list
+ root@myRabbit:/# rabbitmq-plugins enable rabbitmq_management
+ root@myRabbit:/# rabbitmq-server
+</code></pre>
+</li>
+<li><p>rabbitmq client container</p>
+<pre><code class="lang-bash"> $ docker run -it --rm --link micro-rabbit:myRabbit --name rabbit-client -e RABBITMQ_ERLANG_COOKIE=&#39;cj&#39; rabbitmq:3.7.8-management bash
+ root@f2a2d3d27c75:/# rabbitmqctl -n rabbit@myRabbit list_users
+ Listing users ...
+ admin   [administrator]
+
+ $ docker run -it --rm --link micro-rabbit:myRabbit --name rabbit-client -e RABBITMQ_ERLANG_COOKIE=&#39;cj&#39; -e RABBITMQ_NODENAME=rabbit@myRabbit rabbitmq:3.7.8-management bash
+ root@3863ca585892:/# rabbitmqctl list_users
+ Listing users ...
+ admin    [administrator]
+</code></pre>
+</li>
+</ol>
+<h2 id="header-5">Demo</h2>
+<h3 id="header-6">dependency &amp; config</h3>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>application.yml</p>
+<pre><code> server:
+   port: 8080
+   servlet:
+     context-path: /rabbit-demo
+
+ spring:
+   rabbitmq:
+     addresses: localhost:5672
+     username: admin
+     password: admin
+     virtual-host: my_vhost
+     connection-timeout: 15000
+     # add below for consumer:
+     listener:
+       simple:
+         acknowledge-mode: manual
+         prefetch: 1
+         concurrency: 5
+         max-concurrency: 10
+</code></pre></li>
+</ol>
+<h3 id="header-7">Direct Exchange</h3>
+<ul>
+<li>默认Exxchange，根据<code>routingKey</code>全文匹配寻找匹配的队列 </li>
+<li><code>Producer -&gt; Exchange -&gt; (routingKey) -&gt; Queue -&gt; Consumer</code></li>
+<li>Demo case:<ul>
+<li>Bean:<ul>
+<li>queue(direct.s1)</li>
+<li>queue(direct.s2)</li>
+</ul>
+</li>
+<li>Default binding:<ul>
+<li>defaultExchange -&gt; routingKey:<code>direct.s1</code> -&gt; queue(direct.s1)</li>
+<li>defaultExchange -&gt; routingKey:<code>direct.s2</code> -&gt; queue(direct.s2)</li>
+</ul>
+</li>
+<li>Send to defaultExchange:<ul>
+<li>msg with routingKey: <code>direct.s1,direct.s1.user</code> -&gt; <code>consume queue(direct.s1): direct.s1</code></li>
+<li>msg with routingKey: <code>direct.s2,direct.s2.user.role</code> -&gt; <code>consume queue(direct.s2): direct.s2</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java">@SpringBootApplication
+@Configuration
+public class DirectExchangeDemoApp {
+    public static final String RoutingKey_S1=&quot;direct.s1&quot;;
+    public static final String RoutingKey_S2=&quot;direct.s2&quot;;
+    public static void main( String[] args ) throws IOException{
+        ConfigurableApplicationContext ctx = SpringApplication.run(DirectExchangeDemoApp.class, args);
+        QueueSender sender=ctx.getBean(QueueSender.class);
+        sender.send(DirectExchangeDemoApp.RoutingKey_S1,&quot;Hello world &quot;+System.currentTimeMillis());
+        sender.send(DirectExchangeDemoApp.RoutingKey_S1+&quot;.user&quot;,&quot;Hello world &quot;+System.currentTimeMillis());
+        sender.send(DirectExchangeDemoApp.RoutingKey_S2,&quot;Hello world &quot;+System.currentTimeMillis());
+        sender.send(DirectExchangeDemoApp.RoutingKey_S2+&quot;.user.role&quot;,&quot;Hello world &quot;+System.currentTimeMillis());
+    }
+
+    // config
+    @Bean
+    public Queue s1Queue() {
+        return new Queue(DirectExchangeDemoApp.RoutingKey_S1);        //配置一个routingKey为direct.s1的消息队列
+    }
+    @Bean
+    public Queue s2Queue() {
+        return new Queue(DirectExchangeDemoApp.RoutingKey_S2);
+    }
+
+    // sender
+    @Component
+    public class QueueSender {
+        @Autowired
+        private AmqpTemplate rabbitTemplate;
+
+        public void send(String routingKey,String msg){
+            System.out.println(&quot;send &quot;+routingKey+&quot; : &quot;+msg);
+            rabbitTemplate.convertAndSend(routingKey, msg);
+        }
+    }
+
+    // receiver
+    @Component
+    @RabbitListener(queues = {DirectExchangeDemoApp.RoutingKey_S1,DirectExchangeDemoApp.RoutingKey_S2})
+    public class QueueReceiver {
+
+        @RabbitHandler
+        public void receive(@Payload String msg,@Headers Map&lt;String,Object&gt; headers,Channel channel) 
+                throws IOException {
+            System.out.println(&quot;consume queue(&quot;+headers.get(AmqpHeaders.CONSUMER_QUEUE)+&quot;)&quot;
+                    +&quot; routingKey(&quot;+headers.get(AmqpHeaders.RECEIVED_ROUTING_KEY)+&quot;)&quot;
+                    +&quot; msg:&quot;+msg);
+            ;
+            Long deliveryTag=(Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+            channel.basicAck(deliveryTag, false);
+        }
+    }
+}
+</code></pre>
+<h3 id="header-8">Topic Exchange</h3>
+<ul>
+<li>与<code>direct exchange</code>类似, 只是<code>routing_key</code>匹配上支持通配符：<code>*</code> 只能向后多匹配一层路径 ; <code>#</code> 可以向后匹配多层路径 </li>
+<li><code>Producer -&gt; Exchange -&gt; (routingKey) -&gt; Queue -&gt; Consumer</code></li>
+<li>Demo Case:<ul>
+<li>Bean:<ul>
+<li>queue(topic.s1),queue(topic.s2),queue(123)</li>
+<li>topicExchange</li>
+<li>binding:<ul>
+<li>topicExchange -&gt; routingKey: <code>topic.s1.*</code> -&gt; queue(topic.s1) </li>
+<li>topicExchange -&gt; routingKey: <code>topic.s2.#</code> -&gt; queue(topic.s2)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Default binding:<ul>
+<li>defaultExchange -&gt; routingKey: <code>123</code> -&gt; queue(123)</li>
+</ul>
+</li>
+<li>Send to topicExchange:<ul>
+<li>msg with routingKey: <code>123</code>    -&gt; <code>no consume</code></li>
+<li>msg with routingKey: <code>topic.s1,topic.s1.user,topic.s1.user.role</code> -&gt; <code>consume queue(topic.s1) routingKey(topic.s1.user)</code></li>
+<li>msg with routingKey: <code>topic.s2,topic.s2.user,topic.s2.user.role</code> -&gt; <code>consume queue(topic.s2): all</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java">@SpringBootApplication
+public class TopicExchangeDemoApp {
+    public static void main( String[] args ) throws IOException, InterruptedException{
+        ConfigurableApplicationContext ctx = SpringApplication.run(TopicExchangeDemoApp.class, args);
+        QueueSender sender=ctx.getBean(QueueSender.class);
+        String routingKey=TopicExchangeConfig.RoutingKey_S2; // &quot;123&quot;,TopicExchangeConfig.RoutingKey_S1/S2
+        sender.send(routingKey,&quot;Hello world &quot;+System.currentTimeMillis());
+        sender.send(routingKey+&quot;.user&quot;,&quot;Hello World &quot;+System.currentTimeMillis());
+        sender.send(routingKey+&quot;.user.role&quot;,&quot;Hello World &quot;+System.currentTimeMillis());
+    }
+
+    // config
+    @Configuration
+    public class TopicExchangeConfig{
+        public final static String RoutingKey_S1=&quot;topic.s1&quot;;
+        public final static String RoutingKey_S2=&quot;topic.s2&quot;;
+        public final static String Exchange_Name=&quot;topicExchange&quot;;
+
+        // Queue
+        @Bean
+        public Queue s1Queue(){
+            return new Queue(RoutingKey_S1);
+        }
+        @Bean
+        public Queue s2Queue(){
+            return new Queue(RoutingKey_S2);
+        }
+        @Bean
+        public Queue testQueue() {
+            return new Queue(&quot;123&quot;);
+        }
+
+        // Exchange
+        @Bean
+        public TopicExchange exchange(){
+            return new TopicExchange(Exchange_Name);
+        }
+
+        // Binding
+        @Bean
+        public Binding bindingS1QueueAndExchange(Queue s1Queue, TopicExchange exchange){
+            return BindingBuilder.bind(s1Queue).to(exchange).with(RoutingKey_S1+&quot;.*&quot;);
+        }
+        @Bean
+        public Binding bingS2QueueAndExchange(Queue s2Queue,TopicExchange exchange){
+            return BindingBuilder.bind(s2Queue).to(exchange).with(RoutingKey_S2+&quot;.#&quot;);
+        }
+    }
+
+    // sender
+    @Component
+    public class QueueSender{
+        @Autowired
+        private AmqpTemplate rabbitTemplate;
+
+        public void send(String routingKey,String msg){
+            System.out.println(&quot;send routingKey(&quot;+routingKey+&quot;) :&quot;+msg);
+            rabbitTemplate.convertAndSend(TopicExchangeConfig.Exchange_Name, routingKey, msg);
+        }
+    }
+
+    // receiver
+    @Component
+    public class QueueReceiver{
+        @RabbitHandler
+        @RabbitListener(queues = {TopicExchangeConfig.RoutingKey_S1,TopicExchangeConfig.RoutingKey_S2,&quot;123&quot;})
+        public void receive(@Payload String msg,@Headers Map&lt;String,Object&gt; headers,Channel channel) 
+                throws IOException {
+            System.out.println(&quot;consume queue(&quot;+headers.get(AmqpHeaders.CONSUMER_QUEUE)+&quot;)&quot;
+                    +&quot; routingKey(&quot;+headers.get(AmqpHeaders.RECEIVED_ROUTING_KEY)+&quot;)&quot;
+                    +&quot; msg:&quot;+msg);
+            ;
+
+            Long deliveryTag=(Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+            channel.basicAck(deliveryTag, false);
+        }
+    }
+}
+</code></pre>
+<h3 id="header-9">Headers Exchange</h3>
+<ul>
+<li>根据请求消息中设置的header attribute参数类型（一组键值对）匹配队列（和routingKey没有关系）</li>
+<li><code>Producer -&gt; Exchange -&gt; (headers) -&gt; Queue -&gt; Consumer</code></li>
+<li>Demo case:<ul>
+<li>Bean:<ul>
+<li>queue(headers.s1),queueu(headers.s2),queue(123)</li>
+<li>headersExchange</li>
+<li>binding: <ul>
+<li>headersExchange -&gt; <code>headers(&quot;from&quot;:&quot;Tom&quot; &amp;&amp; &quot;to&quot;:&quot;Lucy&quot;)</code> -&gt; queue(headers.s1)</li>
+<li>headersExchange -&gt; <code>headers(&quot;from&quot;:&quot;Tom&quot; || &quot;to&quot;:&quot;Lucy&quot;)</code> -&gt; queue(headers.s2)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>default Exchange:<ul>
+<li>defaultExchange -&gt; routingKey:<code>123</code> -&gt; queue(123)</li>
+</ul>
+</li>
+<li>Send to HeadersExchange with routingKey:123,headers.s1,headers.s1.user<ul>
+<li>msg with <code>headers(&quot;from&quot;:&quot;Tom&quot; &amp;&amp; &quot;to&quot;:&quot;Lucy&quot;)</code> -&gt; <code>consume queue(headers.s1) &amp; queue(headers.s2)</code></li>
+<li>msg with <code>headers(&quot;from&quot;:&quot;Tom&quot; ||&quot;to&quot;:&quot;Lucy&quot;)</code>  -&gt; <code>consume queue(headers.s2)</code></li>
+<li>msg with <code>headers( !&quot;from&quot;:&quot;Tom&quot; &amp;&amp; ! &quot;from&quot;:&quot;Tom&quot;)</code> -&gt; <code>no consume</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java">@SpringBootApplication
+public class HeadersExchangeDemoApp {
+    public static void main( String[] args ) throws IOException, InterruptedException{
+        ConfigurableApplicationContext ctx = SpringApplication.run(HeadersExchangeDemoApp.class, args);
+        QueueSender sender=ctx.getBean(QueueSender.class);
+        Map&lt;String,Object&gt; headers=new HashMap&lt;String,Object&gt;();
+        //case1: send to s1,s1.user,s1.user.role =&gt; s1 &amp; s2 receive !
+        headers.put(&quot;from&quot;, &quot;Tom&quot;);
+        headers.put(&quot;to&quot;, &quot;Lucy&quot;);
+        headers.put(&quot;cc&quot;, &quot;Susan&quot;);
+//        //case2.1: send to s1,s1.user,s1.user.role =&gt; s1 no receive &amp; s2 receive !
+//        headers.put(&quot;from&quot;, &quot;Tom&quot;);
+//        headers.put(&quot;to&quot;, &quot;Lucy2&quot;);
+//        //case2.2: send to s1,s1.user,s1.user.role =&gt; s1 no receive &amp; s2 receive !
+//        headers.put(&quot;from&quot;, &quot;Tom&quot;);
+        //case3: send to s1,s1.user,s1.user.role =&gt; s1 &amp; s2 no receive !
+//        headers.put(&quot;from&quot;, &quot;Tom1&quot;);
+//        headers.put(&quot;to&quot;, &quot;Lucy1&quot;);
+
+        String routingKey=&quot;123&quot;;    // HeadersExchangeConfig.RoutingKey_S1
+        sender.send(routingKey,&quot;Hello world &quot;+System.currentTimeMillis(),headers);
+        sender.send(routingKey+&quot;.user&quot;,&quot;Hello World &quot;+System.currentTimeMillis(),headers);
+        sender.send(routingKey+&quot;.user.role&quot;,&quot;Hello World &quot;+System.currentTimeMillis(),headers);
+    }
+
+    // config
+    @Configuration
+    public class HeadersExchangeConfig{
+        public static final String RoutingKey_S1=&quot;headers.s1&quot;;
+        public static final String RoutingKey_S2=&quot;headers.s2&quot;;
+        public static final String Exchange_Name=&quot;headersExchange&quot;;
+
+        // queue
+        @Bean
+        public Queue s1Queue() {
+            return new Queue(RoutingKey_S1);
+        }
+        @Bean
+        public Queue s2Queue() {
+            return new Queue(RoutingKey_S2);
+        }
+        @Bean
+        public Queue testQueue() {
+            return new Queue(&quot;123&quot;);
+        }
+
+        // exchange
+        @Bean
+        public HeadersExchange exchange() {
+            return new HeadersExchange(Exchange_Name);
+        } 
+
+        // binding
+        @Bean
+        public Binding bindS1QueueAndExchange(Queue s1Queue,HeadersExchange exchange) {
+            Map&lt;String,Object&gt; headerMap=new HashMap&lt;String,Object&gt;();
+            headerMap.put(&quot;from&quot;, &quot;Tom&quot;);
+            headerMap.put(&quot;to&quot;, &quot;Lucy&quot;);
+            return BindingBuilder.bind(s1Queue).to(exchange).whereAll(headerMap).match();
+        }
+        @Bean
+        public Binding bindS2QueueAndExchange(Queue s2Queue,HeadersExchange exchange) {
+            Map&lt;String,Object&gt; headerMap=new HashMap&lt;String,Object&gt;();
+            headerMap.put(&quot;from&quot;, &quot;Tom&quot;);
+            headerMap.put(&quot;to&quot;, &quot;Lucy&quot;);
+            return BindingBuilder.bind(s2Queue).to(exchange).whereAny(headerMap).match();
+        }
+    }
+
+    // sender
+    @Component
+    public class QueueSender{
+         @Autowired
+         private AmqpTemplate rabbitTemplate;
+
+         public void send(String routingKey,String msg,Map&lt;String,Object&gt; headers){
+            Message message = MessageBuilder.withBody(msg.getBytes()).copyHeaders(headers).build();
+            System.out.println(&quot;send routingKey(&quot;+routingKey+&quot;) :&quot;+(new String(message.getBody()))+&quot; &quot;+message.getMessageProperties());
+            rabbitTemplate.convertAndSend(HeadersExchangeConfig.Exchange_Name, routingKey, message);
+        }
+    }
+
+    // receiver
+    @Component
+    public class QueueReceiver{
+        @RabbitHandler
+        @RabbitListener(queues = {HeadersExchangeConfig.RoutingKey_S1,HeadersExchangeConfig.RoutingKey_S2,&quot;123&quot;})
+        public void receive(@Payload byte[] msg,@Headers Map&lt;String,Object&gt; headers,Channel channel) 
+                throws IOException {
+            System.out.println(&quot;consume queue(&quot;+headers.get(AmqpHeaders.CONSUMER_QUEUE)+&quot;)&quot;
+                    +&quot; routingKey(&quot;+headers.get(AmqpHeaders.RECEIVED_ROUTING_KEY)+&quot;)&quot;
+                    +&quot; msg: &quot;+(new String(msg))
+                    +&quot;, headers:&quot;+headers);
+            Long deliveryTag=(Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+            channel.basicAck(deliveryTag, false);
+        }
+    }
+}
+</code></pre>
+<h3 id="header-10">Fanout Exchange</h3>
+<ul>
+<li>广播模式，转发消息到所有绑定队列（和routingKey没有关系）</li>
+<li><code>Producer -&gt; Exchange -&gt; (all) -&gt; Queue -&gt; Consumer</code></li>
+<li>Demo Case:<ul>
+<li>Bean:<ul>
+<li>queue(fanout.s1),queue(fanout.s2),queue(123)</li>
+<li>fanoutExchange</li>
+<li>binding: FanoutExchange -&gt; all -&gt; queue(fanout.s1) &amp; queue(fanout.s2)</li>
+</ul>
+</li>
+<li>Default binding:<ul>
+<li>defaultExchange -&gt; routingKey: 123 -&gt; queue(123)</li>
+</ul>
+</li>
+<li>Send to FanoutExchange with routingKey:<code>123,fanout.s1,fanout.s1.user,...</code> -&gt; <code>consume queue(fanout.s1) &amp; queue(fanout.s2)</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-java">@SpringBootApplication
+public class FanoutExchangeDemoApp {
+
+    public static void main( String[] args ) throws IOException, InterruptedException{
+        ConfigurableApplicationContext ctx = SpringApplication.run(FanoutExchangeDemoApp.class, args);
+        QueueSender sender=ctx.getBean(QueueSender.class);
+        String routingKey=&quot;123&quot;;    // FanoutExchangeConfig.RoutingKey_S1;
+        sender.send(routingKey,&quot;Hello world S1 &quot;+System.currentTimeMillis());
+        sender.send(routingKey+&quot;.user&quot;,&quot;Hello World S1.User &quot;+System.currentTimeMillis());
+        sender.send(routingKey+&quot;.user.role&quot;,&quot;Hello World S1.User.Role &quot;+System.currentTimeMillis());
+    }
+
+    // config
+    @Configuration
+    public class FanoutExchangeConfig{
+        public final static String RoutingKey_S1=&quot;fanout.s1&quot;;
+        public final static String RoutingKey_S2=&quot;fanout.s2&quot;;
+        public final static String Exchange_Name=&quot;fanoutExchange&quot;;
+
+        // Queue
+        @Bean
+        public Queue s1Queue(){
+            return new Queue(RoutingKey_S1);
+        }
+        @Bean
+        public Queue s2Queue(){
+            return new Queue(RoutingKey_S2);
+        }
+        @Bean
+        public Queue testQueue() {
+            return new Queue(&quot;123&quot;);
+        }
+
+        // Exchange
+        @Bean
+        public FanoutExchange exchange(){
+            return new FanoutExchange(Exchange_Name);
+        }
+
+        // Binding
+        @Bean
+        public Binding bindingS1QueueAndExchange(Queue s1Queue, FanoutExchange exchange){
+            return BindingBuilder.bind(s1Queue).to(exchange);
+        }
+        @Bean
+        public Binding bingS2QueueAndExchange(Queue s2Queue,FanoutExchange exchange){
+            return BindingBuilder.bind(s2Queue).to(exchange);
+        }
+    }
+
+    // sender
+    @Component
+    public class QueueSender{
+        @Autowired
+        private AmqpTemplate rabbitTemplate;
+
+        public void send(String routingKey,String msg){
+            System.out.println(&quot;send routingKey(&quot;+routingKey+&quot;) :&quot;+msg);
+            rabbitTemplate.convertAndSend(FanoutExchangeConfig.Exchange_Name, routingKey, msg);
+        }
+    }
+
+    // receiver
+    @Component
+    public class QueueReceiver{
+        @RabbitHandler
+        @RabbitListener(queues = {FanoutExchangeConfig.RoutingKey_S1,FanoutExchangeConfig.RoutingKey_S2,&quot;123&quot;})
+        public void receive(@Payload String msg,@Headers Map&lt;String,Object&gt; headers,Channel channel) 
+                throws IOException {
+            System.out.println(&quot;consume queue(&quot;+headers.get(AmqpHeaders.CONSUMER_QUEUE)+&quot;)&quot;
+                    +&quot; routingKey(&quot;+headers.get(AmqpHeaders.RECEIVED_ROUTING_KEY)+&quot;)&quot;
+                    +&quot; msg:&quot;+msg);
+            ;
+            Long deliveryTag=(Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+            channel.basicAck(deliveryTag, false);
+        }
+    }
+}
+</code></pre>
+<h2 id="header-11">扩展：传输对象</h2>
+<h3 id="header-12">配置(Optional)</h3>
+<p>rabbitmq-management界面setting (visit <code>http://localhost:15672</code>)</p>
+<ul>
+<li>Queues<ul>
+<li>Add Queue,eg: <code>order-queue</code></li>
+</ul>
+</li>
+<li>Exchanges <ul>
+<li>Add Exchange,eg: <code>order-exchange</code> (type:<code>topic</code>)</li>
+<li>Add Binding,eg: <code>order-queue</code> (routingKey: <code>order.#</code>)</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-13">Producer</h3>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+     &lt;scope&gt;test&lt;/scope&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>application.yml</p>
+<pre><code> server:
+   port: 8080
+   servlet:
+     context-path: /rabbit-producer
+
+ spring:
+   rabbitmq:
+     addresses: localhost:5672
+     username: admin
+     password: admin
+     virtual-host: my_vhost
+     connection-timeout: 15000
+     # for confirmCallback:
+     publisher-confirms: true
+</code></pre></li>
+<li><p>Entity: Order(id,msgId,name)</p>
+</li>
+<li><p>Sender</p>
+<pre><code class="lang-java"> package com.cj.rabbit.producer;
+
+ import org.springframework.amqp.rabbit.core.RabbitTemplate;
+ import org.springframework.amqp.rabbit.support.CorrelationData;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Component;
+
+ import com.cj.rabbit.entity.Order;
+
+ @Component
+ public class OrderSender {
+     @Autowired
+     private RabbitTemplate rabbitTemplate;
+
+     public void send(Order order) throws Exception{
+         CorrelationData correlationData=new CorrelationData();
+         correlationData.setId(order.getMsgId());
+         rabbitTemplate.convertAndSend(&quot;order-exchange&quot;,    // exchange
+             &quot;order.abcd&quot;,     // routingkey
+             order,            // 消息内容
+             correlationData // 消息唯一Id
+             );
+     }
+ }
+</code></pre>
+</li>
+<li><p>main</p>
+<pre><code class="lang-java"> @SpringBootApplication
+ public class App {
+     public static void main( String[] args ){
+         SpringApplication.run(App.class, args);
+     }
+ }
+</code></pre>
+</li>
+<li><p>Test</p>
+<pre><code class="lang-java"> @RunWith(SpringRunner.class)
+ @SpringBootTest
+ public class AppTest{
+
+     @Autowired
+     private OrderSender orderSender;
+
+     @Test
+     public void testOrderSend() throws Exception{
+         Order order=new Order();
+         order.setId(&quot;201901070002&quot;);
+         order.setName(&quot;Test Order2&quot;);
+         order.setMsgId(System.currentTimeMillis()+&quot;$&quot;+UUID.randomUUID().toString());
+         orderSender.send(order);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-14">Consumer</h3>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+     &lt;scope&gt;test&lt;/scope&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>application.xml</p>
+<pre><code> server:
+   port: 8090
+   servlet:
+     context-path: /rabbit-consumer
+
+ spring:
+   rabbitmq:
+     addresses: localhost:5672
+     username: admin
+     password: admin
+     virtual-host: my_vhost
+     connection-timeout: 15000
+     # add below for consumer listener config:
+     listener:
+       simple:
+         acknowledge-mode: manual
+         prefetch: 1
+         concurrency: 5
+         max-concurrency: 10
+</code></pre></li>
+<li><p>Entity: Order(id,msgId,name)</p>
+</li>
+<li><p>Receiver</p>
+<pre><code class="lang-java"> package com.cj.rabbit.consumer;
+
+ import java.util.Map;
+
+ import org.springframework.amqp.rabbit.annotation.Exchange;
+ import org.springframework.amqp.rabbit.annotation.Queue;
+ import org.springframework.amqp.rabbit.annotation.QueueBinding;
+ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+ import org.springframework.amqp.rabbit.annotation.RabbitListener;
+ import org.springframework.amqp.support.AmqpHeaders;
+ import org.springframework.messaging.handler.annotation.Headers;
+ import org.springframework.messaging.handler.annotation.Payload;
+ import org.springframework.stereotype.Component;
+
+ import com.cj.rabbit.entity.Order;
+ import com.rabbitmq.client.Channel;
+
+ @Component
+ public class OrderReceiver {
+     @RabbitListener(
+     // Queue,Exchange,Binding 不存在的会自动创建
+         bindings=@QueueBinding(
+             value=@Queue(value=&quot;order-queue&quot;,durable=&quot;true&quot;),
+             exchange=@Exchange(name=&quot;order-exchange&quot;,durable=&quot;true&quot;,type=&quot;topic&quot;),
+             key=&quot;order.#&quot;
+         )
+     )
+     @RabbitHandler
+     public void onOrderMessage(@Payload Order order,@Headers Map&lt;String,Object&gt; headers,Channel channel) 
+         throws Exception{
+         System.err.println(&quot;Received Message&quot;);
+         System.err.println(&quot;order Id:&quot;+order.getId());
+
+         // 手工签收：
+         Long deliveryTag=(Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+         channel.basicAck(deliveryTag,false); // 给MQ主动回送一个信息，说明已签收
+     }
+ }
+</code></pre>
+</li>
+<li><p>main</p>
+<pre><code class="lang-java"> @SpringBootApplication
+ public class App {
+     public static void main( String[] args ){
+         SpringApplication.run(App.class, args);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-15">扩展：可靠性投递</h2>
+<h3 id="header-16">Summary</h3>
+<ul>
+<li><p>Entity (implements Serializable):</p>
+<ul>
+<li>Order:<ul>
+<li>Long id: <code>System.currentTimeMillis()</code></li>
+<li>String msgId: <code>System.currentTimeMillis()+&quot;$&quot;+UUID.randomUUID().toString()</code></li>
+<li>String name</li>
+</ul>
+</li>
+<li>TransportLog: <ul>
+<li>String msgId: <code>order.getMsgId()</code></li>
+<li>String content: <code>JSON.toJSONString(order)</code></li>
+<li>String status: <code>Sending</code>,<code>Success</code>,<code>Fail</code></li>
+<li>Integer retryCount (&lt;=3)</li>
+<li>Date nextTime: now+10s</li>
+<li>Date createTime: now</li>
+<li>Date updateTime</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Service: TransportLogService:</p>
+<ul>
+<li>list(): list all</li>
+<li>listRetry(): list records that status==”Sending” &amp;&amp; nextTime before now</li>
+<li>changeStatus(msgId,status)</li>
+<li>addRetryCount(msgId): retryCount++ &amp;&amp; nextTime=now+10s</li>
+<li>create(msgId,content): status=<code>Sending</code>,retryCount=0,nextTime=now+10s</li>
+<li>save(transportLog)</li>
+</ul>
+</li>
+<li><p>OrderQueueSender: </p>
+<ul>
+<li>confirmCallback: if ack then do <code>transportLogService.changeStatus(correlationData.getId(),&quot;Success&quot;)</code></li>
+<li>send: <code>rabbitTemplate.convertAndSend(Order_Exchange,routingKey,order,new CorrelationData(order.getMsgId()))</code></li>
+<li>application.xml:<code>spring.rabbitmq.publisher-confirms=true</code> </li>
+</ul>
+</li>
+<li><p>OrderQueueReceiver:</p>
+<ul>
+<li><code>@RabbitListener</code> &amp;&amp; <code>@RabbitHandler</code> &amp;&amp; <code>channel.basicAck((Long)headers.get(AmqpHeaders.DELIVERY_TAG),false);</code></li>
+</ul>
+</li>
+<li><p>ScheduleTask: RetryMessageTasker</p>
+<ul>
+<li>@Scheduled(initialDelay=3000,fixedDelay=1000) reSend()<ul>
+<li>transportLogService.listRetry()</li>
+<li>transportLog.getRetryCount()&gt;=3 -&gt; stop retry sending,change status to <code>Fail</code></li>
+<li>transportLog.getRetryCount()<3 -=""> addRetryCount &amp;&amp; orderQueueSender.send</3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>TaskSchedulerConfig implements <code>SchedulingConfigurer</code> : spring默认创建一个单线程池，这里通过taskRegistrar设置一个自定义线程池</p>
+<ul>
+<li><code>@Configuration</code> &amp;&amp; <code>@EnableScheduling</code></li>
+<li><code>@override configureTasks(ScheduledTaskRegistrar taskRegistrar)</code></li>
+<li><code>Executors.newScheduledThreadPool(100)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-17">Dependency</h3>
+<p>pom.xml</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-amqp&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+    &lt;version&gt;1.2.56&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="header-18">Config</h3>
+<p>application.yml</p>
+<pre><code>server:
+  port: 8080
+  servlet:
+    context-path: /rabbit-demo
+
+spring:
+  rabbitmq:
+    addresses: localhost:5672
+    username: admin
+    password: admin
+    virtual-host: my_vhost
+    connection-timeout: 15000
+    # for confirmCallback:
+    publisher-confirms: true
+    # add below for consumer:
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 1
+        concurrency: 5
+        max-concurrency: 10
+</code></pre><h3 id="header-19">Code</h3>
+<pre><code class="lang-java">@SpringBootApplication
+public class SendConfirmDemoApp {
+    public static void main( String[] args ) throws IOException, InterruptedException{
+        ConfigurableApplicationContext ctx = SpringApplication.run(SendConfirmDemoApp.class, args);
+
+        OrderQueueSender sender=ctx.getBean(OrderQueueSender.class);
+        TransportLogService transportLogService=ctx.getBean(TransportLogService.class);
+
+        // prepare testing transportLog records
+        Order order = null;
+        for(int i=0;i&lt;=4;i++) {
+            order=new Order();
+            order.setId(System.currentTimeMillis());
+            order.setMsgId(&quot;0&quot;+i+&quot;-&quot;+order.getId()+&quot;$&quot;+UUID.randomUUID().toString());
+            order.setName(&quot;TestSending0&quot;+i);
+            transportLogService.create(order.getMsgId(), JSON.toJSONString(order),&quot;Sending&quot;,i,10);
+        }
+        for(int i=5;i&lt;=8;i++) {
+            order=new Order();
+            order.setId(System.currentTimeMillis());
+            order.setMsgId(&quot;0&quot;+i+&quot;-&quot;+order.getId()+&quot;$&quot;+UUID.randomUUID().toString());
+            order.setName(&quot;TestSuccess0&quot;+i);
+            transportLogService.create(order.getMsgId(), JSON.toJSONString(order),&quot;Success&quot;,i-5,10);
+        }
+        order=new Order();
+        order.setId(System.currentTimeMillis());
+        order.setMsgId(&quot;09&quot;+&quot;-&quot;+order.getId()+&quot;$&quot;+UUID.randomUUID().toString());
+        order.setName(&quot;TestFail09&quot;);
+        transportLogService.create(order.getMsgId(), JSON.toJSONString(order),&quot;Fail&quot;,0,10);
+
+        // send
+        String routingKey=&quot;order.123&quot;;
+        order = new Order();
+        order.setId(System.currentTimeMillis());
+        order.setMsgId(order.getId()+&quot;$&quot;+UUID.randomUUID().toString());
+        order.setName(&quot;Hello&quot;);
+        transportLogService.create(order.getMsgId(), JSON.toJSONString(order));
+        sender.send(routingKey,order);
+    }
+
+    public static final String Order_Exchange=&quot;order-exchange&quot;;
+    public static final String Order_Queue=&quot;order-queue&quot;;
+    public static final String Order_RoutingKey=&quot;order.#&quot;;
+    public static final String Order_RoutingKey_Prefix=&quot;order.&quot;;
+
+    // sender
+    @Component
+    public class OrderQueueSender{
+        @Autowired
+        private RabbitTemplate rabbitTemplate;
+
+        /*public void send(String routingKey,Order order){
+            System.out.println(&quot;send order :&quot;+order);
+            rabbitTemplate.convertAndSend(Order_Exchange,routingKey,order,new CorrelationData(order.getMsgId()));
+        }*/
+
+        @Autowired
+        private TransportLogService transportLogService;
+        private final ConfirmCallback confirmCallback=new RabbitTemplate.ConfirmCallback(){
+            @Override
+            public void confirm(CorrelationData correlationData,boolean ack,String cause){
+                System.out.println(&quot;confirm correlationData:&quot;+correlationData+&quot;, ack:&quot;+ack+&quot;, cause:&quot;+cause);
+                if(ack)
+                    transportLogService.changeStatus(correlationData.getId(),&quot;Success&quot;);
+                else
+                    System.err.println(&quot;confirm error:&quot;+cause);
+            }
+        };
+
+        public void send(String routingKey,Order order){
+            System.out.println(&quot;send order :&quot;+order);
+            rabbitTemplate.setConfirmCallback(confirmCallback);
+            rabbitTemplate.convertAndSend(Order_Exchange,routingKey,order,new CorrelationData(order.getMsgId()));
+        }
+    }
+
+    // receiver
+    @Component
+    public class OrderQueueReceiver {
+        @RabbitHandler
+        @RabbitListener(
+            bindings=@QueueBinding(
+                value=@Queue(name=Order_Queue,durable=&quot;true&quot;),
+                exchange=@Exchange(name=Order_Exchange,durable=&quot;true&quot;,type=&quot;topic&quot;),
+                key=Order_RoutingKey
+            )
+        )
+//        @RabbitListener(queues = {Order_Queue})
+        public void onOrderMessage(@Payload Order order,@Headers Map&lt;String,Object&gt; headers,Channel channel) 
+            throws Exception{
+            System.out.println(&quot;consume queue(&quot;+headers.get(AmqpHeaders.CONSUMER_QUEUE)+&quot;)&quot;
+                    +&quot; routingKey(&quot;+headers.get(AmqpHeaders.RECEIVED_ROUTING_KEY)+&quot;)&quot;
+                    +&quot; order:&quot;+order);
+            ;
+
+            // 手工签收：
+            Long deliveryTag=(Long)headers.get(AmqpHeaders.DELIVERY_TAG);
+            channel.basicAck(deliveryTag,false); // 给MQ主动回送一个信息，说明已签收
+        }
+    }
+
+    // schedule Task
+    @Component
+    public class RetryMessageTasker {
+        @Autowired
+        private OrderQueueSender orderQueueSender;
+        @Autowired
+        private TransportLogService transportLogService;
+
+        @Scheduled(initialDelay=3000,fixedDelay=1000)
+        public void reSend(){
+            System.out.println(&quot;trigger reSend()&quot;);
+            List&lt;TransportLog&gt; list=transportLogService.listRetry();    // status=&#39;Sending&#39; and nextTime&lt;=sysdate()
+
+            list.forEach(transportLog-&gt;{
+                System.out.println(transportLog);
+                String msgId= transportLog.getMsgId();
+                Integer retryCount=transportLog.getRetryCount();
+
+                if(transportLog.getRetryCount()&gt;=3){
+                    System.out.println(&quot;Fail &quot;+retryCount+&quot; times:&quot;+msgId);
+                    transportLogService.changeStatus(msgId,&quot;Fail&quot;);        // stop retry sending
+                }else{
+                    System.out.println(&quot;Retry &quot;+(retryCount+1)+&quot; times:&quot;+msgId);
+                    transportLogService.addRetryCount(msgId);
+                    Order reSendOrder=JSON.parseObject(transportLog.getContent(),Order.class);
+                    orderQueueSender.send(Order_RoutingKey_Prefix+retryCount,reSendOrder);
+                }
+            });
+        }
+
+        @Scheduled(initialDelay=1000*10,fixedDelay=5*1000)
+        public void listTransportLogs() {
+            System.out.println(&quot;trigger listTransportLogs()&quot;);
+            List&lt;TransportLog&gt; list=transportLogService.list();
+            for(TransportLog log:list)
+                System.out.println(log);
+        }
+    }
+
+    // schedule: spring默认会创建一个单线程池,通过taskRegistrar设置自定义线程池
+    @Configuration
+    @EnableScheduling
+    public class TaskSchedulerConfig implements SchedulingConfigurer{
+
+        @Override
+        public void configureTasks(ScheduledTaskRegistrar taskRegistrar){
+            taskRegistrar.setScheduler(taskScheduler());
+        }
+        @Bean(destroyMethod=&quot;shutdown&quot;)
+        public Executor taskScheduler(){
+            return Executors.newScheduledThreadPool(100);
+        }
+    }
+
+    // entity: Order
+    public static class Order implements Serializable {
+        private static final long serialVersionUID = -698577629696435935L;
+        private Long id;
+        private String name;
+        private String msgId;
+        /* getter &amp; setter &amp; toString */
+    }
+
+    // entity: TransportLog
+    public static class TransportLog implements Serializable{
+        private static final long serialVersionUID = 4330091676523447230L;
+        private String msgId;
+        private String content;
+        private String status;
+        private Integer retryCount;
+        private Date nextTime;
+        private Date createTime;
+        private Date updateTime;
+        /* getter &amp; setter &amp; toString */
+    }
+
+    // service: TransportLogService
+    @Component
+    public class TransportLogService{
+        private final ConcurrentMap&lt;String,TransportLog&gt; data = new ConcurrentHashMap&lt;String,TransportLog&gt;();
+
+        public List&lt;TransportLog&gt; list(){
+            return new ArrayList&lt;TransportLog&gt;(data.values());
+        }
+        public List&lt;TransportLog&gt; listRetry(){
+            Date now = new Date();
+            List&lt;TransportLog&gt; list=new ArrayList&lt;TransportLog&gt;();
+            for(String key:data.keySet()) {
+                TransportLog transportLog=data.get(key);
+                if(&quot;Sending&quot;==transportLog.getStatus() &amp;&amp; transportLog.getNextTime().before(now))
+                    list.add(transportLog);
+            }
+            return list;
+        }
+
+        public TransportLog changeStatus(String msgId,String status){
+            TransportLog transportLog=data.get(msgId);
+            if(transportLog==null)
+                return null;
+            transportLog.setStatus(status);
+            transportLog.setUpdateTime(new Date());
+            data.replace(msgId, transportLog);
+            return transportLog;
+        }
+
+        public TransportLog addRetryCount(String msgId) {
+            TransportLog transportLog=data.get(msgId);
+            if(transportLog==null)
+                return null;
+
+            Date now=new Date();
+            Calendar c=Calendar.getInstance();
+            c.setTime(now);
+            c.add(Calendar.SECOND, 10);
+
+            Integer retryCount=transportLog.getRetryCount()==null?0:transportLog.getRetryCount();
+            transportLog.setRetryCount(retryCount+1);
+            transportLog.setNextTime(c.getTime());
+            transportLog.setUpdateTime(now);
+            data.replace(msgId, transportLog);
+            return transportLog;
+        }
+
+        public TransportLog create(String msgId,String content) {
+            return create(msgId,content,&quot;Sending&quot;,0,10);
+        }
+
+        // for test:
+        public TransportLog create(String msgId,String content,String initialStatus,Integer intialRetryCount,Integer intervalSeconds){
+            Date now=new Date();
+            Calendar c=Calendar.getInstance();
+            c.setTime(now);
+            c.add(Calendar.SECOND, intervalSeconds);
+
+            TransportLog transportLog=new TransportLog();
+            transportLog.setMsgId(msgId);
+            transportLog.setContent(content);
+            transportLog.setStatus(initialStatus);
+            transportLog.setRetryCount(intialRetryCount);
+            transportLog.setNextTime(c.getTime());
+            transportLog.setCreateTime(now);
+            transportLog.setUpdateTime(now);
+            data.putIfAbsent(msgId, transportLog);
+            return transportLog;
+        }
+
+    }
+}
+</code></pre>
+<h2 id="header-20">Reference</h2>
+<ul>
+<li><a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">My demo: rabbit-demo</a></li>
+<li><a href="https://blog.csdn.net/weixin_37641832/article/details/83270778" target="_blank" rel="noopener">深入理解AMQP协议</a></li>
+<li><a href="https://www.cnblogs.com/dwlsxj/p/RabbitMQ.html" target="_blank" rel="noopener">RabbitMQ基础知识</a></li>
+<li><a href="https://blog.csdn.net/hellozpc/article/details/81436980" target="_blank" rel="noopener">RabbitMQ教程</a></li>
+<li><a href="https://www.cnblogs.com/ityouknow/p/6120544.html" target="_blank" rel="noopener">RabbitMQ详解</a></li>
+<li><a href="https://www.cnblogs.com/skychenjiajun/p/9037324.html" target="_blank" rel="noopener">springboot集成rabbitmq</a></li>
+<li><a href="https://www.cnblogs.com/skychenjiajun/p/9057379.html?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">springboot集成schedule</a>    </li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

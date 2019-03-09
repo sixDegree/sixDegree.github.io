@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>服务治理 Eureka</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="micro service,eureka,spring cloud">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Start</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Demo</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">实现一个服务注册中心: eureka-server</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">注册一个服务 eureka-client</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">服务治理 Eureka</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2018-12-31T16:00:00.000Z">2019-01-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-MicroService">MicroService</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Start</h2>
+<ul>
+<li>Spring Cloud Netflix项目下的服务治理模块，可以与Springboot构建的微服务很容易的整合起来</li>
+<li>包含了服务器端和客户端组件：<ul>
+<li>服务器端(服务注册中心)<ul>
+<li>提供服务的发现和注册</li>
+<li>服务实例清单: 根据服务实例发送来的信息（例如主机，端口，版本，通信协议等）组织维护一个服务实例清单</li>
+<li>失效剔除: 以心跳的方式监测服务实例清单中的服务，剔除没有续约的服务(默认：间隔60s，服务失效时间90s)</li>
+<li>自我保护: 保护心跳失败比例在15分钟内低于85%的服务实例的注册信息不过期,所以服务调用者要有容错机处理实例调用失败(<code>eureka.server.enable-self-preservation</code>默认为true，启动)</li>
+<li>高可用: 可将自己作为服务向其他服务注册中心注册自己,形成了一组互相注册的服务注册中心，服务注册中心之间通过异步模式互相复制各自的状态（服务清单的互相同步），达到高可用</li>
+</ul>
+</li>
+<li>客户端(包含服务的消费者和生产者,一般一个应用既是服务提供者也是服务消费者)<ul>
+<li>服务注册: 向服务注册中心注册自身提供的服务（<code>eureka.client.registerWithEureka</code>为false，则不会进行注册；<code>eureka.client.registry-fetch-interval-seconds</code>:缓存清单的刷新时间，默认30s）</li>
+<li>服务续约: 向服务注册中心周期性地发送心跳来更新它的服务租约（<code>eureka.instance.lease-renewal-interval-in-seconds &amp; lease-expiration-duration-in-seconds</code>）</li>
+<li>获取服务: 向服务注册中心请求获取服务实例清单(包含了服务实例的元数据信息)</li>
+<li>服务调用: 根据从注册中心获取的服务实例清单，根据自己的策略选择具体的服务实例进行访问</li>
+<li>服务下线: 服务正常关闭,向注册中心取消租约</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>角色：<ul>
+<li>服务注册中心：Eureka服务端，提供服务注册和发现的功能（包括失效剔除，自我保护）</li>
+<li>服务提供者：提供服务的应用，将自己提供的服务注册到Eureka，供其他应用发现（任务：服务注册，同步，续约）</li>
+<li>服务消费者：消费者从注册中心发现服务列表，然后调用对应的服务（任务：服务获取，调用，下线）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/01/01/eureka.png" alt="eureka架构"><br><!-- ![eureka simple](2019-01-01-Eureka/eureka-simple.png) --></p>
+<h2 id="header-2">Demo</h2>
+<p><strong> 示例：</strong></p>
+<ul>
+<li>服务注册中心(提供服务注册功能) ：eureka-server </li>
+<li>服务提供方(注册服务到服务注册中心)：eureka-client</li>
+</ul>
+<h3 id="header-3">实现一个服务注册中心: eureka-server</h3>
+<ul>
+<li>在项目的启动类上使用<code>@EnableEurekaServer</code>注解</li>
+<li><code>eureka.client.registerWithEureka</code> 配置禁用它的客户端注册行为(在默认设置下，Eureka服务注册中心也会将自己作为客户端来尝试注册它自己，会导致报错）</li>
+<li><code>eureka.client.serviceUrl.defaultZone</code>配置服务注册中心的位置(默认是<code>http://localhost:8761/eureka/</code>，也可加入安全校验信息<code>http://&lt;username&gt;:&lt;password&gt;@localhost:8761/eureka/</code>)</li>
+<li><code>eureka.server.enable-self-preservation</code> 自我保护模式：默认未true打开的，则已关停的Service会一直列在首页；关闭后，检测到的关停的Service就会从列表中自动剔除</li>
+<li><code>eureka.server.eviction-interval-timer-in-ms</code> 心跳周期参数，可调快以便及时发现关停Service</li>
+</ul>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;properties&gt;
+     &lt;spring-cloud.version&gt;Finchley.RELEASE&lt;/spring-cloud.version&gt;
+ &lt;/properties&gt;
+ &lt;dependencyManagement&gt;
+     &lt;dependencies&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+             &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+             &lt;version&gt;${spring-cloud.version}&lt;/version&gt;
+             &lt;type&gt;pom&lt;/type&gt;
+             &lt;scope&gt;import&lt;/scope&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+ &lt;/dependencyManagement&gt;
+ &lt;dependencies&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+ &lt;/dependencies&gt;
+</code></pre>
+</li>
+<li><p>resources/application.yml</p>
+<pre><code> server:
+   port: 8761
+   servlet:
+     context-path: /eureka-server
+
+ eureka:
+   server:
+     enable-self-preservation: false
+     eviction-interval-timer-in-ms: 10000
+   client:
+     registerWithEureka: false   # 是否向服务注册中心注册自己
+     fetchRegistry: false        # 是否检索服务
+     service-url:
+       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka-server/eureka}
+</code></pre></li>
+<li><p>main</p>
+<pre><code class="lang-java"> package com.cj.eureka;
+
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+ @SpringBootApplication
+ @EnableEurekaServer
+ public class EurekaServerApp 
+ {
+     public static void main( String[] args ){
+         SpringApplication.run(EurekaServerApp.class, args);
+     }
+ }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:8761/eureka-server</code></p>
+</li>
+</ol>
+<h3 id="header-4">注册一个服务 eureka-client</h3>
+<ul>
+<li>在项目的启动类上使用<code>@EnableEurekaClient</code>/<code>EnableDiscoveryClient</code>注解<ul>
+<li>spring cloud中discovery service有许多种实现（eureka、consul、zookeeper等等）</li>
+<li>以上两个注解都可实现服务发现的功能</li>
+<li><code>@EnableEurekaClient</code>: 基于spring-cloud-netflix,服务采用eureka作为注册中心，使用场景较为单一</li>
+<li><code>@EnableDiscoveryClient</code>: 基于spring-cloud-commons, 使用场景更多元</li>
+</ul>
+</li>
+<li><code>spring.application.name</code> 注册的服务名会使用这个</li>
+<li><code>eureka.client.serviceUrl.defaultZone</code> 配置服务注册中心的位置</li>
+</ul>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;properties&gt;
+     &lt;spring-cloud.version&gt;Finchley.RELEASE&lt;/spring-cloud.version&gt;
+ &lt;/properties&gt;
+ &lt;dependencyManagement&gt;
+     &lt;dependencies&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+             &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+             &lt;version&gt;${spring-cloud.version}&lt;/version&gt;
+             &lt;type&gt;pom&lt;/type&gt;
+             &lt;scope&gt;import&lt;/scope&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+ &lt;/dependencyManagement&gt;
+ &lt;dependencies&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+ &lt;/dependencies&gt;
+</code></pre>
+</li>
+<li><p>resources/application.yml</p>
+<pre><code> server:
+   port: 8080     # 0 : 随机
+   servlet:
+     context-path: /eureka-client
+
+ spring:
+   application:
+     name: eureka-client
+
+ eureka:
+   client:
+     serviceUrl:
+       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka-server/eureka}
+   instance:
+     preferIpAddress: true
+ #    secure-port-enabled: true
+     status-page-url-path: /eureka-client/actuator
+     health-check-url-path: /eureka-client/actuator/health
+     home-page-url-path: /eureka-client/
+</code></pre></li>
+<li><p>main</p>
+<pre><code class="lang-java"> package com.cj.eureka;
+
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.beans.factory.annotation.Value;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+ import org.springframework.context.annotation.Lazy;
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RestController;
+
+ import com.netflix.discovery.EurekaClient;
+
+ @SpringBootApplication
+ @EnableEurekaClient                // or @EnableDiscoveryClient
+ @RestController
+ public class EurekaClientApp{
+     public static void main( String[] args ){
+         SpringApplication.run(EurekaClientApp.class, args);
+     }
+
+     @RequestMapping(&quot;/&quot;)
+     public String index() {
+         return &quot;Hello World&quot;;
+     }
+
+     @RequestMapping(&quot;/say&quot;)
+     public String say(){
+         return &quot;Say Hello world&quot;;
+     }
+
+ //    @Autowired
+ //    @Lazy
+ //    private EurekaClient eurekaClient;
+ // 
+ //    @Value(&quot;${spring.application.name}&quot;)
+ //    private String appName;
+ //    
+ //    @RequestMapping(&quot;/greeting&quot;)
+ //    public String greeting() {
+ //        return String.format(&quot;Hello from &#39;%s&#39;!&quot;, eurekaClient.getApplication(appName).getName());
+ //    }
+
+ }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:8080/eureka-client</code></p>
+<ul>
+<li><code>/</code>,<code>/say</code></li>
+<li><code>/actuator</code>,<code>/actuator/info</code>,<code>/actuator/health</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="header-5">Reference</h2>
+<p><a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">My demo: eureka-server &amp; eureka-client</a></p>
+<p><a href="https://blog.csdn.net/ycd500756/article/details/80955485" target="_blank" rel="noopener">EureKa:服务注册与发现</a></p>
+<p><a href="https://www.jianshu.com/p/920d2bcda3a7" target="_blank" rel="noopener">spring-cloud-eureka服务治理</a></p>
+<p><a href="https://blog.csdn.net/qq_27529917/article/details/80939962" target="_blank" rel="noopener">Eureka服务发现的常见问题</a></p>
+<p><a href="https://cloud.spring.io/spring-cloud-netflix/2.0.x/single/spring-cloud-netflix.html" target="_blank" rel="noopener">Spring Cloud Netflix</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

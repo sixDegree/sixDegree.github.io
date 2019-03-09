@@ -95,9 +95,158 @@
 <div id="article-listing" role="main">
 
 	<article>
+		<h3><a href="/2019/01/06/Redis.html">SpringBoot Redis</a></h3>
+		<ul class="post-meta">
+			<li><time 2019-03-09T09:42:30.474Z>2019-01-06</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>SpringBoot Redis + Demo</li>
+<li>应用：Session持久化：NoSession方案,SpringSession方案</li>
+<li>方案：NoSession示例</li>
+<li>方案：SpringSession示例</li>
+</ol></p>
+		<a href="/2019/01/06/Redis.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2019/01/05/Rabbitmq.html">消息中间件 RabbitMQ</a></h3>
+		<ul class="post-meta">
+			<li><time 2019-03-09T09:42:30.474Z>2019-01-05</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>AMQP: Advanced Message Queuing Protocol</li>
+<li>RabbitMQ: Producer -&gt; VirtualHost(Exchange -&gt; Binding:routingKey,headers,all,… -&gt; Queue) -&gt; Consumer</li>
+<li>使用Docker安装RabbitMQ</li>
+<li>Demo: Direct/Topic/Headers/Fanout Exchange</li>
+<li>Demo: Exchange object</li>
+<li>Demo: Reliability send</li>
+</ol></p>
+		<a href="/2019/01/05/Rabbitmq.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2019/01/04/Dubbo.html">RPC:Dubbo</a></h3>
+		<ul class="post-meta">
+			<li><time 2019-03-09T09:42:30.474Z>2019-01-04</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>RPC 远程过程调用<ul>
+<li>四个核心组建(Client,Server,Client Stub,Server Stub)</li>
+<li>框架选择的关注点(I/O,线程,序列化,多语言,服务治理)</li>
+<li>流行框架（Dubbo,Motan,Thrift,Grpc)</li>
+</ul>
+</li>
+<li>Dubbo: Provider,Consumer,Registry,Monitor,Container</li>
+<li>HelloWorld</li>
+<li>Demo(with SpringBoot)</li>
+</ol></p>
+		<a href="/2019/01/04/Dubbo.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2019/01/03/Zookeeper.html">一致性服务 Zookeeper(CuratorFramework)</a></h3>
+		<ul class="post-meta">
+			<li><time 2019-03-09T09:42:30.474Z>2019-01-03</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>dependency: curator-recipes</li>
+<li>Start／Close: CuratorFrameworkFactory.builder()…build(), start(),close()</li>
+<li>CRUD: create(),getData(),setData(),delete(),checkExists(),getChildren()</li>
+<li>Watch: usingWatcher(watcher),NodeCache,PathChildrenCache,TreeCache</li>
+<li>ACL: schema:id:permission, new ACL(perms,id),.aclProvider(aclProvider),.authorization(authInfoList),.withACL(aclList),get/setACL()</li>
+<li>一个应用示例：Client端监控文件增删，实现文件从Server端到Client端的同步</li>
+</ol></p>
+		<a href="/2019/01/03/Zookeeper.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2019/01/02/Zuul.html">智能路由 Zuul</a></h3>
+		<ul class="post-meta">
+			<li><time 2019-03-09T09:42:30.475Z>2019-01-02</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>dependency: spring-cloud-starter-netflix-zuul</li>
+<li>@EnableZuulProxy(included: @EnableDiscoveryClient, @EnableCircuitBreaker)</li>
+<li>ZuulFilter @Override shouldFilter(),filterType(), filterOrder(),run()</li>
+<li>配置zuul.routes.xxx: path,url/service-id</li>
+<li>通过Eureka中已经注册的服务名,调用服务（使用service-id)</li>
+</ol></p>
+		<a href="/2019/01/02/Zuul.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2019/01/01/Eureka.html">服务治理 Eureka</a></h3>
+		<ul class="post-meta">
+			<li><time 2019-03-09T09:42:30.475Z>2019-01-01</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>dependency: spring-cloud-starter-netflix-eureka-server</li>
+<li>实现一个服务注册中心: @EnableEurekaServer,eureka.client.registerWithEureka &amp; fetchRegistry:false</li>
+<li>注册一个服务: @EnableEurekaClient/@EnableDiscoveryClient</li>
+<li>配置服务注册中心的位置 eureka.client.serviceUrl.defaultZone(默认是 <a href="http://localhost:8761/eureka/" target="_blank" rel="noopener">http://localhost:8761/eureka/</a>)</li>
+<li>注册的服务名会使用 spring.application.name </li>
+</ol></p>
+		<a href="/2019/01/01/Eureka.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
 		<h3><a href="/2018/10/15/ES6.html">ES6</a></h3>
 		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.732Z>2018-10-15</time></li>
+			<li><time 2019-03-09T09:42:30.475Z>2018-10-15</time></li>
 			
 			<li>
 				
@@ -121,7 +270,7 @@
 	<article>
 		<h3><a href="/2018/09/15/Spring-Boot.html">Spring Boot</a></h3>
 		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.732Z>2018-09-15</time></li>
+			<li><time 2019-03-09T09:42:30.475Z>2018-09-15</time></li>
 			
 			<li>
 				
@@ -145,7 +294,7 @@
 	<article>
 		<h3><a href="/2018/08/15/Oracle-Script.html">Oracle Procedure &amp; Cursor &amp; Array</a></h3>
 		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.732Z>2018-08-15</time></li>
+			<li><time 2019-03-09T09:42:30.480Z>2018-08-15</time></li>
 			
 			<li>
 				
@@ -159,7 +308,8 @@
 		<p><ol>
 <li>Block,Procedure,Transaction,Exception</li>
 <li>Cursor,Bulk Collect,Forall,Dynamic SQL</li>
-<li>Array</li>
+<li>Array/Collection</li>
+<li>String: Split</li>
 </ol></p>
 		<a href="/2018/08/15/Oracle-Script.html" class="readmore">Read More >> </a>
 	</article>
@@ -167,7 +317,7 @@
 	<article>
 		<h3><a href="/2018/08/04/MongoDB.html">MongoDB</a></h3>
 		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.732Z>2018-08-04</time></li>
+			<li><time 2019-03-09T09:42:30.480Z>2018-08-04</time></li>
 			
 			<li>
 				
@@ -189,142 +339,6 @@
 <li>Applicaiton</li>
 </ol></p>
 		<a href="/2018/08/04/MongoDB.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2018/08/03/Koa.html">Koa</a></h3>
-		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.732Z>2018-08-03</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-Node">
-						<span class="label">Node</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>module bundler</li>
-<li>loader</li>
-<li>plugin</li>
-</ol></p>
-		<a href="/2018/08/03/Koa.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2018/08/02/Babel-Browserify.html">Babel &amp; Browserify</a></h3>
-		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.733Z>2018-08-02</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-Node">
-						<span class="label">Node</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>Babel</li>
-<li>Browserify</li>
-</ol></p>
-		<a href="/2018/08/02/Babel-Browserify.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2018/08/01/Webpack.html">Webpack</a></h3>
-		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.733Z>2018-08-01</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-Node">
-						<span class="label">Node</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>module bundler</li>
-<li>loader</li>
-<li>plugin</li>
-</ol></p>
-		<a href="/2018/08/01/Webpack.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2018/06/01/Git.html">Git</a></h3>
-		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.733Z>2018-06-01</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-DevOpts">
-						<span class="label">DevOpts</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>Git安装配置</li>
-<li>常用命令</li>
-<li>分支和标签</li>
-<li>原理</li>
-<li>规范工作流程</li>
-</ol></p>
-		<a href="/2018/06/01/Git.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2018/05/02/Spring-Data-JPA.html">Spring Data JPA</a></h3>
-		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.733Z>2018-05-02</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-Spring">
-						<span class="label">Spring</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>JPA/SpringDataJPA</li>
-<li>Repository/CurdRepository/PagingAndSortingRepository/JpaRepository/JpaSpecification</li>
-<li>Query: exist function,named query,JPQL(@Query),Pageable,Specification,@EntityGraph</li>
-<li>Create/Update/Delete</li>
-<li>Custom Repository</li>
-</ol></p>
-		<a href="/2018/05/02/Spring-Data-JPA.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2017/07/01/Docker-Basic.html">Docker 基础</a></h3>
-		<ul class="post-meta">
-			<li><time 2019-02-06T12:45:53.733Z>2017-07-01</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-DevOpts">
-						<span class="label">DevOpts</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>虚拟化技术</li>
-<li>镜像和容器</li>
-<li>数据管理</li>
-<li>网络管理</li>
-</ol></p>
-		<a href="/2017/07/01/Docker-Basic.html" class="readmore">Read More >> </a>
 	</article>
 
 
@@ -410,6 +424,52 @@
 <section class="widget">
 	<h3>Archives <span class="glyphicon glyphicon-calendar"></span></h3>
 	<ul class="tree">
+	
+		<li>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				2019 (6)
+			</a>
+			<ul>
+				
+					<li>
+						<a href="/2019/01/06/Redis.html">
+							<time>2019-01-06</time>SpringBoot Redis
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/05/Rabbitmq.html">
+							<time>2019-01-05</time>消息中间件 RabbitMQ
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/04/Dubbo.html">
+							<time>2019-01-04</time>RPC:Dubbo
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/03/Zookeeper.html">
+							<time>2019-01-03</time>一致性服务 Zookeeper(CuratorFramework)
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/02/Zuul.html">
+							<time>2019-01-02</time>智能路由 Zuul
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/01/Eureka.html">
+							<time>2019-01-01</time>服务治理 Eureka
+						</a>
+					</li> 
+			  
+			</ul>
+		</li>
 	
 		<li>
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -1147,6 +1207,52 @@
 			</ul>
 		</li>
 	
+		<li>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				2019 (6)
+			</a>
+			<ul>
+				
+					<li>
+						<a href="/2019/01/06/Redis.html">
+							<time>2019-01-06</time>SpringBoot Redis
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/05/Rabbitmq.html">
+							<time>2019-01-05</time>消息中间件 RabbitMQ
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/04/Dubbo.html">
+							<time>2019-01-04</time>RPC:Dubbo
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/03/Zookeeper.html">
+							<time>2019-01-03</time>一致性服务 Zookeeper(CuratorFramework)
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/02/Zuul.html">
+							<time>2019-01-02</time>智能路由 Zuul
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/01/01/Eureka.html">
+							<time>2019-01-01</time>服务治理 Eureka
+						</a>
+					</li> 
+			  
+			</ul>
+		</li>
+	
 	</ul> -->
 </section>
 			<section class="widget">
@@ -1231,6 +1337,12 @@
 			<li>
 				<a href="/tags.html#tag-Linux">
 					Linux (1)
+				</a>
+			</li>
+		
+			<li>
+				<a href="/tags.html#tag-MicroService">
+					MicroService (6)
 				</a>
 			</li>
 		

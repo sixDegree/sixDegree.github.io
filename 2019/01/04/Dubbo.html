@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RPC:Dubbo</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="micro service,RPC,dubbo,spring boot">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Start</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">RPC</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Dubbo</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">HelloWorld</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">dependency</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Provider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Consumer</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Test</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Demo</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Provider (SpringBoot)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Consumer (Spring)</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">RPC:Dubbo</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-01-03T16:00:00.000Z">2019-01-04</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-MicroService">MicroService</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Start</h2>
+<h3 id="header-2">RPC</h3>
+<p>Remote Procedure Call 远程过程调用</p>
+<ul>
+<li>主要是基于TCP/IP协议，长连接，四个核心的组件：<code>Client</code>,<code>Server</code>,<code>Client Stub</code>，<code>Server Stub</code></li>
+<li>选择RPC框架时的关注点：<ul>
+<li><code>I/O</code>: 同步／异步，长／短连接</li>
+<li>线程调度模型: 单／多线程，线程池，线程调度算法的性能</li>
+<li>序列化方式: 可读 (eg: xml,json),二进制(eg: fastjson，jdk自带的序列化）</li>
+<li>多语言支持</li>
+<li>服务治理（服务发现，监控）</li>
+</ul>
+</li>
+<li>流行的RPC框架：<ul>
+<li><code>Dubbo</code>（阿里）／ <code>Dubbox</code>（当当）: 基于Java开发，只支持Java的客户端和服务端</li>
+<li><code>Motan</code> （新浪）: 基于Java开发</li>
+<li><code>Thrift</code>（Facebook －&gt; Apache）: 跨语言的RPC框架，无服务治理</li>
+<li><code>Grpc</code> （谷歌): 基于HTTP2.0协议（基于二进制的HTTP协议升级版本），跨语言的RPC框架（应用主要面向移动端）</li>
+</ul>
+</li>
+<li>各RPC框架对比：<br><img src="/2019/01/04/rpc.png" alt="RPC"></li>
+</ul>
+<h3 id="header-3">Dubbo</h3>
+<ul>
+<li>一款分布式服务框架</li>
+<li>高性能和透明化的RPC远程服务调用方案</li>
+<li>SOA服务治理方案</li>
+<li>提供了三大核心能力：<ul>
+<li>面向接口的远程方法调用</li>
+<li>智能容错和负载均衡</li>
+<li>服务自动注册和发现</li>
+</ul>
+</li>
+<li>基于Java开发，只支持Java的客户端和服务端</li>
+<li>可以和Spring框架无缝集成</li>
+</ul>
+<p><img src="/2019/01/04/dubbo.png" alt="Dubbo 架构"></p>
+<ul>
+<li>角色：<ul>
+<li>Provider: 暴露服务的服务提供方</li>
+<li>Consumer: 调用远程服务的服务消费方</li>
+<li>Registry: 服务注册与发现的注册中心</li>
+<li>Monitor: 统计服务的调用次数和调用时间的监控中心</li>
+<li>Container: 服务运行容器</li>
+</ul>
+</li>
+<li>调用关系<ul>
+<li>Container负责启动，加载，运行Provider</li>
+<li>Provider 启动时向注册中心注册自己提供的服务</li>
+<li>Consumer 启动时向注册中心订阅自己所需的服务</li>
+<li>Registry 返回服务提供者地址列表给Consumer (如果有变更，Registry将基于长连接推送变更数据给Consumer)</li>
+<li>Consumer 从提供者地址列表中，基于软负载均衡算法，选一台提供者进行调用，如果调用失败，再选另一台调用</li>
+<li>Provider &amp; Consumer 在内存中累计调用次数和调用时间，定时每分钟发送一次统计数据到 Monitor</li>
+</ul>
+</li>
+<li>注：<ul>
+<li>Provider &amp; Consumer &amp; Registory 之间使用的是长连接</li>
+<li>Provier &amp; Consumer 之间使用非阻塞IO（NIO）通讯</li>
+<li>Dubbo支持的注册中心有: Multicast,Zookeeper,Redis,Simple，下面的示例均使用Zookeeper</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://dubbo.apache.org/en-us/docs/user/quick-start.html" target="_blank" rel="noopener">Dubbo Quick Start</a> | <a href="https://github.com/sixDegree/dubbo-demo.git" target="_blank" rel="noopener">dubbo-demo</a></p>
+<h2 id="header-4">HelloWorld</h2>
+<h3 id="header-5">dependency</h3>
+<p>pom.xml</p>
+<pre><code class="lang-xml">&lt;!-- Dubbo (include spring)--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+    &lt;artifactId&gt;dubbo&lt;/artifactId&gt;
+    &lt;version&gt;2.6.2&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Curator (include zookeeper) --&gt;
+&lt;!-- Note: need to change zookeeper version,the beta version zookeeper has issues --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+    &lt;version&gt;4.0.1&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+             &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+             &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+    &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+    &lt;version&gt;3.4.6&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+              &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+              &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+             &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+             &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Junit --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;/groupId&gt;
+    &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;version&gt;4.12&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="header-6">Provider</h3>
+<ul>
+<li><p>resources/demo-provider.xml</p>
+<pre><code class="lang-xml">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xmlns:dubbo=&quot;http://dubbo.apache.org/schema/dubbo&quot;
+         xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+         xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+         http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd&quot;&gt;
+
+      &lt;dubbo:application name=&quot;demoProvider&quot;/&gt;
+      &lt;dubbo:registry address=&quot;zookeeper://localhost:2181&quot;/&gt;
+      &lt;dubbo:protocol name=&quot;dubbo&quot; port=&quot;20880&quot;/&gt;
+      &lt;dubbo:service interface=&quot;com.cj.dubbo.service.DemoService&quot; ref=&quot;demoService&quot;/&gt;
+      &lt;bean id=&quot;demoService&quot; class=&quot;com.cj.dubbo.service.DemoServiceImpl&quot;/&gt;
+
+  &lt;/beans&gt;
+</code></pre>
+</li>
+<li><p>Service interface</p>
+<pre><code class="lang-java">package com.cj.dubbo.service;
+public interface DemoService {
+   String sayHello(String name);
+}
+</code></pre>
+</li>
+<li><p>Service Impl</p>
+<pre><code class="lang-java">package com.cj.dubbo.service;
+public class DemoServiceImpl implements DemoService {
+  @Override
+  public String sayHello(String name) {
+      return &quot;Hello &quot;+name;
+  }
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="header-7">Consumer</h3>
+<ul>
+<li><p>resources/demo-consumer.xml</p>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+     xmlns:dubbo=&quot;http://dubbo.apache.org/schema/dubbo&quot;
+     xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+     xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+     http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd&quot;&gt;
+
+  &lt;dubbo:application name=&quot;demoConsumer&quot;/&gt;
+  &lt;dubbo:registry address=&quot;zookeeper://192.168.99.100:2181&quot;/&gt;
+  &lt;dubbo:reference id=&quot;demoService&quot; check=&quot;false&quot; interface=&quot;com.cj.dubbo.service.DemoService&quot;/&gt;
+&lt;/beans&gt;
+</code></pre>
+</li>
+<li><p>Service interface</p>
+<pre><code class="lang-java">package com.cj.dubbo.service;
+public interface DemoService {
+   String sayHello(String name);
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="header-8">Test</h3>
+<pre><code class="lang-java">package com.cj.dubbo;
+import java.io.IOException;
+import org.junit.Test;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.cj.dubbo.consumer.HelloConsumerService;
+import com.cj.dubbo.service.DemoService;
+import com.cj.dubbo.service.HelloService;
+
+public class DemoDubboTest {
+    @Test
+    public void runDemoProvider() throws IOException {
+        System.setProperty(&quot;java.net.preferIPv4Stack&quot;, &quot;true&quot;);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{&quot;demo-provider.xml&quot;});
+        context.start();
+        System.out.println(&quot;Provider started.&quot;);
+        System.in.read(); // press any key to exit
+    }
+
+    @Test
+    public void runDemoConsumer() {
+        // System.setProperty(&quot;java.net.preferIPv4Stack&quot;, &quot;true&quot;);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{&quot;demo-consumer.xml&quot;});
+        context.start();
+        DemoService demoService = (DemoService) context.getBean(&quot;demoService&quot;); // obtain proxy object for remote invocation
+        String hello = demoService.sayHello(&quot;world&quot;); // execute remote invocation
+        System.out.println(hello); // show the result
+    }
+}
+</code></pre>
+<p>Check zookeeper</p>
+<pre><code class="lang-bash">[zk: zk01:2181(CONNECTED) 9] ls /dubbo
+[com.cj.dubbo.service.DemoService]
+[zk: zk01:2181(CONNECTED) 10] ls /dubbo/com.cj.dubbo.service.DemoService
+[consumers, configurators, routers, providers]
+</code></pre>
+<h2 id="header-9">Demo</h2>
+<h3 id="header-10">Provider (SpringBoot)</h3>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;!-- springboot --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+     &lt;scope&gt;test&lt;/scope&gt;
+ &lt;/dependency&gt;
+
+ &lt;!-- springboot dubbo --&gt;
+ &lt;!-- &lt;dependency&gt;
+     &lt;groupId&gt;com.alibaba.spring.boot&lt;/groupId&gt;
+     &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;
+     &lt;version&gt;2.0.0&lt;/version&gt;
+ &lt;/dependency&gt; --&gt;
+
+ &lt;!-- Dubbo (include spring) --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+     &lt;artifactId&gt;dubbo&lt;/artifactId&gt;
+     &lt;version&gt;2.6.2&lt;/version&gt;
+ &lt;/dependency&gt;
+
+ &lt;!-- Curator (include zookeeper) --&gt;
+ &lt;!-- Note: need to change zookeeper version,the beta version zookeeper has issues --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+     &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+     &lt;version&gt;4.0.1&lt;/version&gt;
+     &lt;exclusions&gt;
+         &lt;exclusion&gt;
+              &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+              &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+         &lt;/exclusion&gt;
+     &lt;/exclusions&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+     &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+     &lt;version&gt;3.4.6&lt;/version&gt;
+     &lt;exclusions&gt;
+         &lt;exclusion&gt;
+               &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+               &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+         &lt;/exclusion&gt;
+         &lt;exclusion&gt;
+              &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+              &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+         &lt;/exclusion&gt;
+     &lt;/exclusions&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>Configure</p>
+<ul>
+<li>resources/log4j.properties<pre><code>  ###set log levels###
+  log4j.rootLogger=warn, stdout
+  ###output to the console###
+  log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+  log4j.appender.stdout.Target=System.out
+  log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+  log4j.appender.stdout.layout.ConversionPattern=[%d{dd/MM/yy hh:mm:ss:sss z}] %t %5p %c{2}: %m%n
+</code></pre></li>
+<li><p>resources/provider.xml</p>
+<pre><code class="lang-xml">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xmlns:dubbo=&quot;http://dubbo.apache.org/schema/dubbo&quot;
+         xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+         xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+         http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd&quot;&gt;
+
+      &lt;dubbo:application name=&quot;helloProvider&quot;/&gt;
+      &lt;dubbo:registry address=&quot;zookeeper://localhost:2181&quot;/&gt;
+      &lt;dubbo:protocol name=&quot;dubbo&quot; port=&quot;20881&quot;/&gt;
+      &lt;dubbo:service interface=&quot;com.cj.dubbo.service.HelloService&quot;  ref=&quot;helloService&quot;/&gt;
+
+  &lt;/beans&gt;
+</code></pre>
+</li>
+<li><p>Config: import the <code>provider.xml</code></p>
+<pre><code class="lang-java">  package com.cj.dubbo.config;
+  import org.springframework.context.annotation.Configuration;
+  import org.springframework.context.annotation.ImportResource;
+
+  @Configuration
+  @ImportResource(locations={&quot;classpath:provider.xml&quot;})
+  public class ProviderConfig {
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Service</p>
+<ul>
+<li>interface<pre><code class="lang-java">  package com.cj.dubbo.service;
+  public interface HelloService {
+      public String sayHello(String name);
+  }
+</code></pre>
+</li>
+<li><p>implement</p>
+<pre><code class="lang-java">  package com.cj.dubbo.provider;
+  import org.springframework.stereotype.Component;
+  import com.cj.dubbo.service.HelloService;
+
+  @Component(&quot;helloService&quot;)
+  public class HelloServiceImpl implements HelloService {
+      @Override
+      public String sayHello(String name) {
+          return &quot;Hello, &quot; + name + &quot; (from Spring Boot)&quot;;
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Start</p>
+<pre><code class="lang-java"> package com.cj.dubbo;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+ @SpringBootApplication
+ public class HelloProviderApplication {
+     public static void main(String[] args) {
+         SpringApplication.run(HelloProviderApplication.class,args);
+         System.out.println(&quot;Start Application&quot;);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-11">Consumer (Spring)</h3>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;!-- Curator(include Zookeeper) --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+     &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+     &lt;version&gt;4.0.1&lt;/version&gt;
+ &lt;/dependency&gt;
+
+ &lt;!-- Dubbo (include Spring) --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+     &lt;artifactId&gt;dubbo&lt;/artifactId&gt;
+     &lt;version&gt;2.6.2&lt;/version&gt;
+ &lt;/dependency&gt;
+
+ &lt;!-- Junit --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;junit&lt;/groupId&gt;
+     &lt;artifactId&gt;junit&lt;/artifactId&gt;
+     &lt;version&gt;4.12&lt;/version&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>Configure: resource/hello-consumer.xml</p>
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+ &lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:dubbo=&quot;http://dubbo.apache.org/schema/dubbo&quot;
+        xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+        xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd&quot;&gt;
+
+     &lt;dubbo:application name=&quot;helloConsumer&quot;/&gt;
+     &lt;dubbo:registry address=&quot;zookeeper://localhost:2181&quot;/&gt;
+     &lt;dubbo:reference id=&quot;helloService&quot; check=&quot;false&quot;  interface=&quot;com.cj.dubbo.service.HelloService&quot;/&gt;
+
+     &lt;bean id=&quot;helloConsumerService&quot; class=&quot;com.cj.dubbo.consumer.HelloConsumerService&quot;&gt;
+         &lt;property name=&quot;helloService&quot; ref=&quot;helloService&quot;/&gt;
+     &lt;/bean&gt;
+ &lt;/beans&gt;
+</code></pre>
+</li>
+<li><p>Service</p>
+<ul>
+<li>interface (same with Provider service interface)<pre><code class="lang-java">  package com.cj.dubbo.service;
+  public interface HelloService {
+      public String sayHello(String name);
+  }
+</code></pre>
+</li>
+<li><p>Call the provided Service</p>
+<pre><code class="lang-java">  package com.cj.dubbo.consumer;
+  import com.cj.dubbo.service.HelloService;
+
+  public class HelloConsumerService {
+      private HelloService helloService;
+      public HelloService getHelloService() {
+          return helloService;
+      }
+      public void setHelloService(HelloService helloService) {
+          this.helloService = helloService;
+      }
+      public void printSay(String name) {
+          if(helloService==null)
+              System.out.println(&quot;Can&#39;t get helloService!&quot;);
+          System.out.println(helloService.sayHello(name));
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Test</p>
+<pre><code class="lang-java"> public class DemoDubboTest {
+     @Test
+     public void runHelloConsumer() {
+         // System.setProperty(&quot;java.net.preferIPv4Stack&quot;, &quot;true&quot;);
+         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{&quot;hello-consumer.xml&quot;});
+         context.start();
+         HelloService helloService = (HelloService) context.getBean(&quot;helloService&quot;); // obtain proxy object for remote invocation
+         String hello=helloService.sayHello(&quot;Girl&quot;); // execute remote invocation
+         System.out.println(hello);                    // show the result
+
+         System.out.println(&quot;---- Consume HelloService ----&quot;);
+         HelloConsumerService consumer=context.getBean(HelloConsumerService.class);
+         consumer.printSay(&quot;Boy&quot;);
+
+     }
+ }
+</code></pre>
+</li>
+<li><p>Check zookeeper</p>
+<pre><code class="lang-bash"> [zk: zk01:2181(CONNECTED) 9] ls /dubbo
+ [com.cj.dubbo.service.DemoService, com.cj.dubbo.service.HelloService]
+
+ [zk: zk01:2181(CONNECTED) 18] ls /dubbo/com.cj.dubbo.service.HelloService      
+ [consumers, configurators, routers, providers]
+
+ [zk: zk01:2181(CONNECTED) 19] ls /dubbo/com.cj.dubbo.service.HelloService/providers
+ [dubbo%3A%2F%2F192.168.31.78%3A20881%2Fcom.cj.dubbo.service.HelloService%3Fanyhost%3Dtrue%26application%3DhelloProvider%26dubbo%3D2.6.2%26generic%3Dfalse%26interface%3Dcom.cj.dubbo.service.HelloService%26methods%3DsayHello%26pid%3D1359%26side%3Dprovider%26timestamp%3D1549812635667]
+
+ [zk: zk01:2181(CONNECTED) 20] ls /dubbo/com.cj.dubbo.service.HelloService/consumers
+ []
+</code></pre>
+</li>
+</ol>
+<h2 id="header-12">Reference</h2>
+<p><a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">My demo: dubbo-demo</a></p>
+<p><a href="https://www.cnblogs.com/chenliangcl/p/7402367.html" target="_blank" rel="noopener">什么是Dubbo</a></p>
+<p><a href="https://blog.csdn.net/sanyuedexuanlv/article/details/80352124" target="_blank" rel="noopener">dubbo的详细介绍</a></p>
+<p><a href="https://blog.csdn.net/uniqueweimeijun/article/details/79896551" target="_blank" rel="noopener">dubbo从入门到精通</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

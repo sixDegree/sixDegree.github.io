@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>一致性服务 Zookeeper(CuratorFramework)</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="micro service,zookeeper,spring boot,CuratorFramework">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">CuratorFramework</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Summary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Demo: Start</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Demo: CRUD</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Demo: Watch</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Demo: ACL</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">一个应用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Summary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Dependencies</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Admin(FileServer)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">User(ClientUser)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Common: Service &amp; Entity</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">一致性服务 Zookeeper(CuratorFramework)</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-01-02T16:00:00.000Z">2019-01-03</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-MicroService">MicroService</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">CuratorFramework</h2>
+<h3 id="header-2">Summary</h3>
+<ol>
+<li><p>dependency: curator-recipes (included zookeeper)</p>
+<pre><code class="lang-xml"> &lt;dependency&gt;
+     &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+     &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+     &lt;version&gt;4.0.1&lt;/version&gt;
+     &lt;exclusions&gt;
+         &lt;exclusion&gt;
+              &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+              &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+         &lt;/exclusion&gt;
+     &lt;/exclusions&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+     &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+     &lt;version&gt;3.4.6&lt;/version&gt;
+     &lt;!-- &lt;exclusions&gt;
+         &lt;exclusion&gt;
+               &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+               &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+         &lt;/exclusion&gt;
+         &lt;exclusion&gt;
+              &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+              &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+         &lt;/exclusion&gt;
+     &lt;/exclusions&gt; --&gt;
+ &lt;/dependency&gt;
+</code></pre>
+<ul>
+<li>Change zookeeper version ( beta version may have issues.)</li>
+</ul>
+</li>
+<li><p><code>CuratorFramework zkClient = CuratorFrameworkFactory.builder()...build()</code>, key properties:</p>
+<ul>
+<li>connectString 服务器列表，格式host1:port1,host2:port2</li>
+<li>namespace 命名空间</li>
+<li>retryPolicy 重试策略,内建有四种重试策略,也可以自行实现RetryPolicy接口(eg: <code>ExponentialBackoffRetry(3000, 3)</code>)</li>
+<li>sessionTimeoutMs 会话超时时间，单位毫秒，默认60000ms</li>
+<li>connectionTimeoutMs 连接创建超时时间，单位毫秒，默认60000ms</li>
+</ul>
+</li>
+<li><p><code>zkClient.start()</code>,<code>zkClient.close()</code></p>
+</li>
+<li><p>CRUD</p>
+<ul>
+<li>Create: <code>create()</code><ul>
+<li>creatingParentContainersIfNeeded() 自动递归创建所有所需的父节点</li>
+<li>withMode(CreateMode.xxx) 指定创建模式<ul>
+<li>CreateMode.PERSISTENT 持久化 (default)</li>
+<li>CreateMode.PERSISTENT_SEQUENTIAL 持久化并且带序列号</li>
+<li>CreateMode.EPHEMERAL 临时</li>
+<li>CreateMode.EPHEMERAL_SEQUENTIAL 临时并且带序列号</li>
+</ul>
+</li>
+<li>withACL(Ids.xxx) <ul>
+<li>Ids.OPEN_ACL_UNSAFE (default)</li>
+<li>Ids.CREATOR_ALL_ACL</li>
+<li>Ids.READ_ACL_UNSAFE</li>
+<li>Ids.ANYONE_ID_UNSAFE</li>
+<li>Ids.AUTH_IDS</li>
+</ul>
+</li>
+<li>eg:<ul>
+<li><code>String createdPath=zkClient.create().creatingParentsIfNeeded().forPath(path,dataBytes)</code></li>
+<li><code>String createdPath=zkClient.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).withACL(Ids.OPEN_ACL_UNSAFE).forPath(path,dataBytes)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Read: <code>getData()</code><ul>
+<li>不存在则抛出<code>NoNodeException</code></li>
+<li>返回值是<code>byte[]</code></li>
+<li><code>storingStatIn(stat)</code> 获取到该节点的stat</li>
+<li>eg:<ul>
+<li><code>byte[] data=zkClient.getData().forPath(path)</code></li>
+<li><code>byte[] data=zkClient.getData().storingStatIn(stat).forPath(path)</code> </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Update: <code>setData()</code> <ul>
+<li>不存在则抛出<code>NoNodeException</code></li>
+<li>返回一个<code>Stat</code>实例</li>
+<li><code>withVersion(num)</code> 强制指定版本进行更新</li>
+<li>eg:<ul>
+<li><code>Stat stat=zkClient.setData().forPath(path,dataBytes)</code></li>
+<li><code>Stat stat=zkClient.setData().withVersion(0).forPath(path,dataBytes)</code> (Version不匹配则抛出<code>BadVersionException</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Delete: <code>delete()</code><ul>
+<li>不存在则抛出<code>NoNodeException</code></li>
+<li>只能删除叶子节点</li>
+<li><code>guaranteed()</code> 保障措施, 如果删除失败，那么在后端还是继续会删除，直到成功</li>
+<li><code>deletingChildrenIfNeeded()</code>     递归删除其所有的子节点</li>
+<li><code>withVersion(num)</code> 强制指定版本进行删除</li>
+<li>eg:<ul>
+<li><code>zkClient.delete().guaranteed().deletingChildrenIfNeeded().withVersion(12).forPath(path)</code>  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>More: <ul>
+<li><code>checkExists()</code> 检查节点是否存在，不存在则返回为<code>null</code>，eg:<ul>
+<li><code>Stat stat=zkClient.checkExists().forPath(path)</code></li>
+<li><code>client.checkExists().creatingParentContainersIfNeeded().forPath(path)</code></li>
+</ul>
+</li>
+<li><code>getChildren()</code> 获取某个节点的所有子节点路径,eg:<ul>
+<li><code>List&lt;String&gt; childrenPathList=zkClient.getChildren().forPath(zkPath)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Watch</p>
+<ul>
+<li><p><code>usingWatcher(watcher)</code>: </p>
+<ul>
+<li>Target: 监听当前节点，对子节点无效!</li>
+<li>Times: 只触发一次，监听完毕后就销毁</li>
+<li>Watcher: <code>interface CuratorWatcher</code><pre><code class="lang-java">  public interface CuratorWatcher{
+      public void process(WatchedEvent event) throws Exception;    // event.getPath(),getType(),getState(),...
+  }
+</code></pre>
+</li>
+<li>Usage:<ul>
+<li><code>getData().usingWatcher(watcher).forPath(watchPath)</code><ul>
+<li>监听节点(watchPath)需存在，否则报<code>NoNodeException</code></li>
+<li>可监听到的EventType: <code>NodeDeleted</code>,<code>NodeDataChanged</code></li>
+</ul>
+</li>
+<li><code>checkExists().usingWatcher(watcher).forPath(watchPath)</code><ul>
+<li>监听节点(watchPath)可不存在</li>
+<li>可监听到的EventType: <code>NodeCreated</code>,<code>NodeDeleted</code>,<code>NodeDataChanged</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>NodeCache</code>: </p>
+<ul>
+<li>Target: 监听当前节点，对子节点无效！</li>
+<li>Times: 一次注册，n次监听 (监听节点可不存在)</li>
+<li>Listener: <code>interface NodeCacheListener</code><pre><code class="lang-java">  public interface NodeCacheListener{
+      public void nodeChanged() throws Exception;
+  }
+</code></pre>
+</li>
+<li>Usage: <pre><code class="lang-java">  NodeCache nodeCache = new NodeCache(zkClient, watchPath);
+  nodeCache.getListenable().addListener(new NodeCacheListener() {
+      @Override
+      public void nodeChanged() throws Exception {
+          // ChildData data=nodeCache.getCurrentData();     ChildData#getPath(),getData(),getStat() -- get watchPath node information
+      }
+  });
+  nodeCache.start(true);                         // 启动（buildInitial: true/false）, 注：启动不会触发watcher
+  ChildData data=nodeCache.getCurrentData();    // get watchPath node information
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>PathChildrenCache</code>: </p>
+<ul>
+<li>Target: 监听节点的一级子节点的CUD，注：<ul>
+<li>监听节点不会触发watcher，监听节点可不存在</li>
+<li>若监听节点删除，则监听失效，子节点的变化将不会触发watcher</li>
+</ul>
+</li>
+<li>Times: 一次注册，n次监听</li>
+<li>Listener: <code>interface PathChildrenCacheListener</code><pre><code class="lang-java">  public interface PathChildrenCacheListener{
+       public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception;
+  }
+</code></pre>
+</li>
+<li><p>Usage:</p>
+<pre><code class="lang-java">  PathChildrenCache pathChildrenCache=new PathChildrenCache(zkClient, watchPath, true);    // cacheData:true/false (true则Client能够获取到节点数据内容)
+  pathChildrenCache.getListenable().addListener(new PathChildrenCacheListener() {
+      @Override
+      public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+          // event.getType()            // Type.CHILD_ADDED,CHILD_UPDATED,CHILD_REMOVED,CONNECTION_SUSPENDED,CONNECTION_RECONNECTED,CONNECTION_LOST,INITIALIZED
+          // event.getData()            // ChildData, ChildData#getPath,getData,getStat    -- 获取触发Event的节点信息
+          // event.getInitialData()    // List&lt;ChildData&gt;     -- get initial data when triggered Type.INITIALIZED                
+      }
+  });
+  pathChildrenCache.start(StartMode.BUILD_INITIAL_CACHE);                        // 启动
+  // StartMode 为初始的cache设置暖场方式
+  // StartMode.NORMAL                        异步初始化(default mode), Note: initial not trigger watcher
+  // StartMode.POST_INITIALIZED_EVENT        异步初始化, Cache初始化数据后发送一个PathChildrenCacheEvent.Type#INITIALIZED事件
+  // StartMode.BUILD_INITIAL_CACHE        同步初始化, start方法返回之前调用rebuild(), Note: initial not trigger watcher
+
+  List&lt;ChildData&gt; childDataList= pathChildrenCache.getCurrentData();            //  get watch node (watchPath&#39;s child nodes) information
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>TreeCache</code>: <ul>
+<li>Target: 监听节点和该节点的所有子节点 （创建时可设置<code>maxDepth</code>）</li>
+<li>Times: 一次注册，n次监听</li>
+<li>Listener: <code>interface TreeCacheListener</code><pre><code class="lang-java">  public interface TreeCacheListener{
+      public void childEvent(CuratorFramework client, TreeCacheEvent event) throws Exception;
+  }
+</code></pre>
+</li>
+<li>Usage:<pre><code class="lang-java">  TreeCache treeCache=new TreeCache(zkClient, watchPath,false);        // cacheData：true/false
+  treeCache.getListenable().addListener(new TreeCacheListener() {
+      @Override
+      public void childEvent(CuratorFramework client, TreeCacheEvent event) throws Exception {
+          // event.getType()        Type.NODE_ADDED,NODE_UPDATED,NODE_REMOVED,CONNECTION_SUSPENDED,CONNECTION_RECONNECTED,CONNECTION_LOST,INITIALIZED
+          // event.getData()         ChildData,ChildData#getPath,getData,getStat -- 获取触发Event的节点信息
+      }
+  });
+  treeCache.start();                                                            // 启动
+  ChildData childData=treeCache.getCurrentData(watchPath);                    // get watch node (watchPath node) information
+  Map&lt;String,ChildData&gt; childMap=treeCache.getCurrentChildren(watchPath);        // get watch node (watchPath&#39;s child nodes) information
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ACL 权限控制</p>
+<ul>
+<li>使用：<code>schema</code>:<code>id</code>:<code>permission</code> 来标识<ul>
+<li><code>schema</code>:<code>id</code><ul>
+<li><code>schema</code>: 权限模式(鉴权的策略)</li>
+<li><code>id</code>: 授权对象,即权限赋予的用户或者一个实体<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">schema</th>
+<th style="text-align:left">id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">world</td>
+<td style="text-align:left">只有一个ID：<code>anyone</code> (任何人都拥有所有权限)</td>
+</tr>
+<tr>
+<td style="text-align:left">ip</td>
+<td style="text-align:left">ip地址或ip段</td>
+</tr>
+<tr>
+<td style="text-align:left">auth</td>
+<td style="text-align:left">“”, 使用已添加认证的用户认证,eg: <code>digest:username:password</code></td>
+</tr>
+<tr>
+<td style="text-align:left">digest</td>
+<td style="text-align:left"><code>用户名:加密密码</code> 通常是<code>username:BASE64(SHA-1(username:password))</code></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li><code>permission</code>: 权限<ul>
+<li>CREATE :     c     可以创建子节点</li>
+<li>DELETE :     d     可以删除子节点（仅下一级节点）</li>
+<li>READ :     r     可以读取节点数据及显示子节点列表</li>
+<li>WRITE :     w     可以设置节点数据</li>
+<li>ADMIN :    a     可以设置节点访问控制列表权限</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>特性：</p>
+<ul>
+<li>ZooKeeper的权限控制是基于每个znode节点的，需要对每个节点设置权限</li>
+<li>每个znode支持设置多种权限控制方案和多个权限</li>
+<li>子节点不会继承父节点的权限，客户端无权访问某节点，但可能可以访问它的子节点</li>
+</ul>
+</li>
+<li><p>cmd示例：</p>
+<ul>
+<li>world<pre><code class="lang-bash">  # setAcl &lt;path&gt; world:anyone:&lt;permission&gt;
+  $ setAcl /node1 world:anyone:cdrwa
+  $ getAcl /node1
+</code></pre>
+</li>
+<li>ip<pre><code class="lang-bash">  # setAcl &lt;path&gt; ip:&lt;ip&gt;:&lt;permission&gt;
+  $ setAcl /node2 ip:192.168.100.1:cdrwa
+  $ getAcl /node2
+</code></pre>
+</li>
+<li>auth<pre><code class="lang-bash">  # addauth digest &lt;user&gt;:&lt;password&gt;                 # 添加认证用户
+  # setAcl &lt;path&gt; auth:&lt;user&gt;:&lt;permission&gt;         # 设置ACL
+  $ addauth digest tom:123456
+  $ setAcl /node3 auth:tom:cdrwa
+</code></pre>
+</li>
+<li>digest<pre><code class="lang-bash">  # echo -n &lt;user&gt;:&lt;password&gt; | openssl dgst -binary -sha1 | openssl base64   # password：经SHA1及BASE64处理的密文
+  # setAcl &lt;path&gt; digest:&lt;user&gt;:&lt;password&gt;:&lt;permission&gt;
+  $ echo -n tom:123456 | openssl dgst -binary -sha1 | openssl base64
+  3YvKnq60bERLJOlabQFeB1f+/n0=
+  $ setAcl /node4 digest:tom:3YvKnq60bERLJOlabQFeB1f+/n0=:cdrwa
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Curator    </p>
+<ul>
+<li><p><code>new ACL(perms,id)</code></p>
+<ul>
+<li>parameter1: <code>Perms.xxx</code><ul>
+<li>Perms.ADMIN    – 可以修改节点权限(setAcl)</li>
+<li>Perms.READ    – 可读取节点（ls,get）</li>
+<li>Perms.WRITE    – 可修改节点内容 (set)</li>
+<li>Perms.CREATE – 可创建节点 (create)</li>
+<li>Perms.DELETE – 可删除节点 (delete)</li>
+</ul>
+</li>
+<li>parameter2: <code>new org.apache.zookeeper.data.Id(String schema,String id)</code></li>
+<li>eg: <pre><code class="lang-java">  Id id1=new Id(&quot;digest&quot;,DigestAuthenticationProvider.generateDigest(&quot;id01:12345&quot;));
+  ACL aclRW=new ACL(Perms.READ|Perms.WRITE,id1);
+</code></pre>
+</li>
+<li>Util: <code>org.apache.zookeeper.ZooDefs.Ids</code> 提供一些常用的Id和ACL实例<ul>
+<li><code>ANYONE_ID_UNSAFE = new Id(&quot;world&quot;, &quot;anyone&quot;)</code></li>
+<li><code>AUTH_IDS = new Id(&quot;auth&quot;, &quot;&quot;)</code></li>
+<li><code>OPEN_ACL_UNSAFE = new ArrayList&lt;ACL&gt;(Collections.singletonList(new ACL(Perms.ALL, ANYONE_ID_UNSAFE)))</code></li>
+<li><code>CREATOR_ALL_ACL = new ArrayList&lt;ACL&gt;(Collections.singletonList(new ACL(Perms.ALL, AUTH_IDS)))</code></li>
+<li><code>READ_ACL_UNSAFE = new ArrayList&lt;ACL&gt;(Collections.singletonList(new ACL(Perms.READ, ANYONE_ID_UNSAFE)))</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>aclProvider(aclProvider)</code> same as zkClient cmd <code>setAcl path acl</code> </p>
+<pre><code class="lang-java">  public interface ACLProvider{
+      public List&lt;ACL&gt; getDefaultAcl();
+      public List&lt;ACL&gt; getAclForPath(String path);
+  }
+</code></pre>
+<ul>
+<li><code>aclProvider(new DefaultACLProvider())</code> default,使用ZooDefs.Ids.OPEN_ACL_UNSAFE</li>
+<li><code>aclProvider(new ACLProvider(){ ... })</code> override getDefaultAcl,getAclForPath    </li>
+</ul>
+</li>
+<li><code>authorization(authInfoList)</code>    : same as zkClient cmd <code>addauth sechema auth</code> ( eg: addauth digest id02:12345 )<ul>
+<li><code>new AuthInfo(String scheme, byte[] auth)</code></li>
+<li>eg: <code>new AuthInfo(&quot;digest&quot;, &quot;id01:12345&quot;.getBytes())</code></li>
+</ul>
+</li>
+<li><code>withACL()</code>: same as zkClient cmd <code>setAcl path acl</code> <ul>
+<li><code>setACL().withACL(aclList).forPath(path)</code></li>
+<li><code>create().withACL(aclList).forPath(path)</code></li>
+</ul>
+</li>
+<li>Note:<ul>
+<li><code>setACL()</code> 需要Admin权限 (Perms.ADMIN)</li>
+<li><code>getACL()</code> 无需认权限证</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-3">Demo: Start</h3>
+<pre><code class="lang-java">public class CuratorTest {
+    public static String connectString=&quot;127.0.0.1:2181&quot;;
+    public static String namespace=&quot;micro&quot;;
+    public static String zkPath=&quot;/test&quot;;
+    private CuratorFramework zkClient=null;
+
+    @Before
+    public void init(){
+        RetryPolicy retryPolicy = new ExponentialBackoffRetry(3000, 3);
+        zkClient=CuratorFrameworkFactory.builder()
+                .connectString(connectString)
+                .retryPolicy(retryPolicy)
+                .sessionTimeoutMs(100000)
+                .connectionTimeoutMs(100000)
+                .namespace(namespace)
+                .build();
+        zkClient.start();
+        CuratorFrameworkState state=zkClient.getState();
+        System.out.println(&quot;Init zkClient :&quot;+state.name());
+    }
+
+    @After
+    public void close(){
+        if(zkClient!=null){
+            zkClient.close();
+            CuratorFrameworkState state=zkClient.getState();
+            System.out.println(&quot;Close zkClient :&quot;+state.name());
+        }
+    }
+
+    /*....*/
+}
+</code></pre>
+<h3 id="header-4">Demo: CRUD</h3>
+<ol>
+<li><p>Create</p>
+<ul>
+<li><p><code>create().creatingParentsIfNeeded().forPath(path,data)</code></p>
+<pre><code class="lang-java">  @Test
+  public void createTest() throws Exception{
+      String result=zkClient.create()
+              .creatingParentsIfNeeded()
+              .withMode(CreateMode.PERSISTENT)    //default: PERSISTENT
+              .withACL(Ids.OPEN_ACL_UNSAFE)        //default: Ids.OPEN_ACL_UNSAFE
+              .forPath(zkPath+&quot;/a&quot;,&quot;aaa&quot;.getBytes())
+              ;
+
+      System.out.println(&quot;create: &quot;+result);    // print created path
+  }
+
+  @Test
+  public void createChildrenTest() throws Exception {
+      zkClient.create().creatingParentsIfNeeded().forPath(zkPath+&quot;/a/01/02&quot;);
+  }
+</code></pre>
+</li>
+<li><p><code>checkExists().forPath(path)</code></p>
+<pre><code class="lang-java">  @Test
+  public void checkExistTest() throws Exception{
+      Stat stat=zkClient.checkExists().forPath(zkPath+&quot;/a&quot;);
+      System.out.println(stat);
+
+      // 如果不存在则为空
+      stat=zkClient.checkExists().forPath(zkPath+&quot;/aa&quot;);    //null
+      System.out.println(stat);
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Read</p>
+<ul>
+<li><p><code>getData().forPath(path)</code></p>
+<pre><code class="lang-java">  @Test
+  public void getDataTest() throws Exception{
+
+      byte[] data=zkClient.getData().forPath(zkPath+&quot;/a&quot;);
+      System.out.println(new String(data));
+
+      // NoNodeException
+      data=zkClient.getData().forPath(zkPath+&quot;/aa&quot;);
+      if(data!=null)
+          System.out.println(new String(data));
+  }
+</code></pre>
+</li>
+<li><p><code>getData().storingStatIn(stat).forPath(path)</code></p>
+<pre><code class="lang-java">  @Test
+  public void getStatTest() throws Exception{
+      Stat stat = new Stat();
+      byte[] data=zkClient.getData().storingStatIn(stat).forPath(zkPath+&quot;/a&quot;);
+      if(data!=null){
+          System.out.println(&quot;data: &quot;+new String(data));
+          System.out.println(&quot;version: &quot;+stat.getVersion());
+      }
+
+      //NoNodeException
+      data=zkClient.getData().storingStatIn(stat).forPath(zkPath+&quot;/aa&quot;);    
+      if(data!=null){
+          System.out.println(&quot;data: &quot;+new String(data));
+          System.out.println(&quot;version: &quot;+stat.getVersion());
+      }
+  }
+</code></pre>
+</li>
+<li><code>getChildren().forPath(path)</code><pre><code class="lang-java">  @Test
+  public void getChildrenTest() throws Exception{
+      List&lt;String&gt; children=zkClient.getChildren().forPath(zkPath);
+      for(String child:children){
+          byte[] data=zkClient.getData().forPath(zkPath+&quot;/&quot;+child);    // note: need add parentPath
+          System.out.println(child+&quot;:&quot;+new String(data));
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Update    </p>
+<ul>
+<li><p><code>setData().forPath(path,data)</code></p>
+<pre><code class="lang-java">  @Test
+  public void updateTest() throws Exception{
+      Stat stat=zkClient.setData().forPath(zkPath+&quot;/a&quot;,&quot;aaa-aaa&quot;.getBytes());
+      System.out.println(stat.getVersion());
+
+      byte[] data=zkClient.getData().forPath(zkPath+&quot;/a&quot;);
+      System.out.println(new String(data));
+
+      //BadVersionException
+      stat=zkClient.setData().withVersion(0).forPath(zkPath+&quot;/a&quot;,&quot;aaa-bbb&quot;.getBytes());    
+      System.out.println(stat.getVersion());
+
+      //NoNodeException
+      //zkClient.setData().forPath(zkPath+&quot;/a/01&quot;,&quot;a01&quot;.getBytes());
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Delete</p>
+<ul>
+<li><p><code>delete().guaranteed().deletingChildrenIfNeeded().forPath(path)</code></p>
+<pre><code class="lang-java">  @Test
+  public void deleteTest() throws Exception{
+
+      zkClient.delete()
+          .guaranteed()                    // 如果删除失败，那么在后端还是继续会删除，直到成功
+          .deletingChildrenIfNeeded()        // 如果有子节点，就删除
+          .forPath(zkPath+&quot;/a/01&quot;);
+
+      Stat stat=zkClient.checkExists().forPath(zkPath+&quot;/a/01&quot;);
+      System.out.println(zkPath+&quot;/a/01 :&quot;+(stat!=null?&quot;Exist&quot;:&quot;NotExist&quot;));
+
+      stat=zkClient.checkExists().forPath(zkPath+&quot;/a/01/02&quot;);
+      System.out.println(zkPath+&quot;/a/01/02 :&quot;+(stat!=null?&quot;Exist&quot;:&quot;NotExist&quot;));
+
+      // NoNodeException
+      zkClient.delete().guaranteed().deletingChildrenIfNeeded().forPath(zkPath+&quot;/aa&quot;);    
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-5">Demo: Watch</h3>
+<ol>
+<li><p><code>usingWatcher</code>: 监听只会触发一次，监听完毕后就销毁,且对子节点无效！(<code>getData()</code>,<code>checkExists()</code> 方法可追加 Watcher)</p>
+<ul>
+<li><p><code>getData().usingWatcher(new CuratorWatcher(){ ... } ).forPath(watchPath)</code>: 只监听该节点的变化（可监听到 <code>NodeDeleted</code>,<code>NodeDataChanged</code>)，监听节点(watchPath)需存在，不然会报<code>NoNodeException</code></p>
+<pre><code class="lang-java">  @Test
+  public void usingWatcherTest() throws Exception{
+
+      Stat stat=zkClient.checkExists().forPath(zkPath+&quot;/b&quot;);
+      if(stat==null)
+          zkClient.create().creatingParentContainersIfNeeded().forPath(zkPath+&quot;/b&quot;,&quot;bbb&quot;.getBytes());
+
+      zkClient.getData().usingWatcher(new CuratorWatcher() {
+          @Override
+          public void process(WatchedEvent event) throws Exception {
+              System.out.println(&quot;Path:&quot;+event.getPath());
+              System.out.println(&quot;Type:&quot;+event.getType());
+              System.out.println(&quot;State:&quot;+event.getState());
+              if(!event.getType().equals(EventType.NodeDeleted)){
+                  byte[] data=zkClient.getData().forPath(event.getPath());
+                  if(data!=null)
+                      System.out.println(&quot;Data:&quot;+new String(data));
+              }
+          }
+      }).forPath(zkPath+&quot;/b&quot;);
+
+      // case 1: node data change -- only trigger once
+      // first time - trigger event: NodeDataChanged
+      // zkClient.setData().forPath(zkPath+&quot;/b&quot;,&quot;bbb-bbb&quot;.getBytes());
+      // second time - no watcher trigger
+      // zkClient.setData().forPath(zkPath+&quot;/b&quot;,&quot;bbb-ccc&quot;.getBytes());    
+
+      // case 2: create children -- no trigger
+      // zkClient.create().creatingParentsIfNeeded().forPath(zkPath+&quot;/b/01/02&quot;,&quot;Hello&quot;.getBytes());
+
+      // case 3: update children data -- no trigger
+      // zkClient.setData().forPath(zkPath+&quot;/b/01&quot;,&quot;b01&quot;.getBytes());
+
+      // case 4: delete children -- no trigger
+      // zkClient.delete().deletingChildrenIfNeeded().forPath(zkPath+&quot;/b/01/02&quot;);
+
+      // case 5: delete node -- trigger event: NodeDeleted
+      zkClient.delete().deletingChildrenIfNeeded().forPath(zkPath+&quot;/b&quot;);
+
+      Thread.sleep(10000);
+  }
+</code></pre>
+</li>
+<li><p><code>checkExists().usingWatcher(new CuratorWatcher(){ ... } ).forPath(watchPath)</code>: 只监听该节点的变化（可监听到 <code>NodeCreated</code>,<code>NodeDeleted</code>,<code>NodeDataChanged</code>)，监听节点(watchPath)可不存在</p>
+<pre><code class="lang-java">  @Test
+  public void usingWatcher2Test() throws Exception{
+      // Stat stat=zkClient.checkExists().forPath(zkPath+&quot;/b&quot;);
+      // if(stat==null)
+      //         zkClient.create().creatingParentContainersIfNeeded().forPath(zkPath+&quot;/b&quot;,&quot;bbb&quot;.getBytes());
+
+      zkClient.checkExists().usingWatcher(new CuratorWatcher() {
+          @Override
+          public void process(WatchedEvent event) throws Exception {
+              System.out.println(&quot;Path:&quot;+event.getPath());
+              System.out.println(&quot;Type:&quot;+event.getType());
+              System.out.println(&quot;State:&quot;+event.getState());
+              if(!event.getType().equals(EventType.NodeDeleted)){
+                  byte[] data=zkClient.getData().forPath(event.getPath());
+                  if(data!=null)
+                      System.out.println(&quot;Data:&quot;+new String(data));
+              }
+          }
+      }).forPath(zkPath+&quot;/b&quot;);
+
+      // case 1: node data change
+      // first time - trigger event:NodeDataChanged
+      // zkClient.setData().forPath(zkPath+&quot;/b&quot;,&quot;bbb-bbb&quot;.getBytes());
+      // second time - no watcher trigger
+      // zkClient.setData().forPath(zkPath+&quot;/b&quot;,&quot;bbb-ccc&quot;.getBytes());    
+
+      // case 2: create children -- no trigger
+      // zkClient.create().creatingParentsIfNeeded().forPath(zkPath+&quot;/b/01/02&quot;,&quot;Hello&quot;.getBytes());
+
+      // case 3: update children data -- no trigger
+      // zkClient.setData().forPath(zkPath+&quot;/b/01&quot;,&quot;b01&quot;.getBytes());
+
+      // case 4: delete children -- no trigger
+      // zkClient.delete().deletingChildrenIfNeeded().forPath(zkPath+&quot;/b/01/02&quot;);
+
+      // case 5: delete node -- trigger event: NodeDeleted
+      // zkClient.delete().deletingChildrenIfNeeded().forPath(zkPath+&quot;/b&quot;);
+
+      // case 6: create node -- trigger event: NodeCreated
+      zkClient.create().creatingParentContainersIfNeeded().forPath(zkPath+&quot;/b&quot;,&quot;bbb&quot;.getBytes());
+
+      Thread.sleep(10000);
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><code>NodeCache</code>: 一次注册，n次监听 – 监听当前节点，对子节点无效！（监听节点可不存在）</p>
+<pre><code class="lang-java">@Test
+public void nodeCacheWatchTest() throws Exception{
+
+ String watchPath=zkPath+&quot;/c&quot;;
+ if(zkClient.checkExists().forPath(watchPath)==null)
+     zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath,&quot;ccc&quot;.getBytes());
+
+ NodeCache nodeCache = new NodeCache(zkClient, watchPath);
+
+ System.out.println(&quot;Add Listener...&quot;);
+ nodeCache.getListenable().addListener(new NodeCacheListener() {
+     @Override
+     public void nodeChanged() throws Exception {
+         System.out.println(&quot;Trigger Watcher...&quot;);
+         ChildData data=nodeCache.getCurrentData();
+         if(data!=null){
+             System.out.println(data.getPath());
+             System.out.println(new String(data.getData()));
+             System.out.println(data.getStat().getVersion());
+         }else {
+             System.out.println(&quot;Empty!&quot;);
+         }
+     }
+ });
+
+ // start -- 注意：不管是否cacheData，启动不会触发watcher
+ // nodeCache.start();        // 不cache节点数据
+ nodeCache.start(true);    // cache节点数据 
+
+ // check initial data
+ ChildData data=nodeCache.getCurrentData();
+ if(data!=null){
+     System.out.println(&quot;节点初始化数据为：&quot;);
+     System.out.println(data.getPath());
+     System.out.println(new String(data.getData()));
+     System.out.println(data.getStat().getVersion());
+ }else {
+     System.out.println(&quot;节点初始化数据为空！&quot;);
+ }
+
+ System.out.println(&quot;Begin Case 1 : watchPath -- trigger watcher&quot;);
+ // node data change -- always trigger event:NodeDataChanged
+ zkClient.setData().forPath(watchPath,&quot;ccc-ccc&quot;.getBytes());
+ Thread.sleep(2000);
+ zkClient.setData().forPath(watchPath,&quot;ccc-ddd&quot;.getBytes());    
+ // delete node -- trigger event: NodeDeleted
+ zkClient.delete().deletingChildrenIfNeeded().forPath(watchPath);
+ // create node -- trigger event: NodeCreated
+ zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath,&quot;ccc&quot;.getBytes());
+
+ Thread.sleep(2000);
+
+ System.out.println(&quot;Begin Case 2 : children -- no trigger&quot;);
+ // create children
+ zkClient.create().creatingParentsIfNeeded().forPath(watchPath+&quot;/01/02&quot;,&quot;Hello&quot;.getBytes());
+ // update children data
+ zkClient.setData().forPath(watchPath+&quot;/01&quot;,&quot;c01&quot;.getBytes());
+ // delete children
+ zkClient.delete().deletingChildrenIfNeeded().forPath(watchPath+&quot;/01/02&quot;);
+
+ Thread.sleep(10000);
+
+ if(nodeCache!=null)
+     nodeCache.close();
+}
+</code></pre>
+</li>
+<li><p><code>PathChildrenCache</code>: 监听节点的一级子节点的CUD (Note: 监听节点不会触发watcher，监听节点可不存在; 若监听节点删除，则监听失效，子节点的变化将不会触发watcher )</p>
+<pre><code class="lang-java"> @Test
+ public void pathChildenCacheWatchTest() throws Exception{
+
+     String watchPath=zkPath+&quot;/d&quot;;
+     if(zkClient.checkExists().forPath(watchPath)==null){
+         zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath,&quot;ddd&quot;.getBytes());
+     }
+     if(zkClient.checkExists().forPath(watchPath+&quot;/0&quot;)==null){
+         zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath+&quot;/0&quot;,&quot;00&quot;.getBytes());
+     }
+
+     // cacheData:true/false
+     PathChildrenCache childCache=new PathChildrenCache(zkClient, watchPath, true);
+
+     System.out.println(&quot;Add Listener...&quot;);
+     childCache.getListenable().addListener(new PathChildrenCacheListener() {
+         @Override
+         public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) throws Exception {
+             System.out.println(event.getType());
+             ChildData child=event.getData();
+             if(child!=null)
+                 System.out.println(child.getPath()+&quot;:&quot;+new String(child.getData())+&quot;,version:&quot;+child.getStat().getVersion());
+
+             if(event.getType().equals(Type.INITIALIZED)){
+                 System.out.println(&quot;watcher到的节点初始化信息：&quot;);
+                 List&lt;ChildData&gt; childDataList=event.getInitialData();
+                 for(ChildData c:childDataList){
+                     System.out.println(c.getPath()+&quot;:&quot;+new String(c.getData())+&quot;,version:&quot;+c.getStat().getVersion());
+                 }
+             }
+         }
+     });
+
+     System.out.println(&quot;Start Cache: &quot;);
+     // childCache.start();                                    //default: StartMode.NORMAL,异步初始化     -- initial data not trigger watcher
+     // childCache.start(StartMode.POST_INITIALIZED_EVENT);     // 异步初始化 -- initial trigger watcher: Type.INITIALIZED
+     childCache.start(StartMode.BUILD_INITIAL_CACHE);        // 同步初始化 -- initial not trigger watcher
+
+     // Thread.sleep(2000);
+     List&lt;ChildData&gt; childDataList= childCache.getCurrentData();
+     System.out.println(&quot;start 节点初始化信息：&quot;);
+     for(ChildData child:childDataList){
+         System.out.println(child.getPath()+&quot;:&quot;+new String(child.getData())+&quot;,version:&quot;+child.getStat().getVersion());
+     }
+
+     System.out.println(&quot;Begin Case 1 : watchPath -- no trigger&quot;);
+     // node data change
+     // zkClient.setData().forPath(watchPath,&quot;ddd-ddd&quot;.getBytes());
+     // delete node    -- Note: 会导致watcher失效
+     // zkClient.delete().deletingChildrenIfNeeded().forPath(watchPath);
+     // create node
+     // zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath,&quot;ddd&quot;.getBytes());
+     // Thread.sleep(2000);
+
+     System.out.println(&quot;Begin Case 2 : children -- trigger&quot;);
+     // create children -- trigger CHILD_ADDED -- Note: on trigger &quot;/01&quot; CHILD_ADD, won&#39;t trigger &quot;/01/02&quot; CHILD
+     zkClient.create().creatingParentsIfNeeded().forPath(watchPath+&quot;/01/02&quot;,&quot;Hello&quot;.getBytes());
+     // update children data -- trigger CHILD_UPDATED
+     zkClient.setData().forPath(watchPath+&quot;/01&quot;,&quot;d01&quot;.getBytes());
+     // delete children -- trigger CHILD_REMOVED
+     zkClient.delete().deletingChildrenIfNeeded().forPath(watchPath+&quot;/01&quot;);
+
+     Thread.sleep(10000);
+
+     if(childCache!=null)
+         childCache.close();
+ }
+</code></pre>
+</li>
+<li><p><code>TreeCache</code>: 监听节点和该节点的所有子节点 （创建时可设置<code>maxDepth</code>）</p>
+<pre><code class="lang-java"> @Test
+ public void treeCacheWatchTest() throws Exception{
+
+     String watchPath=zkPath+&quot;/e&quot;;
+     if(zkClient.checkExists().forPath(watchPath)==null){
+         zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath,&quot;eee&quot;.getBytes());
+     }
+     if(zkClient.checkExists().forPath(watchPath+&quot;/0&quot;)==null){
+         zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath+&quot;/0&quot;,&quot;00&quot;.getBytes());
+     }
+
+     System.out.println(&quot;Add Listener...&quot;);
+     TreeCache treeCache=new TreeCache(zkClient, watchPath);        // default：not cacheData,initial data will trigger watcher: NODE_ADDED
+     treeCache.getListenable().addListener(new TreeCacheListener() {
+         @Override
+         public void childEvent(CuratorFramework client, TreeCacheEvent event) throws Exception {
+             System.out.println(&quot;Watch:&quot;);
+             System.out.println(event.getType());
+             ChildData childData=event.getData();
+             if(childData!=null)
+                 System.out.println(childData.getPath()+&quot;:&quot;+new String(childData.getData())+&quot;,version:&quot;+childData.getStat().getVersion());
+         }
+     });
+
+     treeCache.start();
+
+     System.out.println(&quot;Initial Data...&quot;);
+     ChildData childData=treeCache.getCurrentData(watchPath);
+     if(childData!=null)
+         System.out.println(&quot;Current:&quot;+childData.getPath()+&quot;:&quot;+new String(childData.getData())+&quot;,version:&quot;+childData.getStat().getVersion());
+     Map&lt;String,ChildData&gt; childMap=treeCache.getCurrentChildren(watchPath);
+     if(childMap!=null){
+         for(String key:childMap.keySet()){
+             System.out.println(&quot;Child:&quot;+key+&quot;:&quot;+childMap.get(key));
+         }
+     }
+
+     System.out.println(&quot;Begin case 1 : watchPath -- trigger&quot;);
+     // node data change -- trigger NODE_UPDATED
+     zkClient.setData().forPath(watchPath,&quot;eee-eee&quot;.getBytes());
+     // delete node    -- trigger NODE_REMOVED 2 times for path &#39;/test/e/0&#39;,&#39;/test/e&#39;
+     zkClient.delete().deletingChildrenIfNeeded().forPath(watchPath);
+     // create node -- trigger NODE_ADDED
+     zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath,&quot;eee&quot;.getBytes());
+     Thread.sleep(2000);
+
+     System.out.println(&quot;Begin Case 2 : children -- trigger&quot;);
+     // create children -- trigger NODE_ADDED 2 times for path: &#39;/test/e/01&#39;,&#39;/test/e/01/02&#39;
+     zkClient.create().creatingParentsIfNeeded().forPath(watchPath+&quot;/01/02&quot;,&quot;Hello&quot;.getBytes());
+     // update children data -- trigger NODE_UPDATED
+     zkClient.setData().forPath(watchPath+&quot;/01&quot;,&quot;d01&quot;.getBytes());
+     // delete children -- trigger NODE_REMOVED 2 times for path: &#39;/test/e/01/02&#39;,&#39;/test/e/01&#39;
+     zkClient.delete().deletingChildrenIfNeeded().forPath(watchPath+&quot;/01&quot;);
+
+     Thread.sleep(10000);
+
+     if(treeCache!=null)
+         treeCache.close();
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-6">Demo: ACL</h3>
+<ol>
+<li><p>init</p>
+<pre><code class="lang-java"> public class CuratorAclTest {
+
+     public static String connectString=&quot;127.0.0.1:2181&quot;;
+     public static String namespace=&quot;micro&quot;;
+     public static String zkPath=&quot;/bb&quot;;
+     private CuratorFramework zkClient=null;
+
+     private ACL aclAdmin=null;
+     private ACL aclRW=null;
+     private ACL aclCD=null;
+
+     /*
+      * Perms.ADMIN    -- 可以修改节点权限(setAcl)
+      * Perms.READ    -- 可读取节点（ls,get）
+      * Perms.WRITE    -- 可修改节点内容 (set)
+      * Perms.CREATE -- 可创建节点 (create)
+      * Persm.DELETE -- 可删除节点 (delete)
+      */
+     @Before
+     public void init() throws NoSuchAlgorithmException{
+
+         Id id0=new Id(&quot;digest&quot;,DigestAuthenticationProvider.generateDigest(&quot;id00:admin&quot;));
+         Id id1=new Id(&quot;digest&quot;,DigestAuthenticationProvider.generateDigest(&quot;id01:12345&quot;));
+         Id id2=new Id(&quot;digest&quot;,DigestAuthenticationProvider.generateDigest(&quot;id02:12345&quot;));
+
+         aclAdmin=new ACL(Perms.ADMIN, id0);
+         aclRW=new ACL(Perms.READ|Perms.WRITE,id1);
+         aclCD=new ACL(Perms.CREATE|Perms.DELETE,id2);
+     }
+
+     @After
+     public void close(){
+         if(zkClient!=null){
+             zkClient.close();        
+             CuratorFrameworkState state=zkClient.getState();
+             System.out.println(&quot;Close zkClient :&quot;+state.name());
+         }
+     }
+
+     /*  ... */
+ }
+</code></pre>
+</li>
+<li><p>ACL</p>
+<ul>
+<li><p><code>aclProvider</code>/<code>setACL</code>: same as zkClient cmd <code>setAcl path acl</code></p>
+<pre><code class="lang-java">      @Test
+  public void aclProviderTest() throws Exception{
+      RetryPolicy retryPolicy = new ExponentialBackoffRetry(3000, 3);
+      zkClient=CuratorFrameworkFactory.builder()
+              //.aclProvider(new DefaultACLProvider())    // default
+              .aclProvider(new ACLProvider() {    // Note: 在节点创建时触发调用，为新建的节点设置权限
+                  @Override
+                  public List&lt;ACL&gt; getDefaultAcl() {
+                      System.out.println(&quot;setting default acl...&quot;);
+                      return ZooDefs.Ids.OPEN_ACL_UNSAFE;
+                  }
+                  @Override
+                  public List&lt;ACL&gt; getAclForPath(String path) {
+                      System.out.println(&quot;setting acl...&quot;);
+                      // 为zkPath节点和其以下的所有子节点设置acl
+                      if(path.startsWith(&quot;/&quot;+namespace+zkPath)){    // note: namespace+zkPath
+                          System.out.println(&quot;setting aclAdmin,aclRW,aclCD...&quot;);
+                          return Arrays.asList(aclAdmin,aclRW,aclCD);
+                      }
+                      else
+                          return ZooDefs.Ids.OPEN_ACL_UNSAFE;
+                  }
+              })
+              .connectString(connectString)
+              .retryPolicy(retryPolicy)
+              .sessionTimeoutMs(100000)
+              .connectionTimeoutMs(100000)
+              .namespace(namespace)
+              .build();
+
+      zkClient.start();
+
+      CuratorFrameworkState state=zkClient.getState();
+      System.out.println(&quot;Init zkClient :&quot;+state.name());
+
+      // case 1 -- Create -zkPath --&gt; Success
+      aclCreateTest();
+
+      // case 2 -- Read and Write -zkPath    --&gt; NoAuthException!!
+      // aclReadWriteTest();
+
+      // case 3 -- Delete -zkPath --&gt; NoAuthException!!
+      aclDeleteTest();
+
+      // case 4 -- Create -zkPath --&gt; Success
+      aclCreateTest();
+
+      System.out.println(&quot;child case...&quot;);
+
+      // case 5 -- Delete and Create -zkPath child --&gt; NoAuthException!!
+      // aclDeleteChildTest();
+      // aclCreateChildTest();
+
+      // case 6 -- Read and Write -zkPath child    --&gt; NoAuthException!!
+      // aclReadWriteChildTest();
+  }
+</code></pre>
+</li>
+<li><p>authorization:  same as zkClient cmd <code>addauth sechema auth</code> ( eg: addauth digest id02:12345 )</p>
+<pre><code class="lang-java">  @Test
+  public void authorizationTest() throws Exception{
+      List&lt;AuthInfo&gt; authInfos = new ArrayList&lt;AuthInfo&gt;();
+      authInfos.add(new AuthInfo(&quot;digest&quot;, &quot;id00:admin&quot;.getBytes()));    // admin：修改权限认证
+      // authInfos.add(new AuthInfo(&quot;digest&quot;, &quot;id01:12345&quot;.getBytes()));    // rw:读写节点认证
+      authInfos.add(new AuthInfo(&quot;digest&quot;, &quot;id02:12345&quot;.getBytes()));    // cr:增删节点认证
+
+      RetryPolicy retryPolicy = new ExponentialBackoffRetry(3000, 3);
+      zkClient=CuratorFrameworkFactory.builder()
+              // Note: 
+              // 不设置aclProvider，等同.aclProvider(new DefaultACLProvider())，即使用ZooDefs.Ids.OPEN_ACL_UNSAFE
+              // 对于新创建的节点，acl为ZooDefs.Ids.OPEN_ACL_UNSAFE
+              // .authorization(authInfos)    // 附上访问权限信息AuthInfo，用于访问节点认证
+              .connectString(connectString)
+              .retryPolicy(retryPolicy)
+              .sessionTimeoutMs(100000)
+              .connectionTimeoutMs(100000)
+              .namespace(namespace)
+              .build();
+
+      zkClient.start();
+
+      CuratorFrameworkState state=zkClient.getState();
+      System.out.println(&quot;Init zkClient :&quot;+state.name());
+
+      //get acl -- 无需权限
+      getACLTest();
+
+      // set acl -zkPath 
+      // --&gt; 拥有admin权限认证时才可
+      setACLTest();
+
+      // getChildACLTest();
+
+      // case 1: read &amp; write -zkPath
+      // --&gt; 需拥有rw权限
+      aclReadWriteTest();
+
+      // case 2: create -zkPath child    
+      // --&gt; 需拥有c权限才可创建，新创建的节点未设置acl，则使用默认acl{world,anyone}
+      aclCreateChildTest();
+
+      // case 3: read &amp; write -zkPath child
+      aclReadWriteChildTest();
+      // case 4: delete -zkPath child
+      aclDeleteChildTest();
+
+      // case 4: delete -zkPath
+      // --&gt; 需拥有d权限才可删除
+      aclDeleteTest();
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Set/Get ACL</p>
+<ul>
+<li><p>getACL (无需认权限证)</p>
+<pre><code class="lang-java">  public void getACLTest() throws Exception{
+      if(zkClient.checkExists().forPath(zkPath)==null){
+          System.out.println(zkPath+&quot; not exist!&quot;);
+          return;
+      }
+      System.out.println(&quot;list acl:&quot;);
+      List&lt;ACL&gt; aclList=zkClient.getACL().forPath(zkPath);
+      for(ACL acl:aclList)
+          System.out.println(acl);
+  }
+
+  public void getChildACLTest() throws Exception{
+      System.out.println(&quot;list child acl:&quot;);
+      List&lt;String&gt; childList=zkClient.getChildren().forPath(zkPath);
+      for(String child:childList){
+          List&lt;ACL&gt; aclList=zkClient.getACL().forPath(zkPath+&quot;/&quot;+child);
+          System.out.println(child+&quot; acl: &quot;);
+          for(ACL acl:aclList)
+              System.out.println(&quot;\t&quot;+acl);
+      }
+  }
+</code></pre>
+</li>
+<li>setACL<pre><code class="lang-java">  public void setACLTest() throws Exception{
+      if(zkClient.checkExists().forPath(zkPath)!=null){
+          System.out.println(&quot;Set ACL&quot;);
+          Stat stat=zkClient.setACL().withACL(Arrays.asList(aclAdmin,aclRW,aclCD)).forPath(zkPath);
+          System.out.println(stat.getVersion());
+      }else{
+          System.out.println(&quot;Create and Set ACL&quot;);
+          zkClient.create().creatingParentsIfNeeded().withACL(Arrays.asList(aclAdmin,aclRW,aclCD)).forPath(zkPath,&quot;access test&quot;.getBytes());
+      }
+      getACLTest();
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>CRUD : call to test</p>
+<pre><code class="lang-java"> /* Current Path */
+ public void aclReadWriteTest() throws Exception{
+     System.out.println(&quot;aclReadWriteTest....&quot;);
+     if(zkClient.checkExists().forPath(zkPath)==null){
+         System.out.println(zkPath+&quot; not exist!&quot;);
+         return;
+     }
+
+     //read
+     System.out.println(&quot;read...&quot;+zkPath);
+     byte[] data=zkClient.getData().forPath(zkPath);
+     if(data!=null)
+         System.out.println(new String(data));
+
+     //write
+     System.out.println(&quot;write...&quot;+zkPath);
+     Stat stat=zkClient.setData().forPath(zkPath,&quot;access test-acl&quot;.getBytes());
+     System.out.println(stat.getVersion());
+ }
+
+ public void aclCreateTest() throws Exception{
+     System.out.println(&quot;acl create test...&quot;);
+     if(zkClient.checkExists().forPath(zkPath)!=null){
+         System.out.println(zkPath+&quot; already exist!&quot;);
+     }else{
+         //create
+         System.out.println(&quot;create...&quot;+zkPath);
+         zkClient.create().creatingParentsIfNeeded().forPath(zkPath,&quot;access test-new&quot;.getBytes());
+     }
+     //print acl
+     System.out.println(&quot;list acl...&quot;+zkPath);
+     List&lt;ACL&gt; aclList=zkClient.getACL().forPath(zkPath);
+     for(ACL acl:aclList){
+         System.out.println(acl);
+     }
+ }
+
+ public void aclDeleteTest() throws Exception{
+     System.out.println(&quot;aclDeleteTest....&quot;);
+     if(zkClient.checkExists().forPath(zkPath)==null){
+         System.out.println(zkPath+&quot; not exist!&quot;);
+     }else{
+         //delete
+         System.out.println(&quot;delete...&quot;+zkPath);
+         zkClient.delete().deletingChildrenIfNeeded().forPath(zkPath);
+     }
+ }
+
+ /* Children CRUD */
+
+ public void aclReadWriteChildTest() throws Exception{
+     System.out.println(&quot;aclReadWriteChildTest....&quot;);
+     String accessPath=zkPath+&quot;/a&quot;;
+
+     //read
+     System.out.println(&quot;read...&quot;+accessPath);
+     byte[] data=zkClient.getData().forPath(accessPath);
+     if(data!=null)
+         System.out.println(new String(data));
+
+     //write
+     System.out.println(&quot;write...&quot;+accessPath);
+     Stat stat=zkClient.setData().forPath(accessPath,&quot;aaa-acl&quot;.getBytes());
+     System.out.println(stat.getVersion());
+ }
+
+ public void aclCreateChildTest() throws Exception{
+     System.out.println(&quot;aclCreateChildTest....&quot;);
+     String accessPath=zkPath+&quot;/a&quot;;
+     if(zkClient.checkExists().forPath(accessPath)!=null){
+         System.out.println(accessPath+&quot; already exist!&quot;);
+     }else{
+         //create
+         System.out.println(&quot;create...&quot;+accessPath);
+         zkClient.create().creatingParentsIfNeeded().forPath(accessPath,&quot;aaa-new&quot;.getBytes());
+     }
+     //print acl
+     System.out.println(&quot;list acl...&quot;+accessPath);
+     List&lt;ACL&gt; aclList=zkClient.getACL().forPath(accessPath);
+     for(ACL acl:aclList){
+         System.out.println(acl);
+     }
+ }
+
+ public void aclDeleteChildTest() throws Exception{
+     System.out.println(&quot;aclDeleteChildTest....&quot;);
+     String accessPath=zkPath+&quot;/a&quot;;
+     if(zkClient.checkExists().forPath(accessPath)==null){
+         System.out.println(accessPath+&quot; not exist!&quot;);
+     }else{
+         //delete
+         System.out.println(&quot;delete...&quot;+accessPath);
+         zkClient.delete().deletingChildrenIfNeeded().forPath(accessPath);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-7">一个应用示例</h2>
+<p>Client端监控文件增删，实现文件从Server端到Client端的同步</p>
+<h3 id="header-8">Summary</h3>
+<p>Two Parts:</p>
+<ul>
+<li>Part 1: FileServer -&gt; CRUD files</li>
+<li><p>Part 2: ClientUser -&gt; Auto download from FileServer / delete local file depends on the files updates on FileServer.</p>
+</li>
+<li><p>admin(<code>/admin</code>): FileServer</p>
+<ul>
+<li>upload file: POST <code>/images</code> -&gt; upload(MultipartFile photo)<ul>
+<li>save file with name <code>{image.id}.{image.type}</code> on local fileLocation </li>
+<li>save file information on DB</li>
+<li>add zk node: <code>/{image.id}_{PERSISTENT_SEQUENTIAL}</code>: <code>ADD:{image.id}:{image.type}:{image.originalName}</code></li>
+</ul>
+</li>
+<li>delete file: DEL <code>images/{id}</code> -&gt; delete(id)<ul>
+<li>delete file information on DB</li>
+<li>add zk node: <code>/{image.id}_{PERSISTENT_SEQUENTIAL}</code>: <code>DEL:{image.id}:{image.type}:{image.originalName}</code></li>
+</ul>
+</li>
+<li>list all files information: GET <code>/images</code> -&gt; list()</li>
+<li>get file information by id: GET <code>/images/{id}</code> -&gt; get(id)</li>
+<li>config:<ul>
+<li>fileLocation: <code>/Users/cj/space/java/admin-uploads</code></li>
+<li>zk<ul>
+<li>server: 127.0.0.1:2181</li>
+<li>namespace: demo</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>user(<code>/user</code>): Client User</p>
+<ul>
+<li>get local file: GET <code>/images/{filename}</code> -&gt; get(filename)</li>
+<li>zk listen <code>/</code>:<code>CHILD_ADDED</code>: <ul>
+<li><code>ADD:{filename}:{extension}:{originalName}</code> -&gt; download file from fileServer to local,then del this child node</li>
+<li><code>DEL:{filename}:{extension}:{originalName}</code> -&gt; delete local file,then del this child node</li>
+</ul>
+</li>
+<li>config:<ul>
+<li>local fileLocation <code>/Users/cj/space/java/user-downloads</code></li>
+<li>remote fileServer <code>http://localhost:8080/zookeeper-demo/admin/images</code></li>
+<li>zk<ul>
+<li>server: 127.0.0.1:2181</li>
+<li>namespace: demo</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>verify:</p>
+<pre><code class="lang-bash">  # upload: POST /admin/images
+  $ curl -i -F &#39;photo=@/Users/cj/Pictures/design/极光2.jpg&#39; -X POST http://localhost:8080/zookeeper-demo/admin/images 
+
+  # list: GET /admin/images
+  $ curl -i -H &quot;Content-Type: application/json&quot; http://localhost:8080/zookeeper-demo/admin/images
+
+  # get: GET /admin/images/{id}
+  $ curl -i -H &quot;Content-Type: application/json&quot; http://localhost:8080/zookeeper-demo/admin/images/1d0fa647-9dbe-410a-8d9c-0e1c973a98e2
+
+  # delete: DELETE /admin/images/{id}
+  $ curl -i -H &quot;Content-Type: application/json&quot; -X DELETE http://localhost:8080/zookeeper-demo/admin/images/1d0fa647-9dbe-410a-8d9c-0e1c973a98e2
+
+  # visit: 
+  # /user/images/1d0fa647-9dbe-410a-8d9c-0e1c973a98e2.jpg
+
+  # More (for test)
+  # /light.jpg
+  # /admin/images
+  # /admin/images/test1/虫洞.gif
+  # /admin/images/test2/极光1.jpg
+</code></pre>
+</li>
+</ul>
+<h3 id="header-9">Dependencies</h3>
+<p>pom.xml</p>
+<pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;!-- Curator (include zookeeper) --&gt;
+&lt;!-- Note: need to change zookeeper version,the beta version zookeeper has issues --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.curator&lt;/groupId&gt;
+    &lt;artifactId&gt;curator-recipes&lt;/artifactId&gt;
+    &lt;version&gt;4.0.1&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+             &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+             &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.zookeeper&lt;/groupId&gt;
+    &lt;artifactId&gt;zookeeper&lt;/artifactId&gt;
+    &lt;version&gt;3.4.6&lt;/version&gt;
+    &lt;exclusions&gt;
+        &lt;exclusion&gt;
+              &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+              &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+        &lt;exclusion&gt;
+             &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+             &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+        &lt;/exclusion&gt;
+    &lt;/exclusions&gt;
+&lt;/dependency&gt;
+
+&lt;!-- FileUpload --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;
+    &lt;version&gt;1.3.1&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;commons-io&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-io&lt;/artifactId&gt;
+    &lt;version&gt;2.5&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="header-10">Admin(FileServer)</h3>
+<ol>
+<li><p>application.yml</p>
+<pre><code> server:
+   port: 8080
+   servlet:
+     context-path: /zookeeper-demo
+ zk:
+   server: 127.0.0.1:2181
+   namespace: demo
+ admin:
+   fileLocation: /Users/cj/space/java/admin-uploads
+</code></pre></li>
+<li><p>ImageAdminController</p>
+<pre><code class="lang-java">@RestController
+@RequestMapping(&quot;/admin/images&quot;)
+public class ImageAdminController {
+
+ @Value(&quot;${admin.fileLocation}&quot;)
+ private String fileLocation;
+
+ @Autowired
+ private ImageService imageService;
+
+ @Resource(name=&quot;zkService&quot;)
+ private ZkCuratorService zkService;
+
+ @PostMapping
+ public Object upload(@RequestParam(value=&quot;photo&quot;) MultipartFile photo) throws Exception{
+
+     System.out.println(&quot;Name:&quot;+photo.getName());                            // photo
+     System.out.println(&quot;OriginalFilename:&quot;+photo.getOriginalFilename());    // 极光2.jpg
+     System.out.println(&quot;Size:&quot;+photo.getSize());                            // 186316
+     System.out.println(&quot;ContentType:&quot;+photo.getContentType());                // image/jpeg
+
+     Image image=new Image(UUID.randomUUID().toString(),
+             photo.getOriginalFilename(),&quot;Active&quot;);
+     String destFilePath=this.fileLocation+&quot;/&quot;+image.getId()+&quot;.&quot;+image.getType();
+     System.out.println(&quot;dest:&quot;+destFilePath);
+     FileUtils.copyToFile(photo.getInputStream(), new File(destFilePath));
+     boolean result=this.imageService.save(image);
+
+     // zookeeper
+     String data=&quot;ADD:&quot;+image.getId()+&quot;:&quot;+image.getType()+&quot;:&quot;+image.getOriginalName();
+     String zkPath=zkService.create(&quot;/&quot;+image.getId(), data.getBytes());
+     System.out.println(&quot;create zkPath(for ADD):&quot;+zkPath);
+
+     return ResponseEntity.ok(result);
+ }
+
+ @DeleteMapping(&quot;/{id}&quot;)
+ public Object delete(@PathVariable(&quot;id&quot;) String id) throws Exception{
+     Image image=this.imageService.delete(id);
+
+     // zookeeper
+     if(image!=null){
+         String data=&quot;DEL:&quot;+image.getId()+&quot;:&quot;+image.getType()+&quot;:&quot;+image.getOriginalName();
+         String zkPath=zkService.create(&quot;/&quot;+image.getId(), data.getBytes());
+         System.out.println(&quot;create zkPath(for DEL):&quot;+zkPath);
+     }
+
+     return ResponseEntity.ok(image!=null);
+ }
+
+ @GetMapping
+ public Object list(){
+     return ResponseEntity.ok(this.imageService.list());
+ }
+
+ @GetMapping(&quot;/{id}&quot;)
+ public Object get(@PathVariable(&quot;id&quot;)String id) throws IOException{
+     Image image=this.imageService.get(id);
+     if(image==null || !&quot;Active&quot;.equals(image.getStatus()) 
+             || StringUtils.isEmpty(image.getType()) || &quot;Unknow&quot;.equals(image.getType()))
+         return ResponseEntity.ok(&quot;Not Available!&quot;);
+
+     FileInputStream in=new FileInputStream(this.fileLocation+&quot;/&quot;+image.getId()+&quot;.&quot;+image.getType());
+     return ResponseEntity.ok()
+             .contentType(MediaType.IMAGE_JPEG)
+             .contentType(MediaType.IMAGE_PNG)
+             .contentType(MediaType.IMAGE_GIF)
+             .body(IOUtils.toByteArray(in));
+ }
+
+ /* ------ For Test: -------- */
+ @GetMapping(value=&quot;/test1/{name}&quot;
+         ,produces={MediaType.IMAGE_JPEG_VALUE,MediaType.IMAGE_PNG_VALUE,MediaType.IMAGE_GIF_VALUE})
+ public Object getImageByName1(@PathVariable(&quot;name&quot;) String filename) throws IOException{
+     String filePath=&quot;/Users/cj/Pictures/design&quot;;
+     FileInputStream in = new FileInputStream(filePath+&quot;/&quot;+filename);
+     return IOUtils.toByteArray(in);    // or ResponseEntity.ok(IOUtils.toByteArray(in));
+ }
+ @GetMapping(value=&quot;/test2/{name}&quot;)
+ public Object getImageByName2(@PathVariable(&quot;name&quot;) String filename) throws IOException{
+     String filePath=&quot;/Users/cj/Pictures/design&quot;;
+     FileInputStream in = new FileInputStream(filePath+&quot;/&quot;+filename);
+     return ResponseEntity.ok()
+             .contentType(MediaType.IMAGE_JPEG)
+             .contentType(MediaType.IMAGE_PNG)
+             .contentType(MediaType.IMAGE_GIF)
+             .body(IOUtils.toByteArray(in));
+ }
+ @PostConstruct
+ private void init() throws Exception{
+     System.out.println(&quot;init:&quot;+this.fileLocation);
+     FileUtils.forceMkdir(new File(this.fileLocation));
+
+     String id=&quot;1d0fa647-9dbe-410a-8d9c-0e1c973a98e2&quot;;
+     Image image=new Image(id,&quot;light.jpg&quot;,&quot;Active&quot;);
+     FileUtils.copyFile(new File(&quot;/Users/cj/Pictures/design/极光1.jpg&quot;), new File(this.fileLocation+&quot;/&quot;+id+&quot;.jpg&quot;));
+     this.imageService.save(image);
+
+     // zookeeper
+     String data=&quot;ADD:&quot;+image.getId()+&quot;:&quot;+image.getType()+&quot;:&quot;+image.getOriginalName();
+     String zkPath=zkService.create(&quot;/&quot;+image.getId(), data.getBytes());
+     System.out.println(&quot;create zkPath(for ADD):&quot;+zkPath);
+ }
+ @PreDestroy
+ private void clear() throws Exception{
+     FileUtils.cleanDirectory(new File(this.fileLocation));
+     // zookeeper
+     zkService.delete(&quot;/&quot;);
+ }
+}
+</code></pre>
+</li>
+<li><p>main</p>
+<pre><code class="lang-java">@SpringBootApplication
+@Configuration
+public class App {
+ public static void main( String[] args ){
+     SpringApplication.run(App.class, args);
+ }
+
+ @Bean(name=&quot;zkService&quot;)
+ public ZkCuratorService zkService(){
+     return new ZkCuratorService();
+ }
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="header-11">User(ClientUser)</h3>
+<ol>
+<li><p>application.yml</p>
+<pre><code> server:
+   port: 8090
+   servlet:
+     context-path: /zookeeper-demo
+ zk:
+   server: 127.0.0.1:2181
+   namespace: demo
+ user:
+   fileLocation: /Users/cj/space/java/user-downloads
+   fileServer: http://localhost:8080/zookeeper-demo/admin/images
+</code></pre></li>
+<li><p>ImageUserController</p>
+<pre><code class="lang-java">@RestController
+@RequestMapping(&quot;/user/images&quot;)
+public class ImageUserController {
+
+ @Value(&quot;${user.fileLocation}&quot;)
+ private String fileLocation;
+
+ @Value(&quot;${user.fileServer}&quot;)
+ private String fileServer;
+
+ @Resource(name=&quot;zkClientService&quot;)
+//    @Resource(name=&quot;zkService&quot;)
+ private ZkCuratorService zkService;
+
+ @GetMapping(&quot;/{filename}&quot;)
+ public Object get(@PathVariable(&quot;filename&quot;) String filename) throws IOException{
+     FileInputStream in=new FileInputStream(this.fileLocation+&quot;/&quot;+filename);
+     return ResponseEntity.ok()
+             .contentType(MediaType.IMAGE_JPEG)
+             .contentType(MediaType.IMAGE_PNG)
+             .contentType(MediaType.IMAGE_GIF)
+             .body(IOUtils.toByteArray(in));
+ }
+
+ @PostConstruct
+ public void init() throws Exception{
+     PathChildrenCacheListener listener=new PathChildrenCacheListener(){
+         @Override
+         public void childEvent(CuratorFramework client, PathChildrenCacheEvent event) 
+                 throws Exception {
+             System.out.println(&quot;Get Event:&quot;+event.getType());
+
+             if(event.getType().equals(PathChildrenCacheEvent.Type.CHILD_ADDED)){
+                 ChildData child=event.getData();
+                 if(child==null)
+                     return;
+                 String data=new String(child.getData());
+                 String array[]=data.split(&quot;:&quot;);
+                 String filename= array[1]+&quot;.&quot;+array[2];
+                 System.out.println(child.getPath()+&quot;:&quot;+data);
+
+                 if(&quot;ADD&quot;.equals(array[0])){
+                     try{
+                         Thread.sleep(3000);        // ! for test and connect refused exception
+                         FileUtils.copyURLToFile(new URL(fileServer+&quot;/&quot;+filename)
+                                 , new File(fileLocation+&quot;/&quot;+filename));
+                         zkService.delete(child.getPath());
+                     }catch(ConnectException ex){
+                         System.out.println(ex.getMessage());
+                     }
+                 }else if(&quot;DEL&quot;.equals(array[0])){
+                     try{
+                         FileUtils.forceDelete(new File(fileLocation+&quot;/&quot;+filename));
+                     }catch(FileNotFoundException ex){
+                         System.out.println(&quot;not exist:&quot;+fileLocation+&quot;/&quot;+filename);
+                     }
+                     zkService.delete(child.getPath());
+                 }
+             }
+         }
+     };
+     zkService.addPathChildrenWatcher(&quot;/&quot;, true, listener);
+ }
+
+ @PreDestroy
+ public void clear() throws Exception{
+     FileUtils.cleanDirectory(new File(this.fileLocation));
+     // zookeeper
+     zkService.delete(&quot;/&quot;);
+ }
+}
+</code></pre>
+</li>
+<li><p>main</p>
+<pre><code class="lang-java">@SpringBootApplication
+@Configuration
+public class App {
+ public static void main( String[] args ){
+     SpringApplication.run(App.class, args);
+ }
+
+ @Bean(name=&quot;zkClientService&quot;)
+ public ZkCuratorService zkClientService(){
+     return new ZkCuratorService();
+ }
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="header-12">Common: Service &amp; Entity</h3>
+<ol>
+<li><p>ImageService</p>
+<pre><code class="lang-java">@Service
+public class ImageService {
+ private final ConcurrentMap&lt;String,Image&gt; images=new ConcurrentHashMap&lt;String,Image&gt;();
+
+ public boolean save(Image image){
+     return images.put(image.getId(),image)==null;
+ }
+ public Image delete(String id){
+     Image image=images.get(id);
+     if(image==null)
+         return null;
+     image.setStatus(&quot;InActive&quot;);
+     images.replace(id, image);
+     return image;
+ }
+ public Image get(String id){
+     return images.get(id);
+ }
+ public Collection&lt;Image&gt; list(){
+     return images.values();
+ }   
+}
+</code></pre>
+</li>
+<li><p>ZkCuratorService</p>
+<pre><code class="lang-java">public class ZkCuratorService {
+
+ private CuratorFramework zkClient;
+
+ @Value(&quot;${zk.server}&quot;)
+ private String connectString;
+
+ @Value(&quot;${zk.namespace}&quot;)
+ private String namespace;
+
+ private PathChildrenCache childCache;
+
+ public CuratorFramework getZkClient() {
+     return zkClient;
+ }
+ public void setZkClient(CuratorFramework zkClient) {
+     this.zkClient = zkClient;
+ }
+
+ @PostConstruct
+ public void init(){
+     System.out.println(&quot;ZK Service init&quot;);
+     RetryPolicy retryPolicy = new ExponentialBackoffRetry(3000, 3);
+     zkClient=CuratorFrameworkFactory.builder()
+             .connectString(connectString)
+             .retryPolicy(retryPolicy)
+             .sessionTimeoutMs(10000)
+             .connectionTimeoutMs(10000)
+             .namespace(namespace)
+             .build();
+     zkClient.start();
+ }
+ @PreDestroy
+ public void close(){
+     if(zkClient!=null)
+         zkClient.close();
+ }
+ public void addPathChildrenWatcher(String watchPath,boolean createIfNotExist,PathChildrenCacheListener listener) throws Exception{
+     if(createIfNotExist){
+         if(zkClient.checkExists().forPath(watchPath)==null){
+             zkClient.create().creatingParentContainersIfNeeded().forPath(watchPath);
+         }
+     }
+     childCache = new PathChildrenCache(zkClient, watchPath, true);
+     System.out.println(&quot;Add Listener...&quot;);
+     childCache.getListenable().addListener(listener);
+     System.out.println(&quot;Start Cache...&quot;);
+     childCache.start(StartMode.POST_INITIALIZED_EVENT);     // 异步初始化 -- initial trigger watcher: Type.INITIALIZED
+ }
+ public String create(String path,byte[] data) throws Exception{
+     return zkClient.create()
+             .creatingParentsIfNeeded()
+             .withMode(CreateMode.PERSISTENT_SEQUENTIAL)
+             .forPath(path,data);
+ }
+ public void delete(String path) throws Exception{
+     zkClient.delete().guaranteed().deletingChildrenIfNeeded().forPath(path);
+ }
+ public Stat update(String path,byte[] data) throws Exception{
+     return zkClient.setData().forPath(path,data);
+ }
+ public Stat checkExists(String path) throws Exception{
+     return zkClient.checkExists().forPath(path);
+ }
+}
+</code></pre>
+</li>
+<li><p>Entity: Image</p>
+<pre><code class="lang-java">public class Image {
+ private String id;
+ private String originalName;
+ private String type;
+ private String status;
+
+ public Image(){}
+
+ public Image(String id,String originalName,String status){
+     this.id=id;
+     this.originalName=originalName;
+     this.status=status;
+     int pos=originalName.lastIndexOf(&quot;.&quot;);
+     this.type=(pos!=-1?originalName.substring(pos+1):&quot;Unknow&quot;);
+ }
+
+ /* getter &amp; setter .... */
+}
+</code></pre>
+</li>
+</ol>
+<h2 id="header-13">Reference</h2>
+<p><a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">My demo: zookeeper-demo</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

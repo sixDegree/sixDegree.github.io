@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>智能路由 Zuul</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="micro service,zuul,eureka,spring cloud">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Start</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Demo</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Starter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Filter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Service</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">智能路由 Zuul</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-01-01T16:00:00.000Z">2019-01-02</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-MicroService">MicroService</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Start</h2>
+<ul>
+<li>是Netflix开源的微服务网关组件(路由转发 + 过滤器)</li>
+<li>可以和Eureka、Ribbon、Hystrix等组件配合使用，提供动态路由，监控，弹性，安全等的边缘服务</li>
+<li>其核心是一些列的Filters，用来实现对外服务的控制，其作用可以类比Servlet框架的Filter，或者AOP，根据执行时期分为以下几类:<ul>
+<li>PRE：在请求被路由之前调用</li>
+<li>ROUTING：将请求路由到微服务</li>
+<li>POST：在路由到微服务以后执行</li>
+<li>ERROR：在其他阶段发生错误时执行该过滤器</li>
+</ul>
+</li>
+<li>Zuul可实现对内/对外路由，内部服务互相调用还可通过Eureka进行服务发现和调用<ul>
+<li>通过URL映射来实现路由有局限性(例如每增加一个服务就需要配置一条内容；服务本身被调度到其他节点Zuul无法感知）</li>
+<li>利用Eureka注册服务，配置Zuul从Eureka Server获取服务的地址并且基于所有服务的实例进行轮询/熔断/重试更好</li>
+<li>在实现微服务架构时，服务名与服务实例地址的关系在eureka server中已经存在了,只需要将Zuul注册到eureka即可</li>
+<li>注：对于使用<code>service-id</code>的路由，Zuul会以均衡负载（Ribbon）的方式访问服务</li>
+</ul>
+</li>
+<li>路由规则：<ul>
+<li>URL(path,url,prefix,strip-prefix)</li>
+<li>Service(path,service-id,prefix,strip-prefix)</li>
+<li><code>strip-prefix</code>: 是否过滤掉前缀（true则过滤掉）<ul>
+<li>eg: <code>path: /myusers/**</code>，默认时转发到服务的请求是<code>/**</code>，如果<code>stripPrefix</code>为<code>false</code>，则转发的请求是<code>/myusers/**</code></li>
+</ul>
+</li>
+<li><code>prefix</code>: 对path增加一个前缀，可加在全局zuul下，也可加在某个路由规则下面</li>
+<li><code>service-id</code>: 服务名，服务发现中的服务</li>
+<li><code>ignored-services</code>: 注意匹配了忽略的列表, 但却明确的配置在路由列表中的路由不会被忽略</li>
+</ul>
+</li>
+<li>路由熔断: 可以通过写自定义的fallback方法，并且将其指定给某个route,来实现该route访问出问题的熔断处理<pre><code class="lang-java">  public interface FallbackProvider {
+      // 告诉 Zuul 它是负责哪个 route 定义的熔断
+      public String getRoute();                                                
+      // 告诉 Zuul 断路出现时，它会提供一个什么返回值来处理请求
+      ClientHttpResponse fallbackResponse(String route, Throwable cause);        
+  }
+</code></pre>
+</li>
+<li>在Spring Cloud体系中，Spring Cloud Zuul就是提供负载均衡、反向代理、权限认证的一个<code>API gateway</code></li>
+<li>Note: <code>API Gateway</code> 是介于客户端和服务器端之间的中间层，所有的外部请求都会先经过这一层，作用<ul>
+<li>简化客户端调用复杂度</li>
+<li>数据裁剪以及聚合</li>
+<li>多渠道支持 （针对不同的渠道和客户端提供不同的API Gateway,eg: BFF Backend for front-end）</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/01/02/zuul-filter.png" alt="Filters"></p>
+<p><img src="/2019/01/02/zuul-simple.jpg" alt="Simple"></p>
+<p><img src="/2019/01/02/zuul-case.png" alt="高可用"></p>
+<h2 id="header-2">Demo</h2>
+<h3 id="header-3">Starter</h3>
+<ol>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml"> &lt;properties&gt;
+     &lt;spring-cloud.version&gt;Finchley.RELEASE&lt;/spring-cloud.version&gt;
+ &lt;/properties&gt;
+ &lt;dependencyManagement&gt;
+     &lt;dependencies&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+             &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+             &lt;version&gt;${spring-cloud.version}&lt;/version&gt;
+             &lt;type&gt;pom&lt;/type&gt;
+             &lt;scope&gt;import&lt;/scope&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+ &lt;/dependencyManagement&gt;
+ &lt;dependencies&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-cloud-starter-netflix-zuul&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+ &lt;/dependencies&gt;
+</code></pre>
+</li>
+<li><p>resources/application.yml</p>
+<pre><code> server:
+   port: 8888
+   servlet:
+     context-path: /zuul-demo
+
+ spring:
+   application:
+     name: zuul-demo
+
+ zuul:
+   routes:
+     baidu:
+       path: /baidu/**
+       url: http://www.baidu.com
+     csdn:
+       path: /csdn/**
+       url: https://www.csdn.net/
+</code></pre></li>
+<li><p>main</p>
+<pre><code class="lang-java"> @EnableZuulProxy     // include: @EnableDiscoveryClient, @EnableCircuitBreaker
+ @SpringBootApplication
+ public class MicroZuulApplication {
+
+     public static void main(String[] args) {
+         SpringApplication.run(MicroZuulApplication.class, args);
+     }
+ }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:8888/zuul-demo</code></p>
+<ul>
+<li><code>/baidu</code></li>
+<li><code>/csdn</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-4">Filter</h3>
+<ol>
+<li><p>Filter Definition</p>
+<pre><code class="lang-java"> public class MyFilter extends ZuulFilter {
+
+     private static Logger log = LoggerFactory.getLogger(MyFilter.class);
+
+     @Override
+     public boolean shouldFilter() {
+         return true;
+     }
+
+     @Override
+     public Object run() throws ZuulException {
+         RequestContext ctx = RequestContext.getCurrentContext(); 
+         HttpServletRequest request = ctx.getRequest(); 
+         log.info(String.format(&quot;%s -- %s&quot;, request.getMethod(), request.getRequestURL().toString())); 
+
+         String token = request.getParameter(&quot;token&quot;);// 获取请求的参数 
+         if (token!=null &amp;&amp; token.length()&gt;0) { 
+             ctx.setSendZuulResponse(true); //对请求进行路由 
+             ctx.setResponseStatusCode(200); 
+             ctx.set(&quot;success&quot;, true); 
+         } else { 
+             ctx.setSendZuulResponse(false); //不对其进行路由 
+             ctx.setResponseStatusCode(400); 
+             ctx.setResponseBody(&quot;token is empty&quot;); 
+             ctx.set(&quot;success&quot;, false); 
+         }
+         return null;
+     }
+
+     @Override
+     public String filterType() {
+         //Zuul内置的filter类型有四种，pre, route，post，error，分别代表请求处理前，处理时，处理后和出错后
+         return &quot;pre&quot;;
+     }
+
+     @Override
+     public int filterOrder() {
+         //指定了该过滤器执行的顺序
+         return 1;
+     }
+ }
+</code></pre>
+</li>
+<li><p>Inject Filter Bean</p>
+<pre><code class="lang-java"> @EnableZuulProxy
+ @SpringBootApplication
+ public class MicroZuulApplication {
+
+     public static void main(String[] args) {
+         SpringApplication.run(MicroZuulApplication.class, args);
+     }
+
+     // inject Filter
+     @Bean 
+     public MyFilter myFilter() { 
+         return new MyFilter(); 
+     }
+ }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:8888/zuul-demo</code></p>
+<ul>
+<li><code>/baidu</code></li>
+<li><code>/baidu?token=123</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-5">Service</h3>
+<p>这里通过Eureka中已经注册的服务名,调用服务</p>
+<ol>
+<li><p>Prepare <a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">Eureka</a></p>
+<ul>
+<li>Eureka Server(eureka-server): <code>http://localhost:8761/eureka-server</code> </li>
+<li>Eureka Client(eureka-client): <code>http://localhost:8080/eureka-client</code> (<code>/</code>,<code>/say</code>,<code>/actuator</code>)</li>
+</ul>
+</li>
+<li><p>pom.xml: 添加<code>spring-cloud-starter-netflix-eureka-client</code></p>
+<pre><code class="lang-xml"> &lt;properties&gt;
+     &lt;spring-cloud.version&gt;Finchley.RELEASE&lt;/spring-cloud.version&gt;
+ &lt;/properties&gt;
+ &lt;dependencyManagement&gt;
+     &lt;dependencies&gt;
+         &lt;dependency&gt;
+             &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+             &lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+             &lt;version&gt;${spring-cloud.version}&lt;/version&gt;
+             &lt;type&gt;pom&lt;/type&gt;
+             &lt;scope&gt;import&lt;/scope&gt;
+         &lt;/dependency&gt;
+     &lt;/dependencies&gt;
+ &lt;/dependencyManagement&gt;
+ &lt;dependencies&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-cloud-starter-netflix-zuul&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+     &lt;dependency&gt;
+         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+     &lt;/dependency&gt;
+ &lt;/dependencies&gt;
+</code></pre>
+</li>
+<li><p>resource/application.xml</p>
+<pre><code> server:
+   port: 8888
+   servlet:
+     context-path: /zuul-demo
+
+ spring:
+   application:
+     name: zuul-demo
+
+ # 注册到eureka服务中心
+ eureka:
+   client:
+     service-url:
+       defaultZone: http://localhost:8761/eureka-server/eureka 
+
+ zuul:
+   routes:
+     baidu:
+       path: /baidu/**
+     csdn:
+       path: /csdn/**
+       url: https://www.csdn.net/
+     eurekaServer:
+       path: /eurekaServer/**
+       url: http://localhost:8761/eureka-server/
+     serviceTest1:    # http://localhost:8888/zuul-demo/eureka-client/say
+       path: /eureka-client/**
+       service-id: eureka-client
+       strip-prefix: false   
+     serviceTest2:    # http://localhost:8888/zuul-demo/ec/eureka-client/say
+       path: /ec/**
+       service-id: eureka-client
+</code></pre></li>
+<li><p>FallbackProvider: 熔断处理，eg： 未发现eureka-client service，则会调用此处理</p>
+<pre><code class="lang-java"> public class MyFallbackProvider implements FallbackProvider{
+
+     @Override
+     public String getRoute() {
+         return &quot;*&quot;;
+     }
+
+     @Override
+     public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
+          return new ClientHttpResponse() {
+                 @Override
+                 public HttpStatus getStatusCode() throws IOException {
+                     return HttpStatus.OK;
+                 }
+                 @Override
+                 public int getRawStatusCode() throws IOException {
+                     return 200;
+                 }
+                 @Override
+                 public String getStatusText() throws IOException {
+                     return &quot;OK&quot;;
+                 }
+                 @Override
+                 public void close() {
+                 }
+                 @Override
+                 public InputStream getBody() throws IOException {
+                     return new ByteArrayInputStream(&quot;This is my fallback response&quot;.getBytes());
+                 }
+                 @Override
+                 public HttpHeaders getHeaders() {
+                     HttpHeaders headers = new HttpHeaders();
+                     headers.setContentType(MediaType.APPLICATION_JSON);
+                     return headers;
+                 }
+             };
+     }
+ }
+</code></pre>
+</li>
+<li><p>main</p>
+<pre><code class="lang-java"> @EnableZuulProxy
+ @SpringBootApplication
+ public class MicroZuulApplication {
+
+     public static void main(String[] args) {
+         SpringApplication.run(MicroGatewayApplication.class, args);
+     }
+
+     @Bean
+     public MyFallbackProvider myFallbackProvider() {
+         return new MyFallbackProvider();
+     }
+
+ /* service route 映射规则修改
+    eg： service: erueka-client =&gt; route: eureka/client
+ */
+ //    @Bean
+ //    public PatternServiceRouteMapper serviceRouteMapper() {
+ //        // servicePatterh,routePattern
+ //        return new PatternServiceRouteMapper(
+ //            &quot;(?&lt;servicename&gt;^.+)-(?&lt;contextPath&gt;v.+$)&quot;,
+ //            &quot;${servicename}/${contextPath}&quot;);
+ //    }
+ }
+</code></pre>
+</li>
+<li><p>Visit: <code>http://localhost:8888/zuul-demo</code></p>
+<ul>
+<li><code>/eureka-client/</code>,<code>/eureka-client/say</code>,<code>/eureka-client/actuator</code></li>
+<li><code>/ec/eureka-client/</code>, <code>/ec/eureka-client/say</code>,<code>/ec//eureka-client/actuator</code></li>
+<li><code>/eurekaServer/</code></li>
+<li>关闭eureka-client后再访问，会出发路由熔断机制，返回<code>This is my fallback response</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="header-6">Reference</h2>
+<p><a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">My demo: zuul-demo</a></p>
+<p><a href="https://www.cnblogs.com/lexiaofei/p/7080257.html" target="_blank" rel="noopener">zuul入门（1）zuul 的概念和原理</a></p>
+<p><a href="https://cloud.spring.io/spring-cloud-netflix/2.0.x/single/spring-cloud-netflix.html" target="_blank" rel="noopener">Spring Cloud Netflix</a></p>
+<p><a href="https://blog.csdn.net/zhanglh046/article/details/78651993/" target="_blank" rel="noopener">使用Zuul构建API Gateway</a></p>
+<p><a href="https://blog.csdn.net/chenqipc/article/details/53322830/" target="_blank" rel="noopener">Zuul:智能路由和过滤</a></p>
+<p><a href="https://www.imooc.com/article/44600" target="_blank" rel="noopener">路由网关—zuul</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>
