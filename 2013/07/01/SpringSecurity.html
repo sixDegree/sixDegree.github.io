@@ -852,9 +852,9 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <pre><code class="lang-xml">&lt;sec:http use-expressions=&quot;true&quot; &gt;
     &lt;sec:intercept-url pattern=&quot;/&quot; access=&quot;hasRole(&#39;ROLE_GUEST&#39;) or authenticated&quot;/&gt;
     &lt;sec:intercept-url pattern=&quot;/&quot; access=&quot;permitAll&quot;/&gt;
-    &lt;sec:intercept-urlpattern=&quot;/admin/**&quot;access=&quot;hasRole(&#39;ROLE_ADMIN&#39;)&quot;/&gt;
+    &lt;sec:intercept-url pattern=&quot;/admin/**&quot; access=&quot;hasRole(&#39;ROLE_ADMIN&#39;)&quot;/&gt;
     &lt;sec:intercept-url pattern=&quot;/api/**&quot; method=&quot;GET&quot; access=&quot;hasAnyRole(&#39;ROLE_USER&#39;,&#39;ROLE_ADMIN&#39;)&quot;/&gt;
-    ...
+     ...
 &lt;/sec:http&gt;
 </code></pre>
 <table class="table">
@@ -1202,12 +1202,12 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <tr>
 <td>user-search-base</td>
 <td>用于查找users</td>
-<td></td>
+<td>/</td>
 </tr>
 <tr>
 <td>user-search-filter</td>
 <td>用于过滤users</td>
-<td></td>
+<td>/</td>
 </tr>
 <tr>
 <td>user-details-class</td>
@@ -1248,57 +1248,57 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <li><p>配置Provider中的<code>LdapAuthoritiesPopulator</code>用于获取权限信息列表（<code>Collection&lt;? extends GrantedAuthority&gt;</code>）</p>
 <ul>
 <li><p>方式1：扩展<code>UserDetailsService</code></p>
-<pre><code class="lang-xml">&lt;bean class=&quot;org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator&quot; id=&quot;ldapAuthoritiesPopulator&quot;&gt;
- &lt;constructor-arg ref=&quot;myUserDetailsService&quot;/&gt;
-&lt;/bean&gt;
+<pre><code class="lang-xml">  &lt;bean class=&quot;org.springframework.security.ldap.authentication.UserDetailsServiceLdapAuthoritiesPopulator&quot; id=&quot;ldapAuthoritiesPopulator&quot;&gt;
+     &lt;constructor-arg ref=&quot;myUserDetailsService&quot;/&gt;
+   &lt;/bean&gt;
 
-&lt;bean id=&quot;myUserDetailsService&quot; class=&quot;com.cj.security.service.MyUserDetailsServiceImpl&quot;/&gt;
+   &lt;bean id=&quot;myUserDetailsService&quot; class=&quot;com.cj.security.service.MyUserDetailsServiceImpl&quot;/&gt;
 </code></pre>
-<pre><code class="lang-java">public class MyUserDetailsService implements UserDetailsService{
-  static Logger logger = Logger.getLogger(MyUserDetailsService.class);
-  private ISecurityService securityService;
+<pre><code class="lang-java">  public class MyUserDetailsService implements UserDetailsService{
+      static Logger logger = Logger.getLogger(MyUserDetailsService.class);
+      private ISecurityService securityService;
 
-  public ISecurityService getSecurityService(){
-      return securityService;
-  }
-  @Inject
-  public void setSecurityService(ISecurityService securityService){
-      this.securityService = securityService;
-  }
+      public ISecurityService getSecurityService(){
+          return securityService;
+      }
+      @Inject
+      public void setSecurityService(ISecurityService securityService){
+          this.securityService = securityService;
+      }
 
-  @Override
-  public UserDetails loadUserByUsername(String account)
-          throws UsernameNotFoundException{
-      //获取用户角色列表
-      List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
-      if(glist==null || glist.size()==0)
-          throw new UsernameNotFoundException(&quot;No GrantedAuthority&quot;);
-      UserDetails userDetails=new User(account,null,glist);
-      return userDetails;
+      @Override
+      public UserDetails loadUserByUsername(String account)
+              throws UsernameNotFoundException{
+          //获取用户角色列表
+          List&lt;GrantedAuthority&gt; glist=securityService.getGrantedAuthorities(account);
+          if(glist==null || glist.size()==0)
+              throw new UsernameNotFoundException(&quot;No GrantedAuthority&quot;);
+          UserDetails userDetails=new User(account,null,glist);
+          return userDetails;
+      }
   }
-}
 </code></pre>
 </li>
 <li><p>方式二：扩展<code>LdapAuthoritiesPopulator</code></p>
-<pre><code class="lang-xml">&lt;bean id=&quot;ldapAuthoritiesPopulator&quot; class=&quot;com.cj.support.security.ldap.MyLdapAuthoritiesPopulator&quot;/&gt;
+<pre><code class="lang-xml">  &lt;bean id=&quot;ldapAuthoritiesPopulator&quot; class=&quot;com.cj.support.security.ldap.MyLdapAuthoritiesPopulator&quot;/&gt;
 </code></pre>
-<pre><code class="lang-java">public class MyLdapAuthoritiesPopulator implements LdapAuthoritiesPopulator{
-  static Logger logger = Logger.getLogger(MyLdapAuthoritiesPopulator.class); 
-  private ISecurityService securityService;
-  public ISecurityService getSecurityService(){
-      return securityService;
-  }
-  @Inject
-  public void setSecurityService(ISecurityService securityService){
-      this.securityService = securityService;
-  }
+<pre><code class="lang-java">  public class MyLdapAuthoritiesPopulator implements LdapAuthoritiesPopulator{
+      static Logger logger = Logger.getLogger(MyLdapAuthoritiesPopulator.class); 
+      private ISecurityService securityService;
+      public ISecurityService getSecurityService(){
+          return securityService;
+      }
+      @Inject
+      public void setSecurityService(ISecurityService securityService){
+          this.securityService = securityService;
+      }
 
-  @Override
-  public Collection&lt;? extends GrantedAuthority&gt; getGrantedAuthorities(
-          DirContextOperations userData, String username){
-      return securityService.getGrantedAuthorities(username);
+      @Override
+      public Collection&lt;? extends GrantedAuthority&gt; getGrantedAuthorities(
+              DirContextOperations userData, String username){
+          return securityService.getGrantedAuthorities(username);
+      }
   }
-}
 </code></pre>
 </li>
 </ul>
@@ -1564,28 +1564,28 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <h4 id="header-46">支持四种方法层的安全</h4>
 <ol>
 <li><p>Spring 简单注解：</p>
-<pre><code class="lang-xml">&lt;global-method-security secured-annotations=&quot;enabled&quot; /&gt;
+<pre><code class="lang-xml"> &lt;global-method-security secured-annotations=&quot;enabled&quot; /&gt;
 </code></pre>
 <ul>
-<li><code>@Secured</code><pre><code class="lang-java">/*
-指认证的用户必须被授予&quot;ROLE_SPITTER&quot;, &quot;ROLE_ADMIN&quot;其中的一个权限才能访问该方法；
-如果没有这两个中任何一个权限，将抛出异常或是AuthenticationException or AccessDeniedException的子异常;
-如果方法在Web请求中调用，异常将被SpringSecurity自动调用
-*/
-@Secured({&quot;ROLE_SPITTER&quot;, &quot;ROLE_ADMIN&quot;}) 
-public void addSpittle(Spittle spittle) { // ... }
+<li><code>@Secured</code><pre><code class="lang-java">  /*
+  指认证的用户必须被授予&quot;ROLE_SPITTER&quot;, &quot;ROLE_ADMIN&quot;其中的一个权限才能访问该方法；
+  如果没有这两个中任何一个权限，将抛出异常或是AuthenticationException or AccessDeniedException的子异常;
+  如果方法在Web请求中调用，异常将被SpringSecurity自动调用
+  */
+  @Secured({&quot;ROLE_SPITTER&quot;, &quot;ROLE_ADMIN&quot;}) 
+  public void addSpittle(Spittle spittle) { // ... }
 </code></pre>
 </li>
 </ul>
 </li>
 <li><p>JSR-250标准：</p>
-<pre><code class="lang-xml">&lt;!--  JSR-250&#39;s @RolesAllowed与secured-annotations可同时被启用，
-推荐使用该方式启用注解，因为他是Java的标准注解。--&gt;
-&lt;global-method-security jsr250-annotations=&quot;enabled&quot; /&gt;
+<pre><code class="lang-xml"> &lt;!--  JSR-250&#39;s @RolesAllowed与secured-annotations可同时被启用，
+ 推荐使用该方式启用注解，因为他是Java的标准注解。--&gt;
+ &lt;global-method-security jsr250-annotations=&quot;enabled&quot; /&gt;
 </code></pre>
 <ul>
-<li><code>@RolesAllowed</code><pre><code class="lang-java">@RolesAllowed({&quot;ROLE_USER&quot;,&quot;ROLE_ADMIN&quot;})
-public void changePassword(String username, String password);
+<li><code>@RolesAllowed</code><pre><code class="lang-java">  @RolesAllowed({&quot;ROLE_USER&quot;,&quot;ROLE_ADMIN&quot;})
+  public void changePassword(String username, String password);
 </code></pre>
 </li>
 <li><code>@PermitAll</code></li>
@@ -1593,17 +1593,17 @@ public void changePassword(String username, String password);
 </ul>
 </li>
 <li><p>Pre-/Post-invocation (可使用SpEL表达式)：</p>
-<pre><code class="lang-xml">&lt;global-method-security pre-post-annotations=&quot;enabled&quot; /&gt;
+<pre><code class="lang-xml"> &lt;global-method-security pre-post-annotations=&quot;enabled&quot; /&gt;
 </code></pre>
 <ul>
-<li><code>@PreAuthorized</code> : 基于表达式的结果在调用方法或类前限制被访问。<pre><code class="lang-java">/*
-  拥有角色ROLE_SPITTER的用户的参数spittle字符只能少于140个,
+<li><code>@PreAuthorized</code> : 基于表达式的结果在调用方法或类前限制被访问。<pre><code class="lang-java">  /*
+      拥有角色ROLE_SPITTER的用户的参数spittle字符只能少于140个,
 而拥有角色ROLE_PREMIUM的用户则不受此限制
-*/
-@PreAuthorize(&quot;(hasRole(&#39;ROLE_SPITTER&#39;) and #spittle.text.length() &lt;= 140) or hasRole(&#39;ROLE_PREMIUM&#39;)&quot;) 
-public void addSpittle(Spittle spittle) { ... }
+  */
+  @PreAuthorize(&quot;(hasRole(&#39;ROLE_SPITTER&#39;) and #spittle.text.length() &lt;= 140) or hasRole(&#39;ROLE_PREMIUM&#39;)&quot;) 
+  public void addSpittle(Spittle spittle) { ... }
 </code></pre>
-</li>
+<ul>
 <li><code>@PostAuthorized</code>：如果表达式结果为false，允许方法被调用，同时抛出一个安全异常。该注解主要是基于被保护的方法的返回值来决定执行表达式<pre><code class="lang-java">/*
   当返回的Spittle对象属于被认证的用户时才可以访问该方法
   本例中returnObject是SpringEL提供的一个name用于方便获取返回的对象，
@@ -1613,6 +1613,8 @@ public void addSpittle(Spittle spittle) { ... }
 @PostAuthorize(&quot;returnObject.spitter.username == principal.username&quot;) 
 public Spittle getSpittleById(long id) { ... }
 </code></pre>
+</li>
+</ul>
 </li>
 <li><code>@PreFilter</code>：允许一个方法被调用，但是用每一个表达式去过滤方法的结果。</li>
 <li><code>@PostFilter</code>：允许一个方法被调用，但是过滤在进如方法之前的输入。</li>
@@ -1637,10 +1639,10 @@ public Spittle getSpittleById(long id) { ... }
 <p><strong>PS: </strong>若要在MVC Controller方法上加<code>@PreAuthorize</code>,<code>@PostAuthorize</code>,<code>@PreFilter</code>,<code>@PostFilter</code>，<br>此配置一定要放在spring mvc的xml中，否则无效</p>
 </li>
 <li><p>在XxxController方法上添加方法注解：</p>
-<pre><code class="lang-java">@PostAuthorize(&quot;!(#type==&#39;user&#39; and returnObject[extra].senderType==&#39;Group&#39; and !hasRole(&#39;ROLE_GROUP&#39;))&quot;)
-@RequestMapping(value={&quot;/inputs/{type}/{status}/{id}&quot;},method=RequestMethod.GET)
-@ResponseBody
-public Object getInput(@PathVariable(&quot;type&quot;) String type,@PathVariable(&quot;status&quot;) String status,@PathVariable int id) { ... }
+<pre><code class="lang-java"> @PostAuthorize(&quot;!(#type==&#39;user&#39; and returnObject[extra].senderType==&#39;Group&#39; and !hasRole(&#39;ROLE_GROUP&#39;))&quot;)
+ @RequestMapping(value={&quot;/inputs/{type}/{status}/{id}&quot;},method=RequestMethod.GET)
+ @ResponseBody
+ public Object getInput(@PathVariable(&quot;type&quot;) String type,@PathVariable(&quot;status&quot;) String status,@PathVariable int id) { ... }
 </code></pre>
 </li>
 </ol>

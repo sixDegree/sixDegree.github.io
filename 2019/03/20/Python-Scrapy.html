@@ -1,0 +1,3071 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Python 爬虫框架Scrapy</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="python,scrapy,twisted">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">使用</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Demo</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">架构</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">“5+2”结构</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">出入口</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">流程（数据流的三个路径）</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">常用命令</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">解析文档</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Settings 优先级</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">Default Settings</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">数据类型</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Spider</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">创建运行Spider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">基类：Spider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">子类：CrawlSpider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">子类：XMLFeedSpider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">子类：CSVFeedSpider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">子类：SitemapSpider</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">Item</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">ItemLoader</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">Middleware</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">Item Pipeline</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">Media Pipeline</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">Item Exporters</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">应用</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">基于Excel爬取</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">Login</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">常见问题</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">Scrapy-Redis</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">Sample1: use scrapy Spider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">Sample2: 动态start_urls</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-33"><span class="sidebar-nav nav-text">Scrapyd (for Deploy)</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-34"><span class="sidebar-nav nav-text">deploy project</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-35"><span class="sidebar-nav nav-text">调用Scrapyd API（直接使用curl）</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-36"><span class="sidebar-nav nav-text">调用Scrapyd API（使用python-scrapyd-api包）</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-37"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Python 爬虫框架Scrapy</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-03-19T16:00:00.000Z">2019-03-20</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Python">Python</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<ul>
+<li><p>一套基于<code>Twisted</code>事件驱动的异步爬虫框架</p>
+</li>
+<li><p>是为持续运行设计的专业爬虫框架,提供了操作的Scrapy命令行</p>
+</li>
+<li><p>VS. Requests</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">Requests</th>
+<th style="text-align:left">Scrapy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">功能库,重点在于页面下载（页面级爬虫）</td>
+<td style="text-align:left">框架,重点在于爬虫结构（网站级爬虫）</td>
+</tr>
+<tr>
+<td style="text-align:left">阻塞IO</td>
+<td style="text-align:left">基于<code>Twisted</code>事件驱动，异步</td>
+</tr>
+<tr>
+<td style="text-align:left">并发性考虑不足</td>
+<td style="text-align:left">并发性好</td>
+</tr>
+<tr>
+<td style="text-align:left">定制灵活</td>
+<td style="text-align:left">一般定制灵活,深度定制困难</td>
+</tr>
+<tr>
+<td style="text-align:left">场景：小需求</td>
+<td style="text-align:left">场景：大需求</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>install: <code>pip install scrapy</code></p>
+</li>
+<li><p>check:<code>scrapy -h</code></p>
+<pre><code class="lang-bash">  $ scrapy -h
+  Scrapy 1.6.0 - no active project
+
+  Usage:
+    scrapy &lt;command&gt; [options] [args]
+
+  Available commands:
+    bench         Run quick benchmark test
+    fetch         Fetch a URL using the Scrapy downloader
+    genspider     Generate new spider using pre-defined templates
+    runspider     Run a self-contained spider (without creating a project)
+    settings      Get settings values
+    shell         Interactive scraping console
+    startproject  Create new project
+    version       Print Scrapy version
+    view          Open URL in browser, as seen by Scrapy
+
+    [ more ]      More commands available when run from project directory
+
+  Use &quot;scrapy &lt;command&gt; -h&quot; to see more info about a command
+</code></pre>
+</li>
+</ul>
+<h3 id="header-2">使用</h3>
+<ol>
+<li><p>创建工程: </p>
+<ul>
+<li><code>scrapy startproject &lt;name&gt; [dir]</code></li>
+</ul>
+</li>
+<li><p>创建<code>Spider</code>: </p>
+<ul>
+<li>在工程中产生一个Scrapy爬虫: <code>scrapy genspider [options] &lt;spiderName&gt; &lt;domain&gt;</code></li>
+<li>编写<code>vi &lt;spiderName&gt;.py</code><ul>
+<li>start_urls: 初始URL地址</li>
+<li>parse(response): 获取页面后的解析处理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>编写<code>Item Pipeline</code>: </p>
+<ul>
+<li><code>pipelines.py</code>: 定义对爬取项<code>Scraped Item</code>的处理类 </li>
+<li><code>setting.py</code>: 添加到<code>ITEM_PIPELINES</code>配置项</li>
+</ul>
+</li>
+<li><p>配置优化</p>
+<ul>
+<li>配置<code>settings.py</code>文件</li>
+<li>eg: 配置并发连接选项<ul>
+<li><code>CONCURRENT_REQUESTS</code>: <code>Downloader</code>最大并发请求下载数量,默认32</li>
+<li><code>CONCURRENT_ITEMS</code>: <code>Item Pipeline</code>最大并发ITEM处理数量，默认100</li>
+<li><code>CONCURRENT_REQUESTS_PER_DOMAIN</code>: 每个目标域名最大的并发请求数量,默认8 </li>
+<li><code>CONCURRENT_REQUESTS_PER_IP</code>: 每个目标IP最大的并发请求数量,默认0,非0有效</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>执行：<code>scrapy crawl &lt;spiderName&gt;</code></p>
+</li>
+</ol>
+<h3 id="header-3">Demo</h3>
+<ol>
+<li><p>创建项目</p>
+<pre><code class="lang-bash"> $ scrapy startproject douban_demo
+ New Scrapy project &#39;douban_demo&#39;, using template directory &#39;/usr/local/lib/python3.7/site-packages/scrapy/templates/project&#39;, created in:
+     /Users/cj/space/python/douban_demo
+
+ You can start your first spider with:
+     cd douban_demo
+     scrapy genspider example example.com
+</code></pre>
+<ul>
+<li><p>查看项目目录</p>
+<pre><code class="lang-bash">  $ tree
+  .
+  ├── douban_demo
+  │   ├── __init__.py
+  │   ├── __pycache__
+  │   │   ├── __init__.cpython-37.pyc
+  │   │   └── settings.cpython-37.pyc
+  │   ├── items.py
+  │   ├── middlewares.py
+  │   ├── pipelines.py
+  │   ├── settings.py
+  │   └── spiders
+  │       ├── __init__.py
+  │       ├── __pycache__
+  │          └── __init__.cpython-37.pyc
+  └── scrapy.cfg
+
+  4 directories, 10 files
+</code></pre>
+</li>
+<li>查看自动创建的<code>pipelines.py</code><pre><code class="lang-python">  # -*- coding: utf-8 -*-
+  # Define your item pipelines here
+  #
+  # Don&#39;t forget to add your pipeline to the ITEM_PIPELINES setting
+  # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+  class DoubanDemoPipeline(object):
+      def process_item(self, item, spider):
+          return item
+</code></pre>
+</li>
+<li>查看自动创建的<code>items.py</code><pre><code class="lang-python">  # -*- coding: utf-8 -*-
+  # Define here the models for your scraped items
+  #
+  # See documentation in:
+  # https://doc.scrapy.org/en/latest/topics/items.html
+  import scrapy
+  class DoubanDemoItem(scrapy.Item):
+      # define the fields for your item here like:
+      # name = scrapy.Field()
+      pass
+</code></pre>
+</li>
+<li><p>查看自动生成的<code>settings.py</code></p>
+<pre><code class="lang-python">  # -*- coding: utf-8 -*-
+
+  # Scrapy settings for douban_demo project
+  #
+  # For simplicity, this file contains only settings considered important or
+  # commonly used. You can find more settings consulting the documentation:
+  #
+  #     https://doc.scrapy.org/en/latest/topics/settings.html
+  #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
+  #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
+
+  BOT_NAME = &#39;douban_demo&#39;
+
+  SPIDER_MODULES = [&#39;douban_demo.spiders&#39;]
+  NEWSPIDER_MODULE = &#39;douban_demo.spiders&#39;
+
+  # Crawl responsibly by identifying yourself (and your website) on the user-agent
+  #USER_AGENT = &#39;douban_demo (+http://www.yourdomain.com)&#39;
+
+  # Obey robots.txt rules
+  ROBOTSTXT_OBEY = True
+
+  # Configure maximum concurrent requests performed by Scrapy (default: 16)
+  #CONCURRENT_REQUESTS = 32
+
+  # ...
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>创建Spider</p>
+<pre><code class="lang-bash"> # 进入项目目录，创建一个Spider
+ $ cd douban_demo/
+ $ scrapy genspider movie movie.douban.com
+ Created spider &#39;movie&#39; using template &#39;basic&#39; in module:
+   douban_demo.spiders.movie
+</code></pre>
+<ul>
+<li><p>查看新建的spider：<code>spider/movie.py</code></p>
+<pre><code class="lang-python">  # -*- coding: utf-8 -*-
+  import scrapy
+
+  class MovieSpider(scrapy.Spider):
+      name = &#39;movie&#39;
+      allowed_domains = [&#39;movie.douban.com&#39;]
+      start_urls = [&#39;http://movie.douban.com/&#39;]
+
+      def parse(self, response):
+          pass
+</code></pre>
+</li>
+<li><p>编写spider：<code>spider/movie.py</code></p>
+<pre><code class="lang-python">  # -*- coding: utf-8 -*-
+  import scrapy
+  import re
+  import json
+  from douban_demo.items import MovieItem
+
+  class MovieSpider(scrapy.Spider):
+      name = &#39;movie&#39;
+      allowed_domains = [&#39;movie.douban.com&#39;]
+      start_urls = [&#39;https://movie.douban.com/j/search_subjects?type=movie&amp;tag=热门&amp;sort=recommend&amp;page_limit=20&amp;page_start=0&#39;]
+
+      def parse(self, response):
+          print(response.url)
+          result=json.loads(response.body)
+          subjects=result.get(&#39;subjects&#39;)
+          if len(subjects)&gt;0:
+              for subject in subjects:
+                  # print(subject)
+                  yield MovieItem(subject)
+</code></pre>
+</li>
+<li>items.py<pre><code class="lang-python">  # -*- coding: utf-8 -*-
+  import scrapy
+  class MovieItem(scrapy.Item):
+      # {&#39;rate&#39;: &#39;7.0&#39;, &#39;cover_x&#39;: 7142, &#39;title&#39;: &#39;飞驰人生&#39;, &#39;url&#39;: &#39;https://movie.douban.com/subject/30163509/&#39;, &#39;playable&#39;: True, &#39;cover&#39;: &#39;https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2542973862.jpg&#39;, &#39;id&#39;: &#39;30163509&#39;, &#39;cover_y&#39;: 10000, &#39;is_new&#39;: False}
+      rate=scrapy.Field()
+      title=scrapy.Field()
+      url=scrapy.Field()
+      id=scrapy.Field()
+      is_new=scrapy.Field()
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>编写pipeline.py（optional）</p>
+<pre><code class="lang-python"> from scrapy.conf import settings
+ class MoviePipeline(object):
+     def process_item(self, item, spider):
+         print(item)
+         return item
+</code></pre>
+</li>
+<li><p>配置<code>setting.py</code></p>
+<pre><code class="lang-python"> USER_AGENT=&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0&#39;
+ LOG_LEVEL = &#39;INFO&#39;
+ FEED_EXPORT_ENCODING=&#39;utf-8&#39;
+
+ # Obey robots.txt rules
+ ROBOTSTXT_OBEY = False
+
+ ITEM_PIPELINES = {
+     &#39;douban_demo.pipelines.MoviePipeline&#39;:100
+ }
+</code></pre>
+</li>
+<li><p>运行Spider</p>
+<pre><code class="lang-bash"> $ scrapy crawl movie
+ $ scrapy crawl movie -o movies.json -s FEED_EXPORT_ENCODING=utf-8 -L INFO
+</code></pre>
+</li>
+</ol>
+<h2 id="header-4">架构</h2>
+<p><img src="/2019/03/20/scrapy.png" alt="Scrapy"></p>
+<h3 id="header-5">“5+2”结构</h3>
+<ol>
+<li><p>引擎 <code>Engine</code>: </p>
+<ul>
+<li>控制所有模块之间的数据流,根据条件触发事件</li>
+</ul>
+</li>
+<li><p>下载器 <code>Downloader</code>: </p>
+<ul>
+<li>根据请求下载网页</li>
+</ul>
+</li>
+<li><p>调度器 <code>Scheduler</code>: </p>
+<ul>
+<li>对所有爬取请求进行调度管理</li>
+</ul>
+</li>
+<li><p>爬虫 <code>Spider</code> (需要用户编写配置代码):</p>
+<ul>
+<li>解析<code>Downloader</code>返回的响应<code>Response</code></li>
+<li>产生爬取项<code>Scraped item</code></li>
+<li>产生额外的爬取请求<code>Request</code></li>
+</ul>
+</li>
+<li><p>管道 <code>Item Pipelines</code> (需要用户编写配置代码):</p>
+<ul>
+<li>以流水线方式处理<code>Spider</code>产生的爬取项<code>Scraped item</code></li>
+<li>由一组操作顺序组成,类似流水线,每个操作是一个<code>Item Pipeline</code>类型</li>
+<li>可能操作包括: 清理、检验和查重爬取项中的HTML数据、将数据存储到数据库</li>
+</ul>
+</li>
+<li><p>中间件 (用户可以编写配置代码)：</p>
+<ul>
+<li>下载中间件 <code>Downloader Middleware</code>: 修改、丢弃、新增请求<code>Request</code>或响应<code>Response</code></li>
+<li>爬虫中间件<code>Spider Middleware</code>: 修改、丢弃、新增<code>Request</code>或爬取项<code>Scraped item</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-6">出入口</h3>
+<ol>
+<li><p>框架入口: </p>
+<ul>
+<li><code>Spider</code>的初始爬取请求 </li>
+</ul>
+</li>
+<li><p>框架出口: </p>
+<ul>
+<li><code>Item Pipeline</code></li>
+</ul>
+</li>
+<li><p>数据流：</p>
+<ul>
+<li><code>Engine</code>控制各模块数据流,不间断从<code>Scheduler</code>处获得爬取<code>Request</code>,直至<code>Request</code>为空 </li>
+</ul>
+</li>
+<li><p>用户编写： </p>
+<ul>
+<li><code>Spider</code>：处理链接爬取和页面解析</li>
+<li><code>Item Pipelines</code>：处理信息存储</li>
+<li><code>Middleware</code>：<ul>
+<li><code>Spider Middleware</code>: 过滤<code>new requests</code> &amp; <code>Scraped Item</code></li>
+<li><code>Downloader Middleware</code>: 过滤<code>request</code> &amp; <code>response</code></li>
+</ul>
+</li>
+<li><code>Setting</code>：配置</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-7">流程（数据流的三个路径）</h3>
+<ul>
+<li>UR2IM 流程<pre><code>  URL -&gt; Request -&gt; Response -&gt; Item -&gt; More URL
+          ^                      |-&gt; store   |
+          |__________________________________|
+</code></pre></li>
+<li>路径1: <ul>
+<li>Spider =&gt; <code>request</code> =&gt; Engine =&gt; <code>request</code> =&gt; Schedule<br>  (<code>Engine</code>从<code>Spider</code>处获得爬取<code>Request</code>，然后将<code>Request</code>转发给<code>Scheduler</code>,用于调度)</li>
+</ul>
+</li>
+<li>路径2:<ul>
+<li>Schedule =&gt; <code>request</code> =&gt; Engine =&gt; <code>request</code> =&gt; Downloader Middleware =&gt; Downloader<br>  （<code>Engine</code>从<code>Scheduler</code>处获得下一个要爬取的<code>Request</code>，通过<code>Downloader Middleware</code>后发给<code>Downloader</code> ）</li>
+<li>Downloader =&gt; <code>response</code> =&gt; Downloader Middleware =&gt; Engine =&gt; Spider Middleware =&gt; Spider<br>  （爬取网页后<code>Downloader</code>形成响应<code>Response</code>, 通过<code>Downloader Middleware</code>后发回<code>Engine</code>，<code>Engine</code>将收到的响应通过<code>Spider Middleware</code>发送给<code>Spider</code>处理）</li>
+</ul>
+</li>
+<li>路径3:<ul>
+<li>Spider =&gt; <code>Scraped Item</code> &amp; <code>New Requests</code> =&gt; Engine<br>  ( <code>Spider</code>处理响应后产生爬取项<code>Scraped Item</code> 和新的爬取请求<code>Requests</code>给<code>Engine</code>)</li>
+<li>Engine =&gt; <code>Scraped Item</code> =&gt; Item Pipeline<br>  (<code>Engine</code>将爬取项<code>Scraped Item</code>发送给框架出口<code>Item Pipeline</code>)</li>
+<li>Engine =&gt; <code>New Requests</code> =&gt; Scheduler<br>  (<code>Engine</code>将爬取<code>Request</code>发送给<code>Scheduler</code>)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2019/03/20/scrapy-flow.png" alt="Scrapy Flow"></p>
+<h3 id="header-8">常用命令</h3>
+<p>Scrapy采用命令行创建和运行爬虫</p>
+<p>命令行格式：<code>scrapy &lt;command&gt; [options] [args]</code></p>
+<ol>
+<li><p>Scrapy 命令：</p>
+<pre><code class="lang-bash"> $ scrapy -h
+ Scrapy 1.6.0 - project: douban
+
+ Usage:
+   scrapy &lt;command&gt; [options] [args]
+
+ Available commands:
+   bench         Run quick benchmark test
+   check         Check spider contracts
+   crawl         Run a spider
+   edit          Edit spider
+   fetch         Fetch a URL using the Scrapy downloader
+   genspider     Generate new spider using pre-defined templates
+   list          List available spiders
+   parse         Parse URL (using its spider) and print the results
+   runspider     Run a self-contained spider (without creating a project)
+   settings      Get settings values
+   shell         Interactive scraping console
+   startproject  Create new project
+   version       Print Scrapy version
+   view          Open URL in browser, as seen by Scrapy
+
+ Use &quot;scrapy &lt;command&gt; -h&quot; to see more info about a command
+</code></pre>
+<ul>
+<li><p>常用命令说明：</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>scrapy startproject &lt;name&gt; [dir]</code></td>
+<td style="text-align:left">创建一个新工程</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>scrapy genspider [options] &lt;name&gt; &lt;domain&gt;</code></td>
+<td style="text-align:left">创建一个爬虫</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>scrapy list</code></td>
+<td style="text-align:left">列出工程中所有爬虫</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>scrapy crawl &lt;spider&gt;</code></td>
+<td style="text-align:left">运行一个爬虫</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>scrapy settings [options]</code></td>
+<td style="text-align:left">获得爬虫配置信息</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>scrapy shell [url]</code></td>
+<td style="text-align:left">启动URL调试命令行</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Global Options:</p>
+<pre><code class="lang-bash">  Global Options
+  --------------
+  ---logfile=FILE          log file. if omitted stderr will be used
+  --loglevel=LEVEL, -L LEVEL
+                          log level (default: DEBUG)
+  --nolog                 disable logging completely
+  --profile=FILE          write python cProfile stats to FILE
+  --pidfile=FILE          write process ID to FILE
+  --set=NAME=VALUE, -s NAME=VALUE
+                          set/override setting (may be repeated)
+  --pdb                   enable pdb on failure
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>Generate a spider options:</p>
+<pre><code class="lang-bash"> $ scrapy genspider -h
+ Usage
+ =====
+   scrapy genspider [options] &lt;name&gt; &lt;domain&gt;
+
+ Generate new spider using pre-defined templates
+
+ Options
+ =======
+ --help, -h              show this help message and exit
+ --list, -l              List available templates
+ --edit, -e              Edit spider after creating it
+ --dump=TEMPLATE, -d TEMPLATE
+                         Dump template to standard output
+ --template=TEMPLATE, -t TEMPLATE
+                         Uses a custom template.
+ --force                 If the spider already exists, overwrite it with the
+                         template
+</code></pre>
+</li>
+<li><p>Run a spider options:</p>
+<pre><code class="lang-bash"> Usage
+ =====
+   scrapy crawl [options] &lt;spider&gt;
+ Run a spider
+
+ Options
+ =======
+ --help, -h              show this help message and exit
+ -a NAME=VALUE           set spider argument (may be repeated)
+ --output=FILE, -o FILE  dump scraped items into FILE (use - for stdout)
+ --output-format=FORMAT, -t FORMAT
+                         format to use for dumping items with -o
+</code></pre>
+</li>
+<li><p>Set spider settings:</p>
+<pre><code class="lang-bash"> Usage
+ =====
+   scrapy settings [options]
+
+ Get settings values
+
+ Options
+ =======
+ --help, -h              show this help message and exit
+ --get=SETTING           print raw setting value
+ --getbool=SETTING       print setting value, interpreted as a boolean
+ --getint=SETTING        print setting value, interpreted as an integer
+ --getfloat=SETTING      print setting value, interpreted as a float
+ --getlist=SETTING       print setting value, interpreted as a list
+</code></pre>
+</li>
+</ol>
+<p><strong> 示例：使用 <code>scrapy shell</code> 交互式调试 </strong></p>
+<pre><code class="lang-bash">$ scrapy shell
+...
+[s] Available Scrapy objects:
+[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)
+[s]   crawler    &lt;scrapy.crawler.Crawler object at 0x105cd57f0&gt;
+[s]   item       {}
+[s]   settings   &lt;scrapy.settings.Settings object at 0x105cd58d0&gt;
+[s] Useful shortcuts:
+[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)
+[s]   fetch(req)                  Fetch a scrapy.Request and update local objects
+[s]   shelp()           Shell help (print this help)
+[s]   view(response)    View response in a browser
+&gt;&gt;&gt; 
+&gt;&gt;&gt; exit()
+</code></pre>
+<pre><code class="lang-bash">$ scrapy shell https://movie.douban.com/top250
+...
+[s] Available Scrapy objects:
+[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)
+[s]   crawler    &lt;scrapy.crawler.Crawler object at 0x1037be908&gt;
+[s]   item       {}
+[s]   request    &lt;GET https://movie.douban.com/top250&gt;
+[s]   response   &lt;200 https://movie.douban.com/top250&gt;
+[s]   settings   &lt;scrapy.settings.Settings object at 0x1037be9e8&gt;
+[s]   spider     &lt;Top250Spider &#39;top250&#39; at 0x103bb2048&gt;
+[s] Useful shortcuts:
+[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)
+[s]   fetch(req)                  Fetch a scrapy.Request and update local objects
+[s]   shelp()           Shell help (print this help)
+[s]   view(response)    View response in a browser
+
+&gt;&gt;&gt; records=response.xpath(&#39;//ol[@class=&quot;grid_view&quot;]//div[@class=&quot;item&quot;]/div[@class=&quot;info&quot;]&#39;)
+&gt;&gt;&gt; len(records)
+25
+
+&gt;&gt;&gt; records.xpath(&#39;./div[@class=&quot;bd&quot;]/div[@class=&quot;star&quot;]/span[@class=&quot;rating_num
+&quot;]/text()&#39;).extract()
+[&#39;9.6&#39;, &#39;9.6&#39;, &#39;9.4&#39;, &#39;9.4&#39;, &#39;9.5&#39;, &#39;9.4&#39;, &#39;9.3&#39;, &#39;9.5&#39;, &#39;9.3&#39;, &#39;9.3&#39;, &#39;9.3&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.3&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.3&#39;, &#39;9.3&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.0&#39;, &#39;9.0&#39;, &#39;9.2&#39;]
+
+&gt;&gt;&gt; records[0].xpath(&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39;)
+[&lt;Selector xpath=&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39; data=&#39;肖申克&#39;&gt;, &lt;Selector xpath=&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39; data=&#39;\xa0/\xa0The Shawshank Redemption&#39;&gt;]
+&gt;&gt;&gt; records[0].xpath(&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39;).extract()
+[&#39;肖申克的救赎&#39;, &#39;\xa0/\xa0The Shawshank Redemption&#39;]
+&gt;&gt;&gt; records[0].xpath(&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39;).get()
+&#39;肖申克的救赎&#39;
+&gt;&gt;&gt; records[0].xpath(&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39;).extract_first()
+&#39;肖申克的救赎&#39;
+&gt;&gt;&gt;records[0].xpath(&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39;).re(&#39;[A-Za-z ]+&#39;)
+[&#39;The Shawshank Redemption&#39;]
+
+&gt;&gt;&gt; records=response.css(&#39;.grid_view .item .info&#39;)
+&gt;&gt;&gt; len(records)
+25
+
+# &gt;&gt;&gt; records.css(&#39;.bd .star .rating_num&#39;).xpath(&#39;text()&#39;).extract()
+# &gt;&gt;&gt; records.css(&#39;.bd .star .rating_num::text&#39;).extract()
+# &gt;&gt;&gt; records.css(&#39;.bd .star .rating_num&#39;).re(&#39;[\d.]+&#39;)
+&gt;&gt;&gt; records.xpath(&#39;./div[@class=&quot;bd&quot;]/div[@class=&quot;star&quot;]/span[@class=&quot;rating_num&quot;]/text()&#39;).extract()
+[&#39;9.6&#39;, &#39;9.6&#39;, &#39;9.4&#39;, &#39;9.4&#39;, &#39;9.5&#39;, &#39;9.4&#39;, &#39;9.3&#39;, &#39;9.5&#39;, &#39;9.3&#39;, &#39;9.3&#39;, &#39;9.3&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.3&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.3&#39;, &#39;9.3&#39;, &#39;9.2&#39;, &#39;9.2&#39;, &#39;9.0&#39;, &#39;9.0&#39;, &#39;9.2&#39;]
+
+&gt;&gt;&gt; len(response.css(&#39;div&#39;))
+183
+&gt;&gt;&gt; len(records.css(&#39;div&#39;))
+100
+
+&gt;&gt;&gt; exit()
+</code></pre>
+<h3 id="header-9">解析文档</h3>
+<ul>
+<li>可使用BeautifulSoup,lxml解析，而Scrapy内部使用的是lxml（效率更高），可使用Xpath,CssSelector进行文档定位解析</li>
+<li><code>response.xpath()</code>和<code>response.css()</code> 返回的<code>Selector</code>对象列表<code>SelectorList</code>是可以被串联起来的</li>
+<li>获取<code>Selector</code>对象／<code>SelectorList</code>中的<code>data</code>，可以使用<code>.extract/getall()</code>,<code>.extract_first/get()</code>,<code>.re(pattern)</code></li>
+<li>获取<code>Selector</code>对象/<code>SelectorList</code>中标签的某个属性值，可以使用<code>.attrib[&#39;attrName&#39;]</code></li>
+<li>xpath可使用<code>/@attrName</code>获取属性值，eg: <code>response.xpath(//div[@class=&quot;item&quot;]//img/@src)</code></li>
+<li>css selector 可使用伪代码<code>::</code>，eg: <ul>
+<li>select text nodes, use <code>::text</code></li>
+<li>select attribute values, use <code>::attr(attrName)</code></li>
+<li>eg: <code>response.css(&#39;title::text&#39;).get(default=&#39;&#39;)</code>,<code>response.css(&#39;a::attr(href)&#39;).getall()</code></li>
+</ul>
+</li>
+<li><a href="http://doc.scrapy.org/en/latest/topics/selectors.html" target="_blank" rel="noopener">Selector 文档</a></li>
+</ul>
+<h3 id="header-10">Settings 优先级</h3>
+<pre><code class="lang-python">SETTINGS_PRIORITIES = {
+    &#39;default&#39;: 0,
+    &#39;command&#39;: 10,
+    &#39;project&#39;: 20,
+    &#39;spider&#39;: 30,
+    &#39;cmdline&#39;: 40,
+}
+</code></pre>
+<ol>
+<li>default: <code>scrapy/settings/default_settings.py</code></li>
+<li>project: <code>[project]/settings.py</code></li>
+<li>spider: Spider中配置的<code>custom_settings</code>属性</li>
+<li>cmdline: 命令行运行时传入的 <code>-s xxxx=xxx</code> 参数</li>
+</ol>
+<pre><code class="lang-bash">$ scrapy settings --get CONCURRENT_REQUESTS
+16
+
+$ scrapy settings -s CONCURRENT_REQUESTS=19 --get CONCURRENT_REQUESTS
+19
+
+$ scrapy crawl movie -s CONCURRENT_REQUESTS=19
+
+$ scrapy shell -s CONCURRENT_REQUESTS=19
+[s] Available Scrapy objects:
+[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, etc)
+[s]   crawler    &lt;scrapy.crawler.Crawler object at 0x105cd57f0&gt;
+[s]   item       {}
+[s]   settings   &lt;scrapy.settings.Settings object at 0x105cd58d0&gt;
+[s] Useful shortcuts:
+[s]   fetch(url[, redirect=True]) Fetch URL and update local objects (by default, redirects are followed)
+[s]   fetch(req)                  Fetch a scrapy.Request and update local objects
+[s]   shelp()           Shell help (print this help)
+[s]   view(response)    View response in a browser
+&gt;&gt;&gt; settings.get(&#39;CONCURRENT_REQUESTS&#39;)
+&#39;19&#39;
+&gt;&gt;&gt; settings.getint(&#39;CONCURRENT_REQUESTS&#39;)
+19
+&gt;&gt;&gt; exit()
+</code></pre>
+<h3 id="header-11">Default Settings</h3>
+<ul>
+<li><p>项目</p>
+<pre><code class="lang-python">  BOT_NAME = &#39;scrapybot&#39;   # eg: &#39;douban&#39;
+  SPIDER_MODULES = []      # eg: [&#39;douban.spiders&#39;]
+  NEWSPIDER_MODULE = &#39;&#39;    # eg: &#39;douban.spiders&#39;
+
+  TEMPLATES_DIR = abspath(join(dirname(__file__), &#39;..&#39;, &#39;templates&#39;))
+  DEFAULT_ITEM_CLASS = &#39;scrapy.item.Item&#39;
+  EDITOR = &#39;vi&#39;
+  if sys.platform == &#39;win32&#39;:
+      EDITOR = &#39;%s -m idlelib.idle&#39;
+
+  # mail
+  MAIL_HOST = &#39;localhost&#39;
+  MAIL_PORT = 25
+  MAIL_FROM = &#39;scrapy@localhost&#39;
+  MAIL_PASS = None
+  MAIL_USER = None
+</code></pre>
+</li>
+<li><p>分析</p>
+<pre><code class="lang-python">  # 日志 Log ：
+  LOG_ENABLED = True
+  LOG_ENCODING = &#39;utf-8&#39;
+  LOG_FORMATTER = &#39;scrapy.logformatter.LogFormatter&#39;
+  LOG_FORMAT = &#39;%(asctime)s [%(name)s] %(levelname)s: %(message)s&#39;
+  LOG_DATEFORMAT = &#39;%Y-%m-%d %H:%M:%S&#39;
+  LOG_STDOUT = False
+  LOG_LEVEL = &#39;DEBUG&#39;
+  LOG_FILE = None
+  LOG_SHORT_NAMES = False
+  LOGSTATS_INTERVAL = 60.0
+
+  # 统计 Stats ：
+  STATS_CLASS = &#39;scrapy.statscollectors.MemoryStatsCollector&#39;
+  STATS_DUMP = True
+  STATSMAILER_RCPTS = []
+
+  DEPTH_STATS_VERBOSE = False
+  DOWNLOADER_STATS = True
+
+  # Telnet：
+  TELNETCONSOLE_ENABLED = 1
+  TELNETCONSOLE_PORT = [6023, 6073]
+  TELNETCONSOLE_HOST = &#39;127.0.0.1&#39;
+  TELNETCONSOLE_USERNAME = &#39;scrapy&#39;
+  TELNETCONSOLE_PASSWORD = None
+</code></pre>
+</li>
+<li><p>爬取策略</p>
+<pre><code class="lang-python">  # Cookie
+  COOKIES_ENABLED = True
+  COOKIES_DEBUG = False
+
+  # Request
+  DEFAULT_REQUEST_HEADERS = {
+      &#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#39;,
+      &#39;Accept-Language&#39;: &#39;en&#39;,
+  }
+
+  # User-Agent
+  USER_AGENT = &#39;Scrapy/%s (+https://scrapy.org)&#39; % import_module(&#39;scrapy&#39;).__version__
+
+  # robots.txt
+  ROBOTSTXT_OBEY = False
+
+  # 代理
+  HTTPPROXY_ENABLED = True
+  HTTPPROXY_AUTH_ENCODING = &#39;latin-1&#39;
+
+  # referer
+  REFERER_ENABLED = True
+  REFERRER_POLICY = &#39;scrapy.spidermiddlewares.referer.DefaultReferrerPolicy&#39;
+
+  # rediret
+  REDIRECT_ENABLED = True
+  REDIRECT_MAX_TIMES = 20  # uses Firefox default setting
+  REDIRECT_PRIORITY_ADJUST = +2
+
+  # retry
+  RETRY_ENABLED = True
+  RETRY_TIMES = 2  # initial response + 2 retries = 3 requests
+  RETRY_HTTP_CODES = [500, 502, 503, 504, 522, 524, 408]
+  RETRY_PRIORITY_ADJUST = -1
+
+  # meta refresh
+  METAREFRESH_ENABLED = True
+  METAREFRESH_MAXDELAY = 100
+
+  # DNS
+  DNSCACHE_ENABLED = True
+  DNSCACHE_SIZE = 10000
+  DNS_TIMEOUT = 60
+
+  # Http缓存
+  HTTPCACHE_ENABLED = False
+  HTTPCACHE_DIR = &#39;httpcache&#39;
+  HTTPCACHE_IGNORE_MISSING = False
+  HTTPCACHE_STORAGE = &#39;scrapy.extensions.httpcache.FilesystemCacheStorage&#39;
+  HTTPCACHE_EXPIRATION_SECS = 0
+  HTTPCACHE_ALWAYS_STORE = False
+  HTTPCACHE_IGNORE_HTTP_CODES = []
+  HTTPCACHE_IGNORE_SCHEMES = [&#39;file&#39;]
+  HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS = []
+  HTTPCACHE_DBM_MODULE = &#39;anydbm&#39; if six.PY2 else &#39;dbm&#39;
+  HTTPCACHE_POLICY = &#39;scrapy.extensions.httpcache.DummyPolicy&#39;
+  HTTPCACHE_GZIP = False
+
+  # 并发
+  CONCURRENT_ITEMS = 100
+  CONCURRENT_REQUESTS = 16
+  CONCURRENT_REQUESTS_PER_DOMAIN = 8
+  CONCURRENT_REQUESTS_PER_IP = 0
+
+  REACTOR_THREADPOOL_MAXSIZE = 10
+
+  # Depth
+  DEPTH_LIMIT = 0
+  DEPTH_STATS_VERBOSE = False
+  DEPTH_PRIORITY = 0 
+
+  # 结束爬取
+  CLOSESPIDER_TIMEOUT = 0
+  CLOSESPIDER_PAGECOUNT = 0
+  CLOSESPIDER_ITEMCOUNT = 0
+  CLOSESPIDER_ERRORCOUNT = 0
+
+  # 自动限速
+  AUTOTHROTTLE_ENABLED = False
+  AUTOTHROTTLE_DEBUG = False
+  AUTOTHROTTLE_MAX_DELAY = 60.0
+  AUTOTHROTTLE_START_DELAY = 5.0
+  AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0 
+
+  # Memory  
+  MEMDEBUG_ENABLED = False        # enable memory debugging
+  MEMDEBUG_NOTIFY = []            # send memory debugging report by mail at engine shutdown
+
+  MEMUSAGE_CHECK_INTERVAL_SECONDS = 60.0
+  MEMUSAGE_ENABLED = True
+  MEMUSAGE_LIMIT_MB = 0
+  MEMUSAGE_NOTIFY_MAIL = []
+  MEMUSAGE_WARNING_MB = 0
+
+  # other 
+  AJAXCRAWL_ENABLED = False
+  COMPRESSION_ENABLED = True
+</code></pre>
+</li>
+<li><p>组件</p>
+<pre><code class="lang-python">  # 1. Scheduler
+  SCHEDULER = &#39;scrapy.core.scheduler.Scheduler&#39;
+  SCHEDULER_DISK_QUEUE = &#39;scrapy.squeues.PickleLifoDiskQueue&#39;
+  SCHEDULER_MEMORY_QUEUE = &#39;scrapy.squeues.LifoMemoryQueue&#39;
+  SCHEDULER_PRIORITY_QUEUE = &#39;queuelib.PriorityQueue&#39;
+  SCHEDULER_DEBUG = False
+
+  # 2. Downloader
+  DOWNLOADER = &#39;scrapy.core.downloader.Downloader&#39;
+  DOWNLOADER_HTTPCLIENTFACTORY = &#39;scrapy.core.downloader.webclient.ScrapyHTTPClientFactory&#39;
+  DOWNLOADER_CLIENTCONTEXTFACTORY = &#39;scrapy.core.downloader.contextfactory.ScrapyClientContextFactory&#39;
+  DOWNLOADER_CLIENT_TLS_METHOD = &#39;TLS&#39; # Use highest TLS/SSL protocol version supported by the platform,
+                                       # also allowing negotiation
+  DOWNLOADER_STATS = True
+
+  RANDOMIZE_DOWNLOAD_DELAY = True
+
+  DOWNLOAD_DELAY = 0
+  DOWNLOAD_HANDLERS = {}
+  DOWNLOAD_HANDLERS_BASE = {
+      &#39;data&#39;: &#39;scrapy.core.downloader.handlers.datauri.DataURIDownloadHandler&#39;,
+      &#39;file&#39;: &#39;scrapy.core.downloader.handlers.file.FileDownloadHandler&#39;,
+      &#39;http&#39;: &#39;scrapy.core.downloader.handlers.http.HTTPDownloadHandler&#39;,
+      &#39;https&#39;: &#39;scrapy.core.downloader.handlers.http.HTTPDownloadHandler&#39;,
+      &#39;s3&#39;: &#39;scrapy.core.downloader.handlers.s3.S3DownloadHandler&#39;,
+      &#39;ftp&#39;: &#39;scrapy.core.downloader.handlers.ftp.FTPDownloadHandler&#39;,
+  }
+
+  DOWNLOAD_TIMEOUT = 180      # 3mins
+  DOWNLOAD_MAXSIZE = 1024*1024*1024   # 1024m
+  DOWNLOAD_WARNSIZE = 32*1024*1024    # 32m
+  DOWNLOAD_FAIL_ON_DATALOSS = True
+
+  # 3. Item Pipeline
+  ITEM_PROCESSOR = &#39;scrapy.pipelines.ItemPipelineManager&#39;
+  ITEM_PIPELINES = {}
+  ITEM_PIPELINES_BASE = {}
+
+  # 4. Spider Middleware
+  SPIDER_MIDDLEWARES = {}
+  SPIDER_MIDDLEWARES_BASE = {
+      # Engine side
+      &#39;scrapy.spidermiddlewares.httperror.HttpErrorMiddleware&#39;: 50,
+      &#39;scrapy.spidermiddlewares.offsite.OffsiteMiddleware&#39;: 500,
+      &#39;scrapy.spidermiddlewares.referer.RefererMiddleware&#39;: 700,
+      &#39;scrapy.spidermiddlewares.urllength.UrlLengthMiddleware&#39;: 800,
+      &#39;scrapy.spidermiddlewares.depth.DepthMiddleware&#39;: 900,
+      # Spider side
+  }
+
+  # 5. Downloader Middleware
+  DOWNLOADER_MIDDLEWARES = {}
+  DOWNLOADER_MIDDLEWARES_BASE = {
+      # Engine side
+      &#39;scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware&#39;: 100,
+      &#39;scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware&#39;: 300,
+      &#39;scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware&#39;: 350,
+      &#39;scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware&#39;: 400,
+      &#39;scrapy.downloadermiddlewares.useragent.UserAgentMiddleware&#39;: 500,
+      &#39;scrapy.downloadermiddlewares.retry.RetryMiddleware&#39;: 550,
+      &#39;scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware&#39;: 560,
+      &#39;scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware&#39;: 580,
+      &#39;scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware&#39;: 590,
+      &#39;scrapy.downloadermiddlewares.redirect.RedirectMiddleware&#39;: 600,
+      &#39;scrapy.downloadermiddlewares.cookies.CookiesMiddleware&#39;: 700,
+      &#39;scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware&#39;: 750,
+      &#39;scrapy.downloadermiddlewares.stats.DownloaderStats&#39;: 850,
+      &#39;scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware&#39;: 900,
+      # Downloader side
+  }
+
+  # 6. Extension Middleware
+  EXTENSIONS = {}
+  EXTENSIONS_BASE = {
+      &#39;scrapy.extensions.corestats.CoreStats&#39;: 0,
+      &#39;scrapy.extensions.telnet.TelnetConsole&#39;: 0,
+      &#39;scrapy.extensions.memusage.MemoryUsage&#39;: 0,
+      &#39;scrapy.extensions.memdebug.MemoryDebugger&#39;: 0,
+      &#39;scrapy.extensions.closespider.CloseSpider&#39;: 0,
+      &#39;scrapy.extensions.feedexport.FeedExporter&#39;: 0,
+      &#39;scrapy.extensions.logstats.LogStats&#39;: 0,
+      &#39;scrapy.extensions.spiderstate.SpiderState&#39;: 0,
+      &#39;scrapy.extensions.throttle.AutoThrottle&#39;: 0,
+  }
+</code></pre>
+</li>
+<li><p>Output</p>
+<pre><code class="lang-python">  # Feeds &amp; Exporter:
+  FEED_TEMPDIR = None
+  FEED_URI = None
+  FEED_URI_PARAMS = None  # a function to extend uri arguments
+  FEED_FORMAT = &#39;jsonlines&#39;
+  FEED_STORE_EMPTY = False
+  FEED_EXPORT_ENCODING = None
+  FEED_EXPORT_FIELDS = None
+  FEED_STORAGES = {}
+  FEED_STORAGES_BASE = {
+      &#39;&#39;: &#39;scrapy.extensions.feedexport.FileFeedStorage&#39;,
+      &#39;file&#39;: &#39;scrapy.extensions.feedexport.FileFeedStorage&#39;,
+      &#39;stdout&#39;: &#39;scrapy.extensions.feedexport.StdoutFeedStorage&#39;,
+      &#39;s3&#39;: &#39;scrapy.extensions.feedexport.S3FeedStorage&#39;,
+      &#39;ftp&#39;: &#39;scrapy.extensions.feedexport.FTPFeedStorage&#39;,
+  }
+  FEED_EXPORTERS = {}
+  FEED_EXPORTERS_BASE = {
+      &#39;json&#39;: &#39;scrapy.exporters.JsonItemExporter&#39;,
+      &#39;jsonlines&#39;: &#39;scrapy.exporters.JsonLinesItemExporter&#39;,
+      &#39;jl&#39;: &#39;scrapy.exporters.JsonLinesItemExporter&#39;,
+      &#39;csv&#39;: &#39;scrapy.exporters.CsvItemExporter&#39;,
+      &#39;xml&#39;: &#39;scrapy.exporters.XmlItemExporter&#39;,
+      &#39;marshal&#39;: &#39;scrapy.exporters.MarshalItemExporter&#39;,
+      &#39;pickle&#39;: &#39;scrapy.exporters.PickleItemExporter&#39;,
+  }
+  FEED_EXPORT_INDENT = 0
+
+  # file s3/gcs store
+  FILES_STORE_S3_ACL = &#39;private&#39;
+  FILES_STORE_GCS_ACL = &#39;&#39;
+
+  # image s3/gsc store
+  IMAGES_STORE_S3_ACL = &#39;private&#39;
+  IMAGES_STORE_GCS_ACL = &#39;&#39;
+
+  # ftp
+  FTP_USER = &#39;anonymous&#39;
+  FTP_PASSWORD = &#39;guest&#39;
+  FTP_PASSIVE_MODE = True
+</code></pre>
+</li>
+</ul>
+<h3 id="header-12">数据类型</h3>
+<ul>
+<li><p><code>Request</code></p>
+<ul>
+<li><code>class scrapy.http.Request()</code></li>
+<li>表示一个HTTP请求,由<code>Spider</code>生成,<code>Downloader</code>执行</li>
+<li>属性：<ul>
+<li><code>.url</code> : Request对应的请求URL地址</li>
+<li><code>.method</code> : 对应的请求方法,’GET’ ‘POST’等</li>
+<li><code>.headers</code>: 字典类型风格的请求头</li>
+<li><code>.body</code> : 请求内容主体,字符串类型</li>
+<li><code>.meta</code> : 用户添加的扩展信息,在Scrapy内部模块间传递信息使用</li>
+<li><code>.encoding</code></li>
+<li><code>.dont_filter</code>: 默认为False（表示要过滤掉重复Request）</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><code>.copy()</code></li>
+<li><code>.replace()</code></li>
+</ul>
+</li>
+<li>子类：<ul>
+<li><code>FormRequest</code><ul>
+<li><code>from_response()</code></li>
+</ul>
+</li>
+<li><code>XmlRpcRequest</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Response</code></p>
+<ul>
+<li><code>class scrapy.http.Response()</code></li>
+<li>表示一个HTTP响应,由<code>Downloader</code>生成,<code>Spider</code>处理</li>
+<li>属性：<ul>
+<li><code>.url</code> : Response对应的URL地址</li>
+<li><code>.status</code> : HTTP状态码,默认是200</li>
+<li><code>.headers</code> : Response对应的头部信息</li>
+<li><code>.body</code> : Response对应的内容信息,字符串类型 </li>
+<li><code>.flags</code> : 一组标记</li>
+<li><code>.request</code> : 产生Response类型对应的Request对象</li>
+<li><code>.meta</code></li>
+<li><code>.text</code></li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><code>.copy()</code></li>
+<li><code>.replace()</code></li>
+<li><code>.urljoin()</code></li>
+<li><code>.xpath()</code></li>
+<li><code>.css()</code></li>
+<li><code>.follow()</code></li>
+</ul>
+</li>
+<li>子类：<ul>
+<li><code>TextResponse</code><ul>
+<li><code>.encoding</code></li>
+<li>子类：<code>XmlResponse</code>，<code>HtmlResponse</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Item</code></p>
+<ul>
+<li><code>class scrapy.item.Item()</code></li>
+<li>表示一个从HTML页面中提取的信息内容,由<code>Spider</code>生成,<code>Item Pipeline</code>处理</li>
+<li>似字典类型,可按照字典类型操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-13">Spider</h2>
+<p>Refer <a href="http://doc.scrapy.org/en/latest/topics/spiders.html#scrapy-spider" target="_blank" rel="noopener">Scrapy Spider</a></p>
+<h3 id="header-14">创建运行Spider</h3>
+<ol>
+<li><p>创建Spider： <code>scrapy genspider &lt;-t [template:default is basic]&gt; [spiderName] [domain]</code></p>
+<ul>
+<li>查看有效Spider template：<code>scrapy genspider --list</code><pre><code class="lang-bash">  $ scrapy genspider --list
+  Available templates:
+    basic
+    crawl
+    csvfeed
+    xmlfeed
+</code></pre>
+</li>
+<li>eg: 创建基础Spider<pre><code class="lang-bash">  $ scrapy genspider movie movie.douban.com
+  Created spider &#39;movie&#39; using template &#39;basic&#39; in module:
+    douban_demo.spiders.movie
+</code></pre>
+</li>
+<li>eg: 创建CrawlSpider:<pre><code class="lang-bash">  $ scrapy genspider -t crawl top250 movie.douban.com 
+  Created spider &#39;top250&#39; using template &#39;crawl&#39; in module:
+    douban_demo.spiders.top250
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>运行Spider：<code>scrapy crawl [spiderName] &lt; -a [argName]=[argValue] &gt; &lt; -o [File]&gt; &lt;-t [Format] &gt;</code></p>
+<ul>
+<li><code>-a [argName=argValue]</code>: passed arguments to spider,Spiders can access arguments in their <code>__init__</code> methods</li>
+<li><code>-o [File]</code>: dump scraped items into FILE,recognize file extension as format,also could use <code>-t [Format]</code> set output format</li>
+<li><p>eg:</p>
+<pre><code class="lang-bash">  $ scrapy crawl movie
+
+  # 传参给spider，spider中初始化函数中添加参数：
+  # def __init__(self, category=None, *args, **kwargs)
+  $ scrapy crawl movie -a category=top
+
+  # 输出到文件，根据文件后缀名，以对应格式输出
+  $ scrapy crawl movie -o movies.json     # [{},{},...]
+  $ scrapy crawl movie -o movies.jl       # {},{},... =&gt; recommend !
+  $ scrapy crawl movie -o movies.csv      # xxx,xxx,xxx,...
+
+  # -s,-L same as set in setting.py: FEED_EXPORT_ENCODING=&#39;utf-8&#39;, LOG_LEVEL = &#39;INFO&#39;
+  $ scrapy crawl movie -o movies.json -s FEED_EXPORT_ENCODING=utf-8 -L INFO
+
+  # -s CLOSESPIDER_ITEMCOUNT 控制最多爬取10个Item
+  $ scrapy crawl movie -o movies.json -s CLOSESPIDER_ITEMCOUNT=10
+
+  # use - for stdout
+  $ scrapy crawl movie -t json -o -&gt; movies.json
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-15">基类：Spider</h3>
+<p><strong> Sample1: 自动生成的basic spider (<code>scrapy genspider movie movie.douban.com</code>) </strong></p>
+<pre><code class="lang-python"># -*- coding: utf-8 -*-
+import scrapy
+
+class MovieSpider(scrapy.Spider):
+    name = &#39;movie&#39;
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    start_urls = [&#39;http://movie.douban.com/&#39;]
+
+    def parse(self, response):
+        pass
+</code></pre>
+<p><strong> Sample2: 使用<code>start_urls/start_requests()</code> &amp; <code>parse(response)</code> =&gt; <code>self.logger/log</code>, <code>yield Item,Request</code> </strong></p>
+<pre><code class="lang-python">class MySpider(scrapy.Spider):
+    name = &#39;example.com&#39;
+    allowed_domains = [&#39;example.com&#39;]
+    start_urls = [
+        &#39;http://www.example.com/1.html&#39;,
+        &#39;http://www.example.com/2.html&#39;,
+        &#39;http://www.example.com/3.html&#39;,
+    ]
+    #def start_requests(self):
+    #    yield scrapy.Request(&#39;http://www.example.com/1.html&#39;, self.parse)
+    #    yield scrapy.Request(&#39;http://www.example.com/2.html&#39;, self.parse)
+    #    yield scrapy.Request(&#39;http://www.example.com/3.html&#39;, self.parse)
+
+    def parse(self, response):
+        self.logger.info(&#39;A response from %s just arrived!&#39;, response.url)
+        # or self.log(&#39;....&#39;)
+
+        for h3 in response.xpath(&#39;//h3&#39;).getall():
+            yield {&quot;title&quot;: h3}
+
+        for href in response.xpath(&#39;//a/@href&#39;).getall():
+            yield scrapy.Request(response.urljoin(href), self.parse)
+</code></pre>
+<p><strong> Note：</strong></p>
+<ol>
+<li>属性：<ul>
+<li>name</li>
+<li>allowed_domains</li>
+<li>start_urls</li>
+<li>custom_settings</li>
+<li>crawler</li>
+<li>settings</li>
+<li>logger</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><strong>init</strong>(self, name=None, **kwargs)</li>
+<li>from_crawler(cls, crawler, <em>args, *</em>kwargs)</li>
+<li>start_requests(self)</li>
+<li>parse(self,response)</li>
+<li>log(self, message, level=logging.DEBUG, **kw])</li>
+<li>closed(self,reason)</li>
+</ul>
+</li>
+<li>Key:<ul>
+<li><code>name</code></li>
+<li><code>allowed_domains</code></li>
+<li><code>custom_settings</code></li>
+<li><code>start_urls=[]</code> / <code>start_requests(self)</code> =&gt; yield Request (Note: 这里产生的Request的dont_filter=True)</li>
+<li><code>parse(self,response)</code> =&gt; yield Item,yield Request</li>
+<li><code>closed(self,reason)</code> =&gt; Called when the spider closes(for the <code>spider_closed</code> signal)</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-16">子类：CrawlSpider</h3>
+<p><strong> Sample1：自动生成的crawl spider (<code>scrapy genspider -t crawl top250 movie.douban.com</code>) </strong></p>
+<pre><code class="lang-python"># -*- coding: utf-8 -*-
+import scrapy
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
+
+class Top250Spider(CrawlSpider):
+    name = &#39;top250&#39;
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    start_urls = [&#39;http://movie.douban.com/&#39;]
+
+    rules = (
+        Rule(LinkExtractor(allow=r&#39;Items/&#39;), callback=&#39;parse_item&#39;, follow=True),
+    )
+
+    def parse_item(self, response):
+        item = {}
+        #item[&#39;domain_id&#39;] = response.xpath(&#39;//input[@id=&quot;sid&quot;]/@value&#39;).get()
+        #item[&#39;name&#39;] = response.xpath(&#39;//div[@id=&quot;name&quot;]&#39;).get()
+        #item[&#39;description&#39;] = response.xpath(&#39;//div[@id=&quot;description&quot;]&#39;).get()
+        return item
+</code></pre>
+<p><strong> Sample2：<code>rules=(...)</code> &amp; self def callback <code>parse_item(self,response)</code> </strong> </p>
+<pre><code class="lang-python"># -*- coding: utf-8 -*-
+import scrapy
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import CrawlSpider, Rule
+
+from douban_demo.items import Top250Item
+
+class Top250Spider(CrawlSpider):
+    name = &#39;top250&#39;
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    start_urls = [&#39;https://movie.douban.com/top250&#39;]
+
+    rules = (
+        Rule(
+            LinkExtractor(allow=r&#39;\?start=\d+.*&#39;,restrict_xpaths=&#39;//div[@class=&quot;paginator&quot;]&#39;)
+            , callback=&#39;parse_item&#39;, follow=True),
+    )
+
+    def parse_item(self, response):
+        print(response.url)
+        records=response.xpath(&#39;//ol[@class=&quot;grid_view&quot;]//div[@class=&quot;item&quot;]/div[@class=&quot;info&quot;]&#39;)
+        for r in records:
+            item=Top250Item()
+            link=r.xpath(&#39;./div[@class=&quot;hd&quot;]/a/@href&#39;).get()
+            item[&#39;id&#39;]=link.split(&#39;/&#39;)[-2]
+            item[&#39;title&#39;]=r.xpath(&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39;).extract_first()
+            item[&#39;rate&#39;]=r.xpath(&#39;./div[@class=&quot;bd&quot;]/div[@class=&quot;star&quot;]/span[@class=&quot;rating_num&quot;]/text()&#39;).extract_first()
+            item[&#39;quote&#39;]=r.xpath(&#39;./div[@class=&quot;bd&quot;]/p[@class=&quot;quote&quot;]/span/text()&#39;).extract_first()
+            yield item
+</code></pre>
+<p><strong> Note: </strong></p>
+<ol>
+<li>属性：<ul>
+<li>rules=()<ul>
+<li><code>Rule(...)</code>: defines a certain behaviour for crawling the site (内部通过<code>request.meta</code>的<code>rule</code>传递)<ul>
+<li><code>link_extractor</code>: <code>scrapy.linkextractors.LinkExtractor</code> defines how links will be extracted from each crawled page</li>
+<li><code>callback=None</code>: callable,handle response =&gt; yield Item,yield Request</li>
+<li><code>cb_kwargs=None</code>: dict, passed args to the callback function</li>
+<li><code>follow=None</code>: True/False, if still extract the response with this rule (callback:None =&gt; default follow:True; els default follow:False)</li>
+<li><code>process_links=None</code>: callable,used for filtering extract links.</li>
+<li><code>process_request=None</code>: callable,used for filtering extract requests.</li>
+</ul>
+</li>
+<li><code>LinkExtractor(...)</code>: used for extracting links from response<ul>
+<li>allow=()</li>
+<li>deny=()</li>
+<li>allow_domains=()</li>
+<li>deny_domains=()</li>
+<li>deny_extensions=None</li>
+<li>restrict_xpaths=()</li>
+<li>restrict_css=()</li>
+<li>tags=(‘a’, ‘area’)</li>
+<li>attrs=(‘href’, )</li>
+<li>canonicalize=False</li>
+<li>unique=True</li>
+<li>process_value=None</li>
+<li>strip=True</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><code>parse_start_url(self, response)</code>： call for start_urls responses =&gt; yield <code>Item</code>/<code>Request</code></li>
+<li><code>process_results(self, response, results)</code>：call for parse_start_url results =&gt; yield <code>Item</code>/<code>Request</code></li>
+</ul>
+</li>
+<li>Key：<ul>
+<li><code>start_urls=[]</code> / <code>start_requests(self)</code> =&gt; yield Request</li>
+<li>for start requests responses: <code>parse_start_url(self,response)</code>,<code>process_results(self,respons,results)</code> =&gt; yield <code>Item</code>/<code>Request</code></li>
+<li>after start requests follow the rules: <code>rules=(Rule(LinkExtractor(...),callback=&#39;parse_item&#39;,follow=True),...)</code> =&gt; yield <code>Request</code></li>
+<li>def callback func(note:avoid using <code>parse</code> as callback): <code>parse_item(self,response)</code> =&gt; yield <code>Item</code>/<code>Request</code></li>
+</ul>
+</li>
+</ol>
+<p><strong> Sample: LinkExtractor </strong></p>
+<pre><code class="lang-python">$ scrapy shell https://movie.douban.com/top250/
+...
+&gt;&gt;&gt; from scrapy.linkextractors import LinkExtractor
+&gt;&gt;&gt; le=LinkExtractor(allow=r&#39;\?start=\d+.*&#39;,restrict_xpaths=&#39;//div[@class=&quot;paginator&quot;]&#39;)
+&gt;&gt;&gt; le.extract_links(response)
+[Link(url=&#39;https://movie.douban.com/top250?start=25&amp;filter=&#39;, text=&#39;2&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=50&amp;filter=&#39;, text=&#39;3&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=75&amp;filter=&#39;, text=&#39;4&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=100&amp;filter=&#39;, text=&#39;5&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=125&amp;filter=&#39;, text=&#39;6&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=150&amp;filter=&#39;, text=&#39;7&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=175&amp;filter=&#39;, text=&#39;8&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=200&amp;filter=&#39;, text=&#39;9&#39;, fragment=&#39;&#39;, nofollow=False), 
+Link(url=&#39;https://movie.douban.com/top250?start=225&amp;filter=&#39;, text=&#39;10&#39;, fragment=&#39;&#39;, nofollow=False)]
+&gt;&gt;&gt; le.allow_res
+[re.compile(&#39;\\?start=\\d+.*&#39;)]
+&gt;&gt;&gt; le.restrict_xpaths
+(&#39;//div[@class=&quot;paginator&quot;]&#39;,)
+</code></pre>
+<h3 id="header-17">子类：XMLFeedSpider</h3>
+<p><strong> Sample1：</strong></p>
+<pre><code class="lang-python">from scrapy.spiders import XMLFeedSpider
+from myproject.items import TestItem
+
+class MySpider(XMLFeedSpider):
+    name = &#39;example.com&#39;
+    allowed_domains = [&#39;example.com&#39;]
+    start_urls = [&#39;http://www.example.com/feed.xml&#39;]
+    iterator = &#39;iternodes&#39;  # This is actually unnecessary, since it&#39;s the default value
+    itertag = &#39;item&#39;        # change it accordingly
+
+    def parse_node(self, response, node):
+        self.logger.info(&#39;Hi, this is a &lt;%s&gt; node!: %s&#39;, self.itertag, &#39;&#39;.join(node.getall()))
+
+        item = TestItem()
+        item[&#39;id&#39;] = node.xpath(&#39;@id&#39;).get()
+        item[&#39;name&#39;] = node.xpath(&#39;name&#39;).get()
+        item[&#39;description&#39;] = node.xpath(&#39;description&#39;).get()
+        return item
+</code></pre>
+<p><strong> Sample2: 用xmlfeed爬取新浪博客的订阅信息(<code>scrapy genspider -crawl xmlfeed sinaRss sina.com.cn</code>) </strong></p>
+<pre><code class="lang-xml">&lt;rss xmlns:sns=&quot;http://blog.sina.com.cn/sns&quot; version=&quot;2.0&quot;&gt;
+    &lt;channel&gt;
+        &lt;title&gt;科幻星系&lt;/title&gt;
+        &lt;description/&gt;
+        &lt;link&gt;http://blog.sina.com.cn/sfw&lt;/link&gt;
+        &lt;item&gt;
+            &lt;title&gt;手机进化凶猛背后的“凄凉”电池何时才能飞奔起来？&lt;/title&gt;
+            &lt;link&gt;http://blog.sina.com.cn/s/blog_4a46c3960102zgcw.html&lt;/link&gt;
+            &lt;description&gt;...&lt;/description&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;title&gt;中国5G，如何避免重复投资？&lt;/title&gt;
+            &lt;link&gt;http://blog.sina.com.cn/s/blog_4a46c3960102zgcb.html&lt;/link&gt;
+            &lt;description&gt;...&lt;/description&gt;
+        &lt;/item&gt;
+        &lt;item&gt;
+            &lt;title&gt;与英特尔分道扬镳，苹果的5G业务掉队了吗？？&lt;/title&gt;
+            &lt;link&gt;http://blog.sina.com.cn/s/blog_4a46c3960102zgbj.html&lt;/link&gt;
+            &lt;description&gt;...&lt;/description&gt;
+        &lt;/item&gt;
+    &lt;/channel&gt;
+&lt;/rss&gt;
+</code></pre>
+<pre><code class="lang-python"># -*- coding: utf-8 -*-
+from scrapy.spiders import XMLFeedSpider
+
+class SinaRssSpider(XMLFeedSpider):
+    name = &#39;sinaRss&#39;
+    allowed_domains = [&#39;sina.com.cn&#39;]
+    start_urls = [&#39;http://blog.sina.com.cn/rss/1246151574.xml&#39;]
+    iterator = &#39;iternodes&#39; # This is actually unnecessary, since it&#39;s the default value
+    itertag = &#39;item&#39;       # change it accordingly
+
+    def parse_node(self, response, selector):
+        item = {}
+        item[&#39;title&#39;] = selector.xpath(&#39;title/text()&#39;).get()
+        item[&#39;link&#39;] = selector.xpath(&#39;link/text()&#39;).get()
+        return item
+</code></pre>
+<p>使用 <code>scrapy parse</code> 查看：</p>
+<pre><code class="lang-bash">$ scrapy parse --spider=sinaRss http://blog.sina.com.cn/rss/1246151574.xml
+...
+&gt;&gt;&gt; STATUS DEPTH LEVEL 1 &lt;&lt;&lt;
+# Scraped Items  ------------------------------------------------------------
+[{&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zgcw.html&#39;,
+  &#39;title&#39;: &#39;手机进化凶猛背后的“凄凉”电池何时才能飞奔起来？&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zgcb.html&#39;,
+  &#39;title&#39;: &#39;中国5G，如何避免重复投资？&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zgbj.html&#39;,
+  &#39;title&#39;: &#39;与英特尔分道扬镳，苹果的5G业务掉队了吗？&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zga4.html&#39;,
+  &#39;title&#39;: &#39;为什么越来越多的知名品牌热衷打造快闪店？&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zg9a.html&#39;,
+  &#39;title&#39;: &#39;电商专供还是电商专坑,背后的这些猫腻你知道多少?&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zg8n.html&#39;,
+  &#39;title&#39;: &#39;八年坎坷崎岖路：安卓平板为何终究是扶不起的“阿斗”&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zg87.html&#39;,
+  &#39;title&#39;: &#39;火爆的直播能让电视购物焕发第二春吗？&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zg7f.html&#39;,
+  &#39;title&#39;: &#39;各大厂商发力5G新机，未来全球手机市场或将呈现新格局&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zg6r.html&#39;,
+  &#39;title&#39;: &#39;研发2nm芯片，台积电如何做到天下第一？&#39;},
+ {&#39;link&#39;: &#39;http://blog.sina.com.cn/s/blog_4a46c3960102zg6j.html&#39;,
+  &#39;title&#39;: &#39;芬兰采购中国无人机，值得骄傲吗？&#39;}]
+
+# Requests  -----------------------------------------------------------------
+[]
+</code></pre>
+<p><strong> Note: </strong></p>
+<ol>
+<li>属性：<ul>
+<li><code>iterator = &#39;iternodes&#39;</code><ul>
+<li>‘iternodes’(default): a fast iterator based on regular expressions </li>
+<li>‘html’: an iterator which uses Selector (load all DOM in memory)</li>
+<li>‘xml’: an iterator which uses Selector (load all DOM in memory)</li>
+</ul>
+</li>
+<li><code>itertag = &#39;item&#39;</code>: the name of the node (or element) to iterate in</li>
+<li><code>namespaces = ()</code>: A list of <code>(prefix, uri)</code> tuples</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><code>parse(self, response)</code><ul>
+<li>call <code>adapt_response(self, response)</code>: return <code>response</code></li>
+<li>call <code>parse_nodes(self, response, nodes)</code> =&gt; yield <code>Item</code>/<code>Request</code><ul>
+<li>call <code>parse_node(self, response, selector)</code>: return <code>Item</code>/<code>Request</code></li>
+<li>call <code>process_results(self, response, results)</code>: filter <code>Item</code>/<code>Request</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Key:<ul>
+<li>pre: <code>adapt_response(self, response)</code></li>
+<li>process item: <code>parse_node(self, response, selector)</code></li>
+<li>post: <code>process_results(self, response, results)</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-18">子类：CSVFeedSpider</h3>
+<p><strong> Sample：</strong></p>
+<pre><code class="lang-python">from scrapy.spiders import CSVFeedSpider
+from myproject.items import TestItem
+
+class MySpider(CSVFeedSpider):
+    name = &#39;example.com&#39;
+    allowed_domains = [&#39;example.com&#39;]
+    start_urls = [&#39;http://www.example.com/feed.csv&#39;]
+    delimiter = &#39;;&#39;
+    quotechar = &quot;&#39;&quot;
+    headers = [&#39;id&#39;, &#39;name&#39;, &#39;description&#39;]
+
+    def parse_row(self, response, row):
+        self.logger.info(&#39;Hi, this is a row!: %r&#39;, row)
+
+        item = TestItem()
+        item[&#39;id&#39;] = row[&#39;id&#39;]
+        item[&#39;name&#39;] = row[&#39;name&#39;]
+        item[&#39;description&#39;] = row[&#39;description&#39;]
+        return item
+</code></pre>
+<p><strong> Note: </strong></p>
+<ol>
+<li>属性：<ul>
+<li><code>delimiter</code>: separator character for each field, default is <code>,</code></li>
+<li><code>quotechar</code>: enclosure character for each field,default is <code>&quot;</code></li>
+<li><code>headers</code>: A list of the column names in the CSV file</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><code>parse(self, response)</code><ul>
+<li>call <code>adapt_response(self, response)</code>: return <code>response</code></li>
+<li>call <code>parse_rows(self, response)</code> =&gt; yield <code>Item</code>/<code>Request</code><ul>
+<li>call <code>parse_row(self, response, row)</code>: return <code>Item</code>/<code>Request</code></li>
+<li>call <code>process_results(self, response, results)</code>: filter <code>Item</code>/<code>Request</code>   </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Key：<ul>
+<li>pre: <code>adapt_response(self, response)</code></li>
+<li>process item: <code>parse_node(self, response, row)</code></li>
+<li>post: <code>process_results(self, response, results)</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-19">子类：SitemapSpider</h3>
+<p><strong> Sample1：</strong></p>
+<pre><code class="lang-python">from scrapy.spiders import SitemapSpider
+
+class MySpider(SitemapSpider):
+    sitemap_urls = [&#39;http://www.example.com/robots.txt&#39;]
+    sitemap_rules = [
+        (&#39;/shop/&#39;, &#39;parse_shop&#39;),
+    ]
+    sitemap_follow = [&#39;/sitemap_shops&#39;]
+
+
+    def sitemap_filter(self, entries):
+        for entry in entries:
+            date_time = datetime.strptime(entry[&#39;lastmod&#39;], &#39;%Y-%m-%d&#39;)
+            if date_time.year &gt;= 2005:
+                yield entry
+
+    def parse_shop(self, response):
+        pass # ... scrape shop here ...
+</code></pre>
+<p><strong> Sample2: 马蜂窝 sitemapindex </strong></p>
+<ol>
+<li><p>View <code>http://www.mafengwo.cn/sitemapIndex.xml</code>:</p>
+<pre><code class="lang-xml"> &lt;sitemapindex xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+     &lt;sitemap&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/article-0.xml&lt;/loc&gt;
+         &lt;lastmod&gt;2019-03-15&lt;/lastmod&gt;
+     &lt;/sitemap&gt;
+     &lt;sitemap&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/article-1.xml&lt;/loc&gt;
+         &lt;lastmod&gt;2019-03-15&lt;/lastmod&gt;
+     &lt;/sitemap&gt;
+     &lt;sitemap&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/article-2.xml&lt;/loc&gt;
+         &lt;lastmod&gt;2019-03-15&lt;/lastmod&gt;
+     &lt;/sitemap&gt;
+     &lt;sitemap&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/articleList-0.xml&lt;/loc&gt;
+         &lt;lastmod&gt;2019-03-15&lt;/lastmod&gt;
+     &lt;/sitemap&gt;
+     &lt;sitemap&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/shop-0.xml&lt;/loc&gt;
+         &lt;lastmod&gt;2019-03-15&lt;/lastmod&gt;
+     &lt;/sitemap&gt;
+ &lt;/sitemapindex&gt;
+</code></pre>
+</li>
+<li><p>View <code>http://www.mafengwo.cn/shop-0.xml</code>:</p>
+<pre><code class="lang-xml"> &lt;urlset xmlns=&quot;http://www.sitemaps.org/schemas/sitemap/0.9&quot;&gt;
+     &lt;url&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/v100029&lt;/loc&gt;
+         &lt;lastmod&gt;2019-07-03 02:51:02&lt;/lastmod&gt;
+         &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+         &lt;priority&gt;0.7&lt;/priority&gt;
+     &lt;/url&gt;
+     &lt;url&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/v100027&lt;/loc&gt;
+         &lt;lastmod&gt;2019-07-03 02:51:02&lt;/lastmod&gt;
+         &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+         &lt;priority&gt;0.7&lt;/priority&gt;
+     &lt;/url&gt;
+     &lt;url&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/shop/mdd.php?mddid=10186&lt;/loc&gt;
+         &lt;lastmod&gt;2019-07-03 02:51:02&lt;/lastmod&gt;
+         &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+         &lt;priority&gt;0.7&lt;/priority&gt;
+     &lt;/url&gt;
+     &lt;url&gt;
+         &lt;loc&gt;http://www.mafengwo.cn/shop/mdd.php?mddid=10030&lt;/loc&gt;
+         &lt;lastmod&gt;2019-07-03 02:51:02&lt;/lastmod&gt;
+         &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+         &lt;priority&gt;0.7&lt;/priority&gt;
+     &lt;/url&gt;
+ &lt;/urlset&gt;
+</code></pre>
+</li>
+<li><p>Create Spider: <code>scrapy genspider siteUpdate mafengwo.cn</code></p>
+<pre><code class="lang-python"> # -*- coding: utf-8 -*-
+ from scrapy.spiders import SitemapSpider
+
+ class SiteUpdateSpider(SitemapSpider):
+     name = &#39;siteUpdate&#39;
+     allowed_domains = [&#39;mafengwo.cn&#39;]
+
+     sitemap_urls=[&#39;http://www.mafengwo.cn/sitemapIndex.xml&#39;]
+     sitemap_rules=[
+         (r&#39;/v\d+&#39;,&#39;parse_shop&#39;)         # for parse web page(eg:html)
+     ]
+     sitemap_follow=[r&#39;/shop-\d+.xml&#39;]   # for scrapy deep sitemap loc
+
+     def sitemap_filter(self, entries):
+          for entry in entries:
+              # 1. entry: sitemap object(
+              # &lt;sitemap&gt;
+              #  &lt;loc&gt;http://www.mafengwo.cn/shop-0.xml&lt;/loc&gt;
+              #  &lt;lastmod&gt;2019-07-03&lt;/lastmod&gt;
+              # &lt;/sitemap&gt;
+              # )
+              # 2. entry: url object(
+              # &lt;url&gt;
+              #  &lt;loc&gt;http://www.mafengwo.cn/v100292&lt;/loc&gt;
+              #  &lt;lastmod&gt;2019-07-03 02:51:02&lt;/lastmod&gt;
+              #  &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+              #  &lt;priority&gt;0.7&lt;/priority&gt;
+              # &lt;/url&gt;
+              # )
+              if entry[&#39;loc&#39;].find(&#39;.xml&#39;)!=-1 or entry[&#39;loc&#39;].find(&#39;mddid&#39;)==-1:
+                  # print(&quot;entry&quot;, entry)
+                  yield entry
+
+     def parse_shop(self,response):
+         # get response from detail web url page(not sitemap loc)
+         # eg: http://www.mafengwo.cn/v100292  (html)
+         if response.status==200:
+             item={}
+             item[&#39;title&#39;]=response.css(&#39;.t1&#39;).xpath(&#39;string(.)&#39;).get()
+             # 使用split()去除`\xa0`，即`&amp;nbsp`（编码原因变成了`\xa0`字符，`strip()`和`replace()`均无法有效去除该字符）
+             intro=&quot;&quot;.join(response.css(&#39;.address p&#39;).xpath(&#39;string(.)&#39;).getall()).split()
+             item[&#39;introduce&#39;]=&quot; &quot;.join(intro)
+             return item
+</code></pre>
+</li>
+<li><p>execute <code>scrapy crawl siteUpdate -o mafengwo.jl -s FEED_EXPORT_ENCODING=utf-8</code></p>
+</li>
+</ol>
+<p><strong> Note: </strong></p>
+<ol>
+<li>属性：<ul>
+<li><code>sitemap_urls = ()</code>: 可以指向robots.txt（会从中提取Sitemap网址）／sitemap网址</li>
+<li><code>sitemap_rules = [(&#39;&#39;, &#39;parse&#39;)]</code>： A list of tuples <code>(regex, callback)</code>，regex用来匹配Sitemap中列出的网址</li>
+<li><code>sitemap_follow = [&#39;&#39;]</code>：适用于SitemapIndex文件，符合这里设置的regex的sitemap会深入抓取（默认<code>&#39;&#39;</code>，即都会）</li>
+<li><code>sitemap_alternate_links = False</code>：是否url使用列出的备用链接</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><code>start_requests(self)</code>: or use <code>sitemap_urls</code><ul>
+<li><code>sitemap_filter(self,entries)</code>: entries get from the response body</li>
+<li>if <code>sitemapindex</code> &amp; match <code>site_follow</code>: yield <code>Request</code> for <code>sitemap</code></li>
+<li>if <code>urlset</code> &amp; match <code>site_rules</code>: yield <code>Request</code> for web page =&gt; callback func: <code>parse</code> =&gt; yield <code>Item</code>/<code>Request</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-20">Item</h2>
+<ul>
+<li>属性：<ul>
+<li>fields={}</li>
+</ul>
+</li>
+<li>方法：<ul>
+<li>copy(item)</li>
+<li>keys()</li>
+<li>values()</li>
+<li>items()</li>
+<li>pop(key)</li>
+<li>clear()</li>
+<li>get(key,default)</li>
+<li>setdefault(key,default)</li>
+<li>update(…)</li>
+<li>popitem(…)</li>
+</ul>
+</li>
+</ul>
+<p><strong> Sample: </strong></p>
+<ol>
+<li><p>自定义一个Item类：</p>
+<pre><code class="lang-python"> import scrapy
+
+ class Product(scrapy.Item):
+     # `class Field(dict)`,即dict的一个封装容器
+     name = scrapy.Field()
+     price = scrapy.Field()
+     stock = scrapy.Field()
+     last_updated = scrapy.Field(serializer=str)
+</code></pre>
+</li>
+<li><p>常用方法：</p>
+<pre><code class="lang-python"> # 1. Create item
+ &gt;&gt;&gt; product = Product({&#39;name&#39;: &#39;Laptop PC&#39;, &#39;price&#39;: 1500}) # Product(name=&#39;Laptop PC&#39;, price=1500)
+ &gt;&gt;&gt; product = Product({&#39;name&#39;: &#39;Laptop PC&#39;, &#39;lala&#39;: 1500}) # KeyError: &#39;Product does not support field: lala&#39;
+ &gt;&gt;&gt; product = Product(name=&#39;Desktop PC&#39;, price=1000) # Product(name=&#39;Desktop PC&#39;, price=1000)
+
+ # Create Item from Item
+ &gt;&gt;&gt; product2 = Product(product)     # Product(name=&#39;Desktop PC&#39;, price=1000)
+ &gt;&gt;&gt; product3 = product2.copy()      # Product(name=&#39;Desktop PC&#39;, price=1000)
+
+ # Creating dicts from items
+ &gt;&gt;&gt; dict(product)                   # create a dict from all populated values
+ {&#39;price&#39;: 1000, &#39;name&#39;: &#39;Desktop PC&#39;}
+
+ # 2. Get field values
+ &gt;&gt;&gt; product[&#39;name&#39;]
+ Desktop PC
+ &gt;&gt;&gt; product.get(&#39;name&#39;)
+ Desktop PC
+
+ &gt;&gt;&gt; product[&#39;last_updated&#39;]
+ Traceback (most recent call last):
+     ...
+ KeyError: &#39;last_updated&#39;
+ &gt;&gt;&gt; product.get(&#39;last_updated&#39;, &#39;not set&#39;)
+ not set
+
+ # 3. Set field value
+ &gt;&gt;&gt; product[&#39;name&#39;] = &#39;IPad&#39;
+ &gt;&gt;&gt; product[&#39;name&#39;]
+ IPad
+ &gt;&gt;&gt; product[&#39;lala&#39;] = &#39;test&#39; # setting unknown field
+ Traceback (most recent call last):
+     ...
+ KeyError: &#39;Product does not support field: lala&#39;
+
+ # 4. Access all populated values
+ &gt;&gt;&gt; product.keys()
+ [&#39;price&#39;, &#39;name&#39;]
+ &gt;&gt;&gt; product.values()
+ [&quot;1000&quot;,&quot;IPad&quot;]
+ &gt;&gt;&gt; product.items()
+ [(&#39;price&#39;, 1000), (&#39;name&#39;, &#39;IPad&#39;)]
+
+ # 5. Check if has value
+ &gt;&gt;&gt; &#39;name&#39; in product  # is name field populated?
+ True
+ &gt;&gt;&gt; &#39;last_updated&#39; in product  # is last_updated populated?
+ False
+
+ # 6. Check if has field
+ &gt;&gt;&gt; &#39;last_updated&#39; in product.fields  # is last_updated a declared field?
+ True
+ &gt;&gt;&gt; &#39;lala&#39; in product.fields  # is lala a declared field?
+ False
+</code></pre>
+</li>
+</ol>
+<h3 id="header-21">ItemLoader</h3>
+<p>Refer <a href="http://doc.scrapy.org/en/latest/topics/loaders.html" target="_blank" rel="noopener">Item Loaders</a></p>
+<p>方便对数据进行格式化，填充Item（字段赋值）<br>（Item提供保存抓取到数据的容器，Itemloader提供的是填充容器的机制）</p>
+<p><strong> Sample1: </strong></p>
+<ol>
+<li><p>Item：</p>
+<pre><code class="lang-python"> class MovieItem(scrapy.Item):
+     id = scrapy.Field()
+     title = scrapy.Field()
+     rate = scrapy.Field()
+     url = scrapy.Field()
+     cover = scrapy.Field()
+     playable = scrapy.Field()
+     crawl_date = scrapy.Field()
+</code></pre>
+</li>
+<li><p>Spider parse：</p>
+<pre><code class="lang-python"> # -*- coding: utf-8 -*-
+ import scrapy
+ from douban.items import MovieItem
+ from scrapy.loader import ItemLoader
+ from scrapy.loader.processors import TakeFirst, MapCompose, Join
+ import datetime
+
+ class HotMovieSpider(scrapy.Spider):
+     name = &#39;hotMovie&#39;
+     allowed_domains = [&#39;movie.douban.com&#39;]
+     start_urls = [&#39;http://movie.douban.com/&#39;]
+
+     def parse(self, response):
+         # loader=ItemLoader(item=MovieItem(),response=response)
+         movieSelectors = response.xpath(&quot;//*[@id=&#39;screening&#39;]//li[@data-title]&quot;)
+         for s in movieSelectors:
+             loader = ItemLoader(item=MovieItem(), selector=s)
+             loader.add_css(&#39;title&#39;, &#39;::attr(data-title)&#39;, TakeFirst(), MapCompose(str.strip))
+             loader.add_xpath(&#39;rate&#39;, &#39;./@data-rate&#39;, TakeFirst())
+             loader.add_xpath(&#39;url&#39;, &quot;.//li[@class=&#39;poster&#39;]/a/@href&quot;, TakeFirst())
+             loader.add_xpath(&#39;cover&#39;, &quot;.//li[@class=&#39;poster&#39;]//img/@src&quot;, TakeFirst())
+             loader.add_css(&#39;id&#39;, &quot;::attr(data-trailer)&quot;, TakeFirst(), re=r&#39;\d+&#39;)
+             loader.add_value(&#39;crawl_date&#39;, datetime.datetime.now())
+             yield loader.load_item()
+</code></pre>
+</li>
+<li><p>excute <code>scrapy crawl hotMovie -o movie.jl</code>, yield item sample:</p>
+<pre><code class="lang-bash"> # 注：提取数据时不管使用何种processors，都是列表形式填充到Item
+ {
+     &quot;title&quot;: [&quot;蜘蛛侠：英雄远征 Spider-Man: Far From Home&quot;], 
+     &quot;rate&quot;: [&quot;8.0&quot;], 
+     &quot;url&quot;: [&quot;https://movie.douban.com/subject/26931786/?from=showing&quot;], 
+     &quot;cover&quot;: [&quot;https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2558293106.jpg&quot;], 
+     &quot;id&quot;: [&quot;26931786&quot;],
+     &quot;crawl_date&quot;: [&quot;2019-06-30 11:43:19&quot;]
+ }
+</code></pre>
+</li>
+<li><p>字段值去除列表形式，eg:</p>
+<pre><code class="lang-bash"> # 注：提取数据时不管使用何种processors，都是列表形式填充到Item
+ {
+     &quot;title&quot;: &quot;蜘蛛侠：英雄远征 Spider-Man: Far From Home&quot;, 
+     &quot;rate&quot;: &quot;8.0&quot;], 
+     &quot;url&quot;: &quot;https://movie.douban.com/subject/26931786/?from=showing&quot;, 
+     &quot;cover&quot;: &quot;https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2558293106.jpg&quot;, 
+     &quot;id&quot;: &quot;26931786&quot;,
+     &quot;crawl_date&quot;: &quot;2019-06-30 11:43:19&quot;
+ }
+</code></pre>
+<ul>
+<li><p>方式一：修改<code>ItemLoader</code>的<code>default_output_processor</code>为<code>Join()</code>(或其他处理List的processor)</p>
+<pre><code class="lang-python">  def parse(self,response):
+      # ...
+
+      # loader.add_value(&#39;crawl_date&#39;, datetime.datetime.now())
+      loader.add_value(&#39;crawl_date&#39;, str(datetime.datetime.now()))  # Join() only used for str List
+
+      loader.default_output_processor = Join()  # add for convert field value List to String
+      yield loader.load_item()
+</code></pre>
+</li>
+<li>方式二：配置<code>Item</code>的<code>Field(output_processor=xxxx)</code> (优先级高于ItemLoader中的default)<pre><code class="lang-python">  from scrapy.loader.processors import Join
+  class MovieItem(scrapy.Item):
+      # ...
+      title = scrapy.Field(output_processor=Join())
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong> Note: </strong></p>
+<ul>
+<li>属性：<ul>
+<li><code>item</code></li>
+<li><code>selector</code></li>
+<li><code>context</code></li>
+<li><code>parent</code></li>
+<li><code>default_item_class = Item</code></li>
+<li><code>default_input_processor = Identity()</code></li>
+<li><code>default_output_processor = Identity()</code></li>
+<li><code>default_selector_class = Selector</code></li>
+</ul>
+</li>
+<li>方法：<ul>
+<li><code>__init__(self, item=None, selector=None, response=None, parent=None, **context)</code></li>
+<li><code>add_value/replace_value(field_name,value,*processors,**kw)</code>, <code>get_value(value, *processors, **kw)</code></li>
+<li><code>add_xpath/replace_xpath(field_name, xpath, *processors, **kw)</code>, <code>get_xpath(xpath, *processors, **kw)</code></li>
+<li><code>add_css/replace_css(field_name, css, *processors, **kw)</code>, <code>get_css(css, *processors, **kw)</code></li>
+<li><code>nested_xpath(xpath,**context)</code>, <code>nested_css(css,**context)</code> </li>
+<li><code>get_input_processor/get_output_processor(field_name)</code></li>
+<li><code>get_output_value/get_collected_values(field_name)</code></li>
+<li><code>load_item()</code></li>
+</ul>
+</li>
+<li><p>processors:</p>
+<ul>
+<li>内置的processor<ul>
+<li><code>Identity</code>: 不进行任何处理，直接返回原来的数据</li>
+<li><code>TakeFirst</code>: 返回第一个非空值</li>
+<li><code>Join</code>: 返回用分隔符连接后的值（默认是使用空格连接）</li>
+<li><code>Compose</code>： 返回多个函数组合处理后的数据（默认遇到None值时停止处理，可传入<code>stop_on_none = False</code>修改）</li>
+<li><code>MapCompose</code>：与<code>Compose</code>类似，只是输入值是被迭代的处理传入各个函数</li>
+<li><code>SelectJmes</code>：使用jsonpath,返回json对象某个field值（Requires <code>jmespath</code>） </li>
+</ul>
+</li>
+<li>可直接使用内置的processors，也可使用自定义</li>
+<li><p>在<code>Compose／MapCompose</code>中的函数也可使用lambda表达式，更简便</p>
+<pre><code class="lang-python">  &gt;&gt;&gt; from scrapy.loader.processors import MapCompose
+  &gt;&gt;&gt; def filter_world(x):
+  ...     return None if x == &#39;world&#39; else x
+  &gt;&gt;&gt; proc = MapCompose(filter_world, str.upper)
+  &gt;&gt;&gt; proc([&#39;hello&#39;, &#39;world&#39;, &#39;this&#39;, &#39;is&#39;, &#39;scrapy&#39;])
+  &gt;&gt;&gt; [&#39;HELLO&#39;, &#39;THIS&#39;, &#39;IS&#39;, &#39;SCRAPY&#39;]
+
+  &gt;&gt;&gt; proc2 = MapCompose(lambda i : i.replace(&#39;=&#39;,&#39;:&#39;),str.strip)
+  &gt;&gt;&gt; proc2([&#39;a=1&#39;,&#39; b = Tom &#39;,&#39;c:OK&#39;])
+  [&#39;a:1&#39;, &#39;b : Tom&#39;, &#39;c:OK&#39;]
+</code></pre>
+</li>
+<li>使用：<ul>
+<li>ItemLoader <code>add/replace/get_value/xpath/css(...)</code>提取数据时传入</li>
+<li>ItemLoader <code>default_input/output_processor</code>配置</li>
+<li>Item Field <code>input/output_processor</code>配置      </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>步骤：    <ul>
+<li><code>add_value/add_xpath/add_css(...)</code>提取数据<ul>
+<li>可传入processors处理提取的数据</li>
+<li>可传入参数<code>re=&#39;regex&#39;</code>正则表达式来过滤匹配值</li>
+<li>默认提取的数据，填充进去的对象都是List类型(即每个字段存储的都是List类型)</li>
+</ul>
+</li>
+<li>=&gt; <code>input_processor</code> &amp; <code>output_processor</code>数据预处理（填充到Item的Field前的处理）<ul>
+<li>优先使用Item对象的Field字段配置的<code>input/output_processor</code>，未配置则使用ItemLoader中的<code>default_input／output_processor</code></li>
+<li>Item Loader中的<code>default_input／output_processor</code>默认都是<code>Identity</code>，即维持原样，不处理</li>
+</ul>
+</li>
+<li>=&gt; <code>load_item()</code>填充到Item对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-22">Middleware</h2>
+<ol>
+<li><p><code>MiddlewareManager</code>:</p>
+<ul>
+<li>方法：<ul>
+<li>from_settings(cls, settings, crawler=None)</li>
+<li>from_crawler(cls, crawler)</li>
+<li>open_spider(self, spider)</li>
+<li>close_spider(self, spider)</li>
+</ul>
+</li>
+<li>子类：<ul>
+<li><code>ItemPipelineManager</code>: item pipeline<ul>
+<li>process_item(self, item, spider)</li>
+</ul>
+</li>
+<li><code>SpiderMiddlewareManager</code>: spider middleware<ul>
+<li>scrape_response(self, scrape_func, response, request, spider)<ul>
+<li>process_spider_input(response)</li>
+<li>process_spider_exception(_failure)</li>
+<li>process_spider_output(result)</li>
+</ul>
+</li>
+<li>process_start_requests(self, start_requests, spider)</li>
+</ul>
+</li>
+<li><code>DownloaderMiddlewareManager</code>: downloader middleware<ul>
+<li>download(self, download_func, request, spider)<ul>
+<li>process_request(request)</li>
+<li>process_response(response)</li>
+<li>process_exception(_failure)</li>
+<li>Note: @defer.inlineCallbacks</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>ExtensionManager</code>: extension</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Project Middleware:</p>
+<ul>
+<li>ItemPipeline: <code>pipelines.py</code><ul>
+<li><code>open_spider(self, spider)</code></li>
+<li><code>process_item(self, item, spider)</code></li>
+<li><code>close_spider(self, spider)</code></li>
+</ul>
+</li>
+<li>SpiderMiddleware: <code>middleware.py</code><ul>
+<li><code>spider_opened(self, spider)</code></li>
+<li><code>process_start_requests(self, start_requests, spider)</code><ul>
+<li>yied Request (no items)</li>
+</ul>
+</li>
+<li><code>process_spider_input(self, response, spider)</code><ul>
+<li>return None</li>
+<li>or raise Exception</li>
+</ul>
+</li>
+<li><code>process_spider_output(self, response, result, spider)</code><ul>
+<li>yield Request/Item</li>
+</ul>
+</li>
+<li><code>process_spider_exception(self, response, exception, spider)</code></li>
+</ul>
+</li>
+<li>DownloaderMiddleware: <code>middleware.py</code>    <ul>
+<li>spider_opened(self, spider)</li>
+<li>process_request(self, request, spider): <ul>
+<li>return None(continue processing)/Response/Request</li>
+<li>or raise IgnoreRequest =&gt; call downloader middleware <code>process_exception()</code></li>
+</ul>
+</li>
+<li>process_response(self, request, response, spider)<ul>
+<li>return Response/Request</li>
+<li>or raise IgnoreRequest</li>
+</ul>
+</li>
+<li>process_exception(self, request, exception, spider)<ul>
+<li>return None/Response/Request</li>
+<li>Note: return None will continue processing this exception, return Response/Request stops process_exception() chain</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>scrapy/settings/default_settings.py</code>:</p>
+<pre><code class="lang-python"> ITEM_PIPELINES_BASE = {}
+
+ SPIDER_MIDDLEWARES_BASE = {
+     # Engine side
+     &#39;scrapy.spidermiddlewares.httperror.HttpErrorMiddleware&#39;: 50,
+     &#39;scrapy.spidermiddlewares.offsite.OffsiteMiddleware&#39;: 500,
+     &#39;scrapy.spidermiddlewares.referer.RefererMiddleware&#39;: 700,
+     &#39;scrapy.spidermiddlewares.urllength.UrlLengthMiddleware&#39;: 800,
+     &#39;scrapy.spidermiddlewares.depth.DepthMiddleware&#39;: 900,
+     # Spider side
+ }
+
+ DOWNLOADER_MIDDLEWARES_BASE = {
+     # Engine side
+     &#39;scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware&#39;: 100,
+     &#39;scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware&#39;: 300,
+     &#39;scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware&#39;: 350,
+     &#39;scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware&#39;: 400,
+     &#39;scrapy.downloadermiddlewares.useragent.UserAgentMiddleware&#39;: 500,
+     &#39;scrapy.downloadermiddlewares.retry.RetryMiddleware&#39;: 550,
+     &#39;scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware&#39;: 560,
+     &#39;scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware&#39;: 580,
+     &#39;scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware&#39;: 590,
+     &#39;scrapy.downloadermiddlewares.redirect.RedirectMiddleware&#39;: 600,
+     &#39;scrapy.downloadermiddlewares.cookies.CookiesMiddleware&#39;: 700,
+     &#39;scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware&#39;: 750,
+     &#39;scrapy.downloadermiddlewares.stats.DownloaderStats&#39;: 850,
+     &#39;scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware&#39;: 900,
+     # Downloader side
+ }
+
+ EXTENSIONS_BASE = {
+     &#39;scrapy.extensions.corestats.CoreStats&#39;: 0,
+     &#39;scrapy.extensions.telnet.TelnetConsole&#39;: 0,
+     &#39;scrapy.extensions.memusage.MemoryUsage&#39;: 0,
+     &#39;scrapy.extensions.memdebug.MemoryDebugger&#39;: 0,
+     &#39;scrapy.extensions.closespider.CloseSpider&#39;: 0,
+     &#39;scrapy.extensions.feedexport.FeedExporter&#39;: 0,
+     &#39;scrapy.extensions.logstats.LogStats&#39;: 0,
+     &#39;scrapy.extensions.spiderstate.SpiderState&#39;: 0,
+     &#39;scrapy.extensions.throttle.AutoThrottle&#39;: 0,
+ }
+</code></pre>
+</li>
+<li><p>project <code>settings.py</code>：</p>
+<pre><code class="lang-python"> ITEM_PIPELINES = {
+     #&#39;douban.pipelines.DoubanPipeline&#39;: 300,
+ }
+
+ SPIDER_MIDDLEWARES = {
+     #&#39;douban.middlewares.DoubanSpiderMiddleware&#39;: 543,
+ }
+
+ DOWNLOADER_MIDDLEWARES = {
+     #&#39;douban.middlewares.DoubanDownloaderMiddleware&#39;: 543,
+ }
+
+ EXTENSIONS = {
+     #&#39;scrapy.extensions.telnet.TelnetConsole&#39;: None,
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-23">Item Pipeline</h3>
+<ul>
+<li>project下pipeline.py文件</li>
+<li>不需要继承特定的基类，只需要实现特定的方法：<ul>
+<li><code>open_spider</code>:爬虫运行前执行的操作</li>
+<li><code>process_item</code>：爬虫获取到的每项item数据的处理方法</li>
+<li><code>close_spider</code>:爬虫运行结束时执行的操作</li>
+<li><code>from_crawler</code>：pipeline类方法，是创建item pipeline的回调方法，通常该方法用于读取setting中的配置参数</li>
+<li>注：其中<code>process_item</code>必须实现</li>
+</ul>
+</li>
+</ul>
+<p><strong> Sample: </strong></p>
+<ol>
+<li><p>Duplicates filter</p>
+<pre><code class="lang-python"> from scrapy.exceptions import DropItem
+
+ class DuplicatesPipeline(object):
+     def __init__(self):
+         self.ids_seen = set()
+     def process_item(self, item, spider):
+         if item[&#39;id&#39;] in self.ids_seen:
+             raise DropItem(&quot;Duplicate item found: %s&quot; % item)
+         else:
+             self.ids_seen.add(item[&#39;id&#39;])
+             return item
+</code></pre>
+</li>
+<li><p>Take screenshot of item</p>
+<pre><code class="lang-python"> # 从方法返回Deferred process_item()
+ # Pipeline请求本地运行的Splash实例，获取项目网址的屏幕截图
+ # 在Deferred回调函数中保存截图，yield Item
+
+ import scrapy
+ import hashlib
+ from urllib.parse import quote
+
+ class ScreenshotPipeline(object):
+     &quot;&quot;&quot;Pipeline that uses Splash to render screenshot of
+     every Scrapy item.&quot;&quot;&quot;
+
+     SPLASH_URL = &quot;http://localhost:8050/render.png?url={}&quot;
+
+     def process_item(self, item, spider):
+         encoded_item_url = quote(item[&quot;url&quot;])
+         screenshot_url = self.SPLASH_URL.format(encoded_item_url)
+         request = scrapy.Request(screenshot_url)
+         dfd = spider.crawler.engine.download(request, spider)
+         dfd.addBoth(self.return_item, item)
+         return dfd
+
+     def return_item(self, response, item):
+         if response.status != 200:
+             # Error happened, return item.
+             return item
+
+         # Save screenshot to file, filename will be hash of url.
+         url = item[&quot;url&quot;]
+         url_hash = hashlib.md5(url.encode(&quot;utf8&quot;)).hexdigest()
+         filename = &quot;{}.png&quot;.format(url_hash)
+         with open(filename, &quot;wb&quot;) as f:
+             f.write(response.body)
+
+         # Store filename in item.
+         item[&quot;screenshot_filename&quot;] = filename
+         return item
+</code></pre>
+</li>
+<li><p>Write items to file</p>
+<pre><code class="lang-python"> class ItemFilePipeline(object):
+     def __init__(self):
+         self.filepath=settings[&#39;ITEM_STORE&#39;]
+
+     def open_spider(self,spider):
+         filename=os.path.join(self.filepath,spider.name+&#39;.json&#39;)
+         self.file=open(filename,&#39;w&#39;,encoding=&#39;utf-8&#39;)
+         self.file.write(&#39;[\n&#39;)
+
+     def process_item(self,item,spider):
+         #print(item)
+         record=json.dumps(dict(item),ensure_ascii=False)
+         #print(record)
+         self.file.write(record+&quot;,\n&quot;)
+         return item
+
+     def close_spider(self,spider):
+         self.file.write(&#39;]\n&#39;)
+         self.file.close()
+</code></pre>
+</li>
+<li><p>Write items to MongoDB</p>
+<pre><code class="lang-python"> class MongoPipeline(object):
+     def __init__(self):
+         self.mongo_uri=settings[&#39;MONGO_CONN_STR&#39;]
+         self.mongo_db=settings.get(&#39;MONGO_DB&#39;,&#39;scrapy&#39;)
+
+     def process_item(self, item, spider):
+         record=dict(item)
+         record[&#39;_id&#39;]=record[&#39;id&#39;]
+         record.pop(&#39;id&#39;)
+         result=self.db[spider.name].update_one({&#39;_id&#39;:record[&#39;_id&#39;]},{&#39;$set&#39;:record},upsert=True)
+         # print(result.raw_result)
+         return item
+
+     def open_spider(self,spider):
+         self.client = pymongo.MongoClient(self.mongo_uri)
+         self.db = self.client[self.mongo_db]
+         #print(self.client.list_database_names())
+         #print(self.db.list_collection_names())
+
+     def close_spider(self,spider):
+         self.client.close()
+</code></pre>
+</li>
+</ol>
+<h3 id="header-24">Media Pipeline</h3>
+<ol>
+<li><p>FilesPipeline（继承自MediaPipeline）</p>
+<ul>
+<li><code>DEFAULT_FILES_URLS_FIELD = &#39;file_urls&#39;</code><ul>
+<li>默认从Item的<code>file_urls=[]</code>（在Spider中抓取填充该字段）获取文件的URLs，下载文件</li>
+<li>可在settings配置<code>FILES_URLS_FIELD</code>另外指定</li>
+<li>也可在<code>get_media_requests(...)</code>中动态修改</li>
+</ul>
+</li>
+<li><code>DEFAULT_FILES_RESULT_FIELD＝&#39;files&#39;</code><ul>
+<li>默认将下载的文件信息存储到Item的<code>files={}</code>字段,包括<code>url</code>,<code>path</code>,<code>checksum</code></li>
+<li>可在settings配置<code>FILES_RESULT_FIELD</code>另外指定</li>
+<li>也可在<code>item_completed(...)</code>中动态修改</li>
+</ul>
+</li>
+<li><code>EXPIRES=90</code><ul>
+<li>文件多少天后过期（避免重复下载最近的文件）, 默认设置为90天后文件过期</li>
+<li>可在settings配置<code>FILES_EXPIRES</code>另外指定</li>
+</ul>
+</li>
+<li>settings中配置：<code>FILES_STORE</code> 指定文件存储位置文件系统(或者亚马逊S3）<ul>
+<li>文件存储：<code>&lt;FILES_STORE&gt;/file_path(...)</code></li>
+</ul>
+</li>
+<li>Overridable methods:<ul>
+<li><code>get_media_requests(self, item, info)</code><ul>
+<li>return Request (get from file_urls field)</li>
+</ul>
+</li>
+<li><code>file_downloaded(self, response, request, info)</code><ul>
+<li>persist_file</li>
+<li>return checksum</li>
+</ul>
+</li>
+<li><code>item_completed(self, results, item, info)</code><ul>
+<li>store the files information which downloaded successfully into Item field</li>
+<li>return item</li>
+<li>eg:<pre><code class="lang-python">  # results＝(True, {dict}：
+  [(True,
+    {&#39;checksum&#39;: &#39;2b00042f7481c7b056c4b410d28f33cf&#39;,
+     &#39;path&#39;: &#39;full/0a79c461a4062ac383dc4fade7bc09f1384a3910.jpg&#39;,
+     &#39;url&#39;: &#39;http://www.example.com/files/product1.pdf&#39;}),
+   (False,
+    Failure(...))]
+  # store the successful files information to Item files field
+  # item[&#39;files&#39;]:
+  [{&#39;checksum&#39;: &#39;2b00042f7481c7b056c4b410d28f33cf&#39;,
+     &#39;path&#39;: &#39;full/0a79c461a4062ac383dc4fade7bc09f1384a3910.jpg&#39;,
+     &#39;url&#39;: &#39;http://www.example.com/files/product1.pdf&#39;}]
+</code></pre>
+</li>
+</ul>
+</li>
+<li><code>file_path(self, request, response=None, info=None)</code><ul>
+<li>return path </li>
+<li><code>&#39;full/%s%s&#39; % (media_guid, media_ext)</code></li>
+<li>eg: <code>full/0a79c461a4062ac383dc4fade7bc09f1384a3910.jpg</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ImagesPipeline（继承自FilesPipeline）</p>
+<ul>
+<li><code>DEFAULT_IMAGES_URLS_FIELD=&#39;image_urls&#39;</code><ul>
+<li>默认从Item的<code>image_urls=[]</code>（在Spider中抓取填充该字段）获取Image的URLs，下载Image</li>
+<li>可在settings配置<code>IMAGES_URLS_FIELD</code>另外指定</li>
+</ul>
+</li>
+<li><code>DEFAULT_IMAGES_RESULT_FIELD = &#39;images&#39;</code><ul>
+<li>默认将下载的文件信息存储到Item的<code>images={}</code>字段,包括<code>url</code>,<code>path</code>,<code>checksum</code></li>
+<li>可在settings配置<code>IMAGES_RESULT_FIELD</code>另外指定</li>
+</ul>
+</li>
+<li><code>EXPIRES = 90</code><ul>
+<li>文件多少天后过期（避免重复下载最近的文件）, 默认设置为90天后文件过期</li>
+<li>可在settings配置<code>IMAGES_EXPIRES</code>另外指定</li>
+</ul>
+</li>
+<li><code>MIN_WIDTH = 0</code>,<code>MIN_HEIGHT = 0</code><ul>
+<li>Filtering out small images 只下载大于某长宽的图片</li>
+<li>settings: <code>IMAGES_MIN_WIDTH</code>,<code>IMAGES_MIN_HEIGHT</code></li>
+</ul>
+</li>
+<li><code>THUMBS = {}</code><ul>
+<li>配置缩略图，默认无</li>
+<li>可在settings中配置<code>IMAGES_THUMBS={size_name:(x,y),...}</code>另外指定，eg: <pre><code class="lang-python">  IMAGES_THUMBS = {
+      &#39;small&#39;: (50, 50),
+      &#39;big&#39;: (270, 270),
+  }
+  # 则下载的Images存储路径为（checksum相同）：
+  # &lt;IMAGES_STORE&gt;/full/63bbfea82b8880ed33cdb762aa11fab722a90a24.jpg
+  # &lt;IMAGES_STORE&gt;/thumbs/small/63bbfea82b8880ed33cdb762aa11fab722a90a24.jpg
+  # &lt;IMAGES_STORE&gt;/thumbs/big/63bbfea82b8880ed33cdb762aa11fab722a90a24.jpg
+</code></pre>
+</li>
+</ul>
+</li>
+<li>settings中配置： <code>IMAGES_STORE</code><ul>
+<li>Image 原图存储：<code>&lt;IMAGES_STORE&gt;/file_path(...)</code></li>
+<li>Image 缩略图存储：<code>&lt;IMAGES_STORE&gt;/thumb_path(...)</code></li>
+</ul>
+</li>
+<li>methods:<ul>
+<li>convert_image(self, image, size=None)<ul>
+<li>将图片转换成常见格式（JPG）和模式（RGB）</li>
+<li>修正Image大小(生成缩略图)</li>
+</ul>
+</li>
+<li>get_images(self, response, request, info)<ul>
+<li>调用convert_image转换image</li>
+<li>yield path, image, buf （若配置了thumbs，也会yield对应转换后的images）</li>
+</ul>
+</li>
+<li>get_media_requests(self, item, info)<ul>
+<li>同FilesPipeline</li>
+</ul>
+</li>
+<li>file_downloaded/image_downloaded(self, response, request, info)<ul>
+<li>同FilesPipeline</li>
+</ul>
+</li>
+<li>item_completed(self, results, item, info)<ul>
+<li>同FilesPipeline</li>
+</ul>
+</li>
+<li>file_path(self, request, response=None, info=None)<ul>
+<li>return path</li>
+<li><code>&#39;full/%s.jpg&#39; % (image_guid)</code></li>
+</ul>
+</li>
+<li>thumb_path(self, request, thumb_id, response=None, info=None)<ul>
+<li>return <code>&#39;thumbs/%s/%s.jpg&#39; % (thumb_id, thumb_guid)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Note: 生效需要settings中配置<code>ITEM_PIPELINES = { ... }</code>      </p>
+</li>
+</ol>
+<p><strong> Sample : Douban Top 250 Item and Cover(image) download </strong></p>
+<ul>
+<li>Store items to file</li>
+<li>Download item’s cover (image)</li>
+</ul>
+<ol>
+<li><p>item.py</p>
+<pre><code class="lang-python"> class CoverItem(scrapy.Item):
+     name=scrapy.Field()
+     url=scrapy.Field()
+     path=scrapy.Field()
+     #images=scrapy.Field()
+     checksum=scrapy.Field()
+</code></pre>
+</li>
+<li><p>spider/cover.py</p>
+<pre><code class="lang-python"> # -*- coding: utf-8 -*-
+ import scrapy
+ from scrapy.linkextractors import LinkExtractor
+ from scrapy.spiders import CrawlSpider, Rule
+ from douban_demo.items import CoverItem
+ from scrapy.exceptions import DropItem
+
+ class CoverSpider(CrawlSpider):
+     name = &#39;cover&#39;
+     allowed_domains = [&#39;movie.douban.com&#39;]
+     start_urls = [&#39;https://movie.douban.com/top250/&#39;]
+
+     rules = (
+         Rule(LinkExtractor(allow=r&#39;\?start=\d+.*&#39;,restrict_xpaths=&#39;//div[@class=&quot;paginator&quot;]&#39;), callback=&#39;parse_item&#39;, follow=True),
+     )
+
+     def parse_item(self, response):
+         print(response.url)
+         records=response.xpath(&#39;//ol[@class=&quot;grid_view&quot;]//div[@class=&quot;item&quot;]/div[@class=&quot;pic&quot;]//img&#39;)
+         for r in records:
+             item=CoverItem()
+             item[&#39;name&#39;]=r.xpath(&#39;./@alt&#39;).get()
+             item[&#39;url&#39;]=r.xpath(&#39;./@src&#39;).get()
+             print(item[&#39;url&#39;])
+             yield item
+</code></pre>
+</li>
+<li><p>pipeline.py</p>
+<pre><code class="lang-python"> import scrapy
+ from scrapy.pipelines.images import ImagesPipeline
+
+ class CoverImagePipeline(ImagesPipeline):
+     def get_media_requests(self,item,info):
+         ext=item[&#39;url&#39;].split(&#39;.&#39;)[-1]
+         yield scrapy.Request(item[&#39;url&#39;],meta={&#39;image_name&#39;:item[&#39;name&#39;]+&quot;.&quot;+ext})
+
+     def item_completed(self,results, item, info):
+         #item[&#39;images&#39;]=results
+         r = [(x[&#39;path&#39;],x[&#39;checksum&#39;]) for ok, x in results if ok]
+         if not r:
+             raise DropItem(&quot;Item contains no images&quot;)
+         item[&#39;path&#39;] = r[0][0]
+         item[&#39;checksum&#39;]=r[0][1]
+         return item
+
+     def file_path(self,request,response=None,info=None):
+         return &#39;full/%s&#39; % request.meta[&#39;image_name&#39;]
+
+ class CoverItemPipeline(object):
+     def __init__(self):
+         self.filepath=settings[&#39;COVER_FILE&#39;]
+
+     def open_spider(self,spider):
+         self.file=open(self.filepath,&#39;w&#39;,encoding=&#39;utf-8&#39;)
+
+     def process_item(self,item,spider):
+         #print(item)
+         record=json.dumps(dict(item),ensure_ascii=False)
+         #print(record)
+         self.file.write(record+&quot;\n&quot;)
+         return item
+
+     def close_spider(self,spider):
+         self.file.close()
+</code></pre>
+</li>
+<li><p>setting.py</p>
+<pre><code class="lang-python"> COVER_FILE=&#39;D:\Space\python\images\cover.txt&#39;
+ ITEM_PIPELINES = {
+     #&#39;douban_demo.pipelines.DoubanDemoPipeline&#39;: 300,
+     &#39;douban_demo.pipelines.CoverImagePipeline&#39;:310,
+     &#39;douban_demo.pipelines.CoverItemPipeline&#39;:320
+ }
+ IMAGES_STORE=&#39;D:\Space\python\images&#39;
+ IMAGES_EXPIRES = 30
+ IMAGES_THUMBS = {
+     &#39;small&#39;: (50, 50),
+     &#39;big&#39;: (250, 250),
+ }
+</code></pre>
+</li>
+<li><p>run.py</p>
+<pre><code class="lang-python"> from scrapy import cmdline
+ cmdline.execute(&quot;scrapy crawl cover -s LOG_ENABLED=False&quot;.split())
+
+ #from scrapy.cmdline import execute
+ #execute([&#39;scrapy&#39;, &#39;crawl&#39;, &#39;cover&#39;])
+</code></pre>
+</li>
+<li><p>execute</p>
+<pre><code class="lang-bash"> scrapy crawl cover
+ # or execute the run.py:
+ # python run
+</code></pre>
+</li>
+<li><p>sample item：</p>
+<pre><code class="lang-python">{ 
+ &quot;_id&quot; : &quot;1900841&quot;, 
+ &quot;quote&quot; : &quot;别样人生。&quot;, 
+ &quot;rate&quot; : &quot;9.1&quot;, 
+ &quot;title&quot; : &quot;窃听风暴&quot;, 
+ &quot;cover&quot; : { 
+     &quot;name&quot; : &quot;窃听风暴&quot;, 
+     &quot;url&quot; : &quot;https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1808872109.jpg&quot;, 
+     &quot;path&quot; : &quot;full/窃听风暴.jpg&quot;, 
+     &quot;checksum&quot; : &quot;c7ac16a9361d57718543ccea182543a9&quot; 
+ } 
+}
+</code></pre>
+</li>
+</ol>
+<h3 id="header-25">Item Exporters</h3>
+<p>数据导出器(Exporter)：</p>
+<ul>
+<li><p>scrapy内置了6中数据导出格式：<code>json</code>,<code>json lines</code>,<code>CSV</code>,<code>xml</code>,<code>pickle</code>,<code>marshal</code></p>
+<pre><code class="lang-python">  FEED_EXPORTERS = {}
+  FEED_EXPORTERS_BASE = {
+      &#39;json&#39;: &#39;scrapy.exporters.JsonItemExporter&#39;,
+      &#39;jsonlines&#39;: &#39;scrapy.exporters.JsonLinesItemExporter&#39;,
+      &#39;jl&#39;: &#39;scrapy.exporters.JsonLinesItemExporter&#39;,
+      &#39;csv&#39;: &#39;scrapy.exporters.CsvItemExporter&#39;,
+      &#39;xml&#39;: &#39;scrapy.exporters.XmlItemExporter&#39;,
+      &#39;pickle&#39;: &#39;scrapy.exporters.PickleItemExporter&#39;,
+      &#39;marshal&#39;: &#39;scrapy.exporters.MarshalItemExporter&#39;,
+  }
+</code></pre>
+</li>
+<li><p>其他相关配置</p>
+<pre><code class="lang-python">  FEED_TEMPDIR = None
+  FEED_URI = None             # 导出文件路径,eg: &#39;export_data\%(name)s.data&#39;（name自动替换成spider的name）
+  FEED_URI_PARAMS = None      # a function to extend uri arguments
+  FEED_FORMAT = &#39;jsonlines&#39;   # 导出文件的格式,即默认导出器类型，eg: &#39;csv&#39;
+  FEED_STORE_EMPTY = False
+  FEED_EXPORT_ENCODING = None # 导出文件的编码格式
+  FEED_EXPORT_FIELDS = None   # 默认导出全部字段,对字段进行排序,eg [&#39;name&#39;,&#39;author&#39;,&#39;price&#39;]
+  FEED_STORAGES = {}
+  FEED_STORAGES_BASE = {
+      &#39;&#39;: &#39;scrapy.extensions.feedexport.FileFeedStorage&#39;,
+      &#39;file&#39;: &#39;scrapy.extensions.feedexport.FileFeedStorage&#39;,
+      &#39;stdout&#39;: &#39;scrapy.extensions.feedexport.StdoutFeedStorage&#39;,
+      &#39;s3&#39;: &#39;scrapy.extensions.feedexport.S3FeedStorage&#39;,
+      &#39;ftp&#39;: &#39;scrapy.extensions.feedexport.FTPFeedStorage&#39;,
+  }
+  FEED_EXPORT_INDENT = 0
+</code></pre>
+</li>
+<li><p>基类：<code>BaseItemExporter</code></p>
+<ul>
+<li><code>serialize_field(self, field, name, value)</code></li>
+<li><code>start_exporting(self)</code>：导出开始时被调用，用于初始化（类似pipelines的open_spider）</li>
+<li><code>export_item(self, item)</code>：用于处理每项数据（类似pipelines的process_item），必须实现(默认raise NotImplementedError)</li>
+<li><code>finish_exporting(self)</code>：导出完成后调用，用于收尾工作（类似pipelines的close_spider）</li>
+</ul>
+</li>
+<li><p>子类：    </p>
+<ul>
+<li>JsonLinesItemExporter</li>
+<li>JsonItemExporter</li>
+<li>XmlItemExporter</li>
+<li>CsvItemExporter</li>
+<li>PickleItemExporter</li>
+<li>MarshalItemExporter</li>
+<li>PprintItemExporter</li>
+<li>PythonItemExporter</li>
+<li>JsonItemExporter Vs. JsonLinesItemExporter<ul>
+<li>JsonItemExporter: 每次把数据添加到内存中，最后统一写入到磁盘文件中(耗内存),整个文件(<code>.json</code>)：<code>[{},{},...]</code></li>
+<li>JsonLinesItemExporter：每次调用export_item的时候就把item存储到磁盘中（即一个字典一行，不耗内存），整个文件(<code>.jl</code>)：<code>{},{}...</code> (不是一个满足json格式的文件)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>过程：<ul>
+<li>运行爬虫（<code>scrapy crawl</code>）时指定<code>-o filepath</code> 导出到文件，则会使用Exporter</li>
+<li>导出器类型：根据保存文件后缀确定，若指定<code>-t format</code>，则使用指定的</li>
+<li>确定导出器类型后，再从settings中查找对应导出器进行导出</li>
+<li>eg:<pre><code class="lang-bash">  $ scrapy crawl movie -o text.json
+  $ scrapy crawl movie -t json -o test.json
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-26">应用</h2>
+<h3 id="header-27">基于Excel爬取</h3>
+<pre><code class="lang-python"># -*- coding: utf-8 -*-
+import scrapy
+import csv
+from scrapy.item import Item, Field
+from scrapy.loader import ItemLoader
+from scrapy.loader.processors import Identity, Join, MapCompose
+import datetime
+
+class MoviecsvSpider(scrapy.Spider):
+    name = &#39;movieCsv&#39;
+    allowed_domains = [&#39;movie.douban.com&#39;]
+    # start_urls = [&#39;http://movie.douban.com/&#39;]
+
+    def start_requests(self):
+        with open(&quot;movie.csv&quot;, &#39;rU&#39;) as f:
+            reader = csv.DictReader(f)
+            for line in reader:
+                print(line)
+                # OrderedDict([(&#39;src_url&#39;, &#39;http://movie.douban.com/&#39;),
+                # (&#39;src_selector&#39;, &#39;#screening li[data-title]&#39;),
+                # (&#39;title&#39;, &#39;::attr(data-title)&#39;),
+                # (&#39;rate&#39;, &#39;::attr(data-rate)&#39;),
+                # (&#39;url&#39;, &#39;li.poster&gt;a::attr(href)&#39;),
+                # (&#39;cover&#39;, &#39;li.poster img::attr(src)&#39;),
+                # (&#39;id&#39;, &#39;::attr(data-trailer)&#39;)]
+                yield scrapy.Request(url=line.pop(&#39;src_url&#39;), callback=self.parse, meta={&#39;rule&#39;: line})
+
+    def parse(self, response):
+        line = response.meta[&#39;rule&#39;]
+        src_selector = response.css(line.pop(&#39;src_selector&#39;))
+        for s in src_selector:
+            item = Item()
+            loader = ItemLoader(item=item, selector=s)
+            for name, exp in line.items():
+                if exp:
+                    item.fields[name] = Field()
+                    loader.add_css(name, exp)
+
+            item.fields[&#39;crawl_date&#39;] = Field() # Field(output_processor=Identity())
+            loader.add_value(&#39;crawl_date&#39;, datetime.datetime.now(), str)
+
+            loader.default_output_processor = Join()
+            yield loader.load_item()
+</code></pre>
+<pre><code class="lang-bash">$ cat movie.csv
+src_url,src_selector,title,rate,url,cover,id
+http://movie.douban.com/,#screening li[data-title],::attr(data-title),::attr(data-rate),li.poster&gt;a::attr(href),li.poster img::attr(src),::attr(data-trailer)
+</code></pre>
+<p>execute <code>scrapy crawl movieCsv -o movie.jl</code>, result sample:</p>
+<pre><code class="lang-bash">{
+    &quot;title&quot;: &quot;监护风云 Jusqu’à la Garde&quot;, 
+    &quot;rate&quot;: &quot;7.3&quot;, 
+    &quot;url&quot;: &quot;https://movie.douban.com/subject/26995532/?from=showing&quot;, 
+    &quot;cover&quot;: &quot;https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2560052923.jpg&quot;, 
+    &quot;id&quot;: &quot;https://movie.douban.com/subject/26995532/trailer&quot;, 
+    &quot;crawl_date&quot;: &quot;2019-06-30 16:21:15.310231&quot;
+}
+</code></pre>
+<h3 id="header-28">Login</h3>
+<ul>
+<li>Method1: spider start_requests: post form request to login first</li>
+<li>Method2: login in web page, then copy the cookie to settings <code>DEFAULT_REQUEST_HEADERS={&#39;Cookie&#39;:&#39;xx=xxx...&#39;}</code></li>
+</ul>
+<p><strong> Sample: post form request to login in spider </strong></p>
+<pre><code class="lang-python">class LessonSpider(scrapy.Spider):
+    name = &#39;lesson&#39;
+    allowed_domains = [&#39;class.121talk.cn&#39;]
+    start_urls=[&#39;https://class.121talk.cn/business/Index&#39;]
+    login_url=&#39;https://class.121talk.cn/business/Index/login&#39;
+    course_url=&#39;https://class.121talk.cn/business/Teachers/detail/id/3313&#39;
+
+    def __init__(self,username=None,password=None,*args, **kwargs):
+        super(LessonSpider, self).__init__(*args, **kwargs)
+        if username is None or password is None:
+            raise Exception(&#39;No username or password to login&#39;)
+        self.username=username
+        self.password=password
+
+    # login - method1:
+    def start_requests(self):
+        print(&#39;start_request&#39;)
+        yield scrapy.FormRequest(self.login_url
+            ,formdata={&#39;username&#39;:self.username,&#39;password&#39;:self.password}
+            ,callback=self.after_login)
+
+    # login - method2:
+    # def parse(self, response):
+    #     yield scrapy.FormRequest.from_response(response
+    #         ,url=self.login_url
+    #         ,formdata={&#39;username&#39;:self.username,&#39;password&#39;:self.password}
+    #         #,meta={&#39;cookiejar&#39;:1}
+    #         ,callback=self.after_login)
+
+    def after_login(self,response):
+        print(&#39;after_login&#39;)
+        print(&#39;login:&#39;,response)
+        print(&#39;login headers:&#39;,response.headers)
+        print(&#39;login cookie:&#39;,response.request.headers.getlist(&#39;Cookie&#39;))
+        print(&#39;login Set-Cookie:&#39;,response.headers.getlist(&#39;Set-Cookie&#39;))
+
+        result=json.loads(response.body)
+        print(&quot;login result:&quot;,result)
+        if result.get(&#39;status&#39;):
+            yield scrapy.Request(self.course_url
+            #,meta={&#39;cookiejar&#39;:response.meta[&#39;cookiejar&#39;]}
+            ,callback=self.parse_course)
+</code></pre>
+<p>run:</p>
+<pre><code class="lang-bash">$ scrapy crawl lesson -a username=xxxx -a password=xxx
+</code></pre>
+<h3 id="header-29">常见问题</h3>
+<ol>
+<li><p>ImportError: No module named win32api.</p>
+<pre><code class="lang-bash"> pip install pypiwin32
+</code></pre>
+</li>
+<li><p>AttributeError: ‘TelnetConsole’ object has no attribute ‘port’</p>
+<pre><code> set TELNETCONSOLE_PORT setting to None (instead of default [6023, 6073]). 
+ If that doesn&#39;t work and if you don&#39;t need the telnet console, simply disable the extension altogether with setting `TELNETCONSOLE_ENABLED=False`
+</code></pre></li>
+<li><p>AttributeError: ‘module’ object has no attribute ‘F_GETFD’ </p>
+<pre><code> 找到python3/Lib 中将fcntl.py改名成fcntl_ex.py再运行
+</code></pre></li>
+<li><p>403 forbidden :  <a href="https://www.jianshu.com/p/31c7426c0da8" target="_blank" rel="noopener">https://www.jianshu.com/p/31c7426c0da8</a></p>
+<pre><code class="lang-python"> # setting.py: set &#39;User-Agent&#39;
+
+ #  method1: Override the default request headers:
+ DEFAULT_REQUEST_HEADERS = {
+     &#39;User-Agent&#39;:&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0&#39;
+    #&#39;Accept&#39;: &#39;text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8&#39;,
+    #&#39;Accept-Language&#39;: &#39;en&#39;,
+ }
+
+ #  method2:
+ USER_AGENT=&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0&#39;
+</code></pre>
+</li>
+<li><p>proxy:  <a href="https://blog.csdn.net/wuchenlhy/article/details/80683829" target="_blank" rel="noopener">https://blog.csdn.net/wuchenlhy/article/details/80683829</a></p>
+<ul>
+<li><p>method1: middlewares.py:</p>
+<pre><code class="lang-python">  # downloader middleware:
+  class ProxyMiddleware(object):
+      def process_request(self, request, spider):
+          spider.logger.info(&#39;Set proxy.....&#39;)
+          request.meta[&#39;proxy&#39;] = &quot;http://xxxxxxx&quot;
+
+  # setting.py:
+  DOWNLOADER_MIDDLEWARES = {
+       &#39;douban_demo.middlewares.ProxyMiddleware&#39;:100
+  #    &#39;douban_demo.middlewares.DoubanDemoDownloaderMiddleware&#39;: 543,
+  }
+</code></pre>
+</li>
+<li>method2: spider/xxxx.py:<pre><code class="lang-python">  def start_requests(self):
+      start_url=&quot;http://xxx&quot;
+      return [scrapy.Request(start_url,callback=self.parse,meta={&#39;proxy&#39;:&#39;http://xxx&#39;})]
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>scrapy 爬虫使用FilesPipeline 下载 出现302</p>
+<pre><code> [scrapy] WARNING: File (code: 302): Error downloading file from
+
+ 在settings文件中没有设置MEDIA_ALLOW_REDIRECTS参数的话，默认会将值赋值成False 
+ 如果在下载的过程中如果有重定向过程，将不再重定向settings文件中 
+ 设置 MEDIA_ALLOW_REDIRECTS =True
+</code></pre></li>
+</ol>
+<h2 id="header-30">Scrapy-Redis</h2>
+<ul>
+<li>单机架构：本机Scheduler调度本机的一个Requests队列</li>
+<li>分布式架构：各机Scheduler调度一个共享Requests队列</li>
+<li><code>Scrapy-Redis</code>: <ul>
+<li>在Scrapy基础上，重新实现了Scrapy的Scheduler，Queue等组建，使用Redis维护共享队列</li>
+<li>如果Requests队列为空，则会从第一个启动的爬虫的start_urls开始；不为空，则继续从队列中调度出Request进行爬取解析</li>
+<li>Refer <a href="https://github.com/rolando/scrapy-redis" target="_blank" rel="noopener">Github Scrapy-Redis</a></li>
+<li>安装：<code>pip install scrapy-redis</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-31">Sample1: use scrapy Spider</h3>
+<ol>
+<li><p>添加Scrapy-redis相关配置（settings.py）</p>
+<pre><code class="lang-python"> # Start Scrapy-Redis Settings:
+ SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;
+ DUPEFILTER_CLASS = &quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;
+
+ SCHEDULER_PERSIST = True
+ #SCHEDULER_FLUSH_ON_START=False
+
+ ITEM_PIPELINES = {
+     &#39;scrapy_redis.pipelines.RedisPipeline&#39;: 300
+ }
+
+ #REDIS_ITEMS_KEY = &#39;%(spider)s:items&#39;
+ #REDIS_ITEMS_SERIALIZER = &#39;json.dumps&#39;
+
+ #REDIS_HOST = &#39;localhost&#39;
+ #REDIS_PORT = 6379
+ #REDIS_PARAMS  = {}
+ REDIS_URL = &#39;redis://root:123456@localhost:6379&#39;
+ REDIS_ENCODING = &#39;utf-8&#39;
+
+ #REDIS_START_URLS_KEY = &#39;%(name)s:start_urls&#39;
+ #REDIS_START_URLS_AS_SET = False
+
+ # End Srapy-Redis Settings!
+</code></pre>
+</li>
+<li><p>Spider：</p>
+<pre><code class="lang-python"> # -*- coding: utf-8 -*-
+ import scrapy
+ from scrapy.linkextractors import LinkExtractor
+ from scrapy.spiders import CrawlSpider, Rule
+ from douban.items import Top250Item
+
+ class Top250Spider(CrawlSpider):
+     name = &#39;top250&#39;
+     allowed_domains = [&#39;movie.douban.com&#39;]
+     start_urls = [&#39;https://movie.douban.com/top250&#39;]
+
+     rules = (
+         Rule(
+             LinkExtractor(allow=r&#39;\?start=\d+.*&#39;, restrict_xpaths=&#39;//div[@class=&quot;paginator&quot;]&#39;)
+             , callback=&#39;parse_item&#39;, follow=True),
+     )
+
+     def parse_item(self, response):
+         print(response.url)
+         records = response.xpath(&#39;//ol[@class=&quot;grid_view&quot;]//div[@class=&quot;item&quot;]&#39;)
+         for r in records:
+             infoPath = r.xpath(&#39;./div[@class=&quot;info&quot;]&#39;)
+             picPath = r.xpath(&#39;./div[@class=&quot;pic&quot;]//img&#39;)
+
+             item = Top250Item()
+             link = infoPath.xpath(&#39;./div[@class=&quot;hd&quot;]/a/@href&#39;).get()
+             item[&#39;id&#39;] = link.split(&#39;/&#39;)[-2]
+             item[&#39;title&#39;] = infoPath.xpath(&#39;./div[@class=&quot;hd&quot;]/a/span[@class=&quot;title&quot;]/text()&#39;).extract_first()
+             item[&#39;rate&#39;] = infoPath.xpath(
+                 &#39;./div[@class=&quot;bd&quot;]/div[@class=&quot;star&quot;]/span[@class=&quot;rating_num&quot;]/text()&#39;).extract_first()
+             item[&#39;quote&#39;] = infoPath.xpath(&#39;./div[@class=&quot;bd&quot;]/p[@class=&quot;quote&quot;]/span/text()&#39;).extract_first()
+             item[&#39;cover&#39;] = {
+                 &#39;name&#39;: picPath.xpath(&#39;./@alt&#39;).get()
+                 , &#39;url&#39;: picPath.xpath(&#39;./@src&#39;).get()
+             }
+             yield item
+</code></pre>
+</li>
+<li><p>执行 <code>scrapy crawl top250</code></p>
+</li>
+<li><p>查看Redis:</p>
+<pre><code class="lang-bash"> # 1. Processing
+ redis:6379&gt; keys *
+ 1) &quot;top250:requests&quot;
+ 2) &quot;top250:items&quot;
+ 3) &quot;top250:dupefilter&quot;
+ redis:6379&gt; type top250:requests
+ zset
+ redis:6379&gt; zrange top250:requests 0 -1 withscores
+ 1) &quot;\x80\x04\x95a\x01\x00\x00\x00\x00\x00\x00}\x94(\x8c\x03url\x94\x8c1https://movie.douban.com/top250?start=225&amp;filter=\x94\x8c\bcallback\x94\x8c\x14_response_downloaded\x94\x8c\aerrback\x94N\x8c\x06method\x94\x8c\x03GET\x94\x8c\aheaders\x94}\x94C\aReferer\x94]\x94C\x1fhttps://movie.douban.com/top250\x94as\x8c\x04body\x94C\x00\x94\x8c\acookies\x94}\x94\x8c\x04meta\x94}\x94(\x8c\x04rule\x94K\x00\x8c\tlink_text\x94\x8c\nlxml.etree\x94\x8c\x15_ElementUnicodeResult\x94\x93\x94\x8c\x0210\x94\x85\x94\x81\x94\x8c\x05depth\x94K\x01u\x8c\t_encoding\x94\x8c\x05utf-8\x94\x8c\bpriority\x94K\x00\x8c\x0bdont_filter\x94\x89\x8c\x05flags\x94]\x94u.&quot;
+ 2) &quot;0&quot;
+ 3) &quot;\x80\x04\x95u\x01\x00\x00\x00\x00\x00\x00}\x94(\x8c\x03url\x94\x8c/https://movie.douban.com/top250?start=0&amp;filter=\x94\x8c\bcallback\x94\x8c\x14_response_downloaded\x94\x8c\aerrback\x94N\x8c\x06method\x94\x8c\x03GET\x94\x8c\aheaders\x94}\x94C\aReferer\x94]\x94C0https://movie.douban.com/top250?start=25&amp;filter=\x94as\x8c\x04body\x94C\x00\x94\x8c\acookies\x94}\x94\x8c\x04meta\x94}\x94(\x8c\x04rule\x94K\x00\x8c\tlink_text\x94\x8c\nlxml.etree\x94\x8c\x15_ElementUnicodeResult\x94\x93\x94\x8c\a&lt;\xe5\x89\x8d\xe9\xa1\xb5\x94\x85\x94\x81\x94\x8c\x05depth\x94K\x02u\x8c\t_encoding\x94\x8c\x05utf-8\x94\x8c\bpriority\x94K\x00\x8c\x0bdont_filter\x94\x89\x8c\x05flags\x94]\x94u.&quot;
+ 4) &quot;0&quot;
+
+ # 2. Done
+ redis:6379&gt; keys *
+ 1) &quot;top250:items&quot;
+ 2) &quot;top250:dupefilter&quot;
+
+ # 3. check requests footprinter (if set SCHEDULER_PERSIST=True):
+ redis:6379&gt; type top250:dupefilter
+ set
+ redis:6379&gt; smembers top250:dupefilter
+  1) &quot;a6d5976e3143b3d8445e1f70a9250e05a2147ba0&quot;
+  2) &quot;1eaddf9a0730560642a4d1b2eb7e90ec26ea9c0e&quot;
+  3) &quot;7efe48768f3d586dcef1245e877eda8c9377385b&quot;
+  4) &quot;368a5242083cc9dab290d77cbe6a81107c882290&quot;
+  5) &quot;a7db0795dad78984b0e6622ab7699b53358be585&quot;
+  6) &quot;c4f38f7d4635b51955cc4129dbbba9c33b202242&quot;
+  7) &quot;5153c8f0e792e26f62c13e110e7a8a522392f817&quot;
+  8) &quot;41432c2cf211502120954135e7a9eacc24d15a30&quot;
+  9) &quot;0a8d961c5cf075725ce493439e64ecef9797cea6&quot;
+ 10) &quot;e8f772a1cff43b734c16f4298dff62dc2ba2cfc7&quot;
+
+ # 4. check items (if set scrapy_redis.pipelines.RedisPipeline):
+ redis:6379&gt; type top250:items
+ list
+ redis:6379&gt; llen top250:items
+ (integer) 250
+ lindex top250:items 0
+ &quot;{\&quot;id\&quot;: \&quot;1851857\&quot;, \&quot;title\&quot;: \&quot;\\u8759\\u8760\\u4fa0\\uff1a\\u9ed1\\u6697\\u9a91\\u58eb\&quot;, \&quot;rate\&quot;: \&quot;9.1\&quot;, \&quot;quote\&quot;: \&quot;\\u65e0\\u5c3d\\u7684\\u9ed1\\u6697\\u3002\&quot;, \&quot;cover\&quot;: {\&quot;name\&quot;: \&quot;\\u8759\\u8760\\u4fa0\\uff1a\\u9ed1\\u6697\\u9a91\\u58eb\&quot;, \&quot;url\&quot;: \&quot;https://img3.doubanio.com/view/photo/s_ratio_poster/public/p462657443.jpg\&quot;}}&quot;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-32">Sample2: 动态start_urls</h3>
+<ol>
+<li><p>Spider: 使用RedisSpider或者RedisCrawlSpider</p>
+<pre><code class="lang-python"> from scrapy_redis.spiders import RedisCrawlSpider
+ class Top250Spider(CrawlSpider):
+     name = &#39;top250&#39;
+     allowed_domains = [&#39;movie.douban.com&#39;]
+
+     # start_urls -- no need
+     # could get from Redis - set `redis_key=&#39;...&#39;`
+     # (default setting:`START_URLS_KEY=&#39;%(name)s:start_urls&#39;`)
+     # start_urls = [&#39;https://movie.douban.com/top250&#39;]
+
+     rules = (
+         Rule(
+             LinkExtractor(allow=r&#39;\?start=\d+.*&#39;, restrict_xpaths=&#39;//div[@class=&quot;paginator&quot;]&#39;)
+             , callback=&#39;parse_item&#39;, follow=True),
+     )
+
+     def parse_item(self, response):
+         #....
+</code></pre>
+</li>
+<li><p>execute <code>scrapy crawl top250</code> (it will keep running and waiting for the start_urls)</p>
+</li>
+<li>redis cli: <code>lpush key value</code> 插入start_urls<pre><code class="lang-bash"> redis:6379&gt; lpush top:start_urls https://movie.douban.com/top250
+ (integer) 1
+ redis:6379&gt; keys *
+ 1) &quot;top:items&quot;
+ 2) &quot;top:dupefilter&quot;
+ 3) &quot;top:requests&quot;
+ redis:6379&gt; keys *
+ 1) &quot;top:items&quot;
+ 2) &quot;top:dupefilter&quot;
+</code></pre>
+</li>
+</ol>
+<h2 id="header-33">Scrapyd (for Deploy)</h2>
+<ul>
+<li><a href="https://scrapyd.readthedocs.io/en/latest/" target="_blank" rel="noopener">Scrapyd Doc</a></li>
+<li>安装：<code>pip install scrapyd</code>,check: <code>scrapyd -h</code></li>
+<li>启动：<code>scrapyd</code>,then could visit: <code>http://127.0.0.1:6800/</code></li>
+</ul>
+<h3 id="header-34">deploy project</h3>
+<p>deploy tools: <a href="https://github.com/scrapy/scrapyd-client" target="_blank" rel="noopener">scrapyd-client</a></p>
+<ul>
+<li>安装：<code>pip install scrapyd-client</code></li>
+<li>编辑项目的<code>scrapy.cfg</code>文件的<code>[deploy]</code>部分：<pre><code>  [deploy]
+  url = http://localhost:6800/
+  project = douban
+</code></pre></li>
+<li>执行打包上传：<code>scrapyd-deploy</code>，then visit <code>http://localhost:6800/</code> to check<pre><code class="lang-python">  $ scrapyd-deploy
+  Packing version 1562566994
+  Deploying to project &quot;douban&quot; in http://localhost:6800/addversion.json
+  Server response (200):
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;project&quot;: &quot;douban&quot;, &quot;version&quot;: &quot;1562566994&quot;, &quot;spiders&quot;: 6}
+</code></pre>
+</li>
+</ul>
+<h3 id="header-35">调用Scrapyd API（直接使用curl）</h3>
+<ul>
+<li>status<pre><code class="lang-bash">  $ curl http://localhost:6800/daemonstatus.json
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;pending&quot;: 0, &quot;running&quot;: 0, &quot;finished&quot;: 0}
+</code></pre>
+</li>
+<li><p>list &amp; delete</p>
+<pre><code class="lang-bash">  # 1.1 list projects
+  $ curl http://localhost:6800/listprojects.json
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;projects&quot;: [&quot;douban&quot;, &quot;default&quot;]}
+
+  # 1.2 list project versions
+  $ curl http://localhost:6800/listversions.json?project=douban
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;versions&quot;: [&quot;1562566994&quot;, &quot;1562567575&quot;]}
+
+  # 1.3 list spiders
+  $ curl http://localhost:6800/listspiders.json?project=douban
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;spiders&quot;: [&quot;hotMovie&quot;, &quot;movieCsv&quot;, &quot;sinaRss&quot;, &quot;siteUpdate&quot;, &quot;top&quot;, &quot;top250&quot;]}
+
+  # 1.4 list jobs
+  $ curl http://localhost:6800/listjobs.json?project=douban
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;pending&quot;: [], &quot;running&quot;: [], &quot;finished&quot;: []}
+  $ curl http://localhost:6800/listjobs.json?project=douban | python -m json.tool
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current Dload  Upload   Total   Spent    Left  Speed
+    0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--   100   106  100   106    0     0  14239      0 --:--:-- --:--:-- --:--:-- 15142
+  {
+      &quot;finished&quot;: [],
+      &quot;node_name&quot;: &quot;cj-Pro.local&quot;,
+      &quot;pending&quot;: [],
+      &quot;running&quot;: [],
+      &quot;status&quot;: &quot;ok&quot;
+  }
+
+  # 2.1 delete version
+  $ curl http://localhost:6800/delversion.json -d project=douban -d version=1562567575
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;}
+  $ curl http://localhost:6800/listversions.json?project=douban
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;versions&quot;: [&quot;1562566994&quot;]}
+
+  # 2.2 delte project
+  $ curl http://localhost:6800/delproject.json -d project=douban
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;}
+  $ curl http://localhost:6800/listprojects.json
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;projects&quot;: [&quot;default&quot;]}
+</code></pre>
+</li>
+<li><p>schedule &amp; cancel job (run &amp; stop spider)</p>
+<pre><code class="lang-bash">  # 1. schedule
+  $ curl http://localhost:6800/schedule.json -d project=douban -d spider=top
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;jobid&quot;: &quot;73b3a61ca14d11e98c68f45c898fde83&quot;}
+
+  # 2. cancel
+  $ curl http://localhost:6800/cancel.json -d project=douban -d job=73b3a61ca14d11e98c68f45c898fde83
+  {&quot;node_name&quot;: &quot;cj-Pro.local&quot;, &quot;status&quot;: &quot;ok&quot;, &quot;prevstate&quot;: &quot;running&quot;}
+
+  # 3. list
+  $ curl http://localhost:6800/listjobs.json?project=douban | python -m json.tool
+    % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current     Dload  Upload   Total   Spent    Left  Speed
+    0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--   100   398  100   398    0     0  51883      0 --:--:-- --:--:-- --:--:-- 56857
+  {
+      &quot;finished&quot;: [
+          {
+              &quot;end_time&quot;: &quot;2019-04-08 14:56:05.819583&quot;,
+              &quot;id&quot;: &quot;73b3a61ca14d11e98c68f45c898fde83&quot;,
+              &quot;spider&quot;: &quot;top&quot;,
+              &quot;start_time&quot;: &quot;2019-04-08 14:56:04.831726&quot;
+          }
+      ],
+      &quot;node_name&quot;: &quot;cj-Pro.local&quot;,
+      &quot;pending&quot;: [],
+      &quot;running&quot;: [],
+      &quot;status&quot;: &quot;ok&quot;
+  }
+
+  # 4. log
+  $ curl http://127.0.0.1:6800/logs/douban/top/73b3a61ca14d11e98c68f45c898fde83.log
+  ....
+</code></pre>
+</li>
+</ul>
+<h3 id="header-36">调用Scrapyd API（使用python-scrapyd-api包）</h3>
+<ul>
+<li>Refer <a href="https://github.com/djm/python-scrapyd-api" target="_blank" rel="noopener">Github</a></li>
+<li>安装：<code>pip install python-scrapyd-api</code></li>
+<li><p>使用：</p>
+<pre><code class="lang-python">  &gt;&gt;&gt; from scrapyd_api import ScrapydAPI
+  &gt;&gt;&gt; scrapyd = ScrapydAPI(&#39;http://localhost:6800&#39;)
+  &gt;&gt;&gt; scrapyd.endpoints
+  {&#39;add_version&#39;: &#39;/addversion.json&#39;, &#39;cancel&#39;: &#39;/cancel.json&#39;, &#39;delete_project&#39;: &#39;/delproject.json&#39;, &#39;delete_version&#39;: &#39;/delversion.json&#39;, &#39;list_jobs&#39;:&#39;/listjobs.json&#39;, &#39;list_projects&#39;: &#39;/listprojects.json&#39;, &#39;list_spiders&#39;: &#39;/listspiders.json&#39;, &#39;list_versions&#39;: &#39;/listversions.json&#39;, &#39;schedule&#39;: &#39;/schedule.json&#39;}
+
+  # 1. list &amp; delete
+  &gt;&gt;&gt; scrapyd.list_projects()         # scrapyd.delete_project(&#39;project_name&#39;) -- return True/False
+  [&#39;douban&#39;, &#39;default&#39;]
+
+  &gt;&gt;&gt; scrapyd.list_versions(&#39;douban&#39;) # scrapyd.delete_version(&#39;project_name&#39;) -- return True/False
+  [&#39;1562569685&#39;]
+
+  &gt;&gt;&gt; scrapyd.list_spiders(&#39;douban&#39;)
+  [&#39;hotMovie&#39;, &#39;movieCsv&#39;, &#39;sinaRss&#39;, &#39;siteUpdate&#39;, &#39;top&#39;, &#39;top250&#39;]
+
+  &gt;&gt;&gt; scrapyd.list_jobs(&#39;douban&#39;)
+  {
+      &#39;node_name&#39;: &#39;cj-Pro.local&#39;, 
+      &#39;pending&#39;: [], 
+      &#39;running&#39;: [], 
+      &#39;finished&#39;: [
+          {&#39;id&#39;: &#39;db52e176a14c11e98c68f45c898fde83&#39;, &#39;spider&#39;: &#39;top&#39;, &#39;start_time&#39;: &#39;2019-04-08 14:51:49.828399&#39;, &#39;end_time&#39;: &#39;2019-04-08 14:51:50.803166&#39;}, 
+          {&#39;id&#39;: &#39;73b3a61ca14d11e98c68f45c898fde83&#39;, &#39;spider&#39;: &#39;top&#39;, &#39;start_time&#39;: &#39;2019-04-08 14:56:04.831726&#39;, &#39;end_time&#39;: &#39;2019-04-08 14:56:05.819583&#39;}, 
+          {&#39;id&#39;: &#39;33402590a14f11e98c68f45c898fde83&#39;, &#39;spider&#39;: &#39;top&#39;, &#39;start_time&#39;: &#39;2019-04-08 15:08:34.827750&#39;, &#39;end_time&#39;: &#39;2019-04-08 15:13:33.890973&#39;}
+      ]
+  }
+
+  # schedule &amp; cancel
+  &gt;&gt;&gt; settings = {&#39;DOWNLOAD_DELAY&#39;: 2}
+  &gt;&gt;&gt; scrapyd.schedule(&#39;douban&#39;, &#39;top&#39;, settings=settings)
+  &#39;3df6469ca15211e98c68f45c898fde83&#39;
+  &gt;&gt;&gt; scrapyd.job_status(&#39;douban&#39;,&#39;3df6469ca15211e98c68f45c898fde83&#39;)
+  &#39;running&#39;
+  &gt;&gt;&gt; scrapyd.cancel(&#39;douban&#39;,&#39;3df6469ca15211e98c68f45c898fde83&#39;)
+  &#39;running&#39;
+  &gt;&gt;&gt; scrapyd.job_status(&#39;douban&#39;,&#39;3df6469ca15211e98c68f45c898fde83&#39;)
+  &#39;finished&#39;
+</code></pre>
+</li>
+</ul>
+<h2 id="header-37">Reference</h2>
+<ul>
+<li><a href="https://github.com/sixDegree/python-scrapy-demo" target="_blank" rel="noopener">My Demo</a></li>
+<li><a href="https://github.com/jackfrued/Python-100-Days/tree/master/Day66-75" target="_blank" rel="noopener">Python - 100天从新手到大师:爬虫开发</a></li>
+<li><a href="https://blog.csdn.net/zwq912318834/article/details/79530828" target="_blank" rel="noopener">如何使用scrapy中的ItemLoader提取数据？</a></li>
+<li><a href="https://cuiqingcai.com/4421.html" target="_blank" rel="noopener">小白进阶之Scrapy第四篇（图片下载管道篇）</a></li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

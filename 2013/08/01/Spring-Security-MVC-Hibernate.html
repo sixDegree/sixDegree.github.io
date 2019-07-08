@@ -144,7 +144,8 @@
 <li><code>isolation_default</code>:Spring特有,使用后端数据库默认的隔离级别,另外四个与JDBC的隔离级别相对应</li>
 <li><code>isolation_read_uncommitted</code>:允许其他事务看到当前事务未提交的数据，可能产生脏读，不可重复读和幻读（事务最低的隔离级别）</li>
 <li><code>isolation_read_commited</code>:保证一个事务修改的数据提交后才能被另外一个事务读取</li>
-<li><code>isolation_repeatable_read</code>:提交数据只读，防止脏读，不可重复读，但可能出现幻像读<br>5.<code>isolation_serializable</code>:事务被处理为顺序执行，防止脏读，不可重复读，幻读（花费代价最高，最可靠的事务隔离级别）</li>
+<li><code>isolation_repeatable_read</code>:提交数据只读，防止脏读，不可重复读，但可能出现幻像读</li>
+<li><code>isolation_serializable</code>:事务被处理为顺序执行，防止脏读，不可重复读，幻读（花费代价最高，最可靠的事务隔离级别）</li>
 </ol>
 <h3 id="header-4">声明式事务配置</h3>
 <ol>

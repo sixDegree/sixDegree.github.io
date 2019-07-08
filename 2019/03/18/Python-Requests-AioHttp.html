@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Python 爬虫之Requests &amp; AioHttp</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="python,requests，aiohttp">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Requests Introduction</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Requests 基础对象和方法</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Request 对象</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Response 对象</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Exception 对象</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Requests 基础示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">requests.get</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">requests.head</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">requests.post+data/json</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">kwargs: params</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">kwargs: auth</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">kwargs: cookies</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">kwargs: timeout</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">kwargs: proxies</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">kwargs: files</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">kwargs: stream</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Exception</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Requests 进阶使用</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">Event hooks</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">Session</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">Prepared Request</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">Chunk-Encoded Requests</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">Reqeusts 应用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">一次性下载（小文件，stream=False)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">流式分块下载（大文件，stream=True）</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">显示进度条</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">多任务下载</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">aiohttp</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">Client Sample</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">Server Sample</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">应用：协程并发下载文件</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Python 爬虫之Requests &amp; AioHttp</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-03-17T16:00:00.000Z">2019-03-18</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Python">Python</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Requests Introduction</h2>
+<ul>
+<li>第三方的HTTP客户端库，<a href="http://www.python-requests.org/en/master/" target="_blank" rel="noopener">官网</a>| <a href="http://docs.python-requests.org/zh_CN/latest/index.html" target="_blank" rel="noopener">Doc</a></li>
+<li><p>支持<code>HTTP</code>连接保持和连接池,支持使用<code>cookie</code>保持会话，文件上传，自动确定响应内容的编码，国际化的URL，POST数据自动编码等</p>
+</li>
+<li><p>vs. <code>urllib</code>:</p>
+<ul>
+<li><code>urllib</code>,<code>urllib2</code>,<code>urllib3</code>是python原生类库</li>
+<li><code>urllib</code> 与 <code>urllib2</code> 是两个相互独立的模块(在python3中<code>urllib2</code>被改为<code>urllib.request</code>)</li>
+<li><code>requests</code>库使用了<code>urllib3</code>，支持连接保持（eg:多次请求重复使用一个<code>socket</code>)，更方便<br>  <img src="/2019/03/18/requests-urllib.png" alt=" urllib vs. requests "></li>
+</ul>
+</li>
+<li><p>安装</p>
+<pre><code class="lang-bash">pip install requests
+</code></pre>
+</li>
+<li><p>使用</p>
+<pre><code class="lang-python">import requests
+
+response=requests.get(&#39;http://www.baidu.com&#39;)
+print(type(response))
+print(response.status_code,response.reason)
+print(response.encoding,response.apparent_encoding)
+print(response.request.headers)
+print(response.headers)
+print(response.content)
+</code></pre>
+</li>
+<li><p>注：</p>
+<ul>
+<li><code>Requests</code>默认的传输适配器使用<code>阻塞IO</code>，<code>Response.content</code>属性会阻塞，直到整个响应下载完成(数据流功能允许每次接受少量的一部分响应，但依然是阻塞式的)</li>
+<li>非阻塞可以考虑其他异步框架，例如<code>grequests</code>，<code>requests-futures</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="header-2">Requests 基础对象和方法</h2>
+<h3 id="header-3">Request 对象</h3>
+<ul>
+<li><code>requests.request(method,url,**kwargs)</code> 构造一个请求,支撑以下各方法的基础方法(method:对应get/put/post等7种)</li>
+<li><code>requests.get(url,params=None,**kwargs)</code></li>
+<li><code>requests.head(url,**kwargs)</code></li>
+<li><code>requests.post(url,data=None,json=None,**kwargs)</code></li>
+<li><code>requests.put/patch(url,data=None,**kwargs)</code></li>
+<li><code>requests.delete(url,**kwargs)</code></li>
+<li>方法参数：<ul>
+<li><code>url</code></li>
+<li><code>params</code>: 作为参数增加到url中 (字典或字节流格式)</li>
+<li><code>data</code>: 作为Request的内容 (字典、字节序列或文件)</li>
+<li><code>json</code>: 作为Request的内容 (JSON格式的数据)</li>
+<li><code>headers</code>: HTTP定制头 (字典)</li>
+<li><code>cookies</code> : Request中的cookie (字典或CookieJar)</li>
+<li><code>auth</code> : 支持HTTP认证功能 (元组)</li>
+<li><code>files</code> : 传输文件 (字典类型)</li>
+<li><code>timeout</code> : 设定超时时间(秒为单位),默认为None，即一直等待</li>
+<li><code>proxies</code> : 设定访问代理服务器,可以增加登录认证(字典类型)</li>
+<li><code>allow_redirects</code> : 重定向开关 (True/False,默认为True)</li>
+<li><code>stream</code> : 获取内容立即下载开关 (True/False)<ul>
+<li>False(默认): 表示立即开始下载文件并存放到内存当中(若文件过大就会导致内存不足的情况)</li>
+<li>True: 推迟下载响应体直到访问 Response.content 属性（请求连接不会被关闭直到读取所有数据或者调用<code>Response.close</code>，使用<code>with</code> 语句发送请求，这样可以保证请求一定会被关闭）</li>
+</ul>
+</li>
+<li><code>verify</code> : 认证SSL证书开关 (True/False,默认为True)</li>
+<li><code>cert</code> : 本地SSL证书路径</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-4">Response 对象</h3>
+<ul>
+<li>类： <code>&lt;class &#39;requests.models.Response&#39;&gt;</code></li>
+<li>状态<ul>
+<li><code>response.status_code</code></li>
+<li><code>response.reason</code></li>
+</ul>
+</li>
+<li>body<ul>
+<li><code>response.raw</code> (原始响应内容 <code>urllib3.response.HTTPResponse</code>, raw.read(),need set <code>stream=True</code> when request)</li>
+<li><code>response.content</code> (二进制形式)</li>
+<li><code>response.text</code> (字符串形式,根据encoding显示网页内容)</li>
+<li><code>response.json()</code> (JSON格式，字典类型)</li>
+</ul>
+</li>
+<li>header<ul>
+<li><code>response.headers</code></li>
+<li><code>request.headers</code></li>
+</ul>
+</li>
+<li>编码<ul>
+<li><code>response.encoding</code> (从HTTP header中猜测的响应内容编码方式)</li>
+<li><code>resposne.apparent_encoding</code> (encoding的备选,从网页内容中分析出的响应内容编码方式) </li>
+</ul>
+</li>
+<li><code>response.raise_for_status()</code><ul>
+<li>在方法内部判断是否等于<code>200</code>,不是则抛出<code>requests.HTTPError</code>异常</li>
+<li>注：不需要增加额外的<code>if</code>语句,该语句便于利用<code>try except</code>进行异常处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-5">Exception 对象</h3>
+<ul>
+<li><code>requests.HTTPError</code> : HTTP错误异常</li>
+<li><code>requests.URLRequired</code> : URL缺失异常</li>
+<li><code>requests.Timeout</code> : 请求URL超时,产生超时异常</li>
+<li><code>requests.ConnectTimeout</code> : 连接远程服务器超时异常</li>
+<li><code>requests.ConnectionError</code> : 网络连接错误异常,如DNS查询失败、拒绝连接等</li>
+<li><code>requests.TooManyRedirects</code> 超过最大重定向次数,产生重定向异常</li>
+</ul>
+<h2 id="header-6">Requests 基础示例</h2>
+<p><strong> Visit <code>http://httpbin.org/</code> </strong></p>
+<h3 id="header-7"><code>requests.get</code></h3>
+<pre><code class="lang-python">&gt;&gt;&gt; r=requests.get(&#39;http://httpbin.org/get&#39;)
+&gt;&gt;&gt; type(r)
+&lt;class &#39;requests.models.Response&#39;&gt;
+&gt;&gt;&gt; r.status_code,r.reason
+(200,&#39;OK&#39;)
+&gt;&gt;&gt; r.encoding,r.apparent_encoding
+(None, &#39;ascii&#39;)
+&gt;&gt;&gt; r.headers
+{&#39;Access-Control-Allow-Credentials&#39;: &#39;true&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-Type&#39;: &#39;application/json&#39;, &#39;Date&#39;: &#39;Thu, 21 Mar 2019 16:40:42 GMT&#39;, &#39;Server&#39;: &#39;nginx&#39;, &#39;Content-Length&#39;: &#39;184&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;}
+&gt;&gt;&gt; r.request.headers
+{&#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Accept&#39;: &#39;*/*&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;}
+&gt;&gt;&gt; r.json()
+{
+  &quot;args&quot;: {},
+  &quot;headers&quot;: {
+    &quot;Accept&quot;: &quot;*/*&quot;,
+    &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;,
+    &quot;Host&quot;: &quot;httpbin.org&quot;,
+    &quot;User-Agent&quot;: &quot;python-requests/2.21.0&quot;
+  },
+  ...
+}
+</code></pre>
+<h3 id="header-8"><code>requests.head</code></h3>
+<pre><code class="lang-python">&gt;&gt;&gt; r=requests.head(&#39;http://httpbin.org/get&#39;)
+&gt;&gt;&gt; r.text
+&#39;&#39;
+&gt;&gt;&gt; r.headers
+{&#39;Access-Control-Allow-Credentials&#39;: &#39;true&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-Type&#39;: &#39;application/json&#39;, &#39;Date&#39;: &#39;Tue, 19 Mar 2019 13:16:24 GMT&#39;, &#39;Server&#39;: &#39;nginx&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;}
+</code></pre>
+<h3 id="header-9"><code>requests.post</code>+<code>data</code>/<code>json</code></h3>
+<pre><code class="lang-python"># `data={...}` 
+# 字典,自动编码为form(表单)
+# content-type: application/x-www-form-urlencoded
+# request body： key1=value1&amp;key2=value2
+&gt;&gt;&gt; record={&#39;key1&#39;:&#39;value1&#39;,&#39;key2&#39;:&#39;value2&#39;}
+&gt;&gt;&gt; r=requests.post(&#39;http://httpbin.org/post&#39;,data=record)
+&gt;&gt;&gt; r.request.headers[&#39;content-type&#39;]
+application/x-www-form-urlencoded
+&gt;&gt;&gt; r.json()
+{&#39;args&#39;: {}, &#39;data&#39;: &#39;&#39;, &#39;files&#39;: {}, &#39;form&#39;: {&#39;key1&#39;: &#39;value1&#39;, &#39;key2&#39;: &#39;value2&#39;}, &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Content-Length&#39;: &#39;23&#39;, &#39;Content-Type&#39;: &#39;application/x-www-form-urlencoded&#39;, &#39;Host&#39;: &#39;httpbin.org&#39;, &#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;}, &#39;json&#39;: None, ...}
+
+# `data=&#39;...&#39;`
+# 字符串,自动编码为data
+# request body: &#39;ABC123&#39;
+&gt;&gt;&gt; record=&quot;ABC123&quot;
+&gt;&gt;&gt; r=requests.post(&#39;http://httpbin.org/post&#39;,data=record)
+&gt;&gt;&gt; r.request.headers.get(&#39;content-type&#39;,None)
+None
+&gt;&gt;&gt; r.json()
+{&#39;args&#39;: {}, &#39;data&#39;: &#39;ABC123&#39;, &#39;files&#39;: {}, &#39;form&#39;: {}, &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Content-Length&#39;: &#39;6&#39;, &#39;Host&#39;: &#39;httpbin.org&#39;, &#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;}, &#39;json&#39;: None, ...}
+
+# `json={...}`
+# 字典
+# content-type: application/json
+# request body: {&#39;key1&#39;: &#39;value1&#39;, &#39;key2&#39;: &#39;value2&#39;}
+&gt;&gt;&gt; record={&#39;key1&#39;:&#39;value1&#39;,&#39;key2&#39;:&#39;value2&#39;}
+&gt;&gt;&gt; r = requests.request(&#39;POST&#39;, &#39;http://httpbin.org/post&#39;, json=record)
+&gt;&gt;&gt; r.request.headers[&#39;Content-Type&#39;]
+application/json
+&gt;&gt;&gt; r.json()
+{&#39;args&#39;: {}, &#39;data&#39;: &#39;{&quot;key1&quot;: &quot;value1&quot;, &quot;key2&quot;: &quot;value2&quot;}&#39;, &#39;files&#39;: {}, &#39;form&#39;: {}, &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Content-Length&#39;: &#39;36&#39;, &#39;Content-Type&#39;: &#39;application/json&#39;, &#39;Host&#39;: &#39;httpbin.org&#39;, &#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;}, &#39;json&#39;: {&#39;key1&#39;: &#39;value1&#39;, &#39;key2&#39;: &#39;value2&#39;}, ...}
+</code></pre>
+<h3 id="header-10">kwargs: <code>params</code></h3>
+<pre><code class="lang-python">&gt;&gt;&gt; kv = {&#39;key1&#39;: &#39;value1&#39;, &#39;key2&#39;: &#39;value2&#39;}
+&gt;&gt;&gt; r = requests.request(&#39;GET&#39;, &#39;http://httpbin.org/get&#39;, params=kv) 
+&gt;&gt;&gt; r.url
+http://httpbin.org/get?key1=value1&amp;key2=value2
+&gt;&gt;&gt; r.json()
+{&#39;args&#39;: {&#39;key1&#39;: &#39;value1&#39;, &#39;key2&#39;: &#39;value2&#39;}, &#39;headers&#39;: {&#39;Accept&#39;: &#39;*/*&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Host&#39;: &#39;httpbin.org&#39;, &#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;}, &#39;origin&#39;: &#39;117.83.222.100, 117.83.222.100&#39;, &#39;url&#39;: &#39;https://httpbin.org/get?key1=value1&amp;key2=value2&#39;}
+</code></pre>
+<h3 id="header-11">kwargs: <code>auth</code></h3>
+<pre><code class="lang-python">import requests
+Endpoint=&quot;http://httpbin.org&quot;
+
+# 1. basic auth
+r=requests.request(&#39;GET&#39;,Endpoint+&#39;/basic-auth/Tom/Tom111&#39;)
+print(r.status_code,r.reason)
+# 401 UNAUTHORIZED
+
+r=requests.request(&#39;GET&#39;,Endpoint+&#39;/basic-auth/Tom/Tom111&#39;,auth=(&#39;Tom&#39;,&#39;Tom123&#39;))
+print(r.status_code,r.reason)
+# 401 UNAUTHORIZED
+
+r=requests.request(&#39;GET&#39;,Endpoint+&#39;/basic-auth/Tom/Tom123&#39;,auth=(&#39;Tom&#39;,&#39;Tom123&#39;))
+print(r.status_code,r.reason)
+print(r.request.headers)
+print(r.text)
+# 200 OK
+# {&#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Accept&#39;: &#39;*/*&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Authorization&#39;: &#39;Basic VG9tOlRvbTEyMw==&#39;}
+# {
+#   &quot;authenticated&quot;: true,
+#   &quot;user&quot;: &quot;Tom&quot;
+# }
+print(base64.b64decode(&#39;VG9tOlRvbTEyMw==&#39;))
+print(&#39;--------------------------&#39;)
+
+# 2. oauth
+r=requests.request(&#39;GET&#39;,Endpoint+&#39;/bearer&#39;)
+print(r.status_code,r.reason)           # 401 UNAUTHORIZED
+print(r.headers)                        # Note: &#39;WWW-Authenticate&#39;: &#39;Bearer&#39;
+
+r=requests.request(&#39;GET&#39;,Endpoint+&#39;/bearer&#39;,headers={&#39;Authorization&#39;:&#39;Bearer 1234567&#39;})
+print(r.status_code,r.reason)           # 200 OK
+print(r.headers)
+print(&#39;--------------------------&#39;)
+
+# 3. advance: 自定义身份验证（继承requests.auth.AuthBase）
+from requests.auth import AuthBase
+class MyAuth(AuthBase):
+    def __init__(self,authType,token):
+        self.authType=authType
+        self.token=token
+    def __call__(self,req):
+        req.headers[&#39;Authorization&#39;]=&#39; &#39;.join([self.authType,self.token])
+        return req
+r=requests.request(&#39;GET&#39;,Endpoint+&#39;/bearer&#39;,auth=MyAuth(&#39;Bearer&#39;,&#39;123456&#39;))
+print(r.status_code,r.reason)                   # 200 OK
+print(&quot;Request Headers:&quot;,r.request.headers)
+print(&quot;Response Headers:&quot;,r.headers)
+print(&quot;Response Text:&quot;,r.text)
+</code></pre>
+<h3 id="header-12">kwargs: <code>cookies</code></h3>
+<pre><code class="lang-python">&gt;&gt;&gt; r=requests.request(&#39;GET&#39;,&#39;http://httpbin.org/cookies/set?freedom=test123&#39;)
+&gt;&gt;&gt; r.cookies
+&gt;&gt;&gt; r.request.headers
+{&#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Accept&#39;: &#39;*/*&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Cookie&#39;: &#39;freedom=test123&#39;}
+
+&gt;&gt;&gt; cookies = dict(cookies_are=&#39;working&#39;)       # {&#39;cookies_are&#39;:&#39;working&#39;}
+&gt;&gt;&gt; r = requests.get(&#39;http://httpbin.org/cookies&#39;, cookies=cookies)
+&gt;&gt;&gt; r.text
+&#39;{&quot;cookies&quot;: {&quot;cookies_are&quot;: &quot;working&quot;}}&#39;
+
+&gt;&gt;&gt; jar = requests.cookies.RequestsCookieJar()
+&gt;&gt;&gt; jar.set(&#39;tasty_cookie&#39;, &#39;yum&#39;, domain=&#39;httpbin.org&#39;, path=&#39;/cookies&#39;)
+&gt;&gt;&gt; jar.set(&#39;gross_cookie&#39;, &#39;blech&#39;, domain=&#39;httpbin.org&#39;, path=&#39;/get&#39;)
+&gt;&gt;&gt; r = requests.get(&#39;http://httpbin.org/cookies&#39;, cookies=jar)
+&gt;&gt;&gt; r.text
+&#39;{&quot;cookies&quot;: {&quot;tasty_cookie&quot;: &quot;yum&quot;}}&#39;
+</code></pre>
+<h3 id="header-13">kwargs: <code>timeout</code></h3>
+<pre><code class="lang-python">def timeout_request(url,timeout):
+    try:
+        resp=requests.get(url,timeout=timeout)
+        resp.raise_for_status()
+    except requests.Timeout or requests.HTTPError as e:
+        print(e)
+    except Exception as e:
+        print(&quot;unknow exception:&quot;,e)
+    else:
+        print(resp.text)
+        print(resp.status_code)
+
+timeout_request(&#39;http://httpbin.org/get&#39;,0.1)
+# HTTPConnectionPool(host=&#39;httpbin.org&#39;, port=80): Max retries exceeded with url: /get (Caused by ConnectTimeoutError(&lt;urllib3.connection.HTTPConnection object at 0x1025d9400&gt;, &#39;Connection to httpbin.org timed out. (connect timeout=0.1)&#39;))
+</code></pre>
+<h3 id="header-14">kwargs: <code>proxies</code></h3>
+<pre><code class="lang-python">&gt;&gt;&gt; pxs = { &#39;http&#39;: &#39;http://user:pass@10.10.10.1:1234&#39; &#39;https&#39;: &#39;https://10.10.10.1:4321&#39; }
+&gt;&gt;&gt; r = requests.request(&#39;GET&#39;, &#39;http://www.baidu.com&#39;, proxies=pxs)
+</code></pre>
+<h3 id="header-15">kwargs: <code>files</code></h3>
+<pre><code class="lang-python">f={&#39;image&#39;: open(&#39;黑洞1.jpg&#39;, &#39;rb&#39;)}
+r = requests.post(Endpoint+&#39;/post&#39;, files=f)
+print(r.status_code,r.reason)
+print(r.headers)
+print(r.text[100:200])
+
+print(&#39;--------------------------&#39;)
+# POST Multiple Multipart-Encoded Files
+multiple_files = [
+    (&#39;images&#39;, (&#39;黑洞1.jpg&#39;, open(&#39;黑洞1.jpg&#39;, &#39;rb&#39;), &#39;image/jpg&#39;)),
+    (&#39;images&#39;, (&#39;极光1.jpg&#39;, open(&#39;极光1.jpg&#39;, &#39;rb&#39;), &#39;image/jpg&#39;))
+]
+r = requests.post(Endpoint+&#39;/post&#39;, files=multiple_files)
+print(r.status_code,r.reason)
+print(r.headers)
+print(r.text[100:200])
+print(&#39;--------------------------&#39;)
+</code></pre>
+<h3 id="header-16">kwargs: <code>stream</code></h3>
+<pre><code class="lang-python">with requests.get(Endpoint+&quot;/stream/3&quot;,stream=True) as r:
+    print(r.status_code,r.reason)
+    contentLength=int(r.headers.get(&#39;content-length&#39;,0))
+    print(&quot;content-length:&quot;,contentLength)
+    # 此时仅有响应头被下载下来了，连接保持打开状态，因此允许我们根据条件获取内容
+    if contentLength&lt;100:
+        print(r.content)
+    else:
+        print(&#39;read line by line&#39;)
+        lines=r.iter_lines() # iter_content 一块一块的下载遍历内容
+        for line in lines:  
+            if line:
+                print(line)             
+    print(&#39;Done&#39;)
+print(&#39;--------------------------&#39;)
+</code></pre>
+<h3 id="header-17">Exception</h3>
+<pre><code class="lang-python">import requests
+
+def do_request(url):
+  try:
+    r=requests.get(url,timeout=0.1)
+    r.raise_for_status()
+    r.encoding=r.apparent_encoding
+  except requests.Timeout or requests.HTTPError as e:
+    print(e)
+  except Exception as e:
+    print(&quot;Request Error:&quot;,e)
+  else:
+    print(r.text)
+    print(r.status_code)
+    return r
+
+if __name__==&#39;__main__&#39;:
+  do_request(&quot;http://www.baidu.com&quot;)
+</code></pre>
+<h2 id="header-18">Requests 进阶使用</h2>
+<h3 id="header-19">Event hooks</h3>
+<pre><code class="lang-python">def get_key_info(response,*args,**kwargs):
+    print(&quot;callback:content-type&quot;,response.headers[&#39;Content-Type&#39;])
+r=requests.get(Endpoint+&#39;/get&#39;,hooks=dict(response=get_key_info))
+print(r.status_code,r.reason)
+
+# callback:content-type application/json
+# 200 OK
+</code></pre>
+<h3 id="header-20">Session</h3>
+<ul>
+<li><p>跨请求保持某些参数</p>
+<pre><code class="lang-python">  # 在同一个 Session 实例发出的所有请求之间保持 cookie， 期间使用 urllib3 的 connection pooling 功能
+  s = requests.Session()
+  r=s.get(Endpoint+&#39;/cookies/set/mycookie/123456&#39;)
+  print(&quot;set cookies&quot;,r.status_code,r.reason)     # set cookies 200 OK
+  r = s.get(Endpoint+&quot;/cookies&quot;)
+  print(&quot;get cookies&quot;,r.status_code,r.reason)     # get cookies 200 OK
+  print(r.text)
+  # {
+  #   &quot;cookies&quot;: {
+  #     &quot;mycookie&quot;: &quot;123456&quot;
+  #   }
+  # }
+</code></pre>
+</li>
+<li><p>为请求方法提供缺省数据</p>
+<pre><code class="lang-python">  # 通过为会话对象的属性提供数据来实现（注：方法层的参数覆盖会会话的参数）
+  s = requests.Session()
+  s.auth = (&#39;user&#39;, &#39;pass&#39;)
+  s.headers.update({&#39;x-test&#39;: &#39;true&#39;})
+  # both &#39;x-test&#39; and &#39;x-test2&#39; are sent
+  r=s.get(Endpoint+&#39;/headers&#39;, headers={&#39;x-test2&#39;: &#39;true&#39;})
+  print(r.request.headers)
+  # {&#39;User-Agent&#39;: &#39;python-requests/2.21.0&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Accept&#39;: &#39;*/*&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;x-test&#39;: &#39;true&#39;, &#39;x-test2&#39;: &#39;true&#39;, &#39;Authorization&#39;: &#39;Basic dXNlcjpwYXNz&#39;}
+</code></pre>
+</li>
+<li><p>用作前后文管理器</p>
+<pre><code class="lang-python">  with requests.Session() as s:       # 这样能确保 with 区块退出后会话能被关闭，即使发生了异常也一样
+      s.get(&#39;http://httpbin.org/cookies/set/mycookie/Test123&#39;)
+      r = s.get(Endpoint+&quot;/cookies&quot;)
+      print(&quot;set cookies&quot;,r.status_code,r.reason)
+      print(r.text)
+      # {
+      #   &quot;cookies&quot;: {
+      #     &quot;mycookie&quot;: &quot;Test123&quot;
+      #   }
+      # }
+  print(&quot;out with:&quot;)
+  r = s.get(Endpoint+&quot;/cookies&quot;)
+  print(&quot;get cookies&quot;,r.status_code,r.reason)
+  print(r.text)
+  # {
+  #   &quot;cookies&quot;: {
+  #     &quot;mycookie&quot;: &quot;Test123&quot;
+  #   }
+  # }
+</code></pre>
+</li>
+</ul>
+<h3 id="header-21">Prepared Request</h3>
+<pre><code class="lang-python"># 可在发送请求前，对body／header等做一些额外处理
+
+s=Session()
+req=Request(&#39;GET&#39;,Endpoint+&#39;/get&#39;,headers={&#39;User-Agent&#39;:&#39;fake1.0.0&#39;})
+prepared=req.prepare()  # 要获取一个带有状态的 PreparedRequest需使用`s.prepare_request(req)`
+
+# could do something with prepared.body/prepared.headers here
+# ...
+
+resp=s.send(prepared,timeout=3)
+print(resp.status_code,resp.reason)
+print(&quot;request headers:&quot;,resp.request.headers)
+# {&#39;User-Agent&#39;: &#39;fake1.0.0&#39;}
+
+print(&quot;response headers:&quot;,resp.headers)
+# {&#39;Access-Control-Allow-Credentials&#39;: &#39;true&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Content-Type&#39;: &#39;application/json&#39;, &#39;Date&#39;: &#39;Thu, 21 Mar 2019 15:47:30 GMT&#39;, &#39;Server&#39;: &#39;nginx&#39;, &#39;Content-Length&#39;: &#39;216&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;}
+
+print(resp.text)
+# {
+#   &quot;args&quot;: {},
+#   &quot;headers&quot;: {
+#     &quot;Accept-Encoding&quot;: &quot;identity&quot;,
+#     &quot;Host&quot;: &quot;httpbin.org&quot;,
+#     &quot;User-Agent&quot;: &quot;fake1.0.0&quot;
+#   },
+#   &quot;origin&quot;: &quot;117.83.222.100, 117.83.222.100&quot;,
+#   &quot;url&quot;: &quot;https://httpbin.org/get&quot;
+# }
+</code></pre>
+<h3 id="header-22">Chunk-Encoded Requests</h3>
+<pre><code class="lang-python"># 分块传输,使用生成器或任意没有具体长度的迭代器
+def gen():
+    yield b&#39;hi &#39;
+    yield b&#39;there! &#39;
+    yield b&#39;How are you?&#39;
+    yield b&#39;This is for test 123567890.....!&#39;
+    yield b&#39;Test ABCDEFG HIGKLMN OPQ RST UVWXYZ.....!&#39;
+
+r=requests.post(Endpoint+&#39;/post&#39;, data=gen())    # stream=True
+print(r.status_code,r.reason,r.headers[&#39;content-length&#39;])
+for chunk in r.iter_content(chunk_size=100):        # chunk_size=None
+    if chunk:
+        print(chunk)
+print(&#39;done&#39;)
+</code></pre>
+<h2 id="header-23">Reqeusts 应用示例</h2>
+<p><strong> Download pic from <code>http://www.nationalgeographic.com.cn</code> </strong></p>
+<h3 id="header-24">一次性下载（小文件，<code>stream=False</code>)</h3>
+<pre><code class="lang-python">import requests
+import os
+
+def download_small_file(url):
+    try:
+        r=requests.get(url)
+        r.raise_for_status()
+        print(r.status_code,r.reason)
+        contentType=r.headers[&quot;Content-Type&quot;]
+        contentLength=int(r.headers.get(&quot;Content-Length&quot;,0))
+        print(contentType,contentLength)
+    except Exception as e:
+        print(e)
+    else:
+        filename=r.url.split(&#39;/&#39;)[-1]
+        print(&#39;filename:&#39;,filename)
+        target=os.path.join(&#39;.&#39;,filename)
+        if os.path.exists(target) and os.path.getsize(target):
+            print(&#39;Exist -- Skip download!&#39;)
+        else:
+            with open(target,&#39;wb&#39;) as fd:
+                fd.write(r.content)
+    print(&#39;done!&#39;)
+
+if __name__ == &#39;__main__&#39;:
+    import time
+    print(&#39;start&#39;)
+    start = time.time()
+
+    url=&quot;http://image.nationalgeographic.com.cn/2017/0211/20170211061910157.jpg&quot;
+    download_small_file(url)
+
+    end=time.time()
+    print(&#39;Runs %0.2f seconds.&#39; % (end - start))
+    print(&#39;end&#39;)
+</code></pre>
+<h3 id="header-25">流式分块下载（大文件，<code>stream=True</code>）</h3>
+<pre><code class="lang-python">import requests
+import os
+
+def download_large_file(url):
+    try:
+        r=requests.get(url,stream=True)
+        r.raise_for_status()
+        print(r.status_code,r.reason)
+        contentType=r.headers[&quot;Content-Type&quot;]
+        contentLength=int(r.headers.get(&quot;Content-Length&quot;,0))
+        print(contentType,contentLength)        
+    except Exception as e:
+        print(e)
+    else:
+        filename=r.url.split(&#39;/&#39;)[-1]
+        print(&#39;filename:&#39;,filename)
+        target=os.path.join(&#39;.&#39;,filename)
+        if os.path.exists(target) and os.path.getsize(target):
+            print(&#39;Exist -- Skip download!&#39;)
+        else:
+            with open(target,&#39;wb&#39;) as fd:
+                for chunk in r.iter_content(chunk_size=10240):
+                    if chunk:
+                        fd.write(chunk)
+                        print(&#39;download:&#39;,len(chunk))
+    finally:
+        r.close()
+        print(&#39;close&#39;)
+
+if __name__ == &#39;__main__&#39;:
+    import time
+    print(&#39;start&#39;)
+    start = time.time()
+
+    url=&quot;http://image.nationalgeographic.com.cn/2017/0211/20170211061910157.jpg&quot;
+    download_large_file(url)
+
+    end=time.time()
+    print(&#39;Runs %0.2f seconds.&#39; % (end - start))
+    print(&#39;end&#39;)
+</code></pre>
+<h3 id="header-26">显示进度条</h3>
+<pre><code class="lang-python">import requests
+import os
+
+def download_with_progress(url):
+    try:
+        with requests.get(url,stream=True) as r:
+            r.raise_for_status()
+            print(r.status_code,r.reason)
+
+            contentType=r.headers[&quot;Content-Type&quot;]
+            contentLength=int(r.headers.get(&quot;Content-Length&quot;,0))
+            print(contentType,contentLength)
+
+            filename=r.url.split(&#39;/&#39;)[-1]
+            print(&#39;filename:&#39;,filename)
+
+            target=os.path.join(&#39;.&#39;,filename)
+            if os.path.exists(target) and os.path.getsize(target):
+                print(&#39;Exist -- Skip download!&#39;)
+            else:
+                chunk_size=1024
+                progress =ProgressBar(filename, total=content_length,chunk_size=1024,unit=&quot;KB&quot;)
+                with open(target,&#39;wb&#39;) as fd:
+                    for chunk in r.iter_content(chunk_size=chunk_size):
+                        if chunk:
+                            fd.write(chunk)
+                            #print(&#39;download:&#39;,len(chunk))
+                            progress.refresh(count=len(chunk))
+
+    except Exception as e:
+        print(e)
+    print(&#39;done&#39;)
+
+# ProgressBar
+class ProgressBar(object):
+def __init__(self,title,total,chunk_size=1024,unit=&#39;KB&#39;):
+    self.title=title
+    self.total=total
+    self.chunk_size=chunk_size
+    self.unit=unit
+    self.progress=0.0
+
+def __info(self):
+    return &quot;【%s】%s %.2f%s / %.2f%s&quot; % (self.title,self.status,self.progress/self.chunk_size,self.unit,self.total/self.chunk_size,self.unit)
+
+def refresh(self,progress):
+    self.progress += progress
+    self.status=&quot;......&quot;
+    end_str=&#39;\r&#39;
+    if self.total&gt;0 and self.progress&gt;=self.total:
+        end_str=&#39;\n&#39;
+        self.status=&#39;completed&#39;
+    print(self.__info(),end=end_str)
+
+if __name__ == &#39;__main__&#39;:
+    import time
+    print(&#39;start&#39;)
+    start = time.time()
+
+    url=&quot;http://image.nationalgeographic.com.cn/2017/0211/20170211061910157.jpg&quot;
+    download_with_progress(url)
+
+    end=time.time()
+    print(&#39;Runs %0.2f seconds.&#39; % (end - start))
+    print(&#39;end&#39;)
+</code></pre>
+<h3 id="header-27">多任务下载</h3>
+<ul>
+<li><p>多进程下载：并行（同时）</p>
+<pre><code class="lang-python">  import multiprocessing
+  from multiprocessing import Pool
+
+  # do multiple downloads - multiprocessing
+  def do_multiple_download_multiprocessing(url_list,targetDir):
+      cpu_cnt=multiprocessing.cpu_count()
+      print(&quot;系统进程数: %s, Parent Pid: %s&quot; % (cpu_cnt,os.getpid()))
+
+      p = Pool(cpu_cnt)
+      results=[]
+      for i,url in enumerate(url_list):
+          result=p.apply_async(do_download,args=(i,url,targetDir,False,),callback=print_return)
+          results.append(result)
+      print(&#39;Waiting for all subprocesses done...&#39;)
+      p.close()
+      p.join()
+      for result in results:
+          print(os.getpid(),result.get())
+      print(&#39;All subprocesses done.&#39;)
+
+  # callback
+  def print_return(result):
+      print(os.getpid(),result)
+</code></pre>
+</li>
+<li><p>多线程下载：并发（交替）</p>
+<pre><code class="lang-python">  import threading
+  def do_multiple_downloads_threads(url_list,targetDir):
+      thread_list=[]
+      for i,url in enumerate(url_list):
+          thread=threading.Thread(target=do_download,args=(i,url,targetDir,True,))
+          thread.start()
+          thread_list.append(thread)
+      print(&#39;Waiting for all threads done...&#39;)
+      for thread in thread_list:
+          thread.join()
+      print(&#39;All threads done.&#39;)
+</code></pre>
+</li>
+<li><p>verify</p>
+<pre><code class="lang-python">  import requests
+  from bs4 import BeautifulSoup
+  import os,time
+  import re
+
+  # do download using `requests`
+  def do_download(i,url,targetDir,isPrint=False):
+      headers={
+          &#39;User-Agent&#39;:&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0&#39;
+      }
+      try:
+          response=requests.get(url,headers=headers,stream=True,verify=False)
+          response.raise_for_status()
+      except Exception as e:
+          print(&quot;Occur Exception:&quot;,e)
+      else:
+          content_length = int(response.headers.get(&#39;Content-Length&#39;,0))
+          filename=str(i)+&quot;.&quot;+url.split(&#39;/&#39;)[-1]
+          print(response.status_code,response.reason,content_length,filename)
+          progressBar=ProgressBar(filename, total=content_length,chunk_size=1024,unit=&quot;KB&quot;)
+          with open(os.path.join(targetDir,filename),&#39;wb&#39;) as fd:
+              for chunk in response.iter_content(chunk_size=1024):
+                  if chunk:
+                      fd.write(chunk)
+                      progressBar.refresh(len(chunk))
+          if isPrint:
+              print(os.getpid(),threading.current_thread().name,filename,&quot;Done!&quot;)
+          return &#39;%s %s %s Done&#39; % (os.getpid(),threading.current_thread().name,filename)
+
+  # prepare download urls
+  def url_list_crawler():
+      url=&quot;http://m.ngchina.com.cn/travel/photo_galleries/5793.html&quot;
+      response=requests.get(url)
+      print(response.status_code,response.reason,response.encoding,response.apparent_encoding)
+      response.encoding=response.apparent_encoding
+      soup=BeautifulSoup(response.text,&#39;html.parser&#39;)
+      #results=soup.select(&#39;div#slideBox ul a img&#39;)
+      #results=soup.find_all(&#39;img&#39;)
+      results=soup.select(&quot;div.sub_center img[src^=&#39;http&#39;]&quot;)
+      url_list=[ r[&quot;src&quot;] for r in results]
+      print(&quot;url_list:&quot;,len(url_list))
+      print(url_list)
+      return url_list
+
+  # main
+  if __name__==&#39;__main__&#39;:
+      print(&#39;start&#39;)
+
+      targetDir=&quot;/Users/cj/space/python/download&quot;
+      url=&quot;http://image.ngchina.com.cn/2019/0325/20190325110244384.jpg&quot;
+      url_list=url_list_crawler()
+
+      start=time.time()
+
+      # 0 download one file using `requests`
+      do_download(&quot;A&quot;,url,targetDir)
+      end = time.time()
+      print(&#39;Total cost %0.2f seconds.&#39; %  (end-start))
+      start=end
+
+      # 1 using multiple processings
+      do_multiple_download_multiprocessing(url_list,targetDir)
+      end = time.time()
+      print(&#39;Total cost %0.2f seconds.&#39; %  (end-start))
+      start=end
+
+      # 2 using multiple threads
+      do_multiple_downloads_threads(url_list,targetDir)
+      end = time.time()
+      print(&#39;Total cost %0.2f seconds.&#39; %  (end-start))
+      start=end
+
+      print(&#39;end&#39;)
+</code></pre>
+</li>
+</ul>
+<h2 id="header-28">aiohttp</h2>
+<p><a href="https://aiohttp.readthedocs.io/en/stable/" target="_blank" rel="noopener">官网</a></p>
+<blockquote>
+<p>Asynchronous HTTP Client/Server for asyncio and Python.</p>
+</blockquote>
+<ul>
+<li>支持客户端和HTTP服务器</li>
+<li>提供异步web服务的库 ( <code>requests</code>是同步阻塞的)</li>
+<li>无需使用Callback Hell即可支持Server/Client WebSockets</li>
+<li>install: <code>pip install aiohttp</code></li>
+</ul>
+<h3 id="header-29">Client Sample</h3>
+<p>Refer to <a href="https://aiohttp.readthedocs.io/en/stable/client_quickstart.html#" target="_blank" rel="noopener">Client Quickstart</a></p>
+<pre><code class="lang-python">import aiohttp
+import asyncio
+
+async def fetch(session, url):
+    async with session.get(url) as response:
+        return await response.text()
+
+async def main():
+    async with aiohttp.ClientSession() as session:
+        html = await fetch(session, &#39;http://httpbin.org/headers&#39;)
+        print(html)
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+</code></pre>
+<h3 id="header-30">Server Sample</h3>
+<p>Refer to <a href="https://aiohttp.readthedocs.io/en/stable/web_quickstart.html" target="_blank" rel="noopener">Web Server Quickstart</a></p>
+<pre><code class="lang-python">from aiohttp import web
+
+async def handle(request):
+    name = request.match_info.get(&#39;name&#39;, &quot;Anonymous&quot;)
+    text = &quot;Hello, &quot; + name
+    return web.Response(text=text)
+
+app = web.Application()
+app.add_routes([web.get(&#39;/&#39;, handle),
+                web.get(&#39;/{name}&#39;, handle)])
+
+web.run_app(app)
+</code></pre>
+<h3 id="header-31">应用：协程并发下载文件</h3>
+<p>单线程 &amp; 异步 &amp; 非阻塞</p>
+<ul>
+<li><p>do download using <code>aiohttp</code></p>
+<pre><code class="lang-python">  async def do_aiohttp_download(session,i,url,targetDir):
+      async with session.get(url) as response:
+          content_length = int(response.headers.get(&#39;Content-Length&#39;,0))
+          filename=str(i)+&quot;.&quot;+url.split(&#39;/&#39;)[-1]
+          print(response.status,response.reason,content_length,filename)
+          progressBar=ProgressBar(filename, total=content_length,chunk_size=1024,unit=&quot;KB&quot;)
+          with open(os.path.join(targetDir,filename),&#39;wb&#39;) as fd:
+              while True:
+                  chunk=await response.content.read(1024)
+                  if not chunk:
+                      break;
+                  fd.write(chunk)
+                  progressBar.refresh(len(chunk))
+          await response.release()
+      # print(filename,&quot;Done!&quot;)
+      return filename
+
+  # callback
+  def print_async_return(task):
+      print(task.result(),&quot;Done&quot;)
+
+  def print_async_return2(i,task):
+      print(i,&quot;:&quot;,task.result(),&quot;Done&quot;)
+</code></pre>
+</li>
+<li><p>case1: do one download</p>
+<pre><code class="lang-python">  async def do_async_download(i,url,targetDir):
+      async with aiohttp.ClientSession() as session:
+          return await do_aiohttp_download(session,i,url,targetDir)
+</code></pre>
+</li>
+<li><p>case2: do multiple download</p>
+<pre><code class="lang-python">  # do multiple downloads - asyncio
+  async def do_multiple_downloads_async(url_list,targetDir):
+       async with aiohttp.ClientSession() as session:
+          # tasks=[do_aiohttp_download(session,url,targetDir) for url in url_list]
+          # await asyncio.gather(*tasks)          
+          tasks=[]
+          for i,url in enumerate(url_list):
+              task=asyncio.create_task(do_aiohttp_download(session,i,url,targetDir))
+              # task.add_done_callback(print_async_return)
+              task.add_done_callback(functools.partial(print_async_return2,i))
+              tasks.append(task)
+              await asyncio.gather(*tasks)
+</code></pre>
+</li>
+<li><p>verify</p>
+<pre><code class="lang-python">  import os,time
+  import asyncio
+  import aiohttp
+  import functools
+  import re
+
+  # prepare download urls
+  def url_list_crawler():
+      url=&quot;http://m.ngchina.com.cn/travel/photo_galleries/5793.html&quot;
+      response=requests.get(url)
+      print(response.status_code,response.reason,response.encoding,response.apparent_encoding)
+      response.encoding=response.apparent_encoding
+      soup=BeautifulSoup(response.text,&#39;html.parser&#39;)
+      #results=soup.select(&#39;div#slideBox ul a img&#39;)
+      #results=soup.find_all(&#39;img&#39;)
+      results=soup.select(&quot;div.sub_center img[src^=&#39;http&#39;]&quot;)
+      url_list=[ r[&quot;src&quot;] for r in results]
+      print(&quot;url_list:&quot;,len(url_list))
+      print(url_list)
+      return url_list
+
+  # main          
+  if __name__==&#39;__main__&#39;:
+      print(&#39;start&#39;)
+
+      targetDir=&quot;/Users/cj/space/python/download&quot;
+      url=&quot;http://image.ngchina.com.cn/2019/0325/20190325110244384.jpg&quot;
+      url_list=url_list_crawler()
+
+      start=time.time()
+      # 1. download one file using `aiohttp`
+      loop=asyncio.get_event_loop()
+      loop.run_until_complete(do_async_download(&quot;A&quot;,url,targetDir))
+      loop.close()
+      end = time.time()
+      print(&#39;Total cost %0.2f seconds.&#39; %  (end-start))
+      start=end
+
+      # 2. download many files using `aiohttp`
+      loop=asyncio.get_event_loop()
+      loop.run_until_complete(do_multiple_downloads_async(url_list,targetDir))
+      loop.close()
+      end = time.time()
+      print(&#39;Total cost %0.2f seconds.&#39; %  (end-start))
+      start=end
+
+      print(&#39;end&#39;)
+</code></pre>
+</li>
+</ul>
+<h2 id="header-32">Reference</h2>
+<ul>
+<li><a href="https://github.com/sixDegree/python-basic-demo" target="_blank" rel="noopener">My Demo</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37824910" target="_blank" rel="noopener">python下载文件—-requests</a></li>
+<li><a href="https://www.cnblogs.com/ssyfj/p/9222342.html" target="_blank" rel="noopener">python—aiohttp的使用</a></li>
+<li><a href="https://blog.fudenglong.site/2017/06/04/Python%E5%B9%B6%E5%8F%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E4%BE%8B%E5%AD%90%E5%92%8C%E6%AF%94%E8%BE%83/" target="_blank" rel="noopener">Python并发下载的例子和比较</a></li>
+</ul>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

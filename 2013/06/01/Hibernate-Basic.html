@@ -221,19 +221,17 @@
  &lt;/hibernate-configuration&gt;
 </code></pre>
 </li>
-<li><p>编写pojo实体类（可通过Hibernate反向工程自动生成）</p>
-<pre><code class="lang-java"> @Entity
- @Table(name = &quot;product&quot;)
- public class Product implements java.io.Serializable{
-     ...
-
-     @Id
-     @GeneratedValue(strategy=IDENTITY)
-     @Column(name = &quot;id&quot;, unique = true, nullable = false)
-     public int getId()
-     {
-         return this.id;
-     }
+<li>编写pojo实体类（可通过Hibernate反向工程自动生成）<pre><code class="lang-java">@Entity
+@Table(name = &quot;product&quot;)
+public class Product implements java.io.Serializable{
+ //...
+ @Id
+ @GeneratedValue(strategy=IDENTITY)
+ @Column(name = &quot;id&quot;, unique = true, nullable = false)
+ public int getId(){
+     return this.id;
+ }
+}
 </code></pre>
 </li>
 </ol>
@@ -717,7 +715,7 @@ public Set&lt;Student&gt; getStudents(){...}
  &lt;/class&gt;
 
  &lt;!-- 双向many-to-one unique ，one-to-one property-ref（相当于mappedBy）,Wife.hbm.xml文件中加 ：--&gt;
-&lt;one-to-one name=&quot;husband&quot; property-ref=&quot;wife&quot;&gt;&lt;/one-to-one&gt;
+ &lt;one-to-one name=&quot;husband&quot; property-ref=&quot;wife&quot;&gt;&lt;/one-to-one&gt;
 </code></pre>
 <p> Annotation方式：</p>
 <pre><code class="lang-java"> @Entity
@@ -773,6 +771,8 @@ public Set&lt;Student&gt; getStudents(){...}
 </tr>
 <tr>
 <td>Husband(id)  reference wife（id）</td>
+<td>/</td>
+<td>/</td>
 </tr>
 </tbody>
 </table>
@@ -1003,6 +1003,7 @@ public Set&lt;Student&gt; getStudents(){...}
 <tr>
 <td>中间表t_s</td>
 <td>teacherId，studentId</td>
+<td>/</td>
 </tr>
 </tbody>
 </table>
@@ -1077,7 +1078,7 @@ public Set&lt;Student&gt; getStudents(){...}
 <td>对象Husband ：id,name,<strong>Wife wife</strong></td>
 </tr>
 <tr>
-<td></td>
+<td>/</td>
 <td>对象Wife：name,age</td>
 </tr>
 </tbody>
@@ -1155,7 +1156,7 @@ for(Map.Entry&lt;Integer,User&gt; entity:g.getUsers().entrySet())
 <td>Student：id,name,score</td>
 </tr>
 <tr>
-<td></td>
+<td>/</td>
 <td>Teacher：id,name,title</td>
 </tr>
 </tbody>
@@ -1209,6 +1210,7 @@ for(Map.Entry&lt;Integer,User&gt; entity:g.getUsers().entrySet())
 </tr>
 <tr>
 <td>t_gen_table(t_pk,t_value)</td>
+<td>/</td>
 </tr>
 </tbody>
 </table>
@@ -1753,12 +1755,13 @@ catch(SQLException e)
 </ul>
 </li>
 <li>使用<code>@Cache</code>注解指定需要使用二级缓存的对象(此注解在JPA1.0中还未提供，固在此由hibernate扩展提供)</li>
-<li>例如：<pre><code class="lang-java">@Entity
-@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
-public class Category
-{...}
+<li><p>例如：</p>
+<pre><code class="lang-java">  @Entity
+  @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+  public class Category
+  {...}
 </code></pre>
-</li>
+<ul>
 <li><p>验证效果：</p>
 <pre><code class="lang-java">public void list(){
   SessionFactory sessionFactory=HibernateSessionFactoryUtil.getSessionFactory();
@@ -1779,6 +1782,8 @@ public class Category
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li><p>应用memcached作为二级缓存(分布式的内存对象缓存系统，通用，不一定在Hibernate中使用)</p>
 <ul>
 <li>导入包: <ul>
@@ -1789,8 +1794,8 @@ public class Category
 </ul>
 </li>
 <li>下载安装memcached服务器程序，执行<code>memcached –vv</code></li>
-<li>在hibernate.cfg.xml 中设定：<pre><code class="lang-xml">  &lt;property name= &quot;cache.use_second_level_cache&quot;&gt;true&lt;/property&gt;
-  &lt;property name=&quot;cache.provider_class&quot;&gt;com.googlecode.hibernate.memcached.MemcachedCacheProvider&lt;/property&gt;
+<li>在hibernate.cfg.xml 中设定：<pre><code class="lang-xml">      &lt;property name= &quot;cache.use_second_level_cache&quot;&gt;true&lt;/property&gt;
+      &lt;property name=&quot;cache.provider_class&quot;&gt;com.googlecode.hibernate.memcached.MemcachedCacheProvider&lt;/property&gt;
 </code></pre>
 </li>
 </ul>
@@ -1947,13 +1952,13 @@ public class Category
 <tbody>
 <tr>
 <td>T1</td>
-<td></td>
+<td>/</td>
 <td>开始事务</td>
 </tr>
 <tr>
 <td>T2</td>
 <td>开始事务</td>
-<td></td>
+<td>/</td>
 </tr>
 <tr>
 <td>T3</td>
@@ -1963,44 +1968,45 @@ public class Category
 <tr>
 <td>T4</td>
 <td>查询账户余额为1000 version=0</td>
-<td></td>
+<td>/</td>
 </tr>
 <tr>
 <td>T5</td>
-<td></td>
+<td>/</td>
 <td>取出100 把余额改为900 version=1</td>
 </tr>
 <tr>
 <td>T6</td>
-<td></td>
+<td>/</td>
 <td>提交事务</td>
 </tr>
 <tr>
 <td>T7</td>
 <td>汇入100元</td>
-<td></td>
+<td>/</td>
 </tr>
 <tr>
 <td>T8</td>
 <td>提交事务 ? version&gt;0 throw Exception</td>
-<td></td>
+<td>/</td>
 </tr>
 <tr>
 <td>T9</td>
 <td>把余额改为1100元(丢失更新)</td>
+<td>/</td>
 </tr>
 </tbody>
 </table>
 </li>
 <li><p>示例：</p>
-<pre><code class="lang-java">//在pojo实体类中增加version属性()，在get方法前加@Version注解
-@Entity
-public class Account{   //属性：id,balance,version
-  ...
-  @Version
-  public int getVersion()
-  { return version; }
-}
+<pre><code class="lang-java">  //在pojo实体类中增加version属性()，在get方法前加@Version注解
+  @Entity
+  public class Account{   //属性：id,balance,version
+      ...
+      @Version
+      public int getVersion()
+      { return version; }
+  }
 </code></pre>
 </li>
 </ul>
@@ -2063,11 +2069,11 @@ public class Account{   //属性：id,balance,version
 <ol>
 <li>去掉@ManyToOne(cascade={CascadeType.All})设置；</li>
 <li>直接写Hql语句执行删除；</li>
-<li>将user对象的group属性设为null，相当于打断User与Group间的关联，代码如下<pre><code class="lang-java">     session.beginTransaction();
-     User user = (User)session.load(User.class,1);
-     user.setGroup(null);
-     session.delete(user);
-     session.getTransaction().commit();
+<li>将user对象的group属性设为null，相当于打断User与Group间的关联，代码如下<pre><code class="lang-java"> session.beginTransaction();
+ User user = (User)session.load(User.class,1);
+ user.setGroup(null);
+ session.delete(user);
+ session.getTransaction().commit();
 </code></pre>
 </li>
 </ol>
