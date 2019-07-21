@@ -323,6 +323,8 @@ H,I,J,K
 </ul>
 </li>
 <li><p>语法由字符和操作符构成, 常用操作符:</p>
+<ul>
+<li><p>匹配单个字符</p>
 <table class="table">
 <thead>
 <tr>
@@ -334,11 +336,12 @@ H,I,J,K
 <tbody>
 <tr>
 <td style="text-align:left"><code>.</code></td>
-<td style="text-align:left">表示任何单个字符 |</td>
+<td style="text-align:left">表示任何单个字符</td>
+<td style="text-align:left">/</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>[]</code></td>
-<td style="text-align:left">字符集,对单个字符给出取值范围</td>
+<td style="text-align:left">匹配<code>[]</code>中列举的字符</td>
 <td style="text-align:left"><code>[abc]</code>表示a、b、c,<code>[a‐z]</code>表示a到z单个字符</td>
 </tr>
 <tr>
@@ -347,24 +350,62 @@ H,I,J,K
 <td style="text-align:left"><code>[^abc]</code>表示非a或b或c的单个字符</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>\d</code></td>
+<td style="text-align:left">数字,等价于<code>[0‐9]</code></td>
+<td style="text-align:left">/</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>\D</code></td>
+<td style="text-align:left">匹配非数字</td>
+<td style="text-align:left">/</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>\w</code></td>
+<td style="text-align:left">单词字符,等价于<code>[A‐Za‐z0‐9]</code></td>
+<td style="text-align:left">/</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>\W</code></td>
+<td style="text-align:left">匹配非单词字符</td>
+<td style="text-align:left">/</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>\s</code></td>
+<td style="text-align:left">匹配空白，即 空格，tab键</td>
+<td style="text-align:left">/</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>\S</code></td>
+<td style="text-align:left">匹配非空白</td>
+<td style="text-align:left">/</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>匹配数量</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">操作符</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td style="text-align:left"><code>*</code></td>
-<td style="text-align:left">前一个字符0次或无限次扩展</td>
+<td style="text-align:left">前一个字符0次或无限次扩展,即可有可无</td>
 <td style="text-align:left"><code>abc*</code> 表示 ab、abc、abcc、abccc等</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>+</code></td>
-<td style="text-align:left">前一个字符1次或无限次扩展</td>
+<td style="text-align:left">前一个字符1次或无限次扩展,即至少有1次</td>
 <td style="text-align:left"><code>abc+</code> 表示 abc、abcc、abccc等</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>?</code></td>
-<td style="text-align:left">前一个字符0次或1次扩展</td>
+<td style="text-align:left">前一个字符0次或1次扩展,即要么有1次，要么没有</td>
 <td style="text-align:left"><code>abc?</code> 表示 ab、abc</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>|</code></td>
-<td style="text-align:left">左右表达式任意一个</td>
-<td style="text-align:left"><code>abc|def</code> 表示 abc、def</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>{m}</code></td>
@@ -372,10 +413,28 @@ H,I,J,K
 <td style="text-align:left"><code>ab{2}c</code>表示abbc</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>{m,}</code></td>
+<td style="text-align:left">扩展前一个字符至少m次</td>
+<td style="text-align:left"><code>ab{2}c</code>表示abbc,abbbc,abbbbc等</td>
+</tr>
+<tr>
 <td style="text-align:left"><code>{m,n}</code></td>
 <td style="text-align:left">扩展前一个字符m至n次(含n)</td>
 <td style="text-align:left"><code>ab{1,2}c</code>表示abc、abbc</td>
 </tr>
+</tbody>
+</table>
+</li>
+<li><p>匹配边界</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">操作符</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td style="text-align:left"><code>^</code></td>
 <td style="text-align:left">匹配字符串开头</td>
@@ -387,22 +446,57 @@ H,I,J,K
 <td style="text-align:left"><code>abc$</code>表示abc且在一个字符串的结尾</td>
 </tr>
 <tr>
+<td style="text-align:left"><code>\b</code></td>
+<td style="text-align:left">匹配一个单词的边界，注意：并不是匹配分隔符，而是单词和符号之间的边界 <br>（单词可是中英文字符,数字；符号可是中英文符号,空格,制表符,换行）</td>
+<td style="text-align:left">“a nice day”,”a niceday”: <code>\bnice\b</code>可匹配出”a nice day”的”nice”</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>\B</code></td>
+<td style="text-align:left">匹配一个非单词的边界</td>
+<td style="text-align:left">“a nice day”,”a niceday”: <code>\bnice\B</code>可匹配出”a niceday”的”nice”</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>匹配分组</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">操作符</th>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>|</code></td>
+<td style="text-align:left">左右表达式任意一个</td>
+<td style="text-align:left"><code>abc|def</code> 表示 abc、def</td>
+</tr>
+<tr>
 <td style="text-align:left"><code>( )</code></td>
 <td style="text-align:left">分组标记,内部只能使用</td>
 <td style="text-align:left"><code>(abc)</code>表示abc,<code>(abc|def)</code>表示abc、def</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>\d</code></td>
-<td style="text-align:left">数字,等价于<code>[0‐9]</code></td>
-<td style="text-align:left">/</td>
+<td style="text-align:left"><code>\num</code></td>
+<td style="text-align:left">引用分组num匹配到的字符串</td>
+<td style="text-align:left"><code>&lt;(\w*)&gt;&lt;(\w*)&gt;.*&lt;/\2&gt;&lt;/\1&gt;</code> =&gt; <code>&lt;html&gt;&lt;h1&gt;hh&lt;h1&gt;&lt;/html&gt;</code>正确，<code>&lt;html&gt;&lt;h1&gt;hh&lt;/h1&gt;&lt;/abc&gt;</code> 错误</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>\w</code></td>
-<td style="text-align:left">单词字符,等价于<code>[A‐Za‐z0‐9]</code></td>
+<td style="text-align:left"><code>(?P&lt;name&gt;)</code></td>
+<td style="text-align:left">分组起别名</td>
+<td style="text-align:left"><code>&lt;(?P&lt;name1&gt;\w*)&gt;&lt;(?P&lt;name2&gt;\w*)&gt;.*&lt;/(?P=name2)&gt;&lt;/(?P=name1)&gt;</code> =&gt; <code>&lt;html&gt;&lt;h1&gt;hh&lt;h1&gt;&lt;/html&gt;</code>正确,<code>&lt;html&gt;&lt;h1&gt;hh&lt;/h1&gt;&lt;/abc&gt;</code> 错误</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>(?P=name)</code></td>
+<td style="text-align:left">引用别名为name分组匹配到的字符串</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
+</li>
+</ul>
 </li>
 <li><p>eg1:</p>
 <ul>

@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redis</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="redis,master,slave,pub/sub,transaction">
+  
+  
+    <meta name="description" content="Redis Introduce">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">安全性</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">事务处理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">持久化机制</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">虚拟内存</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">主从复制</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">发布订阅消息</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">常用命令</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">键值相关命令</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">服务器相关命令</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">数据类型</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">String</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">hash</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">list</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">set</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">zset</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">应用举例</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Redis</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2015-04-30T16:00:00.000Z">2015-05-01</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-NoSql">NoSql</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<h3 id="header-2">安装</h3>
+<ol>
+<li><p>安装</p>
+<pre><code>&gt; wget http://download.redis.io/releases/redis-3.0.2.tar.gz
+&gt; tar zxvf redis-3.0.2.tar.gz
+&gt; cd  redis-3.0.2
+&gt; make              # 安装完之后，会在src目录下生成几个可执行文件
+&gt; make test         # 检查make有没有问题
+&gt; make install      # 会自动将src下生成的新的可执行文件copy到/usr/local/bin下
+</code></pre></li>
+<li><p>配置</p>
+<pre><code>#将默认配置文件redis.conf 拷贝到固定目录下（/etc/redis）
+&gt; mkdir /etc/redis
+&gt; cp redis.conf /etc/redis
+&gt; vi /etc/redis/redis.conf         # 可修改配置 daemonize yes （表示后台运行）
+</code></pre></li>
+<li><p>启动</p>
+<pre><code># Server
+&gt; redis-server /etc/redis/redis.conf
+</code></pre><pre><code># Client
+# redis-cli [OPTIONS] [cmd [arg [arg ...]]]
+# -h &lt;主机ip&gt;，默认是127.0.0.1
+# -p &lt;端口&gt;，默认是6379
+# -a &lt;密码&gt;，如果redis加锁，需要传递密码
+# --help，显示帮助信息
+&gt; redis-cli
+</code></pre></li>
+<li><p>关闭</p>
+<pre><code># Close Client
+&gt; redis-cli shutdown
+</code></pre><pre><code># Close Server
+&gt; pkill redis-server
+</code></pre><pre><code>&gt; netstat -tunpl | grep redis
+&gt; kill pid
+</code></pre></li>
+</ol>
+<p>注意：make失败，错误信息如下</p>
+<pre><code>cc: error: ../deps/hiredis/libhiredis.a: No such file or directory
+cc: error: ../deps/lua/src/liblua.a: No such file or directory
+cc: error: ../deps/jemalloc/lib/libjemalloc.a: No such file or directory
+make: *** [redis-server] Error 1
+</code></pre><p>解决方案：分别进入redis下的deps下的hiredis、lua和jemalloc下运行make</p>
+<pre><code>&gt; cd deps/hiredis
+&gt; make
+</code></pre><pre><code>&gt; yum install -y readline-devel pcre-devel
+&gt; cd deps/lua
+&gt; make
+&gt; yum install openssl-devel
+</code></pre><pre><code>&gt; cd deps/jemalloc
+&gt; ./configure
+&gt; make
+</code></pre><h3 id="header-3">安全性</h3>
+<p>客户端执行命令前先通过密码认证<br>note: Redis速度很快，一般一个外部用户可以在1s进行150k次的密码尝试</p>
+<ol>
+<li><p>Server端配置</p>
+<pre><code>&gt; vi /etc/redis/redis.conf
+requirepass &lt;password&gt;
+</code></pre></li>
+<li><p>Client端连接</p>
+<pre><code>&gt; redis-cli -a &lt;password&gt;
+</code></pre><p>或者</p>
+<pre><code>&gt; redis-cli
+&gt; auth &lt;password&gt;
+</code></pre></li>
+</ol>
+<h3 id="header-4">事务处理</h3>
+<p>Redis对事务的支持比较简单，只能保证一个Client发起的事务中的命令连续执行</p>
+<ul>
+<li><code>muti</code> : 开始事务<ul>
+<li>进入一个事务上下文</li>
+<li>后续命令会放入一个队列（不立即执行）</li>
+</ul>
+</li>
+<li><code>discard</code> : 取消事务（回滚）</li>
+<li><code>exec</code> : 执行事务 （提交）<ul>
+<li>顺序执行队列中的所有命令</li>
+</ul>
+</li>
+<li>注意： 队列中某个命令执行错误，整个事务并不会回滚，而是将可执行的命令都提交了！</li>
+</ul>
+<pre><code>&gt; get age               -&gt; 22
+&gt; muti                   -&gt; OK
+&gt; set age 10          -&gt; QUEUED
+&gt; set age 20          -&gt; QUEUED
+&gt; exec                   -&gt; OK OK
+&gt; get age              -&gt; 20
+</code></pre><p>使用乐观锁进行复杂事务控制：大多数基于数据版本（version）的记录机制实现</p>
+<ul>
+<li><code>watch xxx</code> ：监控某key （乐观锁）</li>
+<li><code>exec</code>时发现watch的key发生过变化，则整个事务失败</li>
+<li><code>exec</code>,<code>discard</code>,<code>unwatch</code>：会清除连接中的所有监视</li>
+</ul>
+<h3 id="header-5">持久化机制</h3>
+<p>Redis 是一个支持持久化的内存数据库 （可将内存中数据同步到硬盘来保证持久化）<br>两种方式：</p>
+<ul>
+<li><code>snapshotting</code> 快照方式 （默认）<ul>
+<li>存储数据，一定时间间隔做一次<ul>
+<li>默认存储文件：<code>/redis/bin/dump.rdb</code></li>
+<li>可配置自动做快照持久化的方式，eg:<pre><code>save 900 10          #900s内如果超过10个key被修改，就发起快照保存
+</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>append-only file</code> 方式 （缩写：aof)<ul>
+<li>存储操作</li>
+<li>默认存储文件： <code>/redis/bin/appendonly.aof</code></li>
+<li>可配置通过fsync函数强制os写入磁盘的时机，eg：<pre><code>&gt; vi /etc/redis/redis.conf
+appendonly yes    //启用aof持久化方式
+#appendfsync always //收到命令立即写入磁盘，最慢，但保证完成持久化
+appendfsync everysec    //每秒钟写入磁盘一次，在性能和持久化之间做了折中
+#appendfsync no        //完成依赖os，性能最好，持久化没有保证
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-6">虚拟内存</h3>
+<p>提高数据库容量的方法：</p>
+<ul>
+<li>将数据分割到多个redis server</li>
+<li>利用虚拟内存，把不经常访问的数据从内存交换到磁盘中，腾出内存空间用于其他需要访问的数据</li>
+</ul>
+<p>虚拟内存配置：</p>
+<pre><code>&gt; vi /etc/redis/redis.conf
+vm-enabled yes                      # 开启vm功能
+really-use-vm yes
+vm-swap-file /tmp/redis.swap        # 制定保存交换出的value的文件
+vm-max-memory 100000                # Redis使用的最大内存上限
+vm-page-size 32                     # 每个页面大小 32字节
+vm-pages 134217728                  # 最多使用多少页
+vm-max-threads 4                    # 执行value对象换入的线程数量
+</code></pre><h3 id="header-7">主从复制</h3>
+<ul>
+<li>主 Master server</li>
+<li>从 Slave servers</li>
+<li>Master 可以拥有多个Slave，Slave可以连接Slave，主从复制不会阻塞Master</li>
+<li>主从Server可以在：不同机器 or 同机器不同端口</li>
+</ul>
+<ol>
+<li><p>Slave Server端配置</p>
+<pre><code>&gt; vi /etc/redis/redis.conf
+slaveof &lt;master-ip&gt; &lt;master-port&gt;
+# 如果master设置了验证密码，需配置masterauth
+masterauth &lt;master-password&gt;
+</code></pre></li>
+<li><p>Start Master &amp; Slave Servers</p>
+<pre><code>&gt; redis-server /etc/redis/redis.conf
+</code></pre></li>
+<li><p>Client连接测试</p>
+<pre><code>&gt; redis-cli -h xxxx -p xxxx
+&gt; info    # 查看状态
+</code></pre><ul>
+<li><p>Master Server info sample:</p>
+<pre><code># Replication
+role:master
+connected slaves:1
+slave0:ip=192.168.0.110,prot=6379,status:online,offset=00,lag=0
+master_rep1_offset:99
+rep1_backlog_active:1
+...
+</code></pre></li>
+<li><p>Slave Server info sample:</p>
+<pre><code>#Replication
+role:slave
+master_host:192.168.0.100
+master_port:6379
+master_link_status:up
+...
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<p>注意： redis主从复制时提示<code>master_link_status:down</code></p>
+<ol>
+<li>确定slave的配置文件<code>redis.conf</code>配置正确（<code>slaveof</code> 和<code>masterauth</code> 参数）</li>
+<li><code>Unable to AUTH to MASTER: Writing to master: No route to host</code>  =&gt; 把master和slave防火墙关掉<code>service iptables stop</code>，之后重启</li>
+<li><code>No route to host</code> =&gt; <code>iptables -F</code></li>
+</ol>
+<h3 id="header-8">发布订阅消息</h3>
+<p>Redis在订阅者和发布者之间起到消息路由的功能</p>
+<ul>
+<li>订阅者使用<code>subscribe</code>，<code>psubscribe</code>命令向redis server订阅消息<ul>
+<li><code>subscribe &lt;channel...&gt;</code> ：订阅者监听频道</li>
+</ul>
+</li>
+<li>发布者使用<code>publish</code>命令想redis server发送特定类型的消息<ul>
+<li><code>publish &lt;channel&gt; &lt;content&gt;</code> ：在某频道发布信息</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<p>Client 1:</p>
+<pre><code>&gt; subscribe tv1
+</code></pre><p>Client 2:</p>
+<pre><code>&gt; subscribe tv1 tv2
+</code></pre><p>Client 3:</p>
+<pre><code>&gt; publish tv1 Hello         # return 2 代表有两个客户端正在监听tv1
+&gt; publish tv2 World         # return 1
+</code></pre><p>Result:</p>
+<ul>
+<li>Client 1 收到 message tv1 Hello</li>
+<li>Client 2 收到 message tv1 Hello message tv2 World</li>
+</ul>
+<h2 id="header-9">常用命令</h2>
+<h3 id="header-10">键值相关命令</h3>
+<ol>
+<li><p><code>keys</code> : 返回给定pattern的所有key</p>
+<pre><code>&gt; keys *
+&gt; keys my*
+</code></pre></li>
+<li><p><code>exists</code> : 确认一个key是否存在=&gt;return 1(存在)/0(不存在)</p>
+<pre><code>&gt; exists name
+&gt; exists age
+</code></pre></li>
+<li><p><code>del</code>: 删除一个key =&gt; return 1(success)/0(fail)</p>
+<pre><code>&gt; del list2
+&gt; exists list2
+</code></pre></li>
+<li><p><code>expire</code> : 设置某个key的过期时间(秒)</p>
+<pre><code>&gt; expire addr 10
+&gt; ttl addr     #查看key还有多少时间过期（有效时长），返回-1表示已过期或取消了过期时间
+&gt; get addr
+</code></pre></li>
+<li><p><code>move</code> : 转移key到另一个数据库</p>
+<pre><code>&gt; select 0            # 选择数据库0
+&gt; move age 1          # 将数据库0中age移动到数据库1中
+</code></pre></li>
+<li><p><code>persist</code> : 移除key的过期时间</p>
+<pre><code>&gt; persist age        # return 1
+&gt; ttl age            # return -1
+&gt; get age
+</code></pre></li>
+<li><p><code>randomkey</code> : 随机返回数据库中一个key</p>
+<pre><code>&gt; randomkey
+&gt; randomkey
+</code></pre></li>
+<li><p><code>rename</code> : 重命名key</p>
+<pre><code>&gt; rename age age_new     # return OK
+&gt; keys age*
+</code></pre></li>
+<li><p><code>type</code> : 返回key类型</p>
+<pre><code>&gt; type myset       # return set
+&gt; type list1       # return list
+&gt; type kk          # return nil
+</code></pre></li>
+</ol>
+<h3 id="header-11">服务器相关命令</h3>
+<ol>
+<li><p><code>select</code> : 选择数据库（ Redis数据库编号从0~15）</p>
+<pre><code>&gt; select 1     # return OK
+&gt; select 5     # return OK
+&gt; select 16    # return (error) ERR invalid DB index
+</code></pre></li>
+<li><p><code>quit</code> : 退出连接</p>
+<pre><code>&gt; quit
+</code></pre></li>
+<li><p><code>dbsize</code> : 返回当前数据库中key的数量</p>
+<pre><code>&gt; dbsize
+</code></pre></li>
+<li><p><code>info</code> : 获取服务器的统计信息</p>
+<pre><code>&gt; info
+redis_version:3.0.1
+redis_git_sha1:xxx
+redis_git_dirty:0
+arch_bits:32
+multiplexing_api:epoll
+process_id:xxx
+uptime_in_seconds:xxx
+uptime_in_days:0
+....
+db0:keys=xxx,expire=xxx
+db1:xxx
+...
+</code></pre></li>
+<li><p><code>config get</code> : 实时存储收到的请求 (获取一些相关配置的参数)</p>
+<pre><code>&gt; config get *              # 获取所有配置参数信息
+&gt; config get timeout
+</code></pre></li>
+<li><p><code>flushdb</code> : 删除当前数据库中所有key(清空当前数据库)</p>
+<pre><code>&gt; dbsize
+&gt; flushdb
+&gt; dbsize
+</code></pre></li>
+<li><p><code>flushall</code> ：删除所有数据库的所有key(清空所有数据库)</p>
+<pre><code>&gt; flushall
+</code></pre></li>
+</ol>
+<h2 id="header-12">数据类型</h2>
+<h3 id="header-13">String</h3>
+<ul>
+<li>二进制安全</li>
+<li>一个key对应一个value</li>
+<li>value可包含任何数据（eg:jpg,序列化对象）</li>
+</ul>
+<ol>
+<li><p><code>set</code></p>
+<pre><code>&gt; set name Tom      # return &quot;OK&quot;
+&gt; get name          # return &quot;Tom&quot;
+</code></pre></li>
+<li><p><code>setnx</code>：set not exist =&gt; return 0(fail) / 1(success)</p>
+<pre><code>&gt; setnx name Jack         # return 0
+&gt; get name                # return &quot;Tom&quot;
+</code></pre></li>
+<li><p><code>setex</code>：set expireTime</p>
+<pre><code>&gt; setex color 10 red         # return &quot;OK&quot;
+&gt; get color                  # return &quot;red&quot;
+# 10s later...
+&gt; get color                  # return (nil)
+</code></pre></li>
+<li><p><code>setrange</code>：replace string by range =&gt; return new string length</p>
+<pre><code>&gt; get email                            # return &quot;Tom@gmail.com&quot;
+&gt; setrange email 4 163.com             # return 13
+&gt; get email                            # return &quot;Tom@163.comom&quot;
+</code></pre></li>
+<li><p><code>mset</code>：muti-set =&gt; return “OK” / 0 (one fail =&gt; all fail)</p>
+<pre><code>msetnx: muti-set not exist          # return &quot;OK&quot; / 0 (one fail -&gt; all fail)
+&gt; mset key1 a1 key2 a2 key3 a3      # return &quot;OK&quot;
+&gt; get key2                          # return &quot;a2&quot;
+</code></pre></li>
+<li><p><code>getset</code>：设置key的值，并返回key的旧值</p>
+<pre><code>&gt; get name                   # return &quot;Tom&quot;
+&gt; getset name  Jack          # return &quot;Tom&quot;
+&gt; get name                   # return &quot;Jack&quot;
+</code></pre></li>
+<li><p><code>getrange</code>：get substring</p>
+<pre><code>&gt; get email                      # return &quot;Tom@163.comom&quot;
+&gt; getrange email 0 5             # return &quot;Tom@16&quot;
+</code></pre></li>
+<li><p><code>mget</code>: muti-get</p>
+<pre><code>&gt; mget key1 key2 key3 key4         # return &quot;a1&quot; &quot;a2&quot; &quot;a3&quot; (nil)
+</code></pre></li>
+<li><p><code>append</code>：追加value =&gt; return new string length</p>
+<pre><code>&gt; get name                    # return &quot;Jack&quot;
+&gt; append name .net            # 8
+&gt; get name                    # return &quot;Jack.net&quot;
+</code></pre></li>
+<li><p><code>strlen</code>: return value length</p>
+<pre><code>&gt; strlen name                # return 8
+</code></pre></li>
+<li><p><code>incr</code>: i++; <code>decr</code>: i–</p>
+<pre><code>&gt; set age 20    # return &quot;20&quot;
+&gt; incr age        # return &quot;21&quot;
+&gt; incr age        # return &quot;22&quot;
+</code></pre><pre><code>&gt; get cc      # return (nil)
+&gt; incr         # return 1
+&gt; incr         # return 2
+</code></pre></li>
+<li><p><code>incrby</code>: i+n; <code>decrby</code>: i-n</p>
+<pre><code>&gt; incr bb 5     # return 5
+&gt; incr bb 5     # return 10
+&gt; incr bb -2    # return 8
+</code></pre></li>
+</ol>
+<h3 id="header-14">hash</h3>
+<ol>
+<li><p><code>hset hash field fieldValue</code></p>
+<pre><code>&gt; hset user:001 name Tom     # return 1
+&gt; hget user:001 name            # return &quot;Tom&quot;
+</code></pre></li>
+<li><p><code>hsetnx</code></p>
+<pre><code>&gt; hsetnx user:001 name Jack   # return 0
+&gt; hget user:001 name             # return &quot;Tom&quot;
+</code></pre></li>
+<li><p><code>hmset</code></p>
+<pre><code>&gt; hmset user:001 name Lucy age 20     # return &quot;OK&quot;
+&gt; hget user:001 age                            # return &quot;20&quot;
+</code></pre></li>
+<li><p><code>hmget</code></p>
+<pre><code>&gt; hmget user:001 name age    # return &quot;Lucy&quot; &quot;20&quot;
+</code></pre></li>
+<li><p><code>hincrby</code></p>
+<pre><code>&gt; hincrby user:001 age 5      # return &quot;25&quot;
+</code></pre></li>
+<li><p><code>hexists</code>: test field exist or not =&gt; return 1(exist)/0 (not exist)</p>
+<pre><code>&gt; hexists user:001 age     # return 1
+&gt; hexists user:001 sex     # return 0
+</code></pre></li>
+<li><p><code>hlen</code>: field length</p>
+<pre><code>&gt; hlen user:001     # return 2
+</code></pre></li>
+<li><p><code>hkeys</code>: return all fields</p>
+<pre><code>&gt; hkeys user:001      # return &quot;name&quot; &quot;age&quot;
+</code></pre></li>
+<li><p><code>hvals</code>: return all values</p>
+<pre><code>&gt; hvals user:001     # return &quot;Lucy&quot; &quot;20&quot;
+</code></pre></li>
+<li><p><code>hgetall</code>: return all fields and values</p>
+<pre><code>&gt; hgetall user:001     # return &quot;name&quot; &quot;Lucy&quot; &quot;age&quot; &quot;20&quot;
+</code></pre></li>
+<li><p><code>hdel</code>: del hash field</p>
+<pre><code>&gt; hdel user:001 age    # return 1
+&gt; hget user:001 age   # return (nil)
+</code></pre></li>
+</ol>
+<h3 id="header-15">list</h3>
+<p>每个子元素都是String类型的双向链表，即可做栈又可做队列<br>可以通过push,pop操作从头部或尾部添加删除元素</p>
+<ol>
+<li><p><code>lpush</code>,<code>lpop</code>,<code>lrang</code></p>
+<ul>
+<li><code>lpush</code> 从头部压入一个元素 =&gt; return list size</li>
+<li><code>lpop</code> 从头部删除一个元素 =&gt; return 弹出的元素</li>
+<li><code>lrange</code> 从头开始取元素（ 0表示头部第一个元素，-1表示尾部第一个元素）<pre><code>&gt; lpush list1 &quot;Hello&quot;       # return 1
+&gt; lpush list1 &quot;World&quot;       # return 2
+&gt; lrange list1 0 -1         # return &quot;World&quot; &quot;Hello&quot; (从头取到尾)
+# 类似栈（先进后出）
+&gt; lpop list1                  # return &quot;World&quot;
+&gt; lrange list1                # return &quot;Hello&quot;
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>rpush</code>,<code>rpop</code></p>
+<ul>
+<li><code>rpush</code> 从尾部压入一个元素</li>
+<li><code>rpop</code> 从尾部弹出一个元素<pre><code>&gt; rpush list2 &quot;Hello&quot;
+&gt; rpush list2 &quot;World&quot;
+&gt; lrange list2 0 -1           # return &quot;Hello&quot; &quot;World&quot;
+# 类似队列（先进先出）
+&gt; rpop list2                   # return &quot;World&quot;
+&gt; lrange list2                 # return &quot;Hello&quot;
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>linsert</code>,<code>lset</code></p>
+<ul>
+<li><code>linsert</code> 在特定位置添加元素</li>
+<li><p><code>lset</code> 替换指定下标的元素</p>
+<pre><code>&gt; lpush list3 &quot;one&quot;                              # return 1
+&gt; lpush list3 &quot;two&quot;                              # return 2
+&gt; lrange list3 0 -1                              # return &quot;two&quot; &quot;one&quot;      
+&gt; linsert list3 before &quot;one&quot; &quot;three&quot;       # return 3
+&gt; lrange list3 0 -1                        # return &quot;two&quot; &quot;three&quot; &quot;one&quot;
+
+&gt; lset list3 1 &quot;four&quot;      # return OK
+&gt; lrange list3 0 -1        # return &quot;two&quot; &quot;four&quot; &quot;one&quot;
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>lrem</code> 删除n个值为value的元素</p>
+<ul>
+<li><code>n=0</code> 表示全部删除</li>
+<li><code>n&gt;0</code> 从头部开始删除</li>
+<li><code>n&lt;0</code> 从尾部开始删除</li>
+<li>return 删除个数<pre><code>&gt; lpush list3 &quot;one&quot;
+&gt; lpush list3 &quot;one&quot;
+&gt; lpush list3 &quot;one&quot;
+&gt; lrange list3 0 -1         # return &quot;one&quot; &quot;one&quot; &quot;one&quot; &quot;two&quot; &quot;four&quot; &quot;one&quot;
+&gt; lrem list3 3 &quot;one&quot;        # return 3
+&gt; lrange list3 0 -1         # return &quot;two&quot; &quot;four&quot; &quot;one&quot;
+&gt; lrem list3 1 &quot;one&quot;        # return 1
+&gt; lrange list3 0 -1         # return &quot;two&quot; &quot;four&quot;
+&gt; lrem list3 1 &quot;one&quot;        # return 0
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>ltrim</code> 保留指定范围的元素，其他全部删除 =&gt; return OK</p>
+<pre><code>&gt; rpush list4 &quot;a1&quot;
+&gt; rpush list4 &quot;a2&quot;
+&gt; rpush list4 &quot;a3&quot;
+&gt; rpush list4 &quot;a4&quot;
+&gt; lrange list4 0 -1          # return &quot;a1&quot; &quot;a2&quot; &quot;a3&quot; &quot;a4&quot;
+&gt; ltrim list4 1 2            # return OK
+&gt; lrange list4 0 -1          # return &quot;a2&quot; &quot;a3&quot;
+</code></pre></li>
+<li><p><code>rpoplpush list1 list2</code>  =&gt; list1从尾部弹出元素，从头压入list2，return 弹出元素</p>
+<pre><code># list5: a1 a2 a3
+# list6: b1 b2 b3 
+&gt; rpoplpush list5 list6      # a1
+&gt; lrange list5 0 -1          # a1 a2
+&gt; lrange list6 0 -1          # a3 b1 b2 b3
+</code></pre></li>
+<li><p><code>lindex list index</code> =&gt; return list中index位置的元素</p>
+<pre><code>&gt; lindex list6 3      # return b3
+</code></pre></li>
+<li><p><code>llen list</code> -&gt; return list size</p>
+<pre><code>&gt; llen list6     # return 4
+</code></pre></li>
+</ol>
+<h3 id="header-16">set</h3>
+<p>string类型的无序集合，通过hash table实现<br>集合可取并集，交集，差集等操作 （可用于实现类似好友推荐，blog的tag功能）</p>
+<ol>
+<li><p><code>sadd</code>,<code>srem</code>,<code>smembers</code></p>
+<ul>
+<li><code>sadd</code> 集合中添加元素 =&gt; return 1(success)/0(fail)</li>
+<li><code>srem</code> 集合中删除元素 =&gt; return 1(success)/0(fail)</li>
+<li><p><code>smembers</code> 列出集合所有元素</p>
+<pre><code>&gt; sadd myset &quot;Hello&quot;         # return 1
+&gt; sadd myset &quot;World&quot;         # return 1
+&gt; sadd myset &quot;World&quot;         # return 0
+&gt; smembers myset             # return &quot;World&quot; &quot;Hello&quot;
+
+&gt; srem myset &quot;Hello&quot;         # return 1
+&gt; srem myset &quot;Hello&quot;         # return 0
+&gt; smembers myset             # return &quot;World&quot;
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>spop</code>,<code>srandmembber</code></p>
+<ul>
+<li><code>spop</code> 从集合中随机弹出一个元素 =&gt; return 弹出的元素</li>
+<li><p><code>srandmember</code> 随机返回集合的一个元素，但不删除元素</p>
+<pre><code># 集合mytest1：&quot;a1&quot;,&quot;a2&quot;,&quot;a3&quot;,&quot;a4&quot;,&quot;a5&quot;
+&gt; spop mytest1                # return &quot;a3&quot; （随机的一个元素）
+&gt; smembers mytest1            # return &quot;a1&quot; &quot;a2&quot; &quot;a4&quot; &quot;a5&quot;
+
+&gt; srandmember mytest1         # return &quot;a2&quot; （随机的一个元素）
+&gt; smembers mytest1            # return  &quot;a1&quot; &quot;a2&quot; &quot;a4&quot; &quot;a5&quot;
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>sdiff</code>,<code>sdiffstore</code></p>
+<ul>
+<li><code>sdiff</code> 返回两个集合的差集，以前一个集合为标准</li>
+<li><p><code>sdiffstore</code> 将返回的差集存储到另一个集合 -&gt; return 1(success)/0(fail)</p>
+<pre><code># test1: a1,a2,a3
+# test2: b1,a2,b3
+&gt; sdiff test1 test2          # return &quot;a1&quot; &quot;a3&quot;
+&gt; sdiff test2 test1          # return &quot;b1&quot; &quot;b3&quot;
+
+&gt; sdiffstore mytest3 test1 test2    #  return 1
+&gt; smembers mytest3                  #  return &quot;a1&quot; &quot;a3&quot;
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>sinter</code>,<code>sunion</code></p>
+<ul>
+<li><code>sinter</code> 返回两个集合的交集，并存储到另一个集合 =&gt;return 1(success)/0(fail)</li>
+<li><p><code>sunion</code> 返回两个集合的并集，并存储到另一个集合 =&gt; return 元素个数</p>
+<pre><code># test1: a1,a2,a3
+# test2: b1,a2,b3
+&gt; sinter test1 test2            # return &quot;a2&quot;
+&gt; sinter mytset4 test1 test2    # return 1
+&gt; smembers mytest4              #  return &quot;a2&quot;
+
+&gt; sunion test1 test2                  # return a1 a2 a3 b1 b3
+&gt; sunionstore mytest5 test1 test2     # return 5
+&gt; smembers mytest5                    # return a1 a2 a3 b1 b3
+</code></pre></li>
+</ul>
+</li>
+<li><p><code>smove</code> 将一个元素从集合1移到集合2  =&gt; return 1(success)/0(fail) </p>
+<pre><code>&gt; smove test1 test2 a1
+&gt; smembers test1          # return a2 a3
+&gt; smembers test2          # return a1 b1 a2 b3
+</code></pre></li>
+<li><p><code>scard</code> 返回集合元素个数</p>
+<pre><code>&gt; scard test1     # return 2
+&gt; scard test2     # return 4
+</code></pre></li>
+<li><p><code>sismember</code> 测试某个元素是否在某个集合中=&gt; return 1(yes)/0(no) </p>
+<pre><code>&gt; sismember test1 a2    # return 1
+&gt; sismember test1 a1    # return 0
+</code></pre></li>
+</ol>
+<h3 id="header-17">zset</h3>
+<ul>
+<li>sorted set类型，set的升级，有序集合</li>
+<li>每次添加修改元素后会自动重新排序</li>
+<li>每一个元素有两个值，值value和分数score(专门用来做排序)</li>
+<li>eg: <code>n1 -&gt; {(value1,score1),(value2,score2),...}</code></li>
+<li>rank: index</li>
+<li>lexicographical: 相同的分值时，有序集合的元素会根据成员的值逐字节对比</li>
+</ul>
+<table class="table">
+<thead>
+<tr>
+<th>rank</th>
+<th>value</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>one</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>two</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>three</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p><code>zadd</code> 向有序集合添加一个元素并指定顺序 =&gt; return 1(success)/0(添加失败，但会更新顺序号)</p>
+<pre><code> # zadd name score1 value1 score2 value2 ...
+ redis:6379&gt; zadd cat 10 cat-A 20 cat-B 30 cat-C 40 cat-D
+ (integer) 4
+</code></pre></li>
+<li><p><code>zscan key cursor</code> 查看集合元素们</p>
+<pre><code> # zscan name cursor ...
+ redis:6379&gt; zscan cat 0
+ 1) &quot;0&quot;
+ 2) 1) &quot;cat-A&quot;
+    2) &quot;10&quot;
+    3) &quot;cat-B&quot;
+    4) &quot;20&quot;
+    5) &quot;cat-C&quot;
+    6) &quot;30&quot;
+    7) &quot;cat-D&quot;
+    8) &quot;40&quot;
+</code></pre></li>
+<li><p><code>zrange/zrevrange</code> 获取rank范围内的元素; <code>zrangebyscore</code> 获取score范围内的元素</p>
+<pre><code> # zrange name start end [withscores]
+ redis:6379&gt; zrange cat 1 3
+ 1) &quot;cat-B&quot;
+ 2) &quot;cat-C&quot;
+ 3) &quot;cat-D&quot;
+ redis:6379&gt; zrange cat 1 3 withscores
+ 1) &quot;cat-B&quot;
+ 2) &quot;20&quot;
+ 3) &quot;cat-C&quot;
+ 4) &quot;30&quot;
+ 5) &quot;cat-D&quot;
+ 6) &quot;40&quot;
+
+ # zrangebyscore name minscore maxscore [withscores]
+ redis:6379&gt; zrangebyscore cat 15 45
+ 1) &quot;cat-B&quot;
+ 2) &quot;cat-C&quot;
+ 3) &quot;cat-D&quot;
+</code></pre></li>
+<li><p><code>zrank/zrevrank</code> 获取元素rank; <code>zscore</code>  获取元素score</p>
+<pre><code> # zrank name value
+ redis:6379&gt; zrank cat cat-C
+ (integer) 2
+ redis:6379&gt; zrevrank cat cat-C
+ (integer) 1
+
+ # zscore name value
+ redis:6379&gt; zscore cat cat-B
+ &quot;20&quot;
+</code></pre></li>
+<li><p><code>zcard</code> 返回集合中所有元素个数; <code>zcount</code> 返回集合指定顺序号范围内的元素数量</p>
+<pre><code> # zcard key
+ redis:6379&gt; zcard cat
+ (integer) 4
+
+ # zcount name minscore maxscore
+ redis:6379&gt; zcount cat 15 45
+ (integer) 3
+</code></pre></li>
+<li><p><code>zinterstore</code> 交集,<code>zunionstore</code>并集</p>
+<pre><code> redis:6379&gt; zadd cat2 15 cat-B 45 cat-D 55 cat-E
+ (integer) 3
+
+ # zinterstore name destName numKeys key1 key2 ... [aggregate sum|max|min]
+ redis:6379&gt; zinterstore cat-inter 2 cat cat2
+ (integer) 2
+ redis:6379&gt; zscan cat-inter 0
+ 1) &quot;0&quot;
+ 2) 1) &quot;cat-B&quot;
+    2) &quot;35&quot;
+    3) &quot;cat-D&quot;
+    4) &quot;85&quot;
+
+ # zinterstore name destName numKeys key1 key2 ... [aggregate sum|max|min]
+ redis:6379&gt; zunionstore cat-union 2 cat cat2
+ (integer) 5
+ redis:6379&gt; zscan cat-union 0
+ 1) &quot;0&quot;
+ 2)  1) &quot;cat-A&quot;
+     2) &quot;10&quot;
+     3) &quot;cat-C&quot;
+     4) &quot;30&quot;
+     5) &quot;cat-B&quot;
+     6) &quot;35&quot;
+     7) &quot;cat-E&quot;
+     8) &quot;55&quot;
+     9) &quot;cat-D&quot;
+    10) &quot;85&quot;
+
+ redis:6379&gt; zunionstore cat-union 2 cat cat2 aggregate max
+ (integer) 5
+ redis:6379&gt; zscan cat-union 0
+ 1) &quot;0&quot;
+ 2)  1) &quot;cat-A&quot;
+     2) &quot;10&quot;
+     3) &quot;cat-B&quot;
+     4) &quot;20&quot;
+     5) &quot;cat-C&quot;
+     6) &quot;30&quot;
+     7) &quot;cat-D&quot;
+     8) &quot;45&quot;
+     9) &quot;cat-E&quot;
+    10) &quot;55&quot;
+</code></pre></li>
+<li><p><code>zincrby</code> 增减某个集合元素的score,若元素不存在，则插入</p>
+<pre><code> # zincrby name increment value
+ redis:6379&gt; zincrby cat 3 cat-A
+ &quot;13&quot;
+ redis:6379&gt; zscore cat cat-A
+ &quot;13&quot;
+</code></pre></li>
+<li><p><code>zrem</code>/<code>zremrangebyrank</code> 按索引/<code>zremrangebyscore</code>按score： 删除集合的元素</p>
+<pre><code> # zrem name value
+ redis:6379&gt; zrem cat cat-B
+ (integer) 1
+ redis:6379&gt; zscan cat 0
+ 1) &quot;0&quot;
+ 2) 1) &quot;cat-A&quot;
+    2) &quot;13&quot;
+    3) &quot;cat-C&quot;
+    4) &quot;30&quot;
+    5) &quot;cat-D&quot;
+    6) &quot;40&quot;
+
+ # zremrangebyscore name minscore maxscore
+ redis:6379&gt; zremrangebyscore cat 15 35
+ (integer) 1
+ redis:6379&gt; zscan cat 0
+ 1) &quot;0&quot;
+ 2) 1) &quot;cat-A&quot;
+    2) &quot;13&quot;
+    3) &quot;cat-D&quot;
+    4) &quot;40&quot;
+</code></pre></li>
+</ol>
+<h3 id="header-18">应用举例</h3>
+<ol>
+<li><p>多个String型键存储一个Object</p>
+<table class="table">
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>post:42:title</td>
+<td>Test Article</td>
+</tr>
+<tr>
+<td>post:42:author</td>
+<td>Tom</td>
+</tr>
+<tr>
+<td>post:42:content</td>
+<td>This is Test</td>
+</tr>
+<tr>
+<td>posts:count</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>一个Hash型存储一个Object</p>
+<table class="table">
+<thead>
+<tr>
+<th>key</th>
+<th>field</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>post:42</td>
+<td>title</td>
+<td>Test Article</td>
+</tr>
+<tr>
+<td>post:42</td>
+<td>author</td>
+<td>Tom</td>
+</tr>
+<tr>
+<td>post:42</td>
+<td>content</td>
+<td>This is Test</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>List</p>
+<table class="table">
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>posts:list</td>
+<td>1,2,42</td>
+</tr>
+<tr>
+<td>posts:42:comments</td>
+<td>“Good”,”Thanks”,”Useful”,…</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Set</p>
+<table class="table">
+<thead>
+<tr>
+<th>key</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>post:1:tags</td>
+<td>java</td>
+</tr>
+<tr>
+<td>post:2:tags</td>
+<td>java,mysql</td>
+</tr>
+<tr>
+<td>post:42:tags</td>
+<td>java,redis</td>
+</tr>
+<tr>
+<td>tags.java.posts</td>
+<td>1,2,42</td>
+</tr>
+<tr>
+<td>tags.mysql.posts</td>
+<td>2</td>
+</tr>
+<tr>
+<td>tags.redis.posts</td>
+<td>42</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>ZSet</p>
+<table class="table">
+<thead>
+<tr>
+<th>key</th>
+<th>member</th>
+<th>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>posts:readCount</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>posts:readCount</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>posts:readCount</td>
+<td>42</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>
