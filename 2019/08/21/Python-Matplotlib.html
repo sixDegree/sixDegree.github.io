@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Python Matplotlib</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Matplotlib</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">基础绘图函数</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">plt.plot 坐标图</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">plt.scatter 散点图</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">plt.hist 直方图</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">plt.pie 饼图</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Python Matplotlib</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-08-20T16:00:00.000Z">2019-08-21</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Python">Python</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Matplotlib</h2>
+<ul>
+<li>第三方可视化库</li>
+<li>由各种可视化类构成,内部结构复杂,受Matlab启发 </li>
+<li><code>matplotlib.pyplot</code>是绘制各类可视化图形的命令子库,相当于快捷方式</li>
+</ul>
+<p>导入使用：</p>
+<pre><code class="lang-python">import matplotlib.pyplot as plt
+</code></pre>
+<h2 id="header-2">基础绘图函数</h2>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">函数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">plt.plot(x,y,fmt,…)</td>
+<td style="text-align:left">绘制一个坐标图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.boxplot(data,notch,position)</td>
+<td style="text-align:left">绘制一个箱形图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.bar(left,height,width,bottom)</td>
+<td style="text-align:left">绘制一个条形图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.barh(width,bottom,left,height)</td>
+<td style="text-align:left">绘制一个横向条形图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.polar(theta, r)</td>
+<td style="text-align:left">绘制极坐标图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.pie(data, explode)</td>
+<td style="text-align:left">绘制饼图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.psd(x,NFFT=256,pad_to,Fs)</td>
+<td style="text-align:left">绘制功率谱密度图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.specgram(x,NFFT=256,pad_to,F)</td>
+<td style="text-align:left">绘制谱图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.cohere(x,y,NFFT=256,Fs)</td>
+<td style="text-align:left">绘制X‐Y的相关性函数</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.scatter(x,y)</td>
+<td style="text-align:left">绘制散点图,其中x和y长度相同</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.step(x,y,where)</td>
+<td style="text-align:left">绘制步阶图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.hist(x,bins,normed)</td>
+<td style="text-align:left">绘制直方图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.contour(X,Y,Z,N)</td>
+<td style="text-align:left">绘制等值图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.vlines()</td>
+<td style="text-align:left">绘制垂直图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.stem(x,y,linefmt,markerfmt)</td>
+<td style="text-align:left">绘制柴火图</td>
+</tr>
+<tr>
+<td style="text-align:left">plt.plot_date()</td>
+<td style="text-align:left">绘制数据日期</td>
+</tr>
+</tbody>
+</table>
+<p>Note:</p>
+<ul>
+<li><code>plt.savefig(fname,dpi)</code> : 将输出图形存储为文件,默认PNG格式,可以通过dpi修改输出质量</li>
+<li><code>plt.show()</code>: 显示绘图</li>
+</ul>
+<h2 id="header-3">plt.plot 坐标图</h2>
+<p><code>plt.plot(x, y, format_string, **kwargs)</code></p>
+<ul>
+<li><code>x</code> : X轴数据,列表或数组,可选(绘制多条曲线时,各条曲线的x不能省略)</li>
+<li><code>y</code> : Y轴数据,列表或数组</li>
+<li><code>format_string</code>: 控制曲线的格式字符串,可选(由颜色字符、风格字符和标记字符组成)</li>
+<li><code>**kwargs</code> : 第二组或更多(x,y,format_string)<ul>
+<li>color : 控制颜色, color=’green’</li>
+<li>linestyle : 线条风格, linestyle=’dashed’</li>
+<li>marker : 标记风格, marker=’o’</li>
+<li>markerfacecolor: 标记颜色, markerfacecolor=’blue’</li>
+<li>markersize : 标记尺寸, markersize=20</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<ol>
+<li><p>准备数据</p>
+<pre><code class="lang-python"> # data
+ x=np.linspace(0,10,100)
+ siny=np.sin(x)
+ cosy=np.cos(x)
+</code></pre>
+</li>
+<li><p>绘制多条曲线</p>
+<pre><code class="lang-python"> # method1:
+ plt.plot(x,siny)
+ plt.plot(x,cosy) 
+
+ # method2:
+ plt.plot(x,siny,x,cosy)
+</code></pre>
+</li>
+<li><p>曲线样式设置</p>
+<pre><code class="lang-python"> # method1:
+ plt.plot(x,siny,color=&quot;green&quot;)
+ plt.plot(x,cosy,color=&quot;red&quot;,linestyle=&quot;--&quot;) # &#39;--&#39;:---- , &#39;-.&#39;:--.--.-- , &#39;:&#39;:..... , &#39;-&#39;: ___
+
+ # method2:
+ plt.plot(x,siny,&#39;g&#39;,x,cosy,&#39;r--&#39;)
+</code></pre>
+<p> <img src="/2019/08/21/sin_cos_style.png" alt="sin_cos_style"></p>
+</li>
+<li><p>曲线标签设置</p>
+<pre><code class="lang-python"> plt.plot(x,siny,color=&quot;green&quot;,label=&quot;sin(x)&quot;)
+ plt.plot(x,cosy,color=&quot;red&quot;,label=&quot;cos(x)&quot;) 
+ plt.legend()
+</code></pre>
+<p> <img src="/2019/08/21/sin_cos_legend.png" alt="sin_cos_legend"></p>
+</li>
+<li><p>坐标轴标签设置</p>
+<pre><code class="lang-python"> plt.plot(x,siny)
+ plt.plot(x,cosy)
+ plt.xlabel(&quot;X axis&quot;)
+ plt.ylabel(&quot;Y axis&quot;)
+</code></pre>
+<p> <img src="/2019/08/21/sin_cos_xylabel.png" alt="sin_cos_xylabel"></p>
+</li>
+<li><p>坐标轴范围设置</p>
+<pre><code class="lang-python"> plt.plot(x,siny,x,cosy)
+ plt.plot(x,cosy)
+
+ # method1:
+ plt.xlim(-5,15)
+ plt.ylim(-0.5,1.5)
+
+ # method2:
+ plt.axis([-1,12,-2,2]) # [x_s,x_e,y_s,y_e]
+</code></pre>
+<p> <img src="/2019/08/21/sin_cos_axis.png" alt="sin_cos_axis"></p>
+</li>
+<li><p>给图加标题</p>
+<pre><code class="lang-python"> plt.plot(x,siny,x,cosy)
+ plt.title(&quot;Test&quot;)
+</code></pre>
+</li>
+<li><p>显示绘图</p>
+<pre><code class="lang-python"> plt.show()
+</code></pre>
+</li>
+</ol>
+<h2 id="header-4">plt.scatter 散点图</h2>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-python">x=np.linspace(0,10,100)
+siny=np.sin(x)
+cosy=np.cos(x)
+plt.scatter(x,siny,color=&quot;green&quot;)
+plt.scatter(x,cosy,color=&quot;red&quot;)
+plt.show()
+</code></pre>
+<p><img src="/2019/08/21/sin_cos_scatter.png" alt="sin_cos_scatter"></p>
+<pre><code class="lang-python">x1=np.random.normal(0,1,1000)
+x2=np.random.normal(0,1,1000)
+plt.scatter(x1,x2,alpha=0.3)
+plt.show()
+</code></pre>
+<p><img src="/2019/08/21/x1_x2_scatter.png" alt="x1_x2_scatter"></p>
+<h2 id="header-5">plt.hist 直方图</h2>
+<pre><code class="lang-python">a=np.random.normal(100,20,size=100)
+plt.hist(a,40,alpha=0.3)       # 40: bin,直方个数
+plt.show()
+</code></pre>
+<p><img src="/2019/08/21/normal_hist.png" alt="normal_hist"></p>
+<h2 id="header-6">plt.pie 饼图</h2>
+<pre><code class="lang-python">labels=[&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;]
+sizes=[15,30,45,10]
+explode=[0,0.1,0,0]
+plt.pie(sizes,explode=explode,labels=labels,autopct=&quot;%1.1f%%&quot;,shadow=False,startangle=90)
+plt.show()
+</code></pre>
+<p><img src="/2019/08/21/pie.png" alt="pie"></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

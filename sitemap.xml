@@ -2,7 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://sixdegree.github.io/2019/03/11/python-basic.html</loc>
+    <loc>http://sixdegree.github.io/2019/08/15/React-Fiber.html</loc>
+    
+    <lastmod>2019-10-07T15:12:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2019/07/20/python-algorithm.html</loc>
+    
+    <lastmod>2019-10-07T14:36:47.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2018/09/15/Spring-Boot.html</loc>
+    
+    <lastmod>2019-10-04T16:56:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/04/01/SQL-Query.html</loc>
+    
+    <lastmod>2019-10-04T16:53:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2019/08/20/Python-Numpy.html</loc>
+    
+    <lastmod>2019-08-23T07:30:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2019/08/21/Python-Matplotlib.html</loc>
+    
+    <lastmod>2019-08-22T05:15:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2019/03/11/Python-Basic.html</loc>
     
     <lastmod>2019-07-21T11:40:24.000Z</lastmod>
     
@@ -37,13 +79,6 @@
   </url>
   
   <url>
-    <loc>http://sixdegree.github.io/2013/04/01/SQL-Query.html</loc>
-    
-    <lastmod>2019-07-08T16:51:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://sixdegree.github.io/2016/05/01/Hadoop1.x-Basic.html</loc>
     
     <lastmod>2019-07-08T16:48:10.000Z</lastmod>
@@ -54,13 +89,6 @@
     <loc>http://sixdegree.github.io/2015/11/03/Storm.html</loc>
     
     <lastmod>2019-07-08T16:47:00.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2018/09/15/Spring-Boot.html</loc>
-    
-    <lastmod>2019-07-08T16:41:34.000Z</lastmod>
     
   </url>
   
@@ -212,14 +240,14 @@
   </url>
   
   <url>
-    <loc>http://sixdegree.github.io/2018/08/03/Koa.html</loc>
+    <loc>http://sixdegree.github.io/2018/08/02/Babel-Browserify.html</loc>
     
     <lastmod>2018-10-26T12:33:58.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://sixdegree.github.io/2018/08/02/Babel-Browserify.html</loc>
+    <loc>http://sixdegree.github.io/2018/08/03/Koa.html</loc>
     
     <lastmod>2018-10-26T12:33:58.000Z</lastmod>
     
@@ -229,6 +257,41 @@
     <loc>http://sixdegree.github.io/2018/08/01/Webpack.html</loc>
     
     <lastmod>2018-10-26T12:33:58.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2015/03/01/NodeJS.html</loc>
+    
+    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2014/01/01/maven.html</loc>
+    
+    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2014/04/01/Sass.html</loc>
+    
+    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2014/05/01/CSS3.html</loc>
+    
+    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://sixdegree.github.io/2013/09/01/Webservice.html</loc>
+    
+    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
     
   </url>
   
@@ -254,42 +317,7 @@
   </url>
   
   <url>
-    <loc>http://sixdegree.github.io/2013/09/01/Webservice.html</loc>
-    
-    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://sixdegree.github.io/2016/01/21/NodeJS-Markdown.html</loc>
-    
-    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2014/05/01/CSS3.html</loc>
-    
-    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2014/01/01/maven.html</loc>
-    
-    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2014/04/01/Sass.html</loc>
-    
-    <lastmod>2018-10-26T12:33:57.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://sixdegree.github.io/2015/03/01/NodeJS.html</loc>
     
     <lastmod>2018-10-26T12:33:57.000Z</lastmod>
     

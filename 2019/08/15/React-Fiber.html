@@ -1,0 +1,3056 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>React Fiber</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="reactJs">
+  
+  
+    <meta name="description" content="ReactJS 16">
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">开发环境搭建</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">开发调试工具</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">打包和部署</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">JSX</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Component</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">自定义组件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">state</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">props</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Sample: TodoList</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">组件拆分：父子组件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">组件拆分: UI &amp; Container</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">受控 &amp; 非受控组件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">组件复用(设计模式)</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">高阶</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">this</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">ref</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Fragment</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">结构化赋值</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">函数式编程</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">Immutable data</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">PureComponent</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">Context API</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">Virtual Dom</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">组件生命周期</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">样式</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">CSS3过渡动画</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">react-transition-group</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">styled-components</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">iconfont</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">UI组件库</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">Redux</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-33"><span class="sidebar-nav nav-text">使用</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-34"><span class="sidebar-nav nav-text">Sample:TodoList</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-35"><span class="sidebar-nav nav-text">Sample改进：封装action</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-36"><span class="sidebar-nav nav-text">Reducer拆分组合</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-37"><span class="sidebar-nav nav-text">Redux中间件: Redux-thunk</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-38"><span class="sidebar-nav nav-text">Redux中间件: Redux-saga</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-39"><span class="sidebar-nav nav-text">React-redux</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-40"><span class="sidebar-nav nav-text">redux-immutable</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-41"><span class="sidebar-nav nav-text">组织Action和Reducer</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-42"><span class="sidebar-nav nav-text">React Router</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-43"><span class="sidebar-nav nav-text">路由</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-44"><span class="sidebar-nav nav-text">路由容器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-45"><span class="sidebar-nav nav-text">参数传递</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-46"><span class="sidebar-nav nav-text">嵌套路由</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-47"><span class="sidebar-nav nav-text">Sample</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-48"><span class="sidebar-nav nav-text">More</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-49"><span class="sidebar-nav nav-text">react-loadable</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-50"><span class="sidebar-nav nav-text">Next.js 创建同构应用</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-51"><span class="sidebar-nav nav-text">单元测试工具</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-52"><span class="sidebar-nav nav-text">拆分复杂度: 按领域模型(feature)组织代码</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">React Fiber</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-08-14T16:00:00.000Z">2019-08-15</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-ReactJs">ReactJs</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<p><strong>React：</strong></p>
+<ul>
+<li>声明式开发（操作Data，自动根据Data构建Dom，注：JQuery是命令式开发，直接操作Dom）</li>
+<li>可以与其他框架并存</li>
+<li>组件化 (Component)</li>
+<li>单向数据流（子组件可使用父组件传递过来的值，但子组件不能直接改变这个值）</li>
+<li>视图层框架（对于大型项目，组件间传值时，可借助其他数据层框架，如redux,flux）</li>
+<li>函数式编程（更方便前端自动化测试）</li>
+</ul>
+<p><strong>React Fiber:</strong></p>
+<ul>
+<li>React Version &gt;16（eg:16.4）</li>
+<li>底层核心算法改良，引入优先级，分片等概念</li>
+</ul>
+<p><strong>注：</strong></p>
+<ul>
+<li>React: UI</li>
+<li>Redux: State</li>
+<li>Router: route</li>
+<li>babel: JavaScript compiler (ES6-&gt;ES5)</li>
+<li>webpack: A module bundler</li>
+<li>ESLint: 语法规则和代码风格的检查工具</li>
+</ul>
+<h3 id="header-2">开发环境搭建</h3>
+<ol>
+<li><p>方式一：直接引入<code>.js</code>文件</p>
+</li>
+<li><p>方式二：使用脚手架工具，eg: grunt,gulp,webpack =&gt; 官方提供：<code>create-react-app</code></p>
+<pre><code class="lang-bash"> $ npm install -g create-react-app
+ $ create-react-app todolist   # or use `npx create-react-app todolist` if npm 5.2.0+
+ $ cd todoList
+ $ npm start                   # or use `yarn start`
+</code></pre>
+</li>
+<li><p>其它工具平台：</p>
+<ul>
+<li>Rekit (React专属IDE和工具集, 基于最佳实践生成代码和管理项目)<ul>
+<li>以feature方式组织代码</li>
+<li>拆分component,action,reducer</li>
+<li>拆分route配置</li>
+<li>通过代码自动生成保持代码一致性：文件夹结构，文件名，变量名，代码逻辑的一致性</li>
+<li>集成单元测试，单元测试覆盖率</li>
+<li>可视化关系，图表</li>
+</ul>
+</li>
+<li>codesandbox (online)</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-3">开发调试工具</h3>
+<ul>
+<li><p>ESLint </p>
+<ul>
+<li>代码格式检查，使用<code>.eslintrc</code>进行规则配置</li>
+<li>例如配置使用<code>airbnb</code>的javascript代码风格</li>
+</ul>
+</li>
+<li><p>Prettier</p>
+<ul>
+<li>代码格式化神器，使用<code>.prettierrc</code>进行规则配置</li>
+<li>保证更容易写出风格一直的代码(保存时会自动格式化修正)</li>
+</ul>
+</li>
+<li><p>Chrom 插件</p>
+<ul>
+<li>React DevTool: 可以React组件树的方式观察组件结构,props,state<ul>
+<li>离线下载安装 Issue: <code>程序包无效:&quot;CRX_HEADER_INVALID&quot;</code> =&gt; 将下载的<code>react-developer-tools.ctx</code>重命名为<code>react-developer-tools.zip</code>压缩包再拖拽到<code>chrome://extensions/</code>即可</li>
+</ul>
+</li>
+<li>Redux DevTool: 可监控查看Redux中store,action等，可自动生成测试</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-4">打包和部署</h3>
+<ul>
+<li><code>npm run build</code> : 打包<code>create-react-app</code>创建的项目到项目的build文件夹下</li>
+<li>webpack<ul>
+<li>编译ES6语法特性，编译JSX</li>
+<li>整合资源，如图片，Less/Sass</li>
+<li>优化代码体积</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>设置nodejs环境为production</li>
+<li>禁用开发时的专用代码，如logger</li>
+<li>设置应用根路径</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-5">JSX</h3>
+<blockquote>
+<p>JSX：在JS文件中直接写HTML或自定义的组件标签（不用字符串包裹）<br>是 <code>HTML</code> 和 <code>JavaScript</code> 的混合，当遇到 <code>&lt;</code> 时，当作 <code>HTML</code> 解析，遇到 <code>{</code> 时，当作 <code>JS</code> 解析<br><code>{}</code>内可使用表达式<br>本质: 不是模版引擎，而是语法糖</p>
+</blockquote>
+<pre><code class="lang-javascript">// JSX: 动态创建组件的语法糖
+const name = &quot;Hello&quot;
+const element = &lt;h1&gt;Hello,{name}&lt;/h1&gt;;
+
+// 等价于：
+const name = &quot;Hello&quot;
+const element = React.createElement(&#39;h1&#39;,null,&#39;Hello,&#39;,name); // (tag,attrs,child1,child2,...)
+</code></pre>
+<p><strong>使用:</strong></p>
+<ol>
+<li><p>import</p>
+<pre><code class="lang-javascript"> // 使用JSX语法，必需引入：
+ import React from &#39;react&#39;;
+</code></pre>
+</li>
+<li><p>添加注释：</p>
+<pre><code class="lang-javascript"> &lt;div&gt;
+     { /* 块注释 */ }
+     {
+       // 行注释
+     }
+ &lt;/div&gt;
+</code></pre>
+</li>
+<li><p>表达式：</p>
+<pre><code class="lang-javascript"> // JSX本身也是表达式
+ const element = &lt;h1&gt;Hello,World!&lt;/h1&gt;;
+
+ // 属性中使用表达式
+ &lt;MyComponent foo = {1+2+3+4} /&gt;
+
+ // 延展属性
+ const props = {firstName: &#39;Ben&#39;,lastName: &#39;Hector&#39;};
+ const greeting = &lt;Greeting {...props} /&gt;;
+
+ // 表达式作子元素
+ const element = &lt;li&gt;{props.msg}&lt;/li&gt;;
+</code></pre>
+</li>
+<li><p>标签上添加css class，不能使用<code>class</code>（关键字冲突），需使用<code>className</code></p>
+<pre><code class="lang-javascript"> &lt;input className=&quot;input&quot; /&gt;
+</code></pre>
+</li>
+<li><p>光标自动聚焦，不能使用<code>for</code>（关键字冲突），需使用<code>htmlFor</code></p>
+<pre><code class="lang-javascript"> &lt;!-- 点击此label时，光标自动聚焦到input --&gt;
+ &lt;label htmlFor=&quot;insertArea&quot;&gt;Input&lt;/label&gt;
+ &lt;input id=&quot;insertArea&quot;/&gt;
+</code></pre>
+</li>
+<li><p>dangerouslySetInnerHTML</p>
+<ul>
+<li><p>直接添加<code>{}</code>的内容会自动转义，eg: 内容为<code>&lt;h1&gt;Hello&lt;/h1&gt;</code> =&gt; 会转换为字符串显示</p>
+<pre><code class="lang-javascript">  return (
+      &lt;ul&gt;
+          {
+              this.state.list.map((item,index)=&gt;{
+                  return &lt;li key={index} 
+                      onClick={this.handleItemDelete.bind(this,index)}
+                      &gt;{item}&lt;/li&gt;
+              })
+          }
+      &lt;/ul&gt;
+  )
+</code></pre>
+</li>
+<li><p>使用<code>dangerouslySetInnerHTML</code>添加的内容不转义，eg: 内容为<code>&lt;h1&gt;Hello&lt;/h1&gt;</code> =&gt; 会直接作为HTML渲染显示</p>
+<pre><code class="lang-javascript">  return(
+      &lt;ul&gt;
+          {
+              this.state.list.map((item,index)=&gt;{
+                  return &lt;li key={index} 
+                      onClick={this.handleItemDelete.bind(this,index)}
+                      // 配置dangerouslySetInnerHTML属性等于一个json对象：`{__html:item}`
+                      dangerouslySetInnerHTML={{__html:item}}
+                      &gt;&lt;/li&gt;
+              })
+          }
+      &lt;/ul&gt;
+  )
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>约定:</strong></p>
+<ul>
+<li>React认为小写的tag是原生Dom节点，如<code>div</code></li>
+<li>大写字母开头为自定义组件</li>
+<li>JSX标记可以直接使用属性语法，如<code>&lt;menu.Item /&gt;</code></li>
+</ul>
+<h2 id="header-6">Component</h2>
+<p>React以组件方式考虑UI的构建:</p>
+<ul>
+<li>一般不提供其它操作方法，而是某种状态机，可理解为一个纯函数</li>
+<li>单向数据绑定</li>
+</ul>
+<pre><code>    props       +       state           =&gt;      View
+(外部传来的属性)       (内部维护的状态)
+</code></pre><ol>
+<li>响应式设计：通过监听Data(即组件的<code>status</code>属性)操作，而传统方式是通过Dom操作</li>
+<li>父子组件通讯：通过组件的<code>props</code>属性<ul>
+<li>父组件：子组件标签上添加标签属性</li>
+<li>子组件：通过<code>props</code>属性获取调用时设置的标签属性</li>
+<li>注：子组件可使用父组件传递过来的值，但子组件不能直接改变这个值（单向数据流）</li>
+</ul>
+</li>
+<li>使用原则:<ul>
+<li>何时创建组件：单一职责原则<ul>
+<li>每一个组件只做一件事</li>
+<li>如果组件变得复杂，则应拆分成小组件</li>
+</ul>
+</li>
+<li>数据状态管理：DRY原则<ul>
+<li>能计算得到的状态就不要单独存储</li>
+<li>组件尽量无状态，所需数据通过<code>props</code>获取</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-7">自定义组件</h3>
+<pre><code class="lang-jsx">import React,{ Component } from &#39;react&#39;;
+
+// 等价于：
+import React from &#39;react&#39;
+const Component=React.Component
+
+// 自定义组件
+class App extends Component{
+    render(){
+        // JSX
+        return &lt;div&gt;Hello world&lt;/div&gt;;
+    }
+}
+
+export default App;
+</code></pre>
+<p><strong>注：</strong></p>
+<ul>
+<li>首字母必需大些</li>
+<li>render返回的内容必需整体包含在一个大的元素中</li>
+</ul>
+<h3 id="header-8">state</h3>
+<p>组件中的<code>state</code>属性不允许直接做任何改变(即<code>Immutable</code>不可变数据)，需通过<code>setState</code>方法</p>
+<pre><code class="lang-javascript">handleItemDelete(index,event){
+    const lst=[...this.state.list]
+    lst.splice(index,1)
+    this.setState({
+        list:lst      // list: this.state.list.splice(index,1) -- not recommend
+    })
+}
+</code></pre>
+<h3 id="header-9">props</h3>
+<ul>
+<li><code>props</code> : 接收从父组件传递过来的属性</li>
+<li><code>defaultProps</code> : 给组件设置默认属性值</li>
+<li><code>propTypes</code> : 对接收的属性进行校验（不通过时，<code>console</code>会有个<code>warning</code>）</li>
+</ul>
+<pre><code class="lang-javascript">import PropTypes from &#39;prop-types&#39;
+
+// Typechecking with PropTypes
+TodoItem.propTypes = {
+    item: PropTypes.string.isRequired
+    ,index: PropTypes.oneOfType([PropTypes.number,PropTypes.string])
+    ,deleteItem: PropTypes.func
+}
+
+TodoItem.defaultProps={
+    item: &#39;Hello World&#39;
+}
+</code></pre>
+<h3 id="header-10">Sample: TodoList</h3>
+<pre><code class="lang-javascript">import React,{Component,Fragment} from &#39;react&#39;;
+import &#39;./style.css&#39;
+
+class TodoList extends Component{
+
+    constructor(props){
+        super(props);
+        this.state={
+            inputValue:&#39;&#39;,
+            list:[
+                &#39;Learn English&#39;
+                ,&#39;Learn React&#39;
+            ]
+        }
+    }
+
+    render(){
+        return (
+            &lt;Fragment&gt; 
+                &lt;label htmlFor=&quot;insertArea&quot;&gt;Input&lt;/label&gt; {/*点击此label时，光标自动聚焦到input*/}
+                &lt;input id=&quot;insertArea&quot;
+                    className=&quot;input&quot;
+                    value={this.state.inputValue}
+                    onChange={this.handleInputChange.bind(this)} // bind this: TodoList inst!!
+                /&gt;&lt;button onClick={this.handleBtnClick.bind(this)}&gt;Submit&lt;/button&gt;
+                &lt;ul&gt;
+                    {
+                        this.state.list.map((item,index)=&gt;{
+                            // return &lt;li key={index} 
+                            //     onClick={this.handleItemDelete.bind(this,index)}  
+                            //     &gt;{item}&lt;/li&gt;
+                            return &lt;li key={index} 
+                                onClick={this.handleItemDelete.bind(this,index)}  
+                                dangerouslySetInnerHTML={{__html:item}}
+                                &gt;&lt;/li&gt;
+
+                        })
+                    }
+                &lt;/ul&gt;
+            &lt;/Fragment&gt;
+        )
+    }
+
+    handleInputChange(event){
+        // console.log(event.target) // event.target = dom: input
+        // console.log(this)         // undefined !! ,need to bind when call
+        // this.state.inputValue=event.target.value // need to use setState!!
+        this.setState({
+            inputValue:event.target.value
+        })
+
+    }
+
+    handleBtnClick(event){
+        this.setState({
+            list:[...this.state.list,this.state.inputValue]
+            ,inputValue:&#39;&#39;
+        })
+    }
+
+    handleItemDelete(index,event){
+        const lst=[...this.state.list]
+        lst.splice(index,1)
+        this.setState({
+            list:lst      // list: this.state.list.splice(index,1) -- not recommend
+        })
+    }
+}
+
+export default TodoList;
+</code></pre>
+<h3 id="header-11">组件拆分：父子组件</h3>
+<p>注：可通过组件的<code>props</code>属性实现父子组件通讯</p>
+<ol>
+<li><p>TodoList.js: <code>import TodoItem from &#39;./TodoItem&#39;</code></p>
+<pre><code class="lang-java"> render(){
+     return (
+         &lt;Fragment&gt; 
+             &lt;label htmlFor=&quot;insertArea&quot;&gt;Input&lt;/label&gt; {/*点击此label时，光标自动聚焦到input*/}
+             &lt;input id=&quot;insertArea&quot;
+                 className=&quot;input&quot;
+                 value={this.state.inputValue}
+                 onChange={this.handleInputChange.bind(this)} // bind this: TodoList inst!!
+             /&gt;&lt;button onClick={this.handleBtnClick.bind(this)}&gt;Submit&lt;/button&gt;
+             &lt;ul&gt;
+                 {
+                     this.state.list.map((item,index)=&gt;{
+                         // return &lt;li key={index} 
+                         //     onClick={this.handleItemDelete.bind(this,index)}  
+                         //     &gt;{item}&lt;/li&gt;
+
+                         // return &lt;li key={index} 
+                         //     onClick={this.handleItemDelete.bind(this,index)}  
+                         //     dangerouslySetInnerHTML={{__html:item}}
+                         //     &gt;&lt;/li&gt;
+
+                         return &lt;TodoItem
+                             key={index} item={item} index={index}
+                             deleteItem={this.handleItemDelete.bind(this)}
+                             //onClick={this.handleItemDelete.bind(this,index)} 
+                             /&gt;
+                     })
+                 }
+             &lt;/ul&gt;
+         &lt;/Fragment&gt;
+     )
+ }
+</code></pre>
+</li>
+<li><p>TodoItem.js:</p>
+<pre><code class="lang-javascript"> import React,{Component} from &#39;react&#39;
+
+ class TodoItem extends Component{
+
+     constructor(props){
+         super(props);
+         this.handleClick=this.handleClick.bind(this) // recommend! 节约性能
+     }
+
+     render(){
+         return &lt;li onClick={this.handleClick}&gt;{this.props.item}&lt;/li&gt;
+     }
+
+     handleClick(){
+         // 调用传过来的父组件方法修改父组件status（即仍然是使用父组件的方法维护父组件状态）
+         // console.log(this.props);
+         this.props.deleteItem(this.props.index) 
+     }
+
+ }
+
+ export default TodoItem
+</code></pre>
+</li>
+</ol>
+<h3 id="header-12">组件拆分: UI &amp; Container</h3>
+<p>拆分成UI组件和Container组件：</p>
+<ul>
+<li>UI组件负责渲染部分 =&gt; 无状态组件(一个只有render函数的组件) =&gt; 可直接用一个函数定义, 性能高</li>
+<li>Container组件负责逻辑部分</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<ol>
+<li><p>AntTodoList.js : Container组件</p>
+<pre><code class="lang-javascript"> import React,{ Component } from &#39;react&#39;;
+ import store from &#39;./store/index&#39;
+ import * as actionCreator from &#39;./store/actionCreator&#39;
+ import TodoListUI from &#39;./TodoListUI&#39;
+
+ class AntdTodoList extends Component {
+     render(){
+         return &lt;TodoListUI 
+                     inputValue={this.state.inputValue}
+                     handleInputChange={this.handleInputChange}
+                     handleBtnClick={this.handleBtnClick}
+                     list={this.state.list}
+                     handleItemDelete={this.handleItemDelete}
+                 /&gt;
+     }
+
+     // 其他不变 ....
+ }
+</code></pre>
+</li>
+<li><p>TodoListUI.js : UI组件</p>
+<pre><code class="lang-java"> import React,{ Component } from &#39;react&#39;;
+ import &#39;antd/dist/antd.css&#39;;
+ import { Input,Button,List,Icon } from &#39;antd&#39;;
+
+ /*
+ class TodoListUI extends Component{
+     render(){
+         return (
+             &lt;div style={{margin:'20px auto',maxWidth:'600px'}}&gt;
+                 &lt;div style={{padding:'20px 0px',textAlign:'center'}}&gt;
+                     &lt;h2&gt;TodoList(with Antd UI):&lt;/h2&gt;
+                     &lt;Input 
+                         placeholder=&#39;Enter todo item here&#39; 
+                         style={{width:'500px',marginRight:'10px'}}
+                         value={this.props.inputValue}
+                         onChange={this.props.handleInputChange}
+                     /&gt;
+                     &lt;Button type=&quot;primary&quot; onClick={this.props.handleBtnClick}&gt;Submit&lt;/Button&gt;
+                 &lt;/div&gt;
+                 &lt;List 
+                   bordered 
+                   dataSource={this.props.list}
+                   renderItem={(item,index) =&gt; (
+                     &lt;List.Item 
+                         actions={[
+                             &lt;Icon 
+                                 type=&quot;delete&quot; theme=&quot;filled&quot; 
+                                 // onClick={this.props.handleItemDelete.bind(this,index)}
+                                 onClick={()=&gt;{
+                                     // console.log(&quot;del:&quot;,index,this.props.list[index])
+                                     this.props.handleItemDelete(index)
+                                 }}
+                             /&gt;
+                         ]}
+                     &gt;
+                         {item}
+                     &lt;/List.Item&gt;
+                   )}
+                 /&gt;
+             &lt;/div&gt;
+         )
+     }
+ }*/
+
+ // 无状态组件(一个只有render函数的组件) =&gt; 可直接用一个函数定义, 性能高
+ const TodoListUI = (props)=&gt;{
+     return (
+         &lt;div style={{margin:'20px auto',maxWidth:'600px'}}&gt;
+             &lt;div style={{padding:'20px 0px',textAlign:'center'}}&gt;
+                 &lt;h2&gt;TodoList(with Antd UI):&lt;/h2&gt;
+                 &lt;Input 
+                     placeholder=&#39;Enter todo item here&#39; 
+                     style={{width:'500px',marginRight:'10px'}}
+                     value={props.inputValue}
+                     onChange={props.handleInputChange}
+                 /&gt;
+                 &lt;Button type=&quot;primary&quot; onClick={props.handleBtnClick}&gt;Submit&lt;/Button&gt;
+             &lt;/div&gt;
+             &lt;List 
+               bordered 
+               dataSource={props.list}
+               renderItem={(item,index) =&gt; (
+                 &lt;List.Item 
+                     actions={[
+                         &lt;Icon 
+                             type=&quot;delete&quot; theme=&quot;filled&quot; 
+                             onClick={()=&gt;{
+                                 // console.log(&quot;del:&quot;,index,props.list[index])
+                                 props.handleItemDelete(index)
+                             }}
+                         /&gt;
+                     ]}
+                 &gt;
+                     {item}
+                 &lt;/List.Item&gt;
+               )}
+             /&gt;
+         &lt;/div&gt;
+     )
+ }
+
+ export default TodoListUI;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-13">受控 &amp; 非受控组件</h3>
+<p>(主要针对表单)</p>
+<ul>
+<li>受控组件：表单元素状态由使用者维护<pre><code class="lang-html">  &lt;input
+      type=&quot;text&quot;
+      value={this.state.value}
+      onChange={ evt =&gt; this.setState({value:evt.target.value})}
+  /&gt;
+</code></pre>
+</li>
+<li>非受控组件：表单元素状态由DOM自身维护<pre><code class="lang-html">  &lt;input
+      type=&quot;text&quot;
+      ref={ node =&gt; this.input=node }
+  /&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="header-14">组件复用(设计模式)</h3>
+<ul>
+<li><p>高阶组件（HOC）: 一个函数，接收组件作为参数，返回新的组件</p>
+<pre><code class="lang-java">  export default function withTimer(WrappedComponent) {
+    return class extends Component {
+      state = { time: new Date() };
+      componentDidMount() {
+        this.timerID = setInterval(() =&gt; this.tick(), 1000);
+      }
+
+      componentWillUnmount() {
+        clearInterval(this.timerID);
+      }
+
+      tick() {
+        this.setState({
+          time: new Date()
+        });
+      }
+      render() {
+        return &lt;WrappedComponent time={this.state.time} {...this.props} /&gt;;
+      }
+    };
+  }
+</code></pre>
+<pre><code class="lang-java">  class App extends Component {
+      render(){
+          return (
+              &lt;div&gt;
+                  &lt;h1&gt;Hello World!&lt;/h1&gt;
+                  // 使用withTimer封装后，可直接使用传递进来的time属性
+                  &lt;h2&gt;{this.props.time.toLocaleString()}&lt;/h2&gt;
+              &lt;/div&gt;
+          )
+      }
+
+  }
+  export default withTimer(App);  // 返回封装后的新组件
+</code></pre>
+</li>
+<li><p>函数作为子组件：外部使用一个函数作为组件的children =&gt; 组件如何render内容，由调用方决定</p>
+<pre><code class="lang-java">  class MyComponent extends Component{
+      render(){
+          return (
+              // 传进来的children是个函数
+              &lt;ul&gt;{this.props.children(&#39;Susan&#39;)}&lt;/ul&gt;
+          )
+      }
+  }
+</code></pre>
+<pre><code class="lang-java">  &lt;MyComponent&gt;{ (name) =&gt; (&lt;li&gt;{name}&lt;/li&gt;) }&lt;/MyComponent&gt;
+</code></pre>
+</li>
+<li><p><strong>注：</strong>是一种设计模式，自己可实现更多场景的组件复用</p>
+</li>
+</ul>
+<h2 id="header-15">高阶</h2>
+<h3 id="header-16">this</h3>
+<ul>
+<li>this : 一般指向该方法运行时所在的环境 <a href="https://sixdegree.github.io/2018/10/15/ES6.html#header-37">ES6 this</a></li>
+<li>注：在箭头函数中，<code>this</code>指向是固定的，为定义时所在的对象，不是使用时所在的对象（因为箭头函数没有自己的this，只能使用外层代码块的this）</li>
+</ul>
+<pre><code class="lang-javascript">render(){
+    return &lt;input id=&quot;insertArea&quot;
+            className=&quot;input&quot;
+            value={this.state.inputValue}
+            onChange={this.handleInputChange.bind(this)} // bind this: TodoList inst!!
+}
+
+handleInputChange(event){
+    // console.log(event.target) // event.target = dom: input
+    // console.log(this)         // undefined !! ,need to bind when call
+    // this.state.inputValue=event.target.value // need to use setState!!
+    this.setState({
+        inputValue:event.target.value
+    })
+}
+</code></pre>
+<p>=&gt; 优化：</p>
+<pre><code class="lang-javascript">constructor(props){
+    super(props);
+    this.state={
+        inputValue:&#39;&#39;,
+        list:[]
+    };
+    this.handleInputChange=this.handleInputChange.bind(this) // 在这里bind this: TodoList inst!! 性能更优
+
+}
+
+render(){
+    return &lt;input id=&quot;insertArea&quot;
+            className=&quot;input&quot;
+            value={this.state.inputValue}
+            onChange={this.handleInputChange} // constructor时已经绑定好了，可直接使用
+}
+</code></pre>
+<h3 id="header-17">ref</h3>
+<p>可用于直接定位到真实Dom（但不推荐直接操作Dom）</p>
+<pre><code class="lang-java">render(){
+    return (
+        &lt;Fragment&gt; 
+            &lt;label htmlFor=&quot;insertArea&quot;&gt;Input&lt;/label&gt; {/*点击此label时，光标自动聚焦到input*/}
+            &lt;input id=&quot;insertArea&quot;
+                className=&quot;input&quot;
+                value={this.state.inputValue}
+                onChange={this.handleInputChange.bind(this)} // bind this: TodoList inst!!
+                ref={(input)=&gt;{this.input=input}}
+            /&gt;
+            &lt;button onClick={this.handleBtnClick.bind(this)}&gt;Submit&lt;/button&gt;
+            &lt;ul ref={(ul)=&gt;{this.ul=ul}}&gt;
+                {this.getTodoItem()}
+            &lt;/ul&gt;
+        &lt;/Fragment&gt;
+    )
+}
+
+handleInputChange(event){
+    // 异步函数式：
+    // const val=event.target.value
+    const val=this.input.value //  使用了ref后，也可这样定位到input dom节点 - 不推荐
+    this.setState(
+        ()=&gt;({inputValue:val})
+    );
+}
+
+handleBtnClick(event){
+    this.setState(
+        (preState)=&gt;({      // preState = this.state
+            list:[...preState.list,preState.inputValue]
+            ,inputValue:&#39;&#39;
+        }),()=&gt;{ // callback func
+            // 使用了ref后,可直接定位到ul dom节点，对dom进行操作 - 不推荐
+            console.log(this.ul.querySelectorAll(&#39;li&#39;).length)
+        }
+    );
+}
+</code></pre>
+<h3 id="header-18">Fragment</h3>
+<p>Fragment占位符，本质也是个组件</p>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-javascript">import React,{Component} from &#39;react&#39;;
+
+class TodoList extends Component{
+
+    render(){
+        return (
+            &lt;div&gt; 
+                &lt;input/&gt;&lt;button&gt;Submit&lt;/button&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Learn English&lt;/li&gt;
+                    &lt;li&gt;Learn React&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+export default TodoList;
+</code></pre>
+<p>=&gt; 将返回的<code>&lt;div&gt;</code>标签插入到目标节点</p>
+<pre><code class="lang-javascript">import React,{Component,Fragment} from &#39;react&#39;;
+
+class TodoList extends Component{
+
+    render(){
+        return (
+            &lt;Fragment&gt; 
+                &lt;input/&gt;&lt;button&gt;Submit&lt;/button&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Learn English&lt;/li&gt;
+                    &lt;li&gt;Learn React&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/Fragment&gt;
+        )
+    }
+}
+
+export default TodoList;
+</code></pre>
+<p>=&gt; 将Fragment下的内容插入到目标节点</p>
+<h3 id="header-19">结构化赋值</h3>
+<pre><code class="lang-javascript">import React,{Component} from &#39;react&#39;
+
+class TodoItem extends Component{
+
+    constructor(props){
+        super(props);
+        this.handleClick=this.handleClick.bind(this) // recommend! 节约性能
+    }
+
+    render(){
+        // return &lt;li onClick={this.handleClick}&gt;{this.props.item}&lt;/li&gt;
+
+        const {item} = this.props;  // 等同于 const item = this.props.item
+        return &lt;li onClick={this.handleClick}&gt;{item}&lt;/li&gt;
+
+    }
+
+    handleClick(){
+        // console.log(this.props);
+        // this.props.deleteItem(this.props.index);
+
+        const {deleteItem,index}=this.props;
+        deleteItem(index);
+    }
+
+}
+
+export default TodoItem
+</code></pre>
+<h3 id="header-20">函数式编程</h3>
+<pre><code class="lang-javascript">handleInputChange(event){
+    // console.log(event.target);                 // event.target = dom: input
+    // console.log(this);                         // undefined !! , need to bind when call
+    // this.state.inputValue=event.target.value;  // need to use setState!!
+
+    // 1. 老式写法：
+    // this.setState({
+    //     inputValue:event.target.value
+    // });
+
+    // 2. 函数式：
+    // this.setState(()=&gt;{
+    //     return {
+    //         inputValue:event.target.value
+    //     }
+    // });
+
+    // 3. 异步函数式：
+    const val=event.target.value
+    this.setState(
+        ()=&gt;({inputValue:val})
+    );
+}
+</code></pre>
+<pre><code class="lang-javascript">handleBtnClick(event){
+    // this.setState({
+    //     list:[...this.state.list,this.state.inputValue]
+    //     ,inputValue:&#39;&#39;
+    // })
+
+    this.setState(
+        (preState)=&gt;({      // preState = this.state
+            list:[...preState.list,preState.inputValue]
+            ,inputValue:&#39;&#39;
+        })
+    );
+}
+</code></pre>
+<pre><code class="lang-javascript">handleItemDelete(index,event){
+    // const lst=[...this.state.list]
+    // lst.splice(index,1)
+    // this.setState({
+    //     list:lst      // list: this.state.list.splice(index,1) -- not recommend
+    // });
+
+    this.setState(
+        (preState)=&gt;{
+            const list=[...preState.list]
+            list.splice(index,1)
+            return {list}   // 等同：return {list:list}
+        }
+    );
+}
+</code></pre>
+<h3 id="header-21">Immutable data</h3>
+<p><strong>不可变数据</strong></p>
+<p><img src="http://arqex.com/wp-content/uploads/2015/02/trees-300x150.png" alt="immutable data"></p>
+<blockquote>
+<p>Instead of updating the node, Freezer creates a new data tree starting from the top.<br>The nodes in the update path are new, but the rest are reused</p>
+<p><a href="http://arqex.com/991/json-editor-react-immutable-data" target="_blank" rel="noopener">Refer: A JSON editor with React and Immutable data</a></p>
+</blockquote>
+<ol>
+<li><p>为何需要不可变数据：性能优化, 易于调试和跟踪, 易于推测</p>
+<ul>
+<li>所有的变化都是由action触发，action触发在旧的state上，形成一个新的state，新旧state是两个不同的对象，这样很容易知道state发生了变化</li>
+<li>（不需要进行深层次的遍历和比较值，只需比较两个state的引用是否一致，即可知道是否发生了变化）</li>
+</ul>
+</li>
+<li><p>如何操作不可变数据：</p>
+<ul>
+<li><p>原生写法: <code>{...}</code>, <code>Object.assign</code></p>
+<pre><code class="lang-javascript">  const state = {filter:&#39;completed&#39;,todos:[&#39;Learn React&#39;]};
+
+  // {}写法
+  const newState = {...state,todos:[...state.todos,&#39;Learn English&#39;]};
+
+  // Object.assign写法
+  const newState2 = object.assign({},state,{todos:[...state.todos,&#39;Learn English&#39;]});
+</code></pre>
+</li>
+<li>使用工具类: <a href="https://github.com/kolodny/immutability-helper" target="_blank" rel="noopener">immutability-helper</a><pre><code class="lang-javascript">  import update from &#39;immutability-helper&#39;;
+  const state = {filter:&#39;completed&#39;,todos:[&#39;Learn React&#39;]};
+  const newState = update(state,{todos:{$push:[&#39;Learn English&#39;]}})
+</code></pre>
+</li>
+<li><p>使用工具类: <a href="https://github.com/immerjs/immer" target="_blank" rel="noopener">immer</a></p>
+<pre><code class="lang-javascript">  import produce from &#39;immer&#39;;
+
+  const state = {filter:&#39;completed&#39;,todos:[&#39;Learn React&#39;]};
+
+  const newState = produce(state,draftState =&gt; {
+      draftState.todos.push(&#39;Learn English&#39;)
+  })
+</code></pre>
+</li>
+<li>使用工具类: <a href="https://github.com/immutable-js/immutable-js" target="_blank" rel="noopener">immutable-js</a> (install: <code>yarn add immutable</code>)<ul>
+<li><code>fromJS(jsObj)</code>: 将一个JS对象变成一个immutable(不可变)对象</li>
+<li><code>immuObj.toJS()</code>: 将一个immutable对象转换回JS对象</li>
+<li><code>immuObj.get(fieldName)</code>: 获取immutable对象里的数据</li>
+<li><code>immuObj.set(fieldName,value)</code>/<code>immuObj.merge({k:v,k,v})</code>: 根据原始值和新值，返回一个全新的immutable对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Sample:使用<code>immutable-js</code>维护redux store中的state对象</strong></p>
+<ol>
+<li><p>src/common/header/store/reducer.js: </p>
+<pre><code class="lang-javascript"> import * as actionType from &#39;./actionType&#39;;
+ import { fromJS } from &#39;immutable&#39;;
+
+ // const defaultState={
+ //     focused: false
+ // };
+ const defaultState = fromJS({               // 将一个JS对象变成一个immutable(不可变)对象
+     focused: false,
+     list: []                                // Note: 这里list也会转变为immutable(不可变)对象，更新数据时要注意
+ })
+
+ export default (state=defaultState,action)=&gt;{
+     if (action.type==actionType.HeaderSearchFocus){
+         // return { focused:true}
+         return state.set(&#39;focused&#39;,true)  // immutable对象的set方法，会根据原始值和新值，返回一个全新的对象
+     }
+     if (action.type==actionType.HeaderSearchBlur){
+         // return {focused:false}
+         return state.set(&#39;focused&#39;,false) // 同 return state.merge({focused:false}), merge方式合并多个更新值，再返回新的对象
+     }
+     return state;
+ }
+</code></pre>
+</li>
+<li><p>src/common/header/index.js</p>
+<pre><code class="lang-javascript"> const mapStateToProps=(state)=&gt;{
+     return {
+         // focused: state.focused
+         // focused: state.header.focused
+         focused: state.header.get(&#39;focused&#39;) // Note：这里state.header是一个immutable对象
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-22">PureComponent</h3>
+<p>PureComponent + immutable.js</p>
+<p>提供了一个具有浅比较的<code>shouldComponentUpdate</code>方法 =&gt; 对<code>props</code>和<code>state</code>进行浅比较，不变则不重新渲染 =&gt; 更具性能</p>
+<pre><code class="lang-java">// import React, { Component } from &#39;react&#39;;
+import React, { PureComponent } from &#39;react&#39;;
+
+// class Home extends Component{
+//     shouldComponentUpdate(nextProps,nextState){
+//         if(nextProps.title!==this.props.title){
+//             return true
+//         }
+//         return false
+//     }
+//     return (
+//         &lt;div&gt;Home&lt;/div&gt;
+//     )
+// }
+
+class Home extends PureComponent{
+    return (
+        &lt;div&gt;Home&lt;/div&gt;
+    )
+}
+
+const mapStateToProps=(state)=&gt;{
+    return {
+        title: state.home.title
+    }
+}
+
+export default connect(mapStateToProps,null)(Home);
+</code></pre>
+<h3 id="header-23">Context API</h3>
+<ul>
+<li>React 16.3公布的新特性（实际早就存在且应用了，如redux）</li>
+<li>可用于解决组件间通讯问题 </li>
+<li><a href="https://reactjs.org/docs/context.html#when-to-use-context" target="_blank" rel="noopener">when to use context</a></li>
+</ul>
+<p><strong>使用：</strong></p>
+<ul>
+<li><code>React.createContext</code><pre><code class="lang-javascript">  const MyContext = React.createContext(defaultValue);
+</code></pre>
+</li>
+<li><code>Context.Provider</code><pre><code class="lang-javascript">  &lt;MyContext.Provider value={/* some value */}&gt;
+</code></pre>
+</li>
+<li><code>Context.Consumer</code><pre><code class="lang-javascript">  &lt;MyContext.Consumer&gt;
+    {value =&gt; /* render something based on the context value */}
+  &lt;/MyContext.Consumer&gt;
+</code></pre>
+</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-java">const TheamContext = React.createContext(&#39;light&#39;);
+
+class App extends Component{
+    render(){
+        &lt;ThemeContext.Provider value=&#39;dark&#39;&gt;
+            &lt;ThemedButton/&gt;
+        &lt;/ThemeContext.Provider&gt;
+    }
+}
+
+class ThemedButton extends Component{
+    render(){
+        &lt;ThemeContext.Consumer&gt;
+            { (theme) =&gt; (&lt;button&gt;{theme}&lt;/button&gt;) }
+        &lt;/ThemeContext.Consumer&gt;
+    }
+}
+</code></pre>
+<p>=&gt; <code>&lt;button&gt;dark&lt;/button&gt;</code></p>
+<h3 id="header-24">Virtual Dom</h3>
+<ul>
+<li>JSX的运行基础，本质为JS对象（eg:<code>[tag,props,children]</code>），用来描述真实Dom</li>
+<li><p><code>JSX</code> =&gt; <code>React.createElement</code> =&gt; <code>虚拟Dom</code> =&gt; <code>真实Dom</code></p>
+<pre><code class="lang-javascript">  // JSX:
+  &lt;div id=&#39;abc&#39;&gt;&lt;span&gt;Hello World&lt;/span&gt;&lt;/div&gt;
+
+  // 等价于：
+  span=React.createElement(&#39;span&#39;,{},&#39;Hello World&#39;)
+  div=React.createElement(&#39;div&#39;,{&#39;id&#39;:&#39;abc&#39;},span)
+</code></pre>
+</li>
+<li>虚拟DOM树，计算<code>Diff</code>：<ul>
+<li>两个假设前提：<ul>
+<li>组件的DOM结构是相对稳定的</li>
+<li>类型相同的兄弟节点可以被唯一标识</li>
+</ul>
+</li>
+<li><code>Diff</code>算法：<ul>
+<li>广度优先分层比较新旧虚拟Dom树</li>
+<li>节点的key属性，作为唯一标识，用于定位比较新旧虚拟Dom树节点</li>
+<li>同层，节点顺序变化，则交换位置</li>
+<li>同层，节点类型变化，则删除该节点和其子节点，重新创建</li>
+</ul>
+</li>
+<li>总体平均算法复杂度可达到: <code>O(n)</code></li>
+</ul>
+</li>
+<li>优点：<ul>
+<li>性能提升<ul>
+<li>减少了真实Dom的创建和对比，使用虚拟Dom（即JS对象）创建和对比损耗小的多</li>
+<li>逐（同）层比对发现节点类型不同时，则不会再往下比对，直接废弃掉，用重新生成的替换掉它，减少比对</li>
+<li><code>setState</code>是异步的，可方便将多次间隔短的<code>setState</code>合并到一次，减少虚拟Dom比对的次数</li>
+</ul>
+</li>
+<li>使得跨端应用得以实现，eg:<ul>
+<li>React: 虚拟Dom -&gt; 浏览器真实Dom</li>
+<li>React Native： 虚拟Dom -&gt; 原生应用的组件 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注：节点通过key定位比对，所以尽量保证用稳定的值作为key，不推荐使用index作为key</li>
+</ul>
+<p><strong>引入虚拟Dom性能提升分析</strong></p>
+<ul>
+<li>不使用<code>Virtual Dom</code>的处理过程:<ol>
+<li>数据 state ＋ 模版 jsx =&gt; 生成真实Dom，渲染显示</li>
+<li>数据 state 发生改变</li>
+<li>数据 state ＋ 模版 jsx =&gt; 生成真实Dom，替换原来的Dom，渲染显示</li>
+</ol>
+</li>
+<li>＝&gt; 缺陷：<ul>
+<li>第一次生成了一个完整的Dom片段</li>
+<li>第二次生成了一个完整的Dom片段</li>
+<li>第二次的Dom替换第一次的Dom</li>
+<li>-&gt; 耗性能</li>
+</ul>
+</li>
+<li>=&gt; 改良：<ul>
+<li>第一次：数据 ＋ 模版 =&gt; 生成真实Dom</li>
+<li>第二次：数据 ＋ 模版 =&gt; 生成真实Dom，不直接替换原始Dom，而是和原来的Dom进行<code>Diff</code>比对，找出变化元素，替换变化元素</li>
+<li>-&gt; 性能提升不明显</li>
+</ul>
+</li>
+<li>=&gt; 进一步，引入<code>Virtual Dom</code>, eg:<ul>
+<li>真实Dom: <code>&lt;div id=&#39;abc&#39;&gt;&lt;span&gt;Hello World&lt;/span&gt;&lt;/div&gt;</code></li>
+<li>虚拟Dom(本质是JS对象): <code>[&#39;div&#39;,{&#39;id&#39;:&#39;abc&#39;},[&#39;span&#39;,{},&#39;Hello World&#39;]]</code></li>
+<li>第一次：数据 ＋ 模版 =&gt; 生成虚拟Dom，用虚拟Dom的结构生成真实Dom</li>
+<li>第二次：数据 ＋ 模版 =&gt; 生成新的虚拟Dom，与原来的虚拟Dom进行<code>Diff</code>比对，找出变化部分，改变真实Dom对应的内容</li>
+<li>-&gt; 极大的提升了性能：减少了真实Dom的创建和对比，而使用虚拟Dom（即JS对象）创建和对比损耗小的多</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-25">组件生命周期</h3>
+<p><a href="https://reactjs.org/docs/react-component.html" target="_blank" rel="noopener">React Component Doc</a></p>
+<p><img src="/2019/08/15/component-lifecycle.jpg" alt="Component Lifecycle"><br>(source: <a href="http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/" target="_blank" rel="noopener">http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/</a>)</p>
+<p><code>react-async-component-lifecycle-hooks</code>: 在某一时刻，组件会自动调用执行的函数</p>
+<p><strong>Mounting生命周期：</strong></p>
+<ol>
+<li><code>constructor()</code><ul>
+<li>用于初始化内部状态(Initialization: setup props and states)</li>
+<li>唯一可以直接修改state的地方(其他地方一般需使用<code>this.setState</code>方法)</li>
+</ul>
+</li>
+<li><code>componentDidMount()</code><ul>
+<li>组件创建渲染完成后调用</li>
+<li>只执行一次</li>
+<li>典型场景：获取外部资源</li>
+</ul>
+</li>
+<li><code>componentWillUnMount()</code><ul>
+<li>组件移除时被调用</li>
+<li>典型场景：资源释放</li>
+</ul>
+</li>
+</ol>
+<p><strong>Updation生命周期</strong></p>
+<ol>
+<li><code>static getDerivedStateFromProps(props, state)</code><ul>
+<li>React 16.3新引入，取代原<code>componentWillReceiveProps</code>应用场景</li>
+<li>用于从props获取值给state</li>
+<li>尽量不要使用：维护两者状态一致性会增加复杂度</li>
+<li>典型场景：表单控件获取默认值</li>
+</ul>
+</li>
+<li><code>shouldComponentUpdate(nextProps, nextState)</code> =&gt; return true/false<ul>
+<li>决定<code>Virtual Dom</code>是否要重绘（是否继续执行后面的Updation生命周期）</li>
+<li>一般可由<code>PureComponent</code>自动实现</li>
+<li>典型场景：性能优化</li>
+</ul>
+</li>
+<li><code>render()</code></li>
+<li><code>getSnapshotBeforeUpdate(prevProps, prevState)</code> =&gt; 返回值会传递给<code>componentDidUpdate</code><ul>
+<li>React 16.3新引入，取代原<code>componentWillUpdate</code>应用场景</li>
+<li>在组件state已更新，React更新D­O­M和refs前被调用</li>
+<li>典型场景：获取更新前DOM状态</li>
+</ul>
+</li>
+<li><code>componentDidUpdate(prevProps, prevState, snapshot)</code><ul>
+<li>React更新D­O­M和refs完成后调用</li>
+<li>典型场景：页面需要根据props变化重新获取数据</li>
+</ul>
+</li>
+</ol>
+<p><strong>Sample:</strong></p>
+<ul>
+<li>props change （父组件重新render时，传递给子组件的属性发生了变化，触发子组件Updation周期）: <ul>
+<li><code>getDerivedStateFromProps</code> </li>
+<li><code>shouldComponentUpdate</code> -&gt; return true/false to continue</li>
+<li><code>render</code><ul>
+<li><code>getSnapshotBeforeUpdate</code></li>
+<li>React 更新 ­D­O­M 和 refs</li>
+<li><code>componentDidUpdate</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>states change（组件state发生改变，触发组件Updation周期）:<ul>
+<li><code>shouldComponentUpdate</code> -&gt; return true/false to continue</li>
+<li><code>render</code><ul>
+<li><code>getSnapshotBeforeUpdate</code></li>
+<li>React 更新 ­D­O­M 和 refs</li>
+<li><code>componentDidUpdate</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="header-26">样式</h2>
+<h3 id="header-27">CSS3过渡动画</h3>
+<pre><code class="lang-java">import React,{Component,Fragment} from &#39;react&#39;
+import &#39;./style.css&#39;
+
+class ToggleButton extends Component{
+    constructor(props){
+        super(props)
+        this.state={
+            show:false
+        }
+        this.handleToggleBtnClick=this.handleToggleBtnClick.bind(this)
+    }
+    render(){
+        return (
+            &lt;Fragment&gt;
+                &lt;div className={this.state.show?&#39;hideArea&#39;:&#39;showArea&#39;}&gt;Hello World&lt;/div&gt;
+                &lt;button onClick={this.handleToggleBtnClick}&gt;Toggle&lt;/button&gt;
+            &lt;/Fragment&gt;
+        )
+    }
+    handleToggleBtnClick(){
+        this.setState(
+            (preState)=&gt;({
+                show:!preState.show
+            })
+        );
+    }
+}
+
+export default ToggleButton
+</code></pre>
+<pre><code class="lang-css">.hideArea{
+    opacity: 0;
+    color: red;
+    transition: all 1s ease-in;
+}
+
+.showArea{
+    opacity: 1;
+    color: green;
+    transition: all 1s ease-in;
+}
+</code></pre>
+<p>or</p>
+<pre><code class="lang-css">.hideArea{
+    /*opacity: 0;
+    color: red;
+    transition: all 1s ease-in;*/
+    animation: hide-item 2s ease-in forwards;
+}
+
+.showArea{
+    /*opacity: 1;
+    color: green;
+    transition: all 1s ease-in;*/
+    animation: show-item 2s ease-in forwards;
+}
+
+@keyframes hide-item{
+    0% {
+        opacity: 1;
+        color: red;
+    }
+    50% {
+        opacity: 0.5;
+        color: green;
+    }
+    100% {
+        opacity: 0;
+        color: blue;
+    }
+}
+
+@keyframes show-item{
+    0% {
+        opacity: 0;
+        color: blue;
+    }
+    50% {
+        opacity: 0.5;
+        color: green;
+    }
+    100% {
+        opacity: 1;
+        color: red;
+    }
+}
+</code></pre>
+<h3 id="header-28">react-transition-group</h3>
+<p>使用第三方模块<code>react-transition-group</code>，方便实现更复杂动画</p>
+<p><a href="https://github.com/reactjs/react-transition-group" target="_blank" rel="noopener">Github</a> | <a href="https://reactcommunity.org/react-transition-group/" target="_blank" rel="noopener">Doc</a></p>
+<ol>
+<li><p>install:</p>
+<pre><code class="lang-bash"> # npm
+ $ npm install react-transition-group --save
+
+ # yarn
+ $ yarn add react-transition-group
+</code></pre>
+</li>
+<li><p>CSSTransaction</p>
+<pre><code class="lang-java"> import React,{Component,Fragment} from &#39;react&#39;
+ import { CSSTransition } from &#39;react-transition-group&#39;
+ import &#39;./style.css&#39;
+
+ class ToggleButtonCSSTransition extends Component{
+
+     constructor(props){
+         super(props)
+         this.state={
+             show:true
+         }
+         this.handleToggleBtnClick=this.handleToggleBtnClick.bind(this)
+     }
+
+     render(){
+         return (
+             &lt;Fragment&gt;
+                 &lt;button onClick={this.handleToggleBtnClick}&gt;CSSTransition&lt;/button&gt;
+                 &lt;CSSTransition
+                     in={this.state.show}
+                     timeout={1000}
+                     classNames=&#39;node&#39;   // note: It&#39;s `classNames`,not `className`, for css style class prefix
+                     appear={true}        // also use the animation when first load
+                     unmountOnExit       // if set,the dom will be removed when hide
+                     onEntered={(el)=&gt;{el.style.color=&#39;blue&#39;}} // hock func, trigger when enter finished
+                 &gt;
+                     &lt;div&gt;Hello World&lt;/div&gt;
+                 &lt;/CSSTransition&gt;
+             &lt;/Fragment&gt;
+         )
+     }
+
+     handleToggleBtnClick(){
+         this.setState(
+             (preState)=&gt;({
+                 show:!preState.show
+             })
+         );
+     }
+ }
+
+ export default ToggleButtonCSSTransition
+</code></pre>
+</li>
+<li><p>TransactionGroup (for batch components)</p>
+<pre><code class="lang-java"> import React,{Component,Fragment} from &#39;react&#39;
+ import { CSSTransition,TransitionGroup } from &#39;react-transition-group&#39;
+ import &#39;./style.css&#39;
+
+ class ToggleButtonTransitionGroup extends Component{
+
+     constructor(props){
+         super(props)
+         this.state={
+             list:[&#39;Hello&#39;]
+         }
+         this.handleToggleBtnClick=this.handleToggleBtnClick.bind(this)
+     }
+
+     render(){
+         return (
+             &lt;Fragment&gt;
+                 &lt;button onClick={this.handleToggleBtnClick}&gt;TransitionGroup&lt;/button&gt;
+                 &lt;TransitionGroup&gt;
+                     {
+                         this.state.list.map((item,index)=&gt;{
+                             return (
+                                 &lt;CSSTransition key={index} 
+                                     timeout={1000} 
+                                     classNames=&#39;node&#39; 
+                                     appear={true}
+                                     onEntered={(el)=&gt;{el.style.color=&#39;blue&#39;}}
+                                 &gt;
+                                     &lt;div&gt;{item}&lt;/div&gt;
+                                 &lt;/CSSTransition&gt;
+                             )
+                         })
+                     }
+                 &lt;/TransitionGroup&gt;
+             &lt;/Fragment&gt;
+         )
+     }
+
+     handleToggleBtnClick(){
+         this.setState(
+             (preState)=&gt;({
+                 list:[...preState.list,&quot;item&quot;]
+             })
+         );
+     }
+ }
+
+ export default ToggleButtonTransitionGroup
+</code></pre>
+</li>
+<li><p>css style class:</p>
+<pre><code class="lang-css"> /* enter &amp; appear lifecycle*/
+ .node-enter,.node-appear {
+     opacity: 0;
+ } 
+ .node-enter-active,.node-appear-active{
+     opacity: 1;
+     transition: opacity 1s ease-in;
+ } 
+ .node-enter-done,.node-appear-done {
+     opacity: 1;
+ } 
+
+ /* exit lifecycle*/
+ .node-exit{
+     opacity: 1;
+ }  
+ .node-exit-active{
+     opacity: 0;
+     transition: opacity 1s ease-in;
+ }
+ .node-exit-done {
+     opacity: 0;
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-29">styled-components</h3>
+<p>不管是哪个子组件，直接import一个css文件，<br>该文件中的样式会作用于所有组件，即是一个全局的样式，无法区分区别<br>=&gt; <code>styled-components</code>库：css模块化（css =&gt; js）</p>
+<p><a href="https://github.com/styled-components/styled-components" target="_blank" rel="noopener">Github</a><br><a href="https://www.styled-components.com/docs" target="_blank" rel="noopener">Docs</a></p>
+<p>install： <code>yarn add styled-components</code></p>
+<p><strong>Sample: 全局Style</strong></p>
+<ol>
+<li><p>style.js</p>
+<pre><code class="lang-javascript"> import { createGlobalStyle } from &#39;styled-components&#39;;
+
+ // 全局样式
+ const GlobalStyle = createGlobalStyle`
+     // reset.css: 让各标签的默认样式在所有浏览器上的显示统一
+     html, body, div, span, applet, object, iframe,
+     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+     a, abbr, acronym, address, big, cite, code,
+     del, dfn, em, img, ins, kbd, q, s, samp,
+     small, strike, strong, sub, sup, tt, var,
+     b, u, i, center,
+     dl, dt, dd, ol, ul, li,
+     fieldset, form, label, legend,
+     table, caption, tbody, tfoot, thead, tr, th, td,
+     article, aside, canvas, details, embed, 
+     figure, figcaption, footer, header, hgroup, 
+     menu, nav, output, ruby, section, summary,
+     time, mark, audio, video {
+         margin: 0;
+         padding: 0;
+         border: 0;
+         font-size: 100%;
+         font: inherit;
+         vertical-align: baseline;
+     }
+     /* HTML5 display-role reset for older browsers */
+     article, aside, details, figcaption, figure, 
+     footer, header, hgroup, menu, nav, section {
+         display: block;
+     }
+     body {
+         line-height: 1;
+     }
+     ol, ul {
+         list-style: none;
+     }
+     blockquote, q {
+         quotes: none;
+     }
+     blockquote:before, blockquote:after,
+     q:before, q:after {
+         content: &#39;&#39;;
+         content: none;
+     }
+     table {
+         border-collapse: collapse;
+         border-spacing: 0;
+     }
+ `;
+ export { GlobalStyle }
+</code></pre>
+</li>
+<li><p>App.js</p>
+<pre><code class="lang-java"> import React, { Fragment } from &#39;react&#39;;
+ import { GlobalStyle } from &#39;./style.js&#39;;
+
+ function App() {
+   return (
+     &lt;Fragment&gt;
+         &lt;GlobalStyle/&gt;
+         &lt;div&gt; Hello World &lt;/div&gt;
+     &lt;/Fragment&gt;
+   );
+ }
+
+ export default App;
+</code></pre>
+</li>
+</ol>
+<p><strong>Sample:局部style</strong></p>
+<ol>
+<li><p>style.js</p>
+<pre><code class="lang-javascript"> import styled from &#39;styled-components&#39;;
+ import logoPic from &#39;../../statics/logo.png&#39;  // import pic!
+
+ export const HeaderWrapper = styled.div`
+     height: 58px;
+     border-bottom: 1px solid #f0f0f0;
+ `
+
+ // export const Logo = styled.a.attrs({ href:&#39;/&#39; })`
+ export const Logo = styled.a`
+     position: absolute;
+     top: 0;
+     left: 0;
+     display: block;
+     width: 100px;
+     height: 56px;
+     background: url(${logoPic});    // use imported pic !
+     background-size: contain;
+ `
+
+ export const NavItem = styled.div`
+     line-height: 56px;
+     padding: 0 15px;
+     font-size: 17px;
+
+     &amp;.left{
+         float: left;
+     }
+
+     &amp;.active{
+         color: #ea6f5a;
+     }
+ `
+</code></pre>
+</li>
+<li><p>SimpleHeader.js:</p>
+<pre><code class="lang-java"> import React from &#39;react&#39;;
+ import { HeaderWrapper,Logo,NavItem} from &#39;./style&#39;;
+ const SimpleHeader=(props)=&gt;{
+     return (
+         &lt;HeaderWrapper&gt;
+             &lt;Logo href=&#39;/&#39;/&gt;
+                 &lt;NavItem className=&quot;right&quot;&gt;登陆&lt;/NavItem&gt;
+                 &lt;NavItem className=&quot;right&quot;&gt;注册&lt;/NavItem&gt;
+         &lt;/HeaderWrapper&gt;
+     )
+ };
+ export default SimpleHeader;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-30">iconfont</h3>
+<p>素材下载：<a href="https://www.iconfont.cn/" target="_blank" rel="noopener">阿里</a></p>
+<p>使用<code>styled-components</code> ＋ <code>iconfont</code>:</p>
+<ol>
+<li><p>全局样式IconGlobalStyle: src/statics/iconfont/icon.js</p>
+<pre><code class="lang-javascript"> import { createGlobalStyle } from &#39;styled-components&#39;;
+
+ const IconGlobalStyle = createGlobalStyle`
+   @font-face {font-family: &quot;iconfont&quot;;
+     /* Note: 更新路径 */
+     src: url(&#39;./iconfont.eot?t=1566970427492&#39;); /* IE9 */
+     src: url(&#39;./iconfont.eot?t=1566970427492#iefix&#39;) format(&#39;embedded-opentype&#39;), /* IE6-IE8 */
+     url(&#39;data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAR4AAsAAAAACVAAAAQsAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqFaIUsATYCJAMUCwwABCAFhG0HTxs/CMieA25rTF6pQqUmQ7qib3Y+H2JT/x0HLTummpp7ks1pcmQ0QkeY2VezifsXsfBQ3f5te5NlgQR6wAF+gaIoSjALwJIwcMixXU7QlltiNehs8L+LS9PU8YDVtbOIZSIe0Fq6FcoEsBWgWKyVLx2/U2nA//rC9sPYTcRhXA8EwNikImN9ay9kIrCJAMihe1TIMS2xpJCQEWE5xxaQGxK5uVHYDbjd/X3yoYYMCKQE2Nm517lR+cZ+btA1oTWYRVHg9WcGIJ0EUEAqQARy5lp9qB9NRTFjvqgSwMgEQl/T8j8v+9wITShckZzBf3gAQQlEIC2AdCiHr4yJ8HksRoDA5/kIUPi8DAEBPjf4N0YqcesZoBlwFkhllLF9zqBEFV14uDIMME+WxynkZWKW37Q90XK6Fr/8Njl69OolzKGgJNbGM0+fo9ResXZdwZYjwxOuo0eXY8fWI0fmw4cnCbN9dpyd89BLb0q2v7R23c1JfS+u+WQEsw/tZV5l+oz7bOyRiU71Y+VmgAVbz27aS9Y6HGvdP17a984LWDPl5k2ELFcA40tQ7nmO9W3KOXq4Z6UO4ds5Xt+UcP7LTZl5zxHH84cyjh6uMU2x23laTm12dm1Gvv2WWFIza2Z0T9ydUTk5UXc+9bTzsXGVD61b99Zrba3fv/ba98KFpyrr6kQdG0ufpieOJyE8deKEiIpsVvR0is2mLBeeflpYBkVP+w66jMosfuHUGNvEkdu3R3pMxijn7aOxXms4kFh7gA8P1aMD5R19QnW/Xn5M/IegtaUwg0hV6UaSXR82W2mpLL48x2HtmjTun8lxP8XZQP/YAL1pNn6ig2LYCt9NW3bDtj7npDF/9Ix8SKla/EnX9JEVZo3gZiNj1pR1DOUflt8w6dRyZ0LpW8miN+qa+L//+KJ31MNDsd+3DEl30CYgVK6jlUDoPAUQgp6n836yVdgul1bNHVH6m6xc3b4Tt+SUuO4QIupJ8afIUJv3S/Fq1ommAOikoldjrp4rUVXAi+H/PRU/knO0s/3Ix9XOBwjZuBAE4aYBJYtFi/hUkChyIYysApgUDScrxjBRpAwBkOxaBoiRXgfBcOuAGmkPWsSfAcl430GYkUGBsceYcyriQ2c1Jlct7o7sXxqpu4yAhgwW8wq7uWehTzWjApdo52ZQD0RmpWcmEw08wM0+9gQXebItS4vUTMMfWc/cjPt8RuSgaQxwl5U+37IGizMytLxnSncZfjA1TJzKwrlF6rdUJJ2LIUCjzS0s9fPdOI+FfFRmSU2D1o4zBemTR8qSLrMGukEaqFVzLvODFvHIZrFo/DqNyeAXqZ41cz4YNUQazF82gHOxpJvfIjyoWAbXSKsrTR9f7r/GYwAMWCyFQCgRiUTCoOz8ziC3MrNyCpimBjxudUCni4QqVVqwUPf5AA==&#39;) format(&#39;woff2&#39;),
+     url(&#39;./iconfont.woff?t=1566970427492&#39;) format(&#39;woff&#39;),
+     url(&#39;./iconfont.ttf?t=1566970427492&#39;) format(&#39;truetype&#39;), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+     url(&#39;./iconfont.svg?t=1566970427492#iconfont&#39;) format(&#39;svg&#39;); /* iOS 4.1- */
+   }
+
+   .iconfont {
+     font-family: &quot;iconfont&quot; !important;
+     font-size: 16px;
+     font-style: normal;
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+   }
+ `
+
+ export { IconGlobalStyle }
+</code></pre>
+</li>
+<li><p>App.js导入IconGlobalStyle</p>
+<pre><code class="lang-java"> import React, { Fragment } from &#39;react&#39;;
+ import { IconGlobalStyle } from &#39;./statics/iconfont/icon.js&#39;
+ function App() {
+   return (
+     &lt;Fragment&gt;
+         &lt;IconGlobalStyle/&gt;
+         &lt;SimpleHeader/&gt;  
+     &lt;/Fragment&gt;
+   );
+ }
+ export default App;
+</code></pre>
+</li>
+<li><p>SimpleHeader.js使用icon</p>
+<pre><code class="lang-java"> import React from &#39;react&#39;;
+ const SimpleHeader=(props)=&gt;{
+     return (
+         &lt;div&gt;
+             &lt;a href=&quot;#&quot;&gt;&lt;span className=&quot;iconfont&quot;&gt;&amp;#xe66f;&lt;/span&gt;写文章&lt;/a&gt;
+         &lt;/div&gt;
+     )
+ };
+ export default SimpleHeader;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-31">UI组件库</h3>
+<ul>
+<li>AntD(Ant Design): React UI 组件库 =&gt; recommend!</li>
+<li>Material UI</li>
+<li>Semantic UI</li>
+</ul>
+<p><strong>Sample:AntD</strong></p>
+<p><code>yarn add antd</code></p>
+<pre><code class="lang-java">import React,{ Component } from &#39;react&#39;;
+
+import &#39;antd/dist/antd.css&#39;;
+import { Input,Button,List,Icon } from &#39;antd&#39;;
+
+class AntdTodoList extends Component {
+    render(){
+        return (
+            &lt;div style={{margin:'20px auto',maxWidth:'600px'}}&gt;
+                &lt;div style={{padding:'20px 0px',textAlign:'center'}}&gt;
+                    &lt;h2&gt;TodoList(with Antd UI):&lt;/h2&gt;
+                    &lt;Input 
+                        placeholder=&#39;Enter todo item here&#39; 
+                        style={{width:'500px',marginRight:'10px'}}
+                    /&gt;
+                    &lt;Button type=&quot;primary&quot;}&gt;Submit&lt;/Button&gt;
+                &lt;/div&gt;
+                &lt;List 
+                  bordered 
+                  dataSource={this.state.list}
+                  renderItem={(item,index) =&gt; (
+                    &lt;List.Item&gt;{item}&lt;/List.Item&gt;
+                  )}
+                /&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+</code></pre>
+<h2 id="header-32">Redux</h2>
+<blockquote>
+<p>独立于UI框架的通用JS状态管理框架，即数据层框架</p>
+<p>不依赖于React，可单独使用:</p>
+<p>  React: 本身实际上只是个视图层框架;<br>  Redux = Reducer + Flux</p>
+<p><a href="https://css-tricks.com/learning-react-redux/" target="_blank" rel="noopener">Refer: Leveling Up with React: Redux</a>  </p>
+</blockquote>
+<pre><code>Flux架构（单项数据流）：
+Action -&gt; Store -&gt; View
+  ^                 |
+  |_________________|
+</code></pre><p><strong>Redux特性：</strong></p>
+<ul>
+<li>所有状态放在唯一的一个Store中（Single Source of Truth）</li>
+<li>可预测性（state &amp; action =&gt; new state）</li>
+<li>纯函数更新Store（reducer函数）</li>
+</ul>
+<p><img src="https://css-tricks.com/wp-content/uploads/2016/03/redux-article-3-03.svg" alt="without and with redux"></p>
+<h3 id="header-33">使用</h3>
+<ul>
+<li>安装：<code>yarn add redux</code></li>
+<li>Chrome 辅助调试插件：redux Devtools</li>
+<li>设计理念<ul>
+<li>将组件中的数据都放到一个公用的存储区Store存储管理</li>
+<li>当某个组件改变数据，其他组件会感知到Store中数据的变化，从而进行更新，以此实现组件间的数据传递问题</li>
+<li><img src="/2019/08/15/redux_flow.jpg" alt="Redux Flow"></li>
+</ul>
+</li>
+<li>核心API:<ul>
+<li>创建 store: <ul>
+<li><code>import { createStore } from &#39;redux&#39;;</code></li>
+<li><code>export default createStore(reducer)</code></li>
+</ul>
+</li>
+<li>创建reducer: <ul>
+<li><code>export default (state=defaultState,action) =&gt; { /* ... */ return state}</code></li>
+</ul>
+</li>
+<li>组件中使用:<ul>
+<li>获取store中数据: <code>store.getState()</code></li>
+<li>派发action给store: <code>store.dispatch(action)</code></li>
+<li>订阅store的改变，触发回调函数: <code>store.subscribe(callbackFunc)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>整个应用<code>store</code>是唯一的</li>
+<li>只有<code>store</code>能改变自己的内容(即state),<code>reducer</code>只是返回一个state给store，最终由store来更新</li>
+<li><code>reducer</code>必须是一个纯函数(确定的输入输出，即没有跟时间有关的操作／异步操作等；且不会有任何副作用，如不会对接收的参数做修改)</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-34">Sample:TodoList</h3>
+<ol>
+<li><p>Store (store/index.js)</p>
+<pre><code class="lang-javascript"> import { createStore } from &#39;redux&#39;;
+ import reducer from &#39;./reducer&#39;;
+
+ const store = createStore(reducer);
+
+ export default store;
+</code></pre>
+</li>
+<li><p>Reducer (store/reducer.js)</p>
+<pre><code class="lang-javascript"> const defaultState={
+     inputValue: &#39;&#39;,
+     list: []
+ }
+ export default (state=defaultState,action) =&gt; {
+     // console.log(state,action)
+     if (action.type === &#39;change_input_value&#39;){
+         /* 
+             reducer可以接收state，但不可以修改state，所以深拷贝了一份
+             将新的state返回给Store，由Store更新Store中的state
+         */
+         const newState = JSON.parse(JSON.stringify(state));
+         newState.inputValue = action.value;
+         return newState;
+     }
+     if (action.type === &#39;submit_input_value&#39;){
+         const newState = JSON.parse(JSON.stringify(state));
+         newState.list.push(newState.inputValue);
+         newState.inputValue=&#39;&#39;;
+         return newState
+     }
+     if (action.type === &#39;delete_list_item&#39;){
+         const newState = JSON.parse(JSON.stringify(state));
+         newState.list.splice(action.value,1);
+         return newState
+     }
+     return state;
+ }
+</code></pre>
+</li>
+<li><p>Component (AntdTodoList.js)</p>
+<pre><code class="lang-java"> import React,{ Component } from &#39;react&#39;;
+ import &#39;antd/dist/antd.css&#39;;
+ import { Input,Button,List,Icon } from &#39;antd&#39;;
+ import store from &#39;./store/index&#39;
+
+ class AntdTodoList extends Component {
+     constructor(props){
+         super(props);
+         this.state=store.getState();
+
+         // this.handleInputChange=this.handleInputChange.bind(this);
+         // this.handleBtnClick=this.handleBtnClick.bind(this);
+         this.handleStoreChange=this.handleStoreChange.bind(this);
+         store.subscribe(this.handleStoreChange);
+     }
+     render(){
+         return (
+             &lt;div style={{margin:'20px auto',maxWidth:'600px'}}&gt;
+                 &lt;div style={{padding:'20px 0px',textAlign:'center'}}&gt;
+                     &lt;h2&gt;TodoList(with Antd UI):&lt;/h2&gt;
+                     &lt;Input 
+                         placeholder=&#39;Enter todo item here&#39; 
+                         style={{width:'500px',marginRight:'10px'}}
+                         value={this.state.inputValue}
+                         onChange={this.handleInputChange}
+                     /&gt;
+                     &lt;Button type=&quot;primary&quot; onClick={this.handleBtnClick}&gt;Submit&lt;/Button&gt;
+                 &lt;/div&gt;
+                 &lt;List 
+                   bordered 
+                   dataSource={this.state.list}
+                   renderItem={(item,index) =&gt; (
+                     &lt;List.Item 
+                         actions={[
+                             &lt;Icon type=&quot;delete&quot; theme=&quot;filled&quot; 
+                             onClick={this.handleItemDelete.bind(this,index)}/&gt;
+                         ]}
+                     &gt;
+                         {item}
+                     &lt;/List.Item&gt;
+                   )}
+                 /&gt;
+             &lt;/div&gt;
+         )
+     }
+     handleInputChange(e){
+         // console.log(e.target.value)
+         const action = {
+             type: &#39;change_input_value&#39;,
+             value: e.target.value
+         }
+         store.dispatch(action)
+     }
+     handleBtnClick(){
+         const action = {
+             type: &#39;submit_input_value&#39;
+         }
+         store.dispatch(action)
+     }
+     handleItemDelete(index){
+         // console.log(index)
+         const action = {
+             type: &#39;delete_list_item&#39;,
+             value: index
+         }
+         store.dispatch(action)
+     }
+     handleStoreChange(){
+         // console.log(&#39;store state changed&#39;)
+         this.setState(store.getState())
+     }
+ }
+
+ export default AntdTodoList;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-35">Sample改进：封装action</h3>
+<ol>
+<li><p>src/actionCreator.js 统一创建action</p>
+<pre><code class="lang-javascript"> import * as actionType from &#39;./actionType&#39;
+
+ const changeInputValueAction = (value) =&gt; ({
+     // type: &quot;change_input_value&quot;,
+     type: actionType.ChangeInputValue,
+     value: value
+ });
+ const submitInputValueAction = () =&gt; ({
+     // type: &quot;submit_input_value&quot;
+     type: actionType.SubmitInputValue
+ });
+ const deleteListItemAction = (value) =&gt; ({
+     // type: &quot;delete_list_item&quot;,
+     type: actionType.DeleteListItem,
+     value: value
+ });
+ export {changeInputValueAction,submitInputValueAction,deleteListItemAction}
+</code></pre>
+</li>
+<li><p>src/actionType.js</p>
+<pre><code class="lang-javascript"> const ChangeInputValue=&quot;change_input_value&quot;;
+ const SubmitInputValue=&quot;submit_input_value&quot;;
+ const DeleteListItem=&quot;delete_list_item&quot;;
+ export {ChangeInputValue,SubmitInputValue,DeleteListItem}
+</code></pre>
+</li>
+<li><p>Reducer update: src/reducer.js</p>
+<pre><code class="lang-javascript"> import * as actionType from &#39;./actionType&#39;
+
+ const defaultState={
+     inputValue: &#39;&#39;,
+     list: []
+ }
+
+ export default (state=defaultState,action) =&gt; {
+     //if (action.type === &#39;change_input_value&#39;){
+     if (action.type === actionType.ChangeInputValue){
+             const newState = JSON.parse(JSON.stringify(state));
+             newState.inputValue = action.value;
+             return newState;
+         }
+         // if (action.type === &#39;submit_input_value&#39;){
+         if (action.type === actionType.SubmitInputValue){
+             const newState = JSON.parse(JSON.stringify(state));
+             newState.list.push(newState.inputValue);
+             newState.inputValue=&#39;&#39;;
+             return newState
+         }
+         // if (action.type === &#39;delete_list_item&#39;){
+         if (action.type === actionType.DeleteListItem){
+             const newState = JSON.parse(JSON.stringify(state));
+             newState.list.splice(action.value,1);
+             return newState
+         }
+         return state;
+     }
+</code></pre>
+</li>
+<li><p>Component update: AntdTodoList.js</p>
+<pre><code class="lang-java"> handleInputChange(e){
+     // console.log(e.target.value)
+
+     // const action = {
+     //     type: &#39;change_input_value&#39;,
+     //     value: e.target.value
+     // }
+
+     const action = actionCreator.changeInputValueAction(e.target.value) 
+     store.dispatch(action)
+ }
+
+ handleBtnClick(){
+     // const action = {
+     //     type: &#39;submit_input_value&#39;
+     // }
+     const action = actionCreator.submitInputValueAction()
+     store.dispatch(action)
+ }
+
+ handleItemDelete(index){
+     // console.log(index)
+
+     // const action = {
+     //     type: &#39;delete_list_item&#39;,
+     //     value: index
+     // }
+     const action = actionCreator.deleteListItemAction(index)
+     store.dispatch(action)
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-36">Reducer拆分组合</h3>
+<p>使用<code>redux</code>的<code>combineReducers</code>：组合多个<code>reducer</code>,形成一个组合的<code>state</code><br>(注：<code>dispatch</code>一个<code>action</code>时，所有<code>reducer</code>都会收到)</p>
+<p><strong>Sample:</strong></p>
+<ol>
+<li><p>src/common/header/store/reducer.js:</p>
+<pre><code class="lang-javascript"> const defaultState={
+     focused: false
+ };
+
+ export default (state=defaultState,action)=&gt;{
+     if (action.type==&#39;HeaderSearchFocus&#39;){
+         return { focused:true}
+     }
+     if (action.type==&#39;HeaderSearchBlur&#39;){
+         return {focused:false}
+     }
+     return state;
+ }
+</code></pre>
+</li>
+<li><p>src/store/reducer.js:</p>
+<pre><code class="lang-javascript"> import { combineReducers } from &#39;redux&#39;;
+ import headerReducer from &#39;../common/header/store/reducer&#39;;
+
+ export default combineReducers({
+     header: headerReducer           // 组合多个reducer
+ })
+</code></pre>
+</li>
+<li><p>src/common/header/index.js:</p>
+<pre><code class="lang-javascript"> const mapStateToProps=(state)=&gt;{
+     return {
+         // focused: state.focused
+         focused: state.header.focused   // Note!
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-37">Redux中间件: Redux-thunk</h3>
+<ul>
+<li>Redux中间件(Middleware)：在action与store中间，对Dispatch做了一个升级封装<ul>
+<li>在dispatcher中截获action做特殊处理后，再发送出去</li>
+<li>即截获action &amp; 发出action</li>
+</ul>
+</li>
+<li><a href="https://github.com/reduxjs/redux-thunk" target="_blank" rel="noopener">redux-thunk</a>: <ul>
+<li>将异步请求或复杂逻辑放到action中处理</li>
+<li>(原本action是一个具体对象，使用thunk后，action还可以是一个函数，然后在这个函数中发送异步请求 =&gt; 异步action)</li>
+<li>install: <code>yarn add redux-thunk</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample:组件获取初始化数据（componentDidMount时触发）</strong></p>
+<ul>
+<li><p>不使用redux-thunk：直接发送异步请求，响应后再发送action给store通知进行后续处理</p>
+<pre><code class="lang-javascript">  // 1. src/actionCreator.js
+  const initialListItemAction = (value) =&gt; ({
+      type: actionType.InitialListItem,
+      value: value
+  })
+
+  // 2. src/actionType.js
+  const InitialListItem=&quot;initialListItem&quot;;
+  export {ChangeInputValue,SubmitInputValue,DeleteListItem,InitialListItem}
+
+  // 3. src/reducer.js
+  // ...
+  if (action.type === actionType.InitialListItem){
+      const newState = JSON.parse(JSON.stringify(state));
+      newState.list=action.value;
+      return newState;
+  }
+  // ...
+
+  // 4. AntdTodoList.js
+  import axios from &#39;axios&#39;
+  // ...
+  componentDidMount(){
+      // axios.get(&#39;/todoItems.json&#39;).then((response)=&gt;{
+      axios.get(&#39;/api/todoItems.json&#39;).then((response)=&gt;{
+          const data = response.data;
+          const action = actionCreator.initialListItemAction(data);
+          store.dispatch(action)
+      });
+  }
+</code></pre>
+</li>
+<li><p>使用redux-thunk: 发送异步action，响应后再发送一个action给store通知进行后续处理</p>
+<pre><code class="lang-javascript">  // 1. store中增加这个中间件: src/index.js
+  import { createStore, applyMiddleware } from &#39;redux&#39;;
+  import reducer from &#39;./reducer&#39;;
+  import thunk from &#39;redux-thunk&#39;;
+
+  const store = createStore(reducer,applyMiddleware(thunk));
+  export default store;
+
+  // 2. src/actionCreator.js
+  import axios from &#39;axios&#39;
+
+  const initialListItemAction = (value) =&gt; ({
+      type: actionType.InitialListItem,
+      value: value
+  })
+
+  const getListItems = ()=&gt;{
+      return (dispatch)=&gt;{
+          // axios.get(&#39;/todoItems.json&#39;).then((response)=&gt;{
+          axios.get(&#39;/api/todoItems.json&#39;).then((response)=&gt;{    
+              const data=response.data;
+              // console.log(data);
+              const action=initialListItem(data);
+              dispatch(action);
+          }).catch((err)=&gt;{
+              // console.log(err);
+              const data=[&quot;Load Initial Items Fail!:&quot;+err]
+              const action=initialListItemAction(data);
+              dispatch(action);
+          })
+      }
+  }
+  export {changeInputValueAction,submitInputValueAction,deleteListItemAction,
+      initialListItemAction,getListItems}
+
+  // 3. src/actionType.js &amp; src/reducer.js 同上
+
+  // 4. AntdTodoList.js
+  componentDidMount(){
+      // axios.get(&#39;/todoItems.json&#39;).then((response)=&gt;{
+      // axios.get(&#39;/api/todoItems.json&#39;).then((response)=&gt;{
+      //     const data = response.data;
+      //     const action = actionCreator.initialListItemAction(data);
+      //     store.dispatch(action)
+      // });
+      const action = actionCreator.getListItems();
+      store.dispatch(action)
+  }
+</code></pre>
+</li>
+</ul>
+<p><strong>注：</strong></p>
+<p>测试时，对于通过<code>create-react-app</code>创建启动的项目，可临时在项目的<code>public</code>目录下临时做个可访问数据,<br>例如：<code>public/api/todoItems.json</code>，可通过<code>http://localhost:3000/api/todoItems.json</code>直接访问文件内容</p>
+<pre><code class="lang-json">[&quot;Reading&quot;,&quot;Watching&quot;]
+</code></pre>
+<p>也可使用Charles实现本地数据mock</p>
+<h3 id="header-38">Redux中间件: Redux-saga</h3>
+<p><a href="https://github.com/redux-saga/redux-saga" target="_blank" rel="noopener">redux-saga</a></p>
+<ul>
+<li>也是做异步代码拆分的一个中间件，可代替<code>redux-thunk</code></li>
+<li>相较于<code>redux-thunk</code>要复杂的多，有较多的API，可将异步代码完全的拆分到一个单独的文件中，在处理大型项目中，可能要优于<code>redux-thunk</code> (redux-thunk要简单的多，只是让action不仅仅是一个对象，还可以是一个函数)</li>
+<li>install: <code>yarn add redux-saga</code></li>
+</ul>
+<p><strong>Sample:</strong></p>
+<ol>
+<li><p>store中增加这个中间件: src/index.js</p>
+<pre><code class="lang-javascript"> import { createStore, applyMiddleware } from &#39;redux&#39;;
+ import reducer from &#39;./reducer&#39;;
+
+ import createSagaMiddleware from &#39;redux-saga&#39;
+ import sagas from &#39;./sagas&#39;
+
+ const sagaMiddleware = createSagaMiddleware()
+ const store = createStore(reducer,applyMiddleware(sagaMiddleware));
+ sagaMiddleware.run(sagas)
+
+ export default store;
+</code></pre>
+</li>
+<li><p>src/sagas.js: 截获指定action，发送异步请求，有响应后再发送action给store通知处理 &lt;= generator &amp; yield （协程）</p>
+<pre><code class="lang-javascript"> import { takeEvery,put } from &#39;redux-saga/effects&#39;
+ import * as actionType from &#39;./actionType&#39;
+ import * as actionCreator from &#39;./actionCreator&#39;
+ import axios from &#39;axios&#39;
+
+ // 注：必须是generator函数
+
+ function* mySaga() {       
+   yield takeEvery(actionType.GetSagaListItems, getListItems);
+ }
+
+ function* getListItems(){
+     console.log(&quot;saga: getListItems&quot;)
+     try{
+         // const response = yield axios.get(&#39;/todoItems.json&#39;);
+         const response = yield axios.get(&#39;/api/todoItems.json&#39;);
+
+         const data = response.data;
+         const action=actionCreator.initialListItemAction(data);
+         yield put(action);
+     }catch(err){
+         const data=[&quot;Load Initial Items Fail!:&quot;+err]
+         const action=actionCreator.initialListItemAction(data);
+         yield put(action);
+     }
+ }
+
+ export default mySaga;
+</code></pre>
+</li>
+<li>AntTodoList.js : 发送一个action给store（会被中间件saga截获到处理）<pre><code class="lang-javascript"> componentDidMount(){
+     const action = actionCreator.getSagaListItems();
+     store.dispatch(action)
+ }
+</code></pre>
+</li>
+<li><p>src/actionCreator.js</p>
+<pre><code class="lang-javascript"> const initialListItemAction = (value) =&gt; ({
+     type: actionType.InitialListItem,
+     value: value || []
+ })
+ const getSagaListItems=() =&gt; ({
+     type: actionType.GetSagaListItems
+ });
+
+ export {changeInputValueAction,submitInputValueAction,deleteListItemAction,
+     initialListItemAction, getSagaListItems}
+</code></pre>
+</li>
+<li><p>src/actionType.js</p>
+<pre><code class="lang-javascript"> const GetSagaListItems=&quot;getSagaListItems&quot;;    // for redux-saga
+
+ export {ChangeInputValue,SubmitInputValue,DeleteListItem,
+         InitialListItem,GetSagaListItems}
+</code></pre>
+</li>
+</ol>
+<h3 id="header-39">React-redux</h3>
+<p>React中使用Redux</p>
+<ul>
+<li>一个第三方模块(帮助在react中更加方便地使用redux),内部使用了<code>React</code>的<code>Context API</code></li>
+<li><code>Provider</code>(使用<code>Context.Provider</code>): 将store提供给Provider下的所有组件</li>
+<li><code>connect</code>(使用<code>Context.Consumer</code>): 连接作用，映射store信息给Component，工作原理：高阶组件，重新封装返回新的Component</li>
+<li>( <code>Component</code> + <code>store</code> =&gt; <code>new Component</code> )</li>
+</ul>
+<p><strong>Sample：分离业务逻辑和组件</strong></p>
+<ul>
+<li>通过<code>react-redux</code>的<code>Provider</code>传递<code>store</code>给Component</li>
+<li>将TodoList优化为UI Component </li>
+<li>定义store的state和dispatch映射组件props的规则</li>
+<li>通过<code>react-redux</code>的<code>connect</code>, 获取<code>store</code>, 结合定义的连接规则，封装组件和业务逻辑，返回一个新的组件</li>
+<li>(<code>UI Component</code> + <code>mapStateToProps,mapDispatchToProps</code> =&gt; <code>Container Component</code>)</li>
+</ul>
+<ol>
+<li><p><code>Provider</code>提供器: 将store提供给Provider下的所有组件</p>
+<pre><code class="lang-java"> import { Provider } from &#39;react-redux&#39;
+ import store from &#39;./store/index&#39;
+ import TodoListRd from &#39;./TodoListRd&#39;
+
+ function App() {
+     return (
+         {/* store和Provider做了关联，则Provider下的组件都有能力获取到store */}
+         &lt;Provider store={store}&gt;
+             &lt;TodoListRd/&gt;
+         &lt;/Provider&gt;
+     )
+ }
+</code></pre>
+</li>
+<li><p>TodoList优化为UI Component </p>
+<pre><code class="lang-javascript"> import React,{Component} from &#39;react&#39;
+ import &#39;antd/dist/antd.css&#39;;
+ import { Input,Button,List,Icon } from &#39;antd&#39;;
+
+ // UI组件：
+ const TodoListRd = (props)=&gt;{
+     const { inputValue, list, handleInputChange, handleBtnClick, handleItemDelete } = props;
+     return (
+         &lt;div style={{margin:'20px auto',maxWidth:'600px'}}&gt;
+             &lt;div style={{padding:'20px 0px',textAlign:'center'}}&gt;
+                 &lt;h2&gt;TodoList(with Antd UI):&lt;/h2&gt;
+                 &lt;Input 
+                     placeholder=&#39;Enter todo item here&#39; 
+                     style={{width:'500px',marginRight:'10px'}}
+                     value={inputValue}
+                     onChange={handleInputChange}
+                 /&gt;
+                 &lt;Button type=&quot;primary&quot; onClick={handleBtnClick}&gt;Submit&lt;/Button&gt;
+             &lt;/div&gt;
+             &lt;List 
+               bordered 
+               dataSource={list}
+               renderItem={(item,index) =&gt; (
+                 &lt;List.Item 
+                     actions={[
+                         &lt;Icon 
+                             type=&quot;delete&quot; theme=&quot;filled&quot; 
+                             onClick={()=&gt;{
+                                 // console.log(&quot;del:&quot;,index,list[index])
+                                 handleItemDelete(index)
+                             }}
+                         /&gt;
+                     ]}
+                 &gt;
+                     {item}
+                 &lt;/List.Item&gt;
+               )}
+             /&gt;
+         &lt;/div&gt;
+     )
+ }
+</code></pre>
+</li>
+<li><p>定义连接规则，使用<code>connect</code>将UI组件与业务逻辑相结合，返回一个<code>Container</code>组件</p>
+<pre><code class="lang-javascript"> import { connect } from &#39;react-redux&#39;
+ import * as actionCreator from &#39;./store/actionCreator&#39;
+
+ // 定义连接规则
+ // 规则1: Map store state to Component props (将store的state映射给组件的props)
+ const mapStateToProps=(state)=&gt;{
+     return {
+         inputValue: state.inputValue,
+         list: state.list
+     }
+ }
+
+ // 规则2: Map store dispatch to Component props (将store的dispatch方法挂载给组件的props)
+ const mapDispatchToProps=(dispatch)=&gt;{
+     return {
+         handleInputChange(e){
+             const action = actionCreator.changeInputValueAction(e.target.value) 
+             dispatch(action)
+         },
+         handleBtnClick(){
+             const action = actionCreator.submitInputValueAction()
+             dispatch(action)
+         },
+         handleItemDelete(index){
+             const action = actionCreator.deleteListItemAction(index)
+             dispatch(action)
+         }
+     }
+ }
+ // 使用connect将UI组件与业务逻辑相结合，返回一个Container组件
+ export default connect(mapStateToProps,mapDispatchToProps)(TodoList)
+</code></pre>
+</li>
+</ol>
+<h3 id="header-40">redux-immutable</h3>
+<ul>
+<li>统一数据格式</li>
+<li>install: <code>yarn add redux-immutable</code></li>
+<li>使用<code>redux-immutable</code>中的<code>combineReducers</code>组合reducer =&gt; 将store的state变成immutable对象</li>
+</ul>
+<p><strong>Sample</strong></p>
+<ol>
+<li><p>src/store/index.js</p>
+<pre><code class="lang-javascript"> // import { combineReducers } from &#39;redux&#39;;
+ import { combineReducers } from &#39;redux-immutable&#39;; // 使用redux-immutable中的combineReducers,会将state封装成immutable对象
+
+ // import headerReducer from &#39;../common/header/store/reducer&#39;;
+ import { reducer as headerReducer} from &#39;../common/header/store&#39;;
+
+ export default combineReducers({
+     header: headerReducer
+ })
+</code></pre>
+</li>
+<li><p>src/common/header/index.js</p>
+<pre><code class="lang-javascript"> const mapStateToProps=(state)=&gt;{
+     return {
+         // focused: state.focused
+         // focused: state.header.focused
+         // focused: state.header.get(&#39;focused&#39;)     // Note：这里state.header是一个immutable对象
+         focused: state.get(&quot;header&quot;).get(&#39;focused&#39;) // Note: 这里state就是一个immutable对象，也可写成 state.getIn([&#39;header&#39;,&#39;focused&#39;])
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-41">组织Action和Reducer</h3>
+<ul>
+<li><p>标准方式：action和reducer分开</p>
+<ul>
+<li>同类action放在一个文件，会无限扩展</li>
+<li>action和reducer分开，实现业务逻辑时需来回切换</li>
+<li>系统有哪些action不够直观</li>
+</ul>
+</li>
+<li><p>新的方式：单个action和reducer放在同一个文件</p>
+<ul>
+<li>以action命名 =&gt; 更直观</li>
+<li>每个action文件都很小，只包括一个action和reducer =&gt; 不用在action和reducer间来回切换，易维护</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample:Counter</strong></p>
+<ol>
+<li><p>reducer.js &amp; actionCreator.js &amp; store.js:</p>
+<ul>
+<li><code>const store = createStore(reducer)</code> 创建store</li>
+<li><code>.getState()</code> 获取store中state数据</li>
+<li><code>.dispatch(action)</code> 将action分发给reducers</li>
+<li><p><code>.subscribe(callbackListener)</code> 监听store变化，触发回调函数</p>
+<pre><code class="lang-javascript">// 1. reducer: 
+const counter = (state={count:0},action)=&gt;{
+  switch(action.type){
+      case &quot;PLUS_ONE&quot;:
+          return {count:state.count+1}
+      case &quot;MINUS_ONE&quot;:
+          return {count:state.count-1}
+      default:
+          break;
+  }
+  return state;
+};
+
+// 2. actionCreator,return an action obj
+function plusCnt(){
+  return {
+      type: &#39;PLUS_ONE&#39;
+  }
+};
+function minusOne(){
+  return {
+      type: &#39;MINUS_ONE&#39;
+  }
+}
+
+// 3. store
+const store = createStore(counter)
+
+// usage sample:
+// store.subscribe(
+//     ()=&gt;{console.log(store.getState())}
+// )
+// store.dispatch(plusOne())
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>改进：使用工具函数 <code>combineReducers</code>: 组合多个reducer,形成一个组合的state (注：dispatch一个action时，所有reducer都会收到)</p>
+<pre><code class="lang-javascript"> // reducer:
+ import {combineReducers} from &#39;redux&#39;;
+
+ const counter = (state={count:0},action)=&gt;{
+     switch(action.type){
+         case &quot;PLUS_ONE&quot;:
+             return {count:state.count+1}
+         case &quot;MINUS_ONE&quot;:
+             return {count:state.count-1}
+         default:
+             break;
+     }
+     return state;
+ };
+
+ const todos = (state={},action)=&gt;{
+     return state;
+ };
+
+ // store:
+ // const store = createStore(counter)
+ const store = createStore(
+     combineReducers({
+         counter,
+         todos
+     })
+ )
+ // =&gt; state: {
+ //     counter: {count:1},
+ //     todos:{}
+ // }
+</code></pre>
+</li>
+<li><p>改进：使用工具函数 <code>bindActionCreators</code>: 重新封装actionCreator，自动调用dispatch</p>
+<pre><code class="lang-javascript"> // action:
+ import {bindActionCreators} from &#39;redux&#39;;
+
+ // action creator function, return an action obj
+ function plusOne(){
+     return {
+         type: &#39;PLUS_ONE&#39;
+     }
+ };
+
+ // bindActionCreators: ()=&gt;{ store.dispatch(plusOne()) }
+ plusOne = bindActionCreators(plusOne,store.dispatch);
+
+ // previous usage: dispatch(plusOne()); 
+ // now could directly use: 
+ // plusOne();
+</code></pre>
+</li>
+<li><p>App.js &amp; Counter.js: 使用<code>react-redux</code>分离UI&amp;逻辑</p>
+<pre><code class="lang-java"> // 1. App.js:
+ import React,{Component} from &#39;react&#39;
+ import { Provider } from &#39;react-redux&#39;
+ import Counter from &#39;./Counter&#39;
+
+ export default class CounterSample extends Component {
+   render() {
+     return (
+       &lt;Provider store={store}&gt;
+         &lt;Counter /&gt;
+       &lt;/Provider&gt;
+     );
+   }
+</code></pre>
+<pre><code class="lang-java"> // 2. Counter.js:
+ import { connect } from &#39;react-redux&#39;;
+
+ class Counter extends Component{
+     render(){
+         const {count,plusOne,minusOne} = this.props;
+         return (
+             &lt;div&gt;
+                 &lt;div&gt;{count}&lt;/div&gt;
+                 &lt;button onClick={plusOne}&gt;Plus&lt;/button&gt;
+                 &lt;button onClick={minusOne}&gt;Minus&lt;/button&gt;
+             &lt;/div&gt;
+         )
+     }
+ }
+
+ const mapStateToProps=(state)=&gt;{
+     return {
+         count: state.count
+     }
+ };
+
+ const mapDispatchToProps=(dispatch)=&gt;{
+     // return {
+     //     plusOne
+     //     ,minusOne
+     // }
+     return bindActionCreators({ plusOne, minusOne }, dispatch);
+ };
+
+ export default connect(mapStateToProps,mapDispatchToProps)(Counter);
+</code></pre>
+</li>
+</ol>
+<p><strong>使用新的组织方式组织action &amp; reducer(一个action文件中包括一个action &amp; reducer)</strong></p>
+<ol>
+<li><p>actions/counterPlusOne.js</p>
+<pre><code class="lang-javascript"> // action creator
+ export const counterPlusOne = ()=&gt;{
+     return {
+         type: &#39;COUNTER_PLUS_ONE&#39;
+     }
+ };
+
+ // reducer
+ export const reducer = (state,action)=&gt;{
+     switch(action.type){
+         case:&#39;COUNTER_PLUS_ONE&#39;:
+             return {count:state.count+1};
+         default:
+             return state;
+     }
+ }
+</code></pre>
+</li>
+<li><p>actions/counterMinusOne.js</p>
+<pre><code class="lang-javascript"> // action creator
+ export const counterMinusOne = ()=&gt;{
+     return {
+         type: &#39;COUNTER_MINUS_ONE&#39;
+     }
+ };
+
+ // reducer
+ export const reducer = (state,action)=&gt;{
+     switch(action.type){
+         case:&#39;COUNTER_MINUS_ONE&#39;:
+             return {count:state.count-1};
+         default:
+             return state;
+     }
+ }
+</code></pre>
+</li>
+<li>actions.js<pre><code class="lang-javascript"> export {counterPlusOne} from &#39;./counterPlusOne&#39;
+ export {counterMinusOne} from &#39;./counterMinusOne&#39;
+</code></pre>
+</li>
+<li>reducer.js<pre><code class="lang-javascript"> export {reducer as counterPlusOneReducer} from &#39;./counterPlusOne&#39;
+ export {reducer as counterMinusOneReducer} from &#39;./counterMinusOne&#39;
+</code></pre>
+</li>
+</ol>
+<h2 id="header-42">React Router</h2>
+<ul>
+<li>install: <code>yarn add react-router-dom</code></li>
+<li>特性：<ul>
+<li>声明式的路由定义（React组件，可像Tag一样去定义使用）</li>
+<li>动态路由（页面render时实时解析）</li>
+<li>基于路由配置进行资源组织<ul>
+<li>实现业务逻辑的松耦合</li>
+<li>易于扩展，重构和维护</li>
+<li>路由层面实现Lazy Load</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注：路由不只是页面切换，更是代码组织方式<ul>
+<li>单页应用也需要进行页面切换</li>
+<li>通过URL可以定位到页面</li>
+<li>更有语义的组织资源</li>
+</ul>
+</li>
+<li>应用：管理登录和授权（区分受保护路由和公开路由，访问未授权路由时重定向到登录页面）</li>
+</ul>
+<h3 id="header-43">路由</h3>
+<ul>
+<li><code>Link</code> : 普通链接，不会出发浏览器刷新(用a标签的话，浏览器会刷新)<pre><code class="lang-javascript">  &lt;Link to=&#39;/home&#39;&gt;Home&lt;/Link&gt;
+</code></pre>
+</li>
+<li><code>NavLink</code> : 类似Link，但是会添加当前选中状态(多了一个css样式设置)<pre><code class="lang-html">  &lt;NavLink to=&quot;/faq&quot; activeClassName=&quot;selected&quot;&gt; FAQs&lt;/NavLink&gt;
+</code></pre>
+</li>
+<li><code>Prompt</code> : 满足条件时提示用户是否里来当前页面<pre><code class="lang-html">  &lt;Prompt when={formIsHalfFilledOut} message=&quot;Are you sure you want to leave?&quot; /&gt;
+</code></pre>
+</li>
+<li><code>Redirect</code> : 重定向当前页面，例如：登录判断<pre><code class="lang-html">  &lt;Route exact path=&quot;/&quot; render={()=&gt;(
+      loggedIn? (&lt;Redirect to=&#39;/dashboard&#39;/&gt;):(&lt;LoginPage/&gt;)
+  )} /&gt;
+</code></pre>
+</li>
+<li><code>Route</code> : 路由配置的核心标记，路径匹配时显示对应组件(不排他，多个匹配，则显示多个)<pre><code class="lang-html">  &lt;Route exact path=&quot;/home&quot; component={Home}/&gt;
+</code></pre>
+</li>
+<li><code>Switch</code> : 只显示第一个匹配的路由(排他，只显示第一个匹配的)<pre><code class="lang-html">  &lt;Switch&gt;
+      &lt;Route exact path=&quot;/&quot; component={Home}/&gt;
+      &lt;Route exact path=&quot;/about&quot; component={About}/&gt;
+      &lt;Route exact path=&quot;/:user&quot; component={User}/&gt;
+      &lt;Route component={NoMatch}/&gt;
+  &lt;/Switch&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="header-44">路由容器</h3>
+<ul>
+<li><code>BrowserRouter</code> : 使用URL路径 <code>/xxx</code> </li>
+<li><code>HashRouter</code> : 使用Hash路由 <code>#xxx</code></li>
+<li><code>MemoryRouter</code> : 内存路由, 不会反应到URL上</li>
+</ul>
+<pre><code class="lang-java">import React from &#39;react&#39;;
+import {Route,Link} from &#39;react-router-dom&#39;;
+
+import {BrowserRouter as Router} from &#39;react-router-dom&#39;; 
+// import {HashRouter as Router} from &#39;react-router-dom&#39;;
+// import {MemoryRouter as Router} from &#39;react-router&#39;;     // 与dom无关
+
+const RouterSample=(props)=&gt;{
+    return (
+        &lt;Router&gt;
+            &lt;div&gt;
+                &lt;ul id=&quot;menu&quot;&gt;
+                    &lt;li&gt;&lt;Link to=&#39;/home&#39;&gt;Home&lt;/Link&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;Link to=&#39;/hello&#39;&gt;Home&lt;/Link&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;Link to=&#39;/about&#39;&gt;Home&lt;/Link&gt;&lt;/li&gt;
+                &lt;/ur&gt;
+            &lt;/div&gt;
+
+            &lt;div&gt;
+                &lt;ul id=&quot;page-container&quot;&gt;
+                    &lt;Route path=&quot;/home&quot; component={Home}/&gt;
+                    &lt;Route path=&quot;/hello&quot; component={Hello}/&gt;
+                    &lt;Route path=&quot;/about&quot; component={About}/&gt;
+                &lt;/ur&gt;
+            &lt;/div&gt;
+        &lt;/Router&gt;
+    )
+};
+export default RouterSample;
+</code></pre>
+<h3 id="header-45">参数传递</h3>
+<p>通过URL传递参数:</p>
+<ul>
+<li>rule: <code>&lt;Route path=&quot;/topic/:id&quot; component={Topic} /&gt;</code> (<a href="https://github.com/pillarjs/path-to-regexp" target="_blank" rel="noopener">More path rules</a>)</li>
+<li>trigger: <code>&lt;Link to=&quot;/topic/15&gt;Topic_15&lt;/Link&gt;</code></li>
+<li>get params(in the Topic Component): <code>this.props.match.params</code></li>
+<li>注：页面状态尽量通过URL参数传递</li>
+</ul>
+<h3 id="header-46">嵌套路由</h3>
+<p>嵌套路由：每个React组件都可以是路由容器，声明式语法可以很方便的定义嵌套路由</p>
+<pre><code class="lang-java">import { BrowserRouter as Router, Route, Link } from &quot;react-router-dom&quot;;
+
+const Category = (props)=&gt; {
+    return (
+      &lt;Router&gt;
+        &lt;div&gt;
+          &lt;ul id=&quot;menu&quot;&gt;
+            &lt;li&gt;&lt;Link to=&quot;/category/1&quot;&gt;Category 1&lt;/Link&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;Link to=&quot;/category/2&quot;&gt;Category 2&lt;/Link&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;Link to=&quot;/category/3&quot;&gt;Category 3&lt;/Link&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div id=&quot;page-container&quot;&gt;
+            &lt;Route path=&quot;/category/:id&quot; component={SubCategory}/&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/Router&gt;
+    )
+};
+
+const SubCategory = (props)=&gt;{
+    const categoryId=props.match.params.id
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;Category {categoryId}&lt;/h1&gt;
+            &lt;ul id=&quot;menu&quot;&gt;
+              &lt;li&gt;&lt;Link to={`/category/${categoryId}/1`}&gt;Sub Category 1&lt;/Link&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;Link to={`/category/${categoryId}/2`}&gt;Sub Category 2&lt;/Link&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div id=&quot;page-container-2&quot;&gt;
+              &lt;Route path=&quot;/category/:id/:subId&quot; component={Detail}/&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+    )
+}
+
+const Detail = (props) =&gt; (
+  &lt;h1&gt;Sub Category {props.match.params.subId} Detail&lt;/h1&gt;
+);
+
+export default Category;
+</code></pre>
+<p><strong>注：</strong></p>
+<pre><code class="lang-java">// 没有使用exact精确匹配
+// =&gt; Link `/category` 时     , 显示 Category
+// =&gt; Link `/category/1` 时   , 显示 SubCategory
+// =&gt; Link `/category/1/2` 时 , 显示Category,SubCategory,Detail
+&lt;Route path=&quot;/category/:id&quot; component={SubCategory}/&gt;
+&lt;Route path=&quot;/category/:id/:subId&quot; component={Detail}/&gt;
+</code></pre>
+<h3 id="header-47">Sample</h3>
+<ol>
+<li><p>App:</p>
+<pre><code class="lang-java"> import React, { Fragment } from &#39;react&#39;;
+ import { BrowserRouter, Route } from &#39;react-router-dom&#39;;
+ import Header from &#39;./common/header&#39;;
+ import Home from &#39;./pages/home&#39;;
+ import Detail from &#39;./pages/detail&#39;;
+
+ function App() {
+   return (
+     &lt;Fragment&gt; 
+         &lt;Header/&gt;
+         {/*
+         &lt;BrowserRouter&gt;
+           &lt;Route path=&#39;/&#39; exact render={()=&gt;(&lt;div&gt;Home&lt;/div&gt;)}&gt;&lt;/Route&gt;
+           &lt;Route path=&#39;/detail&#39; exact render={()=&gt;(&lt;div&gt;Detail&lt;/div&gt;)}&gt;&lt;/Route&gt;
+         &lt;/BrowserRouter&gt;
+         */}
+         &lt;BrowserRouter&gt;
+           &lt;Route path=&#39;/&#39; exact component={Home}&gt;&lt;/Route&gt;
+           &lt;Route path=&#39;/detail/:id&#39; exact component={Detail}&gt;&lt;/Route&gt;
+         &lt;/BrowserRouter&gt;
+     &lt;/Fragment&gt;
+   );
+ }
+
+ export default App;
+</code></pre>
+</li>
+<li><p>Home:</p>
+<pre><code class="lang-java"> import React from &#39;react&#39;;
+ import {Link} from &#39;react-router-dom&#39;;
+
+ const Home = (props) =&gt; {
+     return (
+         &lt;div&gt;
+             &lt;h1&gt;Home&lt;/h1&gt;
+             {/*&lt;a href=&quot;/detail&quot;&gt;Detail&lt;/a&gt;*/}
+             &lt;ul&gt;
+                 &lt;li&gt;&lt;Link to=&quot;/detail/1&quot;&gt;Go Detail_1&lt;/Link&gt;&lt;/li&gt;
+                 &lt;li&gt;&lt;Link to=&quot;/detail/2&quot;&gt;Go Detail_2&lt;/Link&gt;&lt;/li&gt;
+                 &lt;li&gt;&lt;Link to=&quot;/detail/3&quot;&gt;Go Detail_3&lt;/Link&gt;&lt;/li&gt;
+             &lt;/ul&gt;
+         &lt;/div&gt;
+     )
+ }
+
+ export default Home;
+</code></pre>
+</li>
+<li><p>Detail:</p>
+<pre><code class="lang-java"> import React from &#39;react&#39;;
+ import { Link } from &#39;react-router-dom&#39;;
+
+ const Detail=(props)=&gt;{
+
+     // console.log(&quot;props.match&quot;,&quot;eg: /details/1&quot;,props.match)  // props.match.params
+     // console.log(&quot;props.location&quot;,&quot;eg: /details?id=1&quot;,props.location) // props.location.search
+
+     return (
+         &lt;div&gt;
+             &lt;h1&gt;Detail:{props.match.params.id}&lt;/h1&gt;
+             {/*&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;*/}
+             &lt;Link to=&quot;/&quot;&gt;Back Home&lt;/Link&gt;
+         &lt;/div&gt;
+     )
+ }
+
+ export default Detail;
+</code></pre>
+</li>
+</ol>
+<h2 id="header-48">More</h2>
+<h3 id="header-49">react-loadable</h3>
+<p><a href="https://github.com/jamiebuilds/react-loadable" target="_blank" rel="noopener">react-loadable</a> 异步加载组件</p>
+<ul>
+<li>原本一个<code>bundle.js</code>大包了所有组件，第一次加载会比较慢</li>
+<li><code>react-loadable</code>使用时再加载对应组件js =&gt; <code>1.chunk.js</code>,<code>2.chunk.js</code>,…</li>
+<li>install <code>yarn add react-loadable</code></li>
+</ul>
+<p><strong>Sample:</strong></p>
+<ol>
+<li><p>App:</p>
+<pre><code class="lang-java"> import React, { Fragment } from &#39;react&#39;;
+ import { BrowserRouter, Route } from &#39;react-router-dom&#39;;
+ import Header from &#39;./common/header&#39;;
+ import Home from &#39;./pages/home&#39;;
+ // import Detail from &#39;./pages/detail&#39;;
+ import Detail from &#39;./pages/detail/loadable&#39;;  // 使用loadable.js封装的Detail组件
+
+ function App() {
+   return (
+     &lt;Fragment&gt; 
+         &lt;Header/&gt;
+         {/*
+         &lt;BrowserRouter&gt;
+           &lt;Route path=&#39;/&#39; exact render={()=&gt;(&lt;div&gt;Home&lt;/div&gt;)}&gt;&lt;/Route&gt;
+           &lt;Route path=&#39;/detail&#39; exact render={()=&gt;(&lt;div&gt;Detail&lt;/div&gt;)}&gt;&lt;/Route&gt;
+         &lt;/BrowserRouter&gt;
+         */}
+         &lt;BrowserRouter&gt;
+           &lt;Route path=&#39;/&#39; exact component={Home}&gt;&lt;/Route&gt;
+           &lt;Route path=&#39;/detail/:id&#39; exact component={Detail}&gt;&lt;/Route&gt;
+         &lt;/BrowserRouter&gt;
+     &lt;/Fragment&gt;
+   );
+ }
+
+ export default App;
+</code></pre>
+</li>
+<li><p>Detail组件：</p>
+<pre><code class="lang-java"> import React from &#39;react&#39;;
+ import { Link, withRouter } from &#39;react-router-dom&#39;;
+
+ const Detail=(props)=&gt;{
+     return (
+         &lt;div&gt;
+             &lt;h1&gt;Detail:{props.match.params.id}&lt;/h1&gt;
+             {/*&lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;*/}
+             &lt;Link to=&quot;/&quot;&gt;Back Home&lt;/Link&gt;
+         &lt;/div&gt;
+     )
+ }
+
+ export default withRouter(Detail); // 使用withRouter，否则props.match无法获取到值
+</code></pre>
+</li>
+<li><p>封装Detail组件：detail/loadable.js</p>
+<pre><code class="lang-java"> import React from &#39;react&#39;;
+ import Loadable from &#39;react-loadable&#39;;
+
+ const LoadableComponent = Loadable({
+   loader: () =&gt; import(&#39;./&#39;),           // import component: `Detail`
+   loading: ()=&gt; &lt;div&gt;Loading...&lt;/div&gt;  // loading component 
+ });
+
+ export default ()=&gt;{ return (&lt;LoadableComponent/&gt;) } // 直接返回一个无状态组件
+</code></pre>
+</li>
+</ol>
+<p><strong>注:<code>react-loadable</code>会使用已经被重命名的react方法<code>componentWillMount</code></strong></p>
+<p>Warning: componentWillMount has been renamed, and is not recommended for use.<br>See <a href="https://fb.me/react-async-component-lifecycle-hooks" target="_blank" rel="noopener">https://fb.me/react-async-component-lifecycle-hooks</a> for details.</p>
+<ul>
+<li>Move code with side effects to componentDidMount, and set initial state in the constructor.</li>
+<li>Rename componentWillMount to UNSAFE<em>componentWillMount to suppress this warning in non-strict mode. In React 17.x, only the UNSAFE</em> name will work. To rename all deprecated lifecycles to their new names, you can run <code>npx react-codemod rename-unsafe-lifecycles</code> in your project source folder.</li>
+</ul>
+<p>Please update the following components: LoadableComponent</p>
+<h3 id="header-50">Next.js 创建同构应用</h3>
+<ol>
+<li><p>同构应用</p>
+<ul>
+<li>第一次发送请求，服务端渲染，返回页面给客户端呈现（客户端不需要再花时间执行js渲染页面)</li>
+<li>后续仍由客户端执行操作</li>
+</ul>
+</li>
+<li><p>使用 Next.js 实现服务器端渲染（无缝同步到客户端）</p>
+<ul>
+<li>install: <code>npm install --save next react react-dom</code></li>
+<li><code>package.json</code>: add cmd<pre><code class="lang-json">  {
+      &quot;scripts&quot;:{
+          &quot;dev&quot;:&quot;next&quot;,
+          &quot;build&quot;:&quot;next build&quot;,
+          &quot;start&quot;:&quot;next start&quot;
+      }
+  }
+</code></pre>
+</li>
+<li>run: <code>npm run dev</code></li>
+<li>visit: <code>http://localhost:3000</code></li>
+<li>注：<ul>
+<li><code>pages</code>目录: <ul>
+<li>每个文件对应页面路由导航，文件中可定义使用组件</li>
+<li>页面也是标准的node模块，可使用其他React组件</li>
+<li>页面会针对性打包，仅包含其引入的组件</li>
+<li>page具有特殊静态方法<code>getInitialProps</code></li>
+</ul>
+</li>
+<li><code>static</code>目录: 映射静态文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>使用<code>next/link</code>实现同构路由</p>
+<ul>
+<li><code>next/link</code>定义的链接，点击时页面不会刷新</li>
+<li><code>prefetch</code>属性: 预加载目标资源(但不会加载服务器端API数据)</li>
+<li><p><code>replace</code>属性: 替换URL(配置后当前链接不会包含在浏览器的history中，即无法后退到当前页面)</p>
+<pre><code class="lang-java">import Link from &#39;next/link&#39;;
+
+export default ()=&gt;(
+  &lt;div&gt;
+      &lt;Link href=&#39;/hello&#39;&gt;&lt;a&gt;Hello&lt;/a&gt;&lt;/Link&gt;
+      &lt;Link href=&#39;/about&#39; prefetch&gt;&lt;a&gt;About&lt;/a&gt;&lt;/Link&gt;
+  &lt;/div&gt;
+)
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>使用<code>next/dynamic</code>实现动态加载页面（Lazy Load）</p>
+<pre><code class="lang-java"> import dynamic from &#39;next/dynamic&#39;;
+
+ const DynamicHello = dynamic(
+     import(&#39;../components/hello&#39;),{loading:()=&gt;(&lt;p&gt;...&lt;/p&gt;)}
+ )
+
+ export default () =&gt; (
+     &lt;div&gt;
+         &lt;Header/&gt;
+         &lt;DynamicHello /&gt;
+         &lt;p&gt; Home Page &lt;/p&gt;
+     &lt;/div&gt;
+ )
+</code></pre>
+</li>
+</ol>
+<h3 id="header-51">单元测试工具</h3>
+<ul>
+<li><p>React让前端单元测试变的容易：</p>
+<ul>
+<li>React应用很少需要访问浏览器API</li>
+<li>虚拟Dom可以再NodeJS环境运行和测试</li>
+<li>Redux隔离了状态管理，纯数据层单元测试</li>
+</ul>
+</li>
+<li><p>单元测试涉及的工具：</p>
+<ul>
+<li><code>Jest</code>: Facebook开源的JS单元测试框架</li>
+<li><code>JS Dom</code>: NodeJS环境中模拟浏览器API</li>
+<li><code>Enzyme</code>: React组件渲染和测试（可直接在NodeJS环境中渲染虚拟Dom和测试）</li>
+<li><code>nock</code>: 模拟HTTP请求</li>
+<li><code>sinon</code>: 函数模拟和调用跟踪</li>
+<li><code>Istanbul</code>: 单元测试覆盖率</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample: Jest + Enzme</strong></p>
+<pre><code class="lang-javascript">import React from &#39;react&#39;
+import { shallow } from &#39;enzyme&#39;
+import CommentItem from &#39;./commentItem&#39;
+
+describe(&#39;测试评论列表项组件&#39;, () =&gt; {
+  // 这是mocha的玩法，jest可以直接兼容
+  it(&#39;测试评论内容小于等于200时不出现展开收起按钮&#39;, () =&gt; {
+    const propsData = {
+      name: &#39;hj&#39;,
+      content: &#39;测试标题&#39;
+    }
+    const item = shallow(&lt;CommentItem {...propsData} /&gt;)
+    // 这里的断言实际上和chai的expect是很像的
+    expect(item.find(&#39;.btn-expand&#39;).length).toBe(0);
+  })
+  // 这是jest的玩法，推荐用这种
+  test(&#39;两数相加结果为两个数字的和&#39;, () =&gt; {
+    expect(3).toBe(3);
+  });
+}
+</code></pre>
+<h3 id="header-52">拆分复杂度: 按领域模型(feature)组织代码</h3>
+<ul>
+<li>按业务逻辑拆分成高内聚松耦合的模块<ul>
+<li>按feature组织component,action,reducer</li>
+<li>使用root loader加载feature下的各个资源</li>
+</ul>
+</li>
+<li>文件夹结构<ul>
+<li>按feature组织源文件</li>
+<li>组件和样式文件同一级</li>
+<li>Redux单独文件夹</li>
+<li>单元测试保持同样目录结构，放在tests文件夹</li>
+</ul>
+</li>
+<li>在每个feature中单独定义自己的路由<ul>
+<li>使用JSON定义顶层路由</li>
+<li>解析JSON配置到React Router语法</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-javascript">\src
+    \commons
+        configStore.js
+        rootReducer.js              // combine all features reducers
+        routeConfig.js               
+    \features
+        \commons
+        \home
+            \redux
+                actions.js          // export all below reducers
+                reducer.js          // export all below actions
+                constances.js       // export all below constances (use feature name as prefix,eg: HOME_xxx)
+                counterPlusOne.js   // name as action, include one action,one reducer
+                counterMinusOne.js
+            index.js                // export all below components
+            route.js
+            style.css               // import all below css
+            PageNotFound.js
+            PageNotFound.css
+            SidePanel.js
+            SidePanel.css
+            Counter.js
+            Counter.css
+        \about
+        \article
+    index.js
+    logo.svg
+
+\tests
+    \features
+        \commons
+        \home
+        \about
+        \article
+</code></pre>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

@@ -140,8 +140,11 @@
 </ul>
 </li>
 <li><code>cross join</code>：表A和表B的数据进行一个N*M的组合，即笛卡尔积，不带ON子句<ul>
-<li>显式：<code>select [cols_list] from a cross join b where [condition]</code></li>
-<li>隐式：<code>select [cols_list] from a,b where [condition]</code></li>
+<li><code>select [cols_list] from a cross join b where [condition]</code></li>
+</ul>
+</li>
+<li><code>full join</code>: AB并集<ul>
+<li><code>select [cols_list] from a full join b where [condition]</code></li>
 </ul>
 </li>
 <li><strong>注意：</strong><ul>

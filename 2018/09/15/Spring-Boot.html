@@ -6971,7 +6971,7 @@ public class DispatcherServlet extends FrameworkServlet {
      System.out.println(&quot;[Thread:&quot; + threadName + &quot;] &quot; + object);
  }
 
- // 异步
+ // 同步
  @Test
  public void fluxSyncFunctinalProgramingTest() {
      println(&quot;Run fluxSyncFunctinalProgramingTest ...&quot;);
@@ -6999,7 +6999,7 @@ public class DispatcherServlet extends FrameworkServlet {
       */
  }
 
-   // 同步
+   // 异步
  @Test
  public void fluxAsyncFunctionalProgramingTest() throws InterruptedException {
      println(&quot;Run fluxAsyncFunctionalProgramingTest ...&quot;);
@@ -7073,7 +7073,7 @@ public class DispatcherServlet extends FrameworkServlet {
 <p><strong> 示例: </strong></p>
 <ol>
 <li><p>注解驱动,函数式端点驱动</p>
-<pre><code class="lang-java"> SpringBootApplication
+<pre><code class="lang-java"> @SpringBootApplication
  @RestController
  public class WebFluxApp {
      public static void main(String[] args) {
