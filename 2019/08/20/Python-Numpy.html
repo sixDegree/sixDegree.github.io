@@ -1651,46 +1651,63 @@ np.partition(x,[3,7])               # array([0, 1, 2, 3, 4, 5, 6, 7, 9, 8])
  X[row_inds,col_inds]            # array([ 1,  6, 11]) &lt;= nodes [0,1],[1,2],[2,3]
 </code></pre>
 </li>
-<li><p>使用bool值数组（array中的元素进行批量比较，得到bool值数组）<br> ```python<br> ‘’’<br> x = np.arange(5)                 </p>
-<pre><code> array([ 0,  1,  2,  3,  4 ])
-</code></pre><p> ‘’’<br> x&lt;3                         # array([ True,  True,  True, False, False])<br> x[x&lt;3]                      # array([0, 1, 2])</p>
-<p> 2<em>x == 24-4</em>x               # array([False, False, False, False,  True])<br> x[2<em>x == 24-4</em>x]            # array([4])</p>
-<p> x%2==0                      # array([ True, False,  True, False,  True])<br> x[x%2==0]                   # array([0, 2, 4])</p>
-<p> np.sum(x&lt;3)                 # 3<br> np.count_nonzero(x&lt;3)       # 3</p>
-<p> np.sum((x&gt;2)&amp;(x<4)) 1="" #="" <="多个条件，使用位运算符" np.sum((x%2="=0)|(x">3))      # 3<br> np.sum(~(x==0))             # 4</4))></p>
-<p> np.any(x==0)                # True<br> np.any(x<0) #="" false="" np.all(x="">=0)                # True</0)></p>
+<li><p>使用bool值数组（array中的元素进行批量比较，得到bool值数组）</p>
+<pre><code class="lang-python"> &#39;&#39;&#39;
+ x = np.arange(5)                 
+     array([ 0,  1,  2,  3,  4 ])
+ &#39;&#39;&#39;
+ x&lt;3                         # array([ True,  True,  True, False, False])
+ x[x&lt;3]                      # array([0, 1, 2])
+
+ 2*x == 24-4*x               # array([False, False, False, False,  True])
+ x[2*x == 24-4*x]            # array([4])
+
+ x%2==0                      # array([ True, False,  True, False,  True])
+ x[x%2==0]                   # array([0, 2, 4])
+
+ np.sum(x&lt;3)                 # 3
+ np.count_nonzero(x&lt;3)       # 3
+
+ np.sum((x&gt;2)&amp;(x&lt;4))         # 1         &lt;= 多个条件，使用位运算符
+ np.sum((x%2==0)|(x&gt;3))      # 3
+ np.sum(~(x==0))             # 4
+
+ np.any(x==0)                # True
+ np.any(x&lt;0)                 # False
+ np.all(x&gt;=0)                # True
+
+ &#39;&#39;&#39;
+ X=x.reshape(4,-1)
+     array([[ 0,  1,  2,  3],
+            [ 4,  5,  6,  7],
+            [ 8,  9, 10, 11],
+            [12, 13, 14, 15]])
+ &#39;&#39;&#39;
+ X&lt;6                         &#39;&#39;&#39;
+                             array([[ True,  True,  True,  True],
+                                    [ True,  True, False, False],
+                                    [False, False, False, False],
+                                    [False, False, False, False]])
+                             &#39;&#39;&#39;
+ X[X&lt;6]                      # array([0, 1, 2, 3, 4, 5])
+
+ X[:,3]%3==0                 # array([ True, False, False,  True]) &lt;= 每行最后一个元素能否被3整除
+ X[X[:,3]%3==0,:]            # 选出最后一个元素可被3整除的行
+                             &#39;&#39;&#39;
+                             array([[ 0,  1,  2,  3],
+                                    [12, 13, 14, 15]])
+                             &#39;&#39;&#39;
+
+ np.sum(X%2==0)              # 8                     &lt;= 统计偶数个数
+ np.sum(X%2==0,axis=0)       # array([4, 0, 4, 0])   &lt;= 每列有多少偶数（行方向上压缩）
+ np.sum(X%2==0,axis=1)       # array([2, 2, 2, 2])   &lt;= 每行有多少偶数（列方向上压缩））
+
+ np.all(X&gt;3,axis=0)          # array([False, False, False, False]) &lt;= 每列（行方向上判断）
+ np.all(X&gt;3,axis=1)          # array([False,  True,  True,  True]) &lt;= 每行（列方向上判断）
+</code></pre>
 </li>
 </ol>
-<pre><code>&#39;&#39;&#39;
-X=x.reshape(4,-1)
-    array([[ 0,  1,  2,  3],
-           [ 4,  5,  6,  7],
-           [ 8,  9, 10, 11],
-           [12, 13, 14, 15]])
-&#39;&#39;&#39;
-X&lt;6                         &#39;&#39;&#39;
-                            array([[ True,  True,  True,  True],
-                                   [ True,  True, False, False],
-                                   [False, False, False, False],
-                                   [False, False, False, False]])
-                            &#39;&#39;&#39;
-X[X&lt;6]                      # array([0, 1, 2, 3, 4, 5])
-
-X[:,3]%3==0                 # array([ True, False, False,  True]) &lt;= 每行最后一个元素能否被3整除
-X[X[:,3]%3==0,:]            # 选出最后一个元素可被3整除的行
-                            &#39;&#39;&#39;
-                            array([[ 0,  1,  2,  3],
-                                   [12, 13, 14, 15]])
-                            &#39;&#39;&#39;
-
-np.sum(X%2==0)              # 8                     &lt;= 统计偶数个数
-np.sum(X%2==0,axis=0)       # array([4, 0, 4, 0])   &lt;= 每列有多少偶数（行方向上压缩）
-np.sum(X%2==0,axis=1)       # array([2, 2, 2, 2])   &lt;= 每行有多少偶数（列方向上压缩））
-
-np.all(X&gt;3,axis=0)          # array([False, False, False, False]) &lt;= 每列（行方向上判断）
-np.all(X&gt;3,axis=1)          # array([False,  True,  True,  True]) &lt;= 每行（列方向上判断）
-```
-</code></pre><h2 id="header-20">文件存取</h2>
+<h2 id="header-20">文件存取</h2>
 <h3 id="header-21">CSV文件存取</h3>
 <ul>
 <li><p><code>np.savetxt(fname,X,fmt=&#39;%.18e&#39;,delimiter=&#39; &#39;,newline=&#39;\n&#39;,header=&#39;&#39;,footer=&#39;&#39;,comments=&#39;# &#39;,encoding=None,)</code></p>

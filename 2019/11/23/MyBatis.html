@@ -1,0 +1,3032 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MyBatis</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">DB Data</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">HelloWorld</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Global Config</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">properties</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">settings</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">typeAliases</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">typeHandlers</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">plugins</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">environments</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">databaseIdProvider</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">mappers</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Sql Mapper Config: CRUD</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">select</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">insert</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">update</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">delete</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">ParameterHandler</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">Parameters</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">#{},${}</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">ResultSetHandler</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">resultType</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">resultMap</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">resultMap:association</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">resultMap: collection</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">resultMap: discriminator</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">TypeHandler</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">配置</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">处理Enum</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">Sample: EnumTypeHandler</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">Sample: EnumOrdinalTypeHandler</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">处理Enum: 自定义TypeHandler</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-33"><span class="sidebar-nav nav-text">Dynamic Sql</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-34"><span class="sidebar-nav nav-text">OGNL</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-35"><span class="sidebar-nav nav-text">Sample: Dynamic Filter &lt;select&gt;,&lt;if&gt;</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-36"><span class="sidebar-nav nav-text">Sample: Dynamic Update: &lt;update&gt;,&lt;set&gt;,&lt;if&gt;</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-37"><span class="sidebar-nav nav-text">Sample: &lt;foreach&gt;</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-38"><span class="sidebar-nav nav-text">Sample: &lt;bind&gt;</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-39"><span class="sidebar-nav nav-text">Sample: _parameter,_databaseId</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-40"><span class="sidebar-nav nav-text">Sample: &lt;sql&gt;,&lt;include&gt;</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-41"><span class="sidebar-nav nav-text">Plugin</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-42"><span class="sidebar-nav nav-text">原理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-43"><span class="sidebar-nav nav-text">自定义插件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-44"><span class="sidebar-nav nav-text">多个插件</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-45"><span class="sidebar-nav nav-text">第三方插件: PageHelper</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-46"><span class="sidebar-nav nav-text">Cache</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-47"><span class="sidebar-nav nav-text">一级缓存</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-48"><span class="sidebar-nav nav-text">二级缓存</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-49"><span class="sidebar-nav nav-text">缓存相关配置</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-50"><span class="sidebar-nav nav-text">第三方缓存整合</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-51"><span class="sidebar-nav nav-text">与SpringBoot整合</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-52"><span class="sidebar-nav nav-text">dependencies</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-53"><span class="sidebar-nav nav-text">druid</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-54"><span class="sidebar-nav nav-text">MyBatis(单数据源)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-55"><span class="sidebar-nav nav-text">MyBatis(多数据源)</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-56"><span class="sidebar-nav nav-text">高级</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-57"><span class="sidebar-nav nav-text">运行原理</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-58"><span class="sidebar-nav nav-text">存储过程</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-59"><span class="sidebar-nav nav-text">批量操作</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-60"><span class="sidebar-nav nav-text">More</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-61"><span class="sidebar-nav nav-text">显示sql语句</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-62"><span class="sidebar-nav nav-text">logback日志</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">MyBatis</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-11-22T16:00:00.000Z">2019-11-23</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<p><a href="https://github.com/mybatis/mybatis-3" target="_blank" rel="noopener">Github</a> | <a href="https://mybatis.org/mybatis-3/getting-started.html" target="_blank" rel="noopener">Doc</a></p>
+<h3 id="header-2">DB Data</h3>
+<ol>
+<li>pe_department<pre><code class="lang-sql"> CREATE TABLE `pe_department` (
+     `id` INT(11) NOT NULL AUTO_INCREMENT,
+     `name` VARCHAR(50) NOT NULL,
+     `remark` VARCHAR(100) NULL DEFAULT NULL,
+     PRIMARY KEY (`id`)
+ )
+ COLLATE=&#39;latin1_swedish_ci&#39;
+ ENGINE=InnoDB
+ AUTO_INCREMENT=4
+ ;
+</code></pre>
+</li>
+<li>pe_employee<pre><code class="lang-sql"> CREATE TABLE `pe_employee` (
+     `id` INT(11) NOT NULL AUTO_INCREMENT,
+     `department_id` INT(11) NOT NULL,
+     `name` VARCHAR(50) NOT NULL DEFAULT &#39;0&#39;,
+     `remark` VARCHAR(100) NULL DEFAULT NULL,
+     PRIMARY KEY (`id`),
+     INDEX `FK__pe_department` (`department_id`),
+     CONSTRAINT `FK__pe_department` FOREIGN KEY (`department_id`) REFERENCES `pe_department` (`id`)
+ )
+ COLLATE=&#39;latin1_swedish_ci&#39;
+ ENGINE=InnoDB
+ AUTO_INCREMENT=10
+ ;
+</code></pre>
+</li>
+<li><p>test data</p>
+<pre><code class="lang-sql"> -- pe_department
+ INSERT INTO pe_department(name,remark) VALUES(&#39;Dep-A&#39;,&#39;This is Department A&#39;);
+ INSERT INTO pe_department(name,remark) VALUES(&#39;Dep-B&#39;,&#39;This is Department B&#39;);
+ INSERT INTO pe_department(name,remark) VALUES(&#39;Dep-C&#39;,&#39;This is Department C&#39;);
+
+ -- pe_employee
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test1&#39;,1,&#39;This is Test1&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test2&#39;,1,&#39;This is Test2&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test3&#39;,1,&#39;This is Test3&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test4&#39;,2,&#39;This is Test4&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test5&#39;,2,&#39;This is Test5&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test6&#39;,2,&#39;This is Test6&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test7&#39;,3,&#39;This is Test7&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test8&#39;,3,&#39;This is Test8&#39;);
+ INSERT INTO pe_employee(name,department_id,remark) VALUES (&#39;Test9&#39;,3,&#39;This is Test9&#39;);
+</code></pre>
+</li>
+</ol>
+<h3 id="header-3">HelloWorld</h3>
+<ol>
+<li>dependency (pom.xml)<pre><code class="lang-xml"> &lt;dependency&gt;
+     &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+     &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+     &lt;version&gt;3.5.3&lt;/version&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;mysql&lt;/groupId&gt;
+     &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+     &lt;version&gt;8.0.18&lt;/version&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>global config (mybatis-config.xml)</p>
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE configuration
+   PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+   &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+ &lt;configuration&gt;
+   &lt;environments default=&quot;development&quot;&gt;
+     &lt;environment id=&quot;development&quot;&gt;
+       &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+       &lt;dataSource type=&quot;POOLED&quot;&gt;
+         &lt;property name=&quot;driver&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
+         &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/demo?characterEncoding=utf8&amp;amp;useSSL=false&amp;amp;serverTimezone=UTC&quot;/&gt;
+         &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+         &lt;property name=&quot;password&quot; value=&quot;123456&quot;/&gt;
+       &lt;/dataSource&gt;
+     &lt;/environment&gt;
+   &lt;/environments&gt;
+
+   &lt;mappers&gt;
+     &lt;mapper resource=&quot;mapper/EmployeeMapper.xml&quot;/&gt;
+   &lt;/mappers&gt;
+ &lt;/configuration&gt;
+</code></pre>
+</li>
+<li><p>sql config (mapper/EmployeeMapper.xml)</p>
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE mapper
+   PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+   &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+ &lt;mapper namespace=&quot;com.cj.mybatis.mapper.EmployeeMapper&quot;&gt;
+   &lt;!-- id: 标识; resultType: 返回值类型; #{id}: 从传递过来的参数中取出id值 --&gt;
+   &lt;select id=&quot;getEmployee&quot; resultType=&quot;com.cj.mybatis.entity.Employee&quot;&gt;
+     select id,name,remark,department_id as departmentId from pe_employee where id = #{id}
+   &lt;/select&gt;
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+<li><p>entity (com.cj.mybatis.entity.Employee.java)</p>
+<pre><code class="lang-java"> public class Employee {
+     private Integer id;
+     private String name;
+     private String remark;
+     private Integer departmentId;
+
+     // getXxx,setXxx,toString
+     // ...
+ }
+</code></pre>
+</li>
+<li><p>Usage1</p>
+<pre><code class="lang-java"> @Test
+ public void test1() throws IOException {
+     // 1. 根据全局配置文件创建一个SqlSessionFactory对象
+     String resource = &quot;mybatis-config.xml&quot;;
+     InputStream inputStream = Resources.getResourceAsStream(resource);
+     SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
+             .build(inputStream);
+
+     // 2. 获取SqlSession对象来执行映射的sql(一个SqlSession代表和数据库的一次会话，用完关闭)
+     SqlSession session = sqlSessionFactory.openSession();
+     try {
+         // selectOne(namespace.id,parameter)
+         Employee emp = session.selectOne(&quot;com.cj.mybatis.mapper.EmployeeMapper.getEmployee&quot;, 1);
+         System.out.println(emp);
+     }finally {
+         session.close();
+     }
+ }
+</code></pre>
+</li>
+<li><p>Usage2</p>
+<ul>
+<li><p>dao interface (com.cj.mybatis.mapper.EmployeeMapper.java)</p>
+<pre><code class="lang-java">  package com.cj.mybatis.mapper;
+  import com.cj.mybatis.entity.Employee;
+  public interface EmployeeMapper { 
+      Employee getEmployee(Integer id);
+  }
+</code></pre>
+</li>
+<li><p>Test</p>
+<pre><code class="lang-java">  @Test
+  public void test2() throws IOException {
+      // 1. 根据全局配置文件创建一个SqlSessionFactory对象
+      String resource = &quot;mybatis-config.xml&quot;;
+      InputStream inputStream = Resources.getResourceAsStream(resource);
+      SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
+              .build(inputStream);
+
+      // 2. 获取SqlSession对象，执行映射的sql
+      try (SqlSession session = sqlSessionFactory.openSession()) {
+          // Method1: no EmployeeMapper.java
+          // Employee emp = session.selectOne(&quot;com.cj.mybatis.mapper.EmployeeMapper.getEmployee&quot;, 1);
+
+          // Method2: use EmployeeMapper.java
+          // 注： interface EmployeeMapper 无实现类，mybatis会将此接口和sql配置进行绑定，生成一个代理对象执行
+          EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+          Employee emp = employeeMapper.getEmployee(1);
+
+          System.out.println(emp);
+      }
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-4">Global Config</h2>
+<ul>
+<li>properties</li>
+<li>settings</li>
+<li>typeAliases</li>
+<li>typeHandlers</li>
+<li>objectFactory</li>
+<li>plugins</li>
+<li>evironments (evironment: transactionManager &amp; dataSource)</li>
+<li>databaseIdProvider</li>
+<li>mappers</li>
+</ul>
+<h3 id="header-5">properties</h3>
+<p><strong>Sample:</strong></p>
+<ol>
+<li><p>mybatis-config.xml</p>
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE configuration
+   PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+   &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+ &lt;configuration&gt;
+
+   &lt;!-- resource: 引入类路径下资源； url: 引入网络或磁盘路径下资源 --&gt;
+   &lt;properties resource=&quot;db.properties&quot;&gt;
+       &lt;!-- &lt;property name=&quot;&quot; value=&quot;&quot;/&gt; --&gt;
+   &lt;/properties&gt;
+
+   &lt;environments default=&quot;development&quot;&gt;
+     &lt;environment id=&quot;development&quot;&gt;
+       &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+       &lt;dataSource type=&quot;POOLED&quot;&gt;
+           &lt;property name=&quot;driver&quot; value=&quot;${jdbc.driver}&quot;/&gt;
+           &lt;property name=&quot;url&quot; value=&quot;${jdbc.url}&quot;/&gt;
+           &lt;property name=&quot;username&quot; value=&quot;${jdbc.username}&quot;/&gt;
+           &lt;property name=&quot;password&quot; value=&quot;${jdbc.password}&quot;/&gt;
+         &lt;/dataSource&gt;
+     &lt;/environment&gt;
+   &lt;/environments&gt;
+   &lt;mappers&gt;
+     &lt;mapper resource=&quot;mapper/EmployeeMapper.xml&quot;/&gt;
+     &lt;mapper resource=&quot;mapper/DepartmentMapper.xml&quot;/&gt;
+   &lt;/mappers&gt;
+ &lt;/configuration&gt;
+</code></pre>
+</li>
+<li>db.properties<pre><code class="lang-properties"> jdbc.driver=com.mysql.cj.jdbc.Driver
+ jdbc.url=jdbc:mysql://localhost:3306/demo?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC
+ jdbc.username=root
+ jdbc.password=123456
+</code></pre>
+</li>
+</ol>
+<h3 id="header-6">settings</h3>
+<ul>
+<li>cacheEnable (default: true)</li>
+<li>lazyLoadingEnabled (default: false)</li>
+<li>useColumnLabel (default: true)</li>
+<li>defaultStatementTimeout (default: null)</li>
+<li>mapUnderscoreToCamelCase (default: false 默认不开启驼峰命名规则映射：a_column-&gt;aColumn)</li>
+<li>jdbcTypeForNull (default:OTHER)</li>
+<li>autoMappingBehavior (default: PARTIAL 开启自动映射，列名与javaBean属性名必须一致)</li>
+<li>…</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<ol>
+<li>mybatis-config.xml<pre><code class="lang-xml"> &lt;settings&gt;
+     &lt;!-- 打开驼峰命名规则映射--&gt;
+     &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;
+ &lt;/settings&gt;
+</code></pre>
+</li>
+<li>mapper/EmployeeMapper.xml<pre><code class="lang-xml"> &lt;mapper namespace=&quot;com.cj.mybatis.mapper.EmployeeMapper&quot;&gt;
+   &lt;select id=&quot;getEmployee&quot; resultType=&quot;com.cj.mybatis.entity.Employee&quot;&gt;
+     &lt;!-- select id,name,remark,department_id as departmentId from pe_employee where id = #{id} --&gt;
+     select * from pe_employee where id = #{id}
+     &lt;!-- =&gt; setting mapUnderscoreToCamelCase:true后，可以匹配department_id到departmentId--&gt;
+   &lt;/select&gt;
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-7">typeAliases</h3>
+<ul>
+<li>别名处理器，给java类型起别名（别名不区分大小写）</li>
+<li>There are many built-in type aliases for common Java types,eg:<ul>
+<li>byte _byte</li>
+<li>int _int</li>
+<li>String string</li>
+<li>Integer int/integer</li>
+<li>Date date</li>
+<li>Map map</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<ol>
+<li><p>单个配置别名（使用默认别名）</p>
+<pre><code class="lang-xml"> &lt;!-- mybatis-config.xml --&gt;
+ &lt;typeAliases&gt;
+   &lt;typeAlias type=&quot;com.cj.mybatis.entity.Employee&quot;/&gt; &lt;!-- 默认别名=类名 --&gt;
+ &lt;/typeAliases&gt;
+
+ &lt;!-- mapper/EmployeeMapper.xml --&gt;
+ &lt;mapper namespace=&quot;com.cj.mybatis.mapper.EmployeeMapper&quot;&gt;
+   &lt;select id=&quot;getEmployee&quot; resultType=&quot;employee&quot;&gt;  &lt;!-- employee/Employee/com.cj.mybatis.entity.Employee 都可--&gt;
+     select * from pe_employee where id = #{id}
+   &lt;/select&gt;
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+<li><p>单个配置别名（指定别名）</p>
+<pre><code class="lang-xml"> &lt;!-- mybatis-config.xml --&gt;
+ &lt;typeAliases&gt;
+   &lt;typeAlias type=&quot;com.cj.mybatis.entity.Employee&quot; alias=&quot;emp&quot;/&gt; &lt;!-- 指定别名 --&gt;
+ &lt;/typeAliases&gt;
+
+ &lt;!-- mapper/EmployeeMapper.xml --&gt;
+ &lt;mapper namespace=&quot;com.cj.mybatis.mapper.EmployeeMapper&quot;&gt;
+   &lt;select id=&quot;getEmployee&quot; resultType=&quot;emp&quot;&gt;  &lt;!-- emp/Emp/com.cj.mybatis.entity.Employee 都可--&gt;
+     select * from pe_employee where id = #{id}
+   &lt;/select&gt;
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+<li><p>批量配置别名</p>
+<pre><code class="lang-xml"> &lt;!-- mybatis-config.xml --&gt;
+ &lt;typeAliases&gt;
+     &lt;!-- &lt;typeAlias type=&quot;com.cj.mybatis.entity.Department&quot;/&gt;
+     &lt;typeAlias type=&quot;com.cj.mybatis.entity.Employee&quot; alias=&quot;emp&quot;/&gt; --&gt;
+
+     &lt;!-- 批量起别名（使用默认别名，即类名）
+         在此基础上，可在类上加@Alias注解为某个类指定新的别名，eg：
+         @Alias(&quot;emp&quot;)
+         public Employee{
+             //...
+         }
+      --&gt;
+     &lt;package name=&quot;com.cj.mybatis.entity&quot;/&gt; 
+ &lt;/typeAliases&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-8">typeHandlers</h3>
+<p>类型处理器(XxxTypeHandler): value =&gt; javaType</p>
+<pre><code class="lang-xml">&lt;typeHandlers&gt;
+    &lt;!-- method1: 配置具体的TypeHandler,eg:
+    &lt;typeHandler handler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot; 
+        javaType=&quot;com.cj.mybatis.entity.UserTypeEnum&quot;/&gt;
+    --&gt;
+
+    &lt;!-- method2: 或者在XxxMapper.xml中具体处理某个字段时设置,eg:
+        #{status,typeHandler=xxx} 
+
+        &lt;resultMap&gt;
+            &lt;result column=&quot;&quot; property=&quot;&quot; typeHandler=&quot;xxx&quot; /&gt;
+        &lt;/resultMap&gt;    
+
+        注：若在位置参数中配置typeHandler，应保证insert/select用的TypeHandler是一样的
+    --&gt;
+&lt;/typeHandlers&gt;
+</code></pre>
+<h3 id="header-9">plugins</h3>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-xml">&lt;plugins&gt;
+    &lt;plugin interceptor=&quot;com.cj.mybatis.extend.MyFirstPlugin&quot;&gt;
+        &lt;property name=&quot;testname&quot; value=&quot;first-plugin&quot;/&gt;
+    &lt;/plugin&gt;
+&lt;/plugins&gt;
+</code></pre>
+<h3 id="header-10">environments</h3>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-xml">&lt;environments default=&quot;development&quot;&gt; &lt;!-- switch: development/product--&gt;
+    &lt;environment id=&quot;development&quot;&gt;
+      &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+      &lt;dataSource type=&quot;POOLED&quot;&gt;
+          &lt;property name=&quot;driver&quot; value=&quot;${dev.jdbc.driver}&quot;/&gt;
+          &lt;property name=&quot;url&quot; value=&quot;${dev.jdbc.url}&quot;/&gt;
+          &lt;property name=&quot;username&quot; value=&quot;${dev.jdbc.username}&quot;/&gt;
+          &lt;property name=&quot;password&quot; value=&quot;${dev.jdbc.password}&quot;/&gt;
+        &lt;/dataSource&gt;
+    &lt;/environment&gt;
+    &lt;environment id=&quot;product&quot;&gt;
+      &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+      &lt;dataSource type=&quot;POOLED&quot;&gt;
+          &lt;property name=&quot;driver&quot; value=&quot;${pro.jdbc.driver}&quot;/&gt;
+          &lt;property name=&quot;url&quot; value=&quot;${pro.jdbc.url}&quot;/&gt;
+          &lt;property name=&quot;username&quot; value=&quot;${pro.jdbc.username}&quot;/&gt;
+          &lt;property name=&quot;password&quot; value=&quot;${pro.jdbc.password}&quot;/&gt;
+        &lt;/dataSource&gt;
+    &lt;/environment&gt;
+  &lt;/environments&gt;
+</code></pre>
+<h3 id="header-11">databaseIdProvider</h3>
+<p>支持多数据库厂商(execute different statements depending on database vendor)</p>
+<pre><code class="lang-xml">&lt;!-- mybatis-config.xml --&gt;
+&lt;!-- type=&quot;DB_VENDOR&quot;: VendorDatabaseIdProvider 得到数据库厂商的不同标识（驱动 Connection.getMetaData().getDatabaseProductName()） --&gt;
+&lt;databaseIdProvider type=&quot;DB_VENDOR&quot;&gt;
+    &lt;!-- 为不同数据库厂商标识起个别名 --&gt;
+    &lt;property name=&quot;MySQL&quot; value=&quot;mysql&quot;/&gt;
+    &lt;property name=&quot;Oracle&quot; value=&quot;oracle&quot;/&gt;
+    &lt;property name=&quot;SQL Server&quot; value=&quot;sqlserver&quot;/&gt;
+&lt;/databaseIdProvider&gt;
+
+&lt;!-- mapper/EmployeeMapper.xml --&gt;
+&lt;mapper namespace=&quot;com.cj.mybatis.mapper.EmployeeMapper&quot;&gt;
+  &lt;!-- 1. default --&gt;
+  &lt;select id=&quot;getEmployee&quot; resultType=&quot;com.cj.mybatis.entity.Employee&quot;&gt; 
+    select * from pe_employee where id = #{id}
+  &lt;/select&gt;
+  &lt;!-- 2. for mysql --&gt;
+  &lt;select id=&quot;getEmployee&quot; resultType=&quot;com.cj.mybatis.entity.Employee&quot; databaseId=&quot;mysql&quot;&gt; 
+    select * from pe_employee where id = #{id}
+  &lt;/select&gt;
+  &lt;!-- 3. for oracle --&gt;
+  &lt;select id=&quot;getEmployee&quot; resultType=&quot;com.cj.mybatis.entity.Employee&quot; databaseId=&quot;oracle&quot;&gt; 
+    select * from pe_employee where id = #{id}
+  &lt;/select&gt;
+&lt;/mapper&gt;
+
+&lt;!-- 
+    =&gt; if current use MySQL datasource =&gt; load 1 &amp; 2 =&gt; use 2
+    =&gt; if current use Oracle datasource =&gt; load 1 &amp; 3 =&gt; use 3
+    =&gt; if current use any Other datasource =&gt; load 1 =&gt; use 1
+--&gt;
+</code></pre>
+<h3 id="header-12">mappers</h3>
+<p>注册sql映射到global config中</p>
+<ul>
+<li><code>&lt;mapper&gt;</code> 单个注册:<ul>
+<li>url: 磁盘或网络文件（file:///var/mappers/AuthorMapper.xml）</li>
+<li>resource: 类路径下文件  （mapper/EmployeeMapper.xml）</li>
+<li>class: 接口<ul>
+<li>方式一：接口和mapper文件同名同路径下</li>
+<li>方式二：接口上使用注解写sql（无需mapper文件）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;package&gt;</code> 批量注册<ul>
+<li>name: 接口包名（接口使用注解写sql）</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample：三种方式</strong></p>
+<p>mybatis-config.xml</p>
+<ol>
+<li>配置使用url/resource &amp; mapper文件<pre><code class="lang-xml"> &lt;mappers&gt;
+     &lt;mapper resource=&quot;mapper/EmployeeMapper.xml&quot;/&gt;
+ &lt;/mappers&gt;
+</code></pre>
+<pre><code class="lang-java"> package com.cj.mybatis.mapper;
+ import com.cj.mybatis.entity.Employee;
+ public interface EmployeeMapper {
+     Employee getEmployee(Integer id);
+ }
+</code></pre>
+</li>
+<li>配置使用class &amp; 接口上使用注解写sql（无需mapper文件）<pre><code class="lang-xml"> &lt;mappers&gt;
+     &lt;mapper class=&quot;com.cj.mybatis.mapper.EmployeeWithAnnotationMapper&quot;/&gt;
+ &lt;/mappers&gt;
+</code></pre>
+<pre><code class="lang-java"> package com.cj.mybatis.mapper;
+ import org.apache.ibatis.annotations.Select;
+ import com.cj.mybatis.entity.Employee;
+ public interface EmployeeWithAnnotationMapper {
+     @Select(&quot;select * from pe_employee where id=#{id}&quot;)
+     public Employee getEmployee(Integer id);
+ }
+</code></pre>
+</li>
+<li>批量注册（规则同class方式）<pre><code class="lang-xml"> &lt;mappers&gt;
+     &lt;package name=&quot;com.cj.mybatis.mapper&quot;/&gt;
+ &lt;/mappers&gt;
+</code></pre>
+</li>
+</ol>
+<h2 id="header-13">Sql Mapper Config: CRUD</h2>
+<ul>
+<li><code>&lt;select&gt;</code></li>
+<li><code>&lt;insert&gt;</code></li>
+<li><code>&lt;update&gt;</code></li>
+<li><code>&lt;delete&gt;</code></li>
+</ul>
+<h3 id="header-14">select</h3>
+<p><code>&lt;select&gt;</code>用来定义查询操作,属性：</p>
+<ul>
+<li>唯一标识: id</li>
+<li>参数<ul>
+<li>parameterType 参数类型（optional,mybatis会根据TypeHandler自动推断）</li>
+</ul>
+</li>
+<li>结果集<ul>
+<li>resultType 返回值类型，别名或全类名（集合类则指定集合中的元素类型），注：不能和resultMap同时使用</li>
+<li>resultMap</li>
+<li>resultSets,resultSetType</li>
+<li>resultOrdered</li>
+</ul>
+</li>
+<li>缓存相关<ul>
+<li>flushCache</li>
+<li>useCache</li>
+</ul>
+</li>
+<li>statementType: PREPARED,STATEMENT,CALLABLE</li>
+<li>timeout</li>
+<li>fetchSize</li>
+<li>databaseId</li>
+</ul>
+<ol>
+<li><p>DepartmentMapper.xml</p>
+<pre><code class="lang-xml"> &lt;!-- public Department getDepartment(Integer id); --&gt;
+ &lt;select id=&quot;getDepartment&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+     select * from pe_department where id = #{id}
+ &lt;/select&gt;
+
+ &lt;!-- public List&lt;Department&gt; listDepartment(); --&gt;
+ &lt;select id=&quot;listDepartment&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+     select * from pe_department
+ &lt;/select&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> private SqlSessionFactory getSqlSessionFactory() throws IOException {
+     String resource = &quot;mybatis-config2.xml&quot;;
+     InputStream inputStream = Resources.getResourceAsStream(resource);
+     return new SqlSessionFactoryBuilder().build(inputStream);
+ }
+
+ @Test
+ public void testQueryDepartment() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         System.out.println(&quot;------------listDepartment------------&quot;);
+         List&lt;Department&gt; list = departmentMapper.listDepartment();
+         System.out.println(list);
+
+         System.out.println(&quot;------------getDepartment------------&quot;);
+         Department dept = departmentMapper.getDepartment(1);
+         System.out.println(dept);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-15">insert</h3>
+<ol>
+<li><p>DepartmentMapper.xml</p>
+<pre><code class="lang-xml"> &lt;!-- public Integer insertDepartment(Department department); --&gt;
+ &lt;insert id=&quot;insertDepartment&quot;&gt;
+     insert into pe_department(name,remark) values (#{name},#{remark})
+ &lt;/insert&gt;
+
+ &lt;!-- public Integer insertDepartmentAndReturnId(Department department); --&gt;
+ &lt;!-- 
+     useGeneratedKeys=false/true 是否使用产生的主键； 
+     keyProperty: 配置获取到的主键注入javaBean的哪个属性中 
+ --&gt;
+ &lt;insert id=&quot;insertDepartmentAndReturnId&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;&gt;
+     insert into pe_department(name,remark) values (#{name},#{remark})
+ &lt;/insert&gt;
+
+ &lt;!-- public Integer insertDepartmentByNextSeq(Department department); --&gt;
+ &lt;insert id=&quot;insertDepartmentByNextSeq&quot;&gt;
+     &lt;!-- order=&quot;BEFORE&quot;/&quot;AFTER&quot; 在sql执行前/后执行 --&gt;
+     &lt;!-- &lt;selectKey keyProperty=&quot;id&quot; order=&quot;BEFORE&quot; resultType=&quot;Integer&quot;&gt;
+         select max(id)+1 from pe_department
+     &lt;/selectKey&gt; --&gt;
+     &lt;selectKey keyProperty=&quot;id&quot; order=&quot;BEFORE&quot; resultType=&quot;Integer&quot;&gt;
+         &lt;!-- 注意加allowMultiQueries=true这里才可执行多条（ jdbc:mysql://localhost:3306/demo?allowMultiQueries=true） --&gt;
+         update pe_generator set next=next+1 where segment_name=&#39;dept_seq&#39;;
+         select next from pe_generator where segment_name=&#39;dept_seq&#39;
+     &lt;/selectKey&gt;
+     insert into pe_department(id,name,remark) values (#{id},#{name},#{remark})
+ &lt;/insert&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> /*
+ Note:
+     CUD 可返回类型：Integer/Long/Boolean 受影响的行数/是否成功
+     CUD 需提交数据： factory.openSession(true) 自动commit / factory.openSession() + session.commit() 手动commit
+ */
+
+ @Test
+ public void testInsertDepartment() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         System.out.println(&quot;------------insertDepartment------------&quot;);
+         Department dept = new Department(&quot;Dep-test01&quot;,&quot;This is department test01&quot;);
+         Integer result = departmentMapper.insertDepartment(dept);
+         System.out.println(result);
+         System.out.println(dept);           // =&gt; dept.getId() is null
+
+         session.commit();                   // note: commit
+     }
+ }
+
+ @Test
+ public void testInsertDepartmentAndReturnId() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         System.out.println(&quot;------------insertDepartmentAndReturnId------------&quot;);
+         Department dept = new Department(&quot;Dep-test01&quot;,&quot;This is department test01&quot;);
+         Integer result = departmentMapper.insertDepartmentAndReturnId(dept);
+         System.out.println(result);
+         System.out.println(dept);           // =&gt; dept.getId() is not null
+
+         session.commit();                   // note: commit
+     }
+ }
+
+ @Test
+ public void testInsertDepartmentByNextSeq() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         System.out.println(&quot;------------insertDepartmentAndReturnId------------&quot;);
+         Department dept = new Department(&quot;Dep-test01&quot;,&quot;This is department test01&quot;);
+         Integer result = departmentMapper.insertDepartmentByNextSeq(dept);
+         System.out.println(result);
+         System.out.println(dept);           // =&gt; dept.getId() is not null
+
+         session.commit();                   // note: commit
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-16">update</h3>
+<ol>
+<li><p>DepartmentMapper.xml</p>
+<pre><code class="lang-xml"> &lt;!-- public Integer updateDepartment(Department department); --&gt;
+ &lt;update id=&quot;updateDepartment&quot;&gt;
+     update pe_department set name=#{name},remark=#{remark} where id=#{id}
+ &lt;/update&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testUpdateDepartment() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         System.out.println(&quot;------------updateDepartment------------&quot;);
+         Integer result = departmentMapper.updateDepartment(new Department(5,&quot;Dep-test02&quot;,&quot;This is department test02&quot;));
+         System.out.println(result);
+
+         session.commit();                   // note: commits
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-17">delete</h3>
+<ol>
+<li><p>DepartmentMapper.xml</p>
+<pre><code class="lang-xml"> &lt;!-- public Integer deleteDepartment(Integer id); --&gt;
+ &lt;delete id=&quot;deleteDepartment&quot;&gt;
+     delete from pe_department where id=#{id}
+ &lt;/delete&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testDeleteDepartment() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         System.out.println(&quot;------------deleteDepartment------------&quot;);
+         Integer result = departmentMapper.deleteDepartment(5);
+         System.out.println(result);
+
+         session.commit();                   // note: commits
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-18">ParameterHandler</h2>
+<h3 id="header-19">Parameters</h3>
+<ul>
+<li><p>单个参数(mybatis一般不做特殊处理)</p>
+<pre><code class="lang-xml">  &lt;!-- 传入基础类型Integer: public Department getDepartment(Integer id);  --&gt;
+  &lt;select id=&quot;getDepartment&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      select * from pe_department where id = #{id}
+  &lt;/select&gt;
+
+  &lt;!-- 传入POJO : public List&lt;Department&gt; listByExample(Department department); --&gt;
+  &lt;select id=&quot;listByExample&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      select * from pe_department where name like #{name} or remark like #{remark}
+  &lt;/select&gt;
+
+  &lt;!-- 传入Map : public List&lt;Department&gt; listByMap(Map params);  --&gt;
+  &lt;select id=&quot;listByMap&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      select * from pe_department where name like #{name} or remark like #{remark}
+  &lt;/select&gt;
+
+  &lt;!-- 
+      传入Collection/List/Set/List/Array : 会做特殊处理（封装到Map中）
+          Collection  =&gt; Map&lt;collection,Object&gt;
+          List        =&gt; Map&lt;list,Object&gt;
+          Set         =&gt; Map&lt;set,Object&gt;
+          Array       =&gt; Map&lt;array,Object&gt;
+      public List&lt;Department&gt; listByIds(List&lt;Integer&gt; ids);
+  --&gt;
+  &lt;select id=&quot;listByIds&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      select * from pe_department where id in (#{list[0]})
+  &lt;/select&gt;
+</code></pre>
+</li>
+<li><p>多个参数(mybatis会做特殊处理) =&gt; 会被封装成一个<code>Map&lt;String,Object&gt;</code> (key: param1,..,paramN),<code>#{}</code>即从map中取值</p>
+<pre><code class="lang-xml">  &lt;!-- 
+     public List&lt;Department&gt; listByParams1(String name,String remark); 
+     =&gt; available parameters are [arg0,arg1,param1,param2]
+  --&gt;
+  &lt;select id=&quot;listByParams1&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      &lt;!-- select * from pe_department where name like #{arg0} or remark like #{arg1} --&gt;
+      select * from pe_department where name like #{param1} or remark like #{param2}
+  &lt;/select&gt;
+
+  &lt;!--   
+     使用@Param注解命名参数
+     public List&lt;Department&gt; listByParams2(@Param(&quot;name&quot;)String name,@Param(&quot;remark&quot;)String remark); 
+     =&gt; available parameters are [name,remark,param1,param2]
+  --&gt;
+  &lt;select id=&quot;listByParams2&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      &lt;!-- select * from pe_department where name like #{param1} or remark like #{param2} --&gt;
+      select * from pe_department where name like #{name} or remark like #{remark}
+  &lt;/select&gt;
+</code></pre>
+</li>
+</ul>
+<h3 id="header-20"><code>#{}</code>,<code>${}</code></h3>
+<ul>
+<li><p><code>#{}</code> vs <code>${}</code></p>
+<pre><code class="lang-xml">  &lt;!-- 
+      ${} : 直接拼接到sql语句中
+      =&gt; select * from pe_department where id = 2 
+  --&gt;
+  &lt;select id=&quot;getDepartment&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      select * from pe_department where id = ${id}
+      &lt;!-- 更多应用场景（在sql中不支持占位符的地方使用）： 
+          select * from ${year}_salary
+          select * from pe_employee order by ${orderColumn}
+      --&gt;
+  &lt;/select&gt;
+
+  &lt;!-- 
+      #{} : 预编译模式注入参数（PreparedStatement 占位符)，防止sql注入
+      =&gt; select * from pe_department where id = ? 
+  --&gt;
+  &lt;select id=&quot;getDepartment&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+      select * from pe_department where id = #{id}
+  &lt;/select&gt;
+</code></pre>
+</li>
+<li><p><code>#{}</code>中可设置参数规则</p>
+<ul>
+<li><code>javaType</code> 指定参数类型（通常可根据参数对象自动确定）</li>
+<li><code>jdbcType</code> (eg: <code>#{remark,jdbcType=NULL}</code>)</li>
+<li><code>mode</code></li>
+<li><code>numericScale</code></li>
+<li><code>resultMap</code></li>
+<li><code>typeHandler</code></li>
+<li><code>jdbcTypeName</code></li>
+<li><code>expression</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="header-21">ResultSetHandler</h2>
+<h3 id="header-22">resultType</h3>
+<p><strong>Sample: DepartmentMapper.xml</strong></p>
+<ol>
+<li><p>get single result</p>
+<pre><code class="lang-xml"> &lt;!-- 
+     public Department getDepartment(Integer id); 
+     resultType: Department
+ --&gt;
+ &lt;select id=&quot;getDepartment&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+     select * from pe_department where id = #{id}
+ &lt;/select&gt;
+
+ &lt;!-- 
+     public Map&lt;String,Object&gt; getDepartmentMap(Integer id); 
+     =&gt; resultType: map
+ --&gt;
+ &lt;select id=&quot;getDepartmentMap&quot; resultType=&quot;map&quot;&gt;
+     select * from pe_department where id = #{id}
+ &lt;/select&gt;
+</code></pre>
+<pre><code class="lang-java"> @Test
+ public void testReturnSingle() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         // return POJO (set resultType=&quot;com.cj.mybatis.entity.Department&quot;)
+         System.out.println(&quot;------------getDepartment------------&quot;);
+         Department dept = departmentMapper.getDepartment(1);
+         System.out.println(dept);
+
+         // return Map (set resultType=&quot;map&quot;)
+         System.out.println(&quot;------------getDepartmentMap------------&quot;);
+         Map&lt;String,Object&gt; deptMap = departmentMapper.getDepartmentMap(1);
+         System.out.println(deptMap);
+     }
+ }
+</code></pre>
+</li>
+<li><p>get multiple results</p>
+<pre><code class="lang-xml"> &lt;!-- 
+     public List&lt;Department&gt; listDepartment();
+     =&gt; resultType : Department (集合类则指定集合中的元素类型) 
+ --&gt;
+ &lt;select id=&quot;listDepartment&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+     select * from pe_department
+ &lt;/select&gt;
+
+ &lt;!-- 
+    @MapKey(&quot;id&quot;)  // 将结果集封装成Map
+    public Map&lt;Integer,Department&gt; listAndReturnMap(); 
+    =&gt; resultType : Department (集合类则指定集合中的元素类型) 
+ --&gt;
+ &lt;select id=&quot;listDepartmentMap&quot; resultType=&quot;com.cj.mybatis.entity.Department&quot;&gt;
+     select * from pe_department;
+ &lt;/select&gt;
+</code></pre>
+<pre><code class="lang-java"> @Test
+ public void testReturnMultiple() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentMapper departmentMapper = session.getMapper(DepartmentMapper.class);
+
+         // return List&lt;Department&gt; (set resultType=&quot;com.cj.mybatis.entity.Department&quot;)
+         System.out.println(&quot;------------listDepartment------------&quot;);
+         List&lt;Department&gt; list = departmentMapper.listDepartment();
+         System.out.println(list);
+
+         // return Map&lt;Integer,Department&gt; (set resultType=&quot;com.cj.mybatis.entity.Department&quot;)
+         // + @MapKey(&quot;&quot;) 注解 =&gt; 将结果集封装成Map
+         System.out.println(&quot;------------listDepartmentMap------------&quot;);
+         Map&lt;Integer,Department&gt; map = departmentMapper.listDepartmentMap();
+         System.out.println(map);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-23">resultMap</h3>
+<p>自定义resultMap,实现高级结果集映射</p>
+<p><code>&lt;resultMap&gt;</code></p>
+<ul>
+<li>properties: <ul>
+<li><code>id</code>: 唯一标识</li>
+<li><code>type</code>: javaBean</li>
+</ul>
+</li>
+<li>children:<ul>
+<li><code>&lt;id column=&quot;&quot; property=&quot;&quot;/&gt;</code> 定义主键列映射规则，有利底层优化 (<code>column</code>:列名，<code>property</code>:javaBean属性名)</li>
+<li><code>&lt;result column=&quot;&quot; property=&quot;&quot;/&gt;</code> 定义其他普通列映射规则</li>
+<li><code>&lt;association&gt;</code> 定义关联单个对象的映射规则<ul>
+<li><code>&lt;association property=&quot;&quot; javaType=&quot;&quot; autoMapping=&quot;&quot; columnPrefix=&quot;&quot; /&gt;</code> </li>
+<li><code>&lt;association property=&quot;&quot; select=&quot;&quot; column=&quot;&quot; fetchType=&quot;&quot; autoMapping=&quot;&quot; columnPrefix=&quot;&quot; /&gt;</code> 分段查询</li>
+</ul>
+</li>
+<li><code>&lt;collection&gt;</code> 定义关联多个对象的映射规则<ul>
+<li><code>&lt;collection property=&quot;&quot; ofType=&quot;&quot; autoMapping=&quot;&quot; columnPrefix=&quot;&quot; /&gt;</code> (<code>ofType</code> 指定集合里面的元素类型)</li>
+<li><code>&lt;collection property=&quot;&quot; select=&quot;&quot; column=&quot;&quot; fetchType=&quot;&quot; autoMapping=&quot;&quot; columnPrefix=&quot;&quot; /&gt;</code> 分段查询</li>
+</ul>
+</li>
+<li>注分段查询中： <ul>
+<li><code>select</code> 指定当前属性通过调用哪个方法获取</li>
+<li><code>column</code> 指定将那几个列值传递给这个方法作为参数（单列：<code>column=&quot;xxx&quot;</code>; 多列: <code>column={key=column1,key=column2}</code>）</li>
+<li><code>fetchType</code>: eager/lazy</li>
+<li>即使用<code>select</code>指定的方法（传入<code>column</code>指定的列参数值）查出结果，封装给<code>property</code>指定的javaBean属性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-24">resultMap:association</h3>
+<p>OneToOne</p>
+<p><strong>Sample:EmployeeWithDepartmentMapper.xml</strong></p>
+<ol>
+<li>Pojo: EmployeeWithDepartment<pre><code class="lang-java"> @Data
+ public class EmployeeWithDepartment {
+     private Integer id;
+     private String name;
+     private String remark;
+     private Department department;
+ }
+</code></pre>
+</li>
+<li><p>mapper: EmployeeWithDepartmentMapper.xml</p>
+<pre><code class="lang-xml"> &lt;mapper namespace=&quot;com.cj.mybatis.mapper.EmployeeWithDepartmentMapper&quot;&gt;
+    &lt;!-- &lt;resultMap type=&quot;com.cj.mybatis.entity.EmployeeWithDepartment&quot; id=&quot;EmpWithDeptMap&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+     &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+     &lt;result column=&quot;remark&quot; property=&quot;remark&quot;/&gt;
+     &lt;association property=&quot;department&quot; javaType=&quot;com.cj.mybatis.entity.Department&quot; &gt;
+         &lt;id column=&quot;dept_id&quot; property=&quot;id&quot;/&gt;
+         &lt;result column=&quot;dept_name&quot; property=&quot;name&quot;/&gt;
+         &lt;result column=&quot;dept_remark&quot; property=&quot;remark&quot; /&gt;
+     &lt;/association&gt;
+   &lt;/resultMap&gt; --&gt;
+   &lt;resultMap id=&quot;EmpWithDeptMap&quot; type=&quot;com.cj.mybatis.entity.EmployeeWithDepartment&quot; autoMapping=&quot;true&quot;&gt;
+     &lt;association property=&quot;department&quot; 
+         javaType=&quot;com.cj.mybatis.entity.Department&quot; 
+         columnPrefix=&quot;dept_&quot; 
+         autoMapping=&quot;true&quot; /&gt;
+   &lt;/resultMap&gt;
+   &lt;select id=&quot;getEmployee&quot; resultMap=&quot;EmpWithDeptMap&quot;&gt;
+     select 
+         a.id id,a.name name,a.remark remark,
+         b.id dept_id,b.name dept_name,b.remark dept_remark
+     from pe_employee a left join pe_department b on a.department_id=b.id where a.id = #{id}
+   &lt;/select&gt;
+
+   &lt;resultMap type=&quot;com.cj.mybatis.entity.EmployeeWithDepartment&quot; id=&quot;EmpWithDeptLazyMap&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+     &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+     &lt;result column=&quot;remark&quot; property=&quot;remark&quot;/&gt;
+     &lt;association property=&quot;department&quot; 
+         select=&quot;com.cj.mybatis.mapper.DepartmentMapper.getDepartment&quot; 
+         column=&quot;department_id&quot;
+         fetchType=&quot;lazy&quot;&gt;
+     &lt;/association&gt;
+   &lt;/resultMap&gt;
+   &lt;select id=&quot;getEmployeeLazy&quot; resultMap=&quot;EmpWithDeptLazyMap&quot;&gt;
+     select * from pe_employee where id = #{id}
+   &lt;/select&gt;
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testEmployeeWithDepartment() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         EmployeeWithDepartmentMapper edMapper = session.getMapper(EmployeeWithDepartmentMapper.class);
+
+         System.out.println(&quot;------------getEmployee------------&quot;);
+         EmployeeWithDepartment emp = edMapper.getEmployee(1);
+         System.out.println(emp);
+
+         System.out.println(&quot;------------getEmployeeLazy------------&quot;);
+         emp = edMapper.getEmployeeLazy(1);
+         System.out.println(emp.getName());
+         System.out.println(emp.getDepartment());
+         System.out.println(emp);
+     }
+ }
+</code></pre>
+</li>
+<li>result<pre><code class="lang-sql"> ------------getEmployee------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select a.id id,a.name name,a.remark remark, b.id dept_id,b.name dept_name,b.remark dept_remark from pe_employee a left join pe_department b on a.department_id=b.id where a.id = ? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ EmployeeWithDepartment [id=1, name=Test1, remark=This is Test1, department=Department [id=1, name=Dep-A, remark=This is Department A]]
+ ------------getEmployeeLazy------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_employee where id = ? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ Test1
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_department where id = ? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ Department [id=1, name=Dep-A, remark=This is Department A]
+ EmployeeWithDepartment [id=1, name=Test1, remark=This is Test1, department=Department [id=1, name=Dep-A, remark=This is Department A]]
+</code></pre>
+</li>
+</ol>
+<h3 id="header-25">resultMap: collection</h3>
+<p>OneToMany</p>
+<p><strong>Sample:DepartmentWithEmployeeMapper.xml</strong></p>
+<ol>
+<li>Pojo: DepartmentWithEmployees<pre><code class="lang-java"> @Data
+ public class DepartmentWithEmployees {
+     private Integer id;
+     private String name;
+     private String remark; 
+     private List&lt;Employee&gt; employees;
+ }
+</code></pre>
+</li>
+<li><p>mapper: DepartmentWithEmployees.xml</p>
+<pre><code class="lang-xml"> &lt;mapper namespace=&quot;com.cj.mybatis.mapper.DepartmentWithEmployeesMapper&quot;&gt;
+
+    &lt;!-- &lt;resultMap type=&quot;com.cj.mybatis.entity.DepartmentWithEmployees&quot; id=&quot;DeptWithEmpsMap&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+     &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+     &lt;result column=&quot;remark&quot; property=&quot;remark&quot;/&gt;
+     &lt;collection property=&quot;employees&quot; ofType=&quot;com.cj.mybatis.entity.Employee&quot;&gt;
+         &lt;id column=&quot;emp_id&quot; property=&quot;id&quot;/&gt;
+         &lt;result column=&quot;emp_name&quot; property=&quot;name&quot;/&gt;
+         &lt;result column=&quot;emp_remark&quot; property=&quot;remark&quot; /&gt;
+         &lt;result column=&quot;emp_deptartment_id&quot; property=&quot;departmentId&quot; /&gt;
+     &lt;/collection&gt;
+   &lt;/resultMap&gt; --&gt;
+   &lt;resultMap type=&quot;com.cj.mybatis.entity.DepartmentWithEmployees&quot; 
+     id=&quot;DeptWithEmpsMap&quot; autoMapping=&quot;true&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt; &lt;!-- must set! --&gt;
+     &lt;collection property=&quot;employees&quot; ofType=&quot;com.cj.mybatis.entity.Employee&quot; 
+         columnPrefix=&quot;emp_&quot; autoMapping=&quot;true&quot;&gt;
+     &lt;/collection&gt;
+   &lt;/resultMap&gt;
+   &lt;select id=&quot;getDepartment&quot; resultMap=&quot;DeptWithEmpsMap&quot;&gt;
+     select
+         a.id id,a.name name,a.remark remark,
+         b.id emp_id,b.name emp_name,b.remark emp_remark,b.department_id emp_department_id
+     from pe_department a 
+     left join pe_employee b on a.id=b.department_id 
+     where a.id=#{id}
+   &lt;/select&gt;
+
+   &lt;resultMap type=&quot;com.cj.mybatis.entity.DepartmentWithEmployees&quot; id=&quot;DeptWithEmpsLazyMap&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+     &lt;result column=&quot;name&quot; property=&quot;name&quot;/&gt;
+     &lt;result column=&quot;remark&quot; property=&quot;remark&quot;/&gt;
+     &lt;collection property=&quot;employees&quot; 
+         select=&quot;com.cj.mybatis.mapper.EmployeeMapper.listEmployeesByDept&quot;
+         column=&quot;id&quot; fetchType=&quot;lazy&quot;&gt;
+     &lt;/collection&gt;
+   &lt;/resultMap&gt;
+   &lt;select id=&quot;getDepartmentLazy&quot; resultMap=&quot;DeptWithEmpsLazyMap&quot;&gt;
+     select * from pe_department where id = #{id}
+   &lt;/select&gt;
+
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testDepartmentWithEmployees() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         DepartmentWithEmployeesMapper deMapper = session.getMapper(DepartmentWithEmployeesMapper.class);
+
+         System.out.println(&quot;------------getDepartment------------&quot;);
+         DepartmentWithEmployees dept = deMapper.getDepartment(1);
+         System.out.println(dept);
+
+         System.out.println(&quot;------------getDepartmentLazy------------&quot;);
+         dept = deMapper.getDepartmentLazy(1);
+         System.out.println(dept.getName());
+         System.out.println(dept.getEmployees());
+     }
+ }
+</code></pre>
+</li>
+<li>result<pre><code class="lang-sql"> ------------getDepartment------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select a.id id,a.name name,a.remark remark, b.id emp_id,b.name emp_name,b.remark emp_remark,b.department_id emp_department_id from pe_department a left join pe_employee b on a.id=b.department_id where a.id=? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 3
+ DepartmentWithEmployees [id=1, name=Dep-A, remark=This is Department A, employees=[Employee [id=1, name=Test1, remark=This is Test1, departmentId=1], Employee [id=2, name=Test2, remark=This is Test2, departmentId=1], Employee [id=3, name=Test3, remark=This is Test3, departmentId=1]]]
+ ------------getDepartmentLazy------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_department where id = ? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ Dep-A
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_employee where department_id=? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 3
+ [Employee [id=1, name=Test1, remark=This is Test1, departmentId=1], Employee [id=2, name=Test2, remark=This is Test2, departmentId=1], Employee [id=3, name=Test3, remark=This is Test3, departmentId=1]]
+</code></pre>
+</li>
+</ol>
+<h3 id="header-26">resultMap: discriminator</h3>
+<ol>
+<li>Pojo<pre><code class="lang-java"> @Data
+ public class UserRole {
+     private Integer id;
+     private Integer userId;
+     private String userType;
+     private String roleName;
+ }
+</code></pre>
+</li>
+<li><p>mapper: UserRoleMapper.xml</p>
+<pre><code class="lang-xml"> &lt;mapper namespace=&quot;com.cj.mybatis.mapper.UserRoleMapper&quot;&gt;
+
+   &lt;select id=&quot;listUserRoles&quot; resultType=&quot;UserRole&quot;&gt;
+     select * from pe_role
+   &lt;/select&gt;
+
+   &lt;resultMap id=&quot;userRoleMap&quot; type=&quot;com.cj.mybatis.entity.UserRole&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+     &lt;result column=&quot;role_name&quot; property=&quot;roleName&quot; /&gt;
+     &lt;result column=&quot;user_id&quot; property=&quot;userId&quot; /&gt;
+     &lt;result column=&quot;user_type&quot; property=&quot;userType&quot; /&gt;
+     &lt;discriminator javaType=&quot;string&quot; column=&quot;user_type&quot;&gt;
+         &lt;case value=&quot;Employee&quot;&gt;
+             &lt;result column=&quot;emp_name&quot; property=&quot;name&quot; /&gt;
+             &lt;result column=&quot;emp_remark&quot; property=&quot;remark&quot; /&gt;
+         &lt;/case&gt;
+         &lt;case value=&quot;Department&quot;&gt;
+             &lt;result column=&quot;dept_name&quot; property=&quot;name&quot; /&gt;
+             &lt;result column=&quot;dept_remark&quot; property=&quot;remark&quot; /&gt;
+         &lt;/case&gt;
+     &lt;/discriminator&gt;
+   &lt;/resultMap&gt;
+   &lt;select id=&quot;listUserRoleWithDetails&quot; resultMap=&quot;userRoleMap&quot;&gt;
+     select 
+         a.id id,a.role_name role_name,a.user_id user_id,a.user_type user_type,
+         b.id emp_id,b.name emp_name,b.remark emp_remark,b.department_id emp_dept_id,
+         c.id dept_id,c.name dept_name,c.remark dept_remark 
+     from pe_role a 
+     left join pe_employee b on a.user_id=b.id and a.user_type=&#39;Employee&#39;
+     left join pe_department c on a.user_id=c.id and a.user_type=&#39;Department&#39;;
+   &lt;/select&gt;
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testUserRole() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         UserRoleMapper urMapper = session.getMapper(UserRoleMapper.class);
+
+         System.out.println(&quot;------------listUserRole------------&quot;);
+         List&lt;UserRole&gt;  list = urMapper.listUserRoles();
+         System.out.println(list);
+
+         System.out.println(&quot;------------listUserRoleWithDetails------------&quot;);
+         list = urMapper.listUserRoleWithDetails();
+         for(UserRole ur : list) {
+             System.out.println(ur);
+         }
+     }
+ }
+</code></pre>
+</li>
+<li>result<pre><code class="lang-sql"> ------------listUserRole------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_role 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 6
+ [UserRole [id=1, userId=1, userType=Employee, roleName=manager, name=null, remark=null], UserRole [id=2, userId=2, userType=Employee, roleName=leader, name=null, remark=null], UserRole [id=3, userId=3, userType=Employee, roleName=temporary, name=null, remark=null], UserRole [id=4, userId=1, userType=Department, roleName=IT-01, name=null, remark=null], UserRole [id=5, userId=2, userType=Department, roleName=IT-02, name=null, remark=null], UserRole [id=6, userId=3, userType=Department, roleName=Finance-01, name=null, remark=null]]
+ ------------listUserRoleWithDetails------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select a.id id,a.role_name role_name,a.user_id user_id,a.user_type user_type, b.id emp_id,b.name emp_name,b.remark emp_remark,b.department_id emp_dept_id, c.id dept_id,c.name dept_name,c.remark dept_remark from pe_role a left join pe_employee b on a.user_id=b.id and a.user_type=&#39;Employee&#39; left join pe_department c on a.user_id=c.id and a.user_type=&#39;Department&#39;; 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 6
+ UserRole [id=1, userId=1, userType=Employee, roleName=manager, name=Test1, remark=This is Test1]
+ UserRole [id=2, userId=2, userType=Employee, roleName=leader, name=Test2, remark=This is Test2]
+ UserRole [id=3, userId=3, userType=Employee, roleName=temporary, name=Test3, remark=This is Test3]
+ UserRole [id=4, userId=1, userType=Department, roleName=IT-01, name=Dep-A, remark=This is Department A]
+ UserRole [id=5, userId=2, userType=Department, roleName=IT-02, name=Dep-B, remark=This is Department B]
+ UserRole [id=6, userId=3, userType=Department, roleName=Finance-01, name=Dep-C, remark=This is Department C]
+</code></pre>
+</li>
+</ol>
+<h2 id="header-27">TypeHandler</h2>
+<p><a href="https://www.iteye.com/blog/elim-1847854" target="_blank" rel="noopener">Mybatis类型转换介绍</a></p>
+<p>在整个过程中，进行数据库类型和JavaBean类型的映射 (Table column =&gt; JavaBean property)</p>
+<ul>
+<li>DefaultParameterHandler typeHandler.setParameter(ps,i+1,value,jdbcType);</li>
+<li>DefaultResultSetHandler typeHandler.getResult(rs,column);</li>
+</ul>
+<h3 id="header-28">配置</h3>
+<ul>
+<li><p>Method 1: 全局配置(mybatis-config.xml) =&gt; 配置<code>&lt;typeHandlers&gt;</code>,<code>&lt;typeHandler&gt;</code></p>
+<pre><code class="lang-xml">  &lt;typeHandlers&gt;
+      &lt;typeHandler handler=&quot;com.cj.mybatis.extend.MyEnumCodeTypeHandler&quot; javaType=&quot;com.cj.mybatis.entity.EmployeeStatusEnum&quot;/&gt;
+      &lt;typeHandler handler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot; javaType=&quot;com.cj.mybatis.entity.UserTypeEnum&quot;/&gt;
+  &lt;/typeHandlers&gt;
+</code></pre>
+<pre><code class="lang-xml">  &lt;!-- then in XxxMapper.xml : --&gt;
+  &lt;insert id=&quot;insertOnEnumOrdinal&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; &gt;
+      insert into pe_role2(role_name,user_id,user_type)
+      values(
+          #{roleName},
+          #{userId},
+          #{userType}
+      )
+  &lt;/insert&gt;
+  &lt;select id=&quot;listOnEnumOrdinal&quot; resultType=&quot;UserRole&quot;&gt;
+      select * from pe_role2
+  &lt;/select&gt;
+</code></pre>
+</li>
+<li><p>Method 2: 局部配置(XxxMapper.xml) =&gt; 处理某个字段时设置 eg: <code>#{status,typeHandler=xxx}</code>,<code>&lt;resultMap&gt; &lt;result column=&quot;&quot; property=&quot;&quot; typeHandler=&quot;xxx&quot;&gt;</code></p>
+<pre><code class="lang-xml">  &lt;insert id=&quot;insertOnEnumOrdinal&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; 
+      parameterType=&quot;com.cj.mybatis.entity.UserRole&quot;&gt; must set parameterType!
+      insert into pe_role2(role_name,user_id,user_type)
+      values(
+          #{roleName},
+          #{userId},
+          #{userType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
+      )
+  &lt;/insert&gt;
+
+  &lt;resultMap type=&quot;com.cj.mybatis.entity.UserRole&quot; id=&quot;userRoleEnumOrdinalMap&quot; 
+      autoMapping=&quot;true&quot;&gt;
+      &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+      &lt;result column=&quot;user_type&quot; property=&quot;userType&quot; 
+          typeHandler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot;/&gt;
+  &lt;/resultMap&gt;
+  &lt;select id=&quot;listOnEnumOrdinal&quot; resultMap=&quot;userRoleEnumOrdinalMap&quot;&gt;
+      select * from pe_role2
+  &lt;/select&gt;
+</code></pre>
+</li>
+<li><p>Method 3: 在自定义TypeHandler类上添加注解 <code>@MappedTypes(value={Xxx.class})</code> / <code>@MappedJdbcTypes(...)</code> 注册 (eg: <code>@MappedTypes({EmployeeStatusEnum.class})</code>)</p>
+</li>
+</ul>
+<h3 id="header-29">处理Enum</h3>
+<p>处理枚举对象: </p>
+<ul>
+<li>默认使用<code>EnumTypeHandler</code>，即操作的是枚举的名字 (=&gt; select/insert: use enum name)</li>
+<li>可改变使用<code>EnumOrdinalTypeHandler</code>,即操作的是枚举的<code>ordinal()</code>值(eg: 0,1,2,… =&gt; select/insert: use enum ordinal ) </li>
+</ul>
+<h3 id="header-30">Sample: EnumTypeHandler</h3>
+<p>=&gt; column: user_type(Employee,Department)</p>
+<ol>
+<li>enum<pre><code class="lang-java"> public enum UserTypeEnum {
+     Employee,Department
+ }
+</code></pre>
+</li>
+<li>entity<pre><code class="lang-java"> @Data
+ public class UserRole {
+     private Integer id;
+     private Integer userId;
+     private UserTypeEnum userType;
+     private String roleName;
+ }
+</code></pre>
+</li>
+<li><p>mapper</p>
+<pre><code class="lang-xml"> &lt;select id=&quot;listUserRoles&quot; resultType=&quot;UserRole&quot;&gt;
+     select * from pe_role
+ &lt;/select&gt;
+
+ &lt;insert id=&quot;insertUserRole&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;&gt;
+     insert into pe_role(role_name,user_id,user_type)
+     values(#{roleName},#{userId},#{userType})
+ &lt;/insert&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testInsert() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         UserRoleMapper userRoleMapper = session.getMapper(UserRoleMapper.class);
+
+         UserRole userRole=new UserRole();
+         userRole.setRoleName(&quot;PE-01&quot;);
+         userRole.setUserId(4);
+         userRole.setUserType(UserTypeEnum.Employee);
+
+         Integer result = userRoleMapper.insertUserRole(userRole);
+         System.out.println(result);
+         System.out.println(userRole.getId());
+
+         session.commit();
+     }
+ }
+ /*
+  Result Sample:
+  [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: insert into pe_role(role_name,user_id,user_type) values(?,?,?) 
+  [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: PE-01(String), 4(Integer), Employee(String)
+  [QC] DEBUG BaseJdbcLogger.debug | &lt;==    Updates: 1
+  1
+  8
+  */
+
+ @Test
+ public void testList() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         UserRoleMapper urMapper = session.getMapper(UserRoleMapper.class);
+
+         System.out.println(&quot;------------listUserRole------------&quot;);
+         List&lt;UserRole&gt;  list = urMapper.listUserRoles();
+         for(UserRole ur : list) {
+             System.out.println(ur);
+         }
+     }
+ }
+ /*
+ Result Sample:
+ ------------listUserRole------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_role 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 7
+ UserRole [id=1, userId=1, userType=Employee, roleName=manager, name=null, remark=null]
+ UserRole [id=2, userId=2, userType=Employee, roleName=leader, name=null, remark=null]
+ UserRole [id=3, userId=3, userType=Employee, roleName=temporary, name=null, remark=null]
+ UserRole [id=4, userId=1, userType=Department, roleName=IT-01, name=null, remark=null]
+ UserRole [id=5, userId=2, userType=Department, roleName=IT-02, name=null, remark=null]
+ UserRole [id=6, userId=3, userType=Department, roleName=Finance-01, name=null, remark=null]
+ UserRole [id=8, userId=4, userType=Employee, roleName=PE-01, name=null, remark=null]
+ */
+</code></pre>
+</li>
+</ol>
+<h3 id="header-31">Sample: EnumOrdinalTypeHandler</h3>
+<p>=&gt; column: user_type (0,1)</p>
+<ol>
+<li>enum<pre><code class="lang-java"> public enum UserTypeEnum {
+     Employee,Department
+ }
+</code></pre>
+</li>
+<li>entity<pre><code class="lang-java"> @Data
+ public class UserRole {
+     private Integer id;
+     private Integer userId;
+     private UserTypeEnum userType;
+     private String roleName;
+ }
+</code></pre>
+</li>
+<li><p>mapper</p>
+<pre><code class="lang-xml"> &lt;!-- method 1 --&gt;
+ &lt;insert id=&quot;insertOnEnumOrdinal&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; 
+     parameterType=&quot;com.cj.mybatis.entity.UserRole&quot;&gt; &lt;!-- must set parameterType! --&gt;
+     insert into pe_role2(role_name,user_id,user_type)
+     values(
+         #{roleName},
+         #{userId},
+         #{userType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler}
+     )
+   &lt;/insert&gt;
+
+ &lt;resultMap type=&quot;com.cj.mybatis.entity.UserRole&quot; id=&quot;userRoleEnumOrdinalMap&quot; 
+     autoMapping=&quot;true&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+     &lt;result column=&quot;user_type&quot; property=&quot;userType&quot; 
+         typeHandler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot;/&gt;
+ &lt;/resultMap&gt;
+ &lt;select id=&quot;listOnEnumOrdinal&quot; resultMap=&quot;userRoleEnumOrdinalMap&quot;&gt;
+     select * from pe_role2
+ &lt;/select&gt;
+
+ &lt;!-- method 2 
+     1. mybatis-config.xml
+     &lt;typeHandlers&gt;
+         &lt;typeHandler handler=&quot;org.apache.ibatis.type.EnumOrdinalTypeHandler&quot; javaType=&quot;com.cj.mybatis.entity.UserTypeEnum&quot;/&gt;
+     &lt;/typeHandlers&gt;
+
+     2. XxxMapper.xml
+     &lt;insert id=&quot;insertOnEnumOrdinal&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; &gt;
+         insert into pe_role2(role_name,user_id,user_type)
+         values(
+             #{roleName},
+             #{userId},
+             #{userType}
+         )
+     &lt;/insert&gt;
+     &lt;select id=&quot;listOnEnumOrdinal&quot; resultType=&quot;UserRole&quot;&gt;
+         select * from pe_role2
+     &lt;/select&gt;
+ --&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testInsertOnEnumOrdinalTypeHandler() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         UserRoleMapper userRoleMapper = session.getMapper(UserRoleMapper.class);
+
+         UserRole userRole=new UserRole();
+         userRole.setRoleName(&quot;PE-02&quot;);
+         userRole.setUserId(4);
+         userRole.setUserType(UserTypeEnum.Department);
+
+         Integer result = userRoleMapper.insertOnEnumOrdinal(userRole);
+         System.out.println(result);
+         System.out.println(userRole.getId());
+
+         session.commit();
+     }
+ }
+ /*
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: insert into pe_role2(role_name,user_id,user_type) values( ?, ?, ? ) 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: PE-02(String), 4(Integer), 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==    Updates: 1
+ 1
+ 4
+ */
+
+ @Test
+ public void testListOnEnumOrinalTypeHandler() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         UserRoleMapper urMapper = session.getMapper(UserRoleMapper.class);
+
+         System.out.println(&quot;------------listUserRole------------&quot;);
+         List&lt;UserRole&gt;  list = urMapper.listOnEnumOrdinal();
+         for(UserRole ur : list) {
+             System.out.println(ur);
+         }
+     }
+ }
+ /*
+  ------------listUserRole------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_role2 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 3
+ UserRole [id=1, userId=1, userType=Department, roleName=PE-00, name=null, remark=null]
+ UserRole [id=3, userId=4, userType=Department, roleName=PE-01, name=null, remark=null]
+ UserRole [id=4, userId=4, userType=Department, roleName=PE-02, name=null, remark=null]
+ */
+</code></pre>
+</li>
+</ol>
+<h3 id="header-32">处理Enum: 自定义TypeHandler</h3>
+<p>=&gt; column: status(100,200,300)</p>
+<p>步骤: </p>
+<ul>
+<li>实现<code>TypeHandler</code>接口或者继承<code>BaseTypeHandler</code></li>
+<li>注册<code>TypeHandler</code>: <ul>
+<li>method1: 使用<code>@MappedTypes</code>定义处理的java类型(使用<code>@MappedJdbcTypes</code>定义jdbcType类型)</li>
+<li>method2: 在全局配置TypeHandler要处理的javaType</li>
+<li>method3: 在自定义结果集标签(<code>&lt;resultMap&gt;</code>)或者参数处理(<code>@{xx,typeHandler=xxx}</code>)时声明使用自定义<code>TypeHandler</code>进行处理</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample:自定义TypeHandler处理枚举：在设置参数和取出结果集时自定义参数封装策略</strong></p>
+<ol>
+<li><p>enum</p>
+<pre><code class="lang-java"> public enum EmployeeStatusEnum{
+
+     NORMAL(100,&quot;正常&quot;),CANCEL(200,&quot;注销&quot;),DELETE(300,&quot;删除&quot;);
+
+     private Integer code;
+     private String msg;
+
+     private EmployeeStatusEnum(Integer code,String msg) {
+         this.code=code;
+         this.msg=msg;
+     }
+
+     public Integer getCode() {
+         return code;
+     }
+     public String getMsg() {
+         return msg;
+     }
+ }
+</code></pre>
+</li>
+<li>entity<pre><code class="lang-java"> @Data
+ public class Employee {
+     private Integer id;
+     private String name;
+     private String remark;
+     private Integer departmentId;
+     private EmployeeStatusEnum status;
+ }
+</code></pre>
+</li>
+<li><p>self defined TypeHandler: MyEnumCodeTypeHandler (实现<code>TypeHandler</code>接口，或者继承<code>BaseTypeHandler</code>)</p>
+<pre><code class="lang-java"> public class MyEnumCodeTypeHandler extends BaseTypeHandler&lt;EmployeeStatusEnum&gt;{
+
+     private final Class&lt;EmployeeStatusEnum&gt; type;
+     private final Map&lt;Integer,EmployeeStatusEnum&gt; enumMap;
+     private final EmployeeStatusEnum[] enums;
+
+     public MyEnumCodeTypeHandler(Class&lt;EmployeeStatusEnum&gt; type) {
+         if (type == null) {
+               throw new IllegalArgumentException(&quot;Type argument cannot be null&quot;);
+         }
+         this.type = type;
+         this.enums = type.getEnumConstants();
+         if (this.enums == null) {
+           throw new IllegalArgumentException(type.getSimpleName() + &quot; does not represent an enum type.&quot;);
+         }
+         enumMap=new HashMap&lt;Integer,EmployeeStatusEnum&gt;();
+         for(EmployeeStatusEnum e:enums) {
+             enumMap.put(e.getCode(), e);
+         }
+     }
+
+     @Override
+     public void setNonNullParameter(PreparedStatement ps, int i, EmployeeStatusEnum parameter, JdbcType jdbcType) throws SQLException {
+         ps.setInt(i, parameter.getCode());
+     }
+
+     @Override
+     public EmployeeStatusEnum getNullableResult(ResultSet rs, String columnName) throws SQLException {
+         int code = rs.getInt(columnName);
+         if (code == 0 &amp;&amp; rs.wasNull()) {
+           return null;
+         }
+         return toCodeEnum(code);
+     }
+
+     @Override
+     public EmployeeStatusEnum getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
+         int code = rs.getInt(columnIndex);
+         if (code == 0 &amp;&amp; rs.wasNull()) {
+           return null;
+         }
+         return toCodeEnum(code);
+     }
+
+     @Override
+     public EmployeeStatusEnum getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
+         int code = cs.getInt(columnIndex);
+         if (code == 0 &amp;&amp; cs.wasNull()) {
+           return null;
+         }
+         return toCodeEnum(code);
+     }
+
+     private EmployeeStatusEnum toCodeEnum(int code) {
+         try {
+           return this.enumMap.get(code);
+         } catch (Exception ex) {
+           throw new IllegalArgumentException(&quot;Cannot convert &quot; + code + &quot; to &quot; + type.getSimpleName() + &quot; by code value.&quot;, ex);
+         }
+     }
+ }
+</code></pre>
+</li>
+<li><p>mapper</p>
+<pre><code class="lang-xml"> &lt;!-- Method 1 --&gt;
+ &lt;insert id=&quot;insertEmployeeOnMyEnum&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot; 
+     parameterType=&quot;Employee&quot;&gt;  &lt;!-- must set parameterType! --&gt;
+     insert into pe_employee(name,remark,department_id,status)
+     values (#{name},#{remark},#{departmentId},#{status,typeHandler=com.cj.mybatis.extend.MyEnumCodeTypeHandler})
+ &lt;/insert&gt;
+
+ &lt;resultMap type=&quot;Employee&quot; id=&quot;employeesOnMyEnumMap&quot; autoMapping=&quot;true&quot;&gt;
+     &lt;id column=&quot;id&quot; property=&quot;id&quot;/&gt;
+     &lt;result column=&quot;status&quot; property=&quot;status&quot; 
+         typeHandler=&quot;com.cj.mybatis.extend.MyEnumCodeTypeHandler&quot;/&gt;
+ &lt;/resultMap&gt;
+ &lt;select id=&quot;listEmployeesOnMyEnum&quot; resultMap=&quot;employeesOnMyEnumMap&quot;&gt;
+     select * from pe_employee
+ &lt;/select&gt;
+
+ &lt;!-- Method 2 
+     1. mybatis-config.xml
+         &lt;typeHandlers&gt;
+             &lt;typeHandler handler=&quot;com.cj.mybatis.extend.MyEnumCodeTypeHandler&quot; javaType=&quot;com.cj.mybatis.entity.EmployeeStatusEnum&quot;/&gt;
+         &lt;/typeHandlers&gt;
+
+     2. XxxMapper.xml
+         &lt;insert id=&quot;insertEmployeeOnMyEnum&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;&gt; 
+             insert into pe_employee(name,remark,department_id,status)
+             values (#{name},#{remark},#{departmentId},#{status})
+         &lt;/insert&gt;
+
+         &lt;select id=&quot;listEmployeesOnMyEnum&quot; resultType=&quot;Employee&quot;&gt;
+             select * from pe_employee
+         &lt;/select&gt;
+ --&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testInsertOnMyEnumTypeHandler() throws Exception{
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+         System.out.println(&quot;------------insertEmployeeOnMyEnum------------&quot;);
+         Employee emp = new Employee();
+         emp.setName(&quot;QA-02&quot;);
+         emp.setRemark(&quot;This is Employee QA-02&quot;);
+         emp.setDepartmentId(15);
+         emp.setStatus(EmployeeStatusEnum.CANCEL);
+         Integer result = employeeMapper.insertEmployeeOnMyEnum(emp);
+         System.out.println(result);
+         System.out.println(emp.getId());
+         session.commit();
+     }
+ }
+ /*
+ ------------insertEmployeeOnMyEnum------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: insert into pe_employee(name,remark,department_id,status) values (?,?,?,?) 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: QA-02(String), This is Employee QA-02(String), 15(Integer), 200(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==    Updates: 1
+ 1
+ 72
+ */
+
+ @Test
+ public void testListOnMyEnumTypeHandler() throws Exception{
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+         System.out.println(&quot;------------listEmployees------------&quot;);
+         List&lt;Employee&gt;  list = employeeMapper.listEmployeesOnMyEnum();
+         for(Employee ur : list) {
+             System.out.println(ur);
+         }
+     }
+ }
+ /*
+  ------------listEmployees------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_employee 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 38
+ Employee [id=1, name=Test1, remark=This is Test1, depar
+ Employee [id=68, name=Bat-19, remark=This is Employee Bat-19, departmentId=3, status=null]
+ Employee [id=71, name=QA-01, remark=This is Employee QA-01, departmentId=15, status=NORMAL]
+ Employee [id=72, name=QA-02, remark=This is Employee QA-02, departmentId=15, status=CANCEL]
+ */
+</code></pre>
+</li>
+</ol>
+<h2 id="header-33">Dynamic Sql</h2>
+<ul>
+<li><a href="https://mybatis.org/mybatis-3/dynamic-sql.html" target="_blank" rel="noopener">Doc</a></li>
+<li>基于OGNL表达式简化SQL拼装</li>
+<li><code>&lt;if&gt;</code></li>
+<li><code>&lt;choose&gt;</code> (<code>&lt;when&gt;</code>, <code>&lt;otherwise&gt;</code>)</li>
+<li><code>&lt;trim&gt;</code>,<code>&lt;where&gt;</code>, <code>&lt;set&gt;</code></li>
+<li><code>&lt;foreach&gt;</code></li>
+<li><code>&lt;bind&gt;</code>: create a variable out of an OGNL expression and bind it to the context<ul>
+<li>configured variables for dynamic code: <code>_databaseId</code>,<code>_parameter</code></li>
+<li><code>_databaseId</code>: 代表当前数据库的别名（depending on database vendor, 配置<code>databaseIdProvider</code>标签）</li>
+<li><code>_parameter</code>: 代表整个参数（单个参数：<code>_parameter</code>即是这个参数；多个参数：参数会被封装成一个map，<code>_parameter</code>即代表这个map）</li>
+</ul>
+</li>
+<li><code>&lt;sql&gt;</code> 可重用sql片段,<code>&lt;include&gt;</code> 引用定义的sql片段(里面可使用<code>&lt;property name=&quot;&quot; value=&quot;&quot;/&gt;</code>自定义参数和值，传给sql片段)<ul>
+<li>注：<code>&lt;sql&gt;</code>中取<code>include</code>中<code>property</code>定义的属性，只能使用<code>${xxx}</code>,不能使用<code>#{xxx}</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-34">OGNL</h3>
+<p>Object Graph Navigation Language 对象图导航语言 (表达式语言，类似EL)</p>
+<p>person.name<br>person.getName()<br>new com.cj.Persion(‘admin’).name</p>
+<p>调用静态方法<br>@java.lang.Math@PI<br>@java.util.UUID@randomUUID()</p>
+<p>运算符：<code>+,-,*,/,%</code><br>逻辑运算符： in,not in,<code>&gt;,&gt;=</code>,<code>&lt;,&lt;=</code>,<code>==</code>,<code>!=</code><br>注意：xml中特殊符号，如<code>&lt;</code>,<code>&gt;</code>等需要使用转义字符</p>
+<h3 id="header-35">Sample: Dynamic Filter <code>&lt;select&gt;</code>,<code>&lt;if&gt;</code></h3>
+<pre><code class="lang-xml">&lt;!-- 
+Employee sample = new Employee();
+sample.setName(&quot;Test1&quot;);
+List&lt;Employee&gt; employees = employeeMapper.listEmployeesByExample(sample);
+--&gt;
+&lt;select id=&quot;listEmployeesByExample&quot; resultType=&quot;Employee&quot;&gt;
+    select * from pe_employee 
+    where 1=1
+    &lt;if test=&quot;id!=null&quot;&gt; and id=#{id} &lt;/if&gt;
+    &lt;if test=&quot;name!=null&quot;&gt; and name=#{name} &lt;/if&gt;
+    &lt;if test=&quot;remark!=null&quot;&gt; and remark=#{remark} &lt;/if&gt;
+&lt;/select&gt;
+</code></pre>
+<h3 id="header-36">Sample: Dynamic Update: <code>&lt;update&gt;</code>,<code>&lt;set&gt;</code>,<code>&lt;if&gt;</code></h3>
+<pre><code class="lang-xml">&lt;!--
+Employee sample = new Employee();
+sample.setId(9);
+sample.setName(&quot;TestAB9&quot;);
+sample.setRemark(&quot;This is Employee TestAB9&quot;);
+Integer result= employeeMapper.updateEmployee(sample);
+--&gt;
+&lt;update id=&quot;updateEmployee&quot;&gt;
+    update pe_employee
+    &lt;set&gt;
+        &lt;if test=&quot;name!=null&quot;&gt;name=#{name},&lt;/if&gt;
+        &lt;if test=&quot;remark!=null&quot;&gt;remark=#{remark},&lt;/if&gt;
+        &lt;if test=&quot;departmentId!=null&quot;&gt;department_id=#{departmentId}&lt;/if&gt;
+    &lt;/set&gt;
+    where id=#{id}
+&lt;/update&gt;
+</code></pre>
+<h3 id="header-37">Sample: <code>&lt;foreach&gt;</code></h3>
+<pre><code class="lang-xml">&lt;!-- List&lt;Employee&gt; employees= employeeMapper.listEmployeesByDeptIds(Arrays.asList(1,3,5)); --&gt;
+&lt;select id=&quot;listEmployeesByDeptIds&quot; resultType=&quot;Employee&quot;&gt;
+    select * from pe_employee where department_id in 
+    &lt;foreach collection=&quot;list&quot; item=&quot;deptId&quot; separator=&quot;,&quot; open=&quot;(&quot; close=&quot;)&quot;&gt;
+        #{deptId}
+    &lt;/foreach&gt;
+&lt;/select&gt;
+
+&lt;!-- 批量插入：
+    Mysql: 
+        method1: insert into T(...) values (),(),...
+        method2:
+                insert into T(...) values ()
+                insert into T(...) values ()
+                ....
+
+    Oracle:
+        method1: insert into T(...) select ... from ...
+        method2:
+            begin
+                insert into T(...) values ();
+                insert into T(...) values ();
+                ...
+            end
+ --&gt;
+&lt;!-- public Integer insertMultipleEmployees(@param(&quot;emps&quot;)List&lt;Employee&gt; emps)--&gt;
+&lt;insert id=&quot;insertMultipleEmployees&quot;&gt;
+   insert into pe_employees(name,remark,department_id) values
+   &lt;foreach collection=&quot;emps&quot; item=&#39;emp&#39; seperator=&quot;,&quot;&gt;
+       (#{emp.name},#{emp.remark},#{emp.departmentId})
+   &lt;/foreach&gt;
+&lt;/insert&gt;
+
+&lt;!-- 
+    注：这种方式数据库连接属性需加上 allowMultiQueries=true 
+    （ jdbc:mysql://localhost:3306/demo?allowMultiQueries=true ）
+--&gt;
+&lt;!-- 
+&lt;insert id=&quot;insertMultipleEmployees&quot;&gt;
+   &lt;foreach collection=&quot;emps&quot; item=&#39;emp&#39; seperator=&quot;;&quot;&gt;
+       insert into pe_employees(name,remark,department_id) values
+       (#{emp.name},#{emp.remark},#{emp.departmentId})
+   &lt;/foreach&gt;
+&lt;/insert&gt;
+--&gt;
+</code></pre>
+<h3 id="header-38">Sample: <code>&lt;bind&gt;</code></h3>
+<pre><code class="lang-xml">&lt;!-- List&lt;Employee&gt; employees= employeeMapper.listEmployeesByNameLike(&quot;Test&quot;); --&gt;
+&lt;select id=&quot;listEmployeesByNameLike&quot; resultType=&quot;Employee&quot;&gt;
+    &lt;bind name=&quot;namePatten&quot; value=&quot;&#39;%&#39; + name + &#39;%&#39;&quot; /&gt;
+    select * from pe_employee where name like #{namePatten}
+&lt;/select&gt;
+</code></pre>
+<h3 id="header-39">Sample: <code>_parameter</code>,<code>_databaseId</code></h3>
+<ol>
+<li><p><code>_parameter</code></p>
+<pre><code class="lang-xml"> &lt;!-- 单参：listByName(String name)--&gt;
+ &lt;select id=&quot;listByName&quot; resultType=&quot;Employee&quot;&gt;
+     select * fro pe_employees 
+     &lt;if test=&quot;_parameter!=null&quot;&gt;
+         where last_name = #{_paramter}
+     &lt;/if&gt;
+ &lt;/select&gt;
+
+ &lt;!-- 多参：ListBySample(Employee emp)--&gt;
+ &lt;select id=&quot;ListBySample&quot; resultType=&quot;Employee&quot;&gt;
+     select * fro pe_employees 
+     &lt;if test=&quot;_parameter!=null&quot;&gt;
+         where last_name = #{_paramter.lastname}
+     &lt;/if&gt;
+ &lt;/select&gt;
+</code></pre>
+</li>
+<li><p><code>_databaseId</code></p>
+<pre><code class="lang-xml"> &lt;!-- 
+ mybatis-config.xml:
+ &lt;databaseIdProvider type=&quot;DB_VENDOR&quot;&gt; 
+     &lt;property name=&quot;MySQL&quot; value=&quot;mysql&quot;/&gt;
+     &lt;property name=&quot;Oracle&quot; value=&quot;oracle&quot;/&gt;
+     &lt;property name=&quot;SQL Server&quot; value=&quot;sqlserver&quot;/&gt;
+   &lt;/databaseIdProvider&gt;
+ --&gt;
+ &lt;!-- XxxMapper.xml--&gt;
+ &lt;if test=&quot;_databaseId==&#39;oracle&#39;&quot;&gt;
+     select seq_employee.nextval from dual; 
+ &lt;/if&gt;
+</code></pre>
+</li>
+</ol>
+<h3 id="header-40">Sample: <code>&lt;sql&gt;</code>,<code>&lt;include&gt;</code></h3>
+<pre><code class="lang-xml">&lt;update id=&quot;updateEmployee&quot;&gt;
+    &lt;!-- update pe_employee
+    &lt;set&gt;
+        &lt;if test=&quot;name!=null&quot;&gt;name=#{name},&lt;/if&gt;
+        &lt;if test=&quot;remark!=null&quot;&gt;remark=#{remark},&lt;/if&gt;
+        &lt;if test=&quot;departmentId!=null&quot;&gt;department_id=#{departmentId}&lt;/if&gt;
+    &lt;/set&gt;
+    where id=#{id} --&gt;
+    update pe_employee
+    &lt;set&gt;
+        &lt;include refid=&quot;empUpdateSet&quot;/&gt;
+    &lt;/set&gt;
+    where id=#{id}
+&lt;/update&gt;
+
+&lt;sql id=&quot;empUpdateSet&quot;&gt;
+    &lt;if test=&quot;name!=null&quot;&gt;name=#{name},&lt;/if&gt;
+    &lt;if test=&quot;remark!=null&quot;&gt;remark=#{remark},&lt;/if&gt;
+    &lt;if test=&quot;departmentId!=null&quot;&gt;department_id=#{departmentId}&lt;/if&gt;
+&lt;/sql&gt;
+</code></pre>
+<h2 id="header-41">Plugin</h2>
+<h3 id="header-42">原理</h3>
+<ul>
+<li>拦截器接口<code>Interceptor</code>,插件即拦截器实现类(<code>implements Interceptor</code>)<pre><code class="lang-java">  package org.apache.ibatis.plugin;
+  import java.util.Properties;
+  public interface Interceptor {
+    Object intercept(Invocation invocation) throws Throwable;
+    default Object plugin(Object target) {
+      return Plugin.wrap(target, this);
+    }
+    default void setProperties(Properties properties) {
+      // NOP
+    }
+  }
+</code></pre>
+</li>
+<li>插件原理：<ul>
+<li>四大对象每个创建的时候都有一个<code>interceptorChain.pluginAll(target)</code> </li>
+<li>=&gt; 即插件介入：用拦截器们，通过动态代理机制一层层的包装目标对象，返回目标对象的代理对象，从而实现在目标对象执行目标方法之前进行拦截的效果(最终此代理对象可以拦截到四大对象的每一个执行)</li>
+<li>eg:<code>Configuration#newParameterHandler#interceptorChain.pluginAll(parameterHandler)</code><pre><code class="lang-java">public Object pluginAll(Object target) {
+  for (Interceptor interceptor : interceptors) {
+    target = interceptor.plugin(target);
+  }
+  return target;
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li>四大对象：<ul>
+<li>Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)</li>
+<li>ParameterHandler (getParameterObject, setParameters)</li>
+<li>ResultSetHandler (handleResultSets, handleOutputParameters)</li>
+<li>StatementHandler (prepare, parameterize, batch, update, query)</li>
+</ul>
+</li>
+<li>插件会产生目标对象的代理对象，多个插件就会产生多层代理 =&gt; 创建动态代理的时候，按照插件配置顺序创建层层代理对象, 执行目标方法后，按照逆向顺序执行</li>
+</ul>
+<h3 id="header-43">自定义插件</h3>
+<ul>
+<li>编写<code>Interceptor</code>实现类</li>
+<li>使用<code>@Intercepts({@Signature(type=Xxx.class,method=&quot;&quot;,args=[])})</code>注解完成插件签名</li>
+<li>将写好的插件注册到全局配置文件中<code>&lt;plugins&gt;</code> -&gt; <code>&lt;plugin&gt;</code></li>
+</ul>
+<ol>
+<li><p>MyFirstPlugin.java</p>
+<pre><code class="lang-java"> @Intercepts({
+     @Signature(type=StatementHandler.class,method=&quot;parameterize&quot;,args=Statement.class)
+ })
+ public class MyFirstPlugin implements Interceptor{
+     @Override
+     public Object intercept(Invocation invocation) throws Throwable {
+         System.out.println(&quot;MyFirstPlugin#intercept:&quot;+invocation.getMethod());
+
+         // test: change sql parameter value
+         Object target = invocation.getTarget();
+         // 拿到target的元数据
+         MetaObject metaObject = SystemMetaObject.forObject(target);
+         // StatementHandler -&gt; ParameterHandler -&gt; parameterObject
+         Object value = metaObject.getValue(&quot;parameterHandler.parameterObject&quot;);
+         System.out.println(&quot;Get Sql Parameter Value:&quot; + value);
+         metaObject.setValue(&quot;parameterHandler.parameterObject&quot;, 11);
+
+         Object proceed = invocation.proceed();
+         return proceed;
+     }
+
+     @Override
+     public Object plugin(Object target) {
+         // 使用当前Interceptor封装目标对象，返回一个新的代理对象
+         Object wrap = Plugin.wrap(target, this);
+         System.out.println(&quot;MyFirstPlugin#plugin wrap:&quot;+target);
+         return wrap;
+     }
+
+     @Override
+     public void setProperties(Properties properties) {
+         // 获取Plugin注册时（mybatis-config.xml &lt;plugins&gt; &lt;plugin&gt;）设置的property
+         System.out.println(&quot;MyFirstPlugin#setProperties:&quot;+properties);
+     }
+ }
+</code></pre>
+</li>
+<li>mybatis-config.xml<pre><code class="lang-xml"> &lt;plugins&gt;
+     &lt;plugin interceptor=&quot;com.cj.mybatis.extend.MyFirstPlugin&quot;&gt;
+         &lt;property name=&quot;testname&quot; value=&quot;first-plugin&quot;/&gt;
+     &lt;/plugin&gt;
+ &lt;/plugins&gt;
+</code></pre>
+</li>
+<li>test<pre><code class="lang-java">     @Test
+ public void testGet() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+         Employee emp = employeeMapper.getEmployee(1);
+         System.out.println(emp);
+     }
+ }
+</code></pre>
+</li>
+<li><p>result</p>
+<pre><code class="lang-sql"> MyFirstPlugin#setProperties:{testname=first-plugin}
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.executor.CachingExecutor@569cfc36
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.scripting.defaults.DefaultParameterHandler@6eceb130
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.executor.resultset.DefaultResultSetHandler@5c072e3f
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.executor.statement.RoutingStatementHandler@954b04f
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_employee where id = ? 
+ MyFirstPlugin#intercept:public abstract void org.apache.ibatis.executor.statement.StatementHandler.parameterize(java.sql.Statement) throws java.sql.SQLException
+ Get Sql Parameter Value:1
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 11(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ Employee [id=11, name=Test-CC, remark=This is Employee CC, departmentId=3]
+</code></pre>
+</li>
+</ol>
+<h3 id="header-44">多个插件</h3>
+<ol>
+<li>mybatis-config.xml<pre><code class="lang-xml"> &lt;plugins&gt;
+     &lt;plugin interceptor=&quot;com.cj.mybatis.extend.MyFirstPlugin&quot;&gt;
+         &lt;property name=&quot;testname&quot; value=&quot;first-plugin&quot;/&gt;
+     &lt;/plugin&gt;
+     &lt;plugin interceptor=&quot;com.cj.mybatis.extend.MySecondPlugin&quot;&gt;
+         &lt;property name=&quot;testname&quot; value=&quot;second-plugin&quot;/&gt;
+     &lt;/plugin&gt;
+   &lt;/plugins&gt;
+</code></pre>
+</li>
+<li>result ( First wrap,Second wrap -&gt; Target execute -&gt; Second intercept,First intercept )<pre><code class="lang-sql"> MyFirstPlugin#setProperties:{testname=first-plugin}
+ MySecondPlugin#setProperties:{testname=second-plugin}
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.executor.CachingExecutor@569cfc36
+ MySecondPlugin#plugin wrap:org.apache.ibatis.executor.CachingExecutor@569cfc36
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.scripting.defaults.DefaultParameterHandler@6eceb130
+ MySecondPlugin#plugin wrap:org.apache.ibatis.scripting.defaults.DefaultParameterHandler@6eceb130
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.executor.resultset.DefaultResultSetHandler@5c072e3f
+ MySecondPlugin#plugin wrap:org.apache.ibatis.executor.resultset.DefaultResultSetHandler@5c072e3f
+ MyFirstPlugin#plugin wrap:org.apache.ibatis.executor.statement.RoutingStatementHandler@954b04f
+ MySecondPlugin#plugin wrap:org.apache.ibatis.executor.statement.RoutingStatementHandler@954b04f
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_employee where id = ? 
+ MySecondPlugin#intercept:public abstract void org.apache.ibatis.executor.statement.StatementHandler.parameterize(java.sql.Statement) throws java.sql.SQLException
+ MyFirstPlugin#intercept:public abstract void org.apache.ibatis.executor.statement.StatementHandler.parameterize(java.sql.Statement) throws java.sql.SQLException
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 1(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ Employee [id=1, name=Test1, remark=This is Test1, departmentId=1]
+</code></pre>
+</li>
+</ol>
+<h3 id="header-45">第三方插件: PageHelper</h3>
+<p><a href="https://pagehelper.github.io/docs/howtouse/" target="_blank" rel="noopener">Doc</a></p>
+<ol>
+<li>dependency<pre><code class="lang-xml"> &lt;dependency&gt;
+     &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;
+     &lt;artifactId&gt;pagehelper&lt;/artifactId&gt;
+     &lt;version&gt;5.1.10&lt;/version&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li>mybatis-config.xml<pre><code class="lang-xml"> &lt;!-- typeAliases ... --&gt;
+ &lt;plugins&gt;
+      &lt;plugin interceptor=&quot;com.github.pagehelper.PageInterceptor&quot;&gt;
+         &lt;property name=&quot;rowBoundsWithCount&quot; value=&quot;true&quot;/&gt;
+     &lt;/plugin&gt;
+ &lt;/plugins&gt;
+ &lt;!-- environments ... --&gt;
+</code></pre>
+</li>
+<li><p>test: <code>PageHelper.startPage(pageNum,pageSize)</code></p>
+<pre><code class="lang-java"> @Test
+ public void testPage01() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+
+         System.out.println(&quot;------------listEmployees------------&quot;);
+         Page&lt;Object&gt; page = PageHelper.startPage(1, 4);
+         List&lt;Employee&gt; employees = employeeMapper.listEmployees();
+         for(Employee emp:employees) {
+             System.out.println(emp);
+         }
+         System.out.println(&quot;Current Page:\t&quot;+page.getPageNum());
+         System.out.println(&quot;Page Size:\t&quot;+page.getPageSize());
+         System.out.println(&quot;Total Pages:\t&quot;+page.getPages());
+         System.out.println(&quot;Total Records:\t&quot;+page.getTotal());
+     }
+ }
+</code></pre>
+<pre><code class="lang-sql"> ------------listEmployees------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: SELECT count(0) FROM pe_employee 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_employee LIMIT ? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 4(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 4
+ Employee [id=1, name=Test1, remark=This is Test1, departmentId=1]
+ Employee [id=2, name=Test2, remark=This is Test2, departmentId=1]
+ Employee [id=3, name=Test3, remark=This is Test3, departmentId=1]
+ Employee [id=4, name=Dev4, remark=This is Dev4, departmentId=2]
+ Current Page:   1
+ Page Size:  4
+ Total Pages:    4
+ Total Records:  15
+</code></pre>
+</li>
+<li><p>test: <code>new PageInfo&lt;&gt;(List&lt;T&gt; list)</code></p>
+<pre><code class="lang-java"> @Test
+ public void testPage02() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+
+         System.out.println(&quot;------------listEmployees------------&quot;);
+         PageHelper.startPage(1, 4);
+         List&lt;Employee&gt; employees = employeeMapper.listEmployees();
+         PageInfo&lt;Employee&gt; pageInfo = new PageInfo&lt;Employee&gt;(employees);
+
+         System.out.println(&quot;Current Page:\t&quot;+pageInfo.getPageNum());
+         System.out.println(&quot;Page Size:\t&quot;+pageInfo.getPageSize());
+         System.out.println(&quot;Total Pages:\t&quot;+pageInfo.getPages());
+         System.out.println(&quot;Total Records:\t&quot;+pageInfo.getTotal());
+
+         System.out.print(&quot;List Nav Pages:\t&quot;);
+         for(int i : pageInfo.getNavigatepageNums()) {
+             System.out.print(i+&quot; &quot;);
+         }
+         System.out.println();
+
+         System.out.println(&quot;List Records:&quot;);
+         List&lt;Employee&gt; results=pageInfo.getList();
+         for(Employee emp : results) {
+             System.out.println(emp);
+         }
+         System.out.println(results);
+     }
+ }
+</code></pre>
+<pre><code class="lang-sql"> ------------listEmployees------------
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: SELECT count(0) FROM pe_employee 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 1
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: select * from pe_employee LIMIT ? 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 4(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 4
+ Current Page:   1
+ Page Size:  4
+ Total Pages:    4
+ Total Records:  15
+ List Nav Pages: 1 2 3 4 
+ List Records:
+ Employee [id=1, name=Test1, remark=This is Test1, departmentId=1]
+ Employee [id=2, name=Test2, remark=This is Test2, departmentId=1]
+ Employee [id=3, name=Test3, remark=This is Test3, departmentId=1]
+ Employee [id=4, name=Dev4, remark=This is Dev4, departmentId=2]
+ Page{count=true, pageNum=1, pageSize=4, startRow=0, endRow=4, total=15, pages=4, reasonable=false, pageSizeZero=false}[Employee [id=1, name=Test1, remark=This is Test1, departmentId=1], Employee [id=2, name=Test2, remark=This is Test2, departmentId=1], Employee [id=3, name=Test3, remark=This is Test3, departmentId=1], Employee [id=4, name=Dev4, remark=This is Dev4, departmentId=2]]
+</code></pre>
+</li>
+</ol>
+<h2 id="header-46">Cache</h2>
+<h3 id="header-47">一级缓存</h3>
+<ul>
+<li>本地缓存，<code>sqlSession</code>级别（默认开启，一个Map）</li>
+<li>与数据库同一次session查询到的数据会放在本地缓存中,以后获取相同数据，会直接从缓存中取而不用再去DB查询</li>
+<li>一级缓存失效情况（会再向DB发出查询）<ul>
+<li>不同sqlSession</li>
+<li>同一sqlSeesion<ul>
+<li>查询条件不同（一级缓存中还没有这个数据）</li>
+<li>两次查询中间执行了CUD操作（因为这次CUD可鞥会对当前数据有影响）</li>
+<li>手动清除了一级缓存（缓存清空）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-48">二级缓存</h3>
+<ul>
+<li>全局缓存，<code>namespace</code>级别（不同<code>namespace</code>查出的数据会放在自己对应的缓存中，需手动开启和配置）</li>
+<li>一个会话中查询数据放入一级缓存，会话提交或关闭后，一级缓存中数据保存到二级缓存中，新的会话查询信息，可参照二级缓存</li>
+<li>使用步骤：<ol>
+<li>开启全局二级缓存配置 <code>&lt;setting name=&quot;cacheEnabled&quot; value=&quot;true&quot;/&gt;</code></li>
+<li>mapper中配置使用二级缓存 <code>&lt;cache/&gt;</code><ul>
+<li><code>eviction</code> 缓存回收策略 LRU(最近最少使用的，默认),FIFO(先进先出),SOFT(软引用),WEAK(弱引用)</li>
+<li><code>flushInterval</code> 缓存刷新间隔 （毫秒，多长时间清空一次，默认不清空）</li>
+<li><code>readOnly</code> 是否只读（true则认为只读，会将数据在缓存中的引用交给用户，不安全，速度快；false则会利用序列化反序列技术克隆一份给用户，安全，速度慢）</li>
+<li><code>size</code> 缓存存放多少元素</li>
+<li><code>type</code> 指定自定义缓存的全类名（实现Cache接口的自定义类全名）</li>
+</ul>
+</li>
+<li>POJO实现序列化接口</li>
+</ol>
+</li>
+</ul>
+<h3 id="header-49">缓存相关配置</h3>
+<ol>
+<li>全局二级缓存开关 <code>&lt;setting name=&quot;cacheEnabled&quot; value=&quot;true/false&quot; /&gt;</code></li>
+<li>mapper中<code>&lt;select&gt;</code>配置是否使用二级缓存  <code>&lt;select useCache=&quot;true/false&quot; ... &gt;</code></li>
+<li>参照缓存：若想在命名空间中共享相同的缓存配置和实例，可使用<code>&lt;cache-ref namespace=&quot;...xxxMapper&quot; /&gt;</code>引用另一个缓存</li>
+<li>mapper中sql标签上配置sql执行后是否清除缓存（包括一级二级）<ul>
+<li>增删改标签上的<code>flushCache</code>默认为true</li>
+<li>查询标签上的<code>flushCache</code>默认为false</li>
+</ul>
+</li>
+<li>清除当前session的一级缓存：程序执行<code>sqlSession.clearCache()</code></li>
+<li><code>localCacheScope</code> 本地缓存作用域 SESSION(一级缓存)/STATEMENT(禁用一级缓存)</li>
+<li>注：<ul>
+<li>在某一个作用域（一级缓存session/二级缓存namespace)进行了CUD后，默认该作用域下的所有select缓存将被clear</li>
+<li>Mybatis提供了缓存接口<code>Cache</code>，供扩展实现自定义的二级缓存</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-50">第三方缓存整合</h3>
+<p>EhCache </p>
+<ul>
+<li>纯Java进程内缓存框架，是Hibernate中默认的CacheProvider</li>
+<li>使用步骤：<ol>
+<li>导入ehcache包，整合包(mybatis-echcache)，日志包</li>
+<li>编写ehcache.xml配置文件</li>
+<li>mapper中配置<code>&lt;cache type=&quot;org.mybatis.caches.ehcache.EhcacheCache&quot;/&gt;</code>标签</li>
+</ol>
+</li>
+</ul>
+<h2 id="header-51">与SpringBoot整合</h2>
+<h3 id="header-52">dependencies</h3>
+<pre><code class="lang-xml">&lt;dependencies&gt;
+    &lt;!-- springboot --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- mybatis --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+        &lt;version&gt;2.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;
+        &lt;artifactId&gt;pagehelper&lt;/artifactId&gt;
+        &lt;version&gt;5.1.10&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- druid --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+        &lt;version&gt;1.1.21&lt;/version&gt;
+    &lt;/dependency&gt;
+
+    &lt;!-- for @ConfigurationProperties : optional ! --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+        &lt;optional&gt;true&lt;/optional&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<h3 id="header-53">druid</h3>
+<p>Github: <a href="https://github.com/alibaba/druid" target="_blank" rel="noopener">druid</a> | <a href="https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter" target="_blank" rel="noopener">druid-spring-boot-starter</a></p>
+<ol>
+<li><p>application.yml</p>
+<pre><code class="lang-yaml"> server:
+   port: 8080
+   servlet:
+     context-path: /demo
+
+ spring:
+   datasource:
+     druid:
+       url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowMultiQueries=true
+       username: root
+       password: 123456
+       driver-class-name: com.mysql.cj.jdbc.Driver
+ #      type: com.alibaba.druid.pool.DruidDataSource
+       initial-size: 8
+       min-idle: 1
+       max-active: 20
+       max-wait: 60000
+       time-between-eviction-runsMillis: 60000
+       min-evictable-idle-timeMillis: 300000
+       validation-query: select &#39;x&#39;
+       test-while-idle: true
+       test-on-borrow: false
+       test-on-return: false
+       pool-prepared-statements: false
+       max-open-prepared-statements: 20
+       max-pool-prepared-statement-per-connection-size: 20
+       filters: stat,wall
+       use-global-data-source-stat: true
+       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+</code></pre>
+</li>
+<li><p>Configuration</p>
+<pre><code class="lang-java"> @Configuration
+ public class DruidConfig {
+     //doc: https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+
+     // inject configed druid properties
+     @ConfigurationProperties(prefix = &quot;spring.datasource.druid&quot;)
+     @Bean
+     public DataSource druidDataSource(){
+         return new DruidDataSource();
+     }
+
+     //配置Druid的监控
+     //1、配置一个管理后台的Servlet
+     @Bean
+     public ServletRegistrationBean&lt;StatViewServlet&gt; statViewServlet(){
+         ServletRegistrationBean&lt;StatViewServlet&gt; bean = new ServletRegistrationBean&lt;StatViewServlet&gt;(new StatViewServlet(), &quot;/druid/*&quot;);
+         Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;();
+         initParams.put(&quot;loginUsername&quot;,&quot;admin&quot;);
+         initParams.put(&quot;loginPassword&quot;,&quot;123456&quot;);
+         //initParams.put(&quot;allow&quot;,&quot;&quot;);//默认就是允许所有访问
+         //initParams.put(&quot;deny&quot;,&quot;192.168.15.21&quot;);
+         bean.setInitParameters(initParams);
+         return bean;
+     }
+
+     //2、配置一个web监控的filter
+     @Bean
+     public FilterRegistrationBean&lt;WebStatFilter&gt; webStatFilter(){
+         FilterRegistrationBean&lt;WebStatFilter&gt; bean = new FilterRegistrationBean&lt;WebStatFilter&gt;();
+         bean.setFilter(new WebStatFilter());
+         Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;();
+         initParams.put(&quot;exclusions&quot;,&quot;*.js,*.css,/druid/*&quot;);
+         bean.setInitParameters(initParams);
+         //bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));
+         return  bean;
+     }
+ }
+</code></pre>
+</li>
+<li>start application,then visit: <a href="http://localhost:8080/demo/druid" target="_blank" rel="noopener">http://localhost:8080/demo/druid</a> to login</li>
+</ol>
+<p><img src="/2019/11/23/druid-single-monitor.PNG" alt="Druid Monitor"></p>
+<h3 id="header-54">MyBatis(单数据源)</h3>
+<ol>
+<li><p>application.yml</p>
+<pre><code class="lang-yaml"> server:
+   port: 8080
+   servlet:
+     context-path: /demo
+
+ spring:
+   datasource:
+     druid:
+       url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowMultiQueries=true
+       username: root
+       password: 123456
+       driver-class-name: com.mysql.cj.jdbc.Driver
+       # type: com.alibaba.druid.pool.DruidDataSource
+       initial-size: 8
+       min-idle: 1
+       max-active: 20
+       max-wait: 60000
+       time-between-eviction-runsMillis: 60000
+       min-evictable-idle-timeMillis: 300000
+       validation-query: select &#39;x&#39;
+       test-while-idle: true
+       test-on-borrow: false
+       test-on-return: false
+       pool-prepared-statements: false
+       max-open-prepared-statements: 20
+       max-pool-prepared-statement-per-connection-size: 20
+       filters: stat,wall
+       use-global-data-source-stat: true
+       connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+ mybatis:
+   mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+   config-location:  classpath:mybatis-config.xml
+</code></pre>
+</li>
+<li><p>Druid Configuration: DruidConfig.java</p>
+<pre><code class="lang-java"> @Configuration
+ public class DruidConfig {
+
+     //https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+
+     @ConfigurationProperties(prefix = &quot;spring.datasource.druid&quot;)
+     @Bean
+     public DataSource druidDataSource(){
+         return new DruidDataSource();
+     }
+
+     // 配置Druid的监控 &amp; 监控的Filter
+     // ...
+ }
+</code></pre>
+</li>
+<li><p>Global Config: mybatis-config.xml</p>
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE configuration
+   PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+   &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+ &lt;configuration&gt;
+   &lt;settings&gt;
+     &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;
+     &lt;!-- &lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt; --&gt;
+   &lt;/settings&gt;
+
+   &lt;typeAliases&gt;
+     &lt;package name=&quot;com.cj.mybatis.entity&quot;/&gt; 
+   &lt;/typeAliases&gt;
+
+   &lt;plugins&gt;
+      &lt;plugin interceptor=&quot;com.github.pagehelper.PageInterceptor&quot;&gt;
+         &lt;property name=&quot;rowBoundsWithCount&quot; value=&quot;true&quot;/&gt;
+     &lt;/plugin&gt;
+   &lt;/plugins&gt;
+ &lt;/configuration&gt;
+</code></pre>
+</li>
+<li><p>XxxMapper.xml: mybatis/mapper/DepartmentMapper.xml</p>
+<pre><code class="lang-xml"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE mapper
+   PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+   &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+
+ &lt;mapper namespace=&quot;com.cj.mybatis.mapper.DepartmentMapper&quot;&gt;
+
+   &lt;select id=&quot;listAll&quot; resultType=&quot;Department&quot;&gt;
+     select * from pe_department
+   &lt;/select&gt;
+
+ &lt;/mapper&gt;
+</code></pre>
+</li>
+<li><p>Dao Interface: com/cj/mybatis/mapper/DepartmentMapper.java</p>
+<pre><code class="lang-java"> public interface DepartmentMapper {
+     public List&lt;Department&gt; listAll();
+ }
+</code></pre>
+</li>
+<li><p>Entity: com/cj/mybatis/entity/Department.java</p>
+<pre><code class="lang-java"> @Data
+ public class Department {  
+     private Integer id;
+     private String name;
+     private String remark;
+ }
+</code></pre>
+</li>
+<li><p>Service: com/cj/mybatis/service/DepartmentService.java</p>
+<pre><code class="lang-java"> @Service
+ public class DepartmentService {
+
+     @Autowired
+     private DepartmentMapper departmentMapper;
+
+     public List&lt;Department&gt; listAll(){
+         return this.departmentMapper.listAll();
+     }
+ }
+</code></pre>
+</li>
+<li><p>Controller</p>
+<pre><code class="lang-java"> @RestController
+ public class DepartmentController {
+
+     @Autowired
+     DepartmentService departmentService;
+
+     @GetMapping(&quot;/departments&quot;)
+     public Object listAll() {
+         return ResponseUtil.ok(departmentService.listAll());
+     }
+ }
+</code></pre>
+</li>
+<li><p>util/ResponseUtil.java</p>
+<pre><code class="lang-java"> public class ResponseUtil {
+
+     private boolean success;
+     private Object data;
+
+     public ResponseUtil(boolean success, Object data) {
+         this.success = success;
+         this.data = data;
+     }
+
+     public static ResponseUtil result(boolean success,Object data) {
+         return new ResponseUtil(success, data);
+     }
+
+     public static ResponseUtil ok(Object data) {
+         return new ResponseUtil(true,data);
+     }
+
+     public static ResponseUtil fail(Object data) {
+         return new ResponseUtil(false,data);
+     }
+
+     // Getter &amp; Setter ...
+     // ....
+
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-55">MyBatis(多数据源)</h3>
+<ol>
+<li><p>application.yml</p>
+<pre><code class="lang-yaml"> server:
+   port: 8080
+   servlet:
+     context-path: /demo
+
+ spring:
+    datasource:
+       first:
+          url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowMultiQueries=true
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          # type: com.alibaba.druid.pool.DruidDataSource
+          initial-size: 8
+          min-idle: 1
+          max-active: 20
+          max-wait: 60000
+          time-between-eviction-runsMillis: 60000
+          min-evictable-idle-timeMillis: 300000
+          validation-query: select &#39;x&#39; FROM DUAL
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          pool-prepared-statements: false
+          max-open-prepared-statements: 20
+          max-pool-prepared-statement-per-connection-size: 20
+          filters: stat,wall
+          use-global-data-source-stat: true
+          connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+       second:
+          url: jdbc:mysql://localhost:3306/demo2?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowMultiQueries=true
+          username: root
+          password: 123456
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          # type: com.alibaba.druid.pool.DruidDataSource
+          initial-size: 8
+          min-idle: 1
+          max-active: 20
+          max-wait: 60000
+          time-between-eviction-runsMillis: 60000
+          min-evictable-idle-timeMillis: 300000
+          validation-query: select &#39;x&#39; FROM DUAL
+          test-while-idle: true
+          test-on-borrow: false
+          test-on-return: false
+          pool-prepared-statements: false
+          max-open-prepared-statements: 20
+          max-pool-prepared-statement-per-connection-size: 20
+          filters: stat,wall
+          use-global-data-source-stat: true
+          connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+ # config sqlSessionFactory bean,this would be useless!         
+ # mybatis:
+ #   mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+ #   config-location:  classpath:mybatis-config.xml
+</code></pre>
+</li>
+<li><p>Configuration</p>
+<pre><code class="lang-java"> @Configuration
+ @MapperScan(basePackages=&quot;com.cj.mybatis.dao.first&quot;,sqlSessionTemplateRef=&quot;firstSqlSessionTemplate&quot;)
+ public class FirstDruidConfig {
+
+ //  @Primary
+     @Bean(name=&quot;firstDataSource&quot;)
+     @ConfigurationProperties(prefix=&quot;spring.datasource.first&quot;)
+     public DataSource firstDataSource() {
+         return DruidDataSourceBuilder.create().build();
+     }
+
+ //  @Primary
+     @Bean(name=&quot;firstSqlSessionFactory&quot;)
+     public SqlSessionFactory firstSqlSessionFactory(@Qualifier(&quot;firstDataSource&quot;) DataSource dataSource) 
+             throws Exception {
+         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+         factoryBean.setDataSource(dataSource);
+
+         //factoryBean.setTypeAliasesPackage(&quot;com.cj.mybatis.entity&quot;);
+         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver()
+                 .getResources(&quot;classpath:mybatis/mapper/first/*Mapper.xml&quot;));
+         factoryBean.setConfigLocation(new PathMatchingResourcePatternResolver()
+                 .getResource(&quot;classpath:mybatis-config.xml&quot;));
+
+         return factoryBean.getObject(); 
+     }
+
+ //  @Primary
+     @Bean(name=&quot;firstTransactionManager&quot;)
+     public DataSourceTransactionManager firstDataSourceTransactionManager(@Qualifier(&quot;firstDataSource&quot;) DataSource dataSource) {
+         return new DataSourceTransactionManager(dataSource);
+     }
+
+ //  @Primary
+     @Bean(name=&quot;firstSqlSessionTemplate&quot;)
+     public SqlSessionTemplate firstSqlSessionTemplate(@Qualifier(&quot;firstSqlSessionFactory&quot;) SqlSessionFactory sqlSessionFactory) 
+             throws Exception {
+         return new SqlSessionTemplate(sqlSessionFactory);
+     }
+ }
+</code></pre>
+<pre><code class="lang-java"> @Configuration
+ @MapperScan(basePackages=&quot;com.cj.mybatis.dao.second&quot;,sqlSessionTemplateRef=&quot;secondSqlSessionTemplate&quot;)
+ public class SecondDruidConfig {
+
+     @Bean(name=&quot;secondDataSource&quot;)
+     @ConfigurationProperties(prefix=&quot;spring.datasource.second&quot;)
+     public DataSource secondDataSource() {
+         return DruidDataSourceBuilder.create().build();
+     }
+
+     @Bean(name=&quot;secondSqlSessionFactory&quot;)
+     public SqlSessionFactory secondSqlSessionFactory(@Qualifier(&quot;secondDataSource&quot;) DataSource dataSource) 
+             throws Exception {
+         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+         factoryBean.setDataSource(dataSource);
+
+         //factoryBean.setTypeAliasesPackage(&quot;com.cj.mybatis.entity&quot;);
+         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver()
+                 .getResources(&quot;classpath:mybatis/mapper/second/*Mapper.xml&quot;));
+         factoryBean.setConfigLocation(new PathMatchingResourcePatternResolver()
+                 .getResource(&quot;classpath:mybatis-config.xml&quot;));
+         return factoryBean.getObject();
+     }
+
+     @Bean(name=&quot;secondTransactionManager&quot;)
+     public DataSourceTransactionManager secondDataSourceTransactionManager(@Qualifier(&quot;secondDataSource&quot;) DataSource dataSource) {
+         return new DataSourceTransactionManager(dataSource);
+     }
+
+     @Bean(name=&quot;secondSqlSessionTemplate&quot;)
+     public SqlSessionTemplate secondSqlSessionTemplate(@Qualifier(&quot;secondSqlSessionFactory&quot;) SqlSessionFactory sqlSessionFactory) 
+             throws Exception {
+         return new SqlSessionTemplate(sqlSessionFactory);
+     }
+ }
+</code></pre>
+<pre><code class="lang-java"> // Druid Monitor 控制台
+ @Configuration
+ public class DruidConfig {
+
+     @Bean
+     public ServletRegistrationBean&lt;StatViewServlet&gt; statViewServlet(){
+         ServletRegistrationBean&lt;StatViewServlet&gt; bean = new ServletRegistrationBean&lt;StatViewServlet&gt;(new StatViewServlet(), &quot;/druid/*&quot;);
+         Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;();
+         initParams.put(&quot;loginUsername&quot;,&quot;admin&quot;);
+         initParams.put(&quot;loginPassword&quot;,&quot;123456&quot;);
+         bean.setInitParameters(initParams);
+         return bean;
+     }
+
+     @Bean
+     public FilterRegistrationBean&lt;WebStatFilter&gt; webStatFilter(){
+         FilterRegistrationBean&lt;WebStatFilter&gt; bean = new FilterRegistrationBean&lt;WebStatFilter&gt;();
+         bean.setFilter(new WebStatFilter());
+         Map&lt;String,String&gt; initParams = new HashMap&lt;&gt;();
+         initParams.put(&quot;exclusions&quot;,&quot;*.js,*.css,/druid/*&quot;);
+         bean.setInitParameters(initParams);
+         bean.setUrlPatterns(Arrays.asList(&quot;/*&quot;));
+         return  bean;
+     }
+ }
+</code></pre>
+</li>
+<li><p>目录划分：</p>
+<ul>
+<li>resources: <ul>
+<li><code>mybatis/mapper/first/*Mapper.xml</code></li>
+<li><code>mybatis/mapper/second/*Mapper.xml</code></li>
+</ul>
+</li>
+<li>java:<ul>
+<li><code>com.cj.mybatis.dao.first: *Mapper.java</code></li>
+<li><code>com.cj.mybatis.dao.second: *Mapper.java</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Service: 注意事务时指定具体事务名<code>@Transactional(xxx)</code></p>
+<pre><code class="lang-java"> @Service
+ public class EmployeeService {
+
+     @Autowired
+     private EmployeeMapper employeeMapper;
+
+     @Transactional(&quot;firstTransactionManager&quot;)
+     public Integer updateEmployee(Employee emp) {
+         return employeeMapper.updateEmployee(emp);
+     }
+ }
+</code></pre>
+<pre><code class="lang-java"> @Service
+ public class DepartmentService {
+
+     @Autowired
+     private DepartmentMapper departmentMapper;
+
+     @Transactional(&quot;secondTransactionManager&quot;)
+     public List&lt;Integer&gt; insertMultipleDepartments(int count) {
+         List&lt;Integer&gt; results=new ArrayList&lt;&gt;();
+         for(int i=0;i&lt;count;i++) {
+             Department dept = new Department(null,&quot;TDept-&quot;+i,&quot;This is TDept-&quot;+i);
+             results.add(departmentMapper.insert(dept));
+         }
+         return results;
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h2 id="header-56">高级</h2>
+<h3 id="header-57">运行原理</h3>
+<ol>
+<li><code>SqlSessionFactoryBuilder#build</code> =&gt; 创建<code>SqlSessionFactory</code> （默认实现类：<code>DefaultSqlSessionFactory</code>）<ul>
+<li><code>Configuration</code>对象，封装了所有配置文件（全局，sql映射配置文件）的详细信息</li>
+<li>注：会解析XxxMapper.xml中增删改查标签的每一个标签每一个属性，封装成一个<code>MappedStatement</code>(一个MappedStatement就代表一个CRUD标签的详细信息)</li>
+</ul>
+</li>
+<li><code>SqlSessionFactory#openSession</code>  =&gt; 创建一次连接会话<code>SqlSession</code>对象 (默认实现类:<code>DefaultSqlSession</code>)<ul>
+<li>里面包括<code>Configuration</code>对象和根据全局配置文件中的<code>defaultExecutorType</code>创建出对应的<code>Executor</code></li>
+</ul>
+</li>
+<li><code>sqlSession#getMapper</code> =&gt; 返回mapper接口对应的代理对象<code>MapperProxy</code>（<code>implements XxxMapper</code>,里面包括<code>SqlSession</code>对象）</li>
+<li><p>使用返回的代理对象<code>MapperProxy</code>调用接口，执行配置的CRUD方法   </p>
+<ol>
+<li>调用<code>SqlSession</code>的CRUD（<code>Executor</code>）<br>2) 创建<code>StatementHandler</code>对象（同时也会创建出<code>ParameterHandler</code>，<code>ResultSetHandler</code>）<br>3) 调用<code>StatementHandler</code>预编译参数及设置参数值，使用<code>ParameterHandler</code>处理预编译参数<br>4) 调用<code>StatementHandler</code>的CRUD方法 =&gt; JDBC:Statement,PreparedStatement,…<br>5) 使用<code>ResultSetHandler</code>封装结果集</li>
+</ol>
+</li>
+<li><p>总结(主要对象): </p>
+<ul>
+<li><code>Executor</code> (update,query,flushStatements,commit,rollback,getTransaction,close,isClosed) 执行sql</li>
+<li><code>ParameterHandler</code> (getParameterObject,setParameters) 处理预编译参数</li>
+<li><code>ResultSetHandler</code> (handleResultSet,handleOutputParameters) 处理结果集</li>
+<li><code>StatemnetHandler</code> (prepare,parameterize,batch,update,query) 处理Sql语句预编译，设置参数等</li>
+<li><code>TypeHandler</code> 用来在整个过程中，处理Table column =&gt; JavaBean property 映射<ul>
+<li><code>DefaultParameterHandler typeHandler.setParameter(ps,i+1,value,jdbcType)</code>;</li>
+<li><code>DefaultResultSetHandler typeHandler.getResult(rs,column);</code></li>
+</ul>
+</li>
+<li>注： 四大对象(<code>Executor</code>,<code>ParameterHandler</code>,<code>ResultSetHandler</code>,<code>StatementHandler</code>)每个创建的时候都会执行<code>interceptorChain.pluginAll(parameterHandler)</code> 操作，执行插件拦截器</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-58">存储过程</h3>
+<ol>
+<li><p>mysql procedure:</p>
+<pre><code class="lang-sql"> -- 创建
+ delimiter $
+ create procedure get_page_result(
+     IN p_pageNum INTEGER,
+     IN p_pageSize INTEGER,
+     OUT total Integer
+ )
+ begin
+     declare offsetNum int default 0;
+     if p_pageNum is null then
+         set p_pageNum=0;
+     end if;
+     if p_pageSize is null then
+         set p_pageSize=0;
+     end if;
+     set offsetNum = (p_pageNum-1) * p_pageSize;
+     select count(1) into total from pe_employee ;
+     select * from pe_employee limit offsetNum,p_pageSize;
+ end $
+
+ -- 测试
+ set @total=0;
+ call get_page_result(2,3,@total);
+ select @total;
+
+ -- 删除
+ drop procedure get_page_result;
+</code></pre>
+</li>
+<li><p>XxxMapper.xml</p>
+<pre><code class="lang-xml"> &lt;!-- 
+ public List&lt;Employee&gt; getPageResult(MyPageInfo page);
+
+ @Data
+ public class MyPageInfo {
+     private Integer pageNum;
+     private Integer pageSize;
+     private Integer total;
+ }
+ --&gt;
+ &lt;select id=&quot;getPageResult&quot; statementType=&quot;CALLABLE&quot; resultType=&quot;Employee&quot;&gt;
+     {call get_page_result(
+         #{pageNum,mode=IN},
+         #{pageSize,mode=IN},
+         #{total,mode=OUT,jdbcType=INTEGER}
+     )}
+ &lt;/select&gt;
+</code></pre>
+</li>
+<li><p>test</p>
+<pre><code class="lang-java"> @Test
+ public void testProcedure() throws IOException {
+     SqlSessionFactory factory = getSqlSessionFactory();
+     try(SqlSession session=factory.openSession()){
+         EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+
+         MyPageInfo page = new MyPageInfo();
+         page.setPageNum(13);
+         page.setPageSize(3);
+         page.setTotal(0);
+         List&lt;Employee&gt; list = employeeMapper.getPageResult(page);
+         for(Employee emp:list) {
+             System.out.println(emp);
+         }
+         System.out.println(page.getTotal());
+     }
+ }
+ /*
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt;  Preparing: {call get_page_result( ?, ?, ? )} 
+ [QC] DEBUG BaseJdbcLogger.debug | ==&gt; Parameters: 13(Integer), 3(Integer)
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==      Total: 3
+ [QC] DEBUG BaseJdbcLogger.debug | &lt;==    Updates: 0
+ Employee [id=71, name=QA-01, remark=This is Employee QA-01, departmentId=15, status=NORMAL]
+ Employee [id=72, name=QA-02, remark=This is Employee QA-02, departmentId=15, status=CANCEL]
+ Employee [id=73, name=QA-02, remark=This is Employee QA-02, departmentId=15, status=CANCEL]
+ 43
+  */
+</code></pre>
+</li>
+</ol>
+<h3 id="header-59">批量操作</h3>
+<ul>
+<li>非批量：预编译sql &amp; 设置参数 =&gt; 执行10000次 <code>SqlSession session=factory.openSession()</code></li>
+<li>批量：预编译sql &amp; 设置参数 10000次 =&gt; 执行1次 <code>SqlSession session=factory.openSession(ExecutorType.BATCH)</code></li>
+<li>注： springboot中可以注入<code>sqlSessionFactory.openSession(ExecutorType.BATCH)</code>来获取可以执行批量操作的sqlSession</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-java">@SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
+public class BathExecutorTest {
+
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
+
+    /*
+    EmployeeMapper.xml:
+    &lt;insert id=&quot;insertEmployee&quot; useGeneratedKeys=&quot;true&quot; keyProperty=&quot;id&quot;&gt;
+        insert into pe_employee(name,remark,department_id) values (#{name},#{remark},#{departmentId})
+    &lt;/insert&gt;
+    */
+    @Test
+    public void testBatchExecutor() {
+        try(SqlSession session=sqlSessionFactory.openSession(ExecutorType.BATCH)){
+            EmployeeMapper employeeMapper = session.getMapper(EmployeeMapper.class);
+            for(int i=0;i&lt;5;i++) {
+                Employee emp = new Employee(null,&quot;Test-&quot;+i,&quot;This is Test-&quot;+i,3);
+                Integer result = employeeMapper.insertEmployee(emp);
+                System.out.println(result+&quot;,&quot;+emp.getId());
+            }
+            System.out.println(&quot;Done&quot;);
+        }
+    }
+}
+/*
+==&gt;  Preparing: insert into pe_employee(name,remark,department_id) values (?,?,?) 
+==&gt; Parameters: Test-0(String), This is Test-0(String), 3(Integer)
+-2147482646,null
+==&gt; Parameters: Test-1(String), This is Test-1(String), 3(Integer)
+-2147482646,null
+==&gt; Parameters: Test-2(String), This is Test-2(String), 3(Integer)
+-2147482646,null
+==&gt; Parameters: Test-3(String), This is Test-3(String), 3(Integer)
+-2147482646,null
+==&gt; Parameters: Test-4(String), This is Test-4(String), 3(Integer)
+-2147482646,null
+*/
+</code></pre>
+<h2 id="header-60">More</h2>
+<h3 id="header-61">显示sql语句</h3>
+<ul>
+<li>method 1: mybatis-config.xml<pre><code class="lang-xml">  &lt;settings&gt;
+      &lt;setting name=&quot;mapUnderscoreToCamelCase&quot; value=&quot;true&quot;/&gt;
+      &lt;setting name=&quot;logImpl&quot; value=&quot;STDOUT_LOGGING&quot; /&gt; &lt;!-- 控制台显示sql语句--&gt;
+  &lt;/settings&gt;
+</code></pre>
+</li>
+<li><p>method 2: log4j.properties</p>
+<pre><code class="lang-properties">  log4j.rootLogger=error,Stdout
+  # 控制台显示sql语句
+  log4j.logger.com.cj.mybatis=debug
+
+  # 控制台
+  log4j.appender.Stdout=org.apache.log4j.ConsoleAppender
+  log4j.appender.Stdout.layout=org.apache.log4j.PatternLayout
+  log4j.appender.Stdout.layout.ConversionPattern=[QC] %p %C{1}.%M | %m%n
+  log4j.appender.Stdout.Target=System.err
+</code></pre>
+</li>
+<li><p>与springboot结合: application.yml</p>
+<pre><code class="lang-yaml">  logging:
+    level:
+       root: warn
+       com.cj.mybatis.mapper: debug
+</code></pre>
+</li>
+</ul>
+<h3 id="header-62">logback日志</h3>
+<ul>
+<li><p>application.yml</p>
+<pre><code class="lang-yaml">  # 默认就使用logback-spring.xml，可不配置
+  logging:
+    config: classpath:logback-spring.xml
+</code></pre>
+</li>
+<li><p>logback-spring.xml</p>
+<pre><code class="lang-xml">  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+  &lt;configuration&gt;
+      &lt;conversionRule conversionWord=&quot;mycolor&quot; converterClass=&quot;com.cj.mybatis.util.LogColor&quot; /&gt;
+      &lt;appender name=&quot;STDOUT&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;
+          &lt;layout class=&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;
+              &lt;Pattern&gt;
+                  %mycolor(%msg%n)
+              &lt;/Pattern&gt;
+          &lt;/layout&gt;
+      &lt;/appender&gt;
+
+      &lt;!-- 显示sql语句 --&gt;
+      &lt;logger name=&quot;com.cj.mybatis&quot; level=&quot;DEBUG&quot; /&gt;
+      &lt;root level=&quot;info&quot;&gt;
+          &lt;appender-ref ref=&quot;STDOUT&quot; /&gt;
+      &lt;/root&gt;
+  &lt;/configuration&gt;
+</code></pre>
+</li>
+<li><p>彩色输出(自定义实现类：com.cj.mybatis.util.LogColor.java)</p>
+<pre><code class="lang-java">  package com.cj.mybatis.util;
+
+  import ch.qos.logback.classic.Level;
+  import ch.qos.logback.classic.spi.ILoggingEvent;
+  import ch.qos.logback.core.pattern.color.ANSIConstants;
+  import ch.qos.logback.core.pattern.color.ForegroundCompositeConverterBase;
+
+  public class LogColor extends ForegroundCompositeConverterBase&lt;ILoggingEvent&gt;{
+
+      @Override
+      protected String getForegroundColorCode(ILoggingEvent event) {
+          Level level = event.getLevel();
+          switch(level.toInt()) {
+              case Level.ERROR_INT:
+                  return ANSIConstants.RED_FG;
+              case Level.WARN_INT:
+                  return ANSIConstants.YELLOW_FG;
+              case Level.INFO_INT:
+                  return ANSIConstants.BLUE_FG;
+              case Level.DEBUG_INT:
+                  return ANSIConstants.GREEN_FG;
+              case Level.TRACE_INT:
+                  return ANSIConstants.DEFAULT_FG;
+              default:
+                  return ANSIConstants.DEFAULT_FG;
+          }
+      }
+  }
+</code></pre>
+</li>
+<li><p>Logger使用示例：</p>
+<pre><code class="lang-java">  @RestControllerAdvice
+  public class ExceptionControllerAdvice {
+
+      private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionControllerAdvice.class);
+
+      @ExceptionHandler(Throwable.class)
+      public ResponseUtil onException(Throwable ex,HttpServletRequest request){
+          LOGGER.error(&quot;url: {}, msg: {}&quot;, request.getRequestURL(), ex.getMessage());
+          return ResponseUtil.fail(&quot;get exception:&quot;+ex.getMessage());
+      }
+  }
+</code></pre>
+</li>
+</ul>
+
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

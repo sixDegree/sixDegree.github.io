@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Swagger</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Annotation</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Sample</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Swagger</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-11-24T16:00:00.000Z">2019-11-25</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Java">Java</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Annotation</h2>
+<p>Refer to <a href="https://blog.csdn.net/jiangyu1013/article/details/83107255" target="_blank" rel="noopener">swagger2 注解说明</a></p>
+<ul>
+<li><p>请求类上:</p>
+<ul>
+<li><code>@Api(tags=&quot;说明该类的作用&quot;)</code></li>
+</ul>
+</li>
+<li><p>请求方法上 </p>
+<ul>
+<li><code>@ApiOperation(value=&quot;&quot;,notes=&quot;&quot;)</code> 说明方法的用途、作用</li>
+<li><code>@ApiImplicitParams({@ApiImplicitParam(xxxx),...})</code>，<code>@ApiImplicitParam</code> 参数说明<ul>
+<li><code>name</code>：参数名</li>
+<li><code>value</code>：参数的汉字说明、解释</li>
+<li><code>required</code>：参数是否必须传</li>
+<li><code>paramType</code>：参数放在哪个地方<ul>
+<li>header : 请求参数 <code>@RequestHeader</code>获取</li>
+<li>query : 请求参数 <code>@RequestParam</code> 获取</li>
+<li>path: 请求参数<code>@PathVariable</code>获取</li>
+<li>body（不常用）</li>
+<li>form（不常用）    </li>
+</ul>
+</li>
+<li><code>dataType</code>：参数类型，默认String       </li>
+<li><code>defaultValue</code>：参数的默认值</li>
+</ul>
+</li>
+<li><code>@ApiResponses({@ApiResponse(xxx),...})</code> 表示一组响应(一般用于表达错误的响应信息)<ul>
+<li><code>code</code>：数字，例如400</li>
+<li><code>message</code>：信息，例如”请求参数没填好”</li>
+<li><code>response</code>：抛出异常的类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求响应entity上(若无特殊说明，不加注解也可，会使用默认的，即直接使用类名&amp;字段名&amp;类型): </p>
+<ul>
+<li><code>@ApiModel</code>（一般用在post/put创建或修改时，使用@RequestBody的场景，请求参数无法使用<code>@ApiImplicitParam</code>注解进行描述）<pre><code>  的时候）
+</code></pre></li>
+<li><code>@ApiModelProperty</code>：用在entity的属性上</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-java">@ApiOperation(&quot;删除某评论&quot;)
+@ApiImplicitParams({
+        @ApiImplicitParam(name = &quot;id&quot;, value = &quot;id&quot;, dataType = &quot;Integer&quot;, paramType = &quot;path&quot;),
+        @ApiImplicitParam(name = &quot;type&quot;, value = &quot;type&quot;, dataType = &quot;String&quot;, paramType = &quot;path&quot;,
+                allowableValues=&quot;home,school&quot;)
+})
+@ApiResponses({
+    @ApiResponse(code=400,message=&quot;请求参数没填好&quot;),
+    @ApiResponse(code=404,message=&quot;请求路径没有或页面跳转路径不对&quot;)
+})
+@PutMapping(&quot;/comments/{id}/{type}&quot;)
+public Object updateComment(@PathVariable(&quot;id&quot;) Integer id,
+        @PathVariable(&quot;type&quot;)String type,
+        @RequestBody Comment comment){
+   // ...
+}
+</code></pre>
+<h2 id="header-2">Sample</h2>
+<ol>
+<li><p>dependencies</p>
+<pre><code class="lang-xml"> &lt;dependency&gt;
+     &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+     &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;
+     &lt;version&gt;2.9.2&lt;/version&gt;
+ &lt;/dependency&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;io.springfox&lt;/groupId&gt;
+     &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;
+     &lt;version&gt;2.9.2&lt;/version&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>configuration</p>
+<pre><code class="lang-java"> @Configuration
+ @EnableSwagger2
+ public class SwaggerConfig {
+
+     // @Value(&quot;${swagger.enable:false}&quot;)
+     // private boolean enable=false;
+
+     @Bean
+     public Docket docket(Environment env) {
+         Profiles profiles = Profiles.of(&quot;dev&quot;);
+         boolean flag = env.acceptsProfiles(profiles);
+         return new Docket(DocumentationType.SWAGGER_2)
+                 .apiInfo(apiInfo())
+                 .enable(flag) // .enable(enable)
+                 .select()
+                 .apis(RequestHandlerSelectors.basePackage(&quot;com.cj.mybatis.controller&quot;))
+                 //.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+                 //.paths(PathSelectors.any())
+                 .build();
+     }
+
+     private ApiInfo apiInfo() {
+         return new ApiInfoBuilder()
+                 .title(&quot;Swagger Demo&quot;)
+                 .description(&quot;This for swagger demo&quot;)
+                 //.termsOfServiceUrl(&quot;http://blog.csdn.net/saytime&quot;)
+                 .version(&quot;1.0&quot;)
+                 .build();
+     }
+ }
+</code></pre>
+</li>
+<li><p>Controller</p>
+<pre><code class="lang-java"> @Api(tags=&quot;Employee Part&quot;)
+ @RestController
+ public class EmployeeController {
+
+     @Autowired
+     private EmployeeService employeeService;
+
+     // ============================ CRUD ===========================
+
+     @ApiOperation(value=&quot;List Emlpoyees&quot;)
+     @ApiImplicitParams({
+             @ApiImplicitParam(name=&quot;page&quot;,value=&quot;页码&quot;,dataType=&quot;Integer&quot;,paramType=&quot;query&quot;,required=false),
+             @ApiImplicitParam(name=&quot;size&quot;,value=&quot;每页数量&quot;,dataType=&quot;Integer&quot;,paramType=&quot;query&quot;,required=false)
+     })
+     @GetMapping(&quot;/employees&quot;)
+     public Object listEmployees(@RequestParam(name=&quot;page&quot;,required=false) Integer page
+             ,@RequestParam(name=&quot;size&quot;,required=false) Integer size) {
+         if(page!=null &amp;&amp; size!=null) {
+             return ResponseUtil.ok(employeeService.listByPage(page, size));
+         }else {
+             // return new ResponseEntity&lt;&gt;(employeeService.listAll(),HttpStatus.OK);
+             return ResponseUtil.ok(employeeService.listAll());
+         }
+     }
+
+     @ApiOperation(&quot;Get Employee By Id&quot;)
+     @ApiImplicitParam(name=&quot;id&quot;,value=&quot;Employee唯一标识&quot;,dataType=&quot;Integer&quot;,paramType=&quot;path&quot;,required=true)
+     @GetMapping(&quot;/employees/{id}&quot;)
+     public Object getEmployee(@PathVariable Integer id) {
+         return ResponseUtil.ok(employeeService.getEmployee(id));
+     }
+
+     @ApiOperation(&quot;Update Employee By Id&quot;)
+     @ApiImplicitParam(name=&quot;id&quot;,value=&quot;Employee唯一标识&quot;,dataType=&quot;Integer&quot;,paramType=&quot;path&quot;,required=true)
+     @PutMapping(&quot;/employees/{id}&quot;)
+     public Object updateEmployee(@PathVariable(&quot;id&quot;) Integer id,@RequestBody Employee emp) {
+         emp.setId(id);
+         Integer result=this.employeeService.updateEmployee(emp);
+         return ResponseUtil.result(result==1, result);
+     }
+
+     @ApiOperation(&quot;Add Employee&quot;)
+     @PostMapping(&quot;/employees&quot;)
+     public Object insertEmployee(@RequestBody Employee emp) {
+         emp.setId(null);
+         Integer result = this.employeeService.insertEmployee(emp);
+         return ResponseUtil.result(result!=null, result);
+     }
+
+     @ApiOperation(&quot;Delete Employee By Id&quot;)
+     @ApiImplicitParam(name=&quot;id&quot;,value=&quot;Employee唯一标识&quot;,dataType=&quot;Integer&quot;,paramType=&quot;path&quot;,required=true)
+     @DeleteMapping(&quot;/employees/{id}&quot;)
+     public Object deleteEmployee(@PathVariable Integer id) {
+         Integer result = this.employeeService.deleteEmployee(id);
+         return ResponseUtil.result(result==1, result);
+     }
+ }
+</code></pre>
+</li>
+<li><p>entity</p>
+<pre><code class="lang-java"> @ApiModel(&quot;Employee Model&quot;)
+ @Data
+ public class Employee {
+
+     @ApiModelProperty(&quot;唯一标识&quot;)
+     private Integer id;
+
+     @ApiModelProperty(&quot;名称&quot;)
+     private String name;
+
+     @ApiModelProperty(&quot;备注&quot;)
+     private String remark;
+
+     @ApiModelProperty(name=&quot;部门Id&quot;,notes=&quot;Department table primary key&quot;)
+     private Integer departmentId;
+ }
+</code></pre>
+</li>
+<li><p>run then visit: <a href="http://localhost:8080/demo/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/demo/swagger-ui.html</a></p>
+</li>
+</ol>
+
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>
