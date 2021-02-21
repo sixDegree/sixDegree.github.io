@@ -2822,7 +2822,7 @@ export default Category;
 <p>Warning: componentWillMount has been renamed, and is not recommended for use.<br>See <a href="https://fb.me/react-async-component-lifecycle-hooks" target="_blank" rel="noopener">https://fb.me/react-async-component-lifecycle-hooks</a> for details.</p>
 <ul>
 <li>Move code with side effects to componentDidMount, and set initial state in the constructor.</li>
-<li>Rename componentWillMount to UNSAFE<em>componentWillMount to suppress this warning in non-strict mode. In React 17.x, only the UNSAFE</em> name will work. To rename all deprecated lifecycles to their new names, you can run <code>npx react-codemod rename-unsafe-lifecycles</code> in your project source folder.</li>
+<li>Rename componentWillMount to UNSAFE_componentWillMount to suppress this warning in non-strict mode. In React 17.x, only the UNSAFE_ name will work. To rename all deprecated lifecycles to their new names, you can run <code>npx react-codemod rename-unsafe-lifecycles</code> in your project source folder.</li>
 </ul>
 <p>Please update the following components: LoadableComponent</p>
 <h3 id="header-50">Next.js 创建同构应用</h3>
