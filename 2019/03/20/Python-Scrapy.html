@@ -472,18 +472,24 @@
           |__________________________________|
 </code></pre></li>
 <li>路径1: <ul>
-<li>Spider =&gt; <code>request</code> =&gt; Engine =&gt; <code>request</code> =&gt; Schedule<br>  (<code>Engine</code>从<code>Spider</code>处获得爬取<code>Request</code>，然后将<code>Request</code>转发给<code>Scheduler</code>,用于调度)</li>
+<li>Spider =&gt; <code>request</code> =&gt; Engine =&gt; <code>request</code> =&gt; Schedule
+  (<code>Engine</code>从<code>Spider</code>处获得爬取<code>Request</code>，然后将<code>Request</code>转发给<code>Scheduler</code>,用于调度)</li>
 </ul>
 </li>
 <li>路径2:<ul>
-<li>Schedule =&gt; <code>request</code> =&gt; Engine =&gt; <code>request</code> =&gt; Downloader Middleware =&gt; Downloader<br>  （<code>Engine</code>从<code>Scheduler</code>处获得下一个要爬取的<code>Request</code>，通过<code>Downloader Middleware</code>后发给<code>Downloader</code> ）</li>
-<li>Downloader =&gt; <code>response</code> =&gt; Downloader Middleware =&gt; Engine =&gt; Spider Middleware =&gt; Spider<br>  （爬取网页后<code>Downloader</code>形成响应<code>Response</code>, 通过<code>Downloader Middleware</code>后发回<code>Engine</code>，<code>Engine</code>将收到的响应通过<code>Spider Middleware</code>发送给<code>Spider</code>处理）</li>
+<li>Schedule =&gt; <code>request</code> =&gt; Engine =&gt; <code>request</code> =&gt; Downloader Middleware =&gt; Downloader
+  （<code>Engine</code>从<code>Scheduler</code>处获得下一个要爬取的<code>Request</code>，通过<code>Downloader Middleware</code>后发给<code>Downloader</code> ）</li>
+<li>Downloader =&gt; <code>response</code> =&gt; Downloader Middleware =&gt; Engine =&gt; Spider Middleware =&gt; Spider
+  （爬取网页后<code>Downloader</code>形成响应<code>Response</code>, 通过<code>Downloader Middleware</code>后发回<code>Engine</code>，<code>Engine</code>将收到的响应通过<code>Spider Middleware</code>发送给<code>Spider</code>处理）</li>
 </ul>
 </li>
 <li>路径3:<ul>
-<li>Spider =&gt; <code>Scraped Item</code> &amp; <code>New Requests</code> =&gt; Engine<br>  ( <code>Spider</code>处理响应后产生爬取项<code>Scraped Item</code> 和新的爬取请求<code>Requests</code>给<code>Engine</code>)</li>
-<li>Engine =&gt; <code>Scraped Item</code> =&gt; Item Pipeline<br>  (<code>Engine</code>将爬取项<code>Scraped Item</code>发送给框架出口<code>Item Pipeline</code>)</li>
-<li>Engine =&gt; <code>New Requests</code> =&gt; Scheduler<br>  (<code>Engine</code>将爬取<code>Request</code>发送给<code>Scheduler</code>)</li>
+<li>Spider =&gt; <code>Scraped Item</code> &amp; <code>New Requests</code> =&gt; Engine 
+  ( <code>Spider</code>处理响应后产生爬取项<code>Scraped Item</code> 和新的爬取请求<code>Requests</code>给<code>Engine</code>)</li>
+<li>Engine =&gt; <code>Scraped Item</code> =&gt; Item Pipeline 
+  (<code>Engine</code>将爬取项<code>Scraped Item</code>发送给框架出口<code>Item Pipeline</code>)</li>
+<li>Engine =&gt; <code>New Requests</code> =&gt; Scheduler 
+  (<code>Engine</code>将爬取<code>Request</code>发送给<code>Scheduler</code>)</li>
 </ul>
 </li>
 </ul>
@@ -705,7 +711,7 @@
 <li>eg: <code>response.css(&#39;title::text&#39;).get(default=&#39;&#39;)</code>,<code>response.css(&#39;a::attr(href)&#39;).getall()</code></li>
 </ul>
 </li>
-<li><a href="http://doc.scrapy.org/en/latest/topics/selectors.html" target="_blank" rel="noopener">Selector 文档</a></li>
+<li><a href="http://doc.scrapy.org/en/latest/topics/selectors.html">Selector 文档</a></li>
 </ul>
 <h3 id="header-10">Settings 优先级</h3>
 <pre><code class="lang-python">SETTINGS_PRIORITIES = {
@@ -1036,7 +1042,7 @@ $ scrapy shell -s CONCURRENT_REQUESTS=19
 <li>表示一个HTTP请求,由<code>Spider</code>生成,<code>Downloader</code>执行</li>
 <li>属性：<ul>
 <li><code>.url</code> : Request对应的请求URL地址</li>
-<li><code>.method</code> : 对应的请求方法,’GET’ ‘POST’等</li>
+<li><code>.method</code> : 对应的请求方法,&#39;GET&#39; &#39;POST&#39;等</li>
 <li><code>.headers</code>: 字典类型风格的请求头</li>
 <li><code>.body</code> : 请求内容主体,字符串类型</li>
 <li><code>.meta</code> : 用户添加的扩展信息,在Scrapy内部模块间传递信息使用</li>
@@ -1102,7 +1108,7 @@ $ scrapy shell -s CONCURRENT_REQUESTS=19
 </li>
 </ul>
 <h2 id="header-13">Spider</h2>
-<p>Refer <a href="http://doc.scrapy.org/en/latest/topics/spiders.html#scrapy-spider" target="_blank" rel="noopener">Scrapy Spider</a></p>
+<p>Refer <a href="http://doc.scrapy.org/en/latest/topics/spiders.html#scrapy-spider">Scrapy Spider</a></p>
 <h3 id="header-14">创建运行Spider</h3>
 <ol>
 <li><p>创建Spider： <code>scrapy genspider &lt;-t [template:default is basic]&gt; [spiderName] [domain]</code></p>
@@ -1299,8 +1305,8 @@ class Top250Spider(CrawlSpider):
 <li>deny_extensions=None</li>
 <li>restrict_xpaths=()</li>
 <li>restrict_css=()</li>
-<li>tags=(‘a’, ‘area’)</li>
-<li>attrs=(‘href’, )</li>
+<li>tags=(&#39;a&#39;, &#39;area&#39;)</li>
+<li>attrs=(&#39;href&#39;, )</li>
 <li>canonicalize=False</li>
 <li>unique=True</li>
 <li>process_value=None</li>
@@ -1438,9 +1444,9 @@ class SinaRssSpider(XMLFeedSpider):
 <ol>
 <li>属性：<ul>
 <li><code>iterator = &#39;iternodes&#39;</code><ul>
-<li>‘iternodes’(default): a fast iterator based on regular expressions </li>
-<li>‘html’: an iterator which uses Selector (load all DOM in memory)</li>
-<li>‘xml’: an iterator which uses Selector (load all DOM in memory)</li>
+<li>&#39;iternodes&#39;(default): a fast iterator based on regular expressions </li>
+<li>&#39;html&#39;: an iterator which uses Selector (load all DOM in memory)</li>
+<li>&#39;xml&#39;: an iterator which uses Selector (load all DOM in memory)</li>
 </ul>
 </li>
 <li><code>itertag = &#39;item&#39;</code>: the name of the node (or element) to iterate in</li>
@@ -1675,8 +1681,8 @@ class MySpider(SitemapSpider):
 <li>clear()</li>
 <li>get(key,default)</li>
 <li>setdefault(key,default)</li>
-<li>update(…)</li>
-<li>popitem(…)</li>
+<li>update(...)</li>
+<li>popitem(...)</li>
 </ul>
 </li>
 </ul>
@@ -1752,8 +1758,9 @@ class MySpider(SitemapSpider):
 </li>
 </ol>
 <h3 id="header-21">ItemLoader</h3>
-<p>Refer <a href="http://doc.scrapy.org/en/latest/topics/loaders.html" target="_blank" rel="noopener">Item Loaders</a></p>
-<p>方便对数据进行格式化，填充Item（字段赋值）<br>（Item提供保存抓取到数据的容器，Itemloader提供的是填充容器的机制）</p>
+<p>Refer <a href="http://doc.scrapy.org/en/latest/topics/loaders.html">Item Loaders</a></p>
+<p>方便对数据进行格式化，填充Item（字段赋值）
+（Item提供保存抓取到数据的容器，Itemloader提供的是填充容器的机制）</p>
 <p><strong> Sample1: </strong></p>
 <ol>
 <li><p>Item：</p>
@@ -2325,9 +2332,8 @@ class MySpider(SitemapSpider):
 <p><strong> Sample : Douban Top 250 Item and Cover(image) download </strong></p>
 <ul>
 <li>Store items to file</li>
-<li>Download item’s cover (image)</li>
-</ul>
-<ol>
+<li><p>Download item&#39;s cover (image)</p>
+</li>
 <li><p>item.py</p>
 <pre><code class="lang-python"> class CoverItem(scrapy.Item):
      name=scrapy.Field()
@@ -2448,7 +2454,7 @@ class MySpider(SitemapSpider):
 }
 </code></pre>
 </li>
-</ol>
+</ul>
 <h3 id="header-25">Item Exporters</h3>
 <p>数据导出器(Exporter)：</p>
 <ul>
@@ -2638,14 +2644,14 @@ http://movie.douban.com/,#screening li[data-title],::attr(data-title),::attr(dat
 <pre><code class="lang-bash"> pip install pypiwin32
 </code></pre>
 </li>
-<li><p>AttributeError: ‘TelnetConsole’ object has no attribute ‘port’</p>
+<li><p>AttributeError: &#39;TelnetConsole&#39; object has no attribute &#39;port&#39;</p>
 <pre><code> set TELNETCONSOLE_PORT setting to None (instead of default [6023, 6073]). 
  If that doesn&#39;t work and if you don&#39;t need the telnet console, simply disable the extension altogether with setting `TELNETCONSOLE_ENABLED=False`
 </code></pre></li>
-<li><p>AttributeError: ‘module’ object has no attribute ‘F_GETFD’ </p>
+<li><p>AttributeError: &#39;module&#39; object has no attribute &#39;F_GETFD&#39; </p>
 <pre><code> 找到python3/Lib 中将fcntl.py改名成fcntl_ex.py再运行
 </code></pre></li>
-<li><p>403 forbidden :  <a href="https://www.jianshu.com/p/31c7426c0da8" target="_blank" rel="noopener">https://www.jianshu.com/p/31c7426c0da8</a></p>
+<li><p>403 forbidden :  <a href="https://www.jianshu.com/p/31c7426c0da8">https://www.jianshu.com/p/31c7426c0da8</a></p>
 <pre><code class="lang-python"> # setting.py: set &#39;User-Agent&#39;
 
  #  method1: Override the default request headers:
@@ -2659,7 +2665,7 @@ http://movie.douban.com/,#screening li[data-title],::attr(data-title),::attr(dat
  USER_AGENT=&#39;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101 Firefox/60.0&#39;
 </code></pre>
 </li>
-<li><p>proxy:  <a href="https://blog.csdn.net/wuchenlhy/article/details/80683829" target="_blank" rel="noopener">https://blog.csdn.net/wuchenlhy/article/details/80683829</a></p>
+<li><p>proxy:  <a href="https://blog.csdn.net/wuchenlhy/article/details/80683829">https://blog.csdn.net/wuchenlhy/article/details/80683829</a></p>
 <ul>
 <li><p>method1: middlewares.py:</p>
 <pre><code class="lang-python">  # downloader middleware:
@@ -2697,7 +2703,7 @@ http://movie.douban.com/,#screening li[data-title],::attr(data-title),::attr(dat
 <li><code>Scrapy-Redis</code>: <ul>
 <li>在Scrapy基础上，重新实现了Scrapy的Scheduler，Queue等组建，使用Redis维护共享队列</li>
 <li>如果Requests队列为空，则会从第一个启动的爬虫的start_urls开始；不为空，则继续从队列中调度出Request进行爬取解析</li>
-<li>Refer <a href="https://github.com/rolando/scrapy-redis" target="_blank" rel="noopener">Github Scrapy-Redis</a></li>
+<li>Refer <a href="https://github.com/rolando/scrapy-redis">Github Scrapy-Redis</a></li>
 <li>安装：<code>pip install scrapy-redis</code></li>
 </ul>
 </li>
@@ -2855,12 +2861,12 @@ http://movie.douban.com/,#screening li[data-title],::attr(data-title),::attr(dat
 </ol>
 <h2 id="header-33">Scrapyd (for Deploy)</h2>
 <ul>
-<li><a href="https://scrapyd.readthedocs.io/en/latest/" target="_blank" rel="noopener">Scrapyd Doc</a></li>
+<li><a href="https://scrapyd.readthedocs.io/en/latest/">Scrapyd Doc</a></li>
 <li>安装：<code>pip install scrapyd</code>,check: <code>scrapyd -h</code></li>
 <li>启动：<code>scrapyd</code>,then could visit: <code>http://127.0.0.1:6800/</code></li>
 </ul>
 <h3 id="header-34">deploy project</h3>
-<p>deploy tools: <a href="https://github.com/scrapy/scrapyd-client" target="_blank" rel="noopener">scrapyd-client</a></p>
+<p>deploy tools: <a href="https://github.com/scrapy/scrapyd-client">scrapyd-client</a></p>
 <ul>
 <li>安装：<code>pip install scrapyd-client</code></li>
 <li>编辑项目的<code>scrapy.cfg</code>文件的<code>[deploy]</code>部分：<pre><code>  [deploy]
@@ -2957,7 +2963,7 @@ http://movie.douban.com/,#screening li[data-title],::attr(data-title),::attr(dat
 </ul>
 <h3 id="header-36">调用Scrapyd API（使用python-scrapyd-api包）</h3>
 <ul>
-<li>Refer <a href="https://github.com/djm/python-scrapyd-api" target="_blank" rel="noopener">Github</a></li>
+<li>Refer <a href="https://github.com/djm/python-scrapyd-api">Github</a></li>
 <li>安装：<code>pip install python-scrapyd-api</code></li>
 <li><p>使用：</p>
 <pre><code class="lang-python">  &gt;&gt;&gt; from scrapyd_api import ScrapydAPI
@@ -3002,10 +3008,10 @@ http://movie.douban.com/,#screening li[data-title],::attr(data-title),::attr(dat
 </ul>
 <h2 id="header-37">Reference</h2>
 <ul>
-<li><a href="https://github.com/sixDegree/python-scrapy-demo" target="_blank" rel="noopener">My Demo</a></li>
-<li><a href="https://github.com/jackfrued/Python-100-Days/tree/master/Day66-75" target="_blank" rel="noopener">Python - 100天从新手到大师:爬虫开发</a></li>
-<li><a href="https://blog.csdn.net/zwq912318834/article/details/79530828" target="_blank" rel="noopener">如何使用scrapy中的ItemLoader提取数据？</a></li>
-<li><a href="https://cuiqingcai.com/4421.html" target="_blank" rel="noopener">小白进阶之Scrapy第四篇（图片下载管道篇）</a></li>
+<li><a href="https://github.com/sixDegree/python-scrapy-demo">My Demo</a></li>
+<li><a href="https://github.com/jackfrued/Python-100-Days/tree/master/Day66-75">Python - 100天从新手到大师:爬虫开发</a></li>
+<li><a href="https://blog.csdn.net/zwq912318834/article/details/79530828">如何使用scrapy中的ItemLoader提取数据？</a></li>
+<li><a href="https://cuiqingcai.com/4421.html">小白进阶之Scrapy第四篇（图片下载管道篇）</a></li>
 </ul>
   </section>
 </article>

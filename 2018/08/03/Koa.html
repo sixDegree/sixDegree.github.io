@@ -130,8 +130,9 @@
 <blockquote>
 <p>Koa: next generation web framework for node.js</p>
 </blockquote>
-<p><a href="https://koajs.com" target="_blank" rel="noopener">官网</a></p>
-<p>一个比expess更简洁轻量的nodeJS web框架 （requires node v7.6.0 or higher）<br>如今版本已更新到了koa2，性能更优异，还支持async/await（JS原生支持，本身是generator语法糖，实现了同步写异步，终结异步回调）</p>
+<p><a href="https://koajs.com">官网</a></p>
+<p>一个比expess更简洁轻量的nodeJS web框架 （requires node v7.6.0 or higher）
+如今版本已更新到了koa2，性能更优异，还支持async/await（JS原生支持，本身是generator语法糖，实现了同步写异步，终结异步回调）</p>
 <h3 id="header-2">Hello world</h3>
 <ol>
 <li><p>init:</p>
@@ -221,8 +222,10 @@ const app=new Koa();
 <p>Koa 应用程序是一个包含一组中间件函数的对象，按照类似堆栈的方式组织和执行。</p>
 <p>Middleware 实际就是一个函数，使用<code>use(function)</code>加载middleware，使用<code>next</code>进入下一个middleware。</p>
 <h3 id="header-5">Express VS Koa</h3>
-<p>Express Middleware： 顺序执行，从第一个中间件执行到最后一个中间件，发出响应<br><img src="/2018/08/03/express-middleware.jpg" alt="Express Middleware"></p>
-<p>Koa Middleware： 洋葱模型，一层层的打开，再一层层的闭合，直到第一个中间件执行结束才发出响应<br><img src="/2018/08/03/koa-middleware.jpg" alt="Koa Middleware"></p>
+<p>Express Middleware： 顺序执行，从第一个中间件执行到最后一个中间件，发出响应
+<img src="/2018/08/03/express-middleware.jpg" alt="Express Middleware"></p>
+<p>Koa Middleware： 洋葱模型，一层层的打开，再一层层的闭合，直到第一个中间件执行结束才发出响应
+<img src="/2018/08/03/koa-middleware.jpg" alt="Koa Middleware"></p>
 <p>Express: <code>A-&gt;B-&gt;C-&gt;...-&gt;N</code></p>
 <pre><code class="lang-javascript">// middleware A
 app.use(function(request,response,next){
@@ -363,7 +366,7 @@ app.use((ctx,next)=&gt;{
 <tbody>
 <tr>
 <td>1</td>
-<td style="text-align:left">执行必须靠执行器（eg：co模块–用于 Generator 函数的自动执行）</td>
+<td style="text-align:left">执行必须靠执行器（eg：co模块--用于 Generator 函数的自动执行）</td>
 <td style="text-align:left">async函数自带执行器</td>
 </tr>
 <tr>
@@ -1226,27 +1229,27 @@ app.listen(3000,()=&gt;{
 </li>
 </ol>
 <h2 id="header-23">Reference</h2>
-<p><a href="https://github.com/sixDegree/node-mongo" target="_blank" rel="noopener">my demo</a></p>
+<p><a href="https://github.com/sixDegree/node-mongo">my demo</a></p>
 <p>Blog:</p>
 <ul>
-<li><a href="http://www.ruanyifeng.com/blog/2017/08/koa.html" target="_blank" rel="noopener">ruanyf/koa</a> | <a href="https://github.com/ruanyf/koa-demos.git" target="_blank" rel="noopener">ruanyf/koa demo</a></li>
-<li><a href="https://www.jianshu.com/p/f59594b90500" target="_blank" rel="noopener">如何使用koa2+es6/7打造高质量Restful API</a></li>
-<li><a href="https://www.jianshu.com/p/d3afa36aa17a" target="_blank" rel="noopener">koa2入门笔记</a></li>
-<li><a href="https://www.jianshu.com/p/6b816c609669" target="_blank" rel="noopener">koa2从起步到填坑</a></li>
-<li><a href="https://www.jianshu.com/p/f8cfb82b4dad" target="_blank" rel="noopener">koa2 async和await 实战详解</a></li>
-<li><a href="https://segmentfault.com/a/1190000013039187" target="_blank" rel="noopener">koa-session学习笔记</a></li>
-<li><a href="https://segmentfault.com/a/1190000012412299" target="_blank" rel="noopener">从koa-session中间件源码学习cookie与session</a></li>
-<li><a href="https://mongoosejs.com/docs/guide.html" target="_blank" rel="noopener">Mongoose</a></li>
-<li><a href="https://www.jianshu.com/p/554a5bf67b31" target="_blank" rel="noopener">mongoose使用之查询篇</a></li>
-<li><a href="https://www.jianshu.com/p/265ff15bca7a" target="_blank" rel="noopener">Mongoose初使用总结</a></li>
-<li><a href="https://www.jianshu.com/p/dcdd116600fe" target="_blank" rel="noopener">koa2+mongodb搭建简易nodejs后台接口服务</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2017/08/koa.html">ruanyf/koa</a> | <a href="https://github.com/ruanyf/koa-demos.git">ruanyf/koa demo</a></li>
+<li><a href="https://www.jianshu.com/p/f59594b90500">如何使用koa2+es6/7打造高质量Restful API</a></li>
+<li><a href="https://www.jianshu.com/p/d3afa36aa17a">koa2入门笔记</a></li>
+<li><a href="https://www.jianshu.com/p/6b816c609669">koa2从起步到填坑</a></li>
+<li><a href="https://www.jianshu.com/p/f8cfb82b4dad">koa2 async和await 实战详解</a></li>
+<li><a href="https://segmentfault.com/a/1190000013039187">koa-session学习笔记</a></li>
+<li><a href="https://segmentfault.com/a/1190000012412299">从koa-session中间件源码学习cookie与session</a></li>
+<li><a href="https://mongoosejs.com/docs/guide.html">Mongoose</a></li>
+<li><a href="https://www.jianshu.com/p/554a5bf67b31">mongoose使用之查询篇</a></li>
+<li><a href="https://www.jianshu.com/p/265ff15bca7a">Mongoose初使用总结</a></li>
+<li><a href="https://www.jianshu.com/p/dcdd116600fe">koa2+mongodb搭建简易nodejs后台接口服务</a></li>
 </ul>
 <p>Useful npm:</p>
 <ul>
-<li><a href="https://www.npmjs.com/package/koa-session2" target="_blank" rel="noopener">koa session2</a></li>
-<li><a href="https://www.npmjs.com/package/route-parser" target="_blank" rel="noopener">route-parser</a></li>
-<li><a href="https://www.npmjs.com/package/path-parser" target="_blank" rel="noopener">path-parser</a></li>
-<li><a href="https://www.npmjs.com/package/url-pattern" target="_blank" rel="noopener">url-pattern</a></li>
+<li><a href="https://www.npmjs.com/package/koa-session2">koa session2</a></li>
+<li><a href="https://www.npmjs.com/package/route-parser">route-parser</a></li>
+<li><a href="https://www.npmjs.com/package/path-parser">path-parser</a></li>
+<li><a href="https://www.npmjs.com/package/url-pattern">url-pattern</a></li>
 </ul>
   </section>
 </article>

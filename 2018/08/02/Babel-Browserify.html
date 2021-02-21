@@ -127,7 +127,7 @@
   </section>
   <section class="post-content">
     <h2 id="header-1">Babel 转码器</h2>
-<p><a href="https://babeljs.io/" target="_blank" rel="noopener">Babel</a></p>
+<p><a href="https://babeljs.io/">Babel</a></p>
 <blockquote>
 <p>Babel is a JavaScript compiler ( Put in next-gen JavaScript, Get browser-compatible JavaScript out)</p>
 </blockquote>
@@ -230,7 +230,9 @@
 </ol>
 <h3 id="header-3">钩子</h3>
 <p><strong> babel-polyfill </strong></p>
-<p>Babel默认只转换新的JavaScript句法，而不转换新的API（如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法，eg：Object.assign）详细清单可以查看<code>babel-plugin-transform-runtime</code>模块的<a href="https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/definitions.js" target="_blank" rel="noopener">definitions.js</a>文件<br>eg：<br>ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。</p>
+<p>Babel默认只转换新的JavaScript句法，而不转换新的API（如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法，eg：Object.assign）详细清单可以查看<code>babel-plugin-transform-runtime</code>模块的<a href="https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/definitions.js">definitions.js</a>文件
+eg：
+ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。</p>
 <p>安装：</p>
 <pre><code class="lang-bash">npm install --save babel-polyfill
 </code></pre>
@@ -278,7 +280,7 @@ require(&quot;./index.js&quot;);            // 然后，就不需要手动对ind
 <li>transform方法说明：<ul>
 <li>参数：<ul>
 <li>参数一：一个字符串，表示需要转换的ES6代码</li>
-<li>参数二：配置对象options，可以参看<a href="http://babeljs.io/docs/usage/options/" target="_blank" rel="noopener">官方文档</a></li>
+<li>参数二：配置对象options，可以参看<a href="http://babeljs.io/docs/usage/options/">官方文档</a></li>
 </ul>
 </li>
 <li>返回对象：<code>{ code, map, ast }</code></li>
@@ -356,14 +358,14 @@ require(&quot;./index.js&quot;);            // 然后，就不需要手动对ind
   };
 </code></pre>
 </li>
-<li>在线转换：Babel提供一个<a href="https://babeljs.io/repl/" target="_blank" rel="noopener">REPL在线编译器</a>，可以在线将ES6代码转为ES5代码。转换后的代码，可以直接作为ES5代码插入网页运行</li>
+<li>在线转换：Babel提供一个<a href="https://babeljs.io/repl/">REPL在线编译器</a>，可以在线将ES6代码转为ES5代码。转换后的代码，可以直接作为ES5代码插入网页运行</li>
 </ul>
 </li>
 </ol>
 <h2 id="header-6">Browserify</h2>
-<p><a href="http://browserify.org/" target="_blank" rel="noopener">Browserify</a></p>
+<p><a href="http://browserify.org/">Browserify</a></p>
 <blockquote>
-<p>Browserify lets you require(‘modules’) in the browser by bundling up all of your dependencies</p>
+<p>Browserify lets you require(&#39;modules&#39;) in the browser by bundling up all of your dependencies</p>
 </blockquote>
 <p>让服务器端的CommonJS格式的模块可以运行在浏览器端（Browserify编译时，会将脚本所依赖的模块一起编译进去，即可以将多个模块合并成一个文件）</p>
 <p>Demo:</p>
@@ -384,8 +386,8 @@ require(&quot;./index.js&quot;);            // 然后，就不需要手动对ind
 </li>
 </ol>
 <h2 id="header-7">Reference</h2>
-<p><a href="http://www.ruanyifeng.com/blog/2014/09/package-management.html" target="_blank" rel="noopener">阮一峰/前端模块管理器简介</a></p>
-<p><a href="http://www.ruanyifeng.com/blog/2016/01/babel.html" target="_blank" rel="noopener">阮一峰/Babel 入门教程</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2014/09/package-management.html">阮一峰/前端模块管理器简介</a></p>
+<p><a href="http://www.ruanyifeng.com/blog/2016/01/babel.html">阮一峰/Babel 入门教程</a></p>
   </section>
 </article>
 

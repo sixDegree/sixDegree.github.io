@@ -134,7 +134,8 @@
 <li>使用原型链和伪装函数组合模拟继承，创建子对象</li>
 </ul>
 <h3 id="header-1">类</h3>
-<p>使用<code>function</code>,<code>prototype</code>和<code>constructor</code>模拟<br>（参考<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="noopener">Javascript继承机制的设计思想</a>）</p>
+<p>使用<code>function</code>,<code>prototype</code>和<code>constructor</code>模拟
+（参考<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html">Javascript继承机制的设计思想</a>）</p>
 <ul>
 <li><p><code>function Xxx(args){...}</code></p>
 <ul>
@@ -173,7 +174,8 @@ Person.prototype={
 <li><code>Person prototype对象</code>中有一个<code>constructor属性</code>，指向<code>function Person</code></li>
 <li>所以可以通过<code>new Person()</code>创建对象</li>
 <li>注意：使用<code>json</code>方式构建prototype，需手动指定constructor，若不写，则默认指向Object</li>
-<li>原型内存模型：<br>  <img src="/2014/02/01/prototype-1.png" alt="Prototype"></li>
+<li>原型内存模型：
+  <img src="/2014/02/01/prototype-1.png" alt="Prototype"></li>
 </ul>
 <p>创建对象，并测试：</p>
 <pre><code class="lang-js">var p1=new Person();
@@ -195,12 +197,11 @@ p2.say();    // Ada 22
 <li><code>p2.name</code> 返回<code>Ada</code>（p2对象定义的值）</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>注意：这个<code>_prop_</code>属性外部是不能访问的</li>
 </ul>
 </li>
-<li>原型内存模型：<br>  <img src="/2014/02/01/prototype-2.png" alt="Prototype"></li>
+<li>原型内存模型：
+  <img src="/2014/02/01/prototype-2.png" alt="Prototype"></li>
 </ul>
 <p>检测对象：</p>
 <pre><code class="lang-js">Person.prototype.isPrototypeOf(p1);        //true

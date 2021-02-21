@@ -126,7 +126,8 @@
   <section class="post-content">
     <h2 id="header-1">Starter</h2>
 <p><img src="/2020/11/20/oauth-draft.png" alt="OAuth"></p>
-<p>OAuth2.0 是一种协议，提供认证和授权的标准<br>SpringSecurity，Shiro等框架有自己的实现</p>
+<p>OAuth2.0 是一种协议，提供认证和授权的标准
+SpringSecurity，Shiro等框架有自己的实现</p>
 <p>OAuth2.0 涵盖两个服务，可放于一个应用程序中实现，也可用于 1（认证服务）+ N（资源服务）分别部署</p>
 <ul>
 <li>认证服务 Authorization Server：认证合法性，颁发token，即包含两个必须要实现的endpoints<ul>
@@ -157,9 +158,9 @@
 <li>ClientDetailsServiceConfigurer 配置哪些客户端可使用此服务</li>
 <li>AuthorizationServerEndpointsConfigurer 配置获取token的访问端点，token服务（token如何发放，存储等）<ul>
 <li>通过以下属性决定支持的授权类型(Grant Types)<ul>
-<li>authenticationManager 为”password”模式服务</li>
+<li>authenticationManager 为&quot;password&quot;模式服务</li>
 <li>userDetailsService</li>
-<li>authorizationCodeServices 为“authorization_code”授权码模式服务</li>
+<li>authorizationCodeServices 为“authorization_code&quot;授权码模式服务</li>
 <li>implicitGrantService 设置隐式授权模式</li>
 <li>tokenGranter 自定义模式使用</li>
 </ul>
@@ -187,7 +188,7 @@
 <li><p>认证：验证账号密码</p>
 </li>
 <li>授权：这个角色能操作哪些数据<ul>
-<li>角色：人（运营，编辑，管理员，…）/ 系统 （日志系统，监控系统，…）/ 时间（定时清理，…）</li>
+<li>角色：人（运营，编辑，管理员，...）/ 系统 （日志系统，监控系统，...）/ 时间（定时清理，...）</li>
 <li>权限控制模型：<ul>
 <li>RBAC 基于角色的访问控制 (Role Based Access Control)</li>
 <li>ACL 访问控制列表</li>
@@ -217,7 +218,9 @@
 <li>RemoteTokenService 资源服务器通过Http方式，请求认证服点（/oauth/check_token）来完成解码token（认证和资源服务不在同一个应用程序时使用）</li>
 </ul>
 <h3 id="header-4">Doc</h3>
-<p><a href="https://spring.io/projects/spring-security-oauth" target="_blank" rel="noopener">https://spring.io/projects/spring-security-oauth</a><br><a href="https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide</a><br><a href="https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql</a></p>
+<p><a href="https://spring.io/projects/spring-security-oauth">https://spring.io/projects/spring-security-oauth</a>
+<a href="https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide">https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide</a>
+<a href="https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql">https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql</a></p>
 <h2 id="header-5">Sample</h2>
 <h3 id="header-6">认证服务: 基于内存方式</h3>
 <ol>
@@ -455,7 +458,7 @@
 <li>client_secret: $2a$10$i5enbghKJ1yqj9r7XuyJC.Rs0gGSTzjiv5vQvz/ShghJhjomHaqUa （DearApp加密和的字符串）</li>
 <li>scope: app</li>
 <li>authorized_grant_types: authorization_code,password,refresh_token</li>
-<li>web_server_redirect_uri: <a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a></li>
+<li>web_server_redirect_uri: <a href="http://www.baidu.com">http://www.baidu.com</a></li>
 </ul>
 </li>
 <li><p>配置数据源</p>
@@ -555,7 +558,7 @@
 </ol>
 <h3 id="header-8">RBAC</h3>
 <ol>
-<li><p>数据库 (<a href="https://github.com/topsale/spring-boot-samples/blob/master/spring-security-oauth2/spring-security-oauth2-server/db/rbac.sql" target="_blank" rel="noopener">https://github.com/topsale/spring-boot-samples/blob/master/spring-security-oauth2/spring-security-oauth2-server/db/rbac.sql</a>)</p>
+<li><p>数据库 (<a href="https://github.com/topsale/spring-boot-samples/blob/master/spring-security-oauth2/spring-security-oauth2-server/db/rbac.sql">https://github.com/topsale/spring-boot-samples/blob/master/spring-security-oauth2/spring-security-oauth2-server/db/rbac.sql</a>)</p>
 <pre><code class="lang-sql"> /*
  SQLyog  v12.2.6 (64 bit)
  MySQL - 8.0.15 : Database - dear_v1_auth
@@ -822,8 +825,6 @@
   }
 </code></pre>
 </li>
-</ul>
-<ul>
 <li>放式二： dear-auth项目 config/AuthorizationServerConfig =&gt; visit <code>http://localhost:5000/dear-auth/oauth/check_token?token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</code> + Basic Auth 成功<pre><code class="lang-java">  /// Sample 3： 此认证服务器的安全策略
   @Override
   public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -871,20 +872,28 @@
 </li>
 </ol>
 <h3 id="header-10">Test</h3>
-<p>GET <a href="http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code&amp;scope=app&amp;redirect_uri=http://www.baidu.com" target="_blank" rel="noopener">http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code&amp;scope=app&amp;redirect_uri=http://www.baidu.com</a></p>
-<p>POST <a href="http://localhost:5000/dear-auth/oauth/token" target="_blank" rel="noopener">http://localhost:5000/dear-auth/oauth/token</a></p>
-<p>curl -d ‘grant_type=authorization_code&amp;code=3Tgl8q’ -X POST <a href="http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token" target="_blank" rel="noopener">http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token</a> -i</p>
-<p>GET <a href="http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25" target="_blank" rel="noopener">http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</a></p>
-<p>GET <a href="http://DearApp:DearApp@localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25" target="_blank" rel="noopener">http://DearApp:DearApp@localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</a></p>
+<p>GET <a href="http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code&amp;scope=app&amp;redirect_uri=http://www.baidu.com">http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code&amp;scope=app&amp;redirect_uri=http://www.baidu.com</a></p>
+<p>POST <a href="http://localhost:5000/dear-auth/oauth/token">http://localhost:5000/dear-auth/oauth/token</a></p>
+<p>curl -d &#39;grant_type=authorization_code&amp;code=3Tgl8q&#39; -X POST <a href="http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token">http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token</a> -i</p>
+<p>GET <a href="http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25">http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</a></p>
+<p>GET <a href="http://DearApp:DearApp@localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25">http://DearApp:DearApp@localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</a></p>
 <h3 id="header-11">ISSUE</h3>
-<p>SpringSecurityOAuth2登录后无法跳转获取授权码地址，直接跳转根路径原因详解<br><a href="https://blog.csdn.net/CSDN877425287/article/details/110948221" target="_blank" rel="noopener">https://blog.csdn.net/CSDN877425287/article/details/110948221</a></p>
-<p>SpringBoot集成SpringSecurity - 异常处理（三）<br><a href="https://www.jianshu.com/p/5b412418b864/" target="_blank" rel="noopener">https://www.jianshu.com/p/5b412418b864/</a></p>
-<p>SpringBoot2.x统一异常捕获@RestControllerAdvice<br><a href="https://blog.csdn.net/fuu123f/article/details/107249708" target="_blank" rel="noopener">https://blog.csdn.net/fuu123f/article/details/107249708</a></p>
-<p>Spring Security OAuth2 授权失败（401) 问题整理<br><a href="https://www.cnblogs.com/mxmbk/p/9782409.html" target="_blank" rel="noopener">https://www.cnblogs.com/mxmbk/p/9782409.html</a></p>
-<p>SpringBoot /error Error Page status 为 999 的问题<br><a href="https://learnku.com/java/t/39683" target="_blank" rel="noopener">https://learnku.com/java/t/39683</a></p>
-<p>Spring Cloud OAuth2 实现用户认证及单点登录<br><a href="https://www.cnblogs.com/fengzheng/p/11724625.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengzheng/p/11724625.html</a></p>
-<p>官方 spring-security-oauth2<br><a href="https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2</a></p>
-<p>Demo<br><a href="https://github.com/topsale/spring-boot-samples" target="_blank" rel="noopener">https://github.com/topsale/spring-boot-samples</a></p>
+<p>SpringSecurityOAuth2登录后无法跳转获取授权码地址，直接跳转根路径原因详解
+<a href="https://blog.csdn.net/CSDN877425287/article/details/110948221">https://blog.csdn.net/CSDN877425287/article/details/110948221</a></p>
+<p>SpringBoot集成SpringSecurity - 异常处理（三）
+<a href="https://www.jianshu.com/p/5b412418b864/">https://www.jianshu.com/p/5b412418b864/</a></p>
+<p>SpringBoot2.x统一异常捕获@RestControllerAdvice
+<a href="https://blog.csdn.net/fuu123f/article/details/107249708">https://blog.csdn.net/fuu123f/article/details/107249708</a></p>
+<p>Spring Security OAuth2 授权失败（401) 问题整理
+<a href="https://www.cnblogs.com/mxmbk/p/9782409.html">https://www.cnblogs.com/mxmbk/p/9782409.html</a></p>
+<p>SpringBoot /error Error Page status 为 999 的问题
+<a href="https://learnku.com/java/t/39683">https://learnku.com/java/t/39683</a></p>
+<p>Spring Cloud OAuth2 实现用户认证及单点登录
+<a href="https://www.cnblogs.com/fengzheng/p/11724625.html">https://www.cnblogs.com/fengzheng/p/11724625.html</a></p>
+<p>官方 spring-security-oauth2
+<a href="https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2">https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2</a></p>
+<p>Demo
+<a href="https://github.com/topsale/spring-boot-samples">https://github.com/topsale/spring-boot-samples</a></p>
   </section>
 </article>
 

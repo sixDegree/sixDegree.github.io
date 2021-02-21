@@ -184,8 +184,8 @@
   &gt; npm install babelify --save
   &gt; npm install watchify -g
 </code></pre>
-<p>  <a href="https://github.com/babel/babelify" target="_blank" rel="noopener"><code>babelify</code></a> ：合并模块时对 ES6 和 ES7 进行编译转换，同时还可以对 JSX 进行编译转换，也可使用 <a href="https://www.npmjs.com/package/reactify" target="_blank" rel="noopener">reactify</a></p>
-<p>   <a href="https://github.com/substack/watchify" target="_blank" rel="noopener"> <code>watchify</code></a> ：监听，配合 <code>browserify</code> 实现实时合并 (是一个<code>browserify</code>的封装，配置同<code>browserify</code>)</p>
+<p>  <a href="https://github.com/babel/babelify"><code>babelify</code></a> ：合并模块时对 ES6 和 ES7 进行编译转换，同时还可以对 JSX 进行编译转换，也可使用 <a href="https://www.npmjs.com/package/reactify">reactify</a></p>
+<p>   <a href="https://github.com/substack/watchify"> <code>watchify</code></a> ：监听，配合 <code>browserify</code> 实现实时合并 (是一个<code>browserify</code>的封装，配置同<code>browserify</code>)</p>
 </li>
 </ul>
 <ul>
@@ -290,7 +290,7 @@ gulp.task(&#39;build&#39;,function(){
 <li><p>执行</p>
 <pre><code class="lang-vim">  &gt; webpack
 </code></pre>
-<p>  或通过webpack-dev-server Visit <a href="http://127.0.0.1:8080" target="_blank" rel="noopener">http://127.0.0.1:8080</a> with your browser.（先下载包： <code>npm install webpack-dev-server -g</code>）</p>
+<p>  或通过webpack-dev-server Visit <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> with your browser.（先下载包： <code>npm install webpack-dev-server -g</code>）</p>
 <pre><code class="lang-vim">  &gt; webpack-dev-server
   //启动热加载
   &gt; webpack-dev-server --hot --inline
@@ -377,7 +377,9 @@ module.exports=React.createClass({
 </ul>
 </li>
 </ul>
-<p><strong>note:</strong><br>    shouldComponentUpdate(nextProps,nextStates) &amp; render()<br>    should in mixin or component (only in one place)</p>
+<p><strong>note:</strong>
+    shouldComponentUpdate(nextProps,nextStates) &amp; render()
+    should in mixin or component (only in one place)</p>
 <p><strong>Initial (第一次 render ) :</strong></p>
 <ul>
 <li>-&gt; getDefaultProps</li>
@@ -393,8 +395,8 @@ module.exports=React.createClass({
 <p><strong>Update (第n次 render )：</strong></p>
 <ul>
 <li>-&gt; shouldComponentUpdate(nextProps,nextState)<ul>
-<li>return false – stop here</li>
-<li>return true – go to next</li>
+<li>return false -- stop here</li>
+<li>return true -- go to next</li>
 </ul>
 </li>
 <li>-&gt; componentWillUpdate(nextProps,nextState)</li>
@@ -409,21 +411,21 @@ module.exports=React.createClass({
 </ul>
 <p><strong>Initial （has Mixins）:</strong></p>
 <ul>
-<li>-&gt; getDefaultProps – Mixins + Component (merge return) – can’t set same property</li>
-<li>-&gt; getInitialState – Mixins + Component (merge return) – can’t set same property</li>
+<li>-&gt; getDefaultProps -- Mixins + Component (merge return) -- can&#39;t set same property</li>
+<li>-&gt; getInitialState -- Mixins + Component (merge return) -- can&#39;t set same property</li>
 <li>-&gt; Mixins: componentWillMount</li>
 <li>-&gt; componentWillMount</li>
-<li>-&gt; render – in Mixins or Component</li>
+<li>-&gt; render -- in Mixins or Component</li>
 <li>-&gt; Mixins: componentDidMount</li>
 <li>-&gt; componentDidMount</li>
 <li>-&gt; RenderFinished!</li>
 </ul>
 <p><strong>update （has Mixins）:</strong></p>
 <ul>
-<li>-&gt; shouldComponentUpdate – in Mixins or Component</li>
+<li>-&gt; shouldComponentUpdate -- in Mixins or Component</li>
 <li>-&gt; Mixins: componentWillUpdate</li>
 <li>-&gt; componentWillUpdate</li>
-<li>-&gt; render – in Mixins or Component</li>
+<li>-&gt; render -- in Mixins or Component</li>
 <li>-&gt; Mixins: componentDidUpdate</li>
 <li>-&gt; componentDidUpdate</li>
 </ul>
@@ -452,7 +454,7 @@ void componentDidUpdate(object prevProps, object prevState)
 <li><code>this.props.children</code>是获取当前节点的全部子内容</li>
 <li><code>this.props.xxx</code>获取参数值（注意不可这样修改props）</li>
 <li>Component间传递：<ul>
-<li>Father state/props to Children’ props</li>
+<li>Father state/props to Children&#39; props</li>
 <li>refs</li>
 </ul>
 </li>
@@ -495,7 +497,7 @@ ReactDOM.findDOMNode(this.refs.goodInput).focus();
 <ul>
 <li>Interactive props: <code>value</code>,<code>checked</code>,<code>selected</code></li>
 <li>SyntheticEvent ：React对Event进行了封装</li>
-<li>Form Events: <code>onChange</code>, <code>onInput</code>,<code>onClick</code>, <code>onSubmit</code>,<code>onReset</code>,…</li>
+<li>Form Events: <code>onChange</code>, <code>onInput</code>,<code>onClick</code>, <code>onSubmit</code>,<code>onReset</code>,...</li>
 </ul>
 <p>eg:</p>
 <pre><code class="lang-javascript">render:function(){
@@ -536,7 +538,7 @@ radioHandler:function(e){
 <p>使用 <code>ReactDOMServer</code> (in <code>react-dom/server</code> package)</p>
 <ul>
 <li><code>string renderToString(ReactElement element)</code></li>
-<li><code>string renderToStaticMarkup(ReactElement element)</code> //doesn’t create extra DOM attributes such as data-react-id, that React uses internally</li>
+<li><code>string renderToStaticMarkup(ReactElement element)</code> //doesn&#39;t create extra DOM attributes such as data-react-id, that React uses internally</li>
 </ul>
 <h3 id="header-16">一个简单示例</h3>
 <ol>
@@ -668,7 +670,8 @@ radioHandler:function(e){
 <li><p>执行<code>node server</code>启动服务查看效果</p>
 </li>
 </ol>
-<p><strong>PS:</strong><br>如果出现无法识别解析JSX的错误，请检查使用的<code>babel-core</code>版本，6和5的使用上会有些不同，具体可参考<a href="http://jamesknelson.com/the-six-things-you-need-to-know-about-babel-6/" target="_blank" rel="noopener">The Six Things You Need To Know About Babel 6</a></p>
+<p><strong>PS:</strong>
+如果出现无法识别解析JSX的错误，请检查使用的<code>babel-core</code>版本，6和5的使用上会有些不同，具体可参考<a href="http://jamesknelson.com/the-six-things-you-need-to-know-about-babel-6/">The Six Things You Need To Know About Babel 6</a></p>
 <h2 id="header-17">Use Extra JS in React</h2>
 <p><strong>eg:</strong> Using JQuery in React</p>
 <pre><code class="lang-javascript">var $=require(&quot;jquery&quot;);
@@ -682,7 +685,7 @@ module.exports=React.createClass({
     //eg: $(&#39;#xxx&#39;).modal(&#39;show&#39;);
 });
 </code></pre>
-<p><strong>eg:</strong> Using highlight.js in React <a href="https://github.com/isagalaev/highlight.js/issues/925" target="_blank" rel="noopener">Issue on Github</a></p>
+<p><strong>eg:</strong> Using highlight.js in React <a href="https://github.com/isagalaev/highlight.js/issues/925">Issue on Github</a></p>
 <pre><code class="lang-javascript">var hljs =require(&quot;highlight.js&quot;);
 var Pretty = React.createClass({
     componentDidMount: function(){
@@ -696,37 +699,38 @@ var Pretty = React.createClass({
     }
 });
 </code></pre>
-<p><strong>PS:</strong><br>一般不推荐在React中注入其他作用域的代码，推荐使用相应的React Plugins或自行扩展实现功能（尽量保持都在React的作用域）</p>
+<p><strong>PS:</strong>
+一般不推荐在React中注入其他作用域的代码，推荐使用相应的React Plugins或自行扩展实现功能（尽量保持都在React的作用域）</p>
 <h2 id="header-18">Reference</h2>
 <ul>
 <li>ReactJS<ul>
-<li><a href="https://facebook.github.io/react/docs" target="_blank" rel="noopener">Doc En</a> | <a href="http://reactjs.cn/react/docs" target="_blank" rel="noopener">Doc Cn</a> | <a href="https://github.com/facebook/react" target="_blank" rel="noopener">Github</a></li>
-<li><a href="http://react-china.org/" target="_blank" rel="noopener">React China</a> | <a href="http://wiki.jikexueyuan.com/project/react/" target="_blank" rel="noopener">中文版开发手册</a> </li>
-<li><a href="https://github.com/ruanyf/react-demos" target="_blank" rel="noopener">Demos from ruanyf</a></li>
+<li><a href="https://facebook.github.io/react/docs">Doc En</a> | <a href="http://reactjs.cn/react/docs">Doc Cn</a> | <a href="https://github.com/facebook/react">Github</a></li>
+<li><a href="http://react-china.org/">React China</a> | <a href="http://wiki.jikexueyuan.com/project/react/">中文版开发手册</a> </li>
+<li><a href="https://github.com/ruanyf/react-demos">Demos from ruanyf</a></li>
 </ul>
 </li>
 <li>Build<ul>
 <li>Browserify<ul>
-<li><a href="http://browserify.org/" target="_blank" rel="noopener">官网</a> | <a href="https://github.com/substack/node-browserify#usage" target="_blank" rel="noopener">Usage</a></li>
-<li><a href="http://segmentfault.com/a/1190000002941361" target="_blank" rel="noopener">前端模块及依赖管理的新选择：Browserify</a></li>
-<li><a href="https://github.com/substack/watchify" target="_blank" rel="noopener">watchify on Github</a></li>
+<li><a href="http://browserify.org/">官网</a> | <a href="https://github.com/substack/node-browserify#usage">Usage</a></li>
+<li><a href="http://segmentfault.com/a/1190000002941361">前端模块及依赖管理的新选择：Browserify</a></li>
+<li><a href="https://github.com/substack/watchify">watchify on Github</a></li>
 </ul>
 </li>
 <li>Webpack<ul>
-<li><a href="http://webpack.github.io/docs/" target="_blank" rel="noopener">Doc</a></li>
-<li><a href="https://www.gitbook.com/book/zhaoda/webpack/details" target="_blank" rel="noopener">中文指南</a> | <a href="https://www.gitbook.com/book/wohugb/react-webpack-cookbook/details" target="_blank" rel="noopener">react-webpack-cookbook</a> | <a href="https://christianalfoni.github.io/react-webpack-cookbook" target="_blank" rel="noopener">Cookbook</a></li>
-<li><a href="http://segmentfault.com/a/1190000002551952" target="_blank" rel="noopener">入门指迷</a> | <a href="http://www.07net01.com/2015/08/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0" target="_blank" rel="noopener">学习笔记</a> | <a href="http://segmentfault.com/a/1190000002767365" target="_blank" rel="noopener">轻松入门React和Webpack</a></li>
-<li><a href="https://github.com/ruanyf/webpack-demos" target="_blank" rel="noopener">Demos from ruanyf</a></li>
+<li><a href="http://webpack.github.io/docs/">Doc</a></li>
+<li><a href="https://www.gitbook.com/book/zhaoda/webpack/details">中文指南</a> | <a href="https://www.gitbook.com/book/wohugb/react-webpack-cookbook/details">react-webpack-cookbook</a> | <a href="https://christianalfoni.github.io/react-webpack-cookbook">Cookbook</a></li>
+<li><a href="http://segmentfault.com/a/1190000002551952">入门指迷</a> | <a href="http://www.07net01.com/2015/08/webpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0">学习笔记</a> | <a href="http://segmentfault.com/a/1190000002767365">轻松入门React和Webpack</a></li>
+<li><a href="https://github.com/ruanyf/webpack-demos">Demos from ruanyf</a></li>
 </ul>
 </li>
 <li>Babel<ul>
-<li><a href="http://babeljs.io" target="_blank" rel="noopener">官网</a></li>
-<li><a href="https://cnodejs.org/topic/56460e0d89b4b49902e7fbd3" target="_blank" rel="noopener">在node中使用babel6的一些简单分享</a></li>
+<li><a href="http://babeljs.io">官网</a></li>
+<li><a href="https://cnodejs.org/topic/56460e0d89b4b49902e7fbd3">在node中使用babel6的一些简单分享</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="https://github.com/sixDegree/react-starter" target="_blank" rel="noopener">My Demos</a></li>
+<li><a href="https://github.com/sixDegree/react-starter">My Demos</a></li>
 </ul>
   </section>
 </article>

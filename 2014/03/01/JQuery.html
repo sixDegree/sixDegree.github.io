@@ -396,7 +396,8 @@ inputJquery.appendTo($(&quot;body&quot;));
 </li>
 </ul>
 <h4 id="header-12">元素操作: 移动</h4>
-<p>操作元素在网页中的位置：移动直接移动该元素或移动其他元素<br>（以下操作都返回原对象）</p>
+<p>操作元素在网页中的位置：移动直接移动该元素或移动其他元素
+（以下操作都返回原对象）</p>
 <ul>
 <li><p>内部插入</p>
 <ul>
@@ -490,7 +491,7 @@ $(&quot;b&quot;).unwrap();
 <li><code>$.isArray</code> 判断某个参数是否为数组</li>
 <li><code>$.isEmptyObject</code> 判断某个对象是否为空（不含有任何属性）</li>
 <li><code>$.isFunction</code> 判断某个参数是否为函数</li>
-<li><code>$.isPlainObject</code> 判断某个参数是否为用”{}”或”new Object”建立的对象</li>
+<li><code>$.isPlainObject</code> 判断某个参数是否为用&quot;{}&quot;或&quot;new Object&quot;建立的对象</li>
 <li><p><code>$.support</code> 判断浏览器是否支持某个特性</p>
 <pre><code class="lang-js">  $.type(true) === &quot;boolean&quot;
   $.type(3) === &quot;number&quot;
@@ -766,8 +767,8 @@ return (n != 5 &amp;&amp; i &gt; 4);
 <li><p>事件的委托处理</p>
 <ul>
 <li>on/off：代替live,delegate</li>
-<li>子元素”委托”父元素处理事件：<ul>
-<li>子元素的事件会逐级向上”冒泡”，成为父元素的事件</li>
+<li>子元素&quot;委托&quot;父元素处理事件：<ul>
+<li>子元素的事件会逐级向上&quot;冒泡&quot;，成为父元素的事件</li>
 <li>利用这一点，可以大大简化事件的绑定</li>
 </ul>
 </li>
@@ -802,7 +803,12 @@ return (n != 5 &amp;&amp; i &gt; 4);
  $(&quot;input&quot;).unbind(&quot;click&quot;,foo);        //解绑特定函数的绑定
 </code></pre>
 </li>
-<li><p>使用on/off进行事件的委托处理<br>说明：<br>相较与上面使用<code>$(&quot;td&quot;).on(&quot;click&quot;,function(){...})</code><br>这个事件只需要在父元素绑定1次即可<br>而不需要在子元素上绑定n次<br>大大提高了性能</p>
+<li><p>使用on/off进行事件的委托处理
+说明：
+相较与上面使用<code>$(&quot;td&quot;).on(&quot;click&quot;,function(){...})</code>
+这个事件只需要在父元素绑定1次即可
+而不需要在子元素上绑定n次
+大大提高了性能</p>
 <pre><code class="lang-js"> //方式一：
  $(&quot;table&quot;).on(&quot;click&quot;, &quot;td&quot;, function(){
      $(this).toggleClass(&quot;click&quot;);
@@ -858,10 +864,10 @@ $(&quot;input&quot;).change();
 $(&quot;#test&quot;).trigger(&quot;click&quot;,[1,2]);
 </code></pre>
 <h2 id="header-24">延迟</h2>
-<p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html" target="_blank" rel="noopener">jQuery的deferred对象详解</a>）</p>
+<p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/a_detailed_explanation_of_jquery_deferred_object.html">jQuery的deferred对象详解</a>）</p>
 <h3 id="header-25">Deferred</h3>
 <p>【回调函数：异步/同步操作，一般不能立即返回结果，为它们指定回调函数（callback），一旦那些操作运行结束，就触发调用】</p>
-<p>Deferred：”延迟”到未来某个点再执行，作为回调函数解决方案，提供了更好的控制：</p>
+<p>Deferred：&quot;延迟&quot;到未来某个点再执行，作为回调函数解决方案，提供了更好的控制：</p>
 <ul>
 <li>可以进行链式操作</li>
 <li>允许自由添加多个回调函数</li>
@@ -885,8 +891,8 @@ $(&quot;#test&quot;).trigger(&quot;click&quot;,[1,2]);
 </ul>
 </li>
 <li>手动修改：<ul>
-<li><code>resolve()</code> ：”未完成”=&gt;”已完成”，触发<code>done</code>方法指定的function</li>
-<li><code>reject()</code> ：”未完成”=&gt;”已失败”，触发<code>fail</code>方法指定的function</li>
+<li><code>resolve()</code> ：&quot;未完成&quot;=&gt;&quot;已完成&quot;，触发<code>done</code>方法指定的function</li>
+<li><code>reject()</code> ：&quot;未完成&quot;=&gt;&quot;已失败&quot;，触发<code>fail</code>方法指定的function</li>
 </ul>
 </li>
 </ul>
@@ -985,7 +991,7 @@ $.post(url,{name:&quot;tom&quot;},function(data,status){
 </li>
 <li><p><code>$.ajax({...});</code> ,<code>$.ajax(url,{...});</code> 返回一个<code>promise</code>对象</p>
 <ul>
-<li><code>type</code>: 默认为GET，表请求方式（GET,POST,DELETE,PUT,…）</li>
+<li><code>type</code>: 默认为GET，表请求方式（GET,POST,DELETE,PUT,...）</li>
 <li><code>async</code>:默认为true，表异步</li>
 <li><code>contentType</code>:默认为<code>application/x-www-form-urlencoded; charset=UTF-8</code>,发送服务器时内容编码类型</li>
 <li><code>data</code>: 发送到服务器的数据，object或string类型</li>
@@ -1224,7 +1230,7 @@ $(&quot;#nav-left&quot;).jFillContent(true);    //返回JFillContent对象（从
 $(&quot;#nav-left&quot;).jFillContent(true).fillContent(url);    //调用jFillContent插件中定义的方法
 </code></pre>
 <h2 id="header-32">优化</h2>
-<p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html" target="_blank" rel="noopener">jQuery最佳实践</a>）</p>
+<p>（参考 <a href="http://www.ruanyifeng.com/blog/2011/08/jquery_best_practices.html">jQuery最佳实践</a>）</p>
 <ul>
 <li>用对选择器，选择器快到慢：<ul>
 <li><code>id/tag选择器&gt;.class选择器&gt;:xxx伪类/[attr]属性选择器</code></li>

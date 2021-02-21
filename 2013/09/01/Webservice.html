@@ -309,7 +309,8 @@
 </code></pre>
 <h4 id="header-5">portType</h4>
 <p>portType：指明接口名称和接口中的服务</p>
-<p>通过operation指定接口中的方法（服务），绑定相应的in和out的消息<br>（其中input表示参数，output表示返回值）</p>
+<p>通过operation指定接口中的方法（服务），绑定相应的in和out的消息
+（其中input表示参数，output表示返回值）</p>
 <pre><code class="lang-xml">&lt;wsdl:portType name=&quot;IUserWsService&quot;&gt;
     &lt;wsdl:operation name=&quot;addUser&quot;&gt;
           &lt;wsdl:input message=&quot;tns:addUser&quot;/&gt;
@@ -370,7 +371,8 @@
 &lt;/wsdl:service&gt;
 </code></pre>
 <h3 id="header-8">SOAP</h3>
-<p>SOAP （Simple Object Access Protocal）简单对象访问协议<br>通过xml存储对象，通过element元素组装信息，通过Soap Message传递信息</p>
+<p>SOAP （Simple Object Access Protocal）简单对象访问协议
+通过xml存储对象，通过element元素组装信息，通过Soap Message传递信息</p>
 <p>通过SOAP协议进行消息传递</p>
 <p><img src="/2013/09/01/soap.png" alt="SOAP"></p>
 <h4 id="header-9">Eclipse工具</h4>
@@ -402,7 +404,7 @@
 </ol>
 <h4 id="header-10">Apache TCPMon工具</h4>
 <ul>
-<li><a href="http://ws.apache.org/commons/tcpmon/download.cgi" target="_blank" rel="noopener">下载地址</a></li>
+<li><a href="http://ws.apache.org/commons/tcpmon/download.cgi">下载地址</a></li>
 <li>运行：解压后进去<code>build</code>目录，双击<code>tcpmon.bat</code>就可以执行</li>
 <li>实际上是个代理，起一个消息转发的作用，监视的是转发出去的消息</li>
 <li>这样就可以截获转发在WebService服务器和客户机之间会传递的SOAP消息，帮助查看调试</li>
@@ -411,9 +413,11 @@
 <p><img src="/2013/09/01/tcpmon-proc.png" alt="TCPMon Process"></p>
 <p>使用举例：</p>
 <ol>
-<li><p>配置（监听发布在<a href="http://localhost:9876上的webservice）" target="_blank" rel="noopener">http://localhost:9876上的webservice）</a><br><img src="/2013/09/01/tcpmon-config.png" alt="TCPMon Config"></p>
+<li><p>配置（监听发布在<a href="http://localhost:9876上的webservice）">http://localhost:9876上的webservice）</a>
+<img src="/2013/09/01/tcpmon-config.png" alt="TCPMon Config"></p>
 </li>
-<li><p>运行结果：<br><img src="/2013/09/01/tcpmon-result.png" alt="TCPMon Result"></p>
+<li><p>运行结果：
+<img src="/2013/09/01/tcpmon-result.png" alt="TCPMon Result"></p>
 </li>
 </ol>
 <h2 id="header-11">Jax-ws (wsimport命令)</h2>
@@ -437,7 +441,8 @@
 <li>契约优先：先编写wsdl，由wsdl生成接口</li>
 </ul>
 <p>（wsdl即契约）</p>
-<p><strong>PS: </strong><br>使用代码优先会破坏方法原有的结构，而使用契约优先可以定制wsdl，将一些验证信息置于SOAPHeader中，然后通过Handler预处理或者修改接口类显示声明来获取处理</p>
+<p><strong>PS: </strong>
+使用代码优先会破坏方法原有的结构，而使用契约优先可以定制wsdl，将一些验证信息置于SOAPHeader中，然后通过Handler预处理或者修改接口类显示声明来获取处理</p>
 <h3 id="header-13">代码优先</h3>
 <ol>
 <li><p>编写WebService接口（加Annotation）</p>
@@ -483,7 +488,7 @@ public interface IUserWsService {...}
 </ol>
 <h3 id="header-15">发布服务（Application中）</h3>
 <ul>
-<li>默认命名空间targetNamespace为倒置包名（eg: <a href="http://first.sms.cj.com）" target="_blank" rel="noopener">http://first.sms.cj.com）</a></li>
+<li>默认命名空间targetNamespace为倒置包名（eg: <a href="http://first.sms.cj.com）">http://first.sms.cj.com）</a></li>
 <li>可以重新制定命名空间</li>
 <li>注意：需要在实现类中也重新指定命名空间（<code>@WebService(targetNamespace=&quot;http://www.cj.test/&quot;)</code>）</li>
 </ul>
@@ -851,7 +856,8 @@ header.addHeaderElement(hName).setValue(&quot;auth:tom&quot;);
 <li>消息处理器<code>SOAPHandler</code>：可以获取<code>SOAPMessage</code>的信息</li>
 <li>Out处理顺序：先逻辑处理器再消息处理器</li>
 </ul>
-<p><img src="/2013/09/01/handler1.png" alt="Handler"><br><img src="/2013/09/01/handler2.png" alt="Handler"></p>
+<p><img src="/2013/09/01/handler1.png" alt="Handler">
+<img src="/2013/09/01/handler2.png" alt="Handler"></p>
 <h3 id="header-28">自定义SOAPHandler</h3>
 <p><code>implements SOAPHandler&lt;SOAPMessageContext&gt;</code></p>
 <ul>
@@ -938,15 +944,17 @@ header.addHeaderElement(hName).setValue(&quot;auth:tom&quot;);
 </li>
 <li>在WebService实现类上添加@HandlerChain注解（eg：<code>@HandlerChain(file=&quot;handler-chain.xml&quot;)</code></li>
 </ul>
-<p><strong>PS：</strong><br>在下面介绍的CXF中，可通过其他方式加载使用Handler，还可以使用Inteceptor代替Handler</p>
+<p><strong>PS：</strong>
+在下面介绍的CXF中，可通过其他方式加载使用Handler，还可以使用Inteceptor代替Handler</p>
 <h2 id="header-30">CXF</h2>
-<p>基于CXF的通讯方式 （<a href="http://cxf.apache.org/" target="_blank" rel="noopener">Apache CXF官网</a>）</p>
+<p>基于CXF的通讯方式 （<a href="http://cxf.apache.org/">Apache CXF官网</a>）</p>
 <ul>
 <li>基于jax-ws，开发方式和jax-ws基本类似，仅仅是为jax-ws增加了一些功能</li>
 <li>可以使用Interceptor替代SOAPHandler</li>
-<li>生命周期（阶段）：<br><img src="/2013/09/01/cxfLifeCycle.png" alt="LifeCycle"></li>
+<li>生命周期（阶段）：
+<img src="/2013/09/01/cxfLifeCycle.png" alt="LifeCycle"></li>
 <li>有多种Interceptor拦截器，用的比较多的是：<ul>
-<li>extends AbstractPhaseInterceptor<message></message></li>
+<li>extends AbstractPhaseInterceptor<Message></li>
 <li>extends AbstractSoapInterceptor</li>
 </ul>
 </li>
@@ -1230,9 +1238,8 @@ public interface IUserWsService
 <ul>
 <li>字节数组<code>byte[]</code> 放于SOAPBody不好，若太大，会有内存溢出异常</li>
 <li>使用MTOM二进制处理（优化过）</li>
-<li><code>@MTOM</code>：以附件AttachmentPart传送，即以流的方式传送</li>
-</ul>
-<ol>
+<li><p><code>@MTOM</code>：以附件AttachmentPart传送，即以流的方式传送</p>
+</li>
 <li><p>wsdl文件中：</p>
 <pre><code class="lang-xml"> &lt;xsd:complexType name=&quot;uploadFile&quot;&gt;
      &lt;xsd:sequence&gt;
@@ -1291,7 +1298,7 @@ public interface IUserWsService
  }
 </code></pre>
 </li>
-</ol>
+</ul>
 <h3 id="header-44">消息头处理</h3>
 <p>wsdl文件中：</p>
 <pre><code class="lang-xml">&lt;!-- 创建消息头元素 --&gt;

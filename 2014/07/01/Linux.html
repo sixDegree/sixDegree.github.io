@@ -199,7 +199,7 @@
 </li>
 <li>硬盘<ul>
 <li>一块硬盘上： 基本分区（主分区）+扩展分区个数&lt;=4</li>
-<li>硬盘分两种：IDE/SCSI （”sdx~” / “hdx~”）<ul>
+<li>硬盘分两种：IDE/SCSI （&quot;sdx~&quot; / &quot;hdx~&quot;）<ul>
 <li><code>sd</code> :SCSI硬盘(较好)</li>
 <li><code>hd</code> :IDE硬盘</li>
 <li><code>x</code>  :盘号 (a 基本盘，b基本从属盘，c铺助盘，d铺助从属盘 )</li>
@@ -293,7 +293,8 @@ tom:x:503:503::/home/tom:/bin/bash
 <li><p>文件owner</p>
 <ul>
 <li><code>chown 用户名 文件名</code>【修改文件的所有者】</li>
-<li><code>chgrp 组名 文件名</code>    【修改文件的所在组】<br>+<code>ls -ahl</code>     【查看文件的所有者】</li>
+<li><code>chgrp 组名 文件名</code>    【修改文件的所在组】
++<code>ls -ahl</code>     【查看文件的所有者】</li>
 <li><code>who am i</code>【查看当前用户】</li>
 <li>eg:<pre><code class="lang-bash">&gt; chown wang myTest.java
 &gt; chown root ./tom
@@ -621,8 +622,6 @@ cim1tdtp
 <pre><code class="lang-bash"> rm [-dfirv][--help][--version][文件或目录...]
 </code></pre>
 </li>
-</ol>
-<ul>
 <li><code>-d</code>,<code>--directory</code>  删除目录。</li>
 <li><code>-f</code>,<code>--force</code>    强制删除文件或目录（即使原档案属性设为唯读，也直接删除，无需逐一确认）</li>
 <li><code>-i</code>，<code>--interactive</code>    删除前逐一询问确认。</li>
@@ -644,7 +643,7 @@ cim1tdtp
   ls -d * | grep -v tar | xargs -n5 rm -r
 </code></pre>
 </li>
-</ul>
+</ol>
 <h3 id="header-13">tar,gzip,zip</h3>
 <pre><code class="lang-bash">ls -d * | xargs -n5 -i tar -cf {}.tar {}
 ls -d * | xargs -n5 -i zip -r &quot;{}.zip&quot; {}
@@ -723,8 +722,6 @@ gzip -dv FileName
 <pre><code class="lang-bash">zip [参数] [打包后的文件名] [打包的目录路径]
 </code></pre>
 </li>
-</ol>
-<ul>
 <li>参数：<ul>
 <li><code>-a</code>     将文件转成ASCII模式</li>
 <li><code>-F</code>     尝试修复损坏的压缩文件</li>
@@ -745,8 +742,8 @@ gzip -dv FileName
   unzip test.zip
 </code></pre>
 </li>
-<li>更多<a href="http://www.cnblogs.com/say0507/archive/2011/03/31/2001459.html" target="_blank" rel="noopener">参考</a></li>
-</ul>
+<li>更多<a href="http://www.cnblogs.com/say0507/archive/2011/03/31/2001459.html">参考</a></li>
+</ol>
 <h3 id="header-14">ps,kill</h3>
 <p>查杀进程</p>
 <pre><code class="lang-bash">ps -ef | grep nationz | grep &quot;sh -c&quot; | awk &#39;{print $2}&#39; | xargs -i kill -9 {}
@@ -816,9 +813,8 @@ df -k
  umount dir
 </code></pre>
 </li>
-</ol>
-<ul>
-<li><code>-a</code> 将 <code>/etc/fstab</code> 中定义的所有档案系统挂上</li>
+<li><p><code>-a</code> 将 <code>/etc/fstab</code> 中定义的所有档案系统挂上</p>
+</li>
 <li><code>-f</code>伪装mount，作出检查设备和目录的样子，但并不真正挂载文件系统。</li>
 <li><code>-n</code> 不把安装记录在/etc/mtab 文件中。</li>
 <li><code>-r</code> 讲文件系统安装为只读。</li>
@@ -863,9 +859,9 @@ df -k
 </li>
 </ul>
 </li>
-<li><p>更多<a href="http://www.cnblogs.com/xd502djj/p/3809375.html" target="_blank" rel="noopener">参考</a></p>
+<li><p>更多<a href="http://www.cnblogs.com/xd502djj/p/3809375.html">参考</a></p>
 </li>
-</ul>
+</ol>
 <h3 id="header-17">重执行命令</h3>
 <ul>
 <li><p><code>!</code>  执行来自历史清单的一个命令</p>
@@ -1031,7 +1027,10 @@ cut -d&#39;:&#39; -f 1-4 /etc/passwd | head -10
 </li>
 </ul>
 <p>注意：</p>
-<p>使用<code>-exec</code>时，find命令将所有匹配到的文件一起传递给exec执行<br>可能会出现溢出错误（参数列太长”，“参数列溢出”，…）<br>可能会出现进程过多，系统性能下降的问题（有些系统中会为处理每一个匹配到的文件而发起一个相应的进程）<br>建议使用<code>xargs</code>分批获取和传入参数，且只有一个进程，eg：</p>
+<p>使用<code>-exec</code>时，find命令将所有匹配到的文件一起传递给exec执行
+可能会出现溢出错误（参数列太长”，“参数列溢出”，...）
+可能会出现进程过多，系统性能下降的问题（有些系统中会为处理每一个匹配到的文件而发起一个相应的进程）
+建议使用<code>xargs</code>分批获取和传入参数，且只有一个进程，eg：</p>
 <pre><code class="lang-bash"># 查找系统中的每一个普通文件，然后使用xargs命令来测试它们分别属于哪类文件
 &gt; find . -type f -print | xargs file
 ./.kde/Autostart/Autorun.desktop: UTF-8 Unicode English text
@@ -1361,7 +1360,7 @@ cmd | nawk &#39;/pattern/{action}&#39; filename
   docker:x:1000:50:Linux User,,,:/home/docker:/bin/sh
 </code></pre>
 </li>
-<li>显示<code>/etc/passwd</code>的账户name和账户对应的shell, 第一行添加列名”name,shell”, 最后一行添加”blue,/bin/nosh”<pre><code class="lang-bash">  docker@default:~$ cat /etc/passwd |awk  -F &#39;:&#39;  &#39;BEGIN {print &quot;name,shell&quot;}  {print $1&quot;,&quot;$7} END {print &quot;blue,/bin/nosh&quot;}&#39;
+<li>显示<code>/etc/passwd</code>的账户name和账户对应的shell, 第一行添加列名&quot;name,shell&quot;, 最后一行添加&quot;blue,/bin/nosh&quot;<pre><code class="lang-bash">  docker@default:~$ cat /etc/passwd |awk  -F &#39;:&#39;  &#39;BEGIN {print &quot;name,shell&quot;}  {print $1&quot;,&quot;$7} END {print &quot;blue,/bin/nosh&quot;}&#39;
   name,shell
   root,/bin/sh
   lp,/bin/sh
@@ -1622,9 +1621,9 @@ EEE 5
 <ul>
 <li><code>^</code> 匹配行开头，eg: <code>^abc</code> 匹配以abc开头的行</li>
 <li><code>$</code> 匹配行结尾，eg：<code>abc$</code> 匹配以abc结尾的行</li>
-<li><code>.</code> 匹配非换行符的任意一个字符，eg：<code>a.c</code> 可以匹配<code>abc</code>,<code>adc</code>,<code>a8c</code>,…</li>
-<li><code>*</code> 匹配任意多个字符，eg: <code>a*c</code> 可以匹配 <code>ac</code>,<code>abc</code>,<code>adc</code>,<code>abdc</code>,…</li>
-<li><code>+</code> 匹配某字符出现一次及以上次字符，eg：<code>a+</code> 可以匹配 <code>a</code>,<code>aa</code>,<code>aaa</code>,<code>aaaa</code>,…</li>
+<li><code>.</code> 匹配非换行符的任意一个字符，eg：<code>a.c</code> 可以匹配<code>abc</code>,<code>adc</code>,<code>a8c</code>,...</li>
+<li><code>*</code> 匹配任意多个字符，eg: <code>a*c</code> 可以匹配 <code>ac</code>,<code>abc</code>,<code>adc</code>,<code>abdc</code>,...</li>
+<li><code>+</code> 匹配某字符出现一次及以上次字符，eg：<code>a+</code> 可以匹配 <code>a</code>,<code>aa</code>,<code>aaa</code>,<code>aaaa</code>,...</li>
 <li><code>?</code> 匹配0次或一次字符，eg：<code>a?</code> 可以匹配 <code>b</code>,<code>a</code></li>
 <li><code>[]</code> 匹配一个指定范围内的字符<pre><code class="lang-bash">  [ABC]de     # 可以匹配Ade,Bde,Cde; 
   [A-Ca-c]     #与A-C及a-c范围内的字符匹配； 
@@ -2051,7 +2050,8 @@ curl -i -H &quot;Content-Type:application/json&quot; -H &quot;micro-auth:1184e49
 </ul>
 </li>
 <li><code>cmd1 || cmd2</code><ul>
-<li>若 cmd1 运行完毕且正确运行(<code>$?=0</code>)，则 cmd2 不运行<br>+　若 cmd1 运行完毕且为错误 (<code>$?≠0</code>)，则开始运行 cmd2</li>
+<li>若 cmd1 运行完毕且正确运行(<code>$?=0</code>)，则 cmd2 不运行
++　若 cmd1 运行完毕且为错误 (<code>$?≠0</code>)，则开始运行 cmd2</li>
 </ul>
 </li>
 <li><p>示例：</p>
@@ -2958,11 +2958,14 @@ echo $(( 13 % 3 ))
 </code></pre>
 </li>
 </ol>
-<p>更多可参考：<a href="http://vbird.dic.ksu.edu.tw/linux_basic/0320bash.php" target="_blank" rel="noopener">鸟哥的Linux私房菜</a></p>
+<p>更多可参考：<a href="http://vbird.dic.ksu.edu.tw/linux_basic/0320bash.php">鸟哥的Linux私房菜</a></p>
 <h3 id="header-30">注意</h3>
 <p>shell脚本执行错误 <code>$&#39;\r&#39;:command not found</code></p>
-<p>原因：<br>脚本是在window下编辑完成后上传到linux上执行的，win下的换行是回车符+换行符，也就是<code>\r\n</code>,而unix下是换行符<code>\n</code>。<br>linux下不识别<code>\r</code>为回车符，所以导致每行的配置都多了个<code>\r</code>，因此是脚本编码的问题。</p>
-<p>解决方案：<br>在linux上执行 <code>dos2unix 脚本名</code>，再次执行脚本，报错消失</p>
+<p>原因：
+脚本是在window下编辑完成后上传到linux上执行的，win下的换行是回车符+换行符，也就是<code>\r\n</code>,而unix下是换行符<code>\n</code>。
+linux下不识别<code>\r</code>为回车符，所以导致每行的配置都多了个<code>\r</code>，因此是脚本编码的问题。</p>
+<p>解决方案：
+在linux上执行 <code>dos2unix 脚本名</code>，再次执行脚本，报错消失</p>
 <pre><code class="lang-bash">&gt; dos2unix a.sh
 &gt; ./a.sh                # 或 sh a.sh
 </code></pre>

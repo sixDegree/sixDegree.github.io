@@ -146,7 +146,9 @@
 </ul>
 </li>
 </ul>
-<p>nodeJS 本身并没有根目录的概念，并不能读取某个文件夹的静态文件，只能一个文件一个文件的运行<br>nodeJS 自身封装了一些模块，使用require(moduleName)引用<br>nodeJS 本身不具备路由功能，服务跑起来后，不管地址栏添加任何path，结果都不变</p>
+<p>nodeJS 本身并没有根目录的概念，并不能读取某个文件夹的静态文件，只能一个文件一个文件的运行
+nodeJS 自身封装了一些模块，使用require(moduleName)引用
+nodeJS 本身不具备路由功能，服务跑起来后，不管地址栏添加任何path，结果都不变</p>
 <h3 id="header-2">npm</h3>
 <p>npm （Node Package Manager）</p>
 <ul>
@@ -216,7 +218,9 @@ logger.on(&#39;error&#39;,function(msg){
 logger.emit(&#39;error&#39;,&#39;Wrong number&#39;);
 logger.emit(&#39;error&#39;,&#39;Unknow cmd&#39;);
 </code></pre>
-<p>Node里面的许多对象都会emit事件<br>例如：<br><code>class http.Server</code>是一个<code>EventEmitter</code>，当有一个<code>request</code>时，就会通知绑定的<code>function(request,response){...}</code>执行</p>
+<p>Node里面的许多对象都会emit事件
+例如：
+<code>class http.Server</code>是一个<code>EventEmitter</code>，当有一个<code>request</code>时，就会通知绑定的<code>function(request,response){...}</code>执行</p>
 <pre><code class="lang-js">http.createServer(function(request,response){...});
 
 //等价于：
@@ -324,7 +328,7 @@ module.exports=function(opts,message){
 markeRequest({host:&#39;localhost&#39;,&#39;port&#39;:8080,path:&#39;/&#39;,method:&#39;POST&#39;},&quot;Hello world!&quot;);
 </code></pre>
 <h2 id="header-7">Express</h2>
-<p><a href="http://www.expressjs.com.cn/4x/api.html" target="_blank" rel="noopener">Express.js框架</a>: 极大的简化了nodeJS开发</p>
+<p><a href="http://www.expressjs.com.cn/4x/api.html">Express.js框架</a>: 极大的简化了nodeJS开发</p>
 <pre><code>&gt; npm install express
 </code></pre><pre><code class="lang-js">var express=require(&#39;express&#39;);
 var app=express();
@@ -431,9 +435,9 @@ app.route(&#39;/blocks/:name&#39;)
 </code></pre>
 <p>从Express 4.0开始，路由器功能成了一个单独的组件<code>Express.Router</code></p>
 <ul>
-<li>router.use(…)</li>
-<li>router.METHOD(…)</li>
-<li>router.route(…)</li>
+<li>router.use(...)</li>
+<li>router.METHOD(...)</li>
+<li>router.route(...)</li>
 <li><code>...</code>为<code>[path], [function, ...] function</code></li>
 </ul>
 <pre><code class="lang-js">var express = require(&#39;express&#39;);
@@ -498,7 +502,7 @@ app.get(&#39;/blocks/:name&#39;, function(request, response,next) {
 </code></pre>
 <h2 id="header-11">常用module</h2>
 <h3 id="header-12">body parser</h3>
-<p>Node.js body parsing middleware.provides the following parsers: (<a href="https://www.npmjs.com/package/body-parser" target="_blank" rel="noopener">官网</a>)</p>
+<p>Node.js body parsing middleware.provides the following parsers: (<a href="https://www.npmjs.com/package/body-parser">官网</a>)</p>
 <ul>
 <li>JSON body parser <code>bodyParser.json(options)</code> (parse <code>application/json</code>)</li>
 <li>Raw body parser    <code>bodyParser.raw(options)</code></li>

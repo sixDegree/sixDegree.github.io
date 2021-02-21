@@ -202,102 +202,102 @@
 <tr>
 <td style="text-align:left">And</td>
 <td style="text-align:left">findByLastnameAndFirstname</td>
-<td style="text-align:left">… where x.lastname=?1 and x.firstname=?2</td>
+<td style="text-align:left">... where x.lastname=?1 and x.firstname=?2</td>
 </tr>
 <tr>
 <td style="text-align:left">Or</td>
 <td style="text-align:left">findByLastnameOrFirstname</td>
-<td style="text-align:left">… where x.lastname=?1 or x.firstname=?2</td>
+<td style="text-align:left">... where x.lastname=?1 or x.firstname=?2</td>
 </tr>
 <tr>
 <td style="text-align:left">Between</td>
 <td style="text-align:left">findByStartDateBetween</td>
-<td style="text-align:left">… where x.startDate between ?1 and ?2</td>
+<td style="text-align:left">... where x.startDate between ?1 and ?2</td>
 </tr>
 <tr>
 <td style="text-align:left">LessThan</td>
 <td style="text-align:left">findByAgeGreaterThan</td>
-<td style="text-align:left">… where x.age&lt;?1</td>
+<td style="text-align:left">... where x.age&lt;?1</td>
 </tr>
 <tr>
 <td style="text-align:left">GreaterThan</td>
 <td style="text-align:left">findByAgeGreaterThan</td>
-<td style="text-align:left">… where x.age&gt;?1</td>
+<td style="text-align:left">... where x.age&gt;?1</td>
 </tr>
 <tr>
 <td style="text-align:left">After</td>
 <td style="text-align:left">findByStartDateAfter</td>
-<td style="text-align:left">… where x.startDate&gt;?1</td>
+<td style="text-align:left">... where x.startDate&gt;?1</td>
 </tr>
 <tr>
 <td style="text-align:left">Before</td>
 <td style="text-align:left">findByStartDateBefore</td>
-<td style="text-align:left">… where x.startDate&lt;?1</td>
+<td style="text-align:left">... where x.startDate&lt;?1</td>
 </tr>
 <tr>
 <td style="text-align:left">IsNull</td>
 <td style="text-align:left">findByAgeIsNull</td>
-<td style="text-align:left">… where x.age is null</td>
+<td style="text-align:left">... where x.age is null</td>
 </tr>
 <tr>
 <td style="text-align:left">IsNotNull,NotNull</td>
 <td style="text-align:left">findByAgeIsNotNull</td>
-<td style="text-align:left">… where x.age is not null</td>
+<td style="text-align:left">... where x.age is not null</td>
 </tr>
 <tr>
 <td style="text-align:left">Like</td>
 <td style="text-align:left">findByFirstnameLike</td>
-<td style="text-align:left">… where x.firstname like ?1</td>
+<td style="text-align:left">... where x.firstname like ?1</td>
 </tr>
 <tr>
 <td style="text-align:left">NotLike</td>
 <td style="text-align:left">findByFirstnameNotLike</td>
-<td style="text-align:left">… where x.firstname not like ?1</td>
+<td style="text-align:left">... where x.firstname not like ?1</td>
 </tr>
 <tr>
 <td style="text-align:left">StartingWith</td>
 <td style="text-align:left">findByFirstnameStartingWith</td>
-<td style="text-align:left">… where x.firstname like ?1 (parameter bound with appended %)</td>
+<td style="text-align:left">... where x.firstname like ?1 (parameter bound with appended %)</td>
 </tr>
 <tr>
 <td style="text-align:left">EndingWith</td>
 <td style="text-align:left">findByFirstnameEndingWith</td>
-<td style="text-align:left">… where x.firstname like ?1 (parameter bound with prepended %)</td>
+<td style="text-align:left">... where x.firstname like ?1 (parameter bound with prepended %)</td>
 </tr>
 <tr>
 <td style="text-align:left">Containing</td>
 <td style="text-align:left">findByFirstnameContaining</td>
-<td style="text-align:left">… where x.firstname like ?1 (parameter bound wrapped in %)</td>
+<td style="text-align:left">... where x.firstname like ?1 (parameter bound wrapped in %)</td>
 </tr>
 <tr>
 <td style="text-align:left">OrderBy</td>
 <td style="text-align:left">findByAgeOrderByLastnameDesc</td>
-<td style="text-align:left">… where x.age=? order by x.lastname desc</td>
+<td style="text-align:left">... where x.age=? order by x.lastname desc</td>
 </tr>
 <tr>
 <td style="text-align:left">Not</td>
 <td style="text-align:left">findByLastnameNot</td>
-<td style="text-align:left">… where x.lastname &lt;&gt; ?1</td>
+<td style="text-align:left">... where x.lastname &lt;&gt; ?1</td>
 </tr>
 <tr>
 <td style="text-align:left">In</td>
-<td style="text-align:left">findByAgeIn(Collection<age> ages)</age></td>
-<td style="text-align:left">… where x.age in ?1</td>
+<td style="text-align:left">findByAgeIn(Collection<Age> ages)</td>
+<td style="text-align:left">... where x.age in ?1</td>
 </tr>
 <tr>
 <td style="text-align:left">NotIn</td>
-<td style="text-align:left">findByAgeNotIn(Collection<age> ages)</age></td>
-<td style="text-align:left">… where x.age not in ?1</td>
+<td style="text-align:left">findByAgeNotIn(Collection<Age> ages)</td>
+<td style="text-align:left">... where x.age not in ?1</td>
 </tr>
 <tr>
 <td style="text-align:left">TRUE</td>
 <td style="text-align:left">findByActiveTrue()</td>
-<td style="text-align:left">… where x.active=true</td>
+<td style="text-align:left">... where x.active=true</td>
 </tr>
 <tr>
 <td style="text-align:left">FALSE</td>
 <td style="text-align:left">findByActiveFalse()</td>
-<td style="text-align:left">… where x.active=false</td>
+<td style="text-align:left">... where x.active=false</td>
 </tr>
 </tbody>
 </table>
@@ -481,7 +481,7 @@
 </li>
 <li>Entity (<code>@Entity</code>):<ul>
 <li>Employee : id,name,remark,Department department</li>
-<li>Department : id,name,remark,List<employee> employees</employee></li>
+<li>Department : id,name,remark,List<Employee> employees</li>
 </ul>
 </li>
 <li>Relationship (<code>@ManyToOne</code>,<code>@OneToMany</code>): <ul>
@@ -930,7 +930,7 @@
 </li>
 </ul>
 </li>
-<li>e: a persist object: do <code>update</code>/<code>nothing</code> (wont’t execute <code>select</code> at first)<ul>
+<li>e: a persist object: do <code>update</code>/<code>nothing</code> (wont&#39;t execute <code>select</code> at first)<ul>
 <li>has change =&gt; do <code>update</code>, return the updated persist obj</li>
 <li>no change =&gt; do <code>nothing</code>, return : the persist obj</li>
 </ul>
@@ -945,7 +945,7 @@
 </ul>
 </li>
 <li>Update:<ul>
-<li>a transient object &amp; a exist obj’s primaryKey &amp; different (will do select first)</li>
+<li>a transient object &amp; a exist obj&#39;s primaryKey &amp; different (will do select first)</li>
 <li>a persist object &amp; has change</li>
 </ul>
 </li>
@@ -964,7 +964,7 @@
 <li><p>Update:</p>
 <ul>
 <li><code>T save(T e)</code>:<ul>
-<li>a transient object &amp; a exist obj’s primaryKey &amp; different (will do select first)</li>
+<li>a transient object &amp; a exist obj&#39;s primaryKey &amp; different (will do select first)</li>
 <li>a persist object &amp; has change</li>
 </ul>
 </li>
@@ -1188,7 +1188,7 @@ public int delete(Integer departmentId){
 </li>
 </ol>
 <h2 id="header-14">Reference</h2>
-<p><a href="https://github.com/sixDegree/springboot-demo" target="_blank" rel="noopener">my demo</a></p>
+<p><a href="https://github.com/sixDegree/springboot-demo">my demo</a></p>
   </section>
 </article>
 

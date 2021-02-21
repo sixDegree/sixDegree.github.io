@@ -126,14 +126,15 @@
   <section class="post-content">
     <h2 id="header-1">Requests Introduction</h2>
 <ul>
-<li>第三方的HTTP客户端库，<a href="http://www.python-requests.org/en/master/" target="_blank" rel="noopener">官网</a>| <a href="http://docs.python-requests.org/zh_CN/latest/index.html" target="_blank" rel="noopener">Doc</a></li>
+<li>第三方的HTTP客户端库，<a href="http://www.python-requests.org/en/master/">官网</a>| <a href="http://docs.python-requests.org/zh_CN/latest/index.html">Doc</a></li>
 <li><p>支持<code>HTTP</code>连接保持和连接池,支持使用<code>cookie</code>保持会话，文件上传，自动确定响应内容的编码，国际化的URL，POST数据自动编码等</p>
 </li>
 <li><p>vs. <code>urllib</code>:</p>
 <ul>
 <li><code>urllib</code>,<code>urllib2</code>,<code>urllib3</code>是python原生类库</li>
 <li><code>urllib</code> 与 <code>urllib2</code> 是两个相互独立的模块(在python3中<code>urllib2</code>被改为<code>urllib.request</code>)</li>
-<li><code>requests</code>库使用了<code>urllib3</code>，支持连接保持（eg:多次请求重复使用一个<code>socket</code>)，更方便<br>  <img src="/2019/03/18/requests-urllib.png" alt=" urllib vs. requests "></li>
+<li><code>requests</code>库使用了<code>urllib3</code>，支持连接保持（eg:多次请求重复使用一个<code>socket</code>)，更方便
+  <img src="/2019/03/18/requests-urllib.png" alt=" urllib vs. requests "></li>
 </ul>
 </li>
 <li><p>安装</p>
@@ -824,7 +825,7 @@ if __name__ == &#39;__main__&#39;:
 </li>
 </ul>
 <h2 id="header-28">aiohttp</h2>
-<p><a href="https://aiohttp.readthedocs.io/en/stable/" target="_blank" rel="noopener">官网</a></p>
+<p><a href="https://aiohttp.readthedocs.io/en/stable/">官网</a></p>
 <blockquote>
 <p>Asynchronous HTTP Client/Server for asyncio and Python.</p>
 </blockquote>
@@ -835,7 +836,7 @@ if __name__ == &#39;__main__&#39;:
 <li>install: <code>pip install aiohttp</code></li>
 </ul>
 <h3 id="header-29">Client Sample</h3>
-<p>Refer to <a href="https://aiohttp.readthedocs.io/en/stable/client_quickstart.html#" target="_blank" rel="noopener">Client Quickstart</a></p>
+<p>Refer to <a href="https://aiohttp.readthedocs.io/en/stable/client_quickstart.html#">Client Quickstart</a></p>
 <pre><code class="lang-python">import aiohttp
 import asyncio
 
@@ -852,7 +853,7 @@ loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
 </code></pre>
 <h3 id="header-30">Server Sample</h3>
-<p>Refer to <a href="https://aiohttp.readthedocs.io/en/stable/web_quickstart.html" target="_blank" rel="noopener">Web Server Quickstart</a></p>
+<p>Refer to <a href="https://aiohttp.readthedocs.io/en/stable/web_quickstart.html">Web Server Quickstart</a></p>
 <pre><code class="lang-python">from aiohttp import web
 
 async def handle(request):
@@ -969,10 +970,10 @@ web.run_app(app)
 </ul>
 <h2 id="header-32">Reference</h2>
 <ul>
-<li><a href="https://github.com/sixDegree/python-basic-demo" target="_blank" rel="noopener">My Demo</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/37824910" target="_blank" rel="noopener">python下载文件—-requests</a></li>
-<li><a href="https://www.cnblogs.com/ssyfj/p/9222342.html" target="_blank" rel="noopener">python—aiohttp的使用</a></li>
-<li><a href="https://blog.fudenglong.site/2017/06/04/Python%E5%B9%B6%E5%8F%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E4%BE%8B%E5%AD%90%E5%92%8C%E6%AF%94%E8%BE%83/" target="_blank" rel="noopener">Python并发下载的例子和比较</a></li>
+<li><a href="https://github.com/sixDegree/python-basic-demo">My Demo</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/37824910">python下载文件----requests</a></li>
+<li><a href="https://www.cnblogs.com/ssyfj/p/9222342.html">python---aiohttp的使用</a></li>
+<li><a href="https://blog.fudenglong.site/2017/06/04/Python%E5%B9%B6%E5%8F%91%E4%B8%8B%E8%BD%BD%E7%9A%84%E4%BE%8B%E5%AD%90%E5%92%8C%E6%AF%94%E8%BE%83/">Python并发下载的例子和比较</a></li>
 </ul>
   </section>
 </article>

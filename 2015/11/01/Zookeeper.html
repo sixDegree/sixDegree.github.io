@@ -218,7 +218,8 @@
 </li>
 </ol>
 <h3 id="header-3">数据模型</h3>
-<p>Zookeeper 会维护一个具有层次关系的目录树的数据结构，类似于一个标准的文件系统<br>通过对树中的节点（ZNode）进行有效管理，可以设计出多种多样的分布式的数据管理模型</p>
+<p>Zookeeper 会维护一个具有层次关系的目录树的数据结构，类似于一个标准的文件系统
+通过对树中的节点（ZNode）进行有效管理，可以设计出多种多样的分布式的数据管理模型</p>
 <p><img src="/2015/11/01/struct.png" alt=""></p>
 <p>znode</p>
 <ul>
@@ -271,7 +272,8 @@
 <li>更新znode data <code>set /zk testData2</code></li>
 <li>删除znode <code>delete /zk</code></li>
 </ol>
-<p>常用四字命令：<br>（用来获取 ZooKeeper 服务的当前状态及相关信息，在客户端可以通过 telnet 或 nc 向 ZooKeeper 提交相应的命令）</p>
+<p>常用四字命令：
+（用来获取 ZooKeeper 服务的当前状态及相关信息，在客户端可以通过 telnet 或 nc 向 ZooKeeper 提交相应的命令）</p>
 <ul>
 <li><code>cons</code> <ul>
 <li>列出连接到服务器的所有客户端详细信息(连接，会话)。</li>
@@ -300,7 +302,7 @@
 </li>
 <li><code>ruok</code><ul>
 <li>测试服务端是否处于正常状态</li>
-<li>正常返回”imok”</li>
+<li>正常返回&quot;imok&quot;</li>
 </ul>
 </li>
 <li><code>wchs</code><ul>
@@ -523,7 +525,7 @@ assertTrue(result);
 <li>acquire() 获得锁</li>
 <li>release() 释放锁</li>
 </ul>
-<p>curator还提供了很多其他的实现，具体参考<a href="https://github.com/Netflix/curator/wiki/Recipes" target="_blank" rel="noopener">Netflix/curator</a></p>
+<p>curator还提供了很多其他的实现，具体参考<a href="https://github.com/Netflix/curator/wiki/Recipes">Netflix/curator</a></p>
 <h2 id="header-7">应用场景</h2>
 <h3 id="header-8">统一命名服务</h3>
 <p>特点：</p>
@@ -547,7 +549,8 @@ assertTrue(result);
 <h3 id="header-11">共享锁</h3>
 <p>Locks</p>
 <p>在跨进程或者在不同 Server 之间实现同步</p>
-<p>保证数据的强一致性（保证zk集群中任意node上的同一znode的数据是相同的）<br>锁：保持独占，时序控制</p>
+<p>保证数据的强一致性（保证zk集群中任意node上的同一znode的数据是相同的）
+锁：保持独占，时序控制</p>
 <p>利用临时顺序节点来实现分布式锁机制（其实就是一种按照创建顺序排队的实现）</p>
 <ul>
 <li>假设锁存放在znode：<code>/locks</code>下</li>
@@ -567,7 +570,8 @@ assertTrue(result);
 <ul>
 <li>创建一个父目录 <code>/synchronizing</code>，每个成员都监控标志（Set Watch）位目录 <code>/synchronizing/start</code> 是否存在</li>
 <li>通过创建 <code>/synchronizing/member_i</code> 的临时目录节点加入队列</li>
-<li>判断<code>member_i</code>的i 的值是否已经是成员的个数，相等就创建 <code>/synchronizing/start</code>，小于则等待<br><img src="/2015/11/01/queue.png" alt="queue"></li>
+<li>判断<code>member_i</code>的i 的值是否已经是成员的个数，相等就创建 <code>/synchronizing/start</code>，小于则等待
+<img src="/2015/11/01/queue.png" alt="queue"></li>
 </ul>
 </li>
 <li><p>先进先出（分布式锁）</p>
@@ -579,8 +583,8 @@ assertTrue(result);
 </ul>
 <h2 id="header-13">Reference</h2>
 <ul>
-<li><a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/" target="_blank" rel="noopener">分布式服务框架 Zookeeper – 管理分布式环境中的数据</a></li>
-<li><a href="http://cailin.iteye.com/blog/2014486" target="_blank" rel="noopener">zookeeper原理</a></li>
+<li><a href="http://www.ibm.com/developerworks/cn/opensource/os-cn-zookeeper/">分布式服务框架 Zookeeper -- 管理分布式环境中的数据</a></li>
+<li><a href="http://cailin.iteye.com/blog/2014486">zookeeper原理</a></li>
 </ul>
   </section>
 </article>

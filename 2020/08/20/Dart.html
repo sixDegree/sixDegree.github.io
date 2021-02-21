@@ -127,8 +127,8 @@
     <h2 id="header-1">Starter</h2>
 <p>笔记：</p>
 <ul>
-<li>dart2: <a href="https://www.kancloud.cn/marswill/dark2_document/709088" target="_blank" rel="noopener">https://www.kancloud.cn/marswill/dark2_document/709088</a></li>
-<li>coderwhy: <a href="https://toutiao.io/u/482181?f=new" target="_blank" rel="noopener">https://toutiao.io/u/482181?f=new</a> , <a href="https://segmentfault.com/u/coderwhy" target="_blank" rel="noopener">https://segmentfault.com/u/coderwhy</a></li>
+<li>dart2: <a href="https://www.kancloud.cn/marswill/dark2_document/709088">https://www.kancloud.cn/marswill/dark2_document/709088</a></li>
+<li>coderwhy: <a href="https://toutiao.io/u/482181?f=new">https://toutiao.io/u/482181?f=new</a> , <a href="https://segmentfault.com/u/coderwhy">https://segmentfault.com/u/coderwhy</a></li>
 </ul>
 <h2 id="header-2">基础数据类型</h2>
 <h3 id="header-3">明确的声明</h3>
@@ -241,7 +241,8 @@ print(&quot;$c,${c.substring(3)}&quot;); // 可调用 String的substring 方法
 </code></pre>
 <h2 id="header-6">函数</h2>
 <h3 id="header-7">函数的参数</h3>
-<p>函数的 必选参数 &amp; 可选参数（位置可选参数，命名可选参数）<br>注：dart中无函数重载，即不可以声明两个同名函数</p>
+<p>函数的 必选参数 &amp; 可选参数（位置可选参数，命名可选参数）
+注：dart中无函数重载，即不可以声明两个同名函数</p>
 <ol>
 <li><p>必选参数（必传，且无法设置默认参数）</p>
 <pre><code class="lang-js"> void sayHello1(String name) {
@@ -747,18 +748,21 @@ print(l3);
 <ul>
 <li><code>import &#39;库所在的uri&#39;;</code></li>
 <li>库 URI 三种不同的形式：<ul>
-<li>dart标准库  eg: ‘dart:io’,’dart:html’,’dart:math’ （’dart:core’默认已导入）</li>
-<li>相对路径  eg: ‘lib/student/student.dart’</li>
-<li>Pub包管理工具管理的库(包括自己的配置以及一些第三方的库) eg: ‘package:flutter/material.dart’</li>
+<li>dart标准库  eg: &#39;dart:io&#39;,&#39;dart:html&#39;,&#39;dart:math&#39; （&#39;dart:core&#39;默认已导入）</li>
+<li>相对路径  eg: &#39;lib/student/student.dart&#39;</li>
+<li>Pub包管理工具管理的库(包括自己的配置以及一些第三方的库) eg: &#39;package:flutter/material.dart&#39;</li>
 </ul>
 </li>
-<li><code>show</code>/<code>hide</code> 显示/隐藏某个成员 eg:<br>import ‘lib/student/student.dart’ show Student, Person;</li>
-<li><code>as</code> 命名空间，解决命名冲突 eg:<br>import ‘lib/student/student.dart’ as Stu;<br>Stu.Student s = new Stu.Student();</li>
+<li><code>show</code>/<code>hide</code> 显示/隐藏某个成员 eg: 
+import &#39;lib/student/student.dart&#39; show Student, Person;</li>
+<li><code>as</code> 命名空间，解决命名冲突 eg: 
+import &#39;lib/student/student.dart&#39; as Stu; 
+Stu.Student s = new Stu.Student();</li>
 </ul>
 </li>
 </ol>
 <h2 id="header-20">future</h2>
-<p><a href="https://www.imooc.com/article/305495" target="_blank" rel="noopener">https://www.imooc.com/article/305495</a></p>
+<p><a href="https://www.imooc.com/article/305495">https://www.imooc.com/article/305495</a></p>
 <pre><code class="lang-java">Future&lt;String&gt; testFuture() {
   //  return Future.value(&quot;Hello&quot;);
  return Future.error(&quot;haha 创造个error&quot;);// =&gt; onError会打印【代码中有onError回调，catchError不会执行】

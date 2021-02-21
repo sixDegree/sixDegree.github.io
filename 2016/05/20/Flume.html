@@ -127,7 +127,7 @@
   </section>
   <section class="post-content">
     <h2 id="header-1">概述</h2>
-<p>Flume 分布式的日志收集系统 <a href="https://flume.apache.org/FlumeUserGuide.html#setting-up-an-agent" target="_blank" rel="noopener">官网手册</a></p>
+<p>Flume 分布式的日志收集系统 <a href="https://flume.apache.org/FlumeUserGuide.html#setting-up-an-agent">官网手册</a></p>
 <p><img src="/2016/05/20/frame1.png" alt="Frame 1"></p>
 <ul>
 <li>agent：收集日志发送到目的地（运行在日志收集端的一个Java进程），包括三个核心组件：<ul>
@@ -146,7 +146,7 @@
 </li>
 <li>特殊：interceptor 拦截器（在日志进入到source前，包装清洗过滤event）<ul>
 <li>chain形式：可对一个source指定多个拦截器，按先后顺序依次处理</li>
-<li>官方已有的拦截器：Timestamp/Host/Static/Regex Filtering/Regex Extractor/… </li>
+<li>官方已有的拦截器：Timestamp/Host/Static/Regex Filtering/Regex Extractor/... </li>
 </ul>
 </li>
 </ul>
@@ -155,7 +155,9 @@
 <li>注意：<ul>
 <li>事务保证在event级别</li>
 <li>flume支持多级agent</li>
-<li>flume支持扇入(fan-in)，扇出(fan-out)<br>  <img src="/2016/05/20/frame2.png" alt="Frame 2"><br>  <img src="/2016/05/20/frame3.png" alt="Frame 3"></li>
+<li>flume支持扇入(fan-in)，扇出(fan-out)
+  <img src="/2016/05/20/frame2.png" alt="Frame 2">
+  <img src="/2016/05/20/frame3.png" alt="Frame 3"></li>
 </ul>
 </li>
 </ul>

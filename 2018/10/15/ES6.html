@@ -127,7 +127,7 @@
   </section>
   <section class="post-content">
     <blockquote>
-<p>参阅 <a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="noopener">阮一峰 ECMAScript 6 入门</a> ，作一个归纳整理吧。。。</p>
+<p>参阅 <a href="http://es6.ruanyifeng.com/#README">阮一峰 ECMAScript 6 入门</a> ，作一个归纳整理吧。。。</p>
 </blockquote>
 <p>ES6 : 5.1 版以后的 JavaScript 的下一代标准，涵盖了 ES2015、ES2016、ES2017 等,而 ES2015 则是正式名称，特指该年发布的正式版本的语言标准。</p>
 <p>ES6 的第一个版本在 2015 年 6 月发布，正式名称就是《ECMAScript 2015 标准》（简称 ES2015）</p>
@@ -233,7 +233,7 @@
 </li>
 <li><p>声明的函数在不同环境下可能会有差异，建议使用函数表达式，而不是函数声明语句</p>
 <ul>
-<li>使用函数声明语句 – 不推荐，不同环境下会有差异：<pre><code class="lang-js">  {
+<li>使用函数声明语句 -- 不推荐，不同环境下会有差异：<pre><code class="lang-js">  {
     let a = &#39;secret&#39;;
     function f() {return a;}
   }
@@ -253,7 +253,8 @@
 </li>
 </ol>
 <h2 id="header-3">顶层对象 <code>global</code></h2>
-<p>为同一段代码能够在各种环境，都能取到顶层对象，引入global<br>注：</p>
+<p>为同一段代码能够在各种环境，都能取到顶层对象，引入global
+注：</p>
 <ul>
 <li>浏览器中顶层对象： windows，self</li>
 <li>Node中顶层对象： global</li>
@@ -284,7 +285,8 @@
 </li>
 </ol>
 <h2 id="header-4">扩展运算符 <code>...</code></h2>
-<p><code>...变量</code> ： 将剩余传入的参数值，存入一个数组变量中<br><code>...对象</code> ： 拷贝对象的可遍历属性给一个新对象</p>
+<p><code>...变量</code> ： 将剩余传入的参数值，存入一个数组变量中
+<code>...对象</code> ： 拷贝对象的可遍历属性给一个新对象</p>
 <p><strong> 示例：</strong> </p>
 <ol>
 <li><p>function rest 参数</p>
@@ -400,7 +402,8 @@ b    // 2
 </li>
 </ol>
 <h3 id="header-7">解构对象赋值</h3>
-<p>对象的属性没有次序，变量须与属性同名或给变量指定对应属性，才能取到正确的值<br>（解构数组赋值：是按照数组顺序位置给对应变量赋值的）</p>
+<p>对象的属性没有次序，变量须与属性同名或给变量指定对应属性，才能取到正确的值
+（解构数组赋值：是按照数组顺序位置给对应变量赋值的）</p>
 <p><strong> 示例：</strong></p>
 <ol>
 <li><p>单层结构对象</p>
@@ -573,7 +576,7 @@ add([1, 2]);                                    // 3
  console.log(id, status, number);        // 42, &quot;OK&quot;, [867, 5309]
 </code></pre>
 </li>
-<li><p>遍历 Map 结构 ：任何部署了 Iterator 接口的对象，都可以用for…of循环遍历</p>
+<li><p>遍历 Map 结构 ：任何部署了 Iterator 接口的对象，都可以用for...of循环遍历</p>
 <pre><code class="lang-js"> const map = new Map();
  map.set(&#39;first&#39;, &#39;hello&#39;);
  map.set(&#39;second&#39;, &#39;world&#39;);
@@ -980,7 +983,7 @@ proxy.foo // TypeError: Revoked
 </li>
 <li><p>某属性的描述对象的enumerable：可枚举性，若为false，即不可枚举，则一下操作会忽略该属性</p>
 <ul>
-<li>for…in循环</li>
+<li>for...in循环</li>
 <li>Object.keys()</li>
 <li>JSON.stringify()</li>
 <li>Object.assign()</li>
@@ -997,13 +1000,13 @@ proxy.foo // TypeError: Revoked
 <li>操作对象的prototype对象（原型对象）的方法：<ul>
 <li>Object.setPrototypeOf(object, prototype); </li>
 <li>Object.getPrototypeOf(object); </li>
-<li>Object.create(…) </li>
+<li>Object.create(...) </li>
 </ul>
 </li>
 </ul>
 <p><strong> 获取对象自身属性的操作 </strong>（即不包括继承属性）:</p>
 <ul>
-<li>可枚举属性（无Symbol）：Object.keys(obj) – ES2017 引入了Object.values,Object.entries，作为遍历一个对象的补充手段，供for…of循环使用</li>
+<li>可枚举属性（无Symbol）：Object.keys(obj) -- ES2017 引入了Object.values,Object.entries，作为遍历一个对象的补充手段，供for...of循环使用</li>
 <li>可枚举和不可枚举属性（无Symbol）：Object.getOwnPropertyNames(obj) </li>
 <li>Symbol属性：Object.getOwnPropertySymbols(obj) </li>
 <li>所有（可枚举，不可枚举，Symbol）：Reflect.ownKeys(obj) </li>
@@ -1508,7 +1511,8 @@ function f(x) {
   return n(x);
 }
 </code></pre>
-<p>由于是函数的最后一步操作，所以不需要保留外层函数的调用帧，直接用内层函数的调用帧取代外层函数的调用帧即可<br>注：</p>
+<p>由于是函数的最后一步操作，所以不需要保留外层函数的调用帧，直接用内层函数的调用帧取代外层函数的调用帧即可
+注：</p>
 <ul>
 <li>ES6支持尾调用优化，且只在严格模式下开启</li>
 <li>只有不再用到外层函数的内部变量才可取代</li>
@@ -1529,7 +1533,8 @@ function f(x) {
 </li>
 </ul>
 <p><strong> 尾递归：</strong> 尾调用自身</p>
-<p>函数调用自身，因为调用栈太多，容易发生“栈溢出”错误（stack overflow）；<br>而尾递归，由于只存在一个调用帧，所以不会发生“栈溢出”错误</p>
+<p>函数调用自身，因为调用栈太多，容易发生“栈溢出”错误（stack overflow）；
+而尾递归，由于只存在一个调用帧，所以不会发生“栈溢出”错误</p>
 <p>应用示例：</p>
 <ol>
 <li>计算n的阶乘: <code>n!</code><ul>
@@ -1580,7 +1585,8 @@ function f(x) {
 </ul>
 </li>
 </ol>
-<p><strong> 注：</strong><br>尾递归优化只在严格模式下生效，正常模式下可采用“循环”换掉“递归”的方式进行优化</p>
+<p><strong> 注：</strong> 
+尾递归优化只在严格模式下生效，正常模式下可采用“循环”换掉“递归”的方式进行优化</p>
 <h2 id="header-28">Symbol</h2>
 <ol>
 <li>ES6新增的原始数据类型，类似于字符串的数据类型 （Javascript其他原始数据类型有：undefined，null，Boolean，String，Number，Object）</li>
@@ -2206,8 +2212,6 @@ a[mySymbol]                         // &quot;Hello!&quot;
   var notAPerson = Person.call(person, &#39;张三&#39;);  // throw Error: 必须使用 new 命令生成实例
 </code></pre>
 </li>
-</ul>
-<ul>
 <li><p>ES6</p>
 <pre><code class="lang-js">  class Rectangle {
     constructor(length, width) {
@@ -2478,7 +2482,7 @@ A = decorator(A) || A;
 </li>
 <li>类属性修饰器<ul>
 <li>参数（三个）：<ul>
-<li><code>target</code> ： 类的原型对象（类.prototype）– 修饰器的本意是要“修饰”类的实例，但是这个时候实例还没生成，所以只能去修饰原型</li>
+<li><code>target</code> ： 类的原型对象（类.prototype）-- 修饰器的本意是要“修饰”类的实例，但是这个时候实例还没生成，所以只能去修饰原型</li>
 <li><code>name</code> ： 修饰的类属性名</li>
 <li><code>decriptor</code>：修饰类属性的描述对象</li>
 </ul>
@@ -2659,7 +2663,7 @@ A = decorator(A) || A;
 </ul>
 <h3 id="header-40">ES6 Module</h3>
 <ul>
-<li>自动采用严格模式，不管有没有在模块头部加上”use strict” （ES5引入的）</li>
+<li>自动采用严格模式，不管有没有在模块头部加上&quot;use strict&quot; （ES5引入的）</li>
 <li>一个模块就是一个独立的文件，该文件内部的内容，外部无法获取</li>
 <li>导出/导入<ul>
 <li><code>export ...</code> ：定义模块的对外接口，可处于模块顶层的任何位置<ul>
@@ -2675,7 +2679,7 @@ A = decorator(A) || A;
 <li>静态执行，不能使用表达式和变量，不能使用逻辑判断动态加载</li>
 <li>输入的加载项是只读的（本质是输入接口），即不允许在加载模块的脚本里面改写接口</li>
 <li>多次重复执行同一句import语句或多次加载同一module，也只会执行一次</li>
-<li><code>import &lt;module&gt;</code> : 不导入任何值，仅仅执行所加载的模块，eg: import ‘lodash’;</li>
+<li><code>import &lt;module&gt;</code> : 不导入任何值，仅仅执行所加载的模块，eg: import &#39;lodash&#39;;</li>
 </ul>
 </li>
 <li><code>export ... from ...</code>: <ul>
@@ -2686,11 +2690,9 @@ A = decorator(A) || A;
 <li>可使用<code>as</code>重命名加载对象</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>注： <ul>
 <li>模块之中，顶层的this指向undefined（CommonJS 模块的顶层this指向当前模块）</li>
-<li>通过 Babel 转码，CommonJS 模块的require命令和 ES6 模块的import命令，可以写在同一个模块里面 – 但不建议这样使用</li>
+<li>通过 Babel 转码，CommonJS 模块的require命令和 ES6 模块的import命令，可以写在同一个模块里面 -- 但不建议这样使用</li>
 </ul>
 </li>
 </ul>
@@ -2897,17 +2899,17 @@ A = decorator(A) || A;
 </tr>
 <tr>
 <td>加载</td>
-<td style="text-align:left">运行时加载，无法做“静态优化” <br> （加载的是一个对象，即module.exports属性，该对象只有在脚本运行完才会生成）</td>
-<td style="text-align:left">编译时加载，可做“静态优化” <br> （只是一种静态定义，编译时就能确定模块的依赖关系，以及输入和输出的变量）</td>
+<td style="text-align:left">运行时加载，无法做“静态优化” <br/> （加载的是一个对象，即module.exports属性，该对象只有在脚本运行完才会生成）</td>
+<td style="text-align:left">编译时加载，可做“静态优化” <br/> （只是一种静态定义，编译时就能确定模块的依赖关系，以及输入和输出的变量）</td>
 </tr>
 <tr>
 <td>循环加载</td>
-<td style="text-align:left">使用require命令加载脚本 <br> ( 返回的是当前已经执行的部分的值，而不是代码全部执行后的值)</td>
-<td style="text-align:left">使用import命令加载 <br> ( 返回的是引用，需要开发者自己保证，真正取值的时候能够取到值）</td>
+<td style="text-align:left">使用require命令加载脚本 <br/> ( 返回的是当前已经执行的部分的值，而不是代码全部执行后的值)</td>
+<td style="text-align:left">使用import命令加载 <br/> ( 返回的是引用，需要开发者自己保证，真正取值的时候能够取到值）</td>
 </tr>
 <tr>
 <td></td>
-<td style="text-align:left">第一次加载: 会执行整个脚本，在内存中生成一个对象; <br> 第N次加载：不会再执行，直接到缓存中取值，除非手动清除缓存</td>
+<td style="text-align:left">第一次加载: 会执行整个脚本，在内存中生成一个对象; <br/> 第N次加载：不会再执行，直接到缓存中取值，除非手动清除缓存</td>
 <td style="text-align:left">加载项不会被缓存，已加载项不会重复加载</td>
 </tr>
 </tbody>
@@ -2978,8 +2980,6 @@ A = decorator(A) || A;
 <li>ES6 模块的所有输出接口，会成为输入对象的属性（注：不能使用require命令）</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>注：<ul>
 <li>通过 Babel 转码，CommonJS 模块的require命令和 ES6 模块的import命令，可以写在同一个模块里面，但不建议这样使用</li>
 <li>ES6 模块之中不能使用 CommonJS 模块的特有的一些内部变量<ul>
@@ -3465,8 +3465,8 @@ k2: v2,
 </ol>
 <h2 id="header-53">Reference</h2>
 <ul>
-<li><a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="noopener">阮一峰 ECMAScript 6 入门</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener">Object.create()</a></li>
+<li><a href="http://es6.ruanyifeng.com/#README">阮一峰 ECMAScript 6 入门</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create">Object.create()</a></li>
 </ul>
   </section>
 </article>

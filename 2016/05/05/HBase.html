@@ -119,9 +119,9 @@
         <li>
          <span class="glyphicon glyphicon-tags"></span>
           
-            <a href="/tags.html#tag-NoSql">NoSql</a>
-          
             <a href="/tags.html#tag-BigData">BigData</a>
+          
+            <a href="/tags.html#tag-NoSql">NoSql</a>
           
         </li>
       
@@ -145,7 +145,9 @@
 </ul>
 <h3 id="header-2">数据模型</h3>
 <ul>
-<li><p>数据模型<br>  <img src="/2016/05/05/datamodal.png" alt="Data Modal"><br>  <img src="/2016/05/05/keyvalue.png" alt="Key Value"></p>
+<li><p>数据模型
+  <img src="/2016/05/05/datamodal.png" alt="Data Modal">
+  <img src="/2016/05/05/keyvalue.png" alt="Key Value"></p>
 <ul>
 <li>Table:存储管理数据</li>
 <li><code>RowKey</code>:行键（类似于关系型数据库中的主键）</li>
@@ -158,9 +160,11 @@
 </li>
 </ul>
 </li>
-<li><p>逻辑数据模型<br>  <img src="/2016/05/05/logicalmodal.png" alt="Logical Modal"></p>
+<li><p>逻辑数据模型
+  <img src="/2016/05/05/logicalmodal.png" alt="Logical Modal"></p>
 </li>
-<li><p>物理数据模型<br>  <img src="/2016/05/05/physicalmodal.png" alt="Physical Modal"></p>
+<li><p>物理数据模型
+  <img src="/2016/05/05/physicalmodal.png" alt="Physical Modal"></p>
 </li>
 <li><p>说明：</p>
 <ul>
@@ -222,8 +226,8 @@
 <li>MemStore 内存存储 （先，达到阀值后，写入StoreFile）</li>
 <li>StoreFile 文件存储（对应一个HFile，存放在Hadoop HDFS）<ul>
 <li>每次写入就形成一份单独的<ul>
-<li>数量增长到一定阀值：合并StoreFile（合并时会进行版本合并和删除工作）– HDFS适合存储大文件</li>
-<li>大小超过一定阀值：分割当前Region（再由HMaster分配到其他RegionServer）– 实现负载均衡</li>
+<li>数量增长到一定阀值：合并StoreFile（合并时会进行版本合并和删除工作）-- HDFS适合存储大文件</li>
+<li>大小超过一定阀值：分割当前Region（再由HMaster分配到其他RegionServer）-- 实现负载均衡</li>
 </ul>
 </li>
 </ul>
@@ -235,7 +239,8 @@
 <ul>
 <li>HBase中有两张特殊的Table（<code>-ROOT-</code>和<code>.META.</code>）<ul>
 <li><code>.META.</code>：记录了<code>用户表</code>的Region信息，<code>.META.</code>表本身可划分成N个regoin</li>
-<li><code>-ROOT-</code>：记录了<code>.META.</code>表划分成的N个Region的信息，<code>-ROOT-</code>本身只有一个，不划分<br><img src="/2016/05/05/meta.png" alt="META"></li>
+<li><code>-ROOT-</code>：记录了<code>.META.</code>表划分成的N个Region的信息，<code>-ROOT-</code>本身只有一个，不划分
+<img src="/2016/05/05/meta.png" alt="META"></li>
 </ul>
 </li>
 <li>Client访问HBase上数据数据（并不需要master参与）:<code>zookeeper</code>=&gt;<code>-ROOT-</code>表=&gt;<code>.META.</code>表=&gt;Region位置=&gt;访问</li>
@@ -292,10 +297,10 @@
 <p>例如：</p>
 <ul>
 <li>Master：hadoop0</li>
-<li>RegionServer：hadoop1,hadoop2</li>
-</ul>
-<ol>
-<li>配置（<code>$HBASE_HOME/conf</code>目录下）<ul>
+<li><p>RegionServer：hadoop1,hadoop2</p>
+</li>
+<li><p>配置（<code>$HBASE_HOME/conf</code>目录下）</p>
+<ul>
 <li><code>hbase-env.sh</code><pre><code class="lang-vim">  export JAVA_HOME=/usr/local/jdk
   # 不使用HBase内置的Zookeeper
   export HBASE_MANAGES_ZK=false
@@ -325,7 +330,7 @@
 <li>运行HBase: <code>start-hbase.sh</code></li>
 </ul>
 </li>
-</ol>
+</ul>
 <h2 id="header-7">操作</h2>
 <p>注意：HBase不能支持where条件、Order by 查询，只支持按照Row key来查询，但是可以通过HBase提供的API进行条件过滤</p>
 <h3 id="header-8">Shell Cmd</h3>
@@ -345,35 +350,35 @@
 <tbody>
 <tr>
 <td>创建表</td>
-<td>create ‘表名称’, ‘列族名称1’,’列族名称2’,’列族名称N’</td>
+<td>create &#39;表名称&#39;, &#39;列族名称1&#39;,&#39;列族名称2&#39;,&#39;列族名称N&#39;</td>
 </tr>
 <tr>
 <td>添加记录</td>
-<td>put ‘表名称’, ‘行键’, ‘列族名称:列名称’, ‘值’</td>
+<td>put &#39;表名称&#39;, &#39;行键&#39;, &#39;列族名称:列名称&#39;, &#39;值&#39;</td>
 </tr>
 <tr>
 <td>查看记录</td>
-<td>get ‘表名称’, ‘行键’</td>
+<td>get &#39;表名称&#39;, &#39;行键&#39;</td>
 </tr>
 <tr>
 <td>查看表中的记录总数</td>
-<td>count ‘表名称’</td>
+<td>count &#39;表名称&#39;</td>
 </tr>
 <tr>
 <td>删除记录</td>
-<td>delete ‘表名’ ,’行键’ , ‘列名称’</td>
+<td>delete &#39;表名&#39; ,&#39;行键&#39; , &#39;列名称&#39;</td>
 </tr>
 <tr>
 <td>删除一张表</td>
-<td>先要屏蔽该表，才能对该表进行删除，第一步 disable ‘表名称’ 第二步 drop ‘表名称’</td>
+<td>先要屏蔽该表，才能对该表进行删除，第一步 disable &#39;表名称&#39; 第二步 drop &#39;表名称&#39;</td>
 </tr>
 <tr>
 <td>查看所有记录</td>
-<td>scan “表名称”</td>
+<td>scan &quot;表名称&quot;</td>
 </tr>
 <tr>
 <td>查看某个表某个列中所有数据</td>
-<td>scan “表名称” , {COLUMNS=&gt;’列族名称:列名称’}</td>
+<td>scan &quot;表名称&quot; , {COLUMNS=&gt;&#39;列族名称:列名称&#39;}</td>
 </tr>
 <tr>
 <td>更新记录</td>

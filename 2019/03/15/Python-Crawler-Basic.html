@@ -127,7 +127,8 @@
     <h2 id="header-1">基础概念</h2>
 <h3 id="header-2">HTTP协议</h3>
 <blockquote>
-<p>wikipedia:<br>The Hypertext transfer Protocal(HTTP) is a stateless(无状态) application-level protocol for distributed(分布式),collaborative(协作式),hypertext information systems.</p>
+<p>wikipedia:
+The Hypertext transfer Protocal(HTTP) is a stateless(无状态) application-level protocol for distributed(分布式),collaborative(协作式),hypertext information systems.</p>
 </blockquote>
 <p>HyperText Transfer Protocol 超文本传输协议</p>
 <ul>
@@ -165,13 +166,13 @@
 <li>301 Moved Permanetly 重定向</li>
 <li>302 Found 重定向</li>
 <li>304 Not Modified 请求资源未更新，丢弃</li>
-<li>注：一些python库（urllib2,requests,…）已经对重定向做了处理，会自动跳转</li>
+<li>注：一些python库（urllib2,requests,...）已经对重定向做了处理，会自动跳转</li>
 </ul>
 </li>
 <li><code>4xx</code> 客户端错误<ul>
 <li>400 Bad Request 客户端请求有语法错误，不能被服务器所理解（请求参数或者路径错误）</li>
 <li>401 Unauthorized 请求未经授权，这个状态吗需和www-Authenticate报头域一起使用（无权限访问）</li>
-<li>403 Forbidden 服务器收到请求，但拒绝提供服务（未登录/IP被封/…）</li>
+<li>403 Forbidden 服务器收到请求，但拒绝提供服务（未登录/IP被封/...）</li>
 <li>404 Not Found 请求资源部存在</li>
 </ul>
 </li>
@@ -319,7 +320,7 @@ H,I,J,K
 <li>表达文本类型的特征(病毒、入侵等)</li>
 <li>匹配字符串的全部或部分</li>
 <li>查找或替换一组字符串</li>
-<li>…</li>
+<li>...</li>
 </ul>
 </li>
 <li><p>语法由字符和操作符构成, 常用操作符:</p>
@@ -447,13 +448,13 @@ H,I,J,K
 </tr>
 <tr>
 <td style="text-align:left"><code>\b</code></td>
-<td style="text-align:left">匹配一个单词的边界，注意：并不是匹配分隔符，而是单词和符号之间的边界 <br>（单词可是中英文字符,数字；符号可是中英文符号,空格,制表符,换行）</td>
-<td style="text-align:left">“a nice day”,”a niceday”: <code>\bnice\b</code>可匹配出”a nice day”的”nice”</td>
+<td style="text-align:left">匹配一个单词的边界，注意：并不是匹配分隔符，而是单词和符号之间的边界 <br/>（单词可是中英文字符,数字；符号可是中英文符号,空格,制表符,换行）</td>
+<td style="text-align:left">&quot;a nice day&quot;,&quot;a niceday&quot;: <code>\bnice\b</code>可匹配出&quot;a nice day&quot;的&quot;nice&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left"><code>\B</code></td>
 <td style="text-align:left">匹配一个非单词的边界</td>
-<td style="text-align:left">“a nice day”,”a niceday”: <code>\bnice\B</code>可匹配出”a niceday”的”nice”</td>
+<td style="text-align:left">&quot;a nice day&quot;,&quot;a niceday&quot;: <code>\bnice\B</code>可匹配出&quot;a niceday&quot;的&quot;nice&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -500,23 +501,23 @@ H,I,J,K
 </li>
 <li><p>eg1:</p>
 <ul>
-<li>一组字符串(无穷个): ‘PY’, ‘PYY’, ‘PYYY’, ‘PYYYY’, ……, ‘PYYYY……’</li>
+<li>一组字符串(无穷个): &#39;PY&#39;, &#39;PYY&#39;, &#39;PYYY&#39;, &#39;PYYYY&#39;, ......, &#39;PYYYY......&#39;</li>
 <li>正则表达式(无穷字符串组的简洁表达): <code>PY+</code></li>
 </ul>
 </li>
 <li>eg2: <ul>
-<li>一组字符串:  ‘PN’, ‘PYN’, ‘PYTN’, ‘PYTHN’, ‘PYTHON’</li>
+<li>一组字符串:  &#39;PN&#39;, &#39;PYN&#39;, &#39;PYTN&#39;, &#39;PYTHN&#39;, &#39;PYTHON&#39;</li>
 <li>正则表达式(简洁表达):<code>P(Y|YT|YTH|YTHO)?N</code></li>
 </ul>
 </li>
 <li>eg3:<ul>
-<li>表示一组’PY’开头，后续存在不多于10个字符，且不能是’P’或’Y’的字符串(如：’PYABC’ 正确;’PYKXYZ’ 不正确)</li>
+<li>表示一组&#39;PY&#39;开头，后续存在不多于10个字符，且不能是&#39;P&#39;或&#39;Y&#39;的字符串(如：&#39;PYABC&#39; 正确;&#39;PYKXYZ&#39; 不正确)</li>
 <li>正则表达式（特征字符串组的简洁表达）：<code>PY[^PY]{0,10}</code></li>
 </ul>
 </li>
 <li><p>eg4:</p>
 <ul>
-<li>‘PN’、’PYN’、’PYYN’、’PYYYN’…</li>
+<li>&#39;PN&#39;、&#39;PYN&#39;、&#39;PYYN&#39;、&#39;PYYYN&#39;...</li>
 <li><code>PY{:3}N</code></li>
 </ul>
 </li>
@@ -700,17 +701,17 @@ H,I,J,K
 <tbody>
 <tr>
 <td style="text-align:left">html.parser</td>
-<td style="text-align:left">BeautifulSoup(content,’html.parser’)</td>
+<td style="text-align:left">BeautifulSoup(content,&#39;html.parser&#39;)</td>
 <td style="text-align:left">Python内置标准库,速度适中，容错能力适中，不依赖扩展</td>
 </tr>
 <tr>
 <td style="text-align:left">lxml</td>
-<td style="text-align:left">BeautifulSoup(content,’lxml’),BeautifulSoup(content,’xml’)</td>
+<td style="text-align:left">BeautifulSoup(content,&#39;lxml&#39;),BeautifulSoup(content,&#39;xml&#39;)</td>
 <td style="text-align:left">第三方库（<code>pip install lxml</code>），速度快(局部遍历），支持XML解析，容错能力强，依赖C扩展</td>
 </tr>
 <tr>
 <td style="text-align:left">html5hib</td>
-<td style="text-align:left">BeautifulSoup(content,’html5hib’)</td>
+<td style="text-align:left">BeautifulSoup(content,&#39;html5hib&#39;)</td>
 <td style="text-align:left">第三方库（<code>pip install html5hib</code>）,速度慢，以浏览器的方式解析生成HTML5格式的文档，容错能力最好，不依赖外部扩展</td>
 </tr>
 </tbody>
@@ -2027,10 +2028,10 @@ for i,r in enumerate(result):
 <h2 id="header-19">文档解析之JSonPath</h2>
 <ul>
 <li>是一种信息抽取类库, 是从<code>JSON</code>文档中抽取指定信息的工具，提供多种语言实现版本，包括：Javascript,Python,PHP，Java</li>
-<li>JsonPath对于<code>JSON</code>来说，相当于<code>XPATH</code> 对于<code>XML</code>, Refer <a href="https://goessner.net/articles/JsonPath/" target="_blank" rel="noopener">JSONPath - XPath for JSON</a></li>
+<li>JsonPath对于<code>JSON</code>来说，相当于<code>XPATH</code> 对于<code>XML</code>, Refer <a href="https://goessner.net/articles/JsonPath/">JSONPath - XPath for JSON</a></li>
 <li>python中有2个类库可使用<ul>
 <li><code>pip install jsonpath</code>,<code>import jsonpath</code></li>
-<li><code>pip install jsonpath-rw</code>, <code>from jsonpath import jsonpath,parse</code> , Refer <a href="https://pypi.org/project/jsonpath-rw/" target="_blank" rel="noopener">Github</a></li>
+<li><code>pip install jsonpath-rw</code>, <code>from jsonpath import jsonpath,parse</code> , Refer <a href="https://pypi.org/project/jsonpath-rw/">Github</a></li>
 </ul>
 </li>
 </ul>
@@ -2206,12 +2207,12 @@ print(&#39;-------------------------&#39;)
 </code></pre>
 <h2 id="header-23">Reference</h2>
 <ul>
-<li><a href="https://github.com/sixDegree/python-basic-demo" target="_blank" rel="noopener">My Demo</a></li>
-<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.html" target="_blank" rel="noopener">Beautiful Soup Documentation</a></li>
-<li><a href="http://www.cnblogs.com/descusr/archive/2012/06/20/2557075.html" target="_blank" rel="noopener">用lxml解析HTML</a></li>
-<li><a href="https://www.cnblogs.com/MUMO/p/5732836.html" target="_blank" rel="noopener">Python爬虫：Xpath语法笔记</a></li>
-<li><a href="https://www.cnblogs.com/lei0213/p/7506130.html" target="_blank" rel="noopener">python爬虫之xpath的基本使用</a></li>
-<li><a href="https://cloud.tencent.com/developer/news/374969" target="_blank" rel="noopener">Python使用JsonPath</a></li>
+<li><a href="https://github.com/sixDegree/python-basic-demo">My Demo</a></li>
+<li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.html">Beautiful Soup Documentation</a></li>
+<li><a href="http://www.cnblogs.com/descusr/archive/2012/06/20/2557075.html">用lxml解析HTML</a></li>
+<li><a href="https://www.cnblogs.com/MUMO/p/5732836.html">Python爬虫：Xpath语法笔记</a></li>
+<li><a href="https://www.cnblogs.com/lei0213/p/7506130.html">python爬虫之xpath的基本使用</a></li>
+<li><a href="https://cloud.tencent.com/developer/news/374969">Python使用JsonPath</a></li>
 </ul>
   </section>
 </article>

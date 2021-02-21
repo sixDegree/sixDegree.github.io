@@ -51,7 +51,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">CuratorFramework</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Summary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Demo: Start</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Demo: CRUD</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Demo: Watch</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Demo: ACL</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">一个应用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Summary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Dependencies</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Admin(FileServer)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">User(ClientUser)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Common: Service &amp; Entity</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">CuratorFramework</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">Summary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">Demo: Start</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Demo: CRUD</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Demo: Watch</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Demo: ACL</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">一个应用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">Summary</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">Dependencies</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Admin(FileServer)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">User(ClientUser)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">Common: Service & Entity</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -374,7 +374,7 @@
 </tr>
 <tr>
 <td style="text-align:left">auth</td>
-<td style="text-align:left">“”, 使用已添加认证的用户认证,eg: <code>digest:username:password</code></td>
+<td style="text-align:left">&quot;&quot;, 使用已添加认证的用户认证,eg: <code>digest:username:password</code></td>
 </tr>
 <tr>
 <td style="text-align:left">digest</td>
@@ -434,11 +434,11 @@
 <li><p><code>new ACL(perms,id)</code></p>
 <ul>
 <li>parameter1: <code>Perms.xxx</code><ul>
-<li>Perms.ADMIN    – 可以修改节点权限(setAcl)</li>
-<li>Perms.READ    – 可读取节点（ls,get）</li>
-<li>Perms.WRITE    – 可修改节点内容 (set)</li>
-<li>Perms.CREATE – 可创建节点 (create)</li>
-<li>Perms.DELETE – 可删除节点 (delete)</li>
+<li>Perms.ADMIN    -- 可以修改节点权限(setAcl)</li>
+<li>Perms.READ    -- 可读取节点（ls,get）</li>
+<li>Perms.WRITE    -- 可修改节点内容 (set)</li>
+<li>Perms.CREATE -- 可创建节点 (create)</li>
+<li>Perms.DELETE -- 可删除节点 (delete)</li>
 </ul>
 </li>
 <li>parameter2: <code>new org.apache.zookeeper.data.Id(String schema,String id)</code></li>
@@ -748,7 +748,7 @@
 </li>
 </ul>
 </li>
-<li><p><code>NodeCache</code>: 一次注册，n次监听 – 监听当前节点，对子节点无效！（监听节点可不存在）</p>
+<li><p><code>NodeCache</code>: 一次注册，n次监听 -- 监听当前节点，对子节点无效！（监听节点可不存在）</p>
 <pre><code class="lang-java">@Test
 public void nodeCacheWatchTest() throws Exception{
 
@@ -1752,7 +1752,7 @@ public class ImageService {
 </li>
 </ol>
 <h2 id="header-13">Reference</h2>
-<p><a href="https://github.com/sixDegree/micro-demo" target="_blank" rel="noopener">My demo: zookeeper-demo</a></p>
+<p><a href="https://github.com/sixDegree/micro-demo">My demo: zookeeper-demo</a></p>
   </section>
 </article>
 

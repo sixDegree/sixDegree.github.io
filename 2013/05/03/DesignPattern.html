@@ -169,7 +169,8 @@ Sender sender=provider.provide();
 sender.send();
 </code></pre>
 <h3 id="header-4">Builder</h3>
-<p>工厂模式关注创建单个产品<br>建造者模式关注创建多个产品</p>
+<p>工厂模式关注创建单个产品
+建造者模式关注创建多个产品</p>
 <pre><code class="lang-java">public class Builder {
     private List&lt;Sender&gt; list = new ArrayList&lt;Sender&gt;();
     public void produce(String name,int count){
@@ -443,7 +444,8 @@ target.method2();
 <li>缺点：产生过多相似的对象，不易排错</li>
 </ul>
 <h3 id="header-10">Proxy</h3>
-<p>代理模式：相较于Decorator，Proxy通过自己创建Target对象，来持有Targe对象<br>（将功能划分的更加清晰，有助于后期维护）</p>
+<p>代理模式：相较于Decorator，Proxy通过自己创建Target对象，来持有Targe对象
+（将功能划分的更加清晰，有助于后期维护）</p>
 <pre><code class="lang-java">public class Proxy implements Targetable {
     private Targetable target;
 
@@ -466,7 +468,8 @@ Targetable obj=new Proxy();
 obj.method();
 </code></pre>
 <h3 id="header-11">Facade</h3>
-<p>外观模式：为了解决类与类之家的依赖关系<br>（将依赖放在一个Facade类中，降低类与类之间的耦合度，类似Spring将通过配置文件维护各个bean的依赖关系）</p>
+<p>外观模式：为了解决类与类之家的依赖关系
+（将依赖放在一个Facade类中，降低类与类之间的耦合度，类似Spring将通过配置文件维护各个bean的依赖关系）</p>
 <pre><code class="lang-java">public class A{...}
 public class B{...}
 
@@ -490,7 +493,8 @@ facade.method();
 </code></pre>
 <h3 id="header-12">Bridge</h3>
 <p>桥接模式：将抽象与实现解耦，使得二者可以独立变化</p>
-<p>类似：DriverManager与JDBC桥接（统一接口），在各个数据库（提供各自实现）之间进行切换<br>用一个叫做数据库驱动的程序来桥接就行了。</p>
+<p>类似：DriverManager与JDBC桥接（统一接口），在各个数据库（提供各自实现）之间进行切换
+用一个叫做数据库驱动的程序来桥接就行了。</p>
 <pre><code class="lang-java">// 统一接口
 public interface Targetable {
     public void method();
@@ -573,7 +577,8 @@ tree.root.add(nodeB);
 nodeB.add(nodeC);
 </code></pre>
 <h3 id="header-14">Flyweight</h3>
-<p>享元模式：实现对象的共享，即共享池<br>（对象多的时候可以减少内存的开销，一般为单例，可参考数据库连接池的实现）</p>
+<p>享元模式：实现对象的共享，即共享池
+（对象多的时候可以减少内存的开销，一般为单例，可参考数据库连接池的实现）</p>
 <pre><code class="lang-java">public class ConnectionPool {
     private Vector&lt;Connection&gt; pool;
     /*公有属性*/
@@ -622,7 +627,9 @@ nodeB.add(nodeC);
 <h2 id="header-15">行为类模式</h2>
 <p><img src="/2013/05/03/action.png" alt="Action"></p>
 <h3 id="header-16">Strategy</h3>
-<p>策略模式：定义了一系列算法，封装起来，可随意替换<br>场景：适用于当一个应用程序需要实现一种特定的服务或者功能，而且该程序有多种实现方式时使用(决定权在用户，系统本身提供不同的实现)<br><strong>PS：</strong> 可参考<code>java.util</code>中<code>Collections</code>算法类的使用和实现</p>
+<p>策略模式：定义了一系列算法，封装起来，可随意替换
+场景：适用于当一个应用程序需要实现一种特定的服务或者功能，而且该程序有多种实现方式时使用(决定权在用户，系统本身提供不同的实现)
+<strong>PS：</strong> 可参考<code>java.util</code>中<code>Collections</code>算法类的使用和实现</p>
 <p><img src="/2013/05/03/strategy.png" alt="Strategy"></p>
 <pre><code class="lang-java">//统一接口
 public interface IStrategy {
@@ -665,7 +672,8 @@ ctx.operate();
 </li>
 <li>子类：提供这个算法搭建步骤的具体实现</li>
 </ul>
-<p><strong>PS:</strong>可参考<code>HttpServlet</code>抽象类<br>（提供了一个service方法，这个方法调用七个do方法中的一个或几个，完成对客户端调用的响应，这些do方法需要由HttpServlet的具体子类提供，这是典型的模板模式）</p>
+<p><strong>PS:</strong>可参考<code>HttpServlet</code>抽象类
+（提供了一个service方法，这个方法调用七个do方法中的一个或几个，完成对客户端调用的响应，这些do方法需要由HttpServlet的具体子类提供，这是典型的模板模式）</p>
 <pre><code class="lang-java">public abstract class AbstractTemplate{
     protected abstract void abstractMethod1();
     protected abstract void abstractMethod2();
@@ -694,7 +702,9 @@ template.templateMethod();
 </code></pre>
 <h3 id="header-18">Observer</h3>
 <p>订阅者模式：发布-订阅（Publish/Subscribe）模式</p>
-<p>对象之间是一种一对多的关系：<br>让多个观察者对象同时监听某一个主题对象<br>这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己</p>
+<p>对象之间是一种一对多的关系：
+让多个观察者对象同时监听某一个主题对象
+这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己</p>
 <ul>
 <li>Subject：主题（接口/抽象类，可增加删除观察者对象）</li>
 <li>Observer：观察者（接口/抽象类，在得到Subject通知时更新自己）</li>
@@ -1133,7 +1143,8 @@ objectStructor.accept(new ConcreteVisitor1();)
 objectStructor.accept(new ConcreteVisitor2();)
 </code></pre>
 <h3 id="header-25">Mediator</h3>
-<p>中介者模式：<br>用一个中介者对象封装一系列的对象交互，中介者使各对象不需要显示地相互作用，从而使耦合松散，而且可以独立地改变它们之间的交互</p>
+<p>中介者模式：
+用一个中介者对象封装一系列的对象交互，中介者使各对象不需要显示地相互作用，从而使耦合松散，而且可以独立地改变它们之间的交互</p>
 <p><strong>PS：</strong>只需关心和Mediator类的关系（由Mediator负责具体类类之间的关系及调度，有点像spring容器的作用）</p>
 <p>实现：</p>
 <ul>

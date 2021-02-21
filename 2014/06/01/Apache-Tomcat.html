@@ -249,7 +249,9 @@ Server compiled with....
 <pre><code>&gt; yum install -y httpd
 &gt; yum install -y httpd-tools
 &gt; yum install -y httpd-*
-</code></pre><p>说明：<br>注意安装<code>httpd-devel</code>（即apxs）<br>apxs （APache eXtenSion tool）：可独立编译apache的动态模块（DSO）</p>
+</code></pre><p>说明：
+注意安装<code>httpd-devel</code>（即apxs）
+apxs （APache eXtenSion tool）：可独立编译apache的动态模块（DSO）</p>
 <pre><code>&gt; which apxs                 #查看属于哪个文件
 #/usr/sbin/apxs
 &gt; rpm -qf /usr/sbin/apxs     #查看属于哪个安装包
@@ -317,7 +319,8 @@ access_log  error_log  httpd.pid
 <p>apache服务默认会启动一个主进程（控制进程）和多个子进程</p>
 <p>查看apache相关进程</p>
 <pre><code>&gt; ps aux | grep httpd
-</code></pre><p>其中，以<code>root</code>身份运行的是主进程，以<code>apache</code>身份运行的是子进程<br>（主进程的进程ID保存在 <code>/etc/httpd/run/httpd.pid</code>文件内）</p>
+</code></pre><p>其中，以<code>root</code>身份运行的是主进程，以<code>apache</code>身份运行的是子进程
+（主进程的进程ID保存在 <code>/etc/httpd/run/httpd.pid</code>文件内）</p>
 <h4 id="header-11">apache 模块</h4>
 <p>Apache是一个模块化设计的服务</p>
 <pre><code>&gt; httpd -M      #查看模块
@@ -375,18 +378,19 @@ access_log  error_log  httpd.pid
 <li>NameVirtualHost 使用基于域名的虚拟主机<ul>
 <li>必须指定服务器IP地址（和可能的端口）来使主机接受请求</li>
 <li>如果服务器上所有的IP地址都会用到， 可以用<code>*</code>作为NameVirtualHost的参数</li>
-<li>注意：在NameVirtualHost指令中指明IP地址并不会使服务器自动侦听那个IP地址<br>这里设定的IP地址必须对应服务器上的一个网络接口。</li>
+<li>注意：在NameVirtualHost指令中指明IP地址并不会使服务器自动侦听那个IP地址 
+这里设定的IP地址必须对应服务器上的一个网络接口。</li>
 </ul>
 </li>
-<li><code>&lt;VirtualHost&gt;</code> 为建立的每个虚拟主机设定<virtualhost>配置块，其中<ul>
+<li><code>&lt;VirtualHost&gt;</code> 为建立的每个虚拟主机设定<VirtualHost>配置块，其中<ul>
 <li><code>ServerName</code> 指定伺服哪个主机</li>
 <li><code>DocumentRoot</code> 指令说明这个主机的内容存在于文件系统的什么地方</li>
 </ul>
-</virtualhost></li>
+</li>
 </ul>
 <h4 id="header-13">apache 日志</h4>
 <p>日志（Log）</p>
-<p>手册 <a href="http://httpd.apache.org/docs/2.4/logs.html" target="_blank" rel="noopener">logs</a> | <a href="http://httpd.apache.org/docs/2.4/programs/rotatelogs.html" target="_blank" rel="noopener">rotatelogs</a></p>
+<p>手册 <a href="http://httpd.apache.org/docs/2.4/logs.html">logs</a> | <a href="http://httpd.apache.org/docs/2.4/programs/rotatelogs.html">rotatelogs</a></p>
 <p>使用 <code>bin/rotatelogs</code>举例：</p>
 <pre><code>&gt; vi httpd.conf
 #rotatelogs logfile [ rotationtime [ offset ]] | [ filesizeM ]
@@ -439,7 +443,7 @@ JkLogFile &quot;| /usr/local/apache2.4/bin/rotatelogs /usr/local/apache2.4/logs/
  User apache
  Group apache
 </code></pre></li>
-<li><p>Section2: ‘Main’ Server Configuration 主服务配置</p>
+<li><p>Section2: &#39;Main&#39; Server Configuration 主服务配置</p>
 <pre><code> ServerAdmin root@localhost               #管理员邮件地址
  ServerName www.example.com:80     #域名
  UseCanonicalName Off                        #严格合法域名，使用虚拟主机的话一定要off
@@ -683,7 +687,8 @@ JAVA_OPTS=&quot;$JAVA_OPTS -XX:PermSize=256m -XX:MaxPermSize=1024m&quot;
 </li>
 <li>使用第三方来存放共享Session<ul>
 <li>使用<code>memcached</code>，<code>redis</code>将session信息的存储独立出来也是解决session同步问题</li>
-<li>用<code>zookeeper</code>实现的分布式session方案（不是简单的把session独立出来存储而是设计一个完全独立的session机制，它既能给每个web应用提供session的功能又可以实现session同步）<br><img src="/2014/06/01/zookeeper.png" alt="Zookeeper"></li>
+<li>用<code>zookeeper</code>实现的分布式session方案（不是简单的把session独立出来存储而是设计一个完全独立的session机制，它既能给每个web应用提供session的功能又可以实现session同步）
+<img src="/2014/06/01/zookeeper.png" alt="Zookeeper"></li>
 </ul>
 </li>
 <li>使用黏性session的策略 <ul>
@@ -725,8 +730,6 @@ JAVA_OPTS=&quot;$JAVA_OPTS -XX:PermSize=256m -XX:MaxPermSize=1024m&quot;
 <li>8009：用于监听来自于apache的请求</li>
 </ul>
 </li>
-</ul>
-<ul>
 <li>Apache监听转发jsp/servlet请求给Tomcat的8009端口</li>
 <li>交由Tomcat处理后，再返回给Apache，由Apache返回给Client</li>
 </ul>
@@ -778,7 +781,8 @@ JkMount /* worker1
 JkUnMount /*/resources/* worker1
 JkUnMount /index.html worker1
 JkUnMount / worker1
-</code></pre><p><strong>PS：</strong>url映射关系除了使用<code>JkMount</code>配置外，也可使用<code>JkMountFile</code>专门放置在一个文件中进行配置，例如：<br>mod_jk.conf中：</p>
+</code></pre><p><strong>PS：</strong>url映射关系除了使用<code>JkMount</code>配置外，也可使用<code>JkMountFile</code>专门放置在一个文件中进行配置，例如：
+mod_jk.conf中：</p>
 <pre><code>...
 #External File for mount points
 JkMountFile /usr/local/apache2.4/conf/extra/uriworkermap.properties
@@ -857,7 +861,9 @@ worker.status.type=status
 </ul>
 </li>
 </ul>
-<p><strong> 注意</strong>：<br>workers.properties中配置了<code>worker.list=controller</code>,则在JkMount时需使用<code>controller</code><br>例如：uriworkermap.properties</p>
+<p><strong> 注意</strong>：
+workers.properties中配置了<code>worker.list=controller</code>,则在JkMount时需使用<code>controller</code>
+例如：uriworkermap.properties</p>
 <pre><code>/*=controller
 #!/*/resources/*=controller
 !/resources/*=controller
@@ -951,7 +957,8 @@ worker.status.type=status
 </ul>
 </li>
 </ol>
-<p>注意：<code>server.xml</code>中配置的<code>jvmRoute</code>值会出现在由该结点创建的session id中<br>例如：</p>
+<p>注意：<code>server.xml</code>中配置的<code>jvmRoute</code>值会出现在由该结点创建的session id中
+例如：</p>
 <ul>
 <li>在非集群环境下，一个sessionid可能是 “xxxxxxxxx” 的格式</li>
 <li>而在集群环境下，如果当前结点的jvmRtomat1oute被配置为tomcat1,那由该结点生成的sessionid将变成“xxxxxxxxx.tomat1”格式</li>
@@ -1016,12 +1023,16 @@ metadata-complete=&quot;true&quot;&gt;
 </code></pre></li>
 <li><p>测试</p>
 <ul>
-<li>check tomcat1<br><img src="/2014/06/01/tomcat1.png" alt="Tomcat 1"></li>
-<li>check tomcat2<br><img src="/2014/06/01/tomcat2.png" alt="Tomcat 2"></li>
+<li>check tomcat1
+<img src="/2014/06/01/tomcat1.png" alt="Tomcat 1"></li>
+<li>check tomcat2
+<img src="/2014/06/01/tomcat2.png" alt="Tomcat 2"></li>
 <li>=&gt; 可以看到 tomcat1、tomcat2 两个节点的 Session 一样</li>
 <li>check apache （负载均衡集群测试）<ul>
-<li>session粘性测试=&gt; 多次刷新后，请求访问的一直是tomcat1，并且session Id一直保持不变，session中的数据也能够保持，说明session粘性良好<br><img src="/2014/06/01/apache1.png" alt="Apache"></li>
-<li>session复制测试：关闭tomcat1<code>&gt; /usr/local/tomcat1/bin/shutdown.sh</code> =&gt;请求被转发给tomcat2，页面访问正常，Session Id保持不变，session数据也全部传递给tomcat2，表明session复制良好<br><img src="/2014/06/01/apache2.png" alt="Apache"></li>
+<li>session粘性测试=&gt; 多次刷新后，请求访问的一直是tomcat1，并且session Id一直保持不变，session中的数据也能够保持，说明session粘性良好
+<img src="/2014/06/01/apache1.png" alt="Apache"></li>
+<li>session复制测试：关闭tomcat1<code>&gt; /usr/local/tomcat1/bin/shutdown.sh</code> =&gt;请求被转发给tomcat2，页面访问正常，Session Id保持不变，session数据也全部传递给tomcat2，表明session复制良好
+<img src="/2014/06/01/apache2.png" alt="Apache"></li>
 </ul>
 </li>
 </ul>
@@ -1072,7 +1083,9 @@ stick_session=true
 </ul>
 </li>
 </ul>
-<p><img src="/2014/06/01/https-1.png" alt="Https"><br><img src="/2014/06/01/https.png" alt="Https"><br>(Https会话过程)</p>
+<p><img src="/2014/06/01/https-1.png" alt="Https">
+<img src="/2014/06/01/https.png" alt="Https">
+(Https会话过程)</p>
 <ul>
 <li>首先服务器端先生成一份密钥，将公钥交给CA，由CA对它签署并生成证书，保存一份并回送给服务器端。</li>
 <li>服务器对其进行配置使用，在通话后就将证书发送给客户端，客户端询问CA进行验证。</li>
@@ -1084,7 +1097,8 @@ stick_session=true
 </code></pre></li>
 <li>根据key生成csr文件（证书请求文件） =&gt; server.csr<pre><code>openssl req -new -key server.key -out server.csr
 </code></pre></li>
-<li>提交csr生成证书 =&gt; server.crt<br>（这里签署的证书仅仅做测试用，真正运行的时候，应该将CSR发送到一个CA，返回真正的证书）<pre><code>&gt; openssl x509 -days 365 -req -in server.csr -signkey server.key -out server.crt
+<li>提交csr生成证书 =&gt; server.crt
+（这里签署的证书仅仅做测试用，真正运行的时候，应该将CSR发送到一个CA，返回真正的证书）<pre><code>&gt; openssl x509 -days 365 -req -in server.csr -signkey server.key -out server.crt
 </code></pre></li>
 <li>查看证书<pre><code>&gt; openssl x509 -noout -text -in server.crt
 </code></pre></li>
@@ -1094,9 +1108,8 @@ stick_session=true
 <ul>
 <li>浏览器到HttpServer ：使用https加密通信</li>
 <li>HttpServer 与 tomcat：使用http通信</li>
-<li>所以如果HttpServer开启https，则tomcat可以不用开启https</li>
-</ul>
-<ol>
+<li><p>所以如果HttpServer开启https，则tomcat可以不用开启https</p>
+</li>
 <li><p>配置httpd.conf （加载mod_ssl,mod_socache_shmcb模块，ssl配置文件https-ssl.conf）</p>
 <pre><code> #For SSL
  LoadModule socache_shmcb_module modules/mod_socache_shmcb.so
@@ -1128,7 +1141,7 @@ stick_session=true
 </code></pre></li>
 <li><p>重启apache，测试</p>
 </li>
-</ol>
+</ul>
 <p><strong>PS：</strong>若网站无法通过https正常访问，可确认服务器443端口（防火墙）是否开启</p>
 <h3 id="header-30">Tomcat SSL</h3>
 <p>Tomcat的SSL配置分为两种情况：</p>
@@ -1140,9 +1153,8 @@ stick_session=true
 <p>keystore：包含了服务器中被客户端用于验证服务器的数字证书</p>
 <ul>
 <li>客户端接受了这个证书，就可以使用<code>public key</code>加密要发送的数据</li>
-<li>服务器端拥有一个<code>private key</code>，作为唯一解密数据的密钥</li>
-</ul>
-<ol>
+<li><p>服务器端拥有一个<code>private key</code>，作为唯一解密数据的密钥</p>
+</li>
 <li><p>创建<code>.keystore</code> 文件（使用<code>JAVA_HOME/bin</code>下的<code>keytool</code>）</p>
 <pre><code> keytool -genkey -alias tomcat -keyalg RSA -keystore tomcat.keystore
 </code></pre><ul>
@@ -1165,7 +1177,7 @@ keystorePass=&quot;123@com&quot;/&gt;
 </li>
 <li><p>重启 Tomcat，测试</p>
 </li>
-</ol>
+</ul>
 <p><strong>Issues：</strong></p>
 <pre><code>2012-5-16 13:10:37 org.apache.catalina.core.AprLifecycleListener init  
 信息: Loaded APR based Apache Tomcat Native library 1.1.23.  
@@ -1189,7 +1201,7 @@ keystorePass=&quot;123@com&quot;/&gt;
 <pre><code class="lang-xml">  &lt;!--APR library loader. Documentation at /docs/apr.html --&gt;  
   &lt;Listener className=&quot;org.apache.catalina.core.AprLifecycleListener&quot; SSLEngine=&quot;on&quot; /&gt;
 </code></pre>
-<p>  但这样做将失去APR库的价值，Tomcat性能必然下降（<a href="http://wenson.iteye.com/blog/382738" target="_blank" rel="noopener">APR库作用</a> ）</p>
+<p>  但这样做将失去APR库的价值，Tomcat性能必然下降（<a href="http://wenson.iteye.com/blog/382738">APR库作用</a> ）</p>
 </li>
 <li><p>解决方案二：修改上面server.xml中protocol的配置为<code>protocol=&quot;org.apache.coyote.http11.Http11Protocol&quot;</code> （不启用APR）</p>
 <pre><code class="lang-xml">   &lt;Connector port=&quot;443&quot; protocol=&quot;org.apache.coyote.http11.Http11Protocol&quot; SSLEnabled=&quot;true&quot;

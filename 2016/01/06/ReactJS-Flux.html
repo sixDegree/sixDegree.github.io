@@ -141,7 +141,7 @@
 </ul>
 <p>在flux思想之上，有很多优秀的库，比如：reflux，redux</p>
 <h2 id="header-2">Reflux</h2>
-<p><a href="https://github.com/reflux/refluxjs" target="_blank" rel="noopener">Github</a> | <a href="http://segmentfault.com/a/1190000002793786?utm_source=tuicool" target="_blank" rel="noopener">Reflux 介绍</a> | <a href="http://abruzzi.github.com/2015/11/get-started-with-reflux" target="_blank" rel="noopener">Sample</a></p>
+<p><a href="https://github.com/reflux/refluxjs">Github</a> | <a href="http://segmentfault.com/a/1190000002793786?utm_source=tuicool">Reflux 介绍</a> | <a href="http://abruzzi.github.com/2015/11/get-started-with-reflux">Sample</a></p>
 <p>下载包：</p>
 <pre><code>&gt; npm install reflux --save
 </code></pre><ol>
@@ -200,8 +200,9 @@ module.exports=Reflux.createActions([
 </li>
 </ol>
 <h2 id="header-3">Redux</h2>
-<p><a href="http://camsong.github.io/redux-in-chinese/" target="_blank" rel="noopener">中文文档</a> | <a href="https://segmentfault.com/a/1190000003503338#articleHeader5" target="_blank" rel="noopener">Redux 介绍</a> | <a href="http://zhenhua-lee.github.io/react/redux.html" target="_blank" rel="noopener">解读redux工作原理</a></p>
-<p><img src="/2016/01/06/redux.png" alt="redux"><br>（图片来自：<a href="http://staltz.com/unidirectional-user-interface-architectures.html）" target="_blank" rel="noopener">http://staltz.com/unidirectional-user-interface-architectures.html）</a></p>
+<p><a href="http://camsong.github.io/redux-in-chinese/">中文文档</a> | <a href="https://segmentfault.com/a/1190000003503338#articleHeader5">Redux 介绍</a> | <a href="http://zhenhua-lee.github.io/react/redux.html">解读redux工作原理</a></p>
+<p><img src="/2016/01/06/redux.png" alt="redux">
+（图片来自：<a href="http://staltz.com/unidirectional-user-interface-architectures.html）">http://staltz.com/unidirectional-user-interface-architectures.html）</a></p>
 <p>store 是一个单一对象：</p>
 <ul>
 <li><code>store.getState()</code> ：获取reducer的root state</li>
@@ -281,7 +282,8 @@ module.exports=Reflux.createActions([
 </li>
 </ol>
 <h3 id="header-5">高阶使用示例</h3>
-<p><img src="/2016/01/06/redux-book.png" alt="redux"><br>（图片来自：<a href="https://www.udemy.com/react-redux/" target="_blank" rel="noopener">https://www.udemy.com/react-redux/</a> 教程）</p>
+<p><img src="/2016/01/06/redux-book.png" alt="redux">
+（图片来自：<a href="https://www.udemy.com/react-redux/">https://www.udemy.com/react-redux/</a> 教程）</p>
 <p><strong>要点：</strong></p>
 <ol>
 <li>Reducer:<pre><code class="lang-javascript"> var bookReducer=function(state,action){...};
@@ -315,7 +317,8 @@ module.exports=Reflux.createActions([
 </li>
 </ol>
 <p><strong> 可使用middleware实现异步Action </strong> （例如使用<code>redux-promise</code> ）</p>
-<p><img src="/2016/01/06/redux-book-middleware.png" alt="redux"><br>（图片来自：<a href="https://www.udemy.com/react-redux/" target="_blank" rel="noopener">https://www.udemy.com/react-redux/</a> 教程）</p>
+<p><img src="/2016/01/06/redux-book-middleware.png" alt="redux">
+（图片来自：<a href="https://www.udemy.com/react-redux/">https://www.udemy.com/react-redux/</a> 教程）</p>
 <p><strong>要点：</strong> 触发action，传递promise对象，使用middleware拦截直到响应，继续传递action到reducers</p>
 <ol>
 <li><p>下载包<code>redux-promise</code> (Redux Middleware) &amp; <code>axios</code> (Promise Request)：</p>
@@ -351,9 +354,9 @@ module.exports=Reflux.createActions([
 </ol>
 <h2 id="header-6">Reference</h2>
 <ul>
-<li>Reflux <a href="https://github.com/reflux/refluxjs" target="_blank" rel="noopener">Github</a> | <a href="http://segmentfault.com/a/1190000002793786?utm_source=tuicool" target="_blank" rel="noopener">Reflux 介绍</a> | <a href="http://abruzzi.github.com/2015/11/get-started-with-reflux" target="_blank" rel="noopener">Sample</a></li>
-<li>Redux <a href="https://github.com/rackt/react-redux" target="_blank" rel="noopener">Github</a> | <a href="http://camsong.github.io/redux-in-chinese/index.html" target="_blank" rel="noopener">中文文档</a> | <a href="https://segmentfault.com/a/1190000003503338#articleHeader5" target="_blank" rel="noopener">Redux 介绍</a> | <a href="http://zhenhua-lee.github.io/react/redux.html" target="_blank" rel="noopener">解读redux工作原理</a></li>
-<li><a href="https://github.com/sixDegree/react-advance" target="_blank" rel="noopener">My Demos</a></li>
+<li>Reflux <a href="https://github.com/reflux/refluxjs">Github</a> | <a href="http://segmentfault.com/a/1190000002793786?utm_source=tuicool">Reflux 介绍</a> | <a href="http://abruzzi.github.com/2015/11/get-started-with-reflux">Sample</a></li>
+<li>Redux <a href="https://github.com/rackt/react-redux">Github</a> | <a href="http://camsong.github.io/redux-in-chinese/index.html">中文文档</a> | <a href="https://segmentfault.com/a/1190000003503338#articleHeader5">Redux 介绍</a> | <a href="http://zhenhua-lee.github.io/react/redux.html">解读redux工作原理</a></li>
+<li><a href="https://github.com/sixDegree/react-advance">My Demos</a></li>
 </ul>
   </section>
 </article>

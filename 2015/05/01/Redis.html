@@ -179,7 +179,8 @@ make: *** [redis-server] Error 1
 &gt; ./configure
 &gt; make
 </code></pre><h3 id="header-3">安全性</h3>
-<p>客户端执行命令前先通过密码认证<br>note: Redis速度很快，一般一个外部用户可以在1s进行150k次的密码尝试</p>
+<p>客户端执行命令前先通过密码认证
+note: Redis速度很快，一般一个外部用户可以在1s进行150k次的密码尝试</p>
 <ol>
 <li><p>Server端配置</p>
 <pre><code>&gt; vi /etc/redis/redis.conf
@@ -220,7 +221,8 @@ requirepass &lt;password&gt;
 <li><code>exec</code>,<code>discard</code>,<code>unwatch</code>：会清除连接中的所有监视</li>
 </ul>
 <h3 id="header-5">持久化机制</h3>
-<p>Redis 是一个支持持久化的内存数据库 （可将内存中数据同步到硬盘来保证持久化）<br>两种方式：</p>
+<p>Redis 是一个支持持久化的内存数据库 （可将内存中数据同步到硬盘来保证持久化）
+两种方式：</p>
 <ul>
 <li><code>snapshotting</code> 快照方式 （默认）<ul>
 <li>存储数据，一定时间间隔做一次<ul>
@@ -263,9 +265,8 @@ vm-max-threads 4                    # 执行value对象换入的线程数量
 <li>主 Master server</li>
 <li>从 Slave servers</li>
 <li>Master 可以拥有多个Slave，Slave可以连接Slave，主从复制不会阻塞Master</li>
-<li>主从Server可以在：不同机器 or 同机器不同端口</li>
-</ul>
-<ol>
+<li><p>主从Server可以在：不同机器 or 同机器不同端口</p>
+</li>
 <li><p>Slave Server端配置</p>
 <pre><code>&gt; vi /etc/redis/redis.conf
 slaveof &lt;master-ip&gt; &lt;master-port&gt;
@@ -298,7 +299,7 @@ master_link_status:up
 </code></pre></li>
 </ul>
 </li>
-</ol>
+</ul>
 <p>注意： redis主从复制时提示<code>master_link_status:down</code></p>
 <ol>
 <li>确定slave的配置文件<code>redis.conf</code>配置正确（<code>slaveof</code> 和<code>masterauth</code> 参数）</li>
@@ -419,9 +420,8 @@ db1:xxx
 <ul>
 <li>二进制安全</li>
 <li>一个key对应一个value</li>
-<li>value可包含任何数据（eg:jpg,序列化对象）</li>
-</ul>
-<ol>
+<li><p>value可包含任何数据（eg:jpg,序列化对象）</p>
+</li>
 <li><p><code>set</code></p>
 <pre><code>&gt; set name Tom      # return &quot;OK&quot;
 &gt; get name          # return &quot;Tom&quot;
@@ -441,7 +441,7 @@ db1:xxx
 &gt; setrange email 4 163.com             # return 13
 &gt; get email                            # return &quot;Tom@163.comom&quot;
 </code></pre></li>
-<li><p><code>mset</code>：muti-set =&gt; return “OK” / 0 (one fail =&gt; all fail)</p>
+<li><p><code>mset</code>：muti-set =&gt; return &quot;OK&quot; / 0 (one fail =&gt; all fail)</p>
 <pre><code>msetnx: muti-set not exist          # return &quot;OK&quot; / 0 (one fail -&gt; all fail)
 &gt; mset key1 a1 key2 a2 key3 a3      # return &quot;OK&quot;
 &gt; get key2                          # return &quot;a2&quot;
@@ -466,7 +466,7 @@ db1:xxx
 <li><p><code>strlen</code>: return value length</p>
 <pre><code>&gt; strlen name                # return 8
 </code></pre></li>
-<li><p><code>incr</code>: i++; <code>decr</code>: i–</p>
+<li><p><code>incr</code>: i++; <code>decr</code>: i--</p>
 <pre><code>&gt; set age 20    # return &quot;20&quot;
 &gt; incr age        # return &quot;21&quot;
 &gt; incr age        # return &quot;22&quot;
@@ -479,7 +479,7 @@ db1:xxx
 &gt; incr bb 5     # return 10
 &gt; incr bb -2    # return 8
 </code></pre></li>
-</ol>
+</ul>
 <h3 id="header-14">hash</h3>
 <ol>
 <li><p><code>hset hash field fieldValue</code></p>
@@ -522,7 +522,8 @@ db1:xxx
 </code></pre></li>
 </ol>
 <h3 id="header-15">list</h3>
-<p>每个子元素都是String类型的双向链表，即可做栈又可做队列<br>可以通过push,pop操作从头部或尾部添加删除元素</p>
+<p>每个子元素都是String类型的双向链表，即可做栈又可做队列
+可以通过push,pop操作从头部或尾部添加删除元素</p>
 <ol>
 <li><p><code>lpush</code>,<code>lpop</code>,<code>lrang</code></p>
 <ul>
@@ -605,7 +606,8 @@ db1:xxx
 </code></pre></li>
 </ol>
 <h3 id="header-16">set</h3>
-<p>string类型的无序集合，通过hash table实现<br>集合可取并集，交集，差集等操作 （可用于实现类似好友推荐，blog的tag功能）</p>
+<p>string类型的无序集合，通过hash table实现
+集合可取并集，交集，差集等操作 （可用于实现类似好友推荐，blog的tag功能）</p>
 <ol>
 <li><p><code>sadd</code>,<code>srem</code>,<code>smembers</code></p>
 <ul>
@@ -923,7 +925,7 @@ db1:xxx
 </tr>
 <tr>
 <td>posts:42:comments</td>
-<td>“Good”,”Thanks”,”Useful”,…</td>
+<td>&quot;Good&quot;,&quot;Thanks&quot;,&quot;Useful&quot;,...</td>
 </tr>
 </tbody>
 </table>

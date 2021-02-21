@@ -128,7 +128,7 @@
   <section class="post-content">
     <h2 id="header-1">Starter</h2>
 <blockquote>
-<p>Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can “just run”.</p>
+<p>Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can &quot;just run&quot;.</p>
 </blockquote>
 <ul>
 <li>全新框架，目的是简化Spring应用的搭建和开发过程，不需要定义样板化的配置（例如xml文件）</li>
@@ -156,7 +156,7 @@
 <p><img src="/2018/09/15/springboot.png" alt="Spring Boot"></p>
 <h3 id="header-2">三大特性</h3>
 <ol>
-<li><p>自动装配组件： Web MVC，Web Flux，JDBC,…</p>
+<li><p>自动装配组件： Web MVC，Web Flux，JDBC,...</p>
 <ul>
 <li>激活：<code>@EnableAutoConfiguration</code><pre><code class="lang-java">  @EnableAutoConfiguration
   public class App {
@@ -267,7 +267,7 @@
 </li>
 <li>注解：<ul>
 <li><code>@Controller</code>,<code>@ControllerAdvice</code>,<code>@ExceptionHandler</code></li>
-<li><code>@RequestMapping</code>（<code>@GetMapping</code>,<code>@PostMapping</code>,…)</li>
+<li><code>@RequestMapping</code>（<code>@GetMapping</code>,<code>@PostMapping</code>,...)</li>
 <li><code>@RequestBody</code>,<code>@RequestParm</code>,<code>@RequestHeader</code>,<code>@PathVariable</code>,<code>@CookieValue</code></li>
 <li><code>@RestController</code>,<code>@RestControllerAdvice</code>,<code>@ResponseBody</code>(for Rest)</li>
 <li><code>@ModelAttribute</code>,<code>@Valid</code>,<code>@Validated</code></li>
@@ -294,8 +294,8 @@
 </ul>
 </li>
 <li>编程模型：<ul>
-<li>注解式驱动 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-controller" target="_blank" rel="noopener">Annotated Controllers</a>: 同WebMvc使用的注解</li>
-<li>函数式端点 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-fn" target="_blank" rel="noopener">Functional Endpoints</a> : 使用<code>RouterFunction</code>(功能上代替Contoller+HandleMethod)</li>
+<li>注解式驱动 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-controller">Annotated Controllers</a>: 同WebMvc使用的注解</li>
+<li>函数式端点 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-fn">Functional Endpoints</a> : 使用<code>RouterFunction</code>(功能上代替Contoller+HandleMethod)</li>
 </ul>
 </li>
 <li>核心组件(功能大同WebMvc, jar: <code>spring-webflux</code>， package：<code>o.s.w.reactive...</code>):<ul>
@@ -366,7 +366,7 @@
 <ol>
 <li><p>创建SpringBoot项目</p>
 <ul>
-<li>方式一： 使用 <a href="http://start.spring.io" target="_blank" rel="noopener">start spring</a><pre><code>  // 1. 网页中配置GAV：
+<li>方式一： 使用 <a href="http://start.spring.io">start spring</a><pre><code>  // 1. 网页中配置GAV：
   Spring Boot: 2.0.0
   Group: com.cj
   Artifact: springboot-demo-first
@@ -400,7 +400,7 @@ Initializr Server URL: http://start.spring.io -&gt; Next -&gt; 输入GAV等配�
 <li><code>spring-boot-starter-webflux</code>：引入webflux模块(支持Reactive)，默认内嵌Reactor Netty(by including:<code>spring-boot-starter-reactor-netty</code>)</li>
 </ul>
 </li>
-<li>embed web server – no need to deploy WAR files , refer <a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-use-another-web-server" target="_blank" rel="noopener">How to use another web-server</a><ul>
+<li>embed web server -- no need to deploy WAR files , refer <a href="https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/#howto-use-another-web-server">How to use another web-server</a><ul>
 <li><code>spring-boot-starter-tomcat</code></li>
 <li><code>spring-boot-starter-jetty</code></li>
 <li><code>spring-boot-starter-undertow</code></li>
@@ -507,7 +507,7 @@ Initializr Server URL: http://start.spring.io -&gt; Next -&gt; 输入GAV等配�
 </li>
 </ul>
 </li>
-<li>visit <code>http://localhost:8080</code> to verify -&gt; should show “Hello World!” in the page</li>
+<li>visit <code>http://localhost:8080</code> to verify -&gt; should show &quot;Hello World!&quot; in the page</li>
 </ol>
 <h3 id="header-6">Hello World(使用独立容器)</h3>
 <ol>
@@ -670,7 +670,8 @@ Initializr Server URL: http://start.spring.io -&gt; Next -&gt; 输入GAV等配�
 </li>
 </ol>
 <h3 id="header-8">热部署</h3>
-<p>监听classpath下的文件（class类，配置文件）变化，自动重启应用<br>（默认静态资源改变：<code>/public</code>，<code>/resource</code>，<code>/META-INF</code>,…，会重新加载，但不会重启应用）</p>
+<p>监听classpath下的文件（class类，配置文件）变化，自动重启应用
+（默认静态资源改变：<code>/public</code>，<code>/resource</code>，<code>/META-INF</code>,...，会重新加载，但不会重启应用）</p>
 <ul>
 <li><p>方式一：使用<code>springloaded</code> </p>
 <pre><code class="lang-xml">  &lt;plugins&gt;
@@ -833,7 +834,7 @@ Initializr Server URL: http://start.spring.io -&gt; Next -&gt; 输入GAV等配�
 </li>
 </ol>
 <h3 id="header-10">属性配置</h3>
-<p>Refer <a href="https://docs.spring.io/spring-boot/docs/2.1.0.RELEASE/reference/htmlsingle/#common-application-properties" target="_blank" rel="noopener">Common application properties</a>                </p>
+<p>Refer <a href="https://docs.spring.io/spring-boot/docs/2.1.0.RELEASE/reference/htmlsingle/#common-application-properties">Common application properties</a>                </p>
 <ol>
 <li><p>配置文件：<code>resources/application.properties</code> 或 <code>resources/application.yml</code></p>
 </li>
@@ -883,7 +884,7 @@ Initializr Server URL: http://start.spring.io -&gt; Next -&gt; 输入GAV等配�
  }
 </code></pre>
 </li>
-<li><p>visit <code>http://localhost:8080/testSay</code> to verify,shoud see: “Test: Hi Tom – SayProperties [prefix=Hi, target=Tom, times=5]”</p>
+<li><p>visit <code>http://localhost:8080/testSay</code> to verify,shoud see: &quot;Test: Hi Tom -- SayProperties [prefix=Hi, target=Tom, times=5]&quot;</p>
 </li>
 </ol>
 <p><strong> 示例2：多环境配置（不同环境使用不同配置） </strong></p>
@@ -2313,7 +2314,7 @@ public class SpringApplication {
 </li>
 </ul>
 <h2 id="header-26">外部化配置</h2>
-<p>Refer <a href="https://docs.spring.io/spring-boot/docs/2.0.2.RELEASE/reference/htmlsingle/#boot-features-external-config" target="_blank" rel="noopener">SpringBoot Doc</a></p>
+<p>Refer <a href="https://docs.spring.io/spring-boot/docs/2.0.2.RELEASE/reference/htmlsingle/#boot-features-external-config">SpringBoot Doc</a></p>
 <blockquote>
 <p>Spring Boot allows you to externalize your configuration so you can work with the same application code in different environments. You can use properties files, YAML files, environment variables and command-line arguments to externalize configuration.</p>
 </blockquote>
@@ -2514,7 +2515,7 @@ public class SpringApplication {
 <li>setEnvironment</li>
 <li>trigger <code>ApplicationContextInitializer#initialize</code></li>
 <li>trigger <code>SpringApplicationRunListener#contextPrepared</code></li>
-<li>…</li>
+<li>...</li>
 <li>trigger <code>SpringApplicationRunListener#contextLoaded</code></li>
 </ul>
 </li>
@@ -2531,11 +2532,11 @@ public class SpringApplication {
 <ul>
 <li>ConfigurationPropertySourcesPropertySource</li>
 <li>AnnotationsPropertySource</li>
-<li>CommandLinePropertySource<t></t></li>
+<li>CommandLinePropertySource<T></li>
 <li>MapPropertySource</li>
 <li>ServletConfigPropertySource</li>
 <li>ServletContextPropertySource</li>
-<li>…</li>
+<li>...</li>
 </ul>
 </li>
 <li><p><code>SpringApplication#run</code>:</p>
@@ -2757,11 +2758,13 @@ public class SpringApplication {
 <h2 id="header-32">Servlet</h2>
 <p>Servlet:</p>
 <blockquote>
-<p>是一种基于 Java 技术的 Web 组件，用于生成动态内容，由容器管理。<br>类似于其他 Java 技术组件，Servlet 是平台无关的 Java 类组成，且由 Java Web 服务器加载执行。通常情况，由 Servlet容器提供运行时环境。</p>
+<p>是一种基于 Java 技术的 Web 组件，用于生成动态内容，由容器管理。
+类似于其他 Java 技术组件，Servlet 是平台无关的 Java 类组成，且由 Java Web 服务器加载执行。通常情况，由 Servlet容器提供运行时环境。</p>
 </blockquote>
 <p>Servlet 容器/引擎:</p>
 <blockquote>
-<p>作为Web服务器或应用服务器的一部分，管理Servlets实例以及它们的生命周期<br>通过请求和响应对话，提供Web Client与Servlets交互的能力</p>
+<p>作为Web服务器或应用服务器的一部分，管理Servlets实例以及它们的生命周期
+通过请求和响应对话，提供Web Client与Servlets交互的能力</p>
 </blockquote>
 <p>从功能上:</p>
 <blockquote>
@@ -2999,13 +3002,13 @@ public class SpringApplication {
 <td style="text-align:left">SpringBoot(独立Servlet容器)</td>
 <td style="text-align:left">&times;</td>
 <td style="text-align:left">&radic;</td>
-<td style="text-align:left"><code>SpringBootServletInitializer</code>(implements WebApplicationInitializer) <br> note: 支持使用<code>ServletContextInitializer</code>注入的Servlet组件 <br> eg: <br> @Bean ServletContextInitializer <br> @Bean ServletRegisterBean,FilterRegisterBean,ServletListenerRegisterBean (implements ServletContextInitializer)</td>
+<td style="text-align:left"><code>SpringBootServletInitializer</code>(implements WebApplicationInitializer) <br/> note: 支持使用<code>ServletContextInitializer</code>注入的Servlet组件 <br/> eg: <br/> @Bean ServletContextInitializer <br/> @Bean ServletRegisterBean,FilterRegisterBean,ServletListenerRegisterBean (implements ServletContextInitializer)</td>
 </tr>
 <tr>
 <td style="text-align:left">SpringBoot(嵌入式Servlet容器)</td>
 <td style="text-align:left">&times;</td>
 <td style="text-align:left">limited: need to add <code>@ServletComponentScan</code></td>
-<td style="text-align:left">only can use <code>ServletContextInitializer</code> <br> note: 不支持使用<code>SpringBootServletInitializer</code>(implements WebApplicationInitializer)</td>
+<td style="text-align:left">only can use <code>ServletContextInitializer</code> <br/> note: 不支持使用<code>SpringBootServletInitializer</code>(implements WebApplicationInitializer)</td>
 </tr>
 </tbody>
 </table>
@@ -3024,8 +3027,8 @@ public class SpringApplication {
 <li><code>Servlet 3.0</code> 新增的一个接口，主要用于在容器启动阶段通过<code>编程风格</code>注册Servlet/Filter/Listener，以取代通过<code>web.xml</code>配置注册</li>
 <li>这样利于开发内聚的web应用框架，例如：对于SpringWeb应用，<code>Servlet3.0</code>前需要在<code>web.xml</code>中配置注册一些Spring实现的Servlet/Filter/Listener组件,相当于将框架和容器紧耦合了; <code>3.x</code>后注册的功能内聚到Spring里，这个SpringWeb应用就变成了一个即插即用的组件，不用依据应用环境定义一套新的配置</li>
 <li>参考：<ul>
-<li><a href="https://blog.csdn.net/lqzkcx3/article/details/78507169" target="_blank" rel="noopener">Servlet3.0研究之ServletContainerInitializer接口</a></li>
-<li><a href="https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&amp;mid=2650859531&amp;idx=1&amp;sn=02830d72d4bacd00c82314d0281f3eb2&amp;chksm=f13297d8c6451ece93dd5abbfff1cce10e440414838e2864d3c5b8fa794a1acc91cca0e4343f&amp;mpshare=1&amp;scene=23&amp;srcid=0920wmSB9KfBqsVAQTLYz3ly#rd" target="_blank" rel="noopener">Tomcat 中 的可插拔以及 SCI 的实现原理</a></li>
+<li><a href="https://blog.csdn.net/lqzkcx3/article/details/78507169">Servlet3.0研究之ServletContainerInitializer接口</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzI3MTEwODc5Ng==&amp;mid=2650859531&amp;idx=1&amp;sn=02830d72d4bacd00c82314d0281f3eb2&amp;chksm=f13297d8c6451ece93dd5abbfff1cce10e440414838e2864d3c5b8fa794a1acc91cca0e4343f&amp;mpshare=1&amp;scene=23&amp;srcid=0920wmSB9KfBqsVAQTLYz3ly#rd">Tomcat 中 的可插拔以及 SCI 的实现原理</a></li>
 </ul>
 </li>
 </ul>
@@ -3266,7 +3269,7 @@ public class SpringApplication {
  }
 </code></pre>
 </li>
-<li><p>verify: pom.xml maven build… -&gt; <code>jetty:run</code> (使用tomcat maven插件生成可运行的jar包也可以)</p>
+<li><p>verify: pom.xml maven build... -&gt; <code>jetty:run</code> (使用tomcat maven插件生成可运行的jar包也可以)</p>
 <ul>
 <li><code>curl -i http://localhost:9090/demo/</code></li>
 <li><code>curl -i http://localhost:9090/demo/myServlet</code></li>
@@ -3279,9 +3282,8 @@ public class SpringApplication {
 <li>使用<code>@EnableAutoConfiguration</code>自动装配DispatcherServlet</li>
 <li>使用XML/Annotation(<code>@Configuration</code>) 配置WebMvc相关组件 （Spring中也可使用这种注解配置方式 + <code>@ComponentScan(basePackages=&quot;com.cj.demo&quot;)</code>配置扫描到配置类）</li>
 <li>使用<code>SpringBootServletInitializer</code>配置主引导类 (SpringBootServletInitializer implements WebApplicationInitializer)</li>
-<li>使用<code>独立Servlet</code>启动运行</li>
-</ul>
-<ol>
+<li><p>使用<code>独立Servlet</code>启动运行</p>
+</li>
 <li><p>pom.xml</p>
 <pre><code class="lang-xml"> &lt;packaging&gt;war&lt;/packaging&gt;
  &lt;dependencies&gt;
@@ -3384,9 +3386,9 @@ public class SpringApplication {
  }
 </code></pre>
 </li>
-<li><p>verify: <code>pom.xml</code> -&gt; maven build… -&gt; <code>jetty:run</code> -&gt; <code>curl -i http://localhost:9090/demo/</code></p>
+<li><p>verify: <code>pom.xml</code> -&gt; maven build... -&gt; <code>jetty:run</code> -&gt; <code>curl -i http://localhost:9090/demo/</code></p>
 </li>
-</ol>
+</ul>
 <h3 id="header-34">Servlet 嵌入式容器启动初始化</h3>
 <p>SpringBoot 实现 (jar: spring-boot) ：</p>
 <ol>
@@ -3398,23 +3400,23 @@ public class SpringApplication {
  }
 </code></pre>
 <ul>
-<li>为减少风险，嵌入式容器（eg: embed jetty/tomcat/…) 不能使用Servlet interface <code>ServletContainerInitializer</code>和Spring interface<code>WebApplicationInitializer</code>. Refer <a href="https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/#boot-features-embedded-container-context-initializer" target="_blank" rel="noopener">27.4.2 Servlet Context Initialization</a></li>
+<li>为减少风险，嵌入式容器（eg: embed jetty/tomcat/...) 不能使用Servlet interface <code>ServletContainerInitializer</code>和Spring interface<code>WebApplicationInitializer</code>. Refer <a href="https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/#boot-features-embedded-container-context-initializer">27.4.2 Servlet Context Initialization</a></li>
 <li>SpringBoot中提供<code>ServletContextInitializer</code>接口（代替嵌入式容器无法使用的Servlet interface <code>ServletContainerInitializer</code>）来实现<code>ServletContext</code>的initialization.</li>
 </ul>
 </li>
 <li><p><code>ServletContextInitializer</code>实现类</p>
 <ul>
 <li>RegistrationBean<ul>
-<li>DynamicRegistrationBean<d extends="" registration.dynamic=""><ul>
-<li>AbstractFilterRegistrationBean<t extends="" filter=""><ul>
+<li>DynamicRegistrationBean<D extends Registration.Dynamic><ul>
+<li>AbstractFilterRegistrationBean<T extends Filter><ul>
 <li>DelegatingFilterProxyRegistrationBean</li>
-<li>FilterRegistrationBean<t extends="" filter=""> : <code>@WebFilter</code></t></li>
+<li>FilterRegistrationBean<T extends Filter> : <code>@WebFilter</code></li>
 </ul>
-</t></li>
-<li>ServletRegistrationBean<t extends="" servlet=""> : <code>@WebServlet</code></t></li>
+</li>
+<li>ServletRegistrationBean<T extends Servlet> : <code>@WebServlet</code></li>
 </ul>
-</d></li>
-<li>ServletListenerRegistrationBean<t extends="" eventlistener=""> : <code>@WebListener</code></t></li>
+</li>
+<li>ServletListenerRegistrationBean<T extends EventListener> : <code>@WebListener</code></li>
 </ul>
 </li>
 </ul>
@@ -3528,9 +3530,8 @@ public class SpringApplication {
 <li>使用xml/annotation方式配置WebMvc组件</li>
 <li>使用<code>@EnableAutoConfiguration</code>自动部署DispatcherServlet</li>
 <li>自定义Servlet，通过<code>@WebServlet</code>+<code>@ServletComponentScan</code>，或<code>RegistrationBean</code>,或<code>ServletContextInitializer#onStartup-&gt;servletContext.addServlet</code>方式注册</li>
-<li>使用嵌入式容器（直接运行main方法）/独立容器启动进行验证</li>
-</ul>
-<ol>
+<li><p>使用嵌入式容器（直接运行main方法）/独立容器启动进行验证</p>
+</li>
 <li><p>pom.xml</p>
 <pre><code class="lang-xml"> &lt;dependencies&gt;
      &lt;!-- default embed webserver by spring-boot-starter-tomcat--&gt;
@@ -3653,23 +3654,22 @@ public class SpringApplication {
 <li><code>curl -i http://localhost:8080/myServlet</code> -&gt; OK</li>
 </ul>
 </li>
-</ol>
+</ul>
 <h3 id="header-35">组件Servlet源码分析</h3>
 <ul>
-<li><code>Servlet</code> (jar: servlet-api)<ul>
+<li><p><code>Servlet</code> (jar: servlet-api)</p>
+<ul>
 <li><code>GenericServlet</code> (jar: servlet-api)<ul>
 <li><code>HttpServletBean</code> -&gt; <code>FrameworkServlet</code> -&gt; <code>DispatchServlet</code> (jar:spring-webmvc)    </li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<ol>
 <li><p><code>servlet-api</code>: javax.servlet.http (eg: javax.servlet-api-3.1.0.jar)</p>
 <ul>
 <li><code>Servlet</code> (init,service,destroy,getServletConfig)<ul>
-<li><code>GenericServlet</code> (abstract service,init,…)<ul>
-<li><code>HttpServlet</code> (service,doGet,doPost,doXxx…)</li>
+<li><code>GenericServlet</code> (abstract service,init,...)<ul>
+<li><code>HttpServlet</code> (service,doGet,doPost,doXxx...)</li>
 </ul>
 </li>
 </ul>
@@ -3855,7 +3855,7 @@ public class SpringApplication {
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 <h3 id="header-36">Servlet异步支持(3.0+)</h3>
 <ol>
 <li><p>技术：        </p>
@@ -4371,7 +4371,7 @@ public class SpringApplication {
 </li>
 </ol>
 <p><strong> Thymeleaf模版处理流程: </strong></p>
-<p><a href="https://www.thymeleaf.org/" target="_blank" rel="noopener">官网</a> | <a href="https://www.thymeleaf.org/documentation.html" target="_blank" rel="noopener">Doc</a> | <a href="https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html" target="_blank" rel="noopener">Quict Start</a></p>
+<p><a href="https://www.thymeleaf.org/">官网</a> | <a href="https://www.thymeleaf.org/documentation.html">Doc</a> | <a href="https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html">Quict Start</a></p>
 <ol>
 <li><p>资源定位（模板来源 ）:</p>
 <ul>
@@ -4449,13 +4449,12 @@ public class SpringApplication {
 <li>ViewResolver 模板资源查找 </li>
 </ul>
 </li>
-<li>总结：<ul>
+<li><p>总结：</p>
+<ul>
 <li>按照ViewResolver Order，返回第一个可以resolve的View去render（eg：下面的两个Debug示例都只能有一个正确返回）</li>
 <li>找不到Resource时就抛出异常</li>
 </ul>
 </li>
-</ul>
-<ol>
 <li><p>pom.xml</p>
 <pre><code class="lang-xml"> &lt;dependencies&gt;
      &lt;dependency&gt;
@@ -4565,8 +4564,8 @@ public class SpringApplication {
 </ul>
 </li>
 <li>Verify: <ul>
-<li>Visit: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a>    =&gt; Error(500:Error resolving template “index”, template might not exist or might not be accessible by any of the configured Template Resolvers)</li>
-<li>Visit: <a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a> =&gt; Success </li>
+<li>Visit: <a href="http://localhost:8080/">http://localhost:8080/</a>    =&gt; Error(500:Error resolving template &quot;index&quot;, template might not exist or might not be accessible by any of the configured Template Resolvers)</li>
+<li>Visit: <a href="http://localhost:8080/hello">http://localhost:8080/hello</a> =&gt; Success </li>
 </ul>
 </li>
 </ul>
@@ -4609,8 +4608,8 @@ public class SpringApplication {
 </ul>
 </li>
 <li>Verify: <ul>
-<li>Visit: <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a>    =&gt; Success</li>
-<li>Visit: <a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a> =&gt; Error(404)</li>
+<li>Visit: <a href="http://localhost:8080/">http://localhost:8080/</a>    =&gt; Success</li>
+<li>Visit: <a href="http://localhost:8080/hello">http://localhost:8080/hello</a> =&gt; Error(404)</li>
 </ul>
 </li>
 </ul>
@@ -4666,7 +4665,7 @@ public class SpringApplication {
 </li>
 </ul>
 </li>
-</ol>
+</ul>
 <h3 id="header-41">内容协商视图解析器</h3>
 <p><code>ContentNegotiatingViewResolver</code> (implements <code>ViewResolver</code>):</p>
 <ol>
@@ -4683,7 +4682,7 @@ public class SpringApplication {
 <li><code>getCandidateViews</code>： 获取所有可能的<code>View</code> (<code>ViewResolver#resolveViewName</code>视图解析得到的<code>View</code>)</li>
 <li><code>getBestView</code>: 从上面获取的View中选取最佳匹配的<code>View</code><ul>
 <li>HTTP Request <code>MediaType</code> &lt;-&gt; ViewResolver View <code>contentType</code> : 第一个匹配的那个View</li>
-<li>注：<code>ViewResolver 顺序</code> 和 <code>Request的MediaType</code>匹配规则（Accept 头策略，请求参数策略，…）</li>
+<li>注：<code>ViewResolver 顺序</code> 和 <code>Request的MediaType</code>匹配规则（Accept 头策略，请求参数策略，...）</li>
 </ul>
 </li>
 </ul>
@@ -4759,9 +4758,9 @@ public class SpringApplication {
 </ul>
 </li>
 <li>Verify:<ul>
-<li><a href="http://localhost:8080/?format=xml" target="_blank" rel="noopener">http://localhost:8080/?format=xml</a> =&gt; Success (InternalResourceViewResolver resolved,show jsp page)</li>
-<li><a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a>  Accept:text/xml =&gt; Success (match InternalResourceViewResolver resolved, show jsp page)</li>
-<li><a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a> =&gt; Success (ThymeleafViewResolver resolved, show thymeleaf page)</li>
+<li><a href="http://localhost:8080/?format=xml">http://localhost:8080/?format=xml</a> =&gt; Success (InternalResourceViewResolver resolved,show jsp page)</li>
+<li><a href="http://localhost:8080/">http://localhost:8080/</a>  Accept:text/xml =&gt; Success (match InternalResourceViewResolver resolved, show jsp page)</li>
+<li><a href="http://localhost:8080/hello">http://localhost:8080/hello</a> =&gt; Success (ThymeleafViewResolver resolved, show thymeleaf page)</li>
 </ul>
 </li>
 </ul>
@@ -4852,7 +4851,7 @@ public class SpringApplication {
 <li>解析出HTTP Request中的媒体类型 (eg: <code>text/html</code>,<code>application/json</code>)</li>
 <li>使用<code>ContentNegotiationStrategy#resolveMediaTypes</code>，有各种解析策略，例如：<ul>
 <li>固定 MediaType : FixedContentNegotiationStrategy </li>
-<li>“Accept” 请求头: HeaderContentNegotiationStrategy </li>
+<li>&quot;Accept&quot; 请求头: HeaderContentNegotiationStrategy </li>
 <li>请求参数: ParameterContentNegotiationStrategy </li>
 <li>路径扩展名: PathExtensionContentNegotiationStrategy</li>
 </ul>
@@ -5170,7 +5169,7 @@ public class SpringApplication {
  &lt;/html&gt;
 </code></pre>
 </li>
-<li><p>Visit <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></p>
+<li><p>Visit <a href="http://localhost:8080/">http://localhost:8080/</a></p>
 </li>
 </ol>
 <h2 id="header-44">WebMVC 源码分析</h2>
@@ -5421,13 +5420,13 @@ public class SpringApplication {
 <li>内容协商管理器<code>ContentNegotiationManager</code>: 管理内容协商策略<code>ContentNegotiationStrategy</code>（用于获取HTTP Request的<code>MediaType</code>列表）<ul>
 <li><code>List&lt;ContentNegotiationStrategy&gt;</code> , eg:<ul>
 <li>固定 MediaType : FixedContentNegotiationStrategy </li>
-<li>“Accept” 请求头: HeaderContentNegotiationStrategy </li>
+<li>&quot;Accept&quot; 请求头: HeaderContentNegotiationStrategy </li>
 <li>请求参数: ParameterContentNegotiationStrategy </li>
 <li>路径扩展名: PathExtensionContentNegotiationStrategy</li>
 </ul>
 </li>
-<li><code>ContentNegotiationManager#resolveMediaTypes(request)</code> -&gt; List<mediatype></mediatype></li>
-<li><code>ContentNegotiationManager#resolveFileExtensions(mediaType)</code> -&gt; List<string></string></li>
+<li><code>ContentNegotiationManager#resolveMediaTypes(request)</code> -&gt; List<MediaType></li>
+<li><code>ContentNegotiationManager#resolveFileExtensions(mediaType)</code> -&gt; List<String></li>
 </ul>
 </li>
 </ul>
@@ -5437,7 +5436,7 @@ public class SpringApplication {
 <li><code>getCandidateViews</code>: 获取所有可能的View (ViewResolver视图解析得到View)</li>
 <li><code>getBestView</code>: 从上面获取的View中选取最佳匹配的View<ul>
 <li>HTTP Request <code>MediaType</code> &lt;-&gt; ViewResolver View <code>contentType</code> : 第一个匹配的那个View</li>
-<li>注：<code>ViewResolver 顺序</code> 和 <code>Request的MediaType</code>（Accept 头策略，请求参数策略，…）</li>
+<li>注：<code>ViewResolver 顺序</code> 和 <code>Request的MediaType</code>（Accept 头策略，请求参数策略，...）</li>
 </ul>
 </li>
 </ul>
@@ -5468,7 +5467,7 @@ public class SpringApplication {
 <li>foreach this.viewResolvers<ul>
 <li>candidateViews.add(viewResolver.resolveViewName(viewName, locale))</li>
 <li>extensions = this.contentNegotiationManager.resolveFileExtensions(requestedMediaType);</li>
-<li>foreach extensions -&gt; candidateViews.add(viewResolver.resolveViewName(viewName + ‘.’ + extension, locale))</li>
+<li>foreach extensions -&gt; candidateViews.add(viewResolver.resolveViewName(viewName + &#39;.&#39; + extension, locale))</li>
 </ul>
 </li>
 <li>candidateViews.addAll(this.defaultViews)</li>
@@ -5776,12 +5775,12 @@ public interface ContentNegotiationStrategy {
 <li><p><code>DispatcherServlet#doDispatch(request,response)</code></p>
 <ul>
 <li>HandlerExecutionChain { handler(eg:HandlerMethod) &amp; interceptorList }<ul>
-<li>List<handlermapping> handlerMappings</handlermapping></li>
+<li>List<HandlerMapping> handlerMappings</li>
 <li>HandlerMapping#getHandler!=null</li>
 </ul>
 </li>
 <li>HandlerAdapter<ul>
-<li>List<handleradapter> handlerAdapters</handleradapter></li>
+<li>List<HandlerAdapter> handlerAdapters</li>
 <li>HandlerAdapter#support</li>
 </ul>
 </li>
@@ -5791,7 +5790,7 @@ public interface ContentNegotiationStrategy {
 </ul>
 </li>
 <li>View<ul>
-<li>List<viewresolver> viewResolvers</viewresolver></li>
+<li>List<ViewResolver> viewResolvers</li>
 <li>ViewResolver#resolveViewName(ModelAndView#view,local)</li>
 </ul>
 </li>
@@ -5820,7 +5819,7 @@ public interface ContentNegotiationStrategy {
 </li>
 </ul>
 </li>
-<li>AbstractHandlerMethodMapping<t><ul>
+<li>AbstractHandlerMethodMapping<T><ul>
 <li>afterPropertiesSet -&gt; initHandlerMethods -&gt; detectHandlerMethods<ul>
 <li>abstract getMappingForMethod</li>
 <li>registerHandlerMethod</li>
@@ -5833,13 +5832,13 @@ public interface ContentNegotiationStrategy {
 </ul>
 </li>
 </ul>
-</t></li>
-<li>RequestMappingInfoHandlerMapping<requestmappinginfo><ul>
+</li>
+<li>RequestMappingInfoHandlerMapping<RequestMappingInfo><ul>
 <li>override getMatchingMapping</li>
 <li>override handleMatch</li>
 <li>override handleNoMatch</li>
 </ul>
-</requestmappinginfo></li>
+</li>
 <li>RequestMappingHandlerMapping<ul>
 <li>override getMappingForMethod -&gt; createRequestMappingInfo</li>
 </ul>
@@ -6082,7 +6081,7 @@ public class DispatcherServlet extends FrameworkServlet {
 <li><p>HandlerMapping: RequestMappingHandlerMapping</p>
 <ul>
 <li>内部相当于维护了一个<code>Map&lt;RequestMappingInfo,HandlerMethod&gt;</code>，<code>getHandler</code>时根据当前<code>request</code>找到匹配的<code>HandlerMethod</code></li>
-<li>AbstractHandlerMethodMapping<t> (extends AbstractHandlerMapping)<pre><code class="lang-java">  // 1. afterPropertiesSet -- 会注册所有mapping（requestMapping和各个Class method关系）
+<li>AbstractHandlerMethodMapping<T> (extends AbstractHandlerMapping)<pre><code class="lang-java">  // 1. afterPropertiesSet -- 会注册所有mapping（requestMapping和各个Class method关系）
   //        -&gt; initHandlerMethods 
   //            -&gt; detectHandlerMethods 
   //                -&gt; call abstract func:getMappingForMethod
@@ -6174,8 +6173,8 @@ public class DispatcherServlet extends FrameworkServlet {
       }
   }
 </code></pre>
-</t></li>
-<li><p>RequestMappingInfoHandlerMapping (extends AbstractHandlerMethodMapping<requestmappinginfo>)</requestmappinginfo></p>
+</li>
+<li><p>RequestMappingInfoHandlerMapping (extends AbstractHandlerMethodMapping<RequestMappingInfo>)</p>
 <pre><code class="lang-java">  // 1. getMatchingMapping
   //        -&gt;RequestMappingInfo#getMatchingCondition
   @Override
@@ -6468,8 +6467,8 @@ public class DispatcherServlet extends FrameworkServlet {
 </ul>
 </li>
 <li>编程模型：<ul>
-<li>注解式驱动 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-controller" target="_blank" rel="noopener">Annotated Controllers</a>: 同WebMvc使用的注解</li>
-<li>函数式端点 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-fn" target="_blank" rel="noopener">Functional Endpoints</a> : 使用<code>RouterFunction</code></li>
+<li>注解式驱动 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-controller">Annotated Controllers</a>: 同WebMvc使用的注解</li>
+<li>函数式端点 <a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/web-reactive.html#webflux-fn">Functional Endpoints</a> : 使用<code>RouterFunction</code></li>
 </ul>
 </li>
 <li>核心组件(功能大同WebMvc, jar: <code>spring-webflux</code>， package：<code>o.s.w.reactive...</code>):<ul>
@@ -6760,7 +6759,7 @@ public class DispatcherServlet extends FrameworkServlet {
 <ol>
 <li><p>Reactive 思想</p>
 <ul>
-<li>非阻塞下同步／异步执行 – 多功能<ul>
+<li>非阻塞下同步／异步执行 -- 多功能<ul>
 <li>阻塞导致性能瓶颈和浪费资源，但非阻塞也不一定提升性能</li>
 <li>增加线程可能会引起资源竞争和并发问题</li>
 </ul>
@@ -6936,7 +6935,7 @@ public class DispatcherServlet extends FrameworkServlet {
   }
 </code></pre>
 </li>
-<li><code>Subscription</code> ：订阅信号 (Subscriber to Publisher – 背压)<pre><code class="lang-java">  public interface Subscription {
+<li><code>Subscription</code> ：订阅信号 (Subscriber to Publisher -- 背压)<pre><code class="lang-java">  public interface Subscription {
       public void request(long n);    // 限定请求上游元素的数量
       public void cancel();            // 请求停止发送数据并且清除资源
   }
@@ -7201,10 +7200,10 @@ public class DispatcherServlet extends FrameworkServlet {
 -->
 <h2 id="header-54">Reference</h2>
 <ul>
-<li><a href="https://github.com/sixDegree/springboot-demo" target="_blank" rel="noopener">Demo</a></li>
-<li><a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/" target="_blank" rel="noopener">SpringFramework Doc</a></li>
-<li><a href="https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/" target="_blank" rel="noopener">SpringBoot Doc</a></li>
-<li><a href="https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/#howto-convert-an-existing-application-to-spring-boot" target="_blank" rel="noopener">Convert an Existing Application to Spring Boot</a></li>
+<li><a href="https://github.com/sixDegree/springboot-demo">Demo</a></li>
+<li><a href="https://docs.spring.io/spring/docs/5.0.x/spring-framework-reference/">SpringFramework Doc</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/">SpringBoot Doc</a></li>
+<li><a href="https://docs.spring.io/spring-boot/docs/2.0.x/reference/htmlsingle/#howto-convert-an-existing-application-to-spring-boot">Convert an Existing Application to Spring Boot</a></li>
 </ul>
   </section>
 </article>

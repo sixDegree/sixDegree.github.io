@@ -333,7 +333,8 @@ ResponseEntity&lt;String&gt; response=restTemplate.getForEntity(this.serverUrl+p
                      cnonce=&quot;0a4f113b&quot;,
                      response=&quot;6629fae49393a05397450978507c4ef1&quot;,
                      opaque=&quot;5ccc069c403ebaf9f0171e9517f40e41&quot;
-</code></pre><p><strong>PS:</strong><br>其中nonce是digest认证的中心<code>=base64(expirationTime + &quot;:&quot; + md5Hex(expirationTime + &quot;:&quot; + key))</code></p>
+</code></pre><p><strong>PS:</strong>
+其中nonce是digest认证的中心<code>=base64(expirationTime + &quot;:&quot; + md5Hex(expirationTime + &quot;:&quot; + key))</code></p>
 <ul>
 <li><code>expirationTime</code>是nonce的过期时间</li>
 <li><code>key</code>是放置nonce修改的私钥</li>

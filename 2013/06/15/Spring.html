@@ -506,7 +506,8 @@
 </ol>
 <h3 id="header-14">Spring AOP</h3>
 <p>Spring AOP 使用动态代理的方式，将一些横切性的问题（例如：日志管理，权限控制）提取出来成为一个模块，在运行的时候根据需要切入到原有正常代码中</p>
-<p>一些基本概念：<br><img src="/2013/06/15/aop.png" alt="AOP"></p>
+<p>一些基本概念：
+<img src="/2013/06/15/aop.png" alt="AOP"></p>
 <ol>
 <li>Joinpoint 连接点 ： 可加入位置</li>
 <li>Pointcut 切入点： 约定一个范围，Jointpoint集合（使用表达式匹配连接点）</li>
@@ -524,7 +525,8 @@
 </ol>
 <p>切入点(Pointcut)表达式：</p>
 <ul>
-<li><p><code>execution</code>：用于匹配执行方法的连接点<br>  <img src="/2013/06/15/execution.png" alt="Execution"></p>
+<li><p><code>execution</code>：用于匹配执行方法的连接点
+  <img src="/2013/06/15/execution.png" alt="Execution"></p>
 <pre><code class="lang-java">  //任意公共方法的执行
   execution(public * *(..))
 
@@ -573,7 +575,9 @@
 <pre><code class="lang-java">  //任何一个只接受一个参数，且在运行时传入的参数实现了 Serializable 接口的连接点
   args(java.io.Serializable)
 </code></pre>
-<p>  <strong>PS：</strong> 这里不同于 <code>execution(* *(java.io.Serializable))</code><br>  <code>args</code>只有在动态运行时候传入参数是可序列化的（Serializable）才匹配<br>  <code>execution</code> 在传入参数的签名声明的类型实现了 Serializable 接口时候匹配</p>
+<p>  <strong>PS：</strong> 这里不同于 <code>execution(* *(java.io.Serializable))</code>
+  <code>args</code>只有在动态运行时候传入参数是可序列化的（Serializable）才匹配
+  <code>execution</code> 在传入参数的签名声明的类型实现了 Serializable 接口时候匹配</p>
 </li>
 <li><p><code>@args</code>: 限定匹配特定的连接点，其中实际传入参数的运行时类型有指定类型的注解</p>
 <pre><code class="lang-java">  //任何一个接受一个参数，并且传入的参数在运行时的类型实现了 @Classified annotation的连接点: 

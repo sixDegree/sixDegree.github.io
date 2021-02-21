@@ -225,8 +225,11 @@
 </ol>
 <p><strong>PS: </strong></p>
 <ol>
-<li><code>DelegatingFilterProxy</code>将过滤处理委托给一个由Security注入Spring容器的<code>Filter</code><br>（我们无法对注册在web.xml中的Servlet Filter进行Bean注入，<br>但通过Spring的<code>DelegatingFilterProxy</code>，使得我们可以在外部配置文件中配置实际工作的Filter）</li>
-<li>这个<code>filter-name</code>为<code>springSecurityFilterChain对SpringSecurity</code>是有意义的，<br>用于在Spring上下文中查找Filter Bean</li>
+<li><code>DelegatingFilterProxy</code>将过滤处理委托给一个由Security注入Spring容器的<code>Filter</code>
+（我们无法对注册在web.xml中的Servlet Filter进行Bean注入，
+但通过Spring的<code>DelegatingFilterProxy</code>，使得我们可以在外部配置文件中配置实际工作的Filter）</li>
+<li>这个<code>filter-name</code>为<code>springSecurityFilterChain对SpringSecurity</code>是有意义的，
+用于在Spring上下文中查找Filter Bean</li>
 </ol>
 <h3 id="header-6">装载过程说明</h3>
 <ol>
@@ -278,25 +281,30 @@ http://www.springframework.org/schema/security http://www.springframework.org/sc
 <li><code>DelegatingFilterProxy</code><ul>
 <li>位于<code>spring-web.jar</code>包，本身是和springSecurity无关</li>
 <li>通过<code>registerBeanComponent</code>方法将 <code>FilterChainProxy</code>注册到Spring容器中，并控制注册的别名为<code>springSecurityFilterChain</code></li>
-<li>其实该类仅仅是初始化一个<code>FilterChainProxy</code>，然后把所有拦截的Request交给Spring容器中的<code>FilterChainProxy</code>处理<br><img src="/2013/07/01/delegatingFilterProxy.PNG" alt="DelegatingFilterProxy"></li>
+<li>其实该类仅仅是初始化一个<code>FilterChainProxy</code>，然后把所有拦截的Request交给Spring容器中的<code>FilterChainProxy</code>处理
+<img src="/2013/07/01/delegatingFilterProxy.PNG" alt="DelegatingFilterProxy"></li>
 </ul>
 </li>
 <li><code>FilterChainProxy</code><ul>
 <li>是一个特殊的Servlet Filter，它可以链接任意一个或多个其他的过滤器</li>
-<li>package org.springframework.security.web<br><img src="/2013/07/01/filterchain.PNG" alt="filterchain"></li>
+<li>package org.springframework.security.web
+<img src="/2013/07/01/filterchain.PNG" alt="filterchain"></li>
 </ul>
 </li>
 </ul>
 </li>
 </ol>
 <h2 id="header-7">SecurityFilters</h2>
-<p>对于Web资源，我们大约可以只用6个过滤器来保护我们的应用系统:<br><img src="/2013/07/01/filters.png" alt="filters"></p>
-<p>Spring Security依赖一系列的Servlet Filter来提供不同的安全特性<br>(不需要显示的声明springSecurityFilterChain以及它所链接在一起的其他Filters)</p>
+<p>对于Web资源，我们大约可以只用6个过滤器来保护我们的应用系统:
+<img src="/2013/07/01/filters.png" alt="filters"></p>
+<p>Spring Security依赖一系列的Servlet Filter来提供不同的安全特性
+(不需要显示的声明springSecurityFilterChain以及它所链接在一起的其他Filters)</p>
 <ul>
 <li>Spring Security会根据在xml中配置的标签，自动创建所需要的Bean</li>
 <li>通过使用Java EE的servlet过滤器链按顺序组合起来</li>
 </ul>
-<p><strong>PS:</strong><br>Spring Security中默认Filter顺序，通过<code>enum SecurityFilters</code> 定义</p>
+<p><strong>PS:</strong>
+Spring Security中默认Filter顺序，通过<code>enum SecurityFilters</code> 定义</p>
 <ul>
 <li><code>Value [Integer.MIN_VALUE,100~2100,Integer.MAX_VALUE]</code>,每个间隔100</li>
 <li>对于customer配置的Filter，有<code>after</code>，<code>before</code>，<code>position</code>三种顺序 (+-1)</li>
@@ -516,7 +524,8 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </ul>
 </li>
 </ul>
-<p><strong>PS:</strong><br>CAS（Center Authentication Service） 中心认证服务，提供单点登录门户 (SSO:Sigle Sign-On Portal)</p>
+<p><strong>PS:</strong> 
+CAS（Center Authentication Service） 中心认证服务，提供单点登录门户 (SSO:Sigle Sign-On Portal)</p>
 <h3 id="header-15">800 FORM_LOGIN_FILTER</h3>
 <p><strong><code>UsernamePasswordAuthenticationFilter</code>：登录认证过滤器</strong></p>
 <ul>
@@ -650,7 +659,8 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <p><code>JaasApiIntegrationFilter</code></p>
 <h3 id="header-23">1600    REMEMBER_ME_FILTER</h3>
 <p><strong><code>RememberMeAuthenticationFilter</code>: RememberMe AutoLogin 认证</strong></p>
-<p>说明：<br>当SecurityContextHolder中不存在Authentication用户授权信息时，此Filter会调用rememberMeServices 的autoLogin()方法从cookie中获取用户信息自动登录</p>
+<p>说明：
+当SecurityContextHolder中不存在Authentication用户授权信息时，此Filter会调用rememberMeServices 的autoLogin()方法从cookie中获取用户信息自动登录</p>
 <ul>
 <li>创建条件：配置了<code>&lt;remember-me&gt;</code></li>
 <li>执行条件：SecurityContext实例中不存在Authentication认证信息时 (即没有认证实体时)</li>
@@ -664,7 +674,7 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <p><code>Remember me</code>功能设置了一个cookie在用户的浏览器上，它包含一个Base64编码的字符串，包含以下内容：</p>
 <ul>
 <li>一个MD5的散列值，包括过期日期/时间、用户名和密码；</li>
-<li>应用的key值，是在<remember-me>元素的key属性中定义的</remember-me></li>
+<li>应用的key值，是在<remember-me>元素的key属性中定义的</li>
 </ul>
 <p>使用：</p>
 <ol>
@@ -734,7 +744,9 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </tr>
 </tbody>
 </table>
-<p><strong>PS：</strong><br>通过servlet的<code>getRemoteUser</code>等方法无法获取到登录账号，<br>因为<code>SecurityContextHolderAwareRequestFilter</code>过滤器在此Filter的前面</p>
+<p><strong>PS：</strong> 
+通过servlet的<code>getRemoteUser</code>等方法无法获取到登录账号，
+因为<code>SecurityContextHolderAwareRequestFilter</code>过滤器在此Filter的前面</p>
 <h3 id="header-25">1800    SESSION_MANAGEMENT_FILTER</h3>
 <p><strong><code>SessionManagementFilter</code>: Session管理，提供两大类功能：</strong></p>
 <ol>
@@ -779,10 +791,12 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
         &lt;listener-class&gt;org.springframework.security.web.session.HttpSessionEventPublisher&lt;/listener-class&gt;
 &lt;/listener&gt;
 </code></pre>
-<p><strong>PS：</strong><br><code>ConcurrentSessionFilter</code>过滤器也是处理session失效，但是它所处理的仅仅是封装后的<code>SessionInformation</code>类，如果这个类满足失效条件，再执行<code>session.invalidate</code>强制失效</p>
+<p><strong>PS：</strong>
+<code>ConcurrentSessionFilter</code>过滤器也是处理session失效，但是它所处理的仅仅是封装后的<code>SessionInformation</code>类，如果这个类满足失效条件，再执行<code>session.invalidate</code>强制失效</p>
 <h3 id="header-26">1900    EXCEPTION_TRANSLATION_FILTER</h3>
 <p><strong><code>ExceptionTranslationFilter</code>：仅捕获此Filter之后发生的异常</strong></p>
-<p>仅捕获此Filter之后发生的异常:<br>FilterSecurityInterceptor，SwitchUserFilter，1900 Filter之后的自定义拦截器的异常</p>
+<p>仅捕获此Filter之后发生的异常:
+FilterSecurityInterceptor，SwitchUserFilter，1900 Filter之后的自定义拦截器的异常</p>
 <p>主要拦截两类安全异常：</p>
 <ol>
 <li><code>AuthenticationException</code> 认证异常<ul>
@@ -918,7 +932,7 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 </tr>
 <tr>
 <td>hasIpAddress(IP Address)</td>
-<td>The user’s IP address (only available in web security)</td>
+<td>The user&#39;s IP address (only available in web security)</td>
 </tr>
 <tr>
 <td>isAnonymous()</td>
@@ -953,7 +967,7 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
 <h3 id="header-28">2100    SWITCH_USER_FILTER</h3>
 <p><strong><code>SwitchUserFilter</code>: 切换用户</strong></p>
 <h2 id="header-29">http标签</h2>
-<p><code>HttpSecurityBeanDefinitionParser</code>解析<http>标签</http></p>
+<p><code>HttpSecurityBeanDefinitionParser</code>解析<http>标签</p>
 <p>最小化配置：</p>
 <pre><code class="lang-xml">&lt;sec:http auto-config=&quot;true&quot; &gt;
         &lt;sec:intercept-url pattern=&quot;/**&quot; access=&quot;ROLE_ADMIN&quot;/&gt; 
@@ -1003,7 +1017,9 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
     &lt;/sec:authentication-provider&gt;
 &lt;/sec:authentication-manager&gt;
 </code></pre>
-<p><strong>PS：</strong><br>用户的认证信息通过<code>SecurityContextHolder</code>信息传递。<br>eg: <code>SecurityContextHolder.getContext().getAuthentication();</code></p>
+<p><strong>PS：</strong>
+用户的认证信息通过<code>SecurityContextHolder</code>信息传递。
+eg: <code>SecurityContextHolder.getContext().getAuthentication();</code></p>
 <p>Authentication接口可以实现的方法：</p>
 <table class="table">
 <thead>
@@ -1103,7 +1119,8 @@ myLogoutSuccessHandler：自定义的LogoutSuccessHandler
     &lt;/sec:authentication-provider&gt;
 &lt;/sec:authentication-manager&gt;
 </code></pre>
-<p><strong>PS：</strong>扩展数据库schema，salt要与用户记录一起保存在数据库<br>，eg: <code>SysUser(account,password,enable,usersalt)</code></p>
+<p><strong>PS：</strong>扩展数据库schema，salt要与用户记录一起保存在数据库
+，eg: <code>SysUser(account,password,enable,usersalt)</code></p>
 <ul>
 <li>addUser/changePassword(SysUser u)<pre><code class="lang-java">int salt=(int)(Math.random()*1000000);
 u.setUsersalt(String.valueOf(salt));
@@ -1134,11 +1151,14 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <li>是目录服务在TCP/IP上的实现</li>
 <li>允许根据需要使用ACI（一般都称为ACL或者访问控制列表）控制对数据读和写的权限</li>
 </ul>
-<p><strong>PS：</strong><br>ACI可以根据谁访问数据、访问什么数据、数据存在什么地方以及其它对数据进行访问控制。<br>因为这些都是由LDAP目录服务器完成的，所以不用担心在客户端的应用程序上是否要进行安全检查。</p>
+<p><strong>PS：</strong>
+ACI可以根据谁访问数据、访问什么数据、数据存在什么地方以及其它对数据进行访问控制。
+因为这些都是由LDAP目录服务器完成的，所以不用担心在客户端的应用程序上是否要进行安全检查。</p>
 <p>LDIF文件：</p>
 <ul>
 <li>LDIF用文本格式表示目录数据库的信息，以方便用户创建、阅读和修改</li>
-<li>按照树型结构组织，由条目Entry组成（相当于DB中Table的记录）<br>  <img src="/2013/07/01/ldap.png" alt="LDIF"></li>
+<li>按照树型结构组织，由条目Entry组成（相当于DB中Table的记录）
+  <img src="/2013/07/01/ldap.png" alt="LDIF"></li>
 </ul>
 <p>SpringSecurity LDAP 提供两种认证方式：</p>
 <ul>
@@ -1558,7 +1578,8 @@ u.setPassword(passwordEncoder.encodePassword(u.getPassword(), u.getUsersalt()));
 <p>基于Spring AOP</p>
 <h4 id="header-45">一般处理过程</h4>
 <ul>
-<li>在<code>SecurityNamespaceHandler</code>中注入<br><code>GlobalMethodSecurityBeanDefinitionParser</code>，<code>MethodSecurityMetadataSourceBeanDefinitionParser</code></li>
+<li>在<code>SecurityNamespaceHandler</code>中注入
+<code>GlobalMethodSecurityBeanDefinitionParser</code>，<code>MethodSecurityMetadataSourceBeanDefinitionParser</code></li>
 <li>收集配置的访问控制信息存入<code>MethodSecurityMetadataSource</code>实例中</li>
 </ul>
 <h4 id="header-46">支持四种方法层的安全</h4>
@@ -1636,7 +1657,8 @@ public Spittle getSpittleById(long id) { ... }
 <li><p>在mvc的servlet配置文件（xxx-servlet.xml）:</p>
 <pre><code class="lang-xml">&lt;sec:global-method-security pre-post-annotations=&quot;enabled&quot;/&gt;
 </code></pre>
-<p><strong>PS: </strong>若要在MVC Controller方法上加<code>@PreAuthorize</code>,<code>@PostAuthorize</code>,<code>@PreFilter</code>,<code>@PostFilter</code>，<br>此配置一定要放在spring mvc的xml中，否则无效</p>
+<p><strong>PS: </strong>若要在MVC Controller方法上加<code>@PreAuthorize</code>,<code>@PostAuthorize</code>,<code>@PreFilter</code>,<code>@PostFilter</code>，
+此配置一定要放在spring mvc的xml中，否则无效</p>
 </li>
 <li><p>在XxxController方法上添加方法注解：</p>
 <pre><code class="lang-java"> @PostAuthorize(&quot;!(#type==&#39;user&#39; and returnObject[extra].senderType==&#39;Group&#39; and !hasRole(&#39;ROLE_GROUP&#39;))&quot;)

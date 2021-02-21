@@ -53,7 +53,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Import(MySQL=&gt;HDFS)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Job</span></a></li></ol></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">概述</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">安装</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用示例</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">查询</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Import(MySQL=>HDFS)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">Job</span></a></li></ol></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -127,13 +127,13 @@
   </section>
   <section class="post-content">
     <h2 id="header-1">概述</h2>
-<p>SQOOP – 使用MapReduce实现用于对数据进行导入导出</p>
+<p>SQOOP -- 使用MapReduce实现用于对数据进行导入导出</p>
 <ul>
 <li>Import: 把MySQL、Oracle等数据库中的数据导入到HDFS、Hive、HBase中</li>
 <li>Export: 把HDFS、Hive、HBase中的数据导出到MySQL、Oracle等数据库中</li>
 <li>注意：导入导出的事务是以Mapper任务为单位</li>
-<li><a href="http://sqoop.apache.org/" target="_blank" rel="noopener">官网</a></li>
-<li><a href="http://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html#_incremental_imports" target="_blank" rel="noopener">用户手册</a></li>
+<li><a href="http://sqoop.apache.org/">官网</a></li>
+<li><a href="http://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html#_incremental_imports">用户手册</a></li>
 </ul>
 <p><img src="/2016/05/15/frame.png" alt="Export/Import"></p>
 <h2 id="header-2">安装</h2>
@@ -170,9 +170,8 @@
 <li><code>--null-string &lt;str&gt;</code>: 指定用什么代表空字段（默认：NULL）</li>
 <li><code>--hive-import</code>: 表导入到hive中</li>
 <li><code>--hive-table &lt;tablename&gt;</code>: hive table name</li>
-<li><code>--hive-overwrite</code>: overwite hive table</li>
-</ul>
-<ol>
+<li><p><code>--hive-overwrite</code>: overwite hive table</p>
+</li>
 <li><p><code>mysql table =&gt; hdfs file</code>:</p>
 <pre><code class="lang-shell"> # use --warehouse-dir
  # final file: /output/log/part-m-00000
@@ -235,7 +234,7 @@
  --fields-terminated-by &#39;,&#39;
 </code></pre>
 </li>
-</ol>
+</ul>
 <h3 id="header-6">Job</h3>
 <ol>
 <li>create job:<pre><code class="lang-shell"> sqoop job \

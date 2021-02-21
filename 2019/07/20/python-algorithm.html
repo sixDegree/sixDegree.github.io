@@ -137,7 +137,10 @@
 <h2 id="header-2">算法效率衡量</h2>
 <h3 id="header-3">时间复杂度</h3>
 <blockquote>
-<p>程序的运行的计算机环境会影响程序运行的速度并反应在程序的执行时间上,<br>假定计算机执行一个基本操作的时间是固定的(一个时间单位),<br>则可忽略机器环境的影响，用程序运行的基本操作数量客观的反应算法的时间效率,<br>（有多少个基本操作就代表会花费多少时间单位）</p>
+<p>程序的运行的计算机环境会影响程序运行的速度并反应在程序的执行时间上,
+假定计算机执行一个基本操作的时间是固定的(一个时间单位),
+则可忽略机器环境的影响，用程序运行的基本操作数量客观的反应算法的时间效率,
+（有多少个基本操作就代表会花费多少时间单位）</p>
 </blockquote>
 <ol>
 <li><p>算法A处理规模为n的问题:</p>
@@ -200,7 +203,8 @@
 </tbody>
 </table>
 <ul>
-<li>O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) &lt; O(n!) &lt; O(n^n)<br><img src="/2019/07/20/O.png" alt="时间复杂度比较"></li>
+<li>O(1) &lt; O(logn) &lt; O(n) &lt; O(nlogn) &lt; O(n^2) &lt; O(n^3) &lt; O(2^n) &lt; O(n!) &lt; O(n^n)
+<img src="/2019/07/20/O.png" alt="时间复杂度比较"></li>
 </ul>
 </li>
 </ol>
@@ -219,7 +223,7 @@
 <li>返回：执行代码的平均耗时（秒数，float类型）</li>
 </ul>
 </li>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/1.list-timeit-demo.py" target="_blank" rel="noopener">list timeit</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/1.list-timeit-demo.py">list timeit</a></li>
 </ul>
 <p><strong>Sample:</strong></p>
 <pre><code class="lang-python">from timeit import Timer
@@ -295,18 +299,18 @@ if __name__==&#39;__main__&#39;:
 <h2 id="header-8">数据结构（抽象数据类型）</h2>
 <ul>
 <li>列表(顺序存储结构)/链表(链式存储结构)<ul>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/2.link-demo.py" target="_blank" rel="noopener">SingleLinkList</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/2.link-demo.py">SingleLinkList</a></li>
 </ul>
 </li>
 <li>栈/队列<ul>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/3.stack-queue-demo.py" target="_blank" rel="noopener">Stack &amp; Queue</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/3.stack-queue-demo.py">Stack &amp; Queue</a></li>
 <li>可用顺序／链式存储结构</li>
 <li>栈: 先进后出</li>
 <li>队列: 先进先出</li>
 </ul>
 </li>
 <li>树<ul>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/4.tree-demo.py" target="_blank" rel="noopener">Binary Tree</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/4.tree-demo.py">Binary Tree</a></li>
 <li>遍历：<ul>
 <li>广度搜索遍历：队列(先进先出) = 层级遍历</li>
 <li>深度搜索遍历：堆栈(先进后出) = 先序遍历</li>
@@ -316,8 +320,8 @@ if __name__==&#39;__main__&#39;:
 </ul>
 </li>
 <li>结构: <ul>
-<li>堆：<a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryHeap.py" target="_blank" rel="noopener">Binary Heap</a>,<a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryIndexHeap.py" target="_blank" rel="noopener">Binary Index Heap</a>, d-ary Heap</li>
-<li>搜索树: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binarySearchTree.py" target="_blank" rel="noopener">Binary Search Tree</a></li>
+<li>堆：<a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryHeap.py">Binary Heap</a>,<a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryIndexHeap.py">Binary Index Heap</a>, d-ary Heap</li>
+<li>搜索树: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binarySearchTree.py">Binary Search Tree</a></li>
 <li>平衡树：红黑树(B Tree)，2-3 Tree, AVL Tree, Splay Tree</li>
 <li>字典树：Trie Tree</li>
 <li>树堆：Treap（平衡二叉树与堆的结合）</li>
@@ -327,7 +331,7 @@ if __name__==&#39;__main__&#39;:
 </ul>
 </li>
 <li>图<ul>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/graph.py" target="_blank" rel="noopener">Graph</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/graph.py">Graph</a></li>
 <li>点和边组成的数学模型（Vertex &amp; Edge)</li>
 <li>分类：<ul>
 <li>无向图(Undirected) &amp; 有向图(Directed)</li>
@@ -958,14 +962,14 @@ set_size  : [6, -1, -1, -1, -1, -1]
 conn_grps : 1
 </code></pre><h2 id="header-16">算法: 排序</h2>
 <ul>
-<li><p>基础排序(<a href="https://github.com/sixDegree/python-algorithm/blob/master/sortBasic.py" target="_blank" rel="noopener">Demo</a>) =&gt; 平均时间复杂度：O(N^2)</p>
+<li><p>基础排序(<a href="https://github.com/sixDegree/python-algorithm/blob/master/sortBasic.py">Demo</a>) =&gt; 平均时间复杂度：O(N^2)</p>
 <ul>
 <li>选择排序 Selection Sort</li>
 <li>插入排序 Insertion Sort -&gt; 希尔排序 Shell Sort</li>
 <li>冒泡排序 Bubble Sort</li>
 </ul>
 </li>
-<li><p>高级排序(<a href="https://github.com/sixDegree/python-algorithm/blob/master/sortAdvance.py" target="_blank" rel="noopener">Demo</a>) =&gt; 平均时间复杂度：O(N*logN)</p>
+<li><p>高级排序(<a href="https://github.com/sixDegree/python-algorithm/blob/master/sortAdvance.py">Demo</a>) =&gt; 平均时间复杂度：O(N*logN)</p>
 <ul>
 <li>归并排序 Merge Sort</li>
 <li>快速排序 Quick Sort</li>
@@ -1070,7 +1074,7 @@ conn_grps : 1
 </tbody>
 </table>
 </li>
-<li><p>其它：不基于比较的排序(<a href="https://github.com/sixDegree/python-algorithm/blob/master/6.sort-nocompare.py" target="_blank" rel="noopener">Demo</a>) =&gt; 时间复杂度: <code>O(N)</code>,空间复杂度: <code>O(M)</code> （思想来自桶排序，M＝桶数）</p>
+<li><p>其它：不基于比较的排序(<a href="https://github.com/sixDegree/python-algorithm/blob/master/6.sort-nocompare.py">Demo</a>) =&gt; 时间复杂度: <code>O(N)</code>,空间复杂度: <code>O(M)</code> （思想来自桶排序，M＝桶数）</p>
 <ul>
 <li>桶排序 bucket sort</li>
 <li>计数排序 Counting Sort</li>
@@ -1824,11 +1828,11 @@ Final: a = [1, 11, 23, 72, 84, 101]
 <li><code>insert</code> =&gt; 自底向上：尾部插入，新节点执行<code>shiftUp</code>实现Heapify</li>
 </ul>
 </li>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryHeap.py" target="_blank" rel="noopener">Binary Heap</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryHeap.py">Binary Heap</a></li>
 </ul>
 </li>
 <li>二叉索引堆（二叉堆 ＋ key: index）<ul>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryIndexHeap.py" target="_blank" rel="noopener">Binary Index Heap</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binaryIndexHeap.py">Binary Index Heap</a></li>
 <li>存储<ul>
 <li><code>data=[]</code> : 保存具体数据，不做改变，用于查询 <code>data[data_index]</code></li>
 <li><code>id=[]</code>   : 保存数据所在的index，即data_index，用于构建堆（比较时，使用<code>id[heap_index]=&gt;data_index</code>, 定位到具体数据<code>data[data_index]</code>进行key比较）</li>
@@ -1892,7 +1896,7 @@ Final: a = [1, 11, 23, 72, 84, 101]
 </code></pre></li>
 </ul>
 </li>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binarySearch.py" target="_blank" rel="noopener">Binary Search</a>, <a href="https://github.com/sixDegree/python-algorithm/blob/master/binarySearchTree.py" target="_blank" rel="noopener">Binary Search Tree</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/binarySearch.py">Binary Search</a>, <a href="https://github.com/sixDegree/python-algorithm/blob/master/binarySearchTree.py">Binary Search Tree</a></li>
 </ul>
 <h3 id="header-30">并查集</h3>
 <p>并查集 Disjoint Set</p>
@@ -1922,7 +1926,7 @@ Final: a = [1, 11, 23, 72, 84, 101]
 <li>数学中集合类的实现</li>
 </ul>
 </li>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/unionFind.py" target="_blank" rel="noopener">Disjoint Set</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm/blob/master/unionFind.py">Disjoint Set</a></li>
 </ul>
 <p><strong>Sample:</strong></p>
 <pre><code class="lang-python">class UnionFind:
@@ -2314,7 +2318,7 @@ def bellmanFord(self,graph,s):
 </code></pre>
 <h2 id="header-36">Reference</h2>
 <ul>
-<li>Demo: <a href="https://github.com/sixDegree/python-algorithm" target="_blank" rel="noopener">python-algorithm</a></li>
+<li>Demo: <a href="https://github.com/sixDegree/python-algorithm">python-algorithm</a></li>
 </ul>
   </section>
 </article>

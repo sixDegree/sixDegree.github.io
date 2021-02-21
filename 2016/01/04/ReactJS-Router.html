@@ -53,7 +53,7 @@
   <aside id="sidebar">
     <section class="sidebar-header">Catalog</section>
      <nav id="nav-catalog">
-        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">使用示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">History</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用Isomorphic</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Issues</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">1. Add &lt;Routes baseHref&gt;</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">2. Passing props to routes</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">使用示例</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">History</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">使用Isomorphic</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Issues</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">1. Add <Routes baseHref></span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">2. Passing props to routes</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">Reference</span></a></li></ol>
     </nav>
   </aside>
   <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
@@ -208,7 +208,8 @@
 </code></pre>
 </li>
 </ol>
-<p><strong>PS:</strong> 路由的生命周期处理<br>进入时装载组件离开时卸载组件，不会一下把所有的组件都装载进来</p>
+<p><strong>PS:</strong> 路由的生命周期处理
+进入时装载组件离开时卸载组件，不会一下把所有的组件都装载进来</p>
 <h2 id="header-2">History</h2>
 <ol>
 <li><p><code>createHashHistory</code> (default) : 通过 hash 来实现，可以通过 window.location.hash 读取到 # 后的内容</p>
@@ -337,7 +338,7 @@
 </ol>
 <h2 id="header-4">Issues</h2>
 <h3 id="header-5">1. Add <code>&lt;Routes baseHref&gt;</code></h3>
-<p><a href="https://github.com/rackt/react-router/issues/353" target="_blank" rel="noopener">Issue on Github</a></p>
+<p><a href="https://github.com/rackt/react-router/issues/353">Issue on Github</a></p>
 <pre><code class="lang-javascript">import { createHistory, useBasename } from &#39;history&#39;
 
 const history = useBasename(createHistory)({
@@ -351,7 +352,7 @@ const history = useBasename(createHistory)({
 &lt;Link path=&quot;/some_path&quot;&gt;some_path&lt;/Link&gt;
 </code></pre>
 <h3 id="header-6">2. Passing props to routes</h3>
-<p><a href="https://github.com/rackt/react-router/issues/1531" target="_blank" rel="noopener">Issue on Github</a></p>
+<p><a href="https://github.com/rackt/react-router/issues/1531">Issue on Github</a></p>
 <pre><code class="lang-javascript">React.render((
   &lt;Router&gt;
     &lt;Route path=&quot;/&quot; component={RootComp} myprop=&quot;foo&quot;&gt;
@@ -387,7 +388,7 @@ class BarComp extends React.Component {
 }
 </code></pre>
 <p><strong>Option 3) To all route components with Router.createElement</strong></p>
-<p><a href="https://github.com/rackt/react-router/blob/master/docs/API.md#createelementcomponent-props" target="_blank" rel="noopener">Source</a></p>
+<p><a href="https://github.com/rackt/react-router/blob/master/docs/API.md#createelementcomponent-props">Source</a></p>
 <pre><code class="lang-javascript">&lt;Router createElement={createElement} /&gt;
 
 function createElement(Component, props) {
@@ -398,8 +399,8 @@ function createElement(Component, props) {
 </code></pre>
 <h2 id="header-7">Reference</h2>
 <ul>
-<li><a href="https://github.com/rackt/react-router" target="_blank" rel="noopener">react-router on Github </a></li>
-<li><a href="https://github.com/sixDegree/react-advance" target="_blank" rel="noopener">my demos</a></li>
+<li><a href="https://github.com/rackt/react-router">react-router on Github </a></li>
+<li><a href="https://github.com/sixDegree/react-advance">my demos</a></li>
 </ul>
   </section>
 </article>

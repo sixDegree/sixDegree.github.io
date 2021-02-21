@@ -164,7 +164,8 @@
 </li>
 <li>注意：大部分的查询由 MapReduce 完成，但有些不是，例如<code>select * from table</code>（包含<code>*</code>的查询）</li>
 </ul>
-<p>现在Hive的整体框架，计算引擎不仅仅支持Map/Reduce，并且还支持Tez、Spark等。根<br>据不同的计算引擎又可以使用不同的资源调度和存储系统</p>
+<p>现在Hive的整体框架，计算引擎不仅仅支持Map/Reduce，并且还支持Tez、Spark等。根
+据不同的计算引擎又可以使用不同的资源调度和存储系统</p>
 <p><img src="/2016/05/10/frame-new.png" alt="Frame New"></p>
 <h3 id="header-3">数据存储</h3>
 <p>存储结构主要包括：数据库、文件、表、视图</p>
@@ -175,7 +176,8 @@
 <li>每一个 Table 在 Hive 中都有一个相应的目录存储数据</li>
 </ul>
 <h2 id="header-4">安装</h2>
-<p>Hive可以安装在Hadoop集群中的任何一台机器上<br>metastore支持三种存储模式</p>
+<p>Hive可以安装在Hadoop集群中的任何一台机器上
+metastore支持三种存储模式</p>
 <ul>
 <li>本地内嵌模式（默认）：元数据保持在Hive内嵌的derby中，只允许一个会话连接</li>
 <li>本地独立模式：元数据保持在本地的一个DB中，允许多会话连接</li>
@@ -367,7 +369,7 @@ CREATE [EXTERNAL] TABLE target_table LIKE source_table [LOCATION hdfs_path];
 <li>LINES TERMINATED BY</li>
 <li>COLLECTION ITEMS TERMINATED BY</li>
 <li>MAP KEYS TERMINATED BY</li>
-<li>…</li>
+<li>...</li>
 </ul>
 </li>
 <li>STORED AS ：数据存储方式<ul>
@@ -394,7 +396,7 @@ AS SELECT …
 <pre><code class="lang-sql">create table stocks_ctas as select * from stocks;
 </code></pre>
 </li>
-<li><p>INSERT…SELECT：将Hive查询结果存入一个已创表</p>
+<li><p>INSERT...SELECT：将Hive查询结果存入一个已创表</p>
 <pre><code class="lang-sql">INSERT OVERWRITE|INTO TABLE tablename 
 [PARTITION (partcol1=val1, partcol2=val2 ...)] 
 select_statement FROM from_statement
@@ -458,7 +460,8 @@ select * from stocks where symbol=&#39;XYZ&#39; and ymd=&#39;2003-02-01&#39;;
 # 使用分区表，会先找到对应分区列目录，效率高
 select * from stocks_partition where symbol=&#39;XYZ&#39; and ymd=&#39;2003-02-01&#39;;
 </code></pre>
-<p>分区表（partition table）<br>粗粒度的划分，分区列成了目录（为虚拟列），条件查询时可定位到目录提高效率</p>
+<p>分区表（partition table）
+粗粒度的划分，分区列成了目录（为虚拟列），条件查询时可定位到目录提高效率</p>
 <ul>
 <li>创建分区表<pre><code class="lang-sql">create table if not exists stocks_partition(
   col1 string,
@@ -572,14 +575,14 @@ stocks_dynamic_partition/exch_name=ABCSE/yr=2014/symbol=GEL/
 <p>桶表(Bucket Table)</p>
 <ul>
 <li>细粒度的划分，桶列仍在数据文件中</li>
-<li>主要应用：<ul>
+<li><p>主要应用：</p>
+<ul>
 <li>提高数据抽样效率</li>
 <li>提升某些查询操作效率，例如mapside join</li>
 </ul>
 </li>
-</ul>
-<ul>
-<li>创建表<pre><code class="lang-sql"> # 必须设置这个数据，hive才会按照你设置的桶的个数去生成数据
+<li><p>创建表</p>
+<pre><code class="lang-sql"> # 必须设置这个数据，hive才会按照你设置的桶的个数去生成数据
  set hive.enforce.bucketing = true;
  create table t4(id int) clustered by(id) into 4 buckets;
 </code></pre>
@@ -929,7 +932,7 @@ partitioned by (status string,method string)
 row format delimited fields terminated by &#39;,&#39; ;
 </code></pre>
 </li>
-<li><p>插入partition数据:（使用insert…select）</p>
+<li><p>插入partition数据:（使用insert...select）</p>
 <pre><code class="lang-sql">insert into table log_partition partition(status=&#39;200&#39;,method=&#39;GET&#39;)
 select ip,datetime,url,size from log where status=&#39;200&#39; and method=&#39;GET&#39;;
 
@@ -945,7 +948,7 @@ insert overwrite table log_partition partition(status=&#39;400&#39;,method=&#39;
 select ip,datetime,url,size where status=&#39;400&#39;and method=&#39;GET&#39;;
 </code></pre>
 </li>
-<li><p>插入partition数据:（使用alter…location）</p>
+<li><p>插入partition数据:（使用alter...location）</p>
 <pre><code class="lang-sql">insert overwrite directory &#39;/user/hive/warehouse/log_partition/status=400/method=POST&#39;
 row format delimited fields terminated by &#39;,&#39;
 select ip,datetime,url,size from log where status=&#39;400&#39; and method=&#39;POST&#39;;
