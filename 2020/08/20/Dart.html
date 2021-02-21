@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dart</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="app,flutter,dart">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">基础数据类型</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">明确的声明</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">类型推导 (var / final / const): 虽然没有明确指定变量类型，但变量还是有自己明确的类型的</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">object vs dynamic vs var</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">函数</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">函数的参数</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">函数作为参数／返回值</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">操作符</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">??=</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">??</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">::</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">类</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">构造，初始化</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">getter/setter</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">继承，抽象，接口，混入类</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">枚举</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">泛型</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">库</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">future</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Dart</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2020-08-19T16:00:00.000Z">2020-08-20</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-app">app</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<p>笔记：</p>
+<ul>
+<li>dart2: <a href="https://www.kancloud.cn/marswill/dark2_document/709088" target="_blank" rel="noopener">https://www.kancloud.cn/marswill/dark2_document/709088</a></li>
+<li>coderwhy: <a href="https://toutiao.io/u/482181?f=new" target="_blank" rel="noopener">https://toutiao.io/u/482181?f=new</a> , <a href="https://segmentfault.com/u/coderwhy" target="_blank" rel="noopener">https://segmentfault.com/u/coderwhy</a></li>
+</ul>
+<h2 id="header-2">基础数据类型</h2>
+<h3 id="header-3">明确的声明</h3>
+<pre><code class="lang-python">String str1 = &#39;Hello&#39;;
+String str2 = &quot;It&#39;s me&quot;;
+String str3 = &quot;&quot;&quot;Hello
+World
+&quot;&quot;&quot;;
+print(&quot;$str1,$str2,$str3&quot;);
+
+var name = &quot;Tom&quot;;
+var age = 10;
+var height = 120;
+var msg1 = &quot;my name is ${name}, age is ${age}, height is ${height}&quot;;
+var msg2 = &quot;name is ${name}, type is ${name.runtimeType}&quot;;
+print(msg1);
+print(msg2);
+</code></pre>
+<ul>
+<li>数字类型： <code>int</code>,<code>double</code> 可表示的范围并不是固定的，取决于运行Dart的平台</li>
+<li>字符类型： <code>String</code> 可使用<code>${expression}</code>实现字符串和其他变量或表达式拼接，<code>${变量}</code>，则<code>{}</code>可省略，即 <code>$exp</code></li>
+<li><p>布尔类型： <code>bool</code> 取值为true/false，没有非0/非空即true的规则，即不能使用<code>if(非布尔类型的变量)</code>,<code>assert(非布尔类型的变量)</code>之类的代码</p>
+<pre><code class="lang-js">  var flag = true;
+  if(flag){               // right !!
+    print(flag);
+  }
+
+  var message=&quot;Hello&quot;;
+  if(message){            // wrong !!
+    print(message);
+  }
+</code></pre>
+</li>
+<li><p>集合类型： <code>List</code>／<code>Set</code>／<code>Map</code></p>
+<pre><code class="lang-js">  var nameList = [&quot;Tom&quot;, &quot;Lucy&quot;, &quot;Susan&quot;];
+  nameList.add(&quot;Jack&quot;);
+  nameList.remove(&quot;Lucy&quot;);
+  print(
+  &quot;$nameList, len: ${nameList.length}, contain Tom: ${nameList.contains(&#39;Tom&#39;)}&quot;);
+
+  var movieSet = {&quot;a&quot;, &quot;b&quot;, &quot;c&quot;};
+  print(
+  &quot;$movieSet,len: ${movieSet.length}, contain b: ${movieSet.contains(&#39;b&#39;)}&quot;);
+
+  var infoMap = {&quot;name&quot;: &quot;Tom&quot;, &quot;age&quot;: 18};
+  print(
+  &quot;$infoMap,entries: ${infoMap.entries},keys: ${infoMap.keys},infoMap[&#39;age&#39;]=${infoMap[&#39;age&#39;]}&quot;);
+
+  // 去重：
+  var charList = [&#39;a&#39;, &#39;b&#39;, &#39;b&#39;, &#39;c&#39;, &#39;a&#39;];
+  var noDupCharList = Set&lt;String&gt;.from(charList).toList();
+  print(
+  &quot;charList:$charList, set: ${Set.from(charList)}, dup removed list: ${Set.from(charList).toList()}, noDupCharList:$noDupCharList&quot;);
+</code></pre>
+</li>
+<li><p>类：<code>class</code> (dart 中是没有关键字来定义接口的，默认所有的class都是隐式接口)</p>
+<pre><code class="lang-js">  class Person {
+    String name;
+    Person(String name) {
+      this.name = name;
+    }
+  }
+
+  class SingletonPerson {
+    final String name;
+    const SingletonPerson(this.name);
+  }
+</code></pre>
+</li>
+</ul>
+<h3 id="header-4">类型推导 (<code>var</code> / <code>final</code> / <code>const</code>): 虽然没有明确指定变量类型，但变量还是有自己明确的类型的</h3>
+<ul>
+<li>声明变量 var<pre><code class="lang-js">  var score = 20; // 如果后面再设置 ` score=&quot;abc&quot;; ` 会报错
+  score = 30;
+</code></pre>
+</li>
+<li><p>声明常量 final / const</p>
+<pre><code class="lang-js">  // final 运行期间确定一个值，即可以通过计算／函数获取一个值
+  // const 编译期间确定一个值，即须直接赋予一个值
+  final date = DateTime.now();  // 正确
+  const date = DateTime.now();  // 错误
+
+  final price = 1.88; // 如果后面再设置 ` price=2.00; ` 会报错
+  const address = &quot;SuZhou&quot;; // 如果后面再设置 ` address=&quot;ShangHai&quot;; ` 会报错
+
+  final p1 = Person(&quot;Tom&quot;); // = new Person(&quot;Tom&quot;);
+  final p2 = Person(&quot;Tom&quot;); // = new Person(&quot;Tom&quot;);
+  print(identical(p1, p2)); // =&gt; false  p1和p2是不同的对象
+
+  const s1 = SingletonPerson(&quot;Tom&quot;); // = const SingletonPerson(&quot;Tom&quot;);
+  const s2 = SingletonPerson(&quot;Tom&quot;); // = const SingletonPerson(&quot;Tom&quot;);
+  const s3 = SingletonPerson(&quot;Lucy&quot;); // = const SingletonPerson(&quot;Lucy&quot;);
+  print(identical(s1, s2)); // =&gt; true  s1和s2是同一个对象
+  print(identical(s1, s3)); // =&gt; false s1和s3不是同一个对象
+</code></pre>
+</li>
+</ul>
+<h3 id="header-5">object vs dynamic vs var</h3>
+<pre><code class="lang-java">// 注: 关键字（var/const/final/...） vs 类型 （String,Object,dynamic,...）
+Object a = &quot;Hello&quot;;
+// print(&quot;$a,${a.substring(3)}&quot;); // 无法调用 String的substring 方法，编译时即报错了
+
+dynamic b = &quot;Hello&quot;;
+print(&quot;$b, ${b.substring(3)}&quot;); // 可调用 String的substring 方法，编译时不报错，但存在安全隐患，可能调用了一个不存在的方法，运行时报错
+//print(&quot;$b, ${b.say()}&quot;); // 编译时不报错，运行时报错
+
+var c = &quot;Hello&quot;;
+print(&quot;$c,${c.substring(3)}&quot;); // 可调用 String的substring 方法
+// print(&quot;$c,${c.say()}&quot;);  // 编译时就报错了
+</code></pre>
+<h2 id="header-6">函数</h2>
+<h3 id="header-7">函数的参数</h3>
+<p>函数的 必选参数 &amp; 可选参数（位置可选参数，命名可选参数）<br>注：dart中无函数重载，即不可以声明两个同名函数</p>
+<ol>
+<li><p>必选参数（必传，且无法设置默认参数）</p>
+<pre><code class="lang-js"> void sayHello1(String name) {
+   print(name);
+ }
+
+ sayHello1(&quot;Tom&quot;);
+</code></pre>
+</li>
+<li><p>可选参数</p>
+<ul>
+<li><p>位置可选参数 <code>[]</code></p>
+<pre><code class="lang-js">  void sayHello2(String name, [int age, double height]) {
+    print(&quot;$name,$age,$height&quot;);
+  }
+
+  sayHello2(&quot;Lucy&quot;); // Lucy,null,null
+  sayHello2(&quot;Lucy&quot;, 18); // Lucy,18,null
+  sayHello2(&quot;Lucy&quot;, 18, 165.5); // Lucy,18,165.5
+</code></pre>
+</li>
+<li><p>命名可选参数 <code>{}</code></p>
+<pre><code class="lang-js">  void sayHello3(String name, {int age, double height}) {
+    print(&quot;$name,$age,$height&quot;);
+  }
+
+  sayHello3(&quot;Lucy&quot;); // Lucy,null,null
+  sayHello3(&quot;Lucy&quot;, height: 165.5); // Lucy,null,165.5
+  sayHello3(&quot;Lucy&quot;, age: 18, height: 165.5); // Lucy,18,165.5
+</code></pre>
+</li>
+<li><p>可设置默认参数</p>
+<pre><code class="lang-js">  void sayHello4(String name, {int age = 16, double height = 120}) {
+    print(&quot;$name,$age,$height&quot;);
+  }
+
+  sayHello4(&quot;Lucy&quot;, height: 165.5); // Lucy,16,165.5
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-8">函数作为参数／返回值</h3>
+<p>函数是一等公民，即函数可以赋给一个变量，作为参数／返回值来回传递（在一般的面向对象的语言中，如Java，一般class／object是第一公民，可作为参数／返回值来回传递）</p>
+<ol>
+<li><p>函数作为另一个函数的参数</p>
+<ul>
+<li><p>直接使用Function －－ 对函数无限制</p>
+<pre><code class="lang-js">  void test1(Function foo) {
+    foo(); // foo(20,30),...对函数无限制
+  }
+
+  void bar([String name = &quot;Hi&quot;]) {
+    print(name);
+  }
+
+  // 传入函数 － 直接使用某个定义的函数
+  test1(bar);
+
+  // 传入函数 － 使用匿名函数
+  test1(() {
+    print(&quot;test 匿名函数&quot;);
+  });
+
+  // 传入函数 － 使用箭头函数（这种函数体必须只有一行代码）
+  test1(() =&gt; print(&quot;test 箭头函数&quot;));
+</code></pre>
+</li>
+<li>传入声明式函数，注意：对函数有限制，如参数，返回值等<pre><code class="lang-js">  // void test2(int foo(int a, int b)) {    // 太长，阅读性差
+  //   var result = foo(20, 30);
+  //   print(result);
+  // }
+  typedef Calcuate = int Function(int a, int b); // 函数签名
+  void test2(Calcuate cal) {
+    var result = cal(20, 30);
+    print(result);
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>函数作为返回值</p>
+<pre><code class="lang-js"> Calcuate getTestFunc() {
+   return (a, b) {
+     return a + b;
+   };
+ }
+
+ Function getTestFunc2() {
+   return (a, b) {
+     return a + b;
+   };
+ }
+
+ // 函数作为返回值
+ var ts = getTestFunc();
+ print(ts(20, 30));
+
+ var ts2 = getTestFunc2();
+ print(ts2(20, 50));
+</code></pre>
+</li>
+</ol>
+<h2 id="header-9">操作符</h2>
+<h3 id="header-10"><code>??=</code></h3>
+<pre><code class="lang-js">void test1([String name]) {
+  name ??= &quot;Lucy&quot;; // name = (name!=null? name:&quot;Lucy&quot;) 或等同于 [String name=&quot;Lucy&quot;]
+  print(name);
+}
+
+test1();
+test1(&quot;Tom&quot;);
+</code></pre>
+<h3 id="header-11"><code>??</code></h3>
+<pre><code class="lang-js">void test2([String name]) {
+  var temp = name ?? &quot;Lucy&quot;; // temp = ( name!=null? name:&quot;Lucy&quot;)
+  print(temp);
+}
+
+test2();
+test2(&quot;Tom&quot;);
+</code></pre>
+<h3 id="header-12"><code>::</code></h3>
+<p>级联运算符</p>
+<pre><code class="lang-js">class Person {
+  String name;
+
+  void run() {
+    print(&quot;$name running&quot;);
+  }
+
+  void eat() {
+    print(&quot;$name eating&quot;);
+  }
+}
+
+main(List&lt;String&gt; args) {
+    var p1 = Person();
+    p1.name = &quot;Tom&quot;;
+    p1.run();
+    p1.eat();
+
+    print(&quot;---------------------&quot;);
+
+    var p2 = Person()
+    ..name = &quot;Lucy&quot;
+    ..run()
+    ..eat();
+}
+</code></pre>
+<h2 id="header-13">类</h2>
+<h3 id="header-14">构造，初始化</h3>
+<ol>
+<li><p>构造方法</p>
+<ul>
+<li>没有明确指定构造方法时，将默认拥有一个无参的构造方法</li>
+<li>有了自己的构造方法时，默认的构造方法将会失效</li>
+<li><p>Dart本身不支持函数的重载 =&gt; 创建相同名称的构造方法 =&gt; Solution: 命名构造方法</p>
+<pre><code class="lang-java">class Person {
+String name;
+int age;
+double height;
+
+// 1. 构造函数语法糖
+// Person(String name, int age) {
+//   this.name = name;
+//   this.age = age;
+// }
+// =&gt; 等同于:
+Person(this.name, this.age);
+
+// 2. 命名构造方法(名称可自定义)
+Person.withArguments(this.name, this.age, this.height);
+Person.fromMap(Map&lt;String, dynamic&gt; map) {
+  this.name = map[&#39;name&#39;];
+  this.age = map[&#39;age&#39;];
+  this.height = map[&#39;height&#39;];
+}
+
+// 3. 重定向构造函数：在一个构造方法中去调用另外一个构造方法，冒号后面使用this调用
+Person.fromName(String name) : this(name, 20);
+Person.fromName2(String name) : this.withArguments(name, 30, 166.8);
+
+// 重写toString方法
+@override
+String toString() {
+  return &quot;$name,$age,$height&quot;;
+}
+}
+
+main(List&lt;String&gt; args) {
+var p1 = Person(&quot;Tom&quot;, 18);
+var p2 = Person.withArguments(&quot;Lucy&quot;, 16, 165);
+// var p3 = Person.fromMap({&quot;height&quot;: 170);  // wrong !! Unhandled exception: type &#39;int&#39; is not a subtype of type &#39;double&#39;
+var p3 = Person.fromMap(
+    {&quot;age&quot;: 20, &quot;name&quot;: &quot;Susan&quot;, &quot;height&quot;: 170.5, &quot;sex&quot;: &quot;female&quot;});
+print(&quot;p1 : $p1 , p2 : $p2 , p3 : $p3 &quot;);
+
+var p4 = Person.fromName(&quot;Kelly1&quot;);
+var p5 = Person.fromName2(&quot;Kelly2&quot;);
+print(&quot;p4 : $p4 , p5 : $p5&quot;);
+}
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>初始化列表(Initializer list)</p>
+<pre><code class="lang-java"> class FinalPerson {
+   final String name;
+   final int age;
+
+   // FinalPerson(this.name) {
+   //   this.age = 10; // wrong !! age是final类型，编译不通过
+   // }
+   // =&gt; 正确写法：
+   FinalPerson(this.name) : this.age = 10;
+   //FinalPerson.withOptional(this.name, {this.age = 10});     // right !!，可使用表达式
+   FinalPerson.withOptional(this.name, {int age})
+       : this.age = age ?? 10; // 推荐，后面可跟多条语句，`,`分隔
+
+   // 重写toString方法
+   @override
+   String toString() {
+     return &quot;$name,$age&quot;;
+   }
+ }
+
+ var fp1 = FinalPerson(&quot;Tom&quot;);
+ print(&quot;fp1 : $fp1&quot;);
+
+ var fp2 = FinalPerson.withOptional(&quot;Lucy&quot;);
+ print(&quot;fp2 : $fp2&quot;);
+
+ var fp3 = FinalPerson.withOptional(&quot;Susan&quot;, age: 20);
+ print(&quot;fp3 : $fp3&quot;);
+</code></pre>
+</li>
+<li><p>常量构造</p>
+<pre><code class="lang-java"> /*
+   注意：
+     1. 拥有常量构造方法的类中，所有的成员变量必须是final修饰
+     2. 为了可以通过常量构造方法，创建出相同的对象，不再使用 new关键字，而是使用const关键字 
+       (如果是将结果赋值给const修饰的标识符时，const可以省略）
+ */
+ class ConstPerson {
+   final String name;
+   const ConstPerson(this.name);
+ }
+
+ // var cp1 = const ConstPerson(&quot;Jack&quot;);
+ // var cp2 = const ConstPerson(&quot;Jack&quot;);
+ // print(identical(cp1, cp2)); // =&gt; true
+ const cp1 = ConstPerson(&quot;Jack&quot;); // 等同于 var cp1 = const ConstPerson(&quot;Jack&quot;);
+ const cp2 = ConstPerson(&quot;Jack&quot;);
+ print(identical(cp1, cp2)); // =&gt; true
+</code></pre>
+</li>
+<li><p>工厂构造 <code>factory</code> 可以手动返回一个对象（普通的构造函数不能手动返回）</p>
+<pre><code class="lang-java"> class FactoryPerson {
+   String name;
+   String color;
+
+   FactoryPerson(this.name, this.color);
+
+   // eg 需求： 希望name或者color相同时返回的是同一个对象
+   static final Map&lt;String, FactoryPerson&gt; _nameCache = {};
+   static final Map&lt;String, FactoryPerson&gt; _colorCache = {};
+
+   factory FactoryPerson.withName(String name) {
+     if (_nameCache.containsKey(name))
+       return _nameCache[name];
+     else {
+       final p = FactoryPerson(name, &quot;default&quot;);
+       _nameCache[name] = p;
+       return p;
+     }
+   }
+
+   factory FactoryPerson.withColor(String color) {
+     if (_colorCache.containsKey(color))
+       return _colorCache[color];
+     else {
+       final p = FactoryPerson(&quot;default&quot;, color);
+       _colorCache[color] = p;
+       return p;
+     }
+   }
+ }
+
+ var facP1 = FactoryPerson.withName(&quot;Mark&quot;);
+ var facP2 = FactoryPerson.withName(&quot;Mark&quot;);
+ print(identical(facP1, facP2)); // =&gt; true
+</code></pre>
+</li>
+</ol>
+<h3 id="header-15">getter/setter</h3>
+<p>Dart中类定义的属性是可以直接被外界访问的，但通过使用setter和getter，可以监控这个类的属性被访问的过程</p>
+<pre><code class="lang-java">
+// _xxx 下划线，当前模块中可使用
+
+class Person {
+  String name;
+
+  // setter - `set`
+  // set setName(String name) {
+  //   this.name = name;
+  // }
+  set setName(String name) =&gt; this.name = name;
+
+  // getter - `get`
+  // String get getName {
+  //   return this.name;
+  // }
+  String get getName =&gt; this.name;
+}
+
+final p = Person();
+p.name = &quot;Tom&quot;;
+print(p.name);
+
+p.setName = &quot;Jack&quot;;
+print(p.getName);
+</code></pre>
+<h3 id="header-16">继承，抽象，接口，混入类</h3>
+<ol>
+<li><p>继承类 extends</p>
+<pre><code class="lang-java"> class Animal {
+   int age;
+   Animal(this.age);
+
+   void eating() {
+     print(&quot;Animal is eating&quot;);
+   }
+ }
+
+ class Cat extends Animal {
+   String name;
+   Cat(this.name, int age) : super(age);
+
+   @override
+   void eating() {
+     print(&quot;$name is eating&quot;);
+   }
+ }
+
+ var c = Cat(&quot;Miao&quot;, 2);
+ c.eating();
+</code></pre>
+</li>
+<li><p>抽象类 abstract</p>
+<pre><code class="lang-java"> //（不能实例化，但可通过factory构造函数实例化）
+ // 参看 Map抽象类， 有个extenal factory Map();
+ // external: 将方法的声明和实现分离，用个注解@patch在其他地方对方法进行实现 =&gt; 好处： 针对不同平台，可有不同的实现
+ // map_patch.dart
+ abstract class Shape {
+   // 抽象方法 （无方法体）
+   void getArea();
+
+   // 普通方法（有方法体）
+   void getInfo() {
+     print(&quot;Shape&quot;);
+   }
+ }
+
+ // Dart 只支持单继承，不能多继承，即只能extends一个类
+ class Rectangle extends Shape {
+   // 必须实现抽象方法
+   @override
+   void getArea() {
+     print(&quot;Rectangle getArea!&quot;);
+   }
+ }
+
+ var s = Rectangle();
+ s.getArea();
+</code></pre>
+</li>
+<li><p>接口 implements（Dart中，默认情况下所有类都是接口）</p>
+<pre><code class="lang-java"> class Runner {
+   void running() {
+     print(&quot;Running&quot;);
+   }
+ }
+
+ // Dart中可以implements多个类，但必须重新实现@override其中的所有方法
+ class Wind implements Runner {
+   @override
+   void running() {
+     print(&quot;Wind is running&quot;);
+   }
+ }
+
+ var w = Wind();
+ w.running();
+</code></pre>
+</li>
+<li><p>混入类(Mixin定义类，with混入类)</p>
+<pre><code class="lang-java"> // 可复用之前类的原有实现方案
+ mixin Swimer {
+   void swiming() {
+     print(&quot;Swiming&quot;);
+   }
+ }
+
+ mixin Flier {
+   void flying() {
+     print(&quot;Flying&quot;);
+   }
+ }
+
+ class SpaceShip with Swimer, Flier {
+   @override
+   void swiming() {
+     print(&quot;SpaceShip can swiming!&quot;);
+   }
+ }
+
+ var ss = SpaceShip();
+ ss.flying();
+ ss.swiming();
+</code></pre>
+</li>
+</ol>
+<h3 id="header-17">枚举</h3>
+<pre><code class="lang-java">/*
+常见属性：
+  index: 用于表示每个枚举常量的索引, 从0开始
+  values: 包含每个枚举值的List.
+注意：
+  不能子类化、混合或实现枚举
+  不能显式实例化一个枚举
+ */
+enum Colors { red, green, blue }
+
+print(Colors.blue);
+print(Colors.green.index);
+print(Colors.values);
+</code></pre>
+<h3 id="header-18">泛型</h3>
+<pre><code class="lang-java">class Location&lt;T extends num&gt; {
+  T x;
+  T y;
+  Location(this.x, this.y);
+
+  @override
+  String toString() {
+    return &quot;$x,$y&quot;;
+  }
+}
+
+T getListFirst&lt;T&gt;(List&lt;T&gt; list) {
+  return list[0];
+}
+
+var names = [&quot;Tom&quot;, &quot;Lucy&quot;];
+var first = getListFirst(names);
+print(&quot;$first,${first.runtimeType}&quot;);
+
+var ages = [20, 30];
+var a = getListFirst(ages);
+print(&quot;$a,${a.runtimeType}&quot;);
+
+print(&quot;---------------------------&quot;);
+
+var l1 = Location(10, 20);
+print(l1);
+
+var l2 = Location&lt;int&gt;(20, 30);
+print(l2);
+
+var l3 = Location&lt;double&gt;(20.5, 30.9);
+print(l3);
+
+//var l4 = Location&lt;String&gt;(&quot;20&quot;, &quot;39&quot;);    // wrong !!
+</code></pre>
+<h2 id="header-19">库</h2>
+<ol>
+<li><p>Dart中任何一个dart文件都是一个库，即使没有用libary声明（库拆分： part/export -  推荐使用export）</p>
+<pre><code class="lang-java"> // mathUtils.dart:
+ int sum(int num1, int num2) {
+   return num1 + num2;
+ }
+
+ // dateUtils.dart:
+ String dateFormat(DateTime date) {
+   return &quot;2020-12-12&quot;;
+ }
+
+ // utils.dart:
+ library utils;
+ export &quot;mathUtils.dart&quot;;
+ export &quot;dateUtils.dart&quot;;
+
+ // test_libary.dart:
+ import &quot;lib/utils.dart&quot;;
+ main(List&lt;String&gt; args) {
+     print(sum(10, 20));
+     print(dateFormat(DateTime.now()));
+ }
+</code></pre>
+</li>
+<li><p>导入库 import （Dart中任何一个dart文件都是一个库）</p>
+<ul>
+<li><code>import &#39;库所在的uri&#39;;</code></li>
+<li>库 URI 三种不同的形式：<ul>
+<li>dart标准库  eg: ‘dart:io’,’dart:html’,’dart:math’ （’dart:core’默认已导入）</li>
+<li>相对路径  eg: ‘lib/student/student.dart’</li>
+<li>Pub包管理工具管理的库(包括自己的配置以及一些第三方的库) eg: ‘package:flutter/material.dart’</li>
+</ul>
+</li>
+<li><code>show</code>/<code>hide</code> 显示/隐藏某个成员 eg:<br>import ‘lib/student/student.dart’ show Student, Person;</li>
+<li><code>as</code> 命名空间，解决命名冲突 eg:<br>import ‘lib/student/student.dart’ as Stu;<br>Stu.Student s = new Stu.Student();</li>
+</ul>
+</li>
+</ol>
+<h2 id="header-20">future</h2>
+<p><a href="https://www.imooc.com/article/305495" target="_blank" rel="noopener">https://www.imooc.com/article/305495</a></p>
+<pre><code class="lang-java">Future&lt;String&gt; testFuture() {
+  //  return Future.value(&quot;Hello&quot;);
+ return Future.error(&quot;haha 创造个error&quot;);// =&gt; onError会打印【代码中有onError回调，catchError不会执行】
+//  throw &quot;an Error&quot;;   // =&gt; 代码会直接异常，不会走 catchError方法，因为throw返回的数据类型不是Future&lt;T&gt;类型
+}
+
+testFuture().then((value){
+    print(value);
+  },onError: (e) {    // onError为可选参数，代码异常时会被调用【代码中有onError回调，catchError不会执行】
+    print(&quot;onError: $e&quot;);
+  }).catchError((e){
+    print(&quot;catchError: $e&quot;);
+  });
+
+// 类似于java中try{}catch(){}finally{}异常捕获的finally
+Future.error(&quot;haha make a error&quot;)
+  .then(print)  
+  .catchError(print)
+  .whenComplete(() =&gt; print(&quot;Done!!!&quot;));
+//执行结果：
+//haha make a error
+//Done!!!
+</code></pre>
+<pre><code class="lang-java">testAsync() async {
+  var result = await Future.delayed(Duration(milliseconds: 2000), ()=&gt;Future.value(&quot;hahha&quot;));
+  print(&quot;time = ${DateTime.now()}&quot;);
+  print(result);
+}
+
+print(&quot;time start = ${DateTime.now()}&quot;);
+testAsync();
+print(&quot;time end= ${DateTime.now()}&quot;);
+
+//执行结果：
+//time start = 2019-05-15 19:24:14.187961
+//time end= 2019-05-15 19:24:14.200480
+//time = 2019-05-15 19:24:16.213213
+//hahha
+</code></pre>
+<pre><code class="lang-java">Future.delayed(Duration(milliseconds: 3000), () =&gt; &quot;hate&quot;)
+      .timeout(Duration(milliseconds: 2000))
+      .then(print)
+      .catchError(print);
+//TimeoutException after 0:00:00.002000: Future not completed
+</code></pre>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

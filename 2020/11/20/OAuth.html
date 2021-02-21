@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OAuth</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="security">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">Starter</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">配置：认证授权服务</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">配置：资源服务</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">Doc</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">Sample</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">认证服务: 基于内存方式</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">认证服务: 基于JDBC存储数据库方式</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">RBAC</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">资源服务器</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">Test</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">ISSUE</span></a></li></ol></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">OAuth</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2020-11-19T16:00:00.000Z">2020-11-20</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-MicroService">MicroService</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">Starter</h2>
+<p><img src="/2020/11/20/oauth-draft.png" alt="OAuth"></p>
+<p>OAuth2.0 是一种协议，提供认证和授权的标准<br>SpringSecurity，Shiro等框架有自己的实现</p>
+<p>OAuth2.0 涵盖两个服务，可放于一个应用程序中实现，也可用于 1（认证服务）+ N（资源服务）分别部署</p>
+<ul>
+<li>认证服务 Authorization Server：认证合法性，颁发token，即包含两个必须要实现的endpoints<ul>
+<li>AuthorizationEndpoint 用于认证的请求，默认URL：<code>/auth/authorize</code></li>
+<li>TokenEndpoint 用于获取token的请求，默认URL：<code>/auth/token</code></li>
+</ul>
+</li>
+<li>资源服务 Resource Server：拦截保护资源，token鉴权<ul>
+<li>OAuth2AuthenticationProcessingFilter 拦截鉴权token</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-2">配置：认证授权服务</h3>
+<pre><code class="lang-java">public class AuthorizationServerConfigurerAdapter implements AuthorizationServerConfigurer {
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+    }
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+    }
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    }
+}
+</code></pre>
+<p>需配置以下三个对象：</p>
+<ul>
+<li>ClientDetailsServiceConfigurer 配置哪些客户端可使用此服务</li>
+<li>AuthorizationServerEndpointsConfigurer 配置获取token的访问端点，token服务（token如何发放，存储等）<ul>
+<li>通过以下属性决定支持的授权类型(Grant Types)<ul>
+<li>authenticationManager 为”password”模式服务</li>
+<li>userDetailsService</li>
+<li>authorizationCodeServices 为“authorization_code”授权码模式服务</li>
+<li>implicitGrantService 设置隐式授权模式</li>
+<li>tokenGranter 自定义模式使用</li>
+</ul>
+</li>
+<li>pathMapping()配置端点URL，默认：<ul>
+<li>/oauth/authorize 认证</li>
+<li>/oauth/token 获取token</li>
+<li>/oauth/confirm_access 确认授权提交</li>
+<li>/oauth/error 错误</li>
+<li>/oauth/check_token 校验token </li>
+<li>/oauth/token_key 公有密钥</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>AuthorizationServerSecurityConfigurer 配置token端点的安全约束（授权哪些可以访问token端点）</li>
+</ul>
+<p>认证授权模式：</p>
+<ul>
+<li>授权码模式 authorization_code</li>
+<li>简化模式 implicit</li>
+<li>密码模式 password</li>
+<li><p>客户端模式 client_credentials</p>
+</li>
+<li><p>认证：验证账号密码</p>
+</li>
+<li>授权：这个角色能操作哪些数据<ul>
+<li>角色：人（运营，编辑，管理员，…）/ 系统 （日志系统，监控系统，…）/ 时间（定时清理，…）</li>
+<li>权限控制模型：<ul>
+<li>RBAC 基于角色的访问控制 (Role Based Access Control)</li>
+<li>ACL 访问控制列表</li>
+<li>ABAC 基于属性</li>
+<li>PBAC 基于策略</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-3">配置：资源服务</h3>
+<pre><code class="lang-java">public class ResourceServerConfigurerAdapter implements ResourceServerConfigurer {
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+    }
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().anyRequest().authenticated();
+    }
+}
+</code></pre>
+<p>ResourceServerTokenServices 验证token</p>
+<ul>
+<li>DefaultTokenService 在资源服务器本地，配置token存储，解码等服务（认证和资源服务在同一个应用程序时使用）</li>
+<li>RemoteTokenService 资源服务器通过Http方式，请求认证服点（/oauth/check_token）来完成解码token（认证和资源服务不在同一个应用程序时使用）</li>
+</ul>
+<h3 id="header-4">Doc</h3>
+<p><a href="https://spring.io/projects/spring-security-oauth" target="_blank" rel="noopener">https://spring.io/projects/spring-security-oauth</a><br><a href="https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security/wiki/OAuth-2.0-Migration-Guide</a><br><a href="https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql</a></p>
+<h2 id="header-5">Sample</h2>
+<h3 id="header-6">认证服务: 基于内存方式</h3>
+<ol>
+<li><p>application.yml</p>
+<pre><code class="lang-yaml"> server:
+   port: 5000
+   servlet:
+     context-path: /dear-auth
+</code></pre>
+</li>
+<li><p>配置OAuth认证授权服务器</p>
+<pre><code class="lang-java"> @Configuration
+ @EnableAuthorizationServer
+ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
+
+     /// 配置Client
+     @Autowired
+     private PasswordEncoder passwordEncoder;
+
+     @Override
+     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+         // 使用内存方式
+         clients.inMemory()
+             .withClient(&quot;DearApp&quot;)//客户端id
+             .secret(passwordEncoder.encode(&quot;DearApp&quot;))
+             .authorizedGrantTypes(&quot;authorization_code&quot;, &quot;password&quot;,&quot;refresh_token&quot;, ) // 该客户端允许的授权类型(authorization_code,password,client_credentials,implicit,refresh_token)
+             .scopes(&quot;app&quot;)//允许的授权范围，名称自定义，是个标识，必填
+             .redirectUris(&quot;http://www.baidu.com&quot;) //验证回调地址
+             ;
+     }
+ }
+</code></pre>
+</li>
+<li><p>配置Security（提供认证授权页面进行认证： <code>http://localhost:5000/dear-auth/login</code>）</p>
+<pre><code class="lang-java"> @Configuration
+ @EnableWebSecurity
+ @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
+ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+     // 采用bcrypt对密码进行编码
+     @Bean
+     public PasswordEncoder passwordEncoder() {
+         return new BCryptPasswordEncoder();
+     }
+
+     @Override
+     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+         auth.inMemoryAuthentication()
+                 .withUser(&quot;admin&quot;).password(passwordEncoder().encode(&quot;123&quot;)).roles(&quot;ADMIN&quot;)
+                 .and()
+                 .withUser(&quot;user&quot;).password(passwordEncoder().encode(&quot;123&quot;)).roles(&quot;USER&quot;)
+                 ;
+     }
+ }
+</code></pre>
+</li>
+<li><p>AuthApp.java</p>
+<pre><code class="lang-java"> @SpringBootApplication
+ public class AuthApp {
+     public static void main(String[] args){
+         SpringApplication.run(AuthApp.class);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<p><strong> 测试： </strong></p>
+<ol>
+<li>Browser visit: GET <code>http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code</code><ul>
+<li>默认跳转到认证页面 <code>http://localhost:5000/dear-auth/login</code>，输入账户密码（admin,123)进行验证</li>
+<li>认证成功后，跳转回授权页面 <code>http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code</code>,选择是否同意授权</li>
+<li>同意授权后，则跳转到 redirect_uri+code <code>https://www.baidu.com/?code=3Tgl8q</code>,即获得授权码<code>3Tgl8q</code></li>
+</ul>
+</li>
+<li><p>获取token</p>
+<ul>
+<li><p>使用cmd命令：</p>
+<pre><code class="lang-shell">  &gt; curl -d &#39;grant_type=authorization_code&amp;code=3Tgl8q&#39; -X POST http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token -i
+  HTTP/1.1 200
+  Cache-Control: no-store
+  Pragma: no-cache
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  X-Frame-Options: DENY
+  Content-Type: application/json;charset=UTF-8
+  Transfer-Encoding: chunked
+  Date: Thu, 21 Jan 2021 13:32:58 GMT
+
+  {&quot;access_token&quot;:&quot;e775d74e-9e8c-437d-974d-6d8286b37396&quot;,&quot;token_type&quot;:&quot;bearer&quot;,&quot;refresh_token&quot;:&quot;6b9f3fa3-143b-47a0-b356-3f577e8c7fed&quot;,&quot;expires_in&quot;:43199,&quot;scope&quot;:&quot;app&quot;}
+</code></pre>
+</li>
+<li>使用Postman<ul>
+<li>POST <code>http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token</code></li>
+<li>Authorization -&gt; Basic Auth -&gt; Username(DearApp) &amp; Password(DearApp)</li>
+<li>Body -&gt; x-www-form-urlencoded -&gt; grant_type &amp; code</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>授权码使用一次就失效了</li>
+<li>获取token的body参数 redirect_uri &amp; scope可加可不加，但加了后必须和配置的match上，否则获取token失败</li>
+<li>若<code>AuthorizationServerConfig</code>配置了<code>public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {security.allowFormAuthenticationForClients(); }</code>,则表示可以使用表单认证，可不用Basic Auth，直接在body中再加入<code>client_id &amp; client_secret</code>参数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-7">认证服务: 基于JDBC存储数据库方式</h3>
+<ol>
+<li><p>数据库 <code>https://github.com/spring-projects/spring-security-oauth/blob/master/spring-security-oauth2/src/test/resources/schema.sql</code></p>
+<pre><code class="lang-sql"> /*
+ SQLyog  v12.2.6 (64 bit)
+ MySQL - 8.0.15 : Database - dear_v1_auth
+ *********************************************************************
+ */
+
+ /*!40101 SET NAMES utf8 */;
+
+ /*!40101 SET SQL_MODE=&#39;&#39;*/;
+
+ /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+ /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+ /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&#39;NO_AUTO_VALUE_ON_ZERO&#39; */;
+ /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+ CREATE DATABASE /*!32312 IF NOT EXISTS*/`dear_v1_auth` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+ USE `dear_v1_auth`;
+
+ /*Table structure for table `clientdetails` */
+
+ DROP TABLE IF EXISTS `clientdetails`;
+
+ CREATE TABLE `clientdetails` (
+   `appId` varchar(128) NOT NULL,
+   `resourceIds` varchar(256) DEFAULT NULL,
+   `appSecret` varchar(256) DEFAULT NULL,
+   `scope` varchar(256) DEFAULT NULL,
+   `grantTypes` varchar(256) DEFAULT NULL,
+   `redirectUrl` varchar(256) DEFAULT NULL,
+   `authorities` varchar(256) DEFAULT NULL,
+   `access_token_validity` int(11) DEFAULT NULL,
+   `refresh_token_validity` int(11) DEFAULT NULL,
+   `additionalInformation` varchar(4096) DEFAULT NULL,
+   `autoApproveScopes` varchar(256) DEFAULT NULL,
+   PRIMARY KEY (`appId`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ /*Table structure for table `oauth_access_token` */
+
+ DROP TABLE IF EXISTS `oauth_access_token`;
+
+ CREATE TABLE `oauth_access_token` (
+   `token_id` varchar(256) DEFAULT NULL,
+   `token` blob,
+   `authentication_id` varchar(128) NOT NULL,
+   `user_name` varchar(256) DEFAULT NULL,
+   `client_id` varchar(256) DEFAULT NULL,
+   `authentication` blob,
+   `refresh_token` varchar(256) DEFAULT NULL,
+   PRIMARY KEY (`authentication_id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ /*Table structure for table `oauth_approvals` */
+
+ DROP TABLE IF EXISTS `oauth_approvals`;
+
+ CREATE TABLE `oauth_approvals` (
+   `userId` varchar(256) DEFAULT NULL,
+   `clientId` varchar(256) DEFAULT NULL,
+   `scope` varchar(256) DEFAULT NULL,
+   `status` varchar(10) DEFAULT NULL,
+   `expiresAt` timestamp NULL DEFAULT NULL,
+   `lastModifiedAt` timestamp NULL DEFAULT NULL
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ /*Table structure for table `oauth_client_details` */
+
+ DROP TABLE IF EXISTS `oauth_client_details`;
+
+ CREATE TABLE `oauth_client_details` (
+   `client_id` varchar(128) NOT NULL,
+   `resource_ids` varchar(256) DEFAULT NULL,
+   `client_secret` varchar(256) DEFAULT NULL,
+   `scope` varchar(256) DEFAULT NULL,
+   `authorized_grant_types` varchar(256) DEFAULT NULL,
+   `web_server_redirect_uri` varchar(256) DEFAULT NULL,
+   `authorities` varchar(256) DEFAULT NULL,
+   `access_token_validity` int(11) DEFAULT NULL,
+   `refresh_token_validity` int(11) DEFAULT NULL,
+   `additional_information` varchar(4096) DEFAULT NULL,
+   `autoapprove` varchar(256) DEFAULT NULL,
+   PRIMARY KEY (`client_id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ /*Table structure for table `oauth_client_token` */
+
+ DROP TABLE IF EXISTS `oauth_client_token`;
+
+ CREATE TABLE `oauth_client_token` (
+   `token_id` varchar(256) DEFAULT NULL,
+   `token` blob,
+   `authentication_id` varchar(128) NOT NULL,
+   `user_name` varchar(256) DEFAULT NULL,
+   `client_id` varchar(256) DEFAULT NULL,
+   PRIMARY KEY (`authentication_id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ /*Table structure for table `oauth_code` */
+
+ DROP TABLE IF EXISTS `oauth_code`;
+
+ CREATE TABLE `oauth_code` (
+   `code` varchar(256) DEFAULT NULL,
+   `authentication` blob
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ /*Table structure for table `oauth_refresh_token` */
+
+ DROP TABLE IF EXISTS `oauth_refresh_token`;
+
+ CREATE TABLE `oauth_refresh_token` (
+   `token_id` varchar(256) DEFAULT NULL,
+   `token` blob,
+   `authentication` blob
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+ /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+ /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+ /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+</code></pre>
+</li>
+<li><p>插入client数据 table: <code>oauth_client_details</code></p>
+<ul>
+<li>client_id: DearApp</li>
+<li>client_secret: $2a$10$i5enbghKJ1yqj9r7XuyJC.Rs0gGSTzjiv5vQvz/ShghJhjomHaqUa （DearApp加密和的字符串）</li>
+<li>scope: app</li>
+<li>authorized_grant_types: authorization_code,password,refresh_token</li>
+<li>web_server_redirect_uri: <a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a></li>
+</ul>
+</li>
+<li><p>配置数据源</p>
+<ul>
+<li><p>pom.xml</p>
+<pre><code class="lang-xml">   &lt;!-- druid --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+      &lt;artifactId&gt;druid-spring-boot-starter&lt;/artifactId&gt;
+  &lt;/dependency&gt;
+
+  &lt;!-- for @ConfigurationProperties : optional ! --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+      &lt;optional&gt;true&lt;/optional&gt;
+  &lt;/dependency&gt;
+</code></pre>
+</li>
+<li>application.yml <pre><code class="lang-yaml">  spring:
+     datasource:
+       druid:
+         url: jdbc:mysql://localhost:3306/dear_v1_auth?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowMultiQueries=true
+         username: cj
+         password: 123
+         driver-class-name: com.mysql.cj.jdbc.Driver
+   #      type: com.alibaba.druid.pool.DruidDataSource
+         initial-size: 8
+         min-idle: 1
+         max-active: 20
+         max-wait: 60000
+         time-between-eviction-runsMillis: 60000
+         min-evictable-idle-timeMillis: 300000
+         validation-query: select &#39;x&#39;
+         test-while-idle: true
+         test-on-borrow: false
+         test-on-return: false
+         pool-prepared-statements: false
+         max-open-prepared-statements: 20
+         max-pool-prepared-statement-per-connection-size: 20
+         filters: stat,wall
+         use-global-data-source-stat: true
+         connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+</code></pre>
+</li>
+<li><p>config/DruidConfig</p>
+<pre><code class="lang-java">  import com.alibaba.druid.pool.DruidDataSource;
+  import org.springframework.boot.context.properties.ConfigurationProperties;
+  import org.springframework.context.annotation.Bean;
+  import org.springframework.context.annotation.Configuration;
+  import javax.sql.DataSource;
+
+  @Configuration
+  public class DruidConfig {
+      //https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
+      @ConfigurationProperties(prefix = &quot;spring.datasource.druid&quot;)
+      @Bean
+      public DataSource druidDataSource(){
+          return new DruidDataSource();
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>配置授权认证服务器： client &amp; token 存储到数据库</p>
+<pre><code class="lang-java"> @Configuration
+ @EnableAuthorizationServer
+ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
+     // 1. 配置 client
+     @Override
+     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+         clients.withClientDetails(jdbcClientDetailsService());
+     }
+
+     @Autowired
+     DataSource dataSource;
+
+     @Bean
+     public ClientDetailsService jdbcClientDetailsService(){
+         return new JdbcClientDetailsService(dataSource);
+     }
+
+     // 2. 配置 endpoints,token存储
+     @Override
+     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+         endpoints.tokenStore(jdbcTokenStore());
+     }
+
+     @Bean
+     public TokenStore jdbcTokenStore(){
+         return new JdbcTokenStore(dataSource);
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-8">RBAC</h3>
+<ol>
+<li><p>数据库 (<a href="https://github.com/topsale/spring-boot-samples/blob/master/spring-security-oauth2/spring-security-oauth2-server/db/rbac.sql" target="_blank" rel="noopener">https://github.com/topsale/spring-boot-samples/blob/master/spring-security-oauth2/spring-security-oauth2-server/db/rbac.sql</a>)</p>
+<pre><code class="lang-sql"> /*
+ SQLyog  v12.2.6 (64 bit)
+ MySQL - 8.0.15 : Database - dear_v1_auth
+ *********************************************************************
+ */
+
+ /*!40101 SET NAMES utf8 */;
+
+ /*!40101 SET SQL_MODE=&#39;&#39;*/;
+
+ /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+ /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+ /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE=&#39;NO_AUTO_VALUE_ON_ZERO&#39; */;
+ /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+ CREATE DATABASE /*!32312 IF NOT EXISTS*/`dear_v1_auth` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+ USE `dear_v1_auth`;
+
+ /*Table structure for table `tb_permission` */
+
+ DROP TABLE IF EXISTS `tb_permission`;
+
+ CREATE TABLE `tb_permission` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+   `parent_id` bigint(20) DEFAULT NULL COMMENT &#39;父权限&#39;,
+   `name` varchar(64) NOT NULL COMMENT &#39;权限名称&#39;,
+   `enname` varchar(64) NOT NULL COMMENT &#39;权限英文名称&#39;,
+   `url` varchar(255) NOT NULL COMMENT &#39;授权路径&#39;,
+   `description` varchar(200) DEFAULT NULL COMMENT &#39;备注&#39;,
+   `created` datetime NOT NULL,
+   `updated` datetime NOT NULL,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COMMENT=&#39;权限表&#39;;
+
+ /*Data for the table `tb_permission` */
+
+ insert  into `tb_permission`(`id`,`parent_id`,`name`,`enname`,`url`,`description`,`created`,`updated`) values 
+ (37,0,&#39;系统管理&#39;,&#39;System&#39;,&#39;/&#39;,NULL,&#39;2019-04-04 23:22:54&#39;,&#39;2019-04-04 23:22:56&#39;),
+ (38,37,&#39;用户管理&#39;,&#39;SystemUser&#39;,&#39;/users/&#39;,NULL,&#39;2019-04-04 23:25:31&#39;,&#39;2019-04-04 23:25:33&#39;),
+ (39,38,&#39;查看用户&#39;,&#39;SystemUserView&#39;,&#39;/users/view/**&#39;,NULL,&#39;2019-04-04 15:30:30&#39;,&#39;2019-04-04 15:30:43&#39;),
+ (40,38,&#39;新增用户&#39;,&#39;SystemUserInsert&#39;,&#39;/users/insert/**&#39;,NULL,&#39;2019-04-04 15:30:31&#39;,&#39;2019-04-04 15:30:44&#39;),
+ (41,38,&#39;编辑用户&#39;,&#39;SystemUserUpdate&#39;,&#39;/users/update/**&#39;,NULL,&#39;2019-04-04 15:30:32&#39;,&#39;2019-04-04 15:30:45&#39;),
+ (42,38,&#39;删除用户&#39;,&#39;SystemUserDelete&#39;,&#39;/users/delete/**&#39;,NULL,&#39;2019-04-04 15:30:48&#39;,&#39;2019-04-04 15:30:45&#39;),
+ (44,37,&#39;内容管理&#39;,&#39;SystemContent&#39;,&#39;/contents/&#39;,NULL,&#39;2019-04-06 18:23:58&#39;,&#39;2019-04-06 18:24:00&#39;),
+ (45,44,&#39;查看内容&#39;,&#39;SystemContentView&#39;,&#39;/contents/view/**&#39;,NULL,&#39;2019-04-06 23:49:39&#39;,&#39;2019-04-06 23:49:41&#39;),
+ (46,44,&#39;新增内容&#39;,&#39;SystemContentInsert&#39;,&#39;/contents/insert/**&#39;,NULL,&#39;2019-04-06 23:51:00&#39;,&#39;2019-04-06 23:51:02&#39;),
+ (47,44,&#39;编辑内容&#39;,&#39;SystemContentUpdate&#39;,&#39;/contents/update/**&#39;,NULL,&#39;2019-04-06 23:51:04&#39;,&#39;2019-04-06 23:51:06&#39;),
+ (48,44,&#39;删除内容&#39;,&#39;SystemContentDelete&#39;,&#39;/contents/delete/**&#39;,NULL,&#39;2019-04-06 23:51:08&#39;,&#39;2019-04-06 23:51:10&#39;);
+
+ /*Table structure for table `tb_role` */
+
+ DROP TABLE IF EXISTS `tb_role`;
+
+ CREATE TABLE `tb_role` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+   `parent_id` bigint(20) DEFAULT NULL COMMENT &#39;父角色&#39;,
+   `name` varchar(64) NOT NULL COMMENT &#39;角色名称&#39;,
+   `enname` varchar(64) NOT NULL COMMENT &#39;角色英文名称&#39;,
+   `description` varchar(200) DEFAULT NULL COMMENT &#39;备注&#39;,
+   `created` datetime NOT NULL,
+   `updated` datetime NOT NULL,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT=&#39;角色表&#39;;
+
+ /*Data for the table `tb_role` */
+
+ insert  into `tb_role`(`id`,`parent_id`,`name`,`enname`,`description`,`created`,`updated`) values 
+ (37,0,&#39;超级管理员&#39;,&#39;admin&#39;,NULL,&#39;2019-04-04 23:22:03&#39;,&#39;2019-04-04 23:22:05&#39;);
+
+ /*Table structure for table `tb_role_permission` */
+
+ DROP TABLE IF EXISTS `tb_role_permission`;
+
+ CREATE TABLE `tb_role_permission` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+   `role_id` bigint(20) NOT NULL COMMENT &#39;角色 ID&#39;,
+   `permission_id` bigint(20) NOT NULL COMMENT &#39;权限 ID&#39;,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT=&#39;角色权限表&#39;;
+
+ /*Data for the table `tb_role_permission` */
+
+ insert  into `tb_role_permission`(`id`,`role_id`,`permission_id`) values 
+ (37,37,37),
+ (38,37,38),
+ (39,37,39),
+ (40,37,40),
+ (41,37,41),
+ (42,37,42),
+ (43,37,44),
+ (44,37,45),
+ (45,37,46),
+ (46,37,47),
+ (47,37,48);
+
+ /*Table structure for table `tb_user` */
+
+ DROP TABLE IF EXISTS `tb_user`;
+
+ CREATE TABLE `tb_user` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+   `username` varchar(50) NOT NULL COMMENT &#39;用户名&#39;,
+   `password` varchar(64) NOT NULL COMMENT &#39;密码，加密存储&#39;,
+   `phone` varchar(20) DEFAULT NULL COMMENT &#39;注册手机号&#39;,
+   `email` varchar(50) DEFAULT NULL COMMENT &#39;注册邮箱&#39;,
+   `created` datetime NOT NULL,
+   `updated` datetime NOT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY `username` (`username`) USING BTREE,
+   UNIQUE KEY `phone` (`phone`) USING BTREE,
+   UNIQUE KEY `email` (`email`) USING BTREE
+ ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT=&#39;用户表&#39;;
+
+ /*Data for the table `tb_user` */
+
+ insert  into `tb_user`(`id`,`username`,`password`,`phone`,`email`,`created`,`updated`) values 
+ (37,&#39;admin&#39;,&#39;$2a$10$9ZhDOBp.sRKat4l14ygu/.LscxrMUcDAfeVOEPiYwbcRkoB09gCmi&#39;,&#39;15888888888&#39;,&#39;lee.lusifer@gmail.com&#39;,&#39;2019-04-04 23:21:27&#39;,&#39;2019-04-04 23:21:29&#39;);
+
+ /*Table structure for table `tb_user_role` */
+
+ DROP TABLE IF EXISTS `tb_user_role`;
+
+ CREATE TABLE `tb_user_role` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+   `user_id` bigint(20) NOT NULL COMMENT &#39;用户 ID&#39;,
+   `role_id` bigint(20) NOT NULL COMMENT &#39;角色 ID&#39;,
+   PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COMMENT=&#39;用户角色表&#39;;
+
+ /*Data for the table `tb_user_role` */
+
+ insert  into `tb_user_role`(`id`,`user_id`,`role_id`) values 
+ (37,37,37);
+
+ /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+ /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+ /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+ /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+</code></pre>
+</li>
+<li><p>配置MyBatis: application.yml,main上加<code>@MapperScan(&quot;com.cj.dear.auth.mapper&quot;)</code>注解</p>
+<pre><code class="lang-yaml"> mybatis:
+    mapper-locations: classpath:mapper/*Mapper.xml
+    config-location:  classpath:mybatis-config.xml
+</code></pre>
+</li>
+<li><p>编写entity,mapper,service</p>
+</li>
+<li><p>config/WebSecurityConfig.java</p>
+<pre><code class="lang-java"> @Configuration
+ @EnableWebSecurity
+ @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
+ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+     // 采用bcrypt对密码进行编码
+     @Bean
+     public PasswordEncoder passwordEncoder() {
+         return new BCryptPasswordEncoder();
+     }
+
+      @Autowired
+     UserDetailsServiceImpl userDetailsServiceImpl;
+
+     @Override
+     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+         auth.userDetailsService(userDetailsServiceImpl);
+     }
+ }
+</code></pre>
+</li>
+<li><p>UserDetailsServiceImpl.java</p>
+<pre><code class="lang-java"> @Service
+ public class UserDetailsServiceImpl implements UserDetailsService {
+
+     @Autowired
+     private TbUserService tbUserService;
+
+     @Autowired
+     private TbPermissionService tbPermissionService;
+
+     @Override
+     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+         TbUser tbUser = tbUserService.getByUsername(username);
+         if(tbUser!=null){
+             List&lt;GrantedAuthority&gt; grantedAuthorityList = new ArrayList&lt;&gt;();
+             List&lt;TbPermission&gt; tbPermissions = tbPermissionService.listPermisionsByUserId(tbUser.getId());
+             if(tbPermissions!=null){
+                 tbPermissions.forEach(tbPermission -&gt; {
+                     grantedAuthorityList.add(new SimpleGrantedAuthority(tbPermission.getEnname()));
+                 });
+             }
+             return new User(tbUser.getUsername(),tbUser.getPassword(),grantedAuthorityList);
+         }
+         return null;
+     }
+ }
+</code></pre>
+</li>
+</ol>
+<h3 id="header-9">资源服务器</h3>
+<ol>
+<li><p>pom.yml</p>
+<pre><code class="lang-xml"> &lt;!-- OAuth --&gt;
+ &lt;dependency&gt;
+     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+     &lt;artifactId&gt;spring-cloud-starter-oauth2&lt;/artifactId&gt;
+ &lt;/dependency&gt;
+</code></pre>
+</li>
+<li><p>application.yml</p>
+<pre><code class="lang-yaml"> security:
+   oauth2:
+     client:
+       client-id: DearApp
+       client-secret: DearApp
+       access-token-uri: http://localhost:5000/dear-auth/oauth/token
+       user-authorization-uri: http://localhost:5000/dear-auth/authorize
+     resource:
+       token-info-uri: http://localhost:5000/dear-auth/oauth/check_token
+</code></pre>
+</li>
+<li><p>config/ResourceServerConfig</p>
+<pre><code class="lang-java"> @Configuration
+ @EnableResourceServer
+ @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)//激活方法上的PreAuthorize注解
+ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+     @Override
+     public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers(&quot;/&quot;).hasAuthority(&quot;SystemProject&quot;)
+                .antMatchers(&quot;/projects/view/**&quot;).hasAuthority(&quot;SystemProjectView&quot;)
+                ;
+     }
+ }
+</code></pre>
+</li>
+<li><p>ProjectController</p>
+<pre><code class="lang-java"> @RestController
+ public class ProjectController {
+
+     @GetMapping(&quot;/&quot;)
+     public Object index(){
+         return &quot;Project Hello World&quot;;
+     }
+
+     @GetMapping(&quot;/projects/view&quot;)
+     public Object listProjects(){
+         return &quot;List Projects&quot;;
+     }
+
+     @GetMapping(&quot;/projects/insert&quot;)
+     public Object insertProject(){
+         return &quot;Insert Projects&quot;;
+     }
+ }
+</code></pre>
+</li>
+<li><p>visit <code>http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</code> =&gt; Exception (<code>springframework.web.client.HttpClientErrorException$Forbidden: 403 : [{&quot;timestamp&quot;:&quot;2021-01-22T15:01:31.342+00:00&quot;,&quot;status&quot;:403,&quot;error&quot;:&quot;Forbidden&quot;,&quot;message&quot;:&quot;&quot;,&quot;path&quot;:&quot;/dear-auth/oauth/check_token&quot;}]</code>)</p>
+<ul>
+<li>方式一： dear-auth项目 config/WebSecurityConfig =&gt; visit <code>http://localhost:5000/dear-auth/oauth/check_token?token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</code> 成功<pre><code class="lang-java">  /// Sample 3： /oauth/check_token 401/403 配置这个或者在AuthorizationServerConfig中配置security.checkTokenAccess策略
+  @Override
+  public void configure(WebSecurity web) throws Exception {
+     web.ignoring().antMatchers(&quot;/oauth/check_token&quot;);
+  }
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>放式二： dear-auth项目 config/AuthorizationServerConfig =&gt; visit <code>http://localhost:5000/dear-auth/oauth/check_token?token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</code> + Basic Auth 成功<pre><code class="lang-java">  /// Sample 3： 此认证服务器的安全策略
+  @Override
+  public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+      security.tokenKeyAccess(&quot;permitAll()&quot;) // /oauth/token_key 完全开放
+              .checkTokenAccess(&quot;isAuthenticated()&quot;) // /oauth/check_token 需要认证通过，可采用http basic认证
+              .allowFormAuthenticationForClients() // 允许表单认证
+              ;
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>test</p>
+<ul>
+<li>visit <code>http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code</code> =&gt; 获取code：nfGdkg</li>
+<li>POST <code>http://localhost:5000/dear-auth/oauth/token</code> =&gt; 获取access_token: 1e9aedd1-4e92-4444-96a7-edc3b55a3d25</li>
+<li>visit <code>http://localhost:5001/dear-project/</code> =&gt; unauthorized</li>
+<li>visit <code>http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</code> =&gt; Success!</li>
+<li>visit <code>http://localhost:5001/dear-project/</code> + Bearer Token =&gt; Success!</li>
+<li>visit <code>http://localhost:5000/dear-auth/oauth/check_token?token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</code> =&gt;<pre><code class="lang-json">  {
+      &quot;active&quot;: true,
+      &quot;exp&quot;: 1611353145,
+      &quot;user_name&quot;: &quot;admin&quot;,
+      &quot;authorities&quot;: [
+          &quot;SystemProjectView&quot;,
+          &quot;SystemProject&quot;,
+          &quot;SystemUserView&quot;,
+          &quot;SystemProjectInsert&quot;,
+          &quot;SystemProjectUpdate&quot;,
+          &quot;SystemUser&quot;,
+          &quot;SystemUserInsert&quot;,
+          &quot;SystemUserDelete&quot;,
+          &quot;SystemUserUpdate&quot;,
+          &quot;System&quot;,
+          &quot;SystemProjectDelete&quot;
+      ],
+      &quot;client_id&quot;: &quot;DearApp&quot;,
+      &quot;scope&quot;: [
+          &quot;app&quot;
+      ]
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="header-10">Test</h3>
+<p>GET <a href="http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code&amp;scope=app&amp;redirect_uri=http://www.baidu.com" target="_blank" rel="noopener">http://localhost:5000/dear-auth/oauth/authorize?client_id=DearApp&amp;response_type=code&amp;scope=app&amp;redirect_uri=http://www.baidu.com</a></p>
+<p>POST <a href="http://localhost:5000/dear-auth/oauth/token" target="_blank" rel="noopener">http://localhost:5000/dear-auth/oauth/token</a></p>
+<p>curl -d ‘grant_type=authorization_code&amp;code=3Tgl8q’ -X POST <a href="http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token" target="_blank" rel="noopener">http://DearApp:DearApp@localhost:5000/dear-auth/oauth/token</a> -i</p>
+<p>GET <a href="http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25" target="_blank" rel="noopener">http://localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</a></p>
+<p>GET <a href="http://DearApp:DearApp@localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25" target="_blank" rel="noopener">http://DearApp:DearApp@localhost:5001/dear-project/?access_token=1e9aedd1-4e92-4444-96a7-edc3b55a3d25</a></p>
+<h3 id="header-11">ISSUE</h3>
+<p>SpringSecurityOAuth2登录后无法跳转获取授权码地址，直接跳转根路径原因详解<br><a href="https://blog.csdn.net/CSDN877425287/article/details/110948221" target="_blank" rel="noopener">https://blog.csdn.net/CSDN877425287/article/details/110948221</a></p>
+<p>SpringBoot集成SpringSecurity - 异常处理（三）<br><a href="https://www.jianshu.com/p/5b412418b864/" target="_blank" rel="noopener">https://www.jianshu.com/p/5b412418b864/</a></p>
+<p>SpringBoot2.x统一异常捕获@RestControllerAdvice<br><a href="https://blog.csdn.net/fuu123f/article/details/107249708" target="_blank" rel="noopener">https://blog.csdn.net/fuu123f/article/details/107249708</a></p>
+<p>Spring Security OAuth2 授权失败（401) 问题整理<br><a href="https://www.cnblogs.com/mxmbk/p/9782409.html" target="_blank" rel="noopener">https://www.cnblogs.com/mxmbk/p/9782409.html</a></p>
+<p>SpringBoot /error Error Page status 为 999 的问题<br><a href="https://learnku.com/java/t/39683" target="_blank" rel="noopener">https://learnku.com/java/t/39683</a></p>
+<p>Spring Cloud OAuth2 实现用户认证及单点登录<br><a href="https://www.cnblogs.com/fengzheng/p/11724625.html" target="_blank" rel="noopener">https://www.cnblogs.com/fengzheng/p/11724625.html</a></p>
+<p>官方 spring-security-oauth2<br><a href="https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2" target="_blank" rel="noopener">https://github.com/spring-projects/spring-security-oauth/tree/master/spring-security-oauth2</a></p>
+<p>Demo<br><a href="https://github.com/topsale/spring-boot-samples" target="_blank" rel="noopener">https://github.com/topsale/spring-boot-samples</a></p>
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

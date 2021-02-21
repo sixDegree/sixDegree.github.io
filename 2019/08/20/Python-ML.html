@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Machine Learning</title>
+  
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="ml,python">
+  
+  
+
+  <!-- Feed -->
+  
+    <link rel="alternative" href="/atom.xml" title="SixDegree" type="application/atom+xml">
+  
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+  
+	
+		<link rel="stylesheet" href="/highlight/demo/styles/tomorrow-night-bright.css">
+	
+    
+  
+  <link rel="stylesheet" href="/css/fontello.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Site Analyse -->
+  
+	<script>
+	var userID='2bbb83cc0f781dd7502e9d5e19661866';
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?"+userID;
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+
+<body data-spy="scroll" data-target="#nav-catalog">
+  <div id="top-push"></div>
+<a href="#top-push" id="go-top">
+	<span class="glyphicon glyphicon-chevron-up"></span>
+</a>
+  <aside id="sidebar">
+    <section class="sidebar-header">Catalog</section>
+     <nav id="nav-catalog">
+        <ol class="sidebar-nav nav"><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-1"><span class="sidebar-nav nav-text">ML</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-2"><span class="sidebar-nav nav-text">分类</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-3"><span class="sidebar-nav nav-text">机器学习过程</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-4"><span class="sidebar-nav nav-text">判断算法性能</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-5"><span class="sidebar-nav nav-text">模型参数 &amp; 超参数</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-6"><span class="sidebar-nav nav-text">样本表示</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-7"><span class="sidebar-nav nav-text">样本间距离</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-8"><span class="sidebar-nav nav-text">维数灾难</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-9"><span class="sidebar-nav nav-text">scikit-learn</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-10"><span class="sidebar-nav nav-text">标准数据集</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-11"><span class="sidebar-nav nav-text">示例：数据集之鸢尾花</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-12"><span class="sidebar-nav nav-text">基本功能</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-13"><span class="sidebar-nav nav-text">数据预处理: 数据集分割</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-14"><span class="sidebar-nav nav-text">数据预处理: 特征归一化</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-15"><span class="sidebar-nav nav-text">模型度量：准确度</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-16"><span class="sidebar-nav nav-text">kNN - k近邻算法</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-17"><span class="sidebar-nav nav-text">Sample: 自实现的KNeighborsClassifier</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-18"><span class="sidebar-nav nav-text">Sample: sklean中的KNeighborsClassifier</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-19"><span class="sidebar-nav nav-text">Sample: sklean中的KNeighborsRegressor</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-20"><span class="sidebar-nav nav-text">Sample: 数据集预处理之特征归一化</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-21"><span class="sidebar-nav nav-text">Sample: 使用网格搜索方式，寻找到当前最优的超参数</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-22"><span class="sidebar-nav nav-text">线性回归法 Linear Regression</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-23"><span class="sidebar-nav nav-text">线性回归算法的评测</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-24"><span class="sidebar-nav nav-text">最小二乘法</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-25"><span class="sidebar-nav nav-text">评测算法</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-26"><span class="sidebar-nav nav-text">多元线性回归</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-27"><span class="sidebar-nav nav-text">scikit-learn中的LinearRegression</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-28"><span class="sidebar-nav nav-text">scikit-learn中的SGDRegressor</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-29"><span class="sidebar-nav nav-text">梯度下降法(Gradient Descent)</span></a><ol class="sidebar-nav nav-child"><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-30"><span class="sidebar-nav nav-text">批量梯度下降法(Batch Gradient Descent)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-31"><span class="sidebar-nav nav-text">随机梯度下降法(Stochastic Gradient Descent)</span></a></li><li class="sidebar-nav nav-item sidebar-nav nav-level-3"><a class="sidebar-nav nav-link" href="#header-32"><span class="sidebar-nav nav-text">梯度调试</span></a></li></ol></li><li class="sidebar-nav nav-item sidebar-nav nav-level-2"><a class="sidebar-nav nav-link" href="#header-33"><span class="sidebar-nav nav-text">PCA</span></a></li></ol>
+    </nav>
+  </aside>
+  <span id="sidebar-ctrl" class="glyphicon glyphicon-list-alt circle"></span>
+  <div id="wrapper">
+    <header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-menu" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">SixDegree</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-menu">
+        <ul class="nav navbar-nav navbar-right">
+          
+              <li  >
+                <a href="/">Blogs</a>
+              </li>
+          
+              <li  >
+                <a href="/tags.html">Tags</a>
+              </li>
+          
+              <li  >
+                <a href="/about.html">About</a>
+              </li>
+          
+          
+              <li>
+                <a href="/atom.xml" target="_blank">
+                  <span class="icon-rss"></span>
+                </a>
+              </li>
+          
+              <li>
+                <a href="http://github.com/sixdegree" target="_blank">
+                  <span class="icon-github"></span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+
+    <div class="container">
+      <article class="detail" role="main">
+  <section class="post-header">
+    <h1 class="post-title">Machine Learning</h1>
+    <ul class="post-meta">
+      <li>
+        <span class="glyphicon glyphicon-calendar"></span>
+        <time datetime="2019-08-19T16:00:00.000Z">2019-08-20</time>
+      </li>
+      
+        <li>
+         <span class="glyphicon glyphicon-tags"></span>
+          
+            <a href="/tags.html#tag-Python">Python</a>
+          
+        </li>
+      
+    </ul>
+  </section>
+  <section class="post-content">
+    <h2 id="header-1">ML</h2>
+<h3 id="header-2">分类</h3>
+<ul>
+<li><p>监督学习（datasets有label）=&gt; 训练模型</p>
+<ul>
+<li>分类</li>
+<li>回归</li>
+</ul>
+</li>
+<li><p>无监督学习（datasets无label）=&gt; 对数据做处理</p>
+<ul>
+<li>聚类 (分类)</li>
+<li>将维 (特征提取，压缩)</li>
+<li>应用：减少无用featuers,方便可视化，异常检测</li>
+</ul>
+</li>
+<li><p>半监督学习（datasets有的有label，有的无label）</p>
+</li>
+<li><p>增强学习（根据环境action）</p>
+<pre><code>  Action =&gt; Environment =&gt; State: Reward/Reject 
+      ^                           |
+      |                           |
+      －－－－－－－－－－－－－－－－－－
+</code></pre><ul>
+<li>根据周围环境情况采取行动，再根据行动结果(奖／惩)，学习行为方式，如此往复，不断学习</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-3">机器学习过程</h3>
+<ul>
+<li>训练数据集 <code>X_train</code>,<code>y_train</code> =&gt; <strong>fit</strong> 拟合训练数据集 =&gt; 模型</li>
+<li>输入样例 <code>x</code> =&gt; 模型 =&gt; <strong>predict</strong> 结果</li>
+</ul>
+<h3 id="header-4">判断算法性能</h3>
+<ul>
+<li>训练和测试数据集分离(train_test_split)，使用测试数据判断模型好坏</li>
+<li>准确度 accuracy</li>
+</ul>
+<h3 id="header-5">模型参数 &amp; 超参数</h3>
+<ul>
+<li>模型参数：算法过程中学习的参数</li>
+<li>超参数: 算法运行前需要决定的参数(=&gt;需调参)<ul>
+<li>寻找好的超参数：<ul>
+<li>领域知识</li>
+<li>经验数值</li>
+<li>实验搜索(eg: 网格搜索)</li>
+</ul>
+</li>
+<li><code>scikit-learn</code>提供<code>GridSearch</code>网格搜索方法(封装在<code>sklearn.model_selection</code>包中)，实验搜索好的超参数</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-6">样本表示</h3>
+<ul>
+<li>每个样本用一个向量表示 =&gt; 一维数组</li>
+<li>每个样本有1~n个特征(features) =&gt; 一维数组的size</li>
+<li>m个样本 =&gt; m*n矩阵，用一个二维数组表示<ul>
+<li>m: 行, samples</li>
+<li>n: 列, features</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-7">样本间距离</h3>
+<p>有不同的计算方式, eg:</p>
+<ul>
+<li><p>向量的范数：</p>
+<ul>
+<li>曼哈顿距离 (1维空间) : $ (\sum_{i=1}^n{|X_i^a-X_i^b|})^\frac{1}{1} $ (两个点在每个维度上相应距离的和）</li>
+<li>欧拉距离 (2维空间) : $ (\sum_{i=1}^n{|X_i^a-X_i^b|^2})^\frac{1}{2} $ <ul>
+<li>( $ \sqrt{\sum_{i=1}^n{(X_i^a-X_i^b)^2}} $ )</li>
+</ul>
+</li>
+<li>明可夫斯基距离 (p维空间) : $ (\sum_{i=1}^n{|X_i^a-X_i^b|^p})^\frac{1}{p} $</li>
+</ul>
+</li>
+<li><p>统计学上的相似度：</p>
+<ul>
+<li>向量空间余弦相似度 (Cosine Similarity)</li>
+<li>调整余弦相似度 (Adjusted Cosine Similarity)</li>
+<li>皮尔森相关系数 (Pearson Correlation Coefficient)</li>
+<li>Jaccard相似系数 (Jaccard Coefficient)</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-8">维数灾难</h3>
+<p>随着维度的增加，“看似相近”的两个点之间的距离越来越大</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">维数</th>
+<th style="text-align:left">两个样本</th>
+<th style="text-align:left">两样本间的距离</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1维</td>
+<td style="text-align:left">0 &amp; 1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">2维</td>
+<td style="text-align:left">(0,0) &amp; (1,1)</td>
+<td style="text-align:left">1.414</td>
+</tr>
+<tr>
+<td style="text-align:left">3维</td>
+<td style="text-align:left">(0,0,0) &amp; (1,1,1)</td>
+<td style="text-align:left">1.73</td>
+</tr>
+<tr>
+<td style="text-align:left">64维</td>
+<td style="text-align:left">(0,0,…,0) &amp; (1,1,…,1)</td>
+<td style="text-align:left">8</td>
+</tr>
+<tr>
+<td style="text-align:left">10000维</td>
+<td style="text-align:left">(0,0,…,0) &amp; (1,1,…,1)</td>
+<td style="text-align:left">100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>优化方法：将维</strong></p>
+<h2 id="header-9">scikit-learn</h2>
+<p>提供标准数据集和6大基本功能 ( <a href="https://scikit-learn.org/stable/documentation.html" target="_blank" rel="noopener">Documents</a> | <a href="https://scikit-learn.org/stable/modules/classes.html" target="_blank" rel="noopener">API Reference</a> )</p>
+<h3 id="header-10">标准数据集</h3>
+<ul>
+<li><p>小数据集</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">数据集名称</th>
+<th style="text-align:left">调用方式</th>
+<th style="text-align:left">适用算法</th>
+<th style="text-align:left">数据规模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">波士顿房价数据集</td>
+<td style="text-align:left"><code>load_boston()</code></td>
+<td style="text-align:left">回归</td>
+<td style="text-align:left">506*13</td>
+</tr>
+<tr>
+<td style="text-align:left">糖尿病数据集</td>
+<td style="text-align:left"><code>load_diabetes()</code></td>
+<td style="text-align:left">回归</td>
+<td style="text-align:left">442*10</td>
+</tr>
+<tr>
+<td style="text-align:left">鸢尾花数据集</td>
+<td style="text-align:left"><code>load_iris()</code></td>
+<td style="text-align:left">分类</td>
+<td style="text-align:left">150*4</td>
+</tr>
+<tr>
+<td style="text-align:left">手写数字数据集</td>
+<td style="text-align:left"><code>load_digits()</code></td>
+<td style="text-align:left">分类</td>
+<td style="text-align:left">5620*64</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>大数据集</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">数据集名称</th>
+<th style="text-align:left">调用方式</th>
+<th style="text-align:left">适用算法</th>
+<th style="text-align:left">数据规模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Olivetti脸部图像数据集</td>
+<td style="text-align:left"><code>fetch_olivetti_faces()</code></td>
+<td style="text-align:left">降维</td>
+<td style="text-align:left">400_64_64</td>
+</tr>
+<tr>
+<td style="text-align:left">新闻分类数据集</td>
+<td style="text-align:left"><code>fetch_20newsgroups()</code></td>
+<td style="text-align:left">分类</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">带标签的人脸数据集</td>
+<td style="text-align:left"><code>fetch_lfw_people()</code></td>
+<td style="text-align:left">分类;降维</td>
+<td style="text-align:left">-</td>
+</tr>
+<tr>
+<td style="text-align:left">路透社新闻语料数据集</td>
+<td style="text-align:left"><code>fetch_rcv1()</code></td>
+<td style="text-align:left">分类</td>
+<td style="text-align:left">804414*47236</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>注: 小数据集可以直接使用,大数据集要在调用时程序自动下载(一次即可)</p>
+</li>
+</ul>
+<h3 id="header-11">示例：数据集之鸢尾花</h3>
+<ol>
+<li><p>加载数据集</p>
+<pre><code class="lang-python"> from sklearn import datasets
+
+ iris=datasets.load_iris()   # 加载鸢尾花数据集
+
+ iris.keys()                 # dict_keys([&#39;data&#39;, &#39;target&#39;, &#39;target_names&#39;, &#39;DESCR&#39;, &#39;feature_names&#39;, &#39;filename&#39;])
+
+ iris.DESC                   # 1. `.DESC` : some description
+
+ iris.feature_names          # 2. `.feature_names`: each feature meaning
+                             &#39;&#39;&#39;
+                             [&#39;sepal length (cm)&#39;,
+                              &#39;sepal width (cm)&#39;,
+                              &#39;petal length (cm)&#39;,
+                              &#39;petal width (cm)&#39;]
+                             &#39;&#39;&#39;
+
+ iris.target_names           # 3. `.target_names`: each target meaning
+                             &#39;&#39;&#39;
+                             array([&#39;setosa&#39;, &#39;versicolor&#39;, &#39;virginica&#39;], dtype=&#39;&lt;U10&#39;)
+                             &#39;&#39;&#39;
+
+ X = iris.data               # 4. `.data` : features (x1,x2,x3,x4)
+ y = iris.target             # 5. `.target` : result labels (y1,y2,y3)
+</code></pre>
+</li>
+<li><p>可视化</p>
+<ul>
+<li>取前两个feature(x1 &amp; x2) 绘制散点图 =&gt; 发现基本可以区分出y=0的花<pre><code class="lang-python">  plt.scatter(X[y==0,0],X[y==0,1],color=&quot;red&quot;,marker=&quot;o&quot;)
+  plt.scatter(X[y==1,0],X[y==1,1],color=&quot;blue&quot;,marker=&quot;+&quot;)
+  plt.scatter(X[y==2,0],X[y==2,1],color=&quot;green&quot;,marker=&quot;x&quot;)
+</code></pre>
+  <img src="/2019/08/20/iris_x0_x1.png" alt="x0 &amp; x1"></li>
+<li>取后两个feature绘制散点图 =&gt; 发现可区分出y=0的花<pre><code class="lang-python">  plt.scatter(X[y==0,2],X[y==0,3],color=&quot;red&quot;,marker=&quot;o&quot;)
+  plt.scatter(X[y==1,2],X[y==1,3],color=&quot;blue&quot;,marker=&quot;+&quot;)
+  plt.scatter(X[y==2,2],X[y==2,3],color=&quot;green&quot;,marker=&quot;x&quot;)
+</code></pre>
+  <img src="/2019/08/20/iris_x2_x3.png" alt="x2 &amp; x3"></li>
+</ul>
+</li>
+</ol>
+<h3 id="header-12">基本功能</h3>
+<p>共分为6大部分,分别用于:</p>
+<ul>
+<li><p>模型选择 <code>model_selection</code></p>
+<ul>
+<li>数据集分割 (eg: <code>train_test_split</code>)</li>
+<li>交叉验证 (eg: <code>cross_validate</code>)</li>
+<li>超参数评估选择 (eg: 网格搜索<code>GridSearchCV</code>)</li>
+<li>…</li>
+</ul>
+</li>
+<li><p>数据预处理 <code>preprocessing</code></p>
+<ul>
+<li>特征归一化处理 (eg: <code>MinMaxScaler</code>,<code>StandardScaler</code>)</li>
+<li>Normalization</li>
+<li>…</li>
+</ul>
+</li>
+<li><p>分类任务</p>
+<ul>
+<li>最近邻算法 <code>neighbors.NearestNeighbors</code></li>
+<li>支持向量机 <code>svm.SVC</code></li>
+<li>朴素贝叶斯 <code>naive_bayes.GaussianNB</code></li>
+<li>决策树 <code>tree.DecisionTreeClassifier</code></li>
+<li>集成方法 <code>ensemble.BaggingClassifier</code></li>
+<li>神经网络 <code>neural_network.MLPClassifier</code></li>
+</ul>
+</li>
+<li><p>回归任务</p>
+<ul>
+<li>岭回归 <code>linear_model.Ridge</code></li>
+<li>Lasso回归 <code>linear_model.Lasso</code></li>
+<li>弹性网络 <code>linear_model.ElasticNet</code></li>
+<li>最小角回归 <code>linear_model.Lars</code></li>
+<li>贝叶斯回归 <code>linear_model.BayesianRidge</code></li>
+<li>逻辑回归 <code>linear_model.LogisticRegression</code></li>
+<li>多项式回归 <code>preprocessing.PolynomialFeatures</code></li>
+</ul>
+</li>
+<li><p>聚类任务</p>
+<ul>
+<li>K-means <code>cluster.KMeans</code></li>
+<li>AP聚类 <code>cluster.AffinityPropagation</code></li>
+<li>均值漂移 <code>cluster.MeanShift</code></li>
+<li>层次聚类 <code>cluster.AgglomerativeClustering</code></li>
+<li>DBSCAN <code>cluster.DBSCAN</code></li>
+<li>BIRCH <code>cluster.Birch</code></li>
+<li>谱聚类 <code>cluster.SpectralClustering</code></li>
+</ul>
+</li>
+<li><p>降维任务</p>
+<ul>
+<li>主成分分析 <code>decomposition.PCA</code></li>
+<li>截断SVD和LSA <code>decomposition.TruncatedSVD</code></li>
+<li>字典学习 <code>decomposition.SparseCoder</code></li>
+<li>因子分析 <code>decomposition.FactorAnalysis</code></li>
+<li>独立成分分析 <code>decomposition.FastICA</code></li>
+<li>非负矩阵分解 <code>decomposition.NMF</code></li>
+<li>LDA <code>decomposition.LatentDirichletAllocation</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="header-13">数据预处理: 数据集分割</h3>
+<p>训练测试数据集分离(<code>train_test_split</code>)</p>
+<ol>
+<li><p>自定义</p>
+<pre><code class="lang-python"> import numpy as np
+ def train_test_split(X,y,test_ratio=0.2,seed=None):
+     &#39;&#39;&#39; 将数据集(X &amp; y) 按照test_radio比例，分割成训练集(X_train &amp; y_train) 和测试集(X_test &amp; y_test) &#39;&#39;&#39;
+     assert X.shape[0] == y.shape[0], &quot;the size of X must be equal to the size of y&quot;
+     assert 0.0 &lt;=test_ratio &lt;=1.0, &quot;test_radio must be valid&quot;
+
+     if seed:
+         np.random.seed(seed)
+
+     # 1. shuffle indexes
+     shuffle_indexes = np.random.permutation(X.shape[0])
+
+     # 2. test &amp; train shuffled indexes
+     test_size = int(X.shape[0] * test_ratio)
+     test_indexes = shuffle_indexes[:test_size]
+     train_indexes = shuffle_indexes[test_size:]
+
+     # 3. get test &amp; train array
+     X_test = X[test_indexes]
+     y_test = y[test_indexes]
+     X_train = X[train_indexes]
+     y_train = y[train_indexes]
+     return X_train,X_test,y_train,y_test
+
+ if __name__ == &quot;__main__&quot;:
+     # 1. load datasets
+     from sklearn import datasets
+     iris = datasets.load_iris()
+     X = iris.data
+     y = iris.target
+
+     # 2. train test split
+     X_train,X_test,y_train,y_test=train_test_split(X,y,test_ratio=0.2)
+
+     print(&quot;X_train:&quot;,X_train.shape)
+     print(&quot;y_train:&quot;,y_train.shape)
+     print(&quot;X_test:&quot;,X_test.shape)
+     print(&quot;y_test:&quot;,y_test.shape)
+</code></pre>
+</li>
+<li><p>scikit-learn中提供的方法（封装在<code>sklearn.model_selection</code>包中)</p>
+<pre><code class="lang-python"> import numpy as np
+
+ # 1. load datasets
+ from sklearn import datasets
+ iris = datasets.load_iris()
+ X = iris.data
+ y = iris.target
+
+ # 2. do train_test_split
+ from sklearn.model_selection import train_test_split
+ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=66)
+
+ # 3. check
+ X_train.shape       # (120, 4)
+ y_train.shape       # (120,)
+</code></pre>
+</li>
+</ol>
+<h3 id="header-14">数据预处理: 特征归一化</h3>
+<p>数据集特征归一化(<code>Feature Scaling</code>)</p>
+<ol>
+<li><p>问题：样本间距离被较大数级的<code>feature</code>给主导了</p>
+</li>
+<li><p>解决方案：将所有的数据映射到同一尺度</p>
+<ul>
+<li>最值归一化 <code>normalization</code> :<ul>
+<li>将所有数据都映射到<code>0～1</code>之间 $x_{scale} = \frac{x - x_{min}}{x_{max} - x_{min}}$</li>
+<li>适用于分布有明显边界(min,max)的情况；受极端数据值(outlier)影响较大</li>
+</ul>
+</li>
+<li>均值方差归一化 <code>standardization</code> :<ul>
+<li>将所有数据归一到<code>均值为0</code>，<code>均方差为1</code>的分布中 $x_{scale} = \frac{x - x_{mean}}{x_{std}}$</li>
+<li>适用于数据分布没有明显的边界；有可能存在极端数据值</li>
+<li>注：对有明显边界／无极端数据值的数据，这种归一化效果也很好</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注：测试数据集的归一化</p>
+<ul>
+<li>使用训练数据集的关键数值</li>
+<li>如：均值方差归一化，使用测试数据的均值<code>mean_train</code> &amp; 均方差<code>std_train</code> =&gt; <code>(x_test-mean_train)/std_train</code></li>
+<li>原因：测试数据集是模拟真实环境，真实环境很可能无法得到所有数据的均值和方差，且数据的归一化也算是这个算法的一部分</li>
+</ul>
+</li>
+<li><p><code>scikit-learn</code>提供的<code>Scaler</code>归一化方法</p>
+<ul>
+<li>以类的形式封装在<code>sklearn.preprocessing</code>包中，eg:<ul>
+<li><code>MinMaxScaler</code></li>
+<li><code>StandardScaler</code></li>
+<li>…</li>
+</ul>
+</li>
+<li>使用流程和机器学习的流程是一致的<ul>
+<li>训练数据集（<code>X_train</code>) =&gt; <strong>fit</strong> =&gt; 保存关键信息的<code>Scalar</code></li>
+<li>输入样例 =&gt; 保存关键信息的<code>Scalar</code> =&gt; <strong>transform</strong> 出结果</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Sample1.1:自实现MinMaxScaler</strong></p>
+<pre><code class="lang-python">&#39;&#39;&#39;
+0~1 最值归一化 normalization: (x-x_min/(x_max-x_min)
+&#39;&#39;&#39;
+class MinMaxScaler:
+
+    def __init__(self):
+        self.min_ = None
+        self.max_ = None
+
+    def fit(self,X):
+        # 计算保存每个feature（列）的最小最大值
+        self.min_ = np.min(X,axis=0)
+        self.max_ = np.max(X,axis=0)
+        return self
+
+    def transform(self,X):
+        &#39;&#39;&#39; 归一化处理 &#39;&#39;&#39;
+
+        # 元素类型转换为浮点，否则做归一化时会强制为整数，都会变成0
+        X_scaled=np.empty(shape=X.shape,dtype=float)
+
+        # features(列)上做归一化处理
+        for col in range(X.shape[-1]):
+            X_scaled[:,col]=(X[:,col]-self.min_[col])/(self.max_[col]-self.min_[col])
+
+        return X_scaled
+
+if __name__ == &#39;__main__&#39;:
+    X = np.array([[4, 1, 2, 2],
+                  [1, 3, 9, 3],
+                  [5, 7, 5, 1]])
+    scaler = MinMaxScaler()
+    scaler.fit(X)
+    print(&quot;min_:&quot;,scaler.min_)      # min_: [1 1 2 1]
+    print(&quot;max_:&quot;,scaler.max_)      # max_: [5 7 9 3]
+
+    X_scaled=scaler.transform(X)
+    print(X_scaled)     &#39;&#39;&#39;
+                        [[0.75       0.         0.         0.5       ]
+                        [0.         0.33333333 1.         1.        ]
+                        [1.         1.         0.42857143 0.        ]]
+                        &#39;&#39;&#39;
+</code></pre>
+<p><strong>Sample1.2: 自实现StandardScaler</strong></p>
+<pre><code class="lang-python">&#39;&#39;&#39;
+Standarlization 均值方差归一化: (x-x_mean)/x_std
+&#39;&#39;&#39;
+class StandardScaler:
+
+    def __init__(self):
+        self.mean_ = None
+        self.scale_ = None
+
+    def fit(self,X):
+        &#39;&#39;&#39; 计算保存每个feature的均值和均方差 &#39;&#39;&#39;
+        self.mean_ = np.mean(X,axis=0)
+        self.scale_ = np.std(X,axis=0)
+        return self
+
+    def transform(self,X):
+        &#39;&#39;&#39; 归一化处理 &#39;&#39;&#39;
+        X_scaled=np.empty(shape=X.shape,dtype=float)
+        for col in range(X.shape[-1]):
+            X_scaled[:,col]=(X[:,col]-self.mean_[col])/self.scale_[col]
+
+        return X_scaled
+
+if __name__ == &#39;__main__&#39;:
+
+    X = np.array([[4, 1, 2, 2],
+                  [1, 3, 9, 3],
+                  [5, 7, 5, 1]])
+    scaler = StandardScaler()
+    scaler.fit(X)
+    print(&quot;mean_:&quot;,scaler.mean_)        # mean_: [3.33333333 3.66666667 5.33333333 2.        ]
+    print(&quot;std_:&quot;,scaler.std_)          # std_: [1.69967317 2.49443826 2.86744176 0.81649658]
+
+    X_scaled=scaler.transform(X)
+    print(X_scaled)     
+    &#39;&#39;&#39;
+    [[ 0.39223227 -1.06904497 -1.16247639  0.        ]
+     [-1.37281295 -0.26726124  1.27872403  1.22474487]
+     [ 0.98058068  1.33630621 -0.11624764 -1.22474487]]
+    &#39;&#39;&#39;
+</code></pre>
+<p><strong>Sample2.1: sklearn中的MinMaxScaler</strong></p>
+<pre><code class="lang-python">&#39;&#39;&#39;
+MinMaxScaler
+
+X_std = (X-X.min(axis=0)) / (X.max(axis=0)-X.min(axis=0))
+X_scaled = X_std * (max-min)+min
+range 0~1 =&gt; min=0, max=1
+&#39;&#39;&#39;
+X = np.array([[4, 1, 2, 2],
+              [1, 3, 9, 3],
+              [5, 7, 5, 1]])
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(X)
+
+minMaxScaler.data_min_  # = np.min(X_train,axis=0)
+minMaxScaler.data_max_  # = np.max(X_train,axis=0)
+minMaxScaler.scale_     # = (max-min)/(X.max(axis=0)-X.min(axis=0)) = 1/(minMaxScaler.data_max_-minMaxScaler.data_min_)
+minMaxScaler.min_       # = min - X.min(axis=0) * self.scale_ = 0 - minMaxScaler.data_min_ * self.scale_
+
+X_scaled = scaler.transform(X)
+</code></pre>
+<p><strong>Sample2.2: sklearn中的StandardScaler</strong></p>
+<pre><code class="lang-python">&#39;&#39;&#39;
+StandardScaler
+
+z = (x - x_mean) / x_std
+&#39;&#39;&#39;
+
+X = np.array([[4, 1, 2, 2],
+              [1, 3, 9, 3],
+              [5, 7, 5, 1]])
+
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaler.fit(X)
+
+standardScaler.mean_  # 均值
+standardScaler.scale_ # 均方差 （scale可理解成描述数据分布范围的一个变量，std只是描述数据分布范围的一种统计指标而已）
+
+X_scaled = scaler.transform(X)
+</code></pre>
+<p><strong>Sample3:将sklearn的iris数据集归一化</strong></p>
+<pre><code class="lang-python"> # 1. load datasets:
+from sklearn import datasets
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+
+# 2. train_test_split
+from sklearn.model_selection import train_test_split
+X_train,y_train,X_test,y_test=train_test_split(X,y,test_size=0.2,random_state=66)
+
+# 3. 归一化
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+scaler.fit(X_train)
+
+# 归一化测试集X_train
+X_train_scaled = scaler.transform(X_train)
+
+# 归一化训练集X_test(使用测试集X_train得到的mean &amp; std)
+X_test_scaled = scaler.transform(X_test)
+</code></pre>
+<h3 id="header-15">模型度量：准确度</h3>
+<p>准确度(<code>accuracy_score</code>)</p>
+<ol>
+<li><p>自定义</p>
+<pre><code class="lang-python"> import numpy as np
+ def accuracy_store(y_true,y_predict):
+     assert y_true.shape[0] == y_predict.shape[0], &quot;the size of y_true must be equal to the size of y_predict&quot;
+     return sum(y_true==y_predict)/len(y_true)
+</code></pre>
+</li>
+<li><p>scikit-learn中提供的方法（封装在<code>sklearn.metrics</code>包中)</p>
+<pre><code class="lang-python"> from sklearn.metrics import accuracy_score
+ accuracy_score(y_test,y_predict)
+</code></pre>
+</li>
+</ol>
+<h2 id="header-16">kNN - k近邻算法</h2>
+<p>k-Nearest Neighbors</p>
+<ul>
+<li>可用于<code>分类Classify</code>(包括多分类)和<code>回归Regression</code>问题</li>
+<li>scikit-lean封装knn在包<code>sklearn.neighbors</code>中<ul>
+<li>解决分类问题: <code>KNeighborsClassifier</code></li>
+<li>解决回归问题: <code>KNeighborsRegressor</code></li>
+<li>使用步骤：<ul>
+<li>创建KNN类实例</li>
+<li>调用fit方法（传入训练集），返回模型（即KNN实例本身）</li>
+<li>调用predict方法（传入测试集），返回预测结果（向量形式）</li>
+<li>准确度评估:<ul>
+<li>调用封装在<code>sklearn.metrics</code>包中的<code>accuracy_score(y_true,y_predict)</code></li>
+<li>自实现方式：<code>sum(y_true==y_predict)/len(y_true)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模型参数: 较特殊，没有模型参数，实际不需要具体的拟合训练，直接根据训练数据集predict出结果</li>
+<li>超参数：<ul>
+<li><code>n_neighbors</code> = 5 ( 即 <code>k</code> )</li>
+<li><code>weights</code> = <code>uniform</code>/<code>distance</code> (不考虑距离/考虑距离作为权重)</li>
+<li><code>metric</code> = <code>minkowski</code> &amp; <code>metric_params</code> &amp; <code>p</code>=2 （距离度量方式）</li>
+<li><code>algorithm</code> = <code>auto</code>/<code>ball_tree</code>/<code>kd_tree</code>/<code>brute</code> &amp; <code>leaf_size</code>=30</li>
+<li>Note: minkowski距离（p维空间）= $ (\sum_{i=1}^n{|X_i^a-X_i^b|^p})^\frac{1}{p} $</li>
+</ul>
+</li>
+<li>优点：思想简单，效果强大</li>
+<li>缺点：<ul>
+<li>效率低下: 如果训练集有m个样本，n个特征，则预测每个新数据，需要<code>O(m*n)</code>, 优化：使用树结构（eg: <code>KD-Tree</code>,<code>Ball-Tree</code>)</li>
+<li>高度数据相关: 对outlier更加敏感（结果很大程度上取决于k的选择，在边界处效果不佳）</li>
+<li>预测的结果不具有可解释性</li>
+<li>维数灾难: 随着维度的增加，“看似相近”的两个点之间的距离越来越大(优化方法：将维)</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-17">Sample: 自实现的KNeighborsClassifier</h3>
+<pre><code class="lang-python">import numpy as np
+from math import sqrt
+from collections import Counter
+
+class KNNClassifier:
+
+    def __init__(self,k):
+        &#39;&#39;&#39; 初始化kNN分类器 &#39;&#39;&#39;
+        assert k&gt;=1, &quot;k must be valid&quot;
+        self.k=k
+        self.__X_train=None
+        self.__y_train=None
+
+    # 1. fit
+    def fit(self,X_train,y_train):
+        &#39;&#39;&#39; 根据训练集X_train &amp; y_train 训练kNN分类器 &#39;&#39;&#39;
+        assert X_train.shape[0] == y_train.shape[0], &quot;the size of X_train must equal to the size of y_train&quot;
+
+        # kNN算法较特殊，实际上并不需要具体的拟合训练过程，可直接根据训练数据集predict出结果
+        self.__X_train=X_train
+        self.__y_train=y_train
+        return self
+
+    # 2. predict
+    def predict(self,X_predict):
+        &#39;&#39;&#39; 对待预测数据集X_predict（矩阵），进行预测，返回预测结果集y_predict(向量) &#39;&#39;&#39;
+        assert self.__X_train is not None and self.__y_train is not None, &quot;must fit before predict!&quot;
+        assert X_predict.shape[1] == self.__X_train.shape[1], &quot;the feature number of X_predict must be equal to X_train&quot;
+
+        y_predict = [self.__predict(x) for x in X_predict]
+        return np.array(y_predict)
+
+    def __predict(self,x):
+        &#39;&#39;&#39; 对单个待预测数据x，进行预测 &#39;&#39;&#39;
+        assert x.shape[0] == self.__X_train.shape[1], &quot;the featuer number of x must be equal to X_train&quot;
+
+        distances=[sqrt(np.sum((x_train - x)**2)) for x_train in self.__X_train]
+        nearest=np.argsort(distances)
+
+        topK_y=[self.__y_train[i] for i in nearest[:self.k]]
+        votes=Counter(topK_y)
+
+        # print(votes)
+        return votes.most_common(1)[0][0]
+
+    def __repr__(self):
+        return &quot;KNN_classify(k=%d)&quot; % self.k
+
+    # 3. accuracy_store
+    def score(self,X_test,y_test):
+        &#39;&#39;&#39; 根据测试数据集(X_test,y_test)确定当前模型的准确度 &#39;&#39;&#39;
+        y_predict=self.predict(X_test)
+        assert y_test.shape[0] == y_predict.shape[0], &quot;the size of y_test must be equal to the size of y_predict&quot;
+        return sum(y_test==y_predict)/len(y_test)
+
+if __name__ == &quot;__main__&quot;:
+
+    # 1. load datasets:
+    from sklearn import datasets
+
+    iris = datasets.load_iris()
+    X = iris.data
+    y = iris.target
+
+    # 2. train_test_split
+    from sklearn.model_selection import train_test_split
+
+    X_train,y_train,X_test,y_test=train_test_split(X,y,test_size=0.2,random_state=66)
+    print(&quot;X_train:&quot;,X_train.shape)
+    print(&quot;y_train:&quot;,y_train.shape)
+    print(&quot;X_test:&quot;,X_test.shape)
+    print(&quot;y_test:&quot;,y_test.shape)
+
+    # 3. verify KNN 
+    my_knn_clf = KNNClassifier(k=6)
+    my_knn_clf.fit(X_train,y_train)
+    y_predict=my_knn_clf.predict(X_test) # 传入要预测的数据集（矩阵形式）,返回预测结果集（向量形式）
+
+    # 准确度评估
+    correct_cnt = sum(y_predict==y_test)
+    accuracy = correct_cnt/len(y_test)
+    print(&quot;correct_cnt:&quot;,correct_cnt)
+    print(&quot;accuracy:&quot;,accuracy)
+</code></pre>
+<h3 id="header-18">Sample: sklean中的KNeighborsClassifier</h3>
+<pre><code class="lang-python">&#39;&#39;&#39;
+ KNeighborsClassifier(
+     n_neighbors=5, 
+     weights=&#39;uniform&#39;, 
+     algorithm=&#39;auto&#39;, 
+     leaf_size=30, 
+     p=2, 
+     metric=&#39;minkowski&#39;, 
+     metric_params=None, 
+     n_jobs=None, 
+     **kwargs
+ )
+&#39;&#39;&#39;
+
+# 1. load datasets:
+from sklearn import datasets
+
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+
+# 2. train_test_split
+from sklearn.model_selection import train_test_split
+
+X_train,y_train,X_test,y_test=train_test_split(X,y,test_size=0.2,random_state=66)
+print(&quot;X_train:&quot;,X_train.shape)
+print(&quot;y_train:&quot;,y_train.shape)
+print(&quot;X_test:&quot;,X_test.shape)
+print(&quot;y_test:&quot;,y_test.shape)
+
+# 3. use sklearn: KNeighborsClassifier
+from sklearn.neighbors import KNeighborsClassifier
+
+knn_clf=KNeighborsClassifier(n_neighbors=6)
+knn_clf.fit(X_train,y_train)
+y_predict=knn_clf.predict(X_test)
+
+# 可调用accuracy_score方法计算预测值的准确度
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test,y_predict)
+print(&quot;accuracy:&quot;,accuracy)
+
+# KNN类内部也提供score方法（自动调用predict进行预测，然后进行准确度计算，返回准确度）
+accuracy = knn_clf.score(X_test,y_test)
+print(&quot;accuracy:&quot;,accuracy)
+</code></pre>
+<h3 id="header-19">Sample: sklean中的KNeighborsRegressor</h3>
+<pre><code class="lang-python"># 1. data
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+boston = datasets.load_boston()
+X = boston.data
+y = boston.target
+
+y_max = np.max(y)
+X = X[y&lt;y_max]
+y = y[y&lt;y_max]
+print(&quot;X.shape:&quot;,X.shape)
+
+X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=66)
+print(&quot;X_train.shape:&quot;,X_train.shape)
+
+# 2. kNeighborsRegressor
+from sklearn.neighbors import KNeighborsRegressor
+
+knn_reg = KNeighborsRegressor()
+knn_reg.fit(X_train,y_train)
+
+y_predict = reg.predict(X_test)
+print(&quot;y_predict:&quot;,y_predict)
+
+score = knn_reg.score(X_test,y_test) # r2_score
+print(&quot;score:&quot;,score)
+</code></pre>
+<h3 id="header-20">Sample: 数据集预处理之特征归一化</h3>
+<p>数据集特征归一化 (Feature Scaling)后，使用KNN分类</p>
+<pre><code class="lang-python">&#39;&#39;&#39;
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+X_train,y_train,X_test,y_test=train_test_split(X,y,test_size=0.2,random_state=66)
+&#39;&#39;&#39;
+
+# 1. 数据集预处理：均值方差归一化
+from sklearn.preprocessing import StandardScaler
+standardScaler = StandardScaler()
+standardScaler.fit(X_train)
+X_train_standard = standardScaler.transform(X_train) # 训练数据集 归一化处理
+X_test_standard = standardScaler.transform(X_test)   # 测试数据集 归一化处理
+
+# 2. KNN分类：使用归一化的数据集
+from sklearn.neighbors import KNeighborsClassifier
+knn_clf=KNeighborsClassifier(n_neighbors=6)
+knn_clf.fit(X_train_standard,y_train)
+y_predict=knn_clf.predict(X_test_standard)
+
+# 3. 计算准确度
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test,y_predict)
+print(&quot;accuracy:&quot;,accuracy)
+</code></pre>
+<h3 id="header-21">Sample: 使用网格搜索方式，寻找到当前最优的超参数</h3>
+<p>加载使用模型选择<code>model_selection</code>模块的网格搜索<code>GridSearchCV</code> (CV: cross validation)</p>
+<pre><code class="lang-python">&#39;&#39;&#39;
+KNeighborsClassifier(
+    n_neighbors=5, 
+    weights=&#39;uniform&#39;, 
+    algorithm=&#39;auto&#39;, 
+    leaf_size=30, 
+    p=2, 
+    metric=&#39;minkowski&#39;, 
+    metric_params=None, 
+    n_jobs=None, 
+    **kwargs
+)
+
+# 加载数据
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+iris = datasets.load_iris()
+X = iris.data
+y = iris.target
+X_train,y_train,X_test,y_test=train_test_split(X,y,test_size=0.2,random_state=66)
+&#39;&#39;&#39;
+
+from sklearn.model_selection import GridSearchCV
+# 这里考虑3个超参数：n_neighbors,weights,p
+param_grid=[
+    {
+        &#39;weights&#39;:[&#39;uniform&#39;],
+        &#39;n_neighbors&#39;:[i for i in range(1,11)]
+    },
+    {
+        &#39;weights&#39;:[&#39;distance&#39;],
+        &#39;n_neighbors&#39;:[i for i in range(1,11)],
+        &#39;p&#39;:[i for i in range(1,6)]
+    }
+
+]
+knn_clf = KNeighborsClassifier()
+grid_search = GridSearchCV(knn_clf,param_grid,cv=2,n_jobs=-1,verbose=2)  
+# n_jobs 分配几个核进行并行处理，默认为1，－1表应用所有核
+# verbose 搜索过程中进行输出，便于及时了解搜索状态（值越大，越详细）
+
+%%time grid_search.fit(X_train,y_train) # 耗时长
+
+grid_search.best_estimator_             # = knn_clf
+                                        &#39;&#39;&#39;
+                                        KNeighborsClassifier(algorithm=&#39;auto&#39;, leaf_size=30, metric=&#39;minkowski&#39;,
+                                                   metric_params=None, n_jobs=None, n_neighbors=3, p=2,
+                                                   weights=&#39;uniform&#39;)
+                                        &#39;&#39;&#39;
+grid_search.best_score_                 # 0.9860821155184412
+grid_search.best_params_                # {&#39;n_neighbors&#39;: 3, &#39;weights&#39;: &#39;uniform&#39;}
+knn_clf.score(X_test,y_test)            # 0.9861111111111112
+</code></pre>
+<h2 id="header-22">线性回归法 Linear Regression</h2>
+<ul>
+<li><p>解决回归问题(连续空间,预测一个数值），思想简单，容易实现(是许多强大的非线性模型的基础), 结果具有很好的可解释性 </p>
+</li>
+<li><p>寻找一条直线，最大程度的“拟合”样本特征和样本输出标记之间的关系</p>
+</li>
+<li><p>损失函数 loss function (or 效用函数 utility function) =&gt; 用于训练模型</p>
+<ul>
+<li>衡量 预测值 $y_{predict}^{(i)}$ 与 真实值 $y_{true}^{(i)}$ 之间的差距: <ul>
+<li>$\sum_{i=1}^m{|y_{predict}^{(i)} - y_{true}^{(i)}|}$ : 不可导</li>
+<li>$\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2}$ : 可导</li>
+</ul>
+</li>
+<li>目标：差距尽可能的小</li>
+<li>方法：求导，导数为0处即为极值处</li>
+</ul>
+</li>
+<li><p>vs <code>kNN</code>:</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">LinearRegression</th>
+<th style="text-align:left">kNN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">典型的参数学习</td>
+<td style="text-align:left">非参数学习</td>
+</tr>
+<tr>
+<td style="text-align:left">只能解决回归问题</td>
+<td style="text-align:left">可用于解决回归和分类问题</td>
+</tr>
+<tr>
+<td style="text-align:left">对数据有假设：线性</td>
+<td style="text-align:left">对数据没有假设</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="header-23">线性回归算法的评测</h3>
+<ul>
+<li>平均绝对误差<code>MAE</code> (Mean Absolute Error)，与样本数m无关<ul>
+<li>$\frac{1}{m}\sum_{i=1}^m{|y_{predict}^{(i)} - y_{true}^{(i)}|}$ </li>
+</ul>
+</li>
+<li>均方误差<code>MSE</code> (Mean Squared Error)，与样本数m无关<ul>
+<li>$\frac{1}{m}\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2}$</li>
+</ul>
+</li>
+<li>均方根误差<code>RMSE</code> (Root Mean Squared Error), 量纲一致<ul>
+<li>$\sqrt{ \frac{1}{m}\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2} } = \sqrt{MSE}$</li>
+<li>结果值要比<code>MAE</code>大些，<code>RMSE</code>中的平方有放大误差的趋势，而<code>MAE</code>没有这样的趋势，从某种意义上，<code>RMSE</code>更小即让误差大的更小</li>
+</ul>
+</li>
+<li><p>注： </p>
+<ul>
+<li>原本计算误差(损失函数) $\sum_{i=1}^m{|y_{predict}^{(i)} - y_{true}^{(i)}|}$ 或 $\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2}$</li>
+<li>总值受m数影响，平方后量纲不对（例如原本是米，现在是平方米）</li>
+</ul>
+</li>
+<li><p>$R^2$: <code>R Squared</code> （与准确度<code>accurancy</code>相比，存在小于0的情况）</p>
+<ul>
+<li>$R^2 = 1 - \frac{SS_{residual}}{SS_{total}} = 1 - \frac{ \sum_i{(y^{(i)}-y_{true}^{(i)})^2} }{ \sum_i{(\overline{y_{true}}-y_{true}^{(i)})^2} } = 1 - \frac{ \frac{1}{m} \sum_i{(y^{(i)}-y_{true}^{(i)})^2} }{ \frac{1}{m} \sum_i{(\overline{y_{true}}-y_{true}^{(i)})^2} } = 1 - \frac{MSE(y,y_{true})}{Var(y_{true})}$<ul>
+<li>$SS_{residual}$: Residual Sum of Squares, 使用<code>模型</code>(充分考虑了<code>x</code>与<code>y</code>的关系)预测产生的误差</li>
+<li>$SS_{total}$: Total Sum of Squares, 使用<code>基准模型BaselineModel</code>($y=\overline{y}$,与<code>x</code>无关)预测产生的误差</li>
+</ul>
+</li>
+<li>$R^2&lt;=1$，越大越好<ul>
+<li><code>=1</code>: 无错误，最好</li>
+<li><code>=0</code>: 等于BaselineModel</li>
+<li><code>&lt;0</code>: 说明学习到的模型还不如BaselineModel（此时，很可能数据不存在任何线性关系）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-24">最小二乘法</h3>
+<!-- - $y_{predict}=ax+b$
+- $J(a,b) = \sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2} = \sum_{i=1}^m{(ax^{(i)}+b - y_{true}^{(i)})^2}$
+- $\frac{\partial J(a,b)}{\partial b} = 0$ 
+    + => $\sum_{i=1}^m{b}=\sum_{i=1}^m{y_{true}^{(i)} - a\sum_{i=1}^m{x^{(i)}}}$ 
+    + => $b = \overline{y_{true}}-a\overline{x}$
+- $\frac{\partial J(a,b)}{\partial a} = 0$
+    + => $\frac{\sum_{i=1}^m{(x^{(i)}y^{(i)}-x^{(i)}\overline{y})}}{\sum_{i=1}^m{(({x^{(i)}})^2-\overline{x}x^{(i)})}}$
+    + => $\frac{\sum_{i=1}^m{(x^{(i)}-\overline{x})(y^{(i)}-\overline{y})}}{\sum_{i=1}^m{(x^{(i)}-\overline{x})^2}}$
+ -->
+<p><br>$$<br>\begin{split}<br>    y_{predict}^{(i)} &amp; = ax^{(i)}+b \\<br>    J(a,b) &amp;= \sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2} \\<br>\end{split}<br>$$<br></p>
+
+<p>$$<br>    \Rightarrow J(a,b)= \sum_{i=1}^m{(ax^{(i)}+b) - y_{true}^{(i)})^2} \\<br>$$</p>
+<p><br>$$<br>\begin{cases}<br><br>    \frac{\partial J(a,b)}{\partial a} = 0 &amp; \Rightarrow<br>    a = \frac{\sum_{i=1}^m{(x^{(i)}y^{(i)}-x^{(i)}\overline{y_{true}})}}{\sum_{i=1}^m{(({x^{(i)}})^2-\overline{x}x^{(i)})}}<br>      = \frac{\sum_{i=1}^m{(x^{(i)}-\overline{x})(y^{(i)}-\overline{y_{true}})}}{\sum_{i=1}^m{(x^{(i)}-\overline{x})^2}} \\<br><br>    \frac{\partial J(a,b)}{\partial b} = 0 &amp; \Rightarrow<br>    b = \frac{ \sum_{i=1}^m{y_{true}^{(i)} - a\sum_{i=1}^n{x^{(i)}}} }{n}<br>      = \overline{y_{true}}-a\overline{x} \\<br><br>\end{cases}<br>\\ (m个样本)<br>$$<br></p>
+
+<p><strong>向量化运算 ($\overrightarrow{w} \cdot \overrightarrow{v}$)</strong>  </p>
+<p><br>$$<br>\begin{split}<br>a &amp; =\frac{\sum_{i=1}^m{(x^{(i)}-\overline{x})(y^{(i)}-\overline{y_{true}})}}{\sum_{i=1}^m{(x^{(i)}-\overline{x})^2}}<br>\\<br>  &amp; =\frac{ \sum_{i=1}^m{w^{(i)} v^{(i)}} }{ \sum_{i=1}^m{w^{(i)} w^{(i)}} }<br>  &amp;<br>    \begin{cases}<br>        w^{(i)} = (x^{(i)}-\overline{x}) \\<br>        v^{(i)} = (y^{(i)}-\overline{y_{true}})<br>    \end{cases}<br>\\<br>  &amp; =\frac{\overrightarrow{w} \cdot \overrightarrow{v}}{\overrightarrow{w} \cdot \overrightarrow{w}}<br>  &amp;<br>   \begin{cases}<br>        \overrightarrow{w} = (w^{(1)},w^{(2)},…,w^{(m)}) \\<br>        \overrightarrow{v} = (v^{(1)},v^{(2)},…,v^{(m)}) \\<br>    \end{cases}<br>\end{split}<br>$$<br></p>
+
+<p><strong>Sample: 自实现的简单线性回归(样本特征只有一个)预测</strong></p>
+<pre><code class="lang-python">import numpy as np
+
+class SimpleLinearRegression:
+
+    def __init__(self):
+        self.a_ = None
+        self.b_ = None
+
+    def fit(self,x_train,y_train):
+        assert x_train.ndim == 1, &quot;Simple Linear Regressor can only solve single feature training data.&quot;
+        assert len(x_train) == len(y_train), &quot;the size of x_train must be equal to the size of y_train.&quot;
+
+        x_mean = np.mean(x_train)
+        y_mean = np.mean(y_train)
+
+        # method1: 
+        # num = 0.0 # 计算a的分母
+        # d = 0.0   # 计算a的分子
+        # for x_i,y_i in zip(x_train,y_train):
+        #     num += (x_i - x_mean) * (y_i - y_mean)
+        #     d += (x_i-x_mean) ** 2
+
+        # method2: 向量化运算(性能更优)
+        num = (x_train - x_mean).dot(y_train - y_mean)
+        d = (x_train - x_mean).dot(x_train - x_mean)
+
+        self.a_ = num / d
+        self.b_ = y_mean - self.a_ * x_mean
+
+        return self
+
+
+    def predict(self,x_predict):
+        assert x_predict.ndim == 1, &quot;Simple Linear Regressor can only solve single feature training data.&quot;
+        assert self.a_ is not None and self.b_ is not None, &quot;must fit before predict!&quot;
+
+        return self.a_ * x_predict + self.b_
+</code></pre>
+<pre><code class="lang-python">def test_randomData():
+
+    # 1. data
+
+    # x_train = np.linspace(1,5,5)
+    # y_train = np.array([1,3,2,3,5],dtype=float)
+
+    m=10
+    x_train=np.random.random(size=m)
+    y_train=x_train*2.0+3.0+np.random.normal(size=m)
+
+    # 2. LinearRegression
+    reg = SimpleLinearRegression()
+    reg.fit(x_train,y_train)
+    print(&quot;a=%f,b=%f&quot; % (reg.a_,reg.b_))
+
+    x_predict = np.array([0.6])
+    y_predict = reg.predict(x_predict)
+    print(y_predict)
+
+    # 3. visualization
+    import matplotlib.pyplot as plt
+    # y_hat = reg.a_ * x_train + reg.b_
+    y_hat = reg.predict(x_train)
+    plt.scatter(x_train,y_train)
+    plt.plot(x_train,y_hat,color=&#39;r&#39;)
+    plt.scatter(x_predict,y_predict,color=&#39;g&#39;)
+    plt.show()
+</code></pre>
+<p><img src="/2019/08/20/simpleLinearRegression_1.png" alt="pic1"></p>
+<h3 id="header-25">评测算法</h3>
+<ol>
+<li><p>均方误差<code>MSE</code> (Mean Squared Error):  $\frac{1}{m}\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2}$</p>
+<pre><code class="lang-python"> mse = np.sum((y_predict-y_test)**2)/len(y_test)
+</code></pre>
+</li>
+<li><p>均方根误差<code>RMSE</code> (Root Mean Squared Error): $\sqrt{ \frac{1}{m}\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2} } = \sqrt{MSE}$</p>
+<pre><code class="lang-python"> rmse = np.sqrt(mse)
+</code></pre>
+</li>
+<li><p>平均绝对误差<code>MAE</code> (Mean Absolute Error): $\frac{1}{m}\sum_{i=1}^m{|y_{predict}^{(i)} - y_{true}^{(i)}|}$ </p>
+<pre><code class="lang-python"> mae = np.sum(np.abs(y_predict-y_test))/len(y_test)
+</code></pre>
+</li>
+<li><p><code>R Squared</code>: $1 - \frac{ \sum_i{(y^{(i)}-y_{true}^{(i)})^2} }{ \sum_i{(\overline{y_{true}}-y_{true}^{(i)})^2} } = 1 - \frac{ \frac{1}{m} \sum_i{(y^{(i)}-y_{true}^{(i)})^2} }{ \frac{1}{m} \sum_i{(\overline{y_{true}}-y_{true}^{(i)})^2} } = 1 - \frac{MSE(y,y_{true})}{Var(y_{true})}$</p>
+<pre><code class="lang-python"> r2 = 1 - mean_squared_error(y_test,y_predict)/np.var(y_test)
+</code></pre>
+</li>
+<li><p>sklearn中的<code>MSE</code>,<code>MAE</code> (无<code>RMSE</code>),<code>R Squared</code></p>
+<pre><code class="lang-python"> from sklearn.metrics import mean_squared_error
+ from sklearn.metrics import mean_absolute_error
+ from sklearn.metrics import r2_score
+
+ mse = mean_squared_error(y_test,y_predict)
+
+ rmse = np.sqrt(mean_squared_error(y_test,y_predict))
+
+ mae = mean_absolute_error(y_test,y_predict)
+
+ r2_score = r2_score(y_test,y_predict)
+</code></pre>
+</li>
+</ol>
+<p><strong>Sample:</strong></p>
+<pre><code class="lang-python">def test_bostonData():
+    # 1. data
+    from sklearn import datasets
+    from sklearn.model_selection import train_test_split
+
+    boston = datasets.load_boston()     # 波士顿房产数据
+    x = boston.data[:,5]                # 只使用‘RM’房间数量这个特征
+    y = boston.target
+
+    # 数据集清洗：去除最大值的点（采集样本的上限点，可能不是真实的点）
+    y_max=np.max(y)
+    x = x[y&lt;y_max]
+    y = y[y&lt;y_max]
+    print(&quot;x.shape=%s,y.shape=%s&quot; % (x.shape,y.shape))
+
+    # train test split
+    x_train,x_test,y_train,y_test = train_test_split(x,y,random_state=66)
+    print(&quot;x_train.shape=%s,x_test.shape=%s&quot; % (x_train.shape,x_test.shape))
+
+    # 2. LinearRegression
+    reg = SimpleLinearRegression()
+    reg.fit(x_train,y_train)
+    print(&quot;a=%f,b=%f&quot; % (reg.a_,reg.b_))
+    y_predict = reg.predict(x_test)
+
+    # 3. score
+    from sklearn.metrics import mean_squared_error
+    from sklearn.metrics import mean_absolute_error
+    from sklearn.metrics import r2_score
+    mse = mean_squared_error(y_test,y_predict)
+    rmse = root_mean_squared_error(y_test,y_predict)
+    mae = mean_absolute_error(y_test,y_predict)
+    r2 = r2_score(y_test,y_predict)
+    print(&quot;mse=%f,rmse=%f,mae=%f,r2=%f&quot; % (mse,rmse,mae,r2))
+
+    # 4. visualization
+    import matplotlib.pyplot as plt
+    y_hat = reg.predict(x_train)
+    plt.scatter(x_train,y_train)
+    plt.scatter(x_test,y_test,color=&#39;g&#39;)
+    plt.plot(x_train,y_hat,color=&#39;r&#39;)
+    plt.show()
+</code></pre>
+<p><img src="/2019/08/20/simpleLinearRegression_2.png" alt="pic2"></p>
+<h3 id="header-26">多元线性回归</h3>
+<p><br>$$<br>\begin{align}<br>&amp; &amp; y_{predict}^{(i)} &amp; = θ_0 + θ_1x_1^{(i)} + θ_2x_2^{(i)} + … + θ_nx_n^{(i)}      \\<br>&amp; &amp; &amp; = θ_0x_0^{(i)} + θ_1x_1^{(i)} + θ_2x_2^{(i)} + … + θ_nx_n^{(i)}                \\<br>&amp; &amp; &amp; = \overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} &amp;<br>    \begin{cases}<br>        \overrightarrow{x}^{(i)} = (x_0^{(i)},x_1^{(i)}, x_2^{(i)}, …, x_n^{(i)}) &amp;, x_0^{(i)} \equiv 1 \\<br>        \overrightarrow{θ} = (θ_0,θ_1,θ_2,…,θ_n)<br>    \end{cases} \\<br>\\<br>\Longrightarrow &amp; &amp; y_{predict} &amp; = X \cdot \Theta     \\<br>\\<br>&amp; &amp; \begin{pmatrix}<br>        y_{predict}^{(1)} \\<br>        y_{predict}^{(2)} \\<br>        … \\<br>        y_{predict}^{(m)} \\<br>    \end{pmatrix}<br>    &amp; = \begin{pmatrix}<br>            1 &amp; x_1^{(1)} &amp; x_2^{(1)} &amp; … &amp; x_n^{(1)} \\<br>            1 &amp; x_1^{(2)} &amp; x_2^{(2)} &amp; … &amp; x_n^{(2)} \\<br>            … \\<br>            1 &amp; x_1^{(m)} &amp; x_2^{(m)} &amp; … &amp; x_n^{(m)} \\<br>        \end{pmatrix}<br>        \cdot<br>        \begin{pmatrix}<br>            θ_0 \\<br>            θ_1 \\<br>            θ_2 \\<br>            … \\<br>            θ_n \\<br>        \end{pmatrix} \\<br>\\<br>\Longrightarrow &amp; &amp; 目标: &amp; 找到θ_0,θ_1,θ_2,…,θ_n, 使得\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2} 尽可能的小<br>\end{align}<br>$$<br></p>
+
+<p><strong>目标:</strong> 找到$θ_0,θ_1,θ_2,…,θ_n$,使得$\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2}$ 尽可能的小 ( 即$(y_{predict} - y_{true})^T \cdot (y_{predict} - y_{true})$ 尽可能的小 )</p>
+<p>$(θ_0,θ_1,θ_2,…,θ_n)$: </p>
+<ul>
+<li>$θ_0$ : 截距 intercept</li>
+<li>$θ_1,θ_2,…,θ_n$ : 系数 coefficients</li>
+</ul>
+<p><strong>Sample:自定义实现(使用正规方程解 Normal Equation)</strong></p>
+<ul>
+<li>$\Theta = (X^TX)^{-1}X^Ty_{true}$</li>
+<li>问题：时间复杂度高，O(n^3)，优化后可达到O(n^2.4)</li>
+<li>优点：不需要对数据做归一化处理</li>
+</ul>
+<pre><code class="lang-python">import numpy as np
+from metrics import r2_score
+
+class LinearRegression:
+
+    def __init__(self):
+        self.__theta = None
+        self.intercept_ = None      # 截距 intercept
+        self.coef_ = None           # 系数 coefficients
+
+    # 正规方程解(Normal Equation)
+    def fit_normal(self,X_train,y_train):
+        assert X_train.shape[0] == y_train.shape[0],&quot;the size of X_train must be equal to the size of y_train&quot;
+
+        X_b = np.hstack([np.ones(shape=(X_train.shape[0],1)),X_train])
+        self.__theta = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y_train)
+        self.intercept_ = self.__theta[0]
+        self.coef_ = self.__theta[1:]
+        return self
+
+    def predict(self,X_predict):
+        assert self.intercept_ is not None and self.coef_ is not None,&quot;must fit before predict!&quot;
+        assert X_predict.shape[1] == len(self.coef_),&quot;the feature number of X_predict must be equal to X_train&quot;
+
+        X_b = np.hstack([np.ones(shape=(X_predict.shape[0],1)),X_predict])
+        return X_b.dot(self.__theta)
+
+    def score(self,X_test,y_test):
+        y_predict = self.predict(X_test)
+        return r2_score(y_test,y_predict)
+
+    def __repr__(self):
+        return &quot;LinearRegression()&quot;
+
+
+if __name__ == &#39;__main__&#39;:
+
+    # 1. data
+    from sklearn import datasets
+    from sklearn.model_selection import train_test_split
+
+    boston = datasets.load_boston()
+    X = boston.data
+    y = boston.target
+
+    y_max = np.max(y)
+    X = X[y&lt;y_max]
+    y = y[y&lt;y_max]
+    print(&quot;X.shape:&quot;,X.shape)
+
+    X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=66)
+    print(&quot;X_train.shape:&quot;,X_train.shape)
+
+
+    # 2. LinearRegression
+    reg = LinearRegression()
+    reg.fit_normal(X_train,y_train)
+    print(&quot;coef_:&quot;,reg.coef_)
+    print(&quot;intercept_:&quot;,reg.intercept_)
+
+    # y_predict = reg.predict(X_test)
+    r2 = reg.score(X_test,y_test)
+    print(&quot;r2:&quot;,r2)
+
+    # 3. coefficents meaning
+    print(&quot;features:\n&quot;,boston.feature_names)
+    coefInds = np.argsort(reg.coef_)
+    print(&quot;(important)sorted features:\n&quot;,boston.feature_names[coefInds])
+</code></pre>
+<h3 id="header-27">scikit-learn中的LinearRegression</h3>
+<p>内部使用梯度下降法训练模型</p>
+<pre><code class="lang-python"># 1. data
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+boston = datasets.load_boston()
+X = boston.data
+y = boston.target
+
+y_max = np.max(y)
+X = X[y&lt;y_max]
+y = y[y&lt;y_max]
+print(&quot;X.shape:&quot;,X.shape)
+
+X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=66)
+print(&quot;X_train.shape:&quot;,X_train.shape)
+
+# 2. LinearRegression    
+from sklearn.linear_model import LinearRegression
+
+reg = LinearRegression()
+reg.fit(X_train,y_train)
+print(&quot;coef_:%s,intercept_:%s&quot; % (reg.coef_,reg.intercept_))
+r2 = reg.score(X_test,y_test)
+print(&quot;r2:&quot;,r2)
+</code></pre>
+<h3 id="header-28">scikit-learn中的SGDRegressor</h3>
+<p>内部使用随机梯度下降法训练模型</p>
+<pre><code class="lang-python"># 1. data
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+
+boston = datasets.load_boston()
+X = boston.data
+y = boston.target
+
+y_max = np.max(y)
+X = X[y&lt;y_max]
+y = y[y&lt;y_max]
+print(&quot;X.shape:&quot;,X.shape)
+
+X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=66)
+print(&quot;X_train.shape:&quot;,X_train.shape)
+
+#进行数据归一化
+standardScaler = StandardScaler()
+standardScaler.fit(X_train)
+X_train_standard = standardScaler.transform(X_train)
+X_test_standard = standardScaler.transform(X_test)
+
+from sklearn.linear_model import SGDRegressor
+
+sgd_reg = SGDRegressor(n_iter=10)
+sgd_reg.fit(X_train_standard,y_train)
+print(&quot;coef_:%s,intercept_:%s&quot; % (sgd_reg.coef_,sgd_reg.intercept_))
+r2 = sgd_reg.score(X_test_standard,y_test)
+print(&quot;r2:&quot;,r2)
+</code></pre>
+<h2 id="header-29">梯度下降法(Gradient Descent)</h2>
+<p>梯度下降／上升法：</p>
+<ul>
+<li><p>是一种基于搜索的最优化方法 =&gt; 最优化一个目标函数使用的方法（本身不是一个机器学习算法）</p>
+</li>
+<li><p>梯度 <code>∇J(θ)</code>:</p>
+<ul>
+<li>目标函数<code>J(θ)</code>, <code>θ</code>为模型参数</li>
+<li>导数: <ul>
+<li>代表斜率(曲线方程中，代表切线斜率)</li>
+<li>代表方向,对应目标函数增大的方向(负: 在减少，正: 在增大)</li>
+</ul>
+</li>
+<li>梯度(对每个维度的θ求导): $∇J(θ) = (\frac{\partial J}{\partial θ_0},\frac{\partial J}{\partial θ_1},…,\frac{\partial J}{\partial θ_n})$</li>
+</ul>
+</li>
+<li><p><code>η∇J(θ)</code></p>
+<ul>
+<li>梯度下降法: 最小化一个损失函数 (loss function) $θ^{i+1} = θ^i + (- η∇J(θ^i))$  </li>
+<li>梯度上升法：最大化一个效用函数 (utility function) $θ^{i+1} = θ^i + (η∇J(θ^i))$</li>
+<li>超参数：<ul>
+<li>学习率(learning reate)<code>η</code><ul>
+<li>梯度移动步长</li>
+<li>取值影响获得最优解的速度（取值不合适，甚至得不到最优解）</li>
+<li>太小：减慢收敛学习速度</li>
+<li>太大：可能导致不收敛</li>
+</ul>
+</li>
+<li>初始$θ^1$:<ul>
+<li>不是所有函数都有唯一的极值点（局部最优解，全局最优解）</li>
+<li>解决方案：多次运行，随机化初始点</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计算梯度时使用样本的策略:</p>
+<table class="table">
+<thead>
+<tr>
+<th style="text-align:left">批量(Batch)</th>
+<th style="text-align:left">随机(Stochastic)</th>
+<th style="text-align:left">小批量(Mini-Batch)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">每次对所有样本求梯度</td>
+<td style="text-align:left">每次对一个样本求梯度</td>
+<td style="text-align:left">每次对<code>k</code>个样本求梯度</td>
+</tr>
+<tr>
+<td style="text-align:left">慢，方向确定(稳定)</td>
+<td style="text-align:left">快，方向不确定(不稳定)</td>
+<td style="text-align:left">中和前两个方法的优缺点</td>
+</tr>
+<tr>
+<td style="text-align:left">eg: 批量梯度下降法 (Batch Gradient Descent)</td>
+<td style="text-align:left">eg: 随机梯度下降法 (Stochastic Gradient Descent)</td>
+<td style="text-align:left">eg: 小批量梯度下降法 (Mini-Batch Gradient Descent)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>随机的意义：<ul>
+<li>跳出局部最优解</li>
+<li>更快的运行速度</li>
+<li>机器学习领域很多算法都使用了随机的特点，如：随机搜索，随机森林</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="header-30">批量梯度下降法(Batch Gradient Descent)</h3>
+<p>批量梯度下降法<code>θ = θ - η∇J(θ)</code>: </p>
+<ul>
+<li>使用所有样本，训练模型</li>
+<li>结果是一个向量，可以表达搜索方向</li>
+</ul>
+<p><strong>Sample: 线性回归中使用的梯度下降法</strong></p>
+<ul>
+<li>线性回归函数(模型): <code>y = X·θ</code></li>
+<li>损失函数: <code>J(θ)</code><ul>
+<li>$J(θ) = \sum_{i=1}^m{(y_{predict}^{(i)}-y_{true}^{(i)})^2}$ 与样本数量有关</li>
+<li>$J(θ) = \frac{1}{m}\sum_{i=1}^m{(y_{predict}^{(i)}-y_{true}^{(i)})^2} = MSE(y_{predict},y_{true})$ 使用这种，与样本数量无关</li>
+</ul>
+</li>
+<li>梯度：<code>∇J(θ)</code></li>
+</ul>
+<p><br>$$<br>\begin{align}<br>    &amp; &amp; J(θ) &amp; =  \frac{1}{m}\sum_{i=1}^m{(y_{predict}^{(i)} - y_{true}^{(i)})^2}<br>                    \qquad \qquad<br>                    y_{predict} = X·θ  \\<br>    &amp; &amp;      &amp; =  \frac{1}{m}\sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})^2}<br>                    \qquad<br>                    \begin{cases}<br>                        \overrightarrow{x}^{(i)} = (x_0^{(i)},x_1^{(i)}, x_2^{(i)}, …, x_n^{(i)}) \, x_0^{(i)} \equiv 1  \\<br>                        \overrightarrow{θ} = (θ_0,θ_1,θ_2,…,θ_n) \\<br>                    \end{cases} \\<br>    \\ \Longrightarrow<br>    &amp; &amp; ∇J(θ)&amp; = \begin{pmatrix}<br>                    \frac{\partial J}{\partial θ_0} \\<br>                    \frac{\partial J}{\partial θ_1} \\<br>                    \frac{\partial J}{\partial θ_2} \\<br>                    …                             \\<br>                    \frac{\partial J}{\partial θ_n} \\<br>                 \end{pmatrix}<br>               = \frac{1}{m}<br>                    \begin{pmatrix}<br>                        \sum_{i=1}^m{2(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_0^{(i)}} \\<br>                        \sum_{i=1}^m{2(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_1^{(i)}} \\<br>                        \sum_{i=1}^m{2(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_2^{(i)}} \\<br>                        …                                                        \\<br>                        \sum_{i=1}^m{2(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_n^{(i)}} \\<br>                    \end{pmatrix}<br>               = \frac{2}{m}<br>                    \begin{pmatrix}<br>                        \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_0^{(i)}} \\<br>                        \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_1^{(i)}} \\<br>                        \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_2^{(i)}} \\<br>                        …                                                       \\<br>                        \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_n^{(i)}} \\<br>                    \end{pmatrix} \\<br>    &amp; &amp; &amp; = \frac{2}{m}<br>            \begin{pmatrix}<br>                \overrightarrow{w} \cdot \overrightarrow{x_0} \\<br>                \overrightarrow{w} \cdot \overrightarrow{x_1} \\<br>                …                                              \\<br>                \overrightarrow{w} \cdot \overrightarrow{x_n} \\<br>            \end{pmatrix}<br>            \qquad<br>            \begin{cases}<br>                \overrightarrow{w} = (<br>                    \overrightarrow{x}^{(1)} \cdot \overrightarrow{θ} - y_{true}^{(1)},<br>                    \overrightarrow{x}^{(2)} \cdot \overrightarrow{θ} - y_{true}^{(2)},<br>                    …,<br>                    \overrightarrow{x}^{(m)} \cdot \overrightarrow{θ} - y_{true}^{(m)}<br>                ) \\<br>                \overrightarrow{x_j} = (x_j^1,x_j^2,…,x_j^m) \qquad, j \in [0,n] \\<br>            \end{cases}<br>            \\<br>    &amp; &amp; &amp; = \frac{2}{m}(X \cdot \Theta - y_{true})^T \cdot X<br>            \qquad : matrix[1_m] \cdot matrix[m_(n+1)] \rightarrow matrix[1_(n+1)] \\<br>    &amp; &amp; &amp; = \frac{2}{m} X^T \cdot (X \cdot \Theta - y_{true})<br>            \qquad : matrix[(n+1)_m] \cdot matrix[m_1] \rightarrow matrix[(n+1)_1] \\<br>\end{align}<br>$$<br></p>
+
+<ul>
+<li>线性回归中的损失函数具有唯一最优解</li>
+<li>注意：使用梯度下降法前，最好进行数据归一化</li>
+</ul>
+<p>自定义实现<code>LinearRegression</code>:<br>(sklearn中的<code>LinerRegression</code>也是使用<code>Gradient Descent</code>训练模型)</p>
+<pre><code class="lang-python">class LinearRegression:
+
+    def __init__(self):
+        self.__theta = None
+        self.intercept_ = None      # 截距 intercept
+        self.coef_ = None           # 系数 coefficients
+
+    # 使用正规方程解(Normal Equation)训练模型
+    def fit_normal(self,X_train,y_train):
+        assert X_train.shape[0] == y_train.shape[0],&quot;the size of X_train must be equal to the size of y_train&quot;
+
+        X_b = np.hstack([np.ones(shape=(X_train.shape[0],1)),X_train])
+        self.__theta = np.linalg.inv(X_b.T.dot(X_b)).dot(X_b.T).dot(y_train)
+        self.intercept_ = self.__theta[0]
+        self.coef_ = self.__theta[1:]
+        return self
+
+    # 使用梯度下降法(Gradient Descent)训练模型
+    def fit_gd(self,X_train,y_train,eta=0.01,n_iters=1e4):
+        assert X_train.shape[0]==y_train.shape[0],&quot;the size of X_train must be equal to the size of y_train&quot;
+
+        # loss function: J(θ)
+        def J(theta,X_b,y_true):
+            try:
+                return np.sum((X_b.dot(theta)-y_true)**2)/len(y_true)
+            except:
+                return float(&quot;inf&quot;)
+
+        # derivative: ∇J(θ) = J(θ)&#39; = dJ/dθ = (2/m)·X^T·(X·θ - y_true)
+        def dJ(theta,X_b,y_true):
+            # res = np.empty(len(theta))
+            # res[0] = np.sum(X_b.dot(theta)-y_true)
+            # for i in range(1,len(theta)):
+            #     res[i] = (X_b.dot(theta)-y_true).dot(X_b[:,i])
+            # return (res * 2)/len(X_b)
+            return X_b.T.dot(X_b.dot(theta)-y_true)*2/len(y_true)
+
+        # gradient_descent: -η∇J(θ) ≅ 0
+        def gradient_descent(X_b,y_true,initial_theta,eta,epsilon=1e-8,n_iters=1e4):
+            theta = initial_theta
+            i_iter = 0
+            while i_iter&lt;n_iters:
+                gradient = dJ(theta,X_b,y_true)
+                last_theta = theta
+                theta = theta - eta * gradient
+
+                if abs(J(theta,X_b,y_true)-J(last_theta,X_b,y_true)) &lt; epsilon:
+                    break;
+                i_iter+=1
+            return theta
+
+        X_b = np.hstack([np.ones(shape=(len(X_train),1)),X_train])  # m*n matrix =&gt; m*(1+n) matrix
+        initial_theta = np.zeros(shape=(X_b.shape[1]))              # n features = X_b col numbers
+        self.__theta = gradient_descent(X_b,y_train,initial_theta,eta)
+
+        self.intercept_ = self.__theta[0]
+        self.coef_ = self.__theta[1:]
+
+        return self
+
+    def predict(self,X_predict):
+        assert self.intercept_ is not None and self.coef_ is not None,&quot;must fit before predict!&quot;
+        assert X_predict.shape[1] == len(self.coef_),&quot;the feature number of X_predict must be equal to X_train&quot;
+
+        X_b = np.hstack([np.ones(shape=(X_predict.shape[0],1)),X_predict])
+        return X_b.dot(self.__theta)
+
+    def score(self,X_test,y_test):
+        y_predict = self.predict(X_test)
+        return r2_score(y_test,y_predict)
+
+    def __repr__(self):
+        return &quot;LinearRegression()&quot;
+</code></pre>
+<pre><code class="lang-python">def test_gradient_descent_fit():
+
+    # 1. data
+    from sklearn import datasets
+    from sklearn.model_selection import train_test_split
+
+    boston = datasets.load_boston()
+    X = boston.data
+    y = boston.target
+
+    y_max = np.max(y)
+    X = X[y&lt;y_max]
+    y = y[y&lt;y_max]
+    print(&quot;X.shape:&quot;,X.shape)
+
+    X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=66)
+    print(&quot;X_train.shape:&quot;,X_train.shape)
+
+    # 注意：使用梯度下降法前，最好进行数据归一化，防止overflow !
+    from sklearn.preprocessing import StandardScaler
+    standardScaler = StandardScaler()
+    standardScaler.fit(X_train)
+    X_train_standard = standardScaler.transform(X_train)
+    X_test_standard = standardScaler.transform(X_test)
+
+    # 2. LinearRegression
+    reg = LinearRegression()
+    reg.fit_gd(X_train_standard,y_train)
+    print(&quot;coef_:&quot;,reg.coef_)
+    print(&quot;intercept_:&quot;,reg.intercept_)
+
+    # 3. predict/score
+    # y_predict = reg.predict(X_test_standard)
+    r2 = reg.score(X_test_standard,y_test)
+    print(&quot;r2:&quot;,r2)
+
+    # 4. coefficents meaning
+    print(&quot;features:\n&quot;,boston.feature_names)
+    coefInds = np.argsort(reg.coef_)
+    print(reg.coef_[coefInds])
+    print(&quot;(important)sorted features:\n&quot;,boston.feature_names[coefInds])
+</code></pre>
+<h3 id="header-31">随机梯度下降法(Stochastic Gradient Descent)</h3>
+<p>随机梯度下降法<code>θ = θ - η∇J(θ)</code>: </p>
+<ul>
+<li>每次随机取一个样本，计算梯度（搜索的方向），训练模型</li>
+<li>学习率<code>η</code><ul>
+<li>固定值 =&gt; 模拟退火的思想: 随着循环次数的增加逐渐递减 $η = \frac{1}{\text{i_iters}} \rightarrow η = \frac{a}{\text{i_iters+b}}$</li>
+<li>一般取 <code>a = 5</code>, <code>b = 50</code></li>
+</ul>
+</li>
+<li>注：不能保证每次每次梯度都是减小的</li>
+</ul>
+<p><strong>Sample: 线性回归中使用随机梯度下降法</strong></p>
+<p><br>$$<br>\begin{align}<br>&amp; &amp; ∇J(θ)&amp; = \begin{pmatrix}<br>                \frac{\partial J}{\partial θ_0} \\<br>                \frac{\partial J}{\partial θ_1} \\<br>                \frac{\partial J}{\partial θ_2} \\<br>                …                             \\<br>                \frac{\partial J}{\partial θ_n} \\<br>             \end{pmatrix}<br>           = \frac{2}{m}<br>                \begin{pmatrix}<br>                    \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_0^{(i)}} \\<br>                    \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_1^{(i)}} \\<br>                    \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_2^{(i)}} \\<br>                    …                                                       \\<br>                    \sum_{i=1}^m{(\overrightarrow{x}^{(i)} \cdot \overrightarrow{θ} - y_{true}^{(i)})x_n^{(i)}} \\<br>                \end{pmatrix} \\<br>\\ \Longrightarrow<br>&amp; &amp; &amp;    2 \begin{pmatrix}<br>                (\overrightarrow{x}^{(k)} \cdot \overrightarrow{θ} - y_{true}^{(k)}) \cdot x_0^{(k)} \\<br>                (\overrightarrow{x}^{(k)} \cdot \overrightarrow{θ} - y_{true}^{(k)}) \cdot x_1^{(k)} \\<br>                …                                                                                  \\<br>                (\overrightarrow{x}^{(k)} \cdot \overrightarrow{θ} - y_{true}^{(k)}) \cdot x_n^{(k)} \\<br>            \end{pmatrix} \\<br>&amp; &amp; &amp;   = 2 (\overrightarrow{x}^{(k)} \cdot \overrightarrow{θ} - y_{true}^{(k)}) \cdot \overrightarrow{x}^{(k)}<br>          &amp; \begin{cases}<br>                \overrightarrow{x}^{(k)} : (n+1)维行向量 \\<br>                (\overrightarrow{x}^{(k)} \cdot \overrightarrow{θ} - y_{true}^{(k)}) : 一个标量 \\<br>                k = random(1,m) \in [1,m]<br>            \end{cases} \\<br>&amp; &amp; &amp;   = 2 (x^{(k)})^T \cdot (\overrightarrow{x}^{(k)} \cdot \overrightarrow{θ} - y_{true}^{(k)})<br>          &amp; \rightarrow matrix[(n+1)*1] : n+1维列向量 \\<br>\end{align}<br>$$<br></p>
+
+<p>自定义实现<code>LinearRegression</code>:<br>(sklearn中的<code>SGDRegressor</code>使用<code>Stochastic Gradient Descent</code>训练模型)</p>
+<pre><code class="lang-python"># 使用随机梯度下降法(Stochastic Gradient Descent)训练模型
+    # n_iters 整体样本处理几轮
+    def fit_sgd(self,X_train,y_train,n_iters=5,t0=5,t1=50):
+        assert X_train.shape[0]==y_train.shape[0],&quot;the size of X_train must be equal to the size of y_train&quot;
+        assert n_iters &gt;0,&quot;n_iters should be greater 0&quot;
+
+        def dJ_sgd(theta,X_b_i,y_i):
+            return X_b_i.T.dot(X_b_i.dot(theta)-y_i)*2
+
+        def sdg(X_b,y,initial_theta,n_iters,t0=t0,t1=t1):
+
+            def learning_rate(t):
+                return t0/(t+t1)
+
+            theta = initial_theta
+            m = len(X_b)
+            for cur_iter in range(n_iters):
+                indexes = np.random.permutation(m)
+                X_b_new = X_b[indexes]
+                y_new = y[indexes]
+                for i in range(m):
+                    gradient = dJ_sgd(theta,X_b_new[i],y_new[i])
+                    theta = theta - learning_rate(cur_iter*m+i)*gradient
+            return theta
+
+        X_b = np.hstack([np.ones(shape=(len(X_train),1)),X_train])  # m*n matrix =&gt; m*(1+n) matrix
+        initial_theta = np.random.randn(X_b.shape[1])              # n features = X_b col numbers
+        self.__theta = sdg(X_b,y_train,initial_theta,n_iters,t0,t1)
+
+        self.intercept_ = self.__theta[0]
+        self.coef_ = self.__theta[1:]
+
+        return self
+</code></pre>
+<pre><code class="lang-python">def test_sdg_fit():
+
+    # # 1. data
+    # m = 10000
+    # x = np.random.normal(size=m)
+    # X = x.reshape(-1,1)
+    # y = 4.*x + 3. + np.random.normal(0,3,size=m)
+
+    # # 2. fit_sdg
+    # reg = LinearRegression()
+    # reg.fit_sgd(X,y,n_iters=2)
+    # print(&quot;coef_:&quot;,reg.coef_)
+    # print(&quot;intercept_:&quot;,reg.intercept_)
+
+    # 1. data
+    from sklearn import datasets
+    from sklearn.model_selection import train_test_split
+
+    boston = datasets.load_boston()
+    X = boston.data
+    y = boston.target
+
+    y_max = np.max(y)
+    X = X[y&lt;y_max]
+    y = y[y&lt;y_max]
+    print(&quot;X.shape:&quot;,X.shape)
+
+    X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=66)
+    print(&quot;X_train.shape:&quot;,X_train.shape)
+
+    # 注意：使用梯度下降法前，最好进行数据归一化，防止overflow
+    from sklearn.preprocessing import StandardScaler
+    standardScaler = StandardScaler()
+    standardScaler.fit(X_train)
+    X_train_standard = standardScaler.transform(X_train)
+    X_test_standard = standardScaler.transform(X_test)
+
+    # 2. LinearRegression
+    reg = LinearRegression()
+    reg.fit_sgd(X_train_standard,y_train,n_iters=10)
+    print(&quot;coef_:&quot;,reg.coef_)
+    print(&quot;intercept_:&quot;,reg.intercept_)
+
+    # 3. predict/score
+    # y_predict = reg.predict(X_test_standard)
+    r2 = reg.score(X_test_standard,y_test)
+    print(&quot;r2:&quot;,r2)
+
+    # 4. coefficents meaning
+    print(&quot;features:\n&quot;,boston.feature_names)
+    coefInds = np.argsort(reg.coef_)
+    print(reg.coef_[coefInds])
+    print(&quot;(important)sorted features:\n&quot;,boston.feature_names[coefInds])
+</code></pre>
+<h3 id="header-32">梯度调试</h3>
+<p>模拟导数：验证求导是否正确，比直接求导慢的多，只是用于检查验证</p>
+<p><br>$$<br>\begin{align}<br>\frac{dJ}{dθ} &amp; = \frac{J(θ+ε)-J(θ-ε)}{2ε}  &amp; θ = (θ_0,θ_1,θ_2,…,θ_n) \\<br>\\<br>∇J(θ) &amp; = \frac{\partial J}{\partial θ}<br>        = \begin{pmatrix}<br>                \frac{\partial J}{\partial θ_0} \\<br>                \frac{\partial J}{\partial θ_1} \\<br>                \frac{\partial J}{\partial θ_2} \\<br>                …                             \\<br>                \frac{\partial J}{\partial θ_n} \\<br>             \end{pmatrix}<br>            = \begin{pmatrix}<br>                \frac{J(θ_0^+)-J(θ_0^-)}{2ε} \\<br>                \frac{J(θ_1^+)-J(θ_1^-)}{2ε} \\<br>                \frac{J(θ_2^+)-J(θ_2^-)}{2ε} \\<br>                …                          \\<br>                \frac{J(θ_n^+)-J(θ_n^-)}{2ε} \\<br>              \end{pmatrix}<br>            &amp; \begin{cases}<br>                θ_0^+ = (θ_0+ε,θ_1,θ_2,…,θ_n) &amp; , θ_0^- = (θ_0-ε,θ_1,θ_2,…,θ_n) \\<br>                θ_1^+ = (θ_0,θ_1+ε,θ_2,…,θ_n) &amp; , θ_1^- = (θ_0,θ_1-ε,θ_2,…,θ_n) \\<br>                …      \\<br>                θ_n^+ = (θ_0,θ_1,θ_2,…,θ_n+ε) &amp; , θ_j^- = (θ_0,θ_1,θ_2,…,θ_n-ε)  \\<br>              \end{cases}<br>\end{align}<br>$$<br></p>
+
+<pre><code class="lang-python"># loss function: J(θ)
+def J(theta,X_b,y_true):
+    try:
+        return np.sum((X_b.dot(theta)-y_true)**2)/len(y_true)
+    except:
+        return float(&quot;inf&quot;)
+
+# derivative: ∇J(θ) = dJ/dθ = (2/m)·X^T·(X·θ - y_true)
+def dJ_math(theta,X_b,y_true):
+    return X_b.T.dot(X_b.dot(theta)-y_true)*2/len(y_true)
+
+# derivative: ∇J(θ) = dJ/dθ :  (J(θ+ε)-J(θ-ε))/2ε
+def dJ_debug(theta,X_b,y_true,epsilon=0.01):
+    res = np.empty(len(theta))
+    for i in range(len(theta)):
+        theta_1 = theta.copy()
+        theta_2 = theta.copy()
+        theta_1[i] += epsilon
+        theta_2[i] -= epsilon
+        res[i] = (J(theta_1,X_b,y)-J(theta_2,X_b,y))/(2*epsilon)
+    return res
+</code></pre>
+<pre><code class="lang-python"># 1. data
+np.random.seed(666)
+X = np.random.random(size=(1000,10))
+true_theta = np.arange(1,12,dtype=float)    
+# array([ 1.,  2.,  3.,  4.,  5.,  6.,  7.,  8.,  9., 10., 11.])
+
+X_b = np.hstack([np.ones((len(X),1)),X])
+y = X_b.dot(true_theta) + np.random.normal(size=(1000))
+
+initial_theta = np.zeros(X_b.shape[1])
+eta = 0.01
+
+# 2. use dJ_debug
+theta_debug = gradient_descent(dJ_debug,X_b,y,initial_theta,eta)
+print(theta_debug)
+&#39;&#39;&#39;
+CPU times: user 8.66 s, sys: 137 ms, total: 8.8 s
+Wall time: 4.65 s
+array([ 1.1251597 ,  2.05312521,  2.91522497,  4.11895968,  5.05002117,
+        5.90494046,  6.97383745,  8.00088367,  8.86213468,  9.98608331,
+       10.90529198])
+&#39;&#39;&#39;
+
+# 3. use dJ_match
+theta_math = gradient_descent(dJ_math,X_b,y,initial_theta,eta)
+print(theta_math)
+&#39;&#39;&#39;
+CPU times: user 1.2 s, sys: 18.5 ms, total: 1.22 s
+Wall time: 645 ms
+array([ 1.1251597 ,  2.05312521,  2.91522497,  4.11895968,  5.05002117,
+        5.90494046,  6.97383745,  8.00088367,  8.86213468,  9.98608331,
+       10.90529198])
+&#39;&#39;&#39;
+
+# =&gt; then check and compare the result : theta_debug &amp; theta_math
+</code></pre>
+<h2 id="header-33">PCA</h2>
+<p>主成分分析法</p>
+<p>对数据进行降维<br>内部可使用梯度上升法（搜索策略）实现</p>
+<!-- <script type="text/javascript"
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript">
+    MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            /*
+            processEscapes: true,
+              //skipTags remove 'pre' entry
+              skipTags: ['script', 'noscript', 'style', 'textarea','code']
+            */
+        }
+    }); 
+</script> -->
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+          //skipTags remove 'pre' entry
+          skipTags: ['script', 'noscript', 'style', 'textarea','code']
+
+          ,inlineMath: [ ['$','$'], ["\\(","\\)"] ]
+          ,displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+          ,processEscapes: false
+        }
+    });
+</script> -->
+  </section>
+</article>
+
+      <hr/>
+      
+<section class="post-comment">
+	
+		<div id="gitment_container"></div>
+
+<link rel="stylesheet" href="/gitment/default.css">
+<script src="/gitment/gitment.browser.js"></script>
+
+
+<script type="text/javascript">
+	var gitment = new Gitment({
+	  id: document.location.pathname,
+	  owner: 'chenjin-zero',
+	  repo: 'blogComment',
+	  oauth: {
+	    client_id: '36a09bb7399efe69c6ce',
+	    client_secret: 'ad9ad546b23b708c71d92e513dc36e0486179dea',
+	  }
+	})
+      
+	gitment.render('gitment_container')
+</script>
+	
+</section>
+
+    </div>
+  </div>
+</body>
+
+<script src="/jquery/dist/jquery.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+	<script src="/highlight/highlight.pack.js"></script>
+	<script type="text/javascript">
+		hljs.initHighlightingOnLoad();
+	</script>
+
+
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+          //skipTags remove 'pre' entry
+          skipTags: ['script', 'noscript', 'style', 'textarea','code']
+
+          ,inlineMath: [ ['$','$'], ["\\(","\\)"] ]
+          ,displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+          ,processEscapes: false
+        }
+    });
+</script>
+
+
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    var sidebarCtrl=$("#sidebar-ctrl");
+    var sidebar=$("#sidebar");
+    var wrapper=$("#wrapper");
+    sidebarCtrl.on("click",function(event){
+        //alert("click");
+        sidebar.toggleClass("sidebar-toggle");
+        wrapper.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("sidebar-toggle");
+        sidebarCtrl.toggleClass("active");
+    })
+  });
+</script>
+
+
+</html>

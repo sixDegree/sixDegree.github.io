@@ -95,9 +95,132 @@
 <div id="article-listing" role="main">
 
 	<article>
+		<h3><a href="/2019/01/02/Zuul.html">智能路由 Zuul</a></h3>
+		<ul class="post-meta">
+			<li><time 2021-02-21T19:31:49.166Z>2019-01-02</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>dependency: spring-cloud-starter-netflix-zuul</li>
+<li>@EnableZuulProxy(included: @EnableDiscoveryClient, @EnableCircuitBreaker)</li>
+<li>ZuulFilter @Override shouldFilter(),filterType(), filterOrder(),run()</li>
+<li>配置zuul.routes.xxx: path,url/service-id</li>
+<li>通过Eureka中已经注册的服务名,调用服务（使用service-id)</li>
+</ol></p>
+		<a href="/2019/01/02/Zuul.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2019/01/01/Eureka.html">服务治理 Eureka</a></h3>
+		<ul class="post-meta">
+			<li><time 2021-02-21T19:31:49.167Z>2019-01-01</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-MicroService">
+						<span class="label">MicroService</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>dependency: spring-cloud-starter-netflix-eureka-server</li>
+<li>实现一个服务注册中心: @EnableEurekaServer,eureka.client.registerWithEureka &amp; fetchRegistry:false</li>
+<li>注册一个服务: @EnableEurekaClient/@EnableDiscoveryClient</li>
+<li>配置服务注册中心的位置 eureka.client.serviceUrl.defaultZone(默认是 <a href="http://localhost:8761/eureka/" target="_blank" rel="noopener">http://localhost:8761/eureka/</a>)</li>
+<li>注册的服务名会使用 spring.application.name </li>
+</ol></p>
+		<a href="/2019/01/01/Eureka.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2018/10/15/ES6.html">ES6</a></h3>
+		<ul class="post-meta">
+			<li><time 2021-02-21T19:31:49.167Z>2018-10-15</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-Javascript">
+						<span class="label">Javascript</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>变量，作用域，Symbol</li>
+<li>Object，Function，Array，Set，Map</li>
+<li>解构赋值，扩展运算符，箭头函数</li>
+<li>代理器Proxy，修饰器Decorator，遍历器Iterator</li>
+<li>类，模块</li>
+</ol></p>
+		<a href="/2018/10/15/ES6.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2018/09/15/Spring-Boot.html">Spring Boot</a></h3>
+		<ul class="post-meta">
+			<li><time 2021-02-21T19:31:49.167Z>2018-09-15</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-Java">
+						<span class="label">Java</span>
+					</a>
+				
+					<a href="/tags.html#tag-Spring">
+						<span class="label">Spring</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>自动装配组件</li>
+<li>外部化配置</li>
+<li>Servlet（独立／嵌入式Servlet容器）</li>
+<li>WebMvc</li>
+<li>WebFlux</li>
+</ol></p>
+		<a href="/2018/09/15/Spring-Boot.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
+		<h3><a href="/2018/08/15/Oracle-Script.html">Oracle Procedure &amp; Cursor &amp; Array</a></h3>
+		<ul class="post-meta">
+			<li><time 2021-02-21T19:31:49.167Z>2018-08-15</time></li>
+			
+			<li>
+				
+					<a href="/tags.html#tag-SQL">
+						<span class="label">SQL</span>
+					</a>
+				
+			</li>
+			
+		</ul>
+		<p><ol>
+<li>Block,Procedure,Transaction,Exception</li>
+<li>Cursor,Bulk Collect,Forall,Dynamic SQL</li>
+<li>Array/Collection</li>
+<li>String: Split</li>
+</ol></p>
+		<a href="/2018/08/15/Oracle-Script.html" class="readmore">Read More >> </a>
+	</article>
+
+	<article>
 		<h3><a href="/2018/08/04/MongoDB.html">MongoDB</a></h3>
 		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.176Z>2018-08-04</time></li>
+			<li><time 2021-02-21T19:31:49.167Z>2018-08-04</time></li>
 			
 			<li>
 				
@@ -124,7 +247,7 @@
 	<article>
 		<h3><a href="/2018/08/03/Koa.html">Koa</a></h3>
 		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.176Z>2018-08-03</time></li>
+			<li><time 2021-02-21T19:31:49.168Z>2018-08-03</time></li>
 			
 			<li>
 				
@@ -146,7 +269,7 @@
 	<article>
 		<h3><a href="/2018/08/02/Babel-Browserify.html">Babel &amp; Browserify</a></h3>
 		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.176Z>2018-08-02</time></li>
+			<li><time 2021-02-21T19:31:49.168Z>2018-08-02</time></li>
 			
 			<li>
 				
@@ -167,7 +290,7 @@
 	<article>
 		<h3><a href="/2018/08/01/Webpack.html">Webpack</a></h3>
 		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.176Z>2018-08-01</time></li>
+			<li><time 2021-02-21T19:31:49.168Z>2018-08-01</time></li>
 			
 			<li>
 				
@@ -189,7 +312,7 @@
 	<article>
 		<h3><a href="/2018/06/01/Git.html">Git</a></h3>
 		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.177Z>2018-06-01</time></li>
+			<li><time 2021-02-21T19:31:49.168Z>2018-06-01</time></li>
 			
 			<li>
 				
@@ -208,118 +331,6 @@
 <li>规范工作流程</li>
 </ol></p>
 		<a href="/2018/06/01/Git.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2018/05/02/Spring-Data-JPA.html">Spring Data JPA</a></h3>
-		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.177Z>2018-05-02</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-Java">
-						<span class="label">Java</span>
-					</a>
-				
-					<a href="/tags.html#tag-Spring">
-						<span class="label">Spring</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>JPA/SpringDataJPA</li>
-<li>Repository/CurdRepository/PagingAndSortingRepository/JpaRepository/JpaSpecification</li>
-<li>Query: exist function,named query,JPQL(@Query),Pageable,Specification,@EntityGraph</li>
-<li>Create/Update/Delete</li>
-<li>Custom Repository</li>
-</ol></p>
-		<a href="/2018/05/02/Spring-Data-JPA.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2017/07/01/Docker-Basic.html">Docker 基础</a></h3>
-		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.177Z>2017-07-01</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-DevOpts">
-						<span class="label">DevOpts</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>虚拟化技术</li>
-<li>镜像和容器</li>
-<li>数据管理</li>
-<li>网络管理</li>
-</ol></p>
-		<a href="/2017/07/01/Docker-Basic.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2016/05/25/Hadoop2.x-Basic.html">Hadoop2.x Basic</a></h3>
-		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.177Z>2016-05-25</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-BigData">
-						<span class="label">BigData</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>Hadoop2.x HDFS HA &amp; Federation;</li>
-<li>Hadoop2.x MapReduce on Yarn</li>
-</ol></p>
-		<a href="/2016/05/25/Hadoop2.x-Basic.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2016/05/20/Flume.html">Flume</a></h3>
-		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.177Z>2016-05-20</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-BigData">
-						<span class="label">BigData</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><ol>
-<li>Flume概述（Agent组件：Source，Channel，Sink）；</li>
-<li>Flume安装；</li>
-<li>Flume使用示例；</li>
-</ol></p>
-		<a href="/2016/05/20/Flume.html" class="readmore">Read More >> </a>
-	</article>
-
-	<article>
-		<h3><a href="/2016/05/15/Sqoop.html">Sqoop</a></h3>
-		<ul class="post-meta">
-			<li><time 2020-04-01T08:30:59.177Z>2016-05-15</time></li>
-			
-			<li>
-				
-					<a href="/tags.html#tag-BigData">
-						<span class="label">BigData</span>
-					</a>
-				
-			</li>
-			
-		</ul>
-		<p><p>HDFS数据到关系型数据库的导入导出工具Sqoop简介和基本使用示例</p></p>
-		<a href="/2016/05/15/Sqoop.html" class="readmore">Read More >> </a>
 	</article>
 
 
@@ -353,7 +364,7 @@
 			
 			
 				<li><a href="/page/4/"> > </a></li>
-  				<li><a href="/page/7/"> >> </a></li>
+  				<li><a href="/page/8/"> >> </a></li>
 			
 		</ul>
 	</nav>
@@ -412,7 +423,41 @@
 		<li>
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<span class="glyphicon glyphicon-menu-right"></span>
-				2019 (17)
+				2020 (4)
+			</a>
+			<ul>
+				
+					<li>
+						<a href="/2020/12/01/SpringCloud.html">
+							<time>2020-12-01</time>Spring Cloud
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2020/11/20/OAuth.html">
+							<time>2020-11-20</time>OAuth
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2020/08/20/Dart.html">
+							<time>2020-08-20</time>Dart
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2020/08/20/Flutter.html">
+							<time>2020-08-20</time>Flutter
+						</a>
+					</li> 
+			  
+			</ul>
+		</li>
+	
+		<li>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				2019 (18)
 			</a>
 			<ul>
 				
@@ -437,6 +482,12 @@
 					<li>
 						<a href="/2019/08/20/Python-Numpy.html">
 							<time>2019-08-20</time>Python Numpy
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/08/20/Python-ML.html">
+							<time>2019-08-20</time>Machine Learning
 						</a>
 					</li> 
 			  
@@ -837,14 +888,14 @@
 					</li> 
 			  
 					<li>
-						<a href="/2013/06/15/Spring-RestTemplate-with-Authentication.html">
-							<time>2013-06-15</time>Spring应用之RestTemplate with Authentication
+						<a href="/2013/06/15/Spring.html">
+							<time>2013-06-15</time>Spring
 						</a>
 					</li> 
 			  
 					<li>
-						<a href="/2013/06/15/Spring.html">
-							<time>2013-06-15</time>Spring
+						<a href="/2013/06/15/Spring-RestTemplate-with-Authentication.html">
+							<time>2013-06-15</time>Spring应用之RestTemplate with Authentication
 						</a>
 					</li> 
 			  
@@ -947,14 +998,14 @@
 					</li> 
 			  
 					<li>
-						<a href="/2013/06/15/Spring-RestTemplate-with-Authentication.html">
-							<time>2013-06-15</time>Spring应用之RestTemplate with Authentication
+						<a href="/2013/06/15/Spring.html">
+							<time>2013-06-15</time>Spring
 						</a>
 					</li> 
 			  
 					<li>
-						<a href="/2013/06/15/Spring.html">
-							<time>2013-06-15</time>Spring
+						<a href="/2013/06/15/Spring-RestTemplate-with-Authentication.html">
+							<time>2013-06-15</time>Spring应用之RestTemplate with Authentication
 						</a>
 					</li> 
 			  
@@ -1260,7 +1311,7 @@
 		<li>
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<span class="glyphicon glyphicon-menu-right"></span>
-				2019 (17)
+				2019 (18)
 			</a>
 			<ul>
 				
@@ -1285,6 +1336,12 @@
 					<li>
 						<a href="/2019/08/20/Python-Numpy.html">
 							<time>2019-08-20</time>Python Numpy
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2019/08/20/Python-ML.html">
+							<time>2019-08-20</time>Machine Learning
 						</a>
 					</li> 
 			  
@@ -1369,6 +1426,40 @@
 			</ul>
 		</li>
 	
+		<li>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-menu-right"></span>
+				2020 (4)
+			</a>
+			<ul>
+				
+					<li>
+						<a href="/2020/12/01/SpringCloud.html">
+							<time>2020-12-01</time>Spring Cloud
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2020/11/20/OAuth.html">
+							<time>2020-11-20</time>OAuth
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2020/08/20/Dart.html">
+							<time>2020-08-20</time>Dart
+						</a>
+					</li> 
+			  
+					<li>
+						<a href="/2020/08/20/Flutter.html">
+							<time>2020-08-20</time>Flutter
+						</a>
+					</li> 
+			  
+			</ul>
+		</li>
+	
 	</ul> -->
 </section>
 			<section class="widget">
@@ -1379,8 +1470,20 @@
 	<ul class="tags">
 		
 			<li>
+				<a href="/tags.html#tag-SQL">
+					SQL (2)
+				</a>
+			</li>
+		
+			<li>
 				<a href="/tags.html#tag-Java">
 					Java (21)
+				</a>
+			</li>
+		
+			<li>
+				<a href="/tags.html#tag-Hibernate">
+					Hibernate (2)
 				</a>
 			</li>
 		
@@ -1403,6 +1506,24 @@
 			</li>
 		
 			<li>
+				<a href="/tags.html#tag-Node">
+					Node (7)
+				</a>
+			</li>
+		
+			<li>
+				<a href="/tags.html#tag-Apache">
+					Apache (1)
+				</a>
+			</li>
+		
+			<li>
+				<a href="/tags.html#tag-NoSql">
+					NoSql (3)
+				</a>
+			</li>
+		
+			<li>
 				<a href="/tags.html#tag-BigData">
 					BigData (9)
 				</a>
@@ -1415,50 +1536,38 @@
 			</li>
 		
 			<li>
-				<a href="/tags.html#tag-Python">
-					Python (8)
-				</a>
-			</li>
-		
-			<li>
-				<a href="/tags.html#tag-SQL">
-					SQL (2)
-				</a>
-			</li>
-		
-			<li>
-				<a href="/tags.html#tag-Node">
-					Node (7)
-				</a>
-			</li>
-		
-			<li>
-				<a href="/tags.html#tag-NoSql">
-					NoSql (3)
+				<a href="/tags.html#tag-DevOpts">
+					DevOpts (2)
 				</a>
 			</li>
 		
 			<li>
 				<a href="/tags.html#tag-MicroService">
-					MicroService (6)
+					MicroService (8)
 				</a>
 			</li>
 		
 			<li>
-				<a href="/tags.html#tag-Hibernate">
-					Hibernate (2)
+				<a href="/tags.html#tag-Python">
+					Python (9)
 				</a>
 			</li>
 		
 			<li>
-				<a href="/tags.html#tag-Apache">
-					Apache (1)
+				<a href="/tags.html#tag-app">
+					app (2)
 				</a>
 			</li>
 		
 			<li>
-				<a href="/tags.html#tag-DevOpts">
-					DevOpts (2)
+				<a href="/tags.html#tag-python">
+					python (0)
+				</a>
+			</li>
+		
+			<li>
+				<a href="/tags.html#tag-wechat">
+					wechat (0)
 				</a>
 			</li>
 		
